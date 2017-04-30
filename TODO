@@ -1,0 +1,130 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    TODO                                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/04/21 23:17:42 by ade-sede          #+#    #+#              #
+#    Updated: 2017/04/27 09:32:18 by ade-sede         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#################################
+#				#
+# 	TODO	 		#
+#				#
+#################################
+
+KEYWORDS : split and glob - completion
+
+#################################
+#				#
+# 	NOTE	 		#
+#				#
+#################################
+
+	1)	SHLVL is the shell level. Shows how many time a shell has been
+			nested. The very first shell has SHLVL = 1
+
+
+	2)	List of vars that should be init with **environ:
+
+			PATH // optional, if env -i path is nul. but we could assume /usr/bin
+			SHLVL
+			PWD // Maybe we do an opendir . and check it ?
+			_: // Last used command
+
+	3)	If i need to edit env->environ ?
+			Use ft_realloc
+
+	4)	With env -i, env is fully empty. it looks like nothing is init
+			during the command.
+
+		env TATA=TOTO env will display all env variables including
+		tata
+
+		env TATA=TOTO echo $TATA will be blank. Every binary used with
+		env will act using the env as it was before env was cold. The
+		only one using the new env looks like its env
+		
+		##					
+			Maybe env doesnt nest ??
+		##					
+		
+		even always give tmp env to the call behind it, but the
+		variable are expanded during parsing, thats why.
+		
+		
+	5)	The fcts that runs all the programs should have a pointer to
+			the environ to use
+				
+		
+
+
+
+#################################
+#				#
+# 	FCTS DRAFT 		#
+#				#
+#################################
+
+# This is a simple draft for the fonctions that might be needed
+
+		1)	A fonction that would return us the index of one key=value
+				string in env->environ. 
+			
+			ssize_t		get_var_index(char *key, char **environ){
+					i = 0;
+					while (strncmp(key, environ[i], len(key)))		
+						i++;
+					return i;
+			}
+
+			IDEAS 1 -> Give an empty string to the function
+			that would be filled with the value of the key. and an
+			int that would contain the pos len of the key + the "="
+			sign. Would give us the start of the value field
+
+			IDEAS 2 -> Keep all of that in a struct ?
+
+
+#################################
+#				#
+#	 PLAN			#
+#				#
+#################################
+
+
+{{{ int	main()
+	{{{ Initializ the full environement
+
+		Create then fill.
+		{{{ Create t_env *env
+			struct s_env
+			{
+				char	**environ;
+				size_t	environ_size;
+				char	**path;
+				size_t	path_size;
+			}
+		}}}
+			{{{ Fill env->environ with a copy of extern char **environ
+
+				A function should return **char and we assign that to environ.
+			}}}
+			{{{ Fill env->path
+			}}}
+	}}} 
+	{{{ Main shell loop
+		{{{ Get_next_line in *line
+		}}}
+		{{{ Parse into **args
+		}}}
+		{{{ Send into execute
+		}}}
+	}}}
+	{{{ Clean up
+	}}}
+}}}
+
