@@ -6,7 +6,7 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/04/26 18:18:41 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/14 22:34:59 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ CFLAGS = -g -Wall -Wextra -Werror
 CC = gcc
 
 # Sources
-SRC_FILE =	main.c
+SRC_FILE =	main.c \
+		environ.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
