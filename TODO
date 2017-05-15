@@ -6,7 +6,7 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/21 23:17:42 by ade-sede          #+#    #+#              #
-#    Updated: 2017/04/27 09:32:18 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/02 13:46:44 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,30 @@
 #				#
 #################################
 
-KEYWORDS : split and glob - completion
+LINKS		:	
+
+			# DOC LIST ON 42's FORUM
+			https://forum.intra.42.fr/topics/16416/messages
+
+			# POSIX STANDARDS ON SHELL GRAMAR AND BASIC BEHAVIOR
+			http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
+
+			# 42SH's SUBJECT
+			https://cdn.intra.42.fr/pdf/pdf/183/42sh.fr.pdf
+
+			# 21SH's SUBJECT
+			https://cdn.intra.42.fr/pdf/pdf/468/21sh.fr.pdf
+			
+			# MINISHELL's SUBJECT
+			https://cdn.intra.42.fr/pdf/pdf/107/minishell.fr.pdf
+
+			# TERMCAPS FRIENDLY DOC
+			http://loiclefloch.fr/877-les-termcaps/
+
+			# HOSTILE TERMCAPS DOC // RUN
+			https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html
+
+KEYWORDS	:	split and glob - completion - AST - lexer parser
 
 #################################
 #				#
@@ -38,29 +61,29 @@ KEYWORDS : split and glob - completion
 	3)	If i need to edit env->environ ?
 			Use ft_realloc
 
-	4)	With env -i, env is fully empty. it looks like nothing is init
-			during the command.
-
-		env TATA=TOTO env will display all env variables including
-		tata
-
-		env TATA=TOTO echo $TATA will be blank. Every binary used with
-		env will act using the env as it was before env was cold. The
-		only one using the new env looks like its env
-		
-		##					
-			Maybe env doesnt nest ??
-		##					
-		
-		even always give tmp env to the call behind it, but the
-		variable are expanded during parsing, thats why.
-		
-		
-	5)	The fcts that runs all the programs should have a pointer to
+	4)	The fcts that runs all the programs should have a pointer to
 			the environ to use
-				
-		
 
+#################################
+#				#
+#	LEXER PARSER		#
+#				#
+#################################
+
+LINKS		:	# PARSING
+			https://en.wikipedia.org/wiki/Parsing
+			
+			# LEXICA ANALYSIS
+			https://en.wikipedia.org/wiki/Lexical_analysis
+
+			# PARSE TREE
+			https://en.wikipedia.org/wiki/Parse_tree
+
+			# TOKENIZER IN C SHARP
+			http://onoffswitch.net/building-a-custom-lexer/
+
+			# PARSER IN C SHARP
+			http://onoffswitch.net/a-handrolled-language-parser/
 
 
 #################################
@@ -115,16 +138,32 @@ KEYWORDS : split and glob - completion
 			}}}
 			{{{ Fill env->path
 			}}}
+			Init termcaps{{{
+			}}}
 	}}} 
+
 	{{{ Main shell loop
-		{{{ Get_next_line in *line
+		Print prompt {{{
 		}}}
-		{{{ Parse into **args
+		Edit line {{{
+			Termcaps
+		}}}
+		{{{ Get_next_line on 0
+		}}}
+	Lexer {{{
+		Tokenizer {{{
+		}}}
+		Recognize the tokens (match keywords, brackets, etc etc) {{{
+		}}}
+		Check the global grammar {{{
+		}}}
+	}}}
+		Parser{{{
 		}}}
 		{{{ Send into execute
 		}}}
 	}}}
+
 	{{{ Clean up
 	}}}
 }}}
-

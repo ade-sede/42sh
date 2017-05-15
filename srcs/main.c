@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 14:38:25 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/14 22:59:55 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/15 12:01:23 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	main(void)
 
 	env.environ = create_environ(environ, &(env.environ_size));
 	/* print_environ((const char **)env.environ); */
-	ft_printf("%s\n", ft_get_env((const char **)(env.environ), "SHELL", NULL));
+	/* ft_printf("%s\n", ft_get_env((const char **)(env.environ), "SHELL", NULL)); */
 	return (0);
 }
