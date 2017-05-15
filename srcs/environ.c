@@ -6,19 +6,21 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 22:35:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/15 11:57:05 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/15 17:35:51 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "libft.h"
 #include "printf.h"
+#include <stdio.h>
 
 void		print_environ(const char **environ)
 {
 	while (*environ)
 	{
-		ft_printf("%s\n", *environ);
+		ft_putstr(*environ);
+		ft_putstr("\n");
 		environ++;
 	}
 }
@@ -35,15 +37,17 @@ char		**create_environ(const char **original, size_t *new_size)
 	return (new_environ);
 }
 
-char		*ft_get_env(const char **environ, const char *key, size_t *index)
+char		*ft_get_env(const char **environ, const char *key_start, size_t *index)
 {
 	size_t	i;
 	size_t	key_size;
 	char		*value;
+	char		*key;
 
-	key_size = ft_strlen(key);
+	key = ft_strjoin(key_start, "=");
+	key_size = ft_strlen((const char*)key);
 	i = 0;
-	while (environ[i] && ft_strncmp(key, environ[i], key_size) != 0)
+	while (environ[i] && ft_strncmp((const char*)key, environ[i], key_size) != 0)
 		i++;
 	if (index != NULL)
 		*index = i;
@@ -51,5 +55,7 @@ char		*ft_get_env(const char **environ, const char *key, size_t *index)
 		value = (char*)(environ[i] + ft_strichr((char*)environ[i], '=') + 1);
 	else
 		value = NULL;
+	free(key);
 	return (value);
 }
+

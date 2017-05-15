@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   unsetenv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/21 14:38:25 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/15 18:45:13 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/05/15 14:45:01 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/15 17:49:30 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "libft.h"
-#include "printf.h"
 
-int	main(void)
+char		**remove_var(char **environ, size_t environ_size, size_t key_index)
 {
-	t_env			env;
-	extern const char	**environ;
-	t_list		*first;
+	char	**new_environ;
 
-	load_base_env(&env, environ);
-	print_environ((const char **)env.environ);
-	first = env.path;
-	while (first)
-	{
-		ft_printf("%s\n", first->data);
-		first = first->next;
-	}
-	return (0);
+	new_environ = palloc(sizeof(char*) * (environ_size - 1 + 1), __func__);
+	ft_addcpy((void**)new_environ, (const void**)environ, key_index);
+	ft_addcpy((void**)new_environ + key_index, \
+			(const void**)environ + key_index + 1, environ_size - key_index);
+	new_environ[environ_size - 1] = NULL;
+	return (new_environ);
 }
