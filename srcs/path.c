@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 17:57:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/15 18:32:06 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/15 22:54:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	create_path_list(char *path, t_list **first)
 			*first = node;
 		else if (colon_index > 0)
 			ft_simple_lst_pushback(first, node);
-		path += (colon_index == -1) ? ft_strlen((const char*)path) : colon_index + 1;
+		path += (colon_index == -1) ? (int)ft_strlen((const char*)path) : (int)(colon_index + 1);
 	}
 }
