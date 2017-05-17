@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 14:38:25 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/17 14:59:45 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/17 20:50:15 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ int	main(void)
 {
 	t_env			env;
 	extern const char	**environ;
-	/* t_list		*first; */
 
-	load_base_env(&env, environ);
-	print_environ((const char **)env.environ);
+	env_load_base_env(&env, environ);
+	env_print_environ((const char **)env.environ);
 
 	/* size_t index; */
 
-	/* ft_get_env((const char**)env.environ, "SHLVL", &index); */
-	/* env.environ = (char**)ft_freeswap((t_ulong)env.environ, (t_ulong)remove_var(env.environ, env.environ_size, index)); */
-	/* print_environ((const char **)env.environ); */
+	/* env_getenv((const char**)env.environ, "SHLVL", &index); */
+	/* env.environ = (char**)ft_freeswap((t_ulong)env.environ, (t_ulong)env_remove_var(env.environ, env.environ_size, index)); */
+	/* env_print_environ((const char **)env.environ); */
 
+	/* t_list		*first; */
 	/* first = env.path; */
 	/* while (first) */
 	/* { */

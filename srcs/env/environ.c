@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 22:35:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/15 17:35:51 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/17 20:36:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "printf.h"
 #include <stdio.h>
 
-void		print_environ(const char **environ)
+void		env_print_environ(const char **environ)
 {
 	while (*environ)
 	{
@@ -25,7 +25,7 @@ void		print_environ(const char **environ)
 	}
 }
 
-char		**create_environ(const char **original, size_t *new_size)
+char		**env_create_environ(const char **original, size_t *new_size)
 {
 	char		**new_environ;
 	size_t	original_size;
@@ -37,7 +37,7 @@ char		**create_environ(const char **original, size_t *new_size)
 	return (new_environ);
 }
 
-char		*ft_get_env(const char **environ, const char *key_start, size_t *index)
+char		*env_getenv(const char **environ, const char *key_start, size_t *index)
 {
 	size_t	i;
 	size_t	key_size;
@@ -58,4 +58,3 @@ char		*ft_get_env(const char **environ, const char *key_start, size_t *index)
 	free(key);
 	return (value);
 }
-

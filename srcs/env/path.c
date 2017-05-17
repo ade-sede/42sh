@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 17:57:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/17 14:11:21 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/17 20:38:26 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "minishell.h"
 #include <stdio.h>
 
-void	create_path_list(char *path, t_list **first)
+void	env_create_path_list(char *path, t_list **first)
 {
 	t_list	*node;
 	ssize_t	colon_index;

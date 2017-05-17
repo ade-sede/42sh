@@ -6,7 +6,7 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/15 18:31:29 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/17 20:45:30 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,15 @@ CFLAGS = -g -Wall -Wextra -Werror
 CC = gcc
 
 # Sources
-SRC_FILE =	main.c \
-		environ.c \
-		setenv.c \
-		load_base_env.c \
-		unsetenv.c \
-		path.c
+SRC_FILE =	\
+	main.c \
+	return_failure.c \
+	env/environ.c \
+	env/setenv.c \
+	env/load_base_env.c \
+	env/unsetenv.c \
+	env/path.c \
+	builtin/cd.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
