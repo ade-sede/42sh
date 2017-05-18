@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 15:41:54 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 17:39:03 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,6 @@ void			env_remove_var_index(t_env *env, size_t key_index);
 void			env_create_path_list(char *path, t_list **first);
 void			env_add_change(t_env *env, const char *key, const char *value);
 int			return_failure(const char *str, const char *error_msg);
+int			env_copy_env(t_env *new_env, t_env *old_env);
+int			env_free_env(t_env *env);
 #endif 
