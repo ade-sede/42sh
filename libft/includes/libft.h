@@ -188,4 +188,5 @@ char				*ft_strsurround(const char *s1, const char *s2, const char *s3);
 short int			bs_str(const char *str, int i, char c);
 void				ft_simple_lst_dup(t_list **new_list_first, t_list *original);
 void				ft_arraydel(char ***tab);
+int				ft_atoi_safe(const char *str, int *result);
 #endif

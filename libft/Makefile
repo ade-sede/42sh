@@ -120,6 +120,7 @@ SRC = \
 		charcmp.c \
 		bs_str.c \
 		ft_arraydel.c \
+		ft_atoi_safe.c \
 		ft_lst_dup.c
 
 
