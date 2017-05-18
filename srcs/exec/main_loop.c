@@ -41,6 +41,7 @@ void	main_loop(t_env *env)
 		//line = get_input(env);
 		ft_bzero(buf, 4096);
 		read(0, buf, 4096);
+		*ft_strchr(buf, '\n') = '\0';
 		argv = ft_strsplit(buf, " \t");
 		exec(env, (const char **)argv);
 		put_prompt(env);
