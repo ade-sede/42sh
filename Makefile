@@ -6,7 +6,7 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/18 15:05:05 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/18 17:53:39 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC_FILE =	\
 	env/load_base_env.c \
 	env/edit_env.c \
 	env/path.c \
+	env/t_env.c \
 	builtin/cd.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
