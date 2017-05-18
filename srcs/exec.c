@@ -45,7 +45,7 @@ void	ft_exec_bin_path(t_env *env, const char **argv)
 	return_failure(argv[0], " :no such file or directory");
 }
 
-void	ft_fork_exec(t_env *env, const char **argv)
+int	fork_exec_bin(t_env *env, const char **argv)
 {
 	pid_t		child;
 
@@ -61,5 +61,7 @@ void	ft_fork_exec(t_env *env, const char **argv)
 	{
 		wait(&child);
 		env->previous_exit = WEXITSTATUS(child);
+		return (WEXITSTATUS(child));
 	}
+	return (1);
 }

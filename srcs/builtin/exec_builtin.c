@@ -12,32 +12,32 @@
 
 #include "libft.h"
 #include "minishell.h"
-#include <stdio.h>
-
-static int	builtin_cd(t_env *env, char **argv)
-{
-	(void)(env);
-	printf("%s\n", *++argv);
-	return (1);
-}
-
-typedef struct	s_builtin
-{
-	const char	*key;
-	int		(*f)(t_env*, char**);
-}			t_builtin;
-
+#include "builtin.h"
 
 t_builtin g_builtin[] = 
 { 
-			{"cd", &builtin_cd},
-			{"pwd", &builtin_pwd}
+	{"cd", &builtin_cd},
+	{"exit", &builtin_exit},
+	{"env", &builtin_env},
+	{"unsetenv", &builtin_unsetenv},
+	{"setenv", &builtin_setenv},
+	{"echo", &builtin_echo}
+	{NULL, NULL}
 };
 
-int		main(int ac, char *av[])
+int		exec_builtin(t_env *env, char **av)
 {
-	printf("%s\n", g_builtin[0].key);
-	if (ac == 2)
-		g_builtin[0].f(NULL, av);
+	int	i;
+
+	i = 0;
+	while (g_builtin[i].key)
+	{
+		if (ft_strnequ(g_builtin[i].key), av[0])
+		{
+			env->previous_exit = g_builtin[i].f(env, av);
+			return (1);
+		}
+		i++;
+	}
 	return (0);
 }
