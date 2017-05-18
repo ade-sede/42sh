@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-ssize_t		ft_strichr(char *s, char c)
+ssize_t		ft_strichr(const char *s, char c)
 {
 	ssize_t	i;
 

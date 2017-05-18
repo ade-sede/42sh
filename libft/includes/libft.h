@@ -142,7 +142,7 @@ void				ft_sort_int_tab(int *tabb, size_t n);
 int					ft_sqrt(int nb);
 int					ft_power(int nb, int power);
 char				*ft_itoa_base(intmax_t value, int base);
-ssize_t				ft_strichr(char *s, char c);
+ssize_t				ft_strichr(const char *s, char c);
 int					divide(int a, int b);
 int					mod(int a, int b);
 int					mult(int a, int b);
