@@ -186,4 +186,5 @@ unsigned long int		ft_freeswap(unsigned long int old, unsigned long int new);
 int				charcmp(const char *str, int index, char *char_base);
 char				*ft_strsurround(const char *s1, const char *s2, const char *s3);
 short int			bs_str(const char *str, int i, char c);
+void				ft_arraydel(char ***tab);
 #endif

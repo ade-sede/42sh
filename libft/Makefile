@@ -118,7 +118,8 @@ SRC = \
 		ft_lst_return_if.c \
 		free.c \
 		charcmp.c \
-		bs_str.c
+		bs_str.c \
+		ft_arraydel.c \
 
 
 SRCDIR = srcs
