@@ -130,6 +130,6 @@ void	ft_simple_lst_del_one(t_list **first, t_list *node, void(*f)(void*))
 		else
 			old_tmp->next = curr_tmp->next;
 		(f)(node->data);
-		free(0);
+		free(node);
 	}
 }
