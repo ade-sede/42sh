@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <vcombey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,11 +13,13 @@
 #include "libft.h"
 #include <unistd.h>
 #include "env.h"
+#include "exec.h"
+#include "builtin.h"
 
-void	exec(t_env *env, char **argv)
+void	exec(t_env *env, const char **argv)
 {
-	if (!(exec_builtin(argv)))
-		ft_fork_exec(argv, *env, previous_exit);
+	if (!(exec_builtin(env, argv)))
+		fork_exec_bin(env, argv);
 }
 
 void	put_prompt(t_env *env)
@@ -27,19 +29,20 @@ void	put_prompt(t_env *env)
 	ft_putstr("$>");
 }
 
-void	ft_sh(t_env *env)
+void	main_loop(t_env *env)
 {
-	char		*line;
 	char		**argv;
+	char		buf[4096];
 
 	put_prompt(env);
 	while (42)
 	{
 		//refresh_buff_and_history();
 		//line = get_input(env);
-		line = get_next_line(0, &line);
-		argv = ft_strsplit(line, " \t");
-		exec(env, &previous_exit);
+		ft_bzero(buf, 4096);
+		read(0, buf, 4096);
+		argv = ft_strsplit(buf, " \t");
+		exec(env, (const char **)argv);
 		put_prompt(env);
 		ft_arraydel(&argv);
 	}

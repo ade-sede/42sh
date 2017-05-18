@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 #include <unistd.h>
 #include "env.h"
 
@@ -93,7 +93,7 @@ void	putchar_echo(char **av, int *i, int *j)
 	*j = *j + 1;
 }
 
-void	ft_echo(char **argv, char *str)
+int	builtin_echo(char **argv, char *str)
 {
 	char	**av;
 	int		n_flag;
@@ -119,4 +119,5 @@ void	ft_echo(char **argv, char *str)
 		ft_putstr("\033[30m\033[47m%\x1b[0m");
 	ft_putchar('\n');
 	tab_free(av);
+	return (0);
 }

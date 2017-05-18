@@ -36,4 +36,5 @@ void			env_add_change(t_env *env, const char *key, const char *value);
 int			return_failure(const char *str, const char *error_msg);
 int			env_copy_env(t_env *new_env, t_env *old_env);
 int			env_free_env(t_env *env);
+void			env_add_var_from_string(t_env *env, char *key_value, ssize_t eq_index);
 #endif 

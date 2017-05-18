@@ -80,3 +80,10 @@ void		env_add_change(t_env *env, const char *key, const char *value)
 		env_change_value(env, key, index, value);
 }
 
+void		env_add_var_from_string(t_env *env, char *key_value, ssize_t eq_index)
+{
+	key_value[eq_index] = 0;
+	env_add_change(env, (const char*)key_value, \
+		(const char*)key_value + eq_index + 1);
+}
+

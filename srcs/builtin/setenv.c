@@ -10,33 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "env.h"
 #include "libft.h"
 #include <unistd.h>
 
-int		builtin_setenv(t_env *env, char **argv)
+int		builtin_setenv(t_env *env, const char **argv)
 {
-	int		k;
+	int		eq_index;
 	int		i;
-	char	*key;
-	char	*value;
 	int		argc;
 
 	argc = ft_arraylen(argv);
-	if (argc = 1)
-		ft_putarray(env->environ);
+	if (argc == 1)
+		env_print_environ((const char **)env->environ);
 	i = 1;
 	while (i < argc)
 	{
-		if ((k = ft_strchri(argv[i], '=')) > 0)
-		{
-			argv[i][k] = '\0';
-			key = ft_strdup(argv[i]);
-			value = ft_strdup(argv[i] + k + 1);
-			env_add_to_env(env, key, value);
-			free(key);
-			free(value);
-		}
+		eq_index = ft_strichr(argv[i], '=');
+		if (eq_index != -1 && eq_index != 0)
+			env_add_var_from_string(env, (char*)argv[i], eq_index);
 		else
 			return (return_failure("usage: cp key1=value1 key2=value2 ..", NULL));
 		i++;

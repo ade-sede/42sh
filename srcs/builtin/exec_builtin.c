@@ -21,20 +21,20 @@ t_builtin g_builtin[] =
 	{"env", &builtin_env},
 	{"unsetenv", &builtin_unsetenv},
 	{"setenv", &builtin_setenv},
-	{"echo", &builtin_echo}
+//	{"echo", &builtin_echo},
 	{NULL, NULL}
 };
 
-int		exec_builtin(t_env *env, char **av)
+int		exec_builtin(t_env *env, const char **argv)
 {
 	int	i;
 
 	i = 0;
 	while (g_builtin[i].key)
 	{
-		if (ft_strnequ(g_builtin[i].key), av[0])
+		if (ft_strequ(g_builtin[i].key, argv[0]))
 		{
-			env->previous_exit = g_builtin[i].f(env, av);
+			env->previous_exit = g_builtin[i].f(env, argv);
 			return (1);
 		}
 		i++;
