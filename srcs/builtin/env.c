@@ -14,26 +14,26 @@
 #include "libft/libft.h"
 #include <unistd.h>
 
-int		ft_env_option(t_env **env, char **argv)
+static size_t	builtin_env_options(t_env *env_cpy, char **argv)
 {
-	int		i;
+	size_t		i;
 
 	i = 1;
 	while (argv[i] && argv[i][0] == '-')
 	{
 		if (ft_strequ(argv[i], "-i"))
-			ft_free_env(env);
+			ft_free_env(env_cpy);
 		else if (ft_strequ(argv[i], "-u") && argv[i + 1])
 		{
-			ft_delete_var(env, argv[i + 1]);
+			env_remove_var(env_cpy, argv[i + 1]);
 			i++;
 		}
 		else if (argv[i][1] == '-' && !argv[i][2])
 			return (i + 1);
 		else
 		{
-			ft_free_env(env);
-			ft_return_err("env: invalid option -", argv[i]);
+			ft_free_env(env_cpy);
+			return_failure("env: invalid option -", argv[i]);
 			return (0);
 		}
 		i++;
@@ -41,60 +41,49 @@ int		ft_env_option(t_env **env, char **argv)
 	return (i);
 }
 
-void	change_var(char *str, t_env **env)
+void	change_var(t_env *env_cpy, char *str)
 {
 	int		k;
-	char	*var;
+	char	*key;
 	char	*value;
 
 	k = ft_strchri(str, '=');
 	str[k] = '\0';
-	var = ft_strdup(str);
+	key = ft_strdup(str);
 	value = ft_strdup(str + k + 1);
-	if (!(ft_change_var(*env, var, value)))
-		ft_envadd(ft_envnew(var, value), env);
+	env_add_change(env_cpy, key, value);
+	free(key);
+	free(value);
 }
 
-void	display_environ(char **environ)
+int	builtin_env(t_env *env, char **argv)
 {
-	ft_putstrstr(environ);
-	tab_free(environ);
-	return ;
-}
+	t_env		env_cpy;
+	size_t		i;
+	size_t		argc;
+	int		exit_status;
 
-void	display_new_environ(t_env *env)
-{
-	char	**new_environ;
-
-	new_environ = ft_lsttotab(env);
-	ft_putstrstr(new_environ);
-	tab_free(new_environ);
-	if (env != NULL)
-		ft_free_env(&env);
-}
-
-void	ft_env(char **argv, char *line, char **environ, int *previous_exit)
-{
-	t_env	*env;
-	int		i;
-
-	if (ft_strstrlen(argv) == 1)
-		return (display_environ(environ));
-	env = ft_tabtolst(environ);
-	tab_free(environ);
-	if ((i = ft_env_option(&env, argv)) == 0)
-		return ;
-	while (argv[i])
+	argc = ft_arraylen(argv);
+	if (argc == 1)
+	{
+		env_print_environ(env->environ);
+		return (0); 
+	}
+	env_cpy = duplicate_env(env);
+	if ((i = builtin_env_options(&env, argv)) == 0)
+		return (1);
+	while (i < argc)
 	{
 		if (ft_strchri(argv[i], '=') > 0)
-			change_var(argv[i], &env);
+			change_var(env_cpy, argv[i]);
 		else if (!(ft_strequ(argv[i], "env")))
 		{
-			ft_parse(argv + i, line, &env, previous_exit);
-			ft_free_env(&env);
-			return ;
+			exit_status = fork_exec_bin(env_cpy, argv + i);
+			ft_free_env(&env_cpy);
+			return (exit_status);
 		}
 		i++;
 	}
-	display_new_environ(env);
+	ft_free_env(&env_cpy);
+	env_print_environ(env_cpy->environ);
 }

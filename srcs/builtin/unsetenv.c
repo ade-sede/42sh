@@ -6,27 +6,25 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 18:51:04 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/18 15:01:40 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:49:33 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
-#include "libft/libft.h"
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_unsetenv(char **argv, t_env **env)
+int	builtin_unsetenv(t_env *env, char **argv)
 {
-	int		i;
+	size_t	i;
+	int		argc;
 
+	argc = ft_arraylen(argv);
+	if (argc == 1)
+		return (return_failure("unsetenv: Too few arguments\n", 2));
 	i = 1;
-	if (ft_strstrlen(argv) == 1)
+	while (i < argc)
 	{
-		ft_putstr_fd("unsetenv: Too few arguments\n", 2);
-		return ;
-	}
-	while (argv[i])
-	{
-		ft_delete_var(env, argv[i]);
+		env_remove_var(env, argv[i]);
 		i++;
 	}
 }

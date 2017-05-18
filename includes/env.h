@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                        :+:      :+:    :+:   */
+/*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/26 18:23:09 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 15:00:50 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/18 15:41:54 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_env
 
 char			**env_create_environ(const char **original, size_t *new_size);
 void			env_print_environ(const char **environ);
+void			env_remove_var(t_env *env, const char *key);
 char			*env_getenv(const char **environ, const char *key, size_t *index);
 void			env_add_var(t_env *env, const char *key, const char *value);
 void			env_change_value(t_env *env, const char *key, size_t key_index, const char *new_value);

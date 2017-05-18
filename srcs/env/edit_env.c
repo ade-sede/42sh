@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 14:54:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:41:14 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ void	env_remove_var_index(t_env *env, size_t key_index)
 	free(env->environ);
 	env->environ = new_environ;
 	env->environ_size--;
+}
+
+
+void	env_remove_var(t_env *env, const char *key)
+{
+	size_t	index;
+
+	if (env_getenv((const char**)env->environ, key, &index))
+		env_remove_var_index(env, index);
 }
 
 void		env_add_var(t_env *env, const char *key, const char *value)
@@ -70,3 +79,4 @@ void		env_add_change(t_env *env, const char *key, const char *value)
 	else
 		env_change_value(env, key, index, value);
 }
+
