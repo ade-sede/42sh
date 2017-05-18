@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 00:11:36 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:57:57 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	change_var(t_env *env_cpy, char *str)
 	char	*key;
 	char	*value;
 
-	k = ft_strchri(str, '=');
+	k = ft_strichr(str, '=');
 	str[k] = '\0';
 	key = ft_strdup(str);
 	value = ft_strdup(str + k + 1);
