@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 15:46:58 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 17:25:13 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 17:42:34 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,4 +187,5 @@ int				charcmp(const char *str, int index, char *char_base);
 char				*ft_strsurround(const char *s1, const char *s2, const char *s3);
 short int			bs_str(const char *str, int i, char c);
 void				ft_simple_lst_dup(t_list **new_list_first, t_list *original);
+void				ft_arraydel(char ***tab);
 #endif

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_arraydel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 18:37:42 by ade-sede          #+#    #+#             */
-/*   Updated: 2016/11/12 15:04:44 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/01/13 10:10:11 by vcombey           #+#    #+#             */
+/*   Updated: 2017/01/13 10:10:26 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_arraydel(char ***tab)
 {
-	if (*ap)
+	char	**tmp;
+
+	tmp = *tab;
+	while (*tmp)
 	{
-		free(*ap);
-		*ap = NULL;
+		ft_bzero(*tmp, ft_strlen(*tmp));
+		ft_memdel((void*)tmp);
+		tmp++;
 	}
+	free(*tab);
+	*tab = NULL;
 }
