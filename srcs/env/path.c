@@ -6,12 +6,12 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 17:57:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/17 20:38:26 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "minishell.h"
+#include "env.h"
 #include <stdio.h>
 
 void	env_create_path_list(char *path, t_list **first)

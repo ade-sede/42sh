@@ -6,11 +6,11 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 22:35:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/17 20:36:01 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "env.h"
 #include "libft.h"
 #include "printf.h"
 #include <stdio.h>

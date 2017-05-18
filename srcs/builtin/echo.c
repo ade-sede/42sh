@@ -6,13 +6,13 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 17:13:37 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/17 16:34:31 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <unistd.h>
-#include "minishell.h"
+#include "env.h"
 
 int		replace_quotes(char *str)
 {

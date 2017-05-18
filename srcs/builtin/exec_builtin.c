@@ -6,12 +6,12 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 15:47:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/17 16:14:21 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "minishell.h"
+#include "env.h"
 #include <stdio.h>
 
 static int	builtin_cd(t_env *env, char **argv)

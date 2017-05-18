@@ -1,17 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setenv.c                                           :+:      :+:    :+:   */
+/*   edit_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/15 13:41:21 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/17 20:38:17 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/05/18 14:54:59 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "env.h"
 #include "libft.h"
+
+
+void	env_remove_var_index(t_env *env, size_t key_index)
+{
+	size_t environ_size;
+	char	**environ;
+	char	**new_environ;
+
+	environ = env->environ;
+	environ_size = env->environ_size;
+	new_environ = palloc(sizeof(char*) * (environ_size - 1 + 1), __func__);
+	free(environ[key_index]);
+	ft_addcpy((void**)new_environ, (const void**)environ, key_index);
+	ft_addcpy((void**)new_environ + key_index, \
+			(const void**)environ + key_index + 1, environ_size - key_index);
+	new_environ[environ_size - 1] = NULL;
+	free(env->environ);
+	env->environ = new_environ;
+	env->environ_size--;
+}
 
 void		env_add_var(t_env *env, const char *key, const char *value)
 {
@@ -41,7 +61,7 @@ void		env_change_value(t_env *env, const char *key, size_t key_index, const char
 	environ[key_index] = ft_strsurround(key, "=", new_value);
 }
 
-void		env_add_to_env(t_env *env, const char *key, const char *value)
+void		env_add_change(t_env *env, const char *key, const char *value)
 {
 	size_t	index;
 

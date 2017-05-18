@@ -6,14 +6,15 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/17 20:45:30 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/18 15:05:05 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = minishell
 LIB_DIR = libft
-INC_DIR = $(LIB_DIR)/includes
+LIBFT_INCLUDE = $(LIB_DIR)/includes
+INCLUDE_DIR = includes
 SRC_DIR = srcs
 
 # Flags at compile time
@@ -25,9 +26,8 @@ SRC_FILE =	\
 	main.c \
 	return_failure.c \
 	env/environ.c \
-	env/setenv.c \
 	env/load_base_env.c \
-	env/unsetenv.c \
+	env/edit_env.c \
 	env/path.c \
 	builtin/cd.c
 
@@ -39,7 +39,7 @@ LIB:
 	@make -C $(LIB_DIR) re
 
 $(NAME):
-	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) -L $(LIB_DIR) -lft -I $(INC_DIR)
+	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) -L $(LIB_DIR) -lft -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR)
 
 clean:
 	@/bin/rm -rf $(OBJ)
