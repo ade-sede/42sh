@@ -14,64 +14,77 @@
 #include "exec.h"
 #include "libft.h"
 
-static size_t	builtin_env_options(t_env *env_cpy, const char **argv)
+static const char	**apply_opt(t_env *env, const char **argv, int	*error)
 {
-	size_t		i;
-
-	i = 1;
-	while (argv[i] && argv[i][0] == '-')
+	while (*argv)
 	{
-		if (ft_strequ(argv[i], "-i"))
-			env_free_env(env_cpy);
-		else if (ft_strequ(argv[i], "-u") && argv[i + 1])
+		if (ft_strequ(*argv, "-i"))
 		{
-			env_remove_var(env_cpy, argv[i + 1]);
-			i++;
+			env_free_env(env);
+			env->environ = env_create_environ(NULL, NULL);
+			argv++;
 		}
-		else if (argv[i][1] == '-' && !argv[i][2])
-			return (i + 1);
+		else if (ft_strequ(*argv, "-u"))
+		{
+			if (!(*(argv + 1)))
+			{
+				return_failure("env: option requires an argument -- u\n", NULL);		
+				*error = 1;
+				return (argv);
+			}
+			env_remove_var(env, *(argv + 1));
+			argv += 2;
+		}
+		else if (ft_strequ(*argv, "-"))
+			argv++;
+		else if (ft_strequ(*argv, "--"))
+			return (argv + 1);
 		else
-		{
-			env_free_env(env_cpy);
-			return_failure("env: invalid option -", argv[i]);
-			return (0);
-		}
-		i++;
+			return (argv);
 	}
-	return (i);
+	return (argv);
 }
 
-int	builtin_env(t_env *env, const char **argv)
+static const char	**build_new_env(t_env *env, const char **argv, int *error)
 {
-	t_env		env_cpy;
-	ssize_t		eq_index;
-	size_t		i;
-	size_t		argc;
-	int		exit_status;
+	int	eq_index;
 
-	argc = ft_arraylen(argv);
-	if (argc == 1)
+	argv = apply_opt(env, argv, error);
+	if (*error)
+		return (argv);
+	while (*argv)
 	{
-		env_print_environ((const char **)env->environ);
-		return (0); 
-	}
-	env_copy_env(&env_cpy, env);
-	if ((i = builtin_env_options(&env_cpy, argv)) == 0)
-		return (1);
-	while (i < argc)
-	{
-		eq_index = ft_strichr(argv[i], '=');
-		if ( eq_index != -1 && eq_index != 0)
-			env_add_var_from_string(env, (char*)argv[0], eq_index);
-		else if (!(ft_strequ(argv[i], "env")))
+		eq_index = ft_strichr(*argv, '=');
+		if (eq_index == 0)
 		{
-			exit_status = fork_exec_bin(&env_cpy, argv + i);
-			env_free_env(&env_cpy);
-			return (exit_status);
+			*error = 1;
+			return_failure("env: invalid argument", *argv);
+			return (argv);
 		}
-		i++;
+		else if (eq_index > 0)
+			env_add_var_from_string(env, (char *)*argv, eq_index);
+		else
+			return (argv);
+		argv++;
 	}
-	env_free_env(&env_cpy);
-	env_print_environ((const char**)env_cpy.environ);
+	return (argv);
+}
+
+int	builtin_env(t_env *old_env, const char **argv)
+{
+	t_env	new_env;
+	int	error;
+
+	error = 0;
+	if (!env_copy_env(&new_env, old_env))
+		return (EXIT_FAILURE);
+	argv = build_new_env(&new_env, argv + 1, &error);
+	if (error)
+		return (EXIT_FAILURE);
+	if (!(*argv))
+		env_print_environ((const char**)new_env.environ);
+	else
+		fork_exec_bin(&new_env, argv);
+	env_free_env(&new_env);
 	return (EXIT_SUCCESS);
 }
