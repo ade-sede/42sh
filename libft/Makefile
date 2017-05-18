@@ -6,7 +6,7 @@
 #    By: ade-sede <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 14:34:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/18 16:34:05 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/18 17:25:03 by ade-sede         ###   ########.fr        #
 #    Updated: 2016/12/12 13:30:18 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -118,7 +118,8 @@ SRC = \
 		ft_lst_return_if.c \
 		free.c \
 		charcmp.c \
-		bs_str.c
+		bs_str.c \
+		ft_lst_dup.c
 
 
 SRCDIR = srcs

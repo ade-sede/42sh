@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/08 16:42:31 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/12 12:14:26 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/18 17:25:13 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	simple_is_okay(t_list *node1, t_list *node2)
 {
 	int	i;
 	int	j;
-	
+
 	i = atoi(node1->data);
 	j = atoi(node2->data);
 	if (i == j)
@@ -60,7 +60,7 @@ static int	is_okay(t_list_d *node1, t_list_d *node2)
 {
 	int	i;
 	int	j;
-	
+
 	i = atoi(node1->data);
 	j = atoi(node2->data);
 	if (i == j)
@@ -88,7 +88,7 @@ static void	change_double(t_list_d *first)
 
 static void	print_double(t_list_d *first)
 {
-		ft_printf("%s\n", first->data);
+	ft_printf("%s\n", first->data);
 }
 
 static void double_add(t_lst_head **head)
@@ -398,6 +398,37 @@ void	simple_sort_insert(void)
 	ft_printf("%s\n", ft_simple_lst_return_if(node0, return_is_okay)->data);
 }
 
+void	simple_copy(void)
+{
+	ft_printf("\n%s\n", __func__);
+	t_list	*node0;
+	t_list	*node1;
+	t_list	*node2;
+	t_list	*node3;
+	t_list	*node4;
+	t_list	*node5;
+	t_list	*first;
+
+	first = NULL;
+	node0 = ft_simple_lst_create(ft_itoa_base(0, 10));
+	node1 = ft_simple_lst_create(ft_itoa_base(1, 10));
+	node2 = ft_simple_lst_create(ft_itoa_base(2, 10));
+	node3 = ft_simple_lst_create(ft_itoa_base(3, 10));
+	node4 = ft_simple_lst_create(ft_itoa_base(4, 10));
+	node5 = ft_simple_lst_create(ft_itoa_base(5, 10));
+	ft_simple_lst_pushback(&node0, node1);
+	ft_simple_lst_pushback(&node0, node2);
+	ft_simple_lst_pushback(&node0, node3);
+	ft_simple_lst_pushback(&node0, node4);
+	ft_simple_lst_pushback(&node0, node5);
+	ft_simple_lst_foreach(node0, NULL, print_simple);
+	ft_printf("\n");
+	ft_printf("%s\n", ft_simple_lst_get_n(node0, 2)->data);
+	ft_simple_lst_dup(&first, node0);
+	ft_printf("\n");
+	ft_simple_lst_foreach(first, NULL, print_simple);
+}
+
 int	main(void)
 {
 	t_lst_head	*head;
@@ -410,10 +441,11 @@ int	main(void)
 	/* double_sort_insert(&head); */
 	/* double_del_one_and_remove(&head); */
 	/* simple_add(); */
-	/* simple_pushback(); */
+	simple_pushback();
+	simple_copy();
 	/* simple_del_one_and_remove(); */
 	/* simple_sort_insert(); */
-	double_del_one_2(&head);
+	/* double_del_one_2(&head); */
 	return (0);
 }
 
