@@ -28,7 +28,7 @@ static const char	**apply_opt(t_env *env, const char **argv, int	*error)
 		{
 			if (!(*(argv + 1)))
 			{
-				return_failure("env: option requires an argument -- u\n", NULL);		
+				return_failure("env: option requires an argument -- u", NULL);		
 				*error = 1;
 				return (argv);
 			}
@@ -85,6 +85,6 @@ int	builtin_env(t_env *old_env, const char **argv)
 		env_print_environ((const char**)new_env.environ);
 	else
 		fork_exec_bin(&new_env, argv);
-	//env_free_env(&new_env);
+	env_free_env(&new_env);
 	return (EXIT_SUCCESS);
 }

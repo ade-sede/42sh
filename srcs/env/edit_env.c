@@ -74,7 +74,7 @@ void		env_add_change(t_env *env, const char *key, const char *value)
 {
 	size_t	index;
 
-	if (env_getenv((const char**)env->environ, key, &index))
+	if (!(env_getenv((const char**)env->environ, key, &index)))
 		env_add_var(env, key, value);
 	else
 		env_change_value(env, key, index, value);
@@ -86,4 +86,3 @@ void		env_add_var_from_string(t_env *env, char *key_value, ssize_t eq_index)
 	env_add_change(env, (const char*)key_value, \
 		(const char*)key_value + eq_index + 1);
 }
-

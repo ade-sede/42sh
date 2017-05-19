@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   return_failure.c                                   :+:      :+:    :+:   */
+/*   ft_is_one_of.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/17 17:15:57 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/02/05 22:00:16 by vcombey           #+#    #+#             */
+/*   Updated: 2017/04/16 19:30:23 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "env.h"
 
-int	return_failure(const char *str, const char *error_msg)
+int		ft_is_one_of(char c, const char *that)
 {
-	if (str)
-		ft_putstr(str);
-	if (error_msg)
-		ft_putstr(error_msg);
-	ft_putchar('\n');
-	return (EXIT_FAILURE);
+	int	i;
+
+	i = 0;
+	while (that[i])
+	{
+		if (c == that[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }

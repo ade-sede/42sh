@@ -15,6 +15,7 @@
 NAME = libft.a
 
 SRC = \
+		ft_is_one_of.c \
 		ft_atoi.c \
 		ft_bzero.c \
 		ft_isalnum.c \

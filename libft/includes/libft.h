@@ -66,6 +66,7 @@ typedef struct		s_lst_head
 	int				node_count;
 }					t_lst_head;
 
+int		ft_is_one_of(char c, const char *that);
 t_list				*ft_simple_lst_create(void *data);
 t_list_d			*ft_double_lst_create(void *data);
 t_lst_head			*ft_create_head(t_list_d *first);

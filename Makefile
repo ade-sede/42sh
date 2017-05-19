@@ -44,18 +44,28 @@ SRC_FILE =	\
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
-all: $(NAME) LIB
+OBJS = $(addprefix objs/, $(SRC:.c=.o))
 
-LIB:
-	@make -C $(LIB_DIR) re
+all: $(NAME)
 
-$(NAME):
-	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) -L $(LIB_DIR) -lft -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR)
+$(NAME): $(OBJS)
+	make -C ./libft/
+	$(CC) -g $(OBJS) -L libft  -ltermcap -lft -o $(NAME)
 
 clean:
-	@/bin/rm -rf $(OBJ)
+	make clean -C ./libft/
+	/bin/rm -rf objs
 
-fclean:clean
-	@/bin/rm -rf $(NAME)
+fclean: clean
+	/bin/rm -f ./libft/libft.a
+	/bin/rm -f $(NAME)
 
-re: fclean LIB all
+re: fclean all
+
+objs/%.o : %.c
+	@/bin/mkdir -p objs
+	@/bin/mkdir -p objs/srcs
+	@/bin/mkdir -p objs/srcs/builtin
+	@/bin/mkdir -p objs/srcs/exec
+	@/bin/mkdir -p objs/srcs/env
+	gcc -g $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $<
