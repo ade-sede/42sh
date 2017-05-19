@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/16 19:18:36 by vcombey           #+#    #+#             */
-/*   Updated: 2017/04/16 19:27:43 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/05/19 19:33:30 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,17 @@ static void			ft_fill_t(char const *s, char **t, const char *str)
 char				**ft_strsplit(char const *s, const char *str)
 {
 	unsigned int	nb_words;
-	unsigned int	i;
-	char			**t;
+	char			**word_tab;
 
 	if (!s)
 		return (NULL);
-	i = 0;
 	nb_words = ft_count_words(s, str);
-	t = NULL;
-	if (!(t = (char **)malloc(sizeof(char *) * (nb_words + 1))))
+	word_tab = NULL;
+	if (!(word_tab = (char **)malloc(sizeof(char *) * (nb_words + 1))))
 		return (NULL);
-	t[nb_words] = NULL;
-	if (ft_malloc_t(s, t, str) == NULL)
+	word_tab[nb_words] = NULL;
+	if (ft_malloc_t(s, word_tab, str) == NULL)
 		return (NULL);
-	ft_fill_t(s, t, str);
-	return (t);
+	ft_fill_t(s, word_tab, str);
+	return (word_tab);
 }
