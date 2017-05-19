@@ -6,13 +6,13 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 16:10:18 by vcombey           #+#    #+#             */
-/*   Updated: 2017/04/20 10:10:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/05/19 19:34:49 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "env.h"
-#include <stdio.h>
+#include "sys/wait.h"
 
 void	ft_exec_bin_absolute(t_env *env, const char **argv)
 {
