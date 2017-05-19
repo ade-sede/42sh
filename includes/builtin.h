@@ -1,12 +1,46 @@
 # ifndef BUILTIN_H
 # define BUILTIN_H
 
+/*
+** In unsetenv.c
+*/
+
 int	builtin_unsetenv(t_env *env, const char **argv);
+
+/*
+** In setenv.c
+*/
+
 int	builtin_setenv(t_env *env, const char **argv);
-int	builtin_exit(t_env *env, const char **argv);
+
+/*
+** In env.c
+*/
+
 int	builtin_env(t_env *env, const char **argv);
+
+/*
+** In env.c
+*/
+
+int	builtin_exit(t_env *env, const char **argv);
+
+/*
+** In cd.c
+*/
+
 int	builtin_cd(t_env *env, const char **argv);
+
+/*
+** In exec_builtin.c
+*/
 int	exec_builtin(t_env *env, const char **argv);
+
+/*
+** In echo.c
+*/
+
+int	builtin_echo(char **argv, char *str)
 
 typedef struct	s_builtin
 {
