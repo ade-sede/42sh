@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/19 15:29:59 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/19 19:47:18 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,6 @@ char			*env_getenv(const char **environ, const char *key, size_t *index);
 
 void			env_load_shlvl_pwd(t_env *env);
 void			env_load_base_env(t_env *env, const char **environ);
-
-/*
-**	In file path.c
-*/
-
-void			env_create_path_list(char *path, t_list **first);
 
 /*
 **	In file return_failure.c
