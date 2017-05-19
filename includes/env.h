@@ -18,7 +18,6 @@ typedef struct	s_env
 {
 	char		**environ;
 	size_t	environ_size;
-	t_list	*path;
 	int		previous_exit;
 }			t_env;
 

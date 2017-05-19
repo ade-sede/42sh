@@ -40,11 +40,6 @@ void	env_remove_var(t_env *env, const char *key)
 
 	if (env_getenv((const char**)env->environ, key, &index))
 		env_remove_var_index(env, index);
-	if (ft_strequ(key, "PATH"))
-	{
-		ft_simple_lst_remove(&env->path, ft_free);
-		env->path = NULL;
-	}
 }
 
 void		env_add_var(t_env *env, const char *key, const char *value)
@@ -83,17 +78,11 @@ void		env_add_change(t_env *env, const char *key, const char *value)
 		env_add_var(env, key, value);
 	else
 		env_change_value(env, key, index, value);
-	if (ft_strequ(key, "PATH"))
-	{
-		ft_simple_lst_remove(&env->path, ft_free);
-		env->path = NULL;
-		env_create_path_list((char*)value, &(env->path));
-	}
 }
 
 void		env_add_var_from_string(t_env *env, char *key_value, ssize_t eq_index)
 {
-	key_value[eq_index] = 0;
+	key_value[eq_index] = '\0';
 	env_add_change(env, (const char*)key_value, \
 		(const char*)key_value + eq_index + 1);
 }

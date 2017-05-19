@@ -20,7 +20,7 @@ int	builtin_cd(t_env *env, const char **argv)
 	char	*current_pwd;
 	char	*new_pwd;
 
-	if (ft_arraylen(argv))
+	if (ft_arraylen(argv) == 1)
 	{
 		if (!(new_pwd = env_getenv((const char**)env->environ, "HOME", NULL)))
 			return (return_failure(NULL, "cd: HOME not set"));

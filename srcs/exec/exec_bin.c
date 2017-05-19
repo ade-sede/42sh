@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include "env.h"
+#include <stdio.h>
 
 void	ft_exec_bin_absolute(t_env *env, const char **argv)
 {
@@ -26,22 +27,33 @@ void	ft_exec_bin_absolute(t_env *env, const char **argv)
 void	ft_exec_bin_path(t_env *env, const char **argv)
 {
 	char	*bin;
-	t_list	*tmp;
+	char	*path; 
+	char	**paths;
+	int	i;
 
-	tmp = env->path;
-	while (tmp)
+	i = 0;
+	if (!(path = env_getenv((const char**)env->environ, "PATH", NULL)))
+		return ;
+	//printf("%s\n", path);
+	paths = ft_strsplit(path + 5, ":");
+	while (paths[i])
 	{
-		bin = ft_strsurround(tmp->data, "/", argv[0]);
+		//printf("%s\n", paths[i]);
+		bin = ft_strsurround(paths[i], "/", argv[0]);
 		if (access(bin, F_OK) == 0)
 		{
 			if (access(bin, X_OK) == -1)
+			{
+				ft_arraydel(&paths);
 				return_failure(bin, " :permission denied ");
+			}
 			execve(bin, (char**)argv, env->environ);
 		}
 		free(bin);
-		tmp = tmp->next;
+		i++;
 	}
-	return_failure(argv[0], " :no such file or directory");
+	ft_arraydel(&paths);
+	return_failure(argv[0], " :commmand not found");
 }
 
 int	fork_exec_bin(t_env *env, const char **argv)

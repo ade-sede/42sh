@@ -17,16 +17,12 @@
 void		env_load_base_env(t_env *env, const char **environ)
 {
 	size_t	index;
-	char		*path;
 
 	env->environ = NULL;
-	env->path = NULL;
 	env->environ = env_create_environ(environ, &(env->environ_size));
 	env_load_shlvl_pwd(env);
 	if (env_getenv((const char**)env->environ, "SHELL", &index) != NULL)
 		env_change_value(env, "SHELL", index, "minishell");
-	if ((path = env_getenv((const char**)env->environ, "PATH", NULL)) != NULL)
-		env_create_path_list(path, &(env->path));
 }
 
 void		env_load_shlvl_pwd(t_env *env)
