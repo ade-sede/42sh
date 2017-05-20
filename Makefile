@@ -6,7 +6,7 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/18 17:53:39 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/20 14:32:54 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ SRC_FILE =	\
 \
 	env/environ.c \
 	env/load_base_env.c \
-	env/edit_env.c \
-	env/path.c \
+	env/add_var.c \
+	env/remove_var.c \
 	env/t_env.c \
 \
 	builtin/cd.c \

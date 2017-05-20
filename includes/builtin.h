@@ -40,7 +40,7 @@ int	exec_builtin(t_env *env, const char **argv);
 ** In echo.c
 */
 
-int	builtin_echo(char **argv, char *str)
+int	builtin_echo(char **argv, char *str);
 
 typedef struct	s_builtin
 {

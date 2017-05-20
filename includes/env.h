@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/19 19:47:18 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/20 14:33:44 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,19 @@ void			env_load_base_env(t_env *env, const char **environ);
 int			return_failure(const char *str, const char *error_msg);
 
 /*
-**	In file edit_env.c
+**	In file add_var.c
 */
 
 void			env_change_value(t_env *env, const char *key, size_t key_index, const char *new_value);
 void			env_add_var(t_env *env, const char *key, const char *value);
-void			env_remove_var_index(t_env *env, size_t key_index);
 void			env_add_change(t_env *env, const char *key, const char *value);
 void			env_add_var_from_string(t_env *env, char *key_value, ssize_t eq_index);
+/*
+** 	In file remove_var.c
+*/
+
+void			env_remove_var_index(t_env *env, size_t key_index);
+void			env_remove_var(t_env *env, const char *key);
 
 /*
 **	In file t_env.c
