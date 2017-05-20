@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 15:46:58 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/20 19:35:55 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:50:52 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,4 +190,5 @@ short int			bs_str(const char *str, int i, char c);
 void				ft_simple_lst_dup(t_list **new_list_first, t_list *original);
 void				ft_arraydel(char ***tab);
 int				ft_atoi_safe(const char *str, int *result);
+char				**ft_strsplit_quotes(const char *str, const char *split_base);
 #endif
