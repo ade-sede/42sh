@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit_str.c                                  :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/16 19:18:36 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/19 19:33:30 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/05/20 14:56:03 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/20 14:57:07 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static unsigned int	ft_count_words(char const *s, const char *str)
 	return (nb_words);
 }
 
-static char			**ft_malloc_t(char const *s, char **t, const  char *str)
+static char			**ft_malloc_tab(char const *s, char **t, const  char *str)
 {
 	unsigned int	i;
 	unsigned int	no_words;
@@ -60,7 +60,7 @@ static char			**ft_malloc_t(char const *s, char **t, const  char *str)
 	return (t);
 }
 
-static void			ft_fill_t(char const *s, char **t, const char *str)
+static void			ft_fill_tab(char const *s, char **t, const char *str)
 {
 	unsigned int	i;
 	unsigned int	no_words;
@@ -96,8 +96,8 @@ char				**ft_strsplit(char const *s, const char *str)
 	if (!(word_tab = (char **)malloc(sizeof(char *) * (nb_words + 1))))
 		return (NULL);
 	word_tab[nb_words] = NULL;
-	if (ft_malloc_t(s, word_tab, str) == NULL)
+	if (ft_malloc_tab(s, word_tab, str) == NULL)
 		return (NULL);
-	ft_fill_t(s, word_tab, str);
+	ft_fill_tab(s, word_tab, str);
 	return (word_tab);
 }

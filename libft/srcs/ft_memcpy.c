@@ -6,11 +6,12 @@
 /*   By: ade-sede <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 14:54:11 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/04/27 19:57:09 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:34:18 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "printf.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -27,7 +28,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-void	**ft_addcpy(void **dst, const void **src, size_t n)
+
+void	**ft_addrcpy(void **dst, const void **src, size_t n)
 {
 	void	**s1;
 

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 14:31:40 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/20 14:32:12 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:36:31 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		env_add_var(t_env *env, const char *key, const char *value)
 	new_environ_size = env->environ_size + 1;
 	new_environ = palloc(sizeof(char*) * (new_environ_size + 1), __func__);
 	new_key_value = ft_strsurround(key, "=", value);
-	ft_addcpy((void**)new_environ, (const void**)environ, env->environ_size);
+	ft_addrcpy((void**)new_environ, (const void**)environ, env->environ_size);
 	new_environ[new_environ_size - 1] = new_key_value;
 	new_environ[new_environ_size] = NULL;
 	free(env->environ);

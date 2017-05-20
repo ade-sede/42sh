@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 14:31:30 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/20 14:32:15 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:36:31 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	env_remove_var_index(t_env *env, size_t key_index)
 	environ_size = env->environ_size;
 	new_environ = palloc(sizeof(char*) * (environ_size - 1 + 1), __func__);
 	free(environ[key_index]);
-	ft_addcpy((void**)new_environ, (const void**)environ, key_index);
-	ft_addcpy((void**)new_environ + key_index, \
+	ft_addrcpy((void**)new_environ, (const void**)environ, key_index);
+	ft_addrcpy((void**)new_environ + key_index, \
 			(const void**)environ + key_index + 1, environ_size - key_index);
 	new_environ[environ_size - 1] = NULL;
 	free(env->environ);

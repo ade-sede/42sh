@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/22 14:42:12 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/08 16:23:22 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:38:29 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	**ft_array_realloc(size_t ptr_data_size, void **ptr, size_t size)
 		return (NULL);
 	} else {
 		new_memory = palloc(size, __func__);
-		ft_addcpy(new_memory, (const void **)ptr, ptr_data_size);
+		ft_addrcpy(new_memory, (const void **)ptr, ptr_data_size);
 		free(ptr);
 	}
 	return (new_memory);
@@ -60,8 +60,8 @@ void	**ft_array_remove(int index, size_t ptr_data_size, void **ptr)
 		return (NULL);
 	} else {
 		new_memory = palloc(size, __func__);
-		ft_addcpy(new_memory, (const void **)ptr, index);
-		ft_addcpy(new_memory + index, (const void **)(ptr + index + 1), size - index);
+		ft_addrcpy(new_memory, (const void **)ptr, index);
+		ft_addrcpy(new_memory + index, (const void **)(ptr + index + 1), size - index);
 		free(ptr);
 	}
 	return (new_memory);

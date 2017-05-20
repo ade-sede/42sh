@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 15:46:58 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 17:42:34 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:35:55 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ char				*ft_unsigned_itoa_base(uintmax_t, int);
 void				*palloc(size_t size, const char *func_name);
 void				*ft_strchange(void *old, void *new);
 void				*ft_str_realloc(size_t ptr_data_size, void *ptr, size_t size);
-void				**ft_addcpy(void **dst, const void **src, size_t n);
+void				**ft_addrcpy(void **dst, const void **src, size_t n);
 void				**ft_array_realloc(size_t ptr_data_size, void **ptr, size_t size);
 size_t				ft_arraylen(const char **s);
 void				**ft_array_remove(int index, size_t ptr_data_size, void **ptr);
