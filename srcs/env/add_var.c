@@ -6,12 +6,13 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 14:31:40 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/20 19:36:31 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/20 22:09:08 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "libft.h"
+#include <stdio.h>
 
 void		env_add_var(t_env *env, const char *key, const char *value)
 {

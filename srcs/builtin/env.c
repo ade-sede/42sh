@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 00:11:36 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/18 15:57:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/20 22:10:07 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static const char	**apply_opt(t_env *env, const char **argv, int	*error)
 		if (ft_strequ(*argv, "-i"))
 		{
 			env_free_env(env);
-			env->environ = env_create_environ(NULL, NULL);
+			env->environ = env_create_environ(NULL, &(env->environ_size));
 			argv++;
 		}
 		else if (ft_strequ(*argv, "-u"))
