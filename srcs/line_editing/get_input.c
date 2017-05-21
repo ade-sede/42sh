@@ -11,7 +11,7 @@ static t_edit_func	g_edit_func[] =
 //	{KEY_DOWN, &edit_down},
 	//{KEY_SHIFT_UP},
 	//{KEY_SHIFT_DOWN},
-	{KEY_TAB, comple_get_input},
+//	{KEY_TAB, comple_get_input},
 	//{},
 	//{},
 	{0, NULL}
@@ -33,6 +33,8 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	}
 	if (ft_isprint((char)keycode))
 		edit_add(keycode, line);
+	//ft_putnbr(keycode);
+	//ft_putchar('\n');
 	return (1);
 }
 

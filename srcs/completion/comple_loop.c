@@ -25,16 +25,7 @@ int		comple_loop(unsigned long long keycode, t_line *line, t_comple *c)
 		}
 		i++;
 	}
-	if (ft_isprint((char)keycode))
 	return (0);
-}
-
-int	comple_init(t_line line, t_comple *c)
-{
-	char	*to_match;
-
-	c->matches = dir_matches(to_match);
-	c->ws_col = get_ws_term();
 }
 
 int		comple_get_input(t_line *line)
@@ -50,8 +41,7 @@ int		comple_get_input(t_line *line)
 		read(0, &keycode, 8);
 		if (keycode == KEY_ENTER)
 		{
-			comple_clear(c);
-			comple_free(c);
+			comple_exit_matched(line, c);
 			return (1);
 		}
 		else if (!(comple_loop(keycode, l, &c)))

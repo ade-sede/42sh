@@ -15,6 +15,7 @@
 # define KEY_DELETE 0x7E335B1B
 # define KEY_HOME 4741915
 # define KEY_END 4610843 
+# define KEY_SHIFT 9 
 # define KEY_SHIFT_UP 71683997260571
 # define KEY_SHIFT_DOWN 72783508888347
 
@@ -49,4 +50,6 @@ void	edit_refresh(int signum, t_env *env);
 
 void	put_prompt(t_env *env);
 
+void	goto_termcap(char *capacity, int co, int li);
+void	put_ntermcap(char *capacity, int n);
 # endif

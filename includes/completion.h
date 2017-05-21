@@ -8,6 +8,8 @@ typedef struct		s_comple
 	int		pos;
 	size_t		ws_col;
 	size_t		nb_lines;
+	size_t		nb_colones;
+	size_t		nb_matches;
 }			t_comple;
 
 typedef struct		s_comple_func
@@ -26,4 +28,9 @@ int		comple_left(t_line *line);
 int		comple_up(t_line *line);
 int		comple_down(t_line *line);
 
+int	comple_refresh(t_line *line, t_comple c);
+
+void	comple_clear(t_comple c);
+void	comple_free(t_comple c);
+int	comple_exit_matched(t_line *line, t_comple c);
 # endif

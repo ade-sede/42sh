@@ -22,17 +22,14 @@ void	edit_add(int keycode, t_line *line)
 
 void	edit_refresh(int signum, t_env *env)
 {
-	int	i;
 	int	n;
 
 	put_termcap("cr");
 	put_termcap("dl");
 	put_prompt(env);
 	ft_putstr(line()->buff);
-	i = -1;
 	n = line()->len - line()->pos;
-	while (++i < n)
-		put_termcap("le");
+	put_ntermcap("le", n);
 	(void)signum;
 }
 
