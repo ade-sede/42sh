@@ -40,7 +40,14 @@ SRC_FILE =	\
 	builtin/exec_builtin.c \
 \
 	exec/exec_bin.c \
-	exec/main_loop.c
+	exec/main_loop.c \
+\
+	line_editing/conf_term.c \
+	line_editing/edit_del.c \
+	line_editing/edit_move.c \
+	line_editing/get_input.c \
+	line_editing/line_editing.c \
+	line_editing/put_termcap.c \
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
@@ -68,4 +75,5 @@ objs/%.o : %.c
 	@/bin/mkdir -p objs/srcs/builtin
 	@/bin/mkdir -p objs/srcs/exec
 	@/bin/mkdir -p objs/srcs/env
+	@/bin/mkdir -p objs/srcs/line_editing
 	gcc -g $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $<

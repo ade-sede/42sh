@@ -10,16 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "libft.h"
-#include "termios.h"
-#include "term.h"
-
-void	fatal(char *msg)
-{
-	ft_putendl_fd(msg, 2);
-	exit(1);
-}
+#include "line_editing.h"
 
 void	conf_term_out(void)
 {

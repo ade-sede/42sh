@@ -14,6 +14,7 @@
 #include "exec.h"
 #include "libft.h"
 #include "printf.h"
+#include "line_editing.h"
 
 int	main(void)
 {
@@ -21,7 +22,7 @@ int	main(void)
 	extern const char	**environ;
 
 	env_load_base_env(&env, environ);
-	env_print_environ((const char **)env.environ);
+	conf_term_in();
 	main_loop(&env);
 	return (0);
 }

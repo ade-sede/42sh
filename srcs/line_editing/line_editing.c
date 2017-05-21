@@ -20,7 +20,7 @@ void	edit_add(int keycode, t_line *line)
 	line->len++;
 }
 
-void	refresh_buff(int signum, t_env *env)
+void	edit_refresh(int signum, t_env *env)
 {
 	int	i;
 	int	n;
