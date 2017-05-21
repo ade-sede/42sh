@@ -1,12 +1,13 @@
 #ifndef COMPLETION_H
 # define COMPLETION_H
-# include "line_editin.h"
+# include "line_editing.h"
 
 typedef struct		s_comple
 {
 	char		**matches;
 	int		pos;
 	size_t		ws_col;
+	size_t		max_len;
 	size_t		nb_lines;
 	size_t		nb_colones;
 	size_t		nb_matches;

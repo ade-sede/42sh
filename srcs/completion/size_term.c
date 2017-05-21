@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include "ft_ls.h"
 
-int				get_size_term(void)
+int				get_ws_col(void)
 {
 	struct winsize	w;
 

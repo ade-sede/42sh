@@ -1,5 +1,5 @@
 #include "completion.h"
-#include "line_editin.h"
+#include "line_editing.h"
 
 void	comple_clear(t_comple c)
 {
@@ -15,7 +15,7 @@ void	comple_free(t_comple c)
 int	comple_exit_matched(t_line *line, t_comple c)
 {
 	size_t	selected_len;
-	char	*selected_str
+	char	*selected_str;
 	
 	selected_str = c.matches[c.pos];
 	selected_len = ft_strlen(selected_str);
@@ -30,4 +30,5 @@ int	comple_exit_matched(t_line *line, t_comple c)
 	line->len += selected_len;
 	comple_clear(c);
 	comple_free(c);
+	return (1);
 }

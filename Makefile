@@ -48,6 +48,12 @@ SRC_FILE =	\
 	line_editing/get_input.c \
 	line_editing/line_editing.c \
 	line_editing/put_termcap.c \
+\
+	completion/comple_exit_matched.c \
+	completion/comple_init.c \
+	completion/comple_loop.c \
+	completion/comple_refresh.c \
+	completion/size_term.c \
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
@@ -76,4 +82,5 @@ objs/%.o : %.c
 	@/bin/mkdir -p objs/srcs/exec
 	@/bin/mkdir -p objs/srcs/env
 	@/bin/mkdir -p objs/srcs/line_editing
+	@/bin/mkdir -p objs/srcs/completion
 	gcc -g $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $<

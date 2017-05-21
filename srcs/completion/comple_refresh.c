@@ -1,9 +1,26 @@
 #include "completion.h"
 #include "line_editin.h"
 
+void	ft_putstr_padding_space(char *str, unsigned int size)
+{
+	unsigned int len;
+
+	len = ft_strlen(str);
+	ft_putstr(str);
+	while ((size - len) > 0)
+	{
+		write(1, " ", 1);
+		size--;
+	}
+	write(1, " ", 1);
+}
+
 void	comple_refresh_elem(t_comple c, int indice)
 {
-	ft_putstr(c.matches[indice]);
+	if (indice = c.pos)
+		put_termcap("mr");
+	ft_putstr_padding_space(c.matches[indice], c.maxlen);
+	put_termcap("me");
 }
 
 void	comple_line_refresh(t_line *line, t_comple c);
