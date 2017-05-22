@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 14:38:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/22 15:35:38 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/22 16:33:19 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		exec_expand_args(t_env env, char **argv)
 		}
 		if (dollar_sign)
 		{
-			split = ft_strsplit((const char*)argv[j], WHITESPACES);
+			split = ft_strsplit_keep((const char*)argv[j], WHITESPACES);
 			argv[j] = ft_strchange(argv[j], expand_from_split(env, split));
 		}
 		j++;
