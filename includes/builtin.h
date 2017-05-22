@@ -34,13 +34,14 @@ int	builtin_cd(t_env *env, const char **argv);
 /*
 ** In exec_builtin.c
 */
+
 int	exec_builtin(t_env *env, const char **argv);
 
 /*
 ** In echo.c
 */
 
-int	builtin_echo(char **argv, char *str);
+int	builtin_echo(t_env *env, const char **argv);
 
 typedef struct	s_builtin
 {
