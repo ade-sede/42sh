@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 15:47:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 15:43:20 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/22 17:12:06 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_builtin g_builtin[] =
 	{"env", &builtin_env},
 	{"unsetenv", &builtin_unsetenv},
 	{"setenv", &builtin_setenv},
-//	{"echo", &builtin_echo},
+	{"echo", &builtin_echo},
 	{NULL, NULL}
 };
 
