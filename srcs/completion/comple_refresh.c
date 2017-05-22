@@ -20,7 +20,7 @@ void	comple_refresh_elem(t_comple c, int indice)
 		put_termcap("mr");
 	ft_putstr_padding_space(c.matches[indice], c.max_len);
 	put_termcap("me");
-	write(1, "  ", 1);
+	write(1, "  ", 2);
 }
 
 void	comple_line_refresh(t_line *line, t_comple c)

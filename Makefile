@@ -6,7 +6,7 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/22 18:30:52 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/22 22:36:40 by vcombey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC_FILE =	\
 	line_editing/edit_move.c \
 	line_editing/get_input.c \
 	line_editing/line_editing.c \
+	line_editing/edit_refresh.c \
 	line_editing/put_termcap.c \
 \
 	completion/comple_exit_matched.c \

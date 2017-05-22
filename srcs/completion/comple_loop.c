@@ -48,7 +48,7 @@ int		comple_get_input(t_line *line)
 		}
 		else if (!(comple_loop(keycode, line, &c)))
 		{
-			comple_free(c);
+			(c.pos != -1) ? comple_exit_matched(line, c) : comple_free(c);
 			return (1);
 		}
 		comple_refresh(line, c);
