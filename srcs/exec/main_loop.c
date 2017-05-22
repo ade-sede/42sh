@@ -6,7 +6,7 @@
 /*   By: vcombey <vcombey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 15:01:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/22 15:14:40 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/22 18:36:20 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "env.h"
 #include "exec.h"
 #include "builtin.h"
+#include "line_editing.h"
 
 void	exec(t_env *env, const char **argv)
 {
@@ -32,20 +33,22 @@ void	put_prompt(t_env *env)
 void	main_loop(t_env *env)
 {
 	char		**argv;
-	char		buf[4096];
+	char		*buf;
 
-	put_prompt(env);
+	line()->buff = ft_strnew(4096);
 	while (42)
 	{
 		//refresh_buff_and_history();
 		//line = get_input(env);
-		ft_bzero(buf, 4096);
-		read(0, buf, 4096);
-		*ft_strchr(buf, '\n') = '\0';
+	//	ft_bzero(buf, 4096);
+	//	read(0, buf, 4096);
+	//	*ft_strchr(buf, '\n') = '\0';
+		put_prompt(env);
+		edit_line_init();
+		buf = edit_get_input(env);
 		argv = ft_strsplit_quotes(buf, " \t");
 		exec_expand_args(*env, argv + 1);
 		exec(env, (const char **)argv);
-		put_prompt(env);
 		ft_arraydel(&argv);
 	}
 }

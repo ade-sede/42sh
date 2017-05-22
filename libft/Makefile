@@ -6,8 +6,7 @@
 #    By: ade-sede <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 14:34:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/22 16:31:41 by ade-sede         ###   ########.fr        #
-#    Updated: 2016/12/12 13:30:18 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/22 18:29:48 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +14,8 @@
 NAME = libft.a
 
 SRC = \
+		ft_putnstr.c \
+		ft_arraymax_f.c \
 		ft_is_one_of.c \
 		ft_atoi.c \
 		ft_bzero.c \

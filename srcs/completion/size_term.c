@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   size_term.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/21 14:38:25 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/01/27 17:53:55 by vcombey           #+#    #+#             */
+/*   Updated: 2017/05/22 16:52:30 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "exec.h"
-#include "libft.h"
-#include "printf.h"
-#include "line_editing.h"
+#include <sys/ioctl.h>
+#include <stdio.h>
 
-int	main(void)
+size_t				get_ws_col(void)
 {
-	t_env			env;
-	extern const char	**environ;
+	struct winsize	w;
 
-	env_load_base_env(&env, environ);
-	conf_term_in();
-	main_loop(&env);
-	return (0);
+	ioctl(0, TIOCGWINSZ, &w);
+	return (w.ws_col);
 }
-
-

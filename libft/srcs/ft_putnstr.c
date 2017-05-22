@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*   By: mlamoure <mlamoure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/21 14:38:25 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/02/02 19:10:01 by mlamoure          #+#    #+#             */
+/*   Updated: 2017/05/22 16:50:44 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "exec.h"
 #include "libft.h"
-#include "printf.h"
-#include "line_editing.h"
 
-int	main(void)
+void	ft_putnstr(char *str, size_t len)
 {
-	t_env			env;
-	extern const char	**environ;
-
-	env_load_base_env(&env, environ);
-	conf_term_in();
-	main_loop(&env);
-	return (0);
+	write(1, str, len);
 }
-
-

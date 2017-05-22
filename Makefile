@@ -6,7 +6,7 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/22 12:58:31 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/22 18:30:52 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,21 @@ SRC_FILE =	\
 \
 	exec/exec_bin.c \
 	exec/main_loop.c \
-	exec/expand_args.c
+	exec/expand_args.c \
+\
+	line_editing/conf_term.c \
+	line_editing/edit_del.c \
+	line_editing/edit_move.c \
+	line_editing/get_input.c \
+	line_editing/line_editing.c \
+	line_editing/put_termcap.c \
+\
+	completion/comple_exit_matched.c \
+	completion/comple_init.c \
+	completion/comple_loop.c \
+	completion/comple_refresh.c \
+	completion/size_term.c \
+	completion/comple_move.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
@@ -69,4 +83,6 @@ objs/%.o : %.c
 	@/bin/mkdir -p objs/srcs/builtin
 	@/bin/mkdir -p objs/srcs/exec
 	@/bin/mkdir -p objs/srcs/env
+	@/bin/mkdir -p objs/srcs/line_editing
+	@/bin/mkdir -p objs/srcs/completion
 	gcc -g $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $<
