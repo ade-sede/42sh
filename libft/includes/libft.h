@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 15:46:58 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/20 19:50:52 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/22 16:50:42 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ typedef struct		s_lst_head
 	int				node_count;
 }					t_lst_head;
 
-size_t	ft_arraymax_f(char **str, size_t (*f)(char *));
+void	ft_putnstr(char *str, size_t len);
+size_t	ft_arraymax_f(const char **str, size_t (*f)(const char *));
 int		ft_is_one_of(char c, const char *that);
 t_list				*ft_simple_lst_create(void *data);
 t_list_d			*ft_double_lst_create(void *data);

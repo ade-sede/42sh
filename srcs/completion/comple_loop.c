@@ -1,5 +1,5 @@
 #include "completion.h"
-#include "line_editin.h"
+#include "line_editing.h"
 
 static t_comple_func	g_comple_func[] =
 {
@@ -20,12 +20,13 @@ int		comple_loop(unsigned long long keycode, t_line *line, t_comple *c)
 	{
 		if (g_comple_func[i].keycode == keycode)
 		{
-			g_comple_func[i].f(line, comple);
+			g_comple_func[i].f(c);
 			return (1);
 		}
 		i++;
 	}
 	return (0);
+	(void)line;
 }
 
 int		comple_get_input(t_line *line)
@@ -44,12 +45,12 @@ int		comple_get_input(t_line *line)
 			comple_exit_matched(line, c);
 			return (1);
 		}
-		else if (!(comple_loop(keycode, l, &c)))
+		else if (!(comple_loop(keycode, line, &c)))
 		{
 			comple_free(c);
 			return (1);
 		}
-		comple_refresh(0, env);
+		comple_refresh(line, c);
 	}
 	return (1);
 }

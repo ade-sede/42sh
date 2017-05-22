@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   size_term.c                                        :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mlamoure <mlamoure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 17:53:55 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/22 16:52:30 by vcombey          ###   ########.fr       */
+/*   Created: 2017/02/02 19:10:01 by mlamoure          #+#    #+#             */
+/*   Updated: 2017/05/22 16:50:44 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/ioctl.h>
-#include <stdio.h>
+#include "libft.h"
 
-size_t				get_ws_col(void)
+void	ft_putnstr(char *str, size_t len)
 {
-	struct winsize	w;
-
-	ioctl(0, TIOCGWINSZ, &w);
-	return (w.ws_col);
+	write(1, str, len);
 }

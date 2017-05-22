@@ -5,9 +5,9 @@ static size_t ft_max_size_t(size_t a, size_t b)
 	return ((a > b) ? a : b);
 }
 
-size_t	ft_arraymax_f(char **str, size_t (*f)(char *))
+size_t	ft_arraymax_f(const char **str, size_t (*f)(const char *))
 {
-	char **tmp;
+	const char **tmp;
 	size_t	max;
 
 	max = 0;

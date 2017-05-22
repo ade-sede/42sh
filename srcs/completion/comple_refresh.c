@@ -1,5 +1,5 @@
 #include "completion.h"
-#include "line_editin.h"
+#include "line_editing.h"
 
 void	ft_putstr_padding_space(char *str, unsigned int size)
 {
@@ -17,28 +17,30 @@ void	ft_putstr_padding_space(char *str, unsigned int size)
 
 void	comple_refresh_elem(t_comple c, int indice)
 {
-	if (indice = c.pos)
+	if (indice == c.pos)
 		put_termcap("mr");
-	ft_putstr_padding_space(c.matches[indice], c.maxlen);
+	ft_putstr_padding_space(c.matches[indice], c.max_len);
 	put_termcap("me");
 }
 
-void	comple_line_refresh(t_line *line, t_comple c);
+void	comple_line_refresh(t_line *line, t_comple c)
 {
+	size_t	n;
+
 	put_termcap("cr");
 	put_termcap("dl");
-	put_prompt(env);
-	ft_putnstr(line->pos, line->pos);
-	ft_putstr(c.matches[pos]);
-	ft_putstr(line->pos + line->pos);
-	n = line()->len - line()->pos;
-	put_ntermcap("le", n + ft_strlen(c.matches[pos]));
+	//put_prompt(env());
+	ft_putnstr(line->buff, line->pos);
+	ft_putstr(c.matches[c.pos]);
+	ft_putstr(line->buff + line->pos);
+	n = line->len - line->pos;
+	put_ntermcap("le", n + ft_strlen(c.matches[c.pos]));
 }
 
 int	comple_refresh(t_line *line, t_comple c)
 {
-	int		co;
-	int		li;
+	size_t	co;
+	size_t	li;
 
 	put_termcap("do");
 	put_termcap("cr");
@@ -48,7 +50,7 @@ int	comple_refresh(t_line *line, t_comple c)
 		co = 0;
 		while (co < c.nb_lines + li)
 		{
-			goto_termap("ch", co, 0);
+			goto_termcap("ch", co, 0);
 			comple_refresh_elem(c, co * c.nb_lines + li);
 			co++;
 		}
@@ -58,4 +60,5 @@ int	comple_refresh(t_line *line, t_comple c)
 	}
 	put_ntermcap("up", c.nb_lines);
 	comple_line_refresh(line, c);
+	return (1);
 }

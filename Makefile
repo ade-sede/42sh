@@ -6,7 +6,7 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/20 14:32:54 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/22 16:52:55 by vcombey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRC_FILE =	\
 	completion/comple_loop.c \
 	completion/comple_refresh.c \
 	completion/size_term.c \
+	completion/comple_move.c \
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 

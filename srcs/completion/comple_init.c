@@ -3,10 +3,7 @@
 
 char	**array_dir_matches(char *to_match)
 {
-
 	struct dirent	*dirent;
-	t_item			*new;
-	t_item			*error;
 	DIR				*dir;
 	char		**matches;
 	int		i;
@@ -20,26 +17,28 @@ char	**array_dir_matches(char *to_match)
 		i++;
 	}
 	closedir(dir);
+	(void)to_match;
 	return (matches);
 }
 
-int	comple_init(t_line line, t_comple *c)
+int	comple_init(t_line *line, t_comple *c)
 {
 	char		*to_match;
 	unsigned int	n;
 
+	to_match = NULL;
 	c->matches = array_dir_matches(to_match);
-	c->max_len = ft_arraymax_f(c->matches, ft_strlen);
-	c->nb_matches = ft_array_len(c->matches);
+	c->max_len = ft_arraymax_f((const char**)c->matches, ft_strlen);
+	c->nb_matches = ft_arraylen((const char**)c->matches);
 	n = c->nb_matches;
 	c->ws_col = get_ws_col();
-	if ((c->nb_col = get_ws_col() / (c->max_name + 1)) == 0)
+	if ((c->ws_col = get_ws_col() / (c->max_len + 1)) == 0)
 		return (0);
-	c->nb_lines = (n % c->nb_col == 0) ? n / c->nb_col : (n / c->nb_col) + 1;
+	c->nb_lines = (n % c->ws_col == 0) ? n / c->ws_col : (n / c->ws_col) + 1;
 	c->pos = 0;
 	if (c->nb_matches == 1)
 	{
-		comple_exit_matched();
+		comple_exit_matched(line, *c);
 		return (0);
 	}
 	return (1);

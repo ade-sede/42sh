@@ -1,4 +1,5 @@
 #include "line_editing.h"
+#include "completion.h"
 
 static t_edit_func	g_edit_func[] =
 {
@@ -11,7 +12,7 @@ static t_edit_func	g_edit_func[] =
 //	{KEY_DOWN, &edit_down},
 	//{KEY_SHIFT_UP},
 	//{KEY_SHIFT_DOWN},
-//	{KEY_TAB, comple_get_input},
+	{KEY_TAB, comple_get_input},
 	//{},
 	//{},
 	{0, NULL}
