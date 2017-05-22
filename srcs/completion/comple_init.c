@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 18:14:44 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/22 18:14:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/05/22 21:38:43 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	comple_init(t_line *line, t_comple *c)
 	if ((c->ws_col = get_ws_col() / (c->max_len + 1)) == 0)
 		return (0);
 	c->nb_lines = (n % c->ws_col == 0) ? n / c->ws_col : (n / c->ws_col) + 1;
-	c->pos = 0;
+	c->pos = -1;
 	if (c->nb_matches == 1)
 	{
 		comple_exit_matched(line, *c);

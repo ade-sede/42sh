@@ -36,6 +36,7 @@ int		comple_get_input(t_line *line)
 
 	if (!(comple_init(line, &c)))
 		return (0);
+	comple_refresh(line, c);
 	while (42)
 	{
 		keycode = 0;
