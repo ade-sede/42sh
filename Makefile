@@ -6,7 +6,7 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/20 14:32:54 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/05/22 12:58:31 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRC_FILE =	\
 	builtin/exec_builtin.c \
 \
 	exec/exec_bin.c \
-	exec/main_loop.c
+	exec/main_loop.c \
+	exec/expand_args.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 

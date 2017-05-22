@@ -1,9 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */ /*   ft_strsplit_quotes.c                               :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */ /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit_quotes.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/17 11:00:57 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/20 19:55:24 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/05/22 11:57:22 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/22 11:57:53 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +25,9 @@ static short int		check_quotes_content(const char *str, const char *split_base, 
 	i++;
 	while (str[i] && in_quotes)
 	{
-		if (bs_str(str, i, '"'))
+		if (charcmp(str, i, '"'))
 			in_quotes = false;
-		if (!ft_is_one_of(str[i], split_base) && !bs_str(str, i, '"'))
+		if (!ft_is_one_of(str[i], split_base) && !charcmp(str, i, '"'))
 			word_in_quotes = true;
 		i++;
 	}
@@ -43,13 +46,13 @@ static unsigned int	count_words(const char *str, const char *split_base)
 	word_in_quotes = false;
 	while (str[i])
 	{
-		while (str[i] && ft_is_one_of(str[i], split_base) && !bs_str(str, i, '"'))
+		while (str[i] && ft_is_one_of(str[i], split_base) && !charcmp(str, i, '"'))
 			i++;
-		if (str[i] && bs_str(str, i, '"'))
+		if (str[i] && charcmp(str, i, '"'))
 			word_in_quotes = check_quotes_content(str, split_base, &i);
-		if (str[i] && !(ft_is_one_of(str[i], split_base)) && !bs_str(str, i, '"'))
+		if (str[i] && !(ft_is_one_of(str[i], split_base)) && !charcmp(str, i, '"'))
 			nb_words++;
-		while (str[i] && !(ft_is_one_of(str[i], split_base)) && !bs_str(str, i, '"'))
+		while (str[i] && !(ft_is_one_of(str[i], split_base)) && !charcmp(str, i, '"'))
 			i++;
 		if (word_in_quotes)
 			nb_words++;
@@ -68,9 +71,9 @@ static void	fill_word_tab(const char *str, const char *split_base, char **word_t
 	word_in_quotes = false;
 	while (str[i])
 	{
-		while (str[i] && ft_is_one_of(str[i], split_base) && !bs_str(str, i, '"'))
+		while (str[i] && ft_is_one_of(str[i], split_base) && !charcmp(str, i, '"'))
 			i++;
-		if (str[i] && bs_str(str, i, '"'))
+		if (str[i] && charcmp(str, i, '"'))
 		{
 			word_start = i + 1;
 			word_in_quotes = check_quotes_content(str, split_base, &i);
@@ -80,10 +83,10 @@ static void	fill_word_tab(const char *str, const char *split_base, char **word_t
 				word_tab++;
 			}
 		}
-		if (str[i] && !(ft_is_one_of(str[i], split_base)) && !bs_str(str, i, '"'))
+		if (str[i] && !(ft_is_one_of(str[i], split_base)) && !charcmp(str, i, '"'))
 		{
 			word_start = i;
-			while (str[i] && !(ft_is_one_of(str[i], split_base)) && !bs_str(str, i, '"'))
+			while (str[i] && !(ft_is_one_of(str[i], split_base)) && !charcmp(str, i, '"'))
 			{
 				i++;
 			}

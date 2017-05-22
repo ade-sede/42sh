@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 15:46:58 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/20 19:50:52 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/22 12:28:31 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define FALSE 0
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
+# define WHITESPACES " 	\n\t\v"
 
 typedef unsigned long int t_ulong;
 
@@ -184,9 +185,8 @@ t_list_d			*ft_double_lst_return_if(t_list_d *node, int (*f)(void*));
 void				ft_free(void *p);
 char				**ft_arraydup(const char **original);
 unsigned long int		ft_freeswap(unsigned long int old, unsigned long int new);
-int				charcmp(const char *str, int index, char *char_base);
 char				*ft_strsurround(const char *s1, const char *s2, const char *s3);
-short int			bs_str(const char *str, int i, char c);
+short int			charcmp(const char *str, size_t i, char c);
 void				ft_simple_lst_dup(t_list **new_list_first, t_list *original);
 void				ft_arraydel(char ***tab);
 int				ft_atoi_safe(const char *str, int *result);

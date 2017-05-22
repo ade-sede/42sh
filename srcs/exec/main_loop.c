@@ -6,7 +6,7 @@
 /*   By: vcombey <vcombey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 15:01:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/20 20:02:39 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/22 15:14:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	main_loop(t_env *env)
 		read(0, buf, 4096);
 		*ft_strchr(buf, '\n') = '\0';
 		argv = ft_strsplit_quotes(buf, " \t");
+		exec_expand_args(*env, argv + 1);
 		exec(env, (const char **)argv);
 		put_prompt(env);
 		ft_arraydel(&argv);
