@@ -5,6 +5,8 @@ static t_edit_func	g_edit_func[] =
 {
 	{KEY_LEFT, &edit_left},
 	{KEY_RIGHT, &edit_right},
+	{KEY_ALT_RIGHT, &edit_word_right},
+	{KEY_ALT_LEFT, &edit_word_left},
 	{KEY_HOME, &edit_home},
 	{KEY_END, &edit_end},
 	{KEY_BACKSPACE, &edit_backspace},

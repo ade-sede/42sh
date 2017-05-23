@@ -18,7 +18,10 @@
 # define KEY_TAB 9
 # define KEY_SHIFT_UP 71683997260571
 # define KEY_SHIFT_DOWN 72783508888347
-
+# define KEY_ALT_DOWN 1113266971
+# define KEY_ALT_UP 1096489755
+# define KEY_ALT_RIGHT 1130044187
+# define KEY_ALT_LEFT 1146821403
 typedef struct		s_line
 {
 	unsigned int		pos;
@@ -44,6 +47,8 @@ int		edit_end(t_line *line);
 int		edit_home(t_line *line);
 int		edit_right(t_line *line);
 int		edit_left(t_line *line);
+int		edit_word_right(t_line *line);
+int		edit_word_left(t_line *line);
 int	edit_backspace(t_line *line);
 void	edit_add(int keycode, t_line *line);
 void	edit_refresh(int signum, t_env *env);
