@@ -37,6 +37,6 @@ int	builtin_echo(t_env *env, const char **argv)
 	if (!n_flag)
 		ft_putchar('\n');
 	else if (n_flag && *tmp)
-		ft_putstr("\033[30m\033[47m%\x1b[0m");
+		ft_putendl("\033[30m\033[47m%\x1b[0m");
 	return (EXIT_SUCCESS);
 }
