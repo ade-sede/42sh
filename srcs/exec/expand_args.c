@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   expand_args.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/21 14:38:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/22 16:33:19 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 #include "env.h"
 #include "exec.h"
@@ -67,9 +55,9 @@ void		exec_expand_args(t_env env, char **argv)
 
 	dollar_sign = false;
 	j = 0;
-	i = 0;
 	while (argv[j])
 	{
+		i = 0;
 		while (argv[j][i])
 		{
 			if (!dollar_sign && argv[j][i] == '$')

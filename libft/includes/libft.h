@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 15:46:58 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/22 18:30:11 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/22 19:44:16 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strcat(char *s1, const char *s2);
 char				*ft_strncat(char *s1, const char *s2, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
-char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *big, const char *little);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
@@ -146,7 +145,21 @@ void				ft_sort_int_tab(int *tabb, size_t n);
 int					ft_sqrt(int nb);
 int					ft_power(int nb, int power);
 char				*ft_itoa_base(intmax_t value, int base);
+
+/*
+** In file ft_strichr.c
+*/
+
 ssize_t				ft_strichr(const char *s, char c);
+ssize_t				ft_arrayichr(const char **array, const char *str);
+
+/*
+** In file ft_strchr.c
+*/
+
+char				*ft_strchr(const char *s, int c);
+const char			**ft_arraychr(const char **array, const char *str);
+
 int					divide(int a, int b);
 int					mod(int a, int b);
 int					mult(int a, int b);

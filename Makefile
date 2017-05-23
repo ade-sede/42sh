@@ -1,16 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/02/18 18:04:44 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/22 22:36:40 by vcombey          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
 NAME = minishell
 LIB_DIR = libft
 LIBFT_INCLUDE = $(LIB_DIR)/includes
@@ -38,6 +25,7 @@ SRC_FILE =	\
 	builtin/unsetenv.c \
 	builtin/exit.c \
 	builtin/exec_builtin.c \
+	builtin/echo.c \
 \
 	exec/exec_bin.c \
 	exec/main_loop.c \

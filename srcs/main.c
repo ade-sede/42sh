@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/21 14:38:25 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "env.h"
 #include "exec.h"
 #include "libft.h"
@@ -24,6 +12,7 @@ int	main(void)
 	env_load_base_env(&env, environ);
 	conf_term_in();
 	main_loop(&env);
+	env_free_env(&env);
 	return (0);
 }
 

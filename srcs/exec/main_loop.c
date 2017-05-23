@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main_loop.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <vcombey@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/20 15:01:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/22 18:36:20 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 #include <unistd.h>
 #include "env.h"
@@ -35,6 +23,8 @@ void	main_loop(t_env *env)
 	char		**argv;
 	char		*buf;
 
+	line()->len = 0;
+	line()->pos = 0;
 	line()->buff = ft_strnew(4096);
 	while (42)
 	{
@@ -47,7 +37,7 @@ void	main_loop(t_env *env)
 		edit_line_init();
 		buf = edit_get_input(env);
 		argv = ft_strsplit_quotes(buf, " \t");
-		exec_expand_args(*env, argv + 1);
+		exec_expand_args(*env, argv);
 		exec(env, (const char **)argv);
 		ft_arraydel(&argv);
 	}

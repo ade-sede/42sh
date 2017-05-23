@@ -1,123 +1,108 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/20 17:13:37 by vcombey           #+#    #+#             */
-/*   Updated: 2017/05/18 15:03:01 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
-#include <unistd.h>
 #include "env.h"
+#include <stdio.h>
 
-int		replace_quotes(char *str)
+static const char **parse_options(const char **argv, short int *n_flag, short int *e_flag)
 {
-	int		i;
-	int		quote;
+	char	*option_array[5];
 
-	quote = 0;
-	i = 0;
-	while (str[i])
+	option_array[0] = "-n";
+	option_array[1] = "-e";
+	option_array[2] = "-ne";
+	option_array[3] = "-en";
+	option_array[4] = NULL;
+	while (ft_arraychr((const char**)option_array, (const char*)*argv))
 	{
-		if (str[i] == '"' && quote == 0)
-			quote = 1;
-		else if (str[i] == '"' && quote == 1)
-			quote = 0;
-		else if (quote == 0 && (str[i] == ' '))
-			str[i] = -1;
+		if (ft_strequ(*argv, "-n"))
+			*n_flag = true;
+		if (ft_strequ(*argv, "-e"))
+			*e_flag = true;
+		if (ft_strequ(*argv, "-ne") || ft_strequ(*argv, "-en"))
+		{
+			*e_flag = true;
+			*n_flag = true;
+		}
+		argv++;
+	}
+	return (argv);
+}
+
+static void		print_unicode(const char *argv, size_t *i)
+{
+	size_t	n;
+	size_t	start;
+	size_t	end;
+	char		*unicode_char;
+	char		*tmp;
+
+	n = 4;
+	start = *i;
+	end = *i;
+	while (n && ft_ishex(argv[end]))
+	{
+		n--;
+		end++;
+	}
+	tmp = ft_strsub(argv, start, end - start);
+	unicode_char = ft_buff_wchar((wchar_t)ft_atoi_base(tmp, 16));
+	ft_putstr(unicode_char);
+	free(unicode_char);
+	free(tmp);
+	*i = end - 1;
+}
+
+static void		print_arg(const char *argv)
+{
+	size_t	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (charcmp(argv, i, '\\'))
+		{
+			i++;
+			if (argv[i] == 'n')
+				ft_putchar('\n');
+			if (argv[i] == 't')
+				ft_putchar('\t');
+			if (argv[i] == 'v')
+				ft_putchar('\v');
+			if (argv[i] == 'u')
+			{
+				i++;
+				print_unicode(argv, &i);
+			}
+		}
+		else
+			ft_putchar(argv[i]);
 		i++;
 	}
-	return (quote);
 }
 
-char	**ft_char_to_av(char *str)
+int	builtin_echo(t_env *env, const char **argv)
 {
-	int		quote;
-	char	*buf;
-	char	**av;
+	short int n_flag;
+	short int e_flag;
+	const char	**tmp;
 
-	quote = replace_quotes(str);
-	if (quote == 1)
+	(void)env;
+	n_flag = false;
+	e_flag = false;
+	argv = parse_options(argv + 1, &n_flag, &e_flag);
+	tmp = argv;
+	while (*argv)
 	{
-		ft_putstr("dquote> ");
-		get_next_line(0, &buf);
-		str = ft_strjoin_free(str, buf, 3);
-		return (ft_char_to_av(str));
+		if (!e_flag)
+			ft_putstr(*argv);
+		else
+			print_arg(*argv);
+		if (*(argv + 1))
+			ft_putchar(32);
+		argv++;
 	}
-	else
-	{
-		av = ft_strsplit(str, -1);
-		free(str);
-		return (av);
-	}
-}
-
-void	init_str(char **argv, char *str)
-{
-	char *end;
-
-	if (ft_strequ(argv[1], "-n"))
-		end = ft_strstr(str, "-n") + 2;
-	else
-		end = ft_strstr(str, "echo") + 4;
-	while (str < end)
-	{
-		*str = -1;
-		str++;
-	}
-}
-
-void	putchar_echo(char **av, int *i, int *j)
-{
-	if (av[*i][*j] == '\\' && av[*i][*j + 1] == 'n')
-	{
+	if (!n_flag)
 		ft_putchar('\n');
-		*j = *j + 1;
-	}
-	else if (av[*i][*j] == '\\' && av[*i][*j + 1] == 't')
-	{
-		ft_putchar('\t');
-		*j = *j + 1;
-	}
-	else if (av[*i][*j] == '\\' && av[*i][*j + 1] == '\\')
-	{
-		ft_putchar('\\');
-		*j = *j + 1;
-	}
-	else if (av[*i][*j] != '"')
-		ft_putchar(av[*i][*j]);
-	*j = *j + 1;
-}
-
-int	builtin_echo(char **argv, char *str)
-{
-	char	**av;
-	int		n_flag;
-	int		i;
-	int		j;
-
-	init_str(argv, str);
-	n_flag = 0;
-	if (ft_strequ(argv[1], "-n"))
-		n_flag = 1;
-	av = ft_char_to_av(str);
-	i = 0;
-	while (av[i])
-	{
-		j = 0;
-		while (av[i][j])
-			putchar_echo(av, &i, &j);
-		if (av[i + 1])
-			ft_putchar(' ');
-		i++;
-	}
-	if (n_flag)
-		ft_putstr("\033[30m\033[47m%\x1b[0m");
-	ft_putchar('\n');
-	tab_free(av);
-	return (0);
+	else if (n_flag && *tmp)
+		ft_putendl("\033[30m\033[47m%\x1b[0m");
+	return (EXIT_SUCCESS);
 }
