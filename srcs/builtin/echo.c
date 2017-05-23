@@ -21,10 +21,12 @@ static const char **parse_options(const char **argv, short int *n_flag)
 int	builtin_echo(t_env *env, const char **argv)
 {
 	short int n_flag;
+	const char	**tmp;
 
 	(void)env;
 	n_flag = false;
 	argv = parse_options(argv + 1, &n_flag);
+	tmp = argv;
 	while (*argv)
 	{
 		ft_putstr(*argv);
@@ -34,5 +36,7 @@ int	builtin_echo(t_env *env, const char **argv)
 	}
 	if (!n_flag)
 		ft_putchar('\n');
+	else if (n_flag && *tmp)
+		ft_putstr("\033[30m\033[47m%\x1b[0m");
 	return (EXIT_SUCCESS);
 }
