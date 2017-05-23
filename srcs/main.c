@@ -12,6 +12,7 @@ int	main(void)
 	env_load_base_env(&env, environ);
 	conf_term_in();
 	main_loop(&env);
+	env_free_env(&env);
 	return (0);
 }
 
