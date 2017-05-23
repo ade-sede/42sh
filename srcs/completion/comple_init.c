@@ -23,10 +23,12 @@ char	**array_dir_matches(char *to_match)
 
 int	comple_init_winch(t_comple *c)
 {
+	unsigned int	n;
+
+	n = c->nb_matches;
 	c->ws_col = get_ws_col();
-	//if ((c->ws_col = get_ws_col() / (c->max_len + 1)) == 0)
-	//	return (0);
-	c->nb_lines = (c->nb_matches % c->ws_col == 0) ? c->nb_matches / c->ws_col : (c->nb_matches / c->ws_col) + 1;
+	c->ws_col = get_ws_col() / (c->max_len + 1);
+	c->nb_lines = (n % c->ws_col == 0) ? n / c->ws_col : (n / c->ws_col) + 1;
 	return (1);
 }
 
