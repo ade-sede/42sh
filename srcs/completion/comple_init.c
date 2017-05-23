@@ -1,6 +1,13 @@
 #include "completion.h"
 #include "line_editing.h"
 
+t_comple	*singleton_comple()
+{
+	static t_comple c;
+
+	return (&c);
+}
+
 char	**array_dir_matches(char *to_match)
 {
 	struct dirent	*dirent;

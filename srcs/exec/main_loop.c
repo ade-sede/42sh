@@ -23,9 +23,9 @@ void	main_loop(t_env *env)
 	char		**argv;
 	char		*buf;
 
-	line()->len = 0;
-	line()->pos = 0;
-	line()->buff = ft_strnew(4096);
+	singleton_line()->len = 0;
+	singleton_line()->pos = 0;
+	singleton_line()->buff = ft_strnew(4096);
 	while (42)
 	{
 		//refresh_buff_and_history();

@@ -9,8 +9,8 @@ void	edit_refresh(int signum, t_env *env)
 	put_termcap("cr");
 	put_termcap("dl");
 	put_prompt(env);
-	ft_putstr(line()->buff);
-	n = line()->len - line()->pos;
+	ft_putstr(singleton_line()->buff);
+	n = singleton_line()->len - singleton_line()->pos;
 	put_ntermcap("le", n);
 	(void)signum;
 }

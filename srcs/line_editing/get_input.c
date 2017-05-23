@@ -46,7 +46,7 @@ char		*edit_get_input(t_env *env)
 	unsigned long long	keycode;
 	t_line		*l;
 
-	l = line();
+	l = singleton_line();
 	while (42)
 	{
 		keycode = 0;
@@ -61,9 +61,3 @@ char		*edit_get_input(t_env *env)
 	}
 }
 
-void		edit_line_init(void)
-{
-	ft_bzero(line()->buff, line()->len);
-	line()->pos = 0;
-	line()->len = 0;
-}

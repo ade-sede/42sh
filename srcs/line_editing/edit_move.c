@@ -45,4 +45,3 @@ int		edit_end(t_line *line)
 	line->pos = line->len;
 	return (1);
 }
-

@@ -8,7 +8,7 @@ void	comple_handle_singwinch(int signum)
 	put_termcap("cl");
 	//comple_clear(*singleton_comple());
 	comple_init_winch(singleton_comple());
-	comple_refresh(line(), *singleton_comple());
+	comple_refresh(singleton_line(), *singleton_comple());
 	(void)signum;
 }
 

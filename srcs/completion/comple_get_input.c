@@ -1,13 +1,6 @@
 #include "completion.h"
 #include "line_editing.h"
 
-t_comple	*singleton_comple()
-{
-	static t_comple c;
-
-	return (&c);
-}
-
 static t_comple_func	g_comple_func[] =
 {
 	{KEY_LEFT, &comple_left},

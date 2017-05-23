@@ -22,10 +22,12 @@
 # define KEY_ALT_UP 1096489755
 # define KEY_ALT_RIGHT 1130044187
 # define KEY_ALT_LEFT 1146821403
+
 typedef struct		s_line
 {
 	unsigned int		pos;
 	unsigned int		len;
+	size_t			ws_col;
 	char		*buff;
 	struct termios	*old_term;
 }			t_line;
@@ -41,14 +43,14 @@ char	*edit_get_input(t_env *env);
 void	conf_term_in(void);
 void	conf_term_out(void);
 void	put_termcap(char *capacity);
-t_line	*line(void);
+t_line	*singleton_line(void);
 
-int		edit_end(t_line *line);
-int		edit_home(t_line *line);
-int		edit_right(t_line *line);
-int		edit_left(t_line *line);
-int		edit_word_right(t_line *line);
-int		edit_word_left(t_line *line);
+int	edit_end(t_line *line);
+int	edit_home(t_line *line);
+int	edit_right(t_line *line);
+int	edit_left(t_line *line);
+int	edit_word_right(t_line *line);
+int	edit_word_left(t_line *line);
 int	edit_backspace(t_line *line);
 void	edit_add(int keycode, t_line *line);
 void	edit_refresh(int signum, t_env *env);
@@ -57,4 +59,5 @@ void	put_prompt(t_env *env);
 
 void	goto_termcap(char *capacity, int co, int li);
 void	put_ntermcap(char *capacity, int n);
+
 # endif

@@ -35,7 +35,7 @@ SRC_FILE =	\
 	line_editing/edit_del.c \
 	line_editing/edit_move.c \
 	line_editing/get_input.c \
-	line_editing/line_editing.c \
+	line_editing/edit_init.c \
 	line_editing/edit_refresh.c \
 	line_editing/put_termcap.c \
 	line_editing/edit_add.c \

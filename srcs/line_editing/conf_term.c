@@ -2,7 +2,7 @@
 
 void	conf_term_out(void)
 {
-	if (tcsetattr(0, TCSADRAIN, line()->old_term))
+	if (tcsetattr(0, TCSADRAIN, singleton_line()->old_term))
 		fatal("tcsetattr error");
 }
 
@@ -18,7 +18,7 @@ void	conf_term_in(void)
 		fatal("cant access data base");
 	if (tcgetattr(0, &term) == -1)
 		fatal("getattr error");
-	line()->old_term = &term;
+	singleton_line()->old_term = &term;
 	term.c_lflag &= ~(ICANON);
 	term.c_lflag &= ~(ECHO);
 	term.c_cc[VMIN] = 1;
