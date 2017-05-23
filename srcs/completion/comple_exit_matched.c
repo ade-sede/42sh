@@ -22,8 +22,6 @@ int	insert_str_linebuff(char *str, char *dest)
 
 	len = ft_strlen(str);
 	ft_memmove((void*)(dest + len), (void*)(dest), ft_strlen(dest));
-	//memset(dest, 48, ft_strlen(dest));
-	//ft_putendl(dest);
 	ft_strncpy(dest, str, len);
 	return (1);
 }
@@ -35,10 +33,7 @@ int	comple_exit_matched(t_line *line, t_comple c)
 	
 	selected_str = c.matches[c.pos];
 	selected_len = ft_strlen(selected_str);
-	if (line->pos == line->len)
-		ft_strcpy(line->buff + line->len, selected_str);
-	else
-		insert_str_linebuff(selected_str, line->buff + line->pos);
+	insert_str_linebuff(selected_str, line->buff + line->pos);
 	line->pos += selected_len;
 	line->len += selected_len;
 	comple_clear(c);

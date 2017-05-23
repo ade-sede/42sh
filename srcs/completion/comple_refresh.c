@@ -31,10 +31,13 @@ void	comple_line_refresh(t_line *line, t_comple c)
 	put_termcap("dl");
 	put_prompt(NULL);
 	ft_putnstr(line->buff, line->pos);
-	ft_putstr(c.matches[c.pos]);
+	if (c.pos != -1)
+		ft_putstr(c.matches[c.pos]);
 	ft_putstr(line->buff + line->pos);
 	n = line->len - line->pos;
-	put_ntermcap("le", n + ft_strlen(c.matches[c.pos]));
+	if (c.pos != -1)
+		n += ft_strlen(c.matches[c.pos]);
+	put_ntermcap("le", n);
 }
 
 int	comple_refresh(t_line *line, t_comple c)

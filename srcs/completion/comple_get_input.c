@@ -1,6 +1,13 @@
 #include "completion.h"
 #include "line_editing.h"
 
+t_comple	*singleton_comple()
+{
+	static t_comple c;
+
+	return (&c);
+}
+
 static t_comple_func	g_comple_func[] =
 {
 	{KEY_LEFT, &comple_left},
@@ -32,26 +39,28 @@ int		comple_loop(unsigned long long keycode, t_line *line, t_comple *c)
 int		comple_get_input(t_line *line)
 {
 	unsigned long long	keycode;
-	t_comple		c;
+	t_comple		*c;
 
-	if (!(comple_init(line, &c)))
+	c = singleton_comple();
+	if (!(comple_init(line, c)))
 		return (0);
-	comple_refresh(line, c);
+	comple_refresh(line, *c);
+	comple_set_signals();
 	while (42)
 	{
 		keycode = 0;
 		read(0, &keycode, 8);
 		if (keycode == KEY_ENTER)
 		{
-			comple_exit_matched(line, c);
+			comple_exit_matched(line, *c);
 			return (1);
 		}
-		else if (!(comple_loop(keycode, line, &c)))
+		else if (!(comple_loop(keycode, line, c)))
 		{
-			(c.pos != -1) ? comple_exit_matched(line, c) : comple_free(c);
+			(c->pos != -1) ? comple_exit_matched(line, *c) : comple_free(*c);
 			return (1);
 		}
-		comple_refresh(line, c);
+		comple_refresh(line, *c);
 	}
 	return (1);
 }

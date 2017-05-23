@@ -41,7 +41,8 @@ SRC_FILE =	\
 \
 	completion/comple_exit_matched.c \
 	completion/comple_init.c \
-	completion/comple_loop.c \
+	completion/comple_get_input.c \
+	completion/comple_signals.c \
 	completion/comple_refresh.c \
 	completion/size_term.c \
 	completion/comple_move.c

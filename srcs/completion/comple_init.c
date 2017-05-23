@@ -21,20 +21,24 @@ char	**array_dir_matches(char *to_match)
 	return (matches);
 }
 
+int	comple_init_winch(t_comple *c)
+{
+	c->ws_col = get_ws_col();
+	//if ((c->ws_col = get_ws_col() / (c->max_len + 1)) == 0)
+	//	return (0);
+	c->nb_lines = (c->nb_matches % c->ws_col == 0) ? c->nb_matches / c->ws_col : (c->nb_matches / c->ws_col) + 1;
+	return (1);
+}
+
 int	comple_init(t_line *line, t_comple *c)
 {
 	char		*to_match;
-	unsigned int	n;
 
 	to_match = NULL;
 	c->matches = array_dir_matches(to_match);
 	c->max_len = ft_arraymax_f((const char**)c->matches, ft_strlen);
 	c->nb_matches = ft_arraylen((const char**)c->matches);
-	n = c->nb_matches;
-	c->ws_col = get_ws_col();
-	if ((c->ws_col = get_ws_col() / (c->max_len + 1)) == 0)
-		return (0);
-	c->nb_lines = (n % c->ws_col == 0) ? n / c->ws_col : (n / c->ws_col) + 1;
+	comple_init_winch(c);
 	c->pos = -1;
 	if (c->nb_matches == 1)
 	{

@@ -14,13 +14,17 @@ typedef struct		s_comple
 	size_t		nb_matches;
 }			t_comple;
 
+t_comple	*singleton_comple(void);
+
 typedef struct		s_comple_func
 {
 	unsigned long long	keycode;
 	int			(*f)(t_comple *);
 }			t_comple_func;
 
+void	comple_set_signals(void);
 int	comple_init(t_line *line, t_comple *c);
+int	comple_init_winch(t_comple *c);
 int	comple_get_input(t_line *line);
 
 int		comple_right(t_comple *c);
