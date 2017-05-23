@@ -27,8 +27,8 @@ int	comple_init_winch(t_comple *c)
 
 	n = c->nb_matches;
 	c->ws_col = get_ws_col();
-	c->ws_col = get_ws_col() / (c->max_len + 1);
-	c->nb_lines = (n % c->ws_col == 0) ? n / c->ws_col : (n / c->ws_col) + 1;
+	c->nb_colones = get_ws_col() / (c->max_len + 2);
+	c->nb_lines = (n % c->nb_colones == 0) ? n / c->nb_colones : (n / c->nb_colones) + 1;
 	return (1);
 }
 
