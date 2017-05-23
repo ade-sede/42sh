@@ -52,7 +52,7 @@ int	comple_refresh(t_line *line, t_comple c)
 	while (li < c.nb_lines)
 	{
 		co = 0;
-		while (co * c.nb_lines +li < c.nb_matches)
+		while (co * c.nb_lines + li < c.nb_matches)
 		{
 			//goto_termcap("ch", co, 0);
 			comple_refresh_elem(c, co * c.nb_lines + li);

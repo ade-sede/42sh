@@ -50,12 +50,7 @@ int		comple_get_input(t_line *line)
 	{
 		keycode = 0;
 		read(0, &keycode, 8);
-		if (keycode == KEY_ENTER)
-		{
-			comple_exit_matched(line, *c);
-			return (1);
-		}
-		else if (!(comple_loop(keycode, line, c)))
+		if (keycode == KEY_ENTER || !(comple_loop(keycode, line, c)))
 		{
 			(c->pos != -1) ? comple_exit_matched(line, *c) : comple_free(*c);
 			return (1);

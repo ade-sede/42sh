@@ -44,6 +44,7 @@ int	comple_init(t_line *line, t_comple *c)
 	c->pos = -1;
 	if (c->nb_matches == 1)
 	{
+		c->pos = 0;
 		comple_exit_matched(line, *c);
 		return (0);
 	}
