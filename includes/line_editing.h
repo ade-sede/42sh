@@ -43,6 +43,7 @@ size_t				get_ws_col(void);
 
 void	edit_line_init(void);
 char	*edit_get_input(t_env *env);
+void	edit_set_signals(void);
 void	conf_term_in(void);
 void	conf_term_out(void);
 void	put_termcap(char *capacity);
@@ -52,11 +53,13 @@ int	edit_end(t_line *line);
 int	edit_home(t_line *line);
 int	edit_right(t_line *line);
 int	edit_left(t_line *line);
+int	edit_down(t_line *line);
+int	edit_up(t_line *line);
 int	edit_word_right(t_line *line);
 int	edit_word_left(t_line *line);
 int	edit_backspace(t_line *line);
 void	edit_add(int keycode, t_line *line);
-void	edit_refresh(int signum, t_env *env);
+void	edit_refresh(t_line *line);
 
 void	put_prompt(t_env *env);
 

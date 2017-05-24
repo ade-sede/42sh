@@ -64,18 +64,14 @@ void	edit_refresh_clear(t_line *line)
 	//put_termcap("do");
 }
 
-void	edit_refresh(int signum, t_env *env)
+void	edit_refresh(t_line *line)
 {
-	t_line	*line;
-
-	line = singleton_line();
 	//ft_putchar('\n');
 	//put_termcap("up");
 	edit_refresh_clear(line);
 	//put_termcap("do");
 	//put_termcap("dl");
-	put_prompt(env);
+	put_prompt(NULL);
 	edit_refresh_line(line);
 	edit_refresh_cursor(line);
-	(void)signum;
 }

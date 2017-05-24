@@ -25,6 +25,20 @@ int		edit_word_left(t_line *line)
 	return (1);
 }
 
+int		edit_up(t_line *line)
+{
+	if (line->pos >= line->ws_col)
+		line->pos -= line->ws_col;
+	return (1);
+}
+
+int		edit_down(t_line *line)
+{
+	if (line->pos + line->ws_col <= line->len)
+		line->pos += line->ws_col;
+	return (1);
+}
+
 int		edit_word_right(t_line *line)
 {
 	while (line->pos < line->len && line->buff[line->pos] == ' ')

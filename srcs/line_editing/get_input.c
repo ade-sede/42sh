@@ -7,6 +7,8 @@ static t_edit_func	g_edit_func[] =
 	{KEY_RIGHT, &edit_right},
 	{KEY_ALT_RIGHT, &edit_word_right},
 	{KEY_ALT_LEFT, &edit_word_left},
+	{KEY_ALT_UP, &edit_up},
+	{KEY_ALT_DOWN, &edit_down},
 	{KEY_HOME, &edit_home},
 	{KEY_END, &edit_end},
 	{KEY_BACKSPACE, &edit_backspace},
@@ -48,6 +50,7 @@ char		*edit_get_input(t_env *env)
 	t_line		*l;
 
 	l = singleton_line();
+	edit_set_signals();
 	while (42)
 	{
 		keycode = 0;
@@ -58,7 +61,7 @@ char		*edit_get_input(t_env *env)
 			return (l->buff);
 		}
 		else if (edit_loop(keycode, l))
-			edit_refresh(0, env);
+			edit_refresh(l);
 	}
+	(void)env;
 }
-

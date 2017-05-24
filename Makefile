@@ -39,6 +39,7 @@ SRC_FILE =	\
 	line_editing/edit_refresh.c \
 	line_editing/put_termcap.c \
 	line_editing/edit_add.c \
+	line_editing/edit_signals.c \
 \
 	completion/comple_exit_matched.c \
 	completion/comple_init.c \
