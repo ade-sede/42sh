@@ -9,10 +9,10 @@ void	edit_refresh_cursor(t_line *line)
 	size_t	ws_col;
 
 	ws_col = line->ws_col;
-	src_col = (line->len + 2) % (ws_col - 1);
-	dest_col = (line->pos + 2) % (ws_col - 1);
-	src_line = (line->len + 2) / (ws_col - 1);
-	dest_line = (line->pos + 2) / (ws_col - 1);
+	src_col = (line->len + 2) % (ws_col);
+	dest_col = (line->pos + 2) % (ws_col);
+	src_line = (line->len + 2) / (ws_col);
+	dest_line = (line->pos + 2) / (ws_col);
 	put_ntermcap("up", src_line - dest_line);
 	if (dest_col > src_col)
 	{
@@ -36,16 +36,16 @@ void	edit_refresh_line(t_line *line)
 	size_t	ws_col;
 
 	ws_col = line->ws_col;
-	ft_putnstr(line->buff, ws_col - 2 - 1);
-	i = ws_col - 2 - 1;
+	ft_putnstr(line->buff, ws_col - 2);
+	i = ws_col - 2;
 	while (i < line->len)
 	{
 		put_termcap("do");
 		put_termcap("cr");
-		ft_putnstr(singleton_line()->buff + i, ws_col - 1);
-		i += ws_col - 1;
+		ft_putnstr(singleton_line()->buff + i, ws_col);
+		i += ws_col;
 	}
-	if ((line->len + 2) % (ws_col - 1) == 0)
+	if ((line->len + 2) % (ws_col) == 0)
 		put_termcap("do");
 
 	//put_termcap("le");
@@ -56,7 +56,7 @@ void	edit_refresh_clear(t_line *line)
 {
 	size_t	init_line;
 
-	init_line = (line->old_pos + 2) / (line->ws_col - 1);
+	init_line = (line->old_pos + 2) / (line->ws_col);
 	put_ntermcap("up", init_line);
 	put_termcap("cr");
 	//put_ntermcap("dl", init_line);
