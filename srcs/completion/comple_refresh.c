@@ -25,6 +25,9 @@ void	comple_refresh_elem(t_comple c, int indice)
 
 void	comple_line_refresh(t_line *line, t_comple c)
 {
+(void)line;
+(void)c;
+	/*
 	size_t	n;
 
 	put_termcap("cr");
@@ -38,6 +41,8 @@ void	comple_line_refresh(t_line *line, t_comple c)
 	if (c.pos != -1)
 		n += ft_strlen(c.matches[c.pos]);
 	put_ntermcap("le", n);
+
+*/
 }
 
 int	comple_refresh(t_line *line, t_comple c)
@@ -45,24 +50,26 @@ int	comple_refresh(t_line *line, t_comple c)
 	size_t	co;
 	size_t	li;
 
-	comple_clear(c);
-	put_termcap("do");
-	put_termcap("cr");
+	put_ntermcap("do", ((line->len -1 + 2) / line->ws_col) - (line->pos + 2) / line->ws_col);
+	//comple_clear(c);
 	li = 0;
 	while (li < c.nb_lines)
 	{
 		co = 0;
+		put_termcap("do");
+		put_termcap("cr");
 		while (co < c.nb_colones && co * c.nb_lines + li < c.nb_matches)
 		{
 			//goto_termcap("ch", co, 0);
 			comple_refresh_elem(c, co * c.nb_lines + li);
 			co++;
 		}
-		put_termcap("do");
-		put_termcap("cr");
 		li++;
 	}
-	put_ntermcap("up", c.nb_lines + 2);
-	comple_line_refresh(line, c);
+	put_ntermcap("up", c.nb_lines);
+	put_termcap("cr");
+	put_ntermcap("nd", (line->len + 2) % (line->ws_col));
+	edit_refresh_cursor(line);
+	//comple_line_refresh(line, c);
 	return (1);
 }
