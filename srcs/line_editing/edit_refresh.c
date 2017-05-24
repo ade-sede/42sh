@@ -9,21 +9,15 @@ void	edit_refresh_cursor(t_line *line)
 	size_t	ws_col;
 
 	ws_col = line->ws_col;
-	src_col = (line->len + 2) % (ws_col);
-	dest_col = (line->pos + 2) % (ws_col);
-	src_line = (line->len + 2) / (ws_col);
-	dest_line = (line->pos + 2) / (ws_col);
+	src_col = (line->len + line->prompt_len) % (ws_col);
+	dest_col = (line->pos + line->prompt_len) % (ws_col);
+	src_line = (line->len + line->prompt_len) / (ws_col);
+	dest_line = (line->pos + line->prompt_len) / (ws_col);
 	put_ntermcap("up", src_line - dest_line);
 	if (dest_col > src_col)
-	{
 		put_ntermcap("nd", dest_col - src_col);
-		//ft_putnbr(dest_col - src_col);
-	}
 	else 
-	{
 		put_ntermcap("le", src_col - dest_col);
-		//ft_putnbr(src_col - dest_col);
-	}
 }
 
 /*
@@ -36,8 +30,8 @@ void	edit_refresh_line(t_line *line)
 	size_t	ws_col;
 
 	ws_col = line->ws_col;
-	ft_putnstr(line->buff, ws_col - 2);
-	i = ws_col - 2;
+	ft_putnstr(line->buff, ws_col - line->prompt_len);
+	i = ws_col - line->prompt_len;
 	while (i < line->len)
 	{
 		put_termcap("do");
@@ -45,19 +39,16 @@ void	edit_refresh_line(t_line *line)
 		ft_putnstr(singleton_line()->buff + i, ws_col);
 		i += ws_col;
 	}
-	if ((line->len + 2) % (ws_col) == 0)
+	/*
+	**if the cursor is in the last colomn, move it to the next line.
+	*/
+	if ((line->len + line->prompt_len) % (ws_col) == 0)
 		put_termcap("do");
-
-	//put_termcap("le");
-	//put_termcap("up");
 }
 
 void	edit_refresh_clear(t_line *line)
 {
-	size_t	init_line;
-
-	init_line = (line->old_pos + 2) / (line->ws_col);
-	put_ntermcap("up", init_line);
+	put_ntermcap("up", (line->old_pos + line->prompt_len) / line->ws_col);
 	put_termcap("cr");
 	//put_ntermcap("dl", init_line);
 	put_termcap("cd");
@@ -71,7 +62,7 @@ void	edit_refresh(t_line *line)
 	edit_refresh_clear(line);
 	//put_termcap("do");
 	//put_termcap("dl");
-	put_prompt(NULL);
+	line->prompt_len = put_prompt(NULL);
 	edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }

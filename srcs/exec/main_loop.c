@@ -11,11 +11,13 @@ void	exec(t_env *env, const char **argv)
 		fork_exec_bin(env, argv);
 }
 
-void	put_prompt(t_env *env)
+size_t	put_prompt(t_env *env)
 {
 	(void)env;
 
-	ft_putstr("$>");
+	char	prompt[] = "$--->";
+	ft_putstr(prompt);
+	return (ft_strlen(prompt));
 }
 
 void	main_loop(t_env *env)
@@ -34,7 +36,7 @@ void	main_loop(t_env *env)
 	//	ft_bzero(buf, 4096);
 	//	read(0, buf, 4096);
 	//	*ft_strchr(buf, '\n') = '\0';
-		put_prompt(env);
+		singleton_line()->prompt_len = put_prompt(env);
 		edit_line_init();
 		buf = edit_get_input(env);
 		argv = ft_strsplit_quotes(buf, " \t");

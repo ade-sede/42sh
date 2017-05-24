@@ -28,6 +28,7 @@ typedef struct		s_line
 	unsigned int		pos;
 	unsigned int		old_pos;
 	unsigned int		len;
+	unsigned int		prompt_len;
 	size_t			ws_col;
 	char		*buff;
 	struct termios	*old_term;
@@ -62,7 +63,7 @@ void	edit_add(int keycode, t_line *line);
 void	edit_refresh(t_line *line);
 void	edit_refresh_cursor(t_line *line);
 
-void	put_prompt(t_env *env);
+size_t	put_prompt(t_env *env);
 
 void	goto_termcap(char *capacity, int co, int li);
 void	put_ntermcap(char *capacity, int n);
@@ -70,4 +71,5 @@ void	put_ntermcap(char *capacity, int n);
 void	move_cursor_lastline(t_line *line);
 void	move_cursor_bufflen_from_lastline(t_line *line);
 char	*edit_exit(t_line *line);
+
 # endif
