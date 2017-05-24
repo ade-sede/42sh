@@ -6,6 +6,7 @@ void	comple_clear(t_comple c)
 	//put_termcap("do");	
 	//put_termcap("cr");	
 	ft_putchar('\n');
+	//goto_termcap("DL", 0, c.nb_lines);
 	put_termcap("cd");	
 	(void)c;
 	//put_ntermcap("dl", c.nb_lines);	

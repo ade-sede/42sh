@@ -25,6 +25,7 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	int	i;
 
 	i = 0;
+	//line->old_pos = line->pos;
 	while (g_edit_func[i].keycode)
 	{
 		if (g_edit_func[i].keycode == keycode)

@@ -26,6 +26,7 @@
 typedef struct		s_line
 {
 	unsigned int		pos;
+	unsigned int		old_pos;
 	unsigned int		len;
 	size_t			ws_col;
 	char		*buff;
@@ -37,6 +38,8 @@ typedef struct		s_edit_func
 	unsigned long long	keycode;
 	int			(*f)(t_line *);
 }			t_edit_func;
+
+size_t				get_ws_col(void);
 
 void	edit_line_init(void);
 char	*edit_get_input(t_env *env);

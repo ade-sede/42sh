@@ -32,7 +32,6 @@ int		comple_left(t_comple *c);
 int		comple_up(t_comple *c);
 int		comple_down(t_comple *c);
 
-size_t				get_ws_col(void);
 int	comple_refresh(t_line *line, t_comple c);
 
 void	comple_clear(t_comple c);
