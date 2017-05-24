@@ -50,7 +50,7 @@ int	comple_refresh(t_line *line, t_comple c)
 	size_t	co;
 	size_t	li;
 
-	put_ntermcap("do", ((line->len -1 + 2) / line->ws_col) - (line->pos + 2) / line->ws_col);
+	move_cursor_lastline(line);
 	//comple_clear(c);
 	li = 0;
 	while (li < c.nb_lines)
@@ -67,8 +67,7 @@ int	comple_refresh(t_line *line, t_comple c)
 		li++;
 	}
 	put_ntermcap("up", c.nb_lines);
-	put_termcap("cr");
-	put_ntermcap("nd", (line->len + 2) % (line->ws_col));
+	move_cursor_bufflen_from_lastline(line);
 	edit_refresh_cursor(line);
 	//comple_line_refresh(line, c);
 	return (1);

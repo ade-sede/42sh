@@ -67,4 +67,7 @@ void	put_prompt(t_env *env);
 void	goto_termcap(char *capacity, int co, int li);
 void	put_ntermcap(char *capacity, int n);
 
+void	move_cursor_lastline(t_line *line);
+void	move_cursor_bufflen_from_lastline(t_line *line);
+char	*edit_exit(t_line *line);
 # endif

@@ -56,10 +56,7 @@ char		*edit_get_input(t_env *env)
 		keycode = 0;
 		read(0, &keycode, 8);
 		if (keycode == KEY_ENTER)
-		{
-			ft_putchar('\n');
-			return (l->buff);
-		}
+			return (edit_exit(l));
 		else if (edit_loop(keycode, l))
 			edit_refresh(l);
 	}
