@@ -27,6 +27,7 @@ void	main_loop(t_env *env)
 
 	singleton_line()->len = 0;
 	singleton_line()->pos = 0;
+	singleton_line()->visu_mode = 0;
 	singleton_line()->ws_col = get_ws_col();
 	singleton_line()->buff = ft_strnew(4096);
 	while (42)
