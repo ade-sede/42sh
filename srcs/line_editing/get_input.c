@@ -12,13 +12,12 @@ static t_edit_func	g_edit_func[] =
 	{KEY_HOME, &edit_home},
 	{KEY_END, &edit_end},
 	{KEY_BACKSPACE, &edit_backspace},
-//	{KEY_UP, &edit_up},
-//	{KEY_DOWN, &edit_down},
+	{KEY_ALT_C, &copy},
+	{KEY_ALT_V, &enter_visual_mode},
+	{KEY_ALT_P, &paste},
 	//{KEY_SHIFT_UP},
 	//{KEY_SHIFT_DOWN},
 	{KEY_TAB, comple_get_input},
-	//{},
-	//{},
 	{0, NULL}
 };
 

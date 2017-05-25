@@ -42,6 +42,8 @@ SRC_FILE =	\
 	line_editing/edit_signals.c \
 	line_editing/edit_move_cursor.c \
 	line_editing/edit_exit.c \
+	line_editing/edit_insert_str.c \
+	line_editing/copy_paste.c \
 \
 	completion/comple_exit_matched.c \
 	completion/comple_init.c \

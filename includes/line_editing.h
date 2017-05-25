@@ -22,17 +22,23 @@
 # define KEY_ALT_UP 1096489755
 # define KEY_ALT_RIGHT 1130044187
 # define KEY_ALT_LEFT 1146821403
+# define KEY_ALT_C 42947
+# define KEY_ALT_P 32975
+# define KEY_ALT_V 10127586
 
-typedef struct		s_line
+typedef struct			s_line
 {
 	unsigned int		pos;
 	unsigned int		old_pos;
 	unsigned int		len;
 	unsigned int		prompt_len;
 	size_t			ws_col;
-	char		*buff;
-	struct termios	*old_term;
-}			t_line;
+	char			*buff;
+	struct termios		*old_term;
+	int			visu_mode;
+	size_t			visu_start;
+	char			*copied_text;
+}				t_line;
 
 typedef struct		s_edit_func
 {
@@ -71,5 +77,16 @@ void	put_ntermcap(char *capacity, int n);
 void	move_cursor_lastline(t_line *line);
 void	move_cursor_bufflen_from_lastline(t_line *line);
 char	*edit_exit(t_line *line);
+
+int	ft_insert_str_dest(char *str, char *dest);
+int	edit_insert_str(t_line *line, char *str);
+
+/*
+** copy_paste func
+*/
+
+int	enter_visual_mode(t_line *line);
+int	copy(t_line *line);
+int	paste(t_line *line);
 
 # endif
