@@ -10,6 +10,7 @@ t_line		*singleton_line(void)
 void		edit_line_init(void)
 {
 	ft_bzero(singleton_line()->buff, singleton_line()->len);
+	singleton_line()->visu_mode = 0;
 	singleton_line()->pos = 0;
 	singleton_line()->len = 0;
 }
