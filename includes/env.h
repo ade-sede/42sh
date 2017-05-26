@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/20 14:33:44 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/26 14:35:29 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct	s_env
 	char		**environ;
 	size_t	environ_size;
 	int		previous_exit;
+	pid_t		child_pid;
 }			t_env;
 
 /*
@@ -28,6 +29,8 @@ typedef struct	s_env
 char			**env_create_environ(const char **original, size_t *new_size);
 void			env_print_environ(const char **environ);
 char			*env_getenv(const char **environ, const char *key, size_t *index);
+t_env	*singleton_env();
+void	set_signals();
 
 /*
 **	In file load_base_env.c

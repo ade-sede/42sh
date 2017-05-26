@@ -16,7 +16,10 @@ size_t	put_prompt(t_env *env)
 	(void)env;
 
 	char	prompt[] = "$--->";
-	ft_putstr(prompt);
+//	if (env)
+//		ft_putstr("main");
+//	else
+		ft_putstr(prompt);
 	return (ft_strlen(prompt));
 }
 
@@ -43,6 +46,7 @@ void	main_loop(t_env *env)
 		buf = edit_get_input(env);
 		argv = ft_strsplit_quotes(buf, " \t");
 		exec_expand_args(*env, argv);
+		set_signals();
 		exec(env, (const char **)argv);
 		ft_arraydel(&argv);
 	}

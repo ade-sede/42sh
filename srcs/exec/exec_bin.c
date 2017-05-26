@@ -58,6 +58,7 @@ int	fork_exec_bin(t_env *env, const char **argv)
 	}
 	if (child > 0)
 	{
+		env->child_pid = child;
 		wait(&child);
 		env->previous_exit = WEXITSTATUS(child);
 		return (WEXITSTATUS(child));

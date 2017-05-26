@@ -30,6 +30,7 @@ SRC_FILE =	\
 	exec/exec_bin.c \
 	exec/main_loop.c \
 	exec/expand_args.c \
+	exec/signals.c \
 \
 	line_editing/conf_term.c \
 	line_editing/edit_del.c \
