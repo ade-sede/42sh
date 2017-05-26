@@ -26,6 +26,7 @@ SRC_FILE =	\
 	builtin/exit.c \
 	builtin/exec_builtin.c \
 	builtin/echo.c \
+	builtin/history.c \
 \
 	exec/exec_bin.c \
 	exec/main_loop.c \
@@ -52,7 +53,9 @@ SRC_FILE =	\
 	completion/comple_get_input.c \
 	completion/comple_refresh.c \
 	completion/size_term.c \
-	completion/comple_move.c
+	completion/comple_move.c \
+\
+	history/load_history.c \
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
@@ -82,4 +85,5 @@ objs/%.o : %.c
 	@/bin/mkdir -p objs/srcs/env
 	@/bin/mkdir -p objs/srcs/line_editing
 	@/bin/mkdir -p objs/srcs/completion
+	@/bin/mkdir -p objs/srcs/history
 	gcc -g $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $<

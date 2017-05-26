@@ -10,6 +10,7 @@ t_builtin g_builtin[] =
 	{"unsetenv", &builtin_unsetenv},
 	{"setenv", &builtin_setenv},
 	{"echo", &builtin_echo},
+	{"history", &builtin_history},
 	{NULL, NULL}
 };
 
