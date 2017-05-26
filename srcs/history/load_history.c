@@ -3,13 +3,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-t_hist	*singleton_hist(void)
-{
-	static t_hist	h;
-
-	return (&h);
-}
-
 int	history_load(t_hist *h)
 {
 	int		fd;

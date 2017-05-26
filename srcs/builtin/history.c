@@ -1,7 +1,6 @@
 #include "history.h"
 #include "builtin.h"
 #include "env.h"
-#include "printf.h"
 #include <stdio.h>
 
 #include "get_next_line.h"

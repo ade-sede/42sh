@@ -1,5 +1,6 @@
 #include "line_editing.h"
 #include "completion.h"
+#include "history.h"
 
 static t_edit_func	g_edit_func[] =
 {
@@ -15,6 +16,8 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_C, &copy},
 	{KEY_ALT_V, &enter_visual_mode},
 	{KEY_ALT_P, &paste},
+	{KEY_UP, &history_next},
+	{KEY_DOWN, &history_prev},
 	//{KEY_SHIFT_UP},
 	//{KEY_SHIFT_DOWN},
 	{KEY_TAB, comple_get_input},

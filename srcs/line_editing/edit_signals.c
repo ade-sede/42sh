@@ -17,8 +17,8 @@ void	edit_handle_sigwinch(int signum)
 void	edit_handle_sigstop(int signum)
 {
 	move_cursor_lastline(singleton_line());
-	edit_line_init();
-	ft_putchar('\n');	
+	edit_line_init(singleton_line());
+	ft_putchar('\n');
 	put_prompt(NULL);
 	(void)signum;
 }

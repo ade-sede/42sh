@@ -48,7 +48,7 @@ typedef struct		s_edit_func
 
 size_t				get_ws_col(void);
 
-void	edit_line_init(void);
+void	edit_line_init(t_line *line);
 char	*edit_get_input(t_env *env);
 void	edit_set_signals(void);
 void	conf_term_in(void);

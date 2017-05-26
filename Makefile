@@ -56,6 +56,8 @@ SRC_FILE =	\
 	completion/comple_move.c \
 \
 	history/load_history.c \
+	history/history_move.c \
+	history/history_init.c \
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 

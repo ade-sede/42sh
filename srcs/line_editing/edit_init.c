@@ -7,10 +7,10 @@ t_line		*singleton_line(void)
 	return (&s);
 }
 
-void		edit_line_init(void)
+void		edit_line_init(t_line *line)
 {
-	ft_bzero(singleton_line()->buff, singleton_line()->len);
-	singleton_line()->visu_mode = 0;
-	singleton_line()->pos = 0;
-	singleton_line()->len = 0;
+	ft_bzero(line->buff, line->len);
+	line->visu_mode = 0;
+	line->pos = 0;
+	line->len = 0;
 }
