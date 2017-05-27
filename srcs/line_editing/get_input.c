@@ -16,6 +16,7 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_C, &copy},
 	{KEY_ALT_V, &enter_visual_mode},
 	{KEY_ALT_P, &paste},
+	{KEY_ALT_R, &btsearch_get_input},
 	//{KEY_SHIFT_UP},
 	//{KEY_SHIFT_DOWN},
 	{KEY_TAB, comple_get_input},

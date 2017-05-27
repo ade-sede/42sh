@@ -9,6 +9,7 @@ int	history_load(t_hist *h)
 	char		*line;
 	t_list_d	*list;
 
+	ft_bzero(h, sizeof(t_hist));
 	h->list = NULL; 
 	if ((fd = open("minishell_history", O_RDWR | O_CREAT)) == -1)
 		return (0);

@@ -25,6 +25,7 @@
 # define KEY_ALT_C 42947
 # define KEY_ALT_P 32975
 # define KEY_ALT_V 10127586
+# define KEY_ALT_R 44738
 
 typedef struct			s_line
 {
