@@ -9,7 +9,7 @@ int		strnequ_writen_buff(void *data)
 		return (1);
 	if (ft_strnequ(data, singleton_hist()->writen_buff, len))
 	{
-		printf("\n writen buff %s data %s len %d\n", singleton_hist()->writen_buff, data, len);
+//		printf("\n writen buff %s data %s len %d\n", singleton_hist()->writen_buff, data, len);
 		return (1);
 	}
 	return (0);
@@ -21,7 +21,7 @@ int	history_next(t_line *line, t_hist *h)
 
 	tmp = NULL;
 	tmp = ft_double_lst_return_if((h->cur) ? h->cur->next : h->list->first, strnequ_writen_buff, 1);
-	printf("\n writen_buff %s h->cur %s tmp %s\n", singleton_hist()->writen_buff, (h->cur) ? h->cur->data : "null", (tmp) ? tmp->data : "null");
+//	printf("\n writen_buff %s h->cur %s tmp %s\n", singleton_hist()->writen_buff, (h->cur) ? h->cur->data : "null", (tmp) ? tmp->data : "null");
 	if (tmp)
 	{
 		h->cur = tmp;
@@ -42,7 +42,7 @@ int	history_prev(t_line *line, t_hist *h)
 
 	tmp = NULL;
 	tmp = ft_double_lst_return_if((h->cur) ? h->cur->prev : h->list->first, strnequ_writen_buff, -1);
-	printf("\n writen_buff %s h->cur %s tmp %s\n", singleton_hist()->writen_buff, (h->cur) ? h->cur->data : "null", (tmp) ? tmp->data : "null");
+//	printf("\n writen_buff %s h->cur %s tmp %s\n", singleton_hist()->writen_buff, (h->cur) ? h->cur->data : "null", (tmp) ? tmp->data : "null");
 	if (tmp)
 	{
 		h->cur = tmp;
@@ -53,14 +53,17 @@ int	history_prev(t_line *line, t_hist *h)
 		line->pos = line->len;
 	}
 	else
+	{
 		put_termcap("bl");
+		line->pos = ft_strlen(h->writen_buff);
+	}
 	return (1);
 }
 
 int	history_move_init(t_line *line, t_hist *h)
 {
 	ft_strcpy(h->writen_buff, line->buff);
-	printf("\n%s\n",h->writen_buff);
+//	printf("\n%s\n",h->writen_buff);
 	return (1);
 }
 
