@@ -1,12 +1,15 @@
 #include "libft.h"
 
-t_list_d	*ft_double_lst_return_if(t_list_d *starting_point, int (*f)(void*))
+t_list_d	*ft_double_lst_return_if(t_list_d *starting_point, int (*f)(void*), int order)
 {
 	while (starting_point)
 	{
 		if ((f)(starting_point->data) == 1)
 			return (starting_point);
-		starting_point = starting_point->next;
+		if (order == 1)
+			starting_point = starting_point->next;
+		else
+			starting_point = starting_point->prev;
 	}
 	return (NULL);
 }

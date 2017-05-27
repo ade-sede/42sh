@@ -196,7 +196,7 @@ t_list				*ft_simple_lst_get_n(t_list	*first, size_t n);
 void				ft_simple_lst_del_one(t_list **first, t_list *node, void(*f)(void*));
 void				ft_simple_lst_remove(t_list	**first, void (*f)(void*));
 t_list				*ft_simple_lst_return_if(t_list *node, int (*f)(void*));
-t_list_d			*ft_double_lst_return_if(t_list_d *node, int (*f)(void*));
+t_list_d			*ft_double_lst_return_if(t_list_d *node, int (*f)(void*), int order);
 void				ft_free(void *p);
 char				**ft_arraydup(const char **original);
 unsigned long int		ft_freeswap(unsigned long int old, unsigned long int new);

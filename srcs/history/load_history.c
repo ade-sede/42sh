@@ -21,5 +21,6 @@ int	history_load(t_hist *h)
 		else
 			ft_double_lst_add(&h->list, list); 
 	}
+	h->writen_buff = ft_strnew(4096);
 	return (1);
 }

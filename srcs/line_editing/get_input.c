@@ -53,7 +53,7 @@ char		*edit_get_input(t_env *env)
 	edit_set_signals();
 	while (42)
 	{
-		keycode = history_get_input(keycode, l);
+		keycode = history_move_loop(l);
 		if (keycode == KEY_ENTER)
 			return (edit_exit(l));
 		edit_loop(keycode, l);
