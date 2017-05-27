@@ -30,6 +30,13 @@ int	history_prev(t_line *line)
 		h->cur = h->cur->prev;
 		edit_line_init(line);
 		ft_strcpy(line->buff, (const char *)h->cur->data);
+		line->len = ft_strlen((const char *)h->cur->data);
+		line->pos = line->len;
 	}
 	return (1);
+}
+
+int	history_move_init(t_line *line, t_hist *hist)
+{
+	hist->writen_buff = ft_strdup(line->buff);
 }

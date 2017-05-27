@@ -14,6 +14,9 @@ typedef struct	s_hist
 t_hist	*singleton_hist(void);
 int	history_load(t_hist *h);
 void	history_init(t_hist *h);
+int	history_move_init(t_line *line, t_hist *hist);
+void	history_refresh(t_line *line);
+int		hist_get_input(t_line *line);
 
 int	history_prev(t_line *line);
 int	history_next(t_line *line);

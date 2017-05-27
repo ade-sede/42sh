@@ -16,8 +16,6 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_C, &copy},
 	{KEY_ALT_V, &enter_visual_mode},
 	{KEY_ALT_P, &paste},
-	{KEY_UP, &history_next},
-	{KEY_DOWN, &history_prev},
 	//{KEY_SHIFT_UP},
 	//{KEY_SHIFT_DOWN},
 	{KEY_TAB, comple_get_input},
@@ -48,19 +46,18 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 
 char		*edit_get_input(t_env *env)
 {
-	unsigned long long	keycode;
+	unsigned long	keycode;
 	t_line		*l;
 
 	l = singleton_line();
 	edit_set_signals();
 	while (42)
 	{
-		keycode = 0;
-		read(0, &keycode, 8);
+		keycode = history_get_input(keycode, l);
 		if (keycode == KEY_ENTER)
 			return (edit_exit(l));
-		else if (edit_loop(keycode, l))
-			edit_refresh(l);
+		edit_loop(keycode, l);
+		edit_refresh(l);
 	}
 	(void)env;
 }

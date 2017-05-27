@@ -58,6 +58,7 @@ SRC_FILE =	\
 	history/load_history.c \
 	history/history_move.c \
 	history/history_init.c \
+	history/history_refresh.c \
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
