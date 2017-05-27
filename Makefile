@@ -60,6 +60,10 @@ SRC_FILE =	\
 	history/history_init.c \
 	history/history_refresh.c \
 	history/history_move_loop.c \
+	history/btsearch_refresh.c \
+	history/btsearch_exit.c \
+	history/btsearch_get_input.c \
+	history/btsearch_add.c \
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
