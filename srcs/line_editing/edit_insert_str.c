@@ -1,6 +1,6 @@
 #include "line_editing.h"
 
-int	ft_insert_str_dest(char *str, char *dest)
+int	ft_insert_str_dest(char *dest, char *str)
 {
 	size_t	len;
 
@@ -10,13 +10,13 @@ int	ft_insert_str_dest(char *str, char *dest)
 	return (1);
 }
 
-int	edit_insert_str(t_line *line, char *str)
+int	edit_insert_str(t_line *line, char *dest, char *str)
 {
 	size_t	len;
 
-	ft_insert_str_dest(str, line->buff + line->pos);
+	ft_insert_str_dest(dest, str);
 	len = ft_strlen(str);
-	line->pos += len;
-	line->len += len;
+	line->pos = dest - line->buff + len;
+	line->len = ft_strlen(line->buff);
 	return (1);
 }

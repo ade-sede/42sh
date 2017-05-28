@@ -54,6 +54,7 @@ SRC_FILE =	\
 	completion/comple_refresh.c \
 	completion/size_term.c \
 	completion/comple_move.c \
+	completion/comple_matches.c \
 \
 	history/load_history.c \
 	history/history_move.c \

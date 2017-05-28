@@ -83,7 +83,7 @@ void	move_cursor_bufflen_from_lastline(t_line *line);
 char	*edit_exit(t_line *line);
 
 int	ft_insert_str_dest(char *str, char *dest);
-int	edit_insert_str(t_line *line, char *str);
+int	edit_insert_str(t_line *line, char *dest, char *str);
 
 /*
 ** copy_paste func
@@ -92,5 +92,14 @@ int	edit_insert_str(t_line *line, char *str);
 int	enter_visual_mode(t_line *line);
 int	copy(t_line *line);
 int	paste(t_line *line);
+
+/*
+** manipulation of cursor word func
+*/
+
+char	*get_start_word_cursor(t_line *line);
+void	delete_word_cursor(t_line *line);
+char	*get_current_word_cursor(t_line *line);
+void	delete_word(char *to_replace);
 
 # endif

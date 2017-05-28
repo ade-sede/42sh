@@ -23,6 +23,6 @@ int	copy(t_line *line)
 int	paste(t_line *line)
 {
 	if (line->copied_text)
-		edit_insert_str(line, line->copied_text);
+		edit_insert_str(line, line->buff + line->pos, line->copied_text);
 	return (1);
 }
