@@ -52,7 +52,8 @@ SRC_FILE =	\
 	completion/comple_get_input.c \
 	completion/comple_refresh.c \
 	completion/size_term.c \
-	completion/comple_move.c
+	completion/comple_move.c \
+	completion/comple_matches.c \
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 

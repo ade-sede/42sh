@@ -8,26 +8,6 @@ t_comple	*singleton_comple()
 	return (&c);
 }
 
-char	**array_dir_matches(char *to_match)
-{
-	struct dirent	*dirent;
-	DIR				*dir;
-	char		**matches;
-	int		i;
-
-	i = 0;
-	matches = ft_memalloc(sizeof(char *) * 100); 
-	dir = opendir(".");
-	while ((dirent = readdir(dir)) != NULL)
-	{
-		matches[i] = ft_strdup(dirent->d_name);
-		i++;
-	}
-	closedir(dir);
-	(void)to_match;
-	return (matches);
-}
-
 int	comple_init_winch(t_comple *c)
 {
 	unsigned int	n;
@@ -41,10 +21,7 @@ int	comple_init_winch(t_comple *c)
 
 int	comple_init(t_line *line, t_comple *c)
 {
-	char		*to_match;
-
-	to_match = NULL;
-	c->matches = array_dir_matches(to_match);
+	c->matches = comple_file_matches(line);
 	c->max_len = ft_arraymax_f((const char**)c->matches, ft_strlen);
 	c->nb_matches = ft_arraylen((const char**)c->matches);
 	comple_init_winch(c);
