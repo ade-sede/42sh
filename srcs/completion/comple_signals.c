@@ -16,7 +16,7 @@ void	comple_handle_sigwinch(int signum)
 void	comple_handle_sigint(int signum)
 {
 	move_cursor_lastline(singleton_line());
-	edit_line_init();
+	edit_line_init(singleton_line());
 	comple_clear(*singleton_comple());
 	put_prompt(NULL);
 	(void)signum;

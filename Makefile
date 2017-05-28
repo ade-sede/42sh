@@ -18,6 +18,7 @@ SRC_FILE =	\
 	env/add_var.c \
 	env/remove_var.c \
 	env/t_env.c \
+	env/prompt.c \
 \
 	builtin/cd.c \
 	builtin/env.c \

@@ -11,18 +11,6 @@ void	exec(t_env *env, const char **argv)
 		fork_exec_bin(env, argv);
 }
 
-size_t	put_prompt(t_env *env)
-{
-	(void)env;
-
-	char	prompt[] = "$--->";
-//	if (env)
-//		ft_putstr("main");
-//	else
-		ft_putstr(prompt);
-	return (ft_strlen(prompt));
-}
-
 void	main_loop(t_env *env)
 {
 	char		**argv;

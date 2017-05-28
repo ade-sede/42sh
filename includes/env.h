@@ -6,19 +6,28 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/26 14:35:29 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/05/29 00:06:10 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_H
 # define ENV_H
 # include "libft.h"
+# define RED   "\x1B[1;31m"
+# define GRN   "\x1B[1;32m"
+# define YEL   "\x1B[1;33m"
+# define BLU   "\x1B[1;34m"
+# define MAG   "\x1B[35m"
+# define CYN   "\x1B[36m"
+# define WHT   "\x1B[37m"
+# define RESET "\x1B[0m"
 
 typedef struct	s_env
 {
 	char		**environ;
 	size_t	environ_size;
 	int		previous_exit;
+	char		*branch;
 	pid_t		child_pid;
 }			t_env;
 
