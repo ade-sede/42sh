@@ -32,5 +32,7 @@ int	comple_init(t_line *line, t_comple *c)
 		comple_exit_matched(line, *c);
 		return (0);
 	}
+	else if (c->nb_matches == 0)
+		return (0);
 	return (1);
 }
