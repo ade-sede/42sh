@@ -33,10 +33,14 @@ int	history_prev(t_line *line, t_hist *h);
 */
 
 int		btsearch_get_input(t_line *line);
+int		btsearch_init(t_line *line, t_hist *h);
 int		btsearch_exit(t_line *line, t_hist *hist);
 int		btsearch_init(t_line *line, t_hist *hist);
 void	btsearch_add(char keycode, t_line *line, t_hist *h);
+int	btsearch_prev(t_line *line, t_hist *h);
+int	btsearch_next(t_line *line, t_hist *h);
 void	btsearch_refresh(t_line *line, t_hist *h);
+void	btsearch_change_line(t_line *line, t_hist *h, t_list_d *node);
 
 
 # endif

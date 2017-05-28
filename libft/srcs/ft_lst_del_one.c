@@ -88,7 +88,8 @@ void	ft_double_lst_del_one(t_lst_head **head, t_list_d *node, void (*f)(void*))
 			pos = 3;
 		prev = node->prev;
 		next = node->next;
-		(f)(node->data);
+		if (f)
+			(f)(node->data);
 		free(node);
 		(*head)->node_count -= 1;
 		if (pos != 0)

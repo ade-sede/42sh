@@ -70,6 +70,7 @@ void	edit_add(int keycode, t_line *line);
 void	edit_refresh(t_line *line);
 void	edit_refresh_clear(t_line *line);
 void	edit_refresh_cursor(t_line *line);
+void	edit_refresh_line(t_line *line);
 
 size_t	put_prompt(t_env *env);
 
@@ -77,6 +78,7 @@ void	goto_termcap(char *capacity, int co, int li);
 void	put_ntermcap(char *capacity, int n);
 
 void	move_cursor_lastline(t_line *line);
+void	move_cursor_firstline_from_lastline(t_line *line);
 void	move_cursor_bufflen_from_lastline(t_line *line);
 char	*edit_exit(t_line *line);
 
