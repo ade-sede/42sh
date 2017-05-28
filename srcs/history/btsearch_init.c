@@ -14,5 +14,3 @@ int		btsearch_init(t_line *line, t_hist *h)
 	(void)h;
 	return (1);
 }
-
-
