@@ -68,6 +68,7 @@ int	edit_word_left(t_line *line);
 int	edit_backspace(t_line *line);
 void	edit_add(int keycode, t_line *line);
 void	edit_refresh(t_line *line);
+void	edit_refresh_clear(t_line *line);
 void	edit_refresh_cursor(t_line *line);
 
 size_t	put_prompt(t_env *env);

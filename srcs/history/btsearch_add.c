@@ -33,12 +33,14 @@ void	btsearch_search(t_hist *h)
 
 void	btsearch_first_search(t_hist *h)
 {
-	ft_double_lst_foreach(h->btsearch_list->first, NULL, create_strstr_btsearch_buff, 1);
+	ft_double_lst_foreach(h->list->first, NULL, create_strstr_btsearch_buff, 1);
 }
 
 void	btsearch_add(char keycode, t_line *line, t_hist *h)
 {
 	h->btsearch_buff[h->btsearch_buff_len] = keycode;
+	h->btsearch_buff_len++;
+	printf("\n%s\n", h->btsearch_buff);
 	(h->btsearch_list == NULL) ?  btsearch_first_search(h) : btsearch_search(h);
 	if (h->btsearch_list && h->btsearch_list->first)
 	{
@@ -46,5 +48,4 @@ void	btsearch_add(char keycode, t_line *line, t_hist *h)
 		ft_strclr(line->buff);
 		ft_strcpy(line->buff, h->btsearch_cur->data);
 	}
-	h->btsearch_buff_len++;
 }
