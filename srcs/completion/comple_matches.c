@@ -93,8 +93,11 @@ char	**array_matches(char *dir_match, char *to_match)
 	int		i;
 
 	i = 0;
+	dir = NULL;
 	matches = ft_memalloc(sizeof(char *) * 100); 
 	dir = (dir_match) ? opendir(dir_match) : opendir(".");
+	if (!dir)
+		return (matches);
 	while ((dirent = readdir(dir)) != NULL)
 	{
 		if (!to_match || ft_strstr(dirent->d_name, to_match))
