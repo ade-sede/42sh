@@ -14,13 +14,13 @@ static const char **parse_options(const char **argv, short int *n_flag, short in
 	while (ft_arraychr((const char**)option_array, (const char*)*argv))
 	{
 		if (ft_strequ(*argv, "-n"))
-			*n_flag = true;
+			*n_flag = TRUE;
 		if (ft_strequ(*argv, "-e"))
-			*e_flag = true;
+			*e_flag = TRUE;
 		if (ft_strequ(*argv, "-ne") || ft_strequ(*argv, "-en"))
 		{
-			*e_flag = true;
-			*n_flag = true;
+			*e_flag = TRUE;
+			*n_flag = TRUE;
 		}
 		argv++;
 	}
@@ -86,8 +86,8 @@ int	builtin_echo(t_env *env, const char **argv)
 	const char	**tmp;
 
 	(void)env;
-	n_flag = false;
-	e_flag = false;
+	n_flag = FALSE;
+	e_flag = FALSE;
 	argv = parse_options(argv + 1, &n_flag, &e_flag);
 	tmp = argv;
 	while (*argv)

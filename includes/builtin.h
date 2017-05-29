@@ -2,6 +2,7 @@
 # define BUILTIN_H
 # include "env.h"
 # include "history.h"
+# include "fcntl.h"
 
 /*
 ** In unsetenv.c

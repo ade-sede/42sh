@@ -7,9 +7,9 @@ static short int	dollar_sign_is_valid(const char *argv, size_t i)
 {
 	short int	valid;
 
-	valid = false;
+	valid = FALSE;
 	if (charcmp(argv, i, '$'))
-		valid = true;
+		valid = TRUE;
 	return (valid);
 }
 
@@ -53,7 +53,7 @@ void		exec_expand_args(t_env env, char **argv)
 	short int	dollar_sign;
 	char	**split;
 
-	dollar_sign = false;
+	dollar_sign = FALSE;
 	j = 0;
 	while (argv[j])
 	{

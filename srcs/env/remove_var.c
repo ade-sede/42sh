@@ -10,11 +10,10 @@ void	env_remove_var_index(t_env *env, size_t key_index)
 
 	environ = env->environ;
 	environ_size = env->environ_size;
-	new_environ = palloc(sizeof(char*) * (environ_size - 1 + 1), __func__);
+	new_environ = palloc(sizeof(char*) * (environ_size - 1 + 1));
 	free(environ[key_index]);
-	ft_addrcpy((void**)new_environ, (const void**)environ, key_index);
-	ft_addrcpy((void**)new_environ + key_index, \
-			(const void**)environ + key_index + 1, environ_size - key_index);
+	ft_memcpy(new_environ, environ, key_index * sizeof(*new_environ));
+	ft_memcpy(new_environ + key_index, environ + key_index + 1, (environ_size - key_index) * sizeof(*new_environ));
 	new_environ[environ_size - 1] = NULL;
 	free(env->environ);
 	env->environ = new_environ;

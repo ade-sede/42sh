@@ -2,6 +2,7 @@
 # define HISTORY_H
 # include "libft.h"
 # include "line_editing.h"
+# include "fcntl.h"
 
 
 typedef struct	s_hist

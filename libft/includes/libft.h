@@ -113,5 +113,10 @@ char				*ft_unsigned_itoa_base(uintmax_t value, int base);
 */
 
 void				fatal(const char *error_str);
+
+/*
+**	strchange.c
+*/
+unsigned long int		ft_freeswap(unsigned long int old, unsigned long int new);
 #endif
 

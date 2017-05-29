@@ -1,12 +1,3 @@
-# **************************************************************************** #
-#                                                                              # #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    # #                                                     +:+ +:+         +:+      # #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/05/29 14:35:40 by ade-sede          #+#    #+#              #
-#    Updated: 2017/05/29 15:02:12 by ade-sede         ###   ########.fr        #
-#                                                                              # # **************************************************************************** #
-
-
 NAME = libft.a
 SRC = \
 	  ft_abs.c \
@@ -89,7 +80,14 @@ SRC = \
 	  ft_chartostr.c \
 	  ft_strmatch.c \
 	  ft_strnreplace.c \
-	  ft_strsurround.c
+	  ft_strsurround.c \
+	  ft_realloc.c \
+	  ft_arraydel.c \
+	  ft_arraychr.c \
+	  ft_strchange.c \
+	  ft_putnstr.c \
+	  ft_arraymax_f.c \
+	  get_next_line.c
 
 OPTI_FLAGS = -O2
 SANITIZER =# -fsanitize=address -fno-omit-frame-pointer  && ASAN_OPTIONS=symbolize=1 ASAN_SYMBOLIZER_PATH=/Users/ade-sede/.brew/opt/llvm/bin/llvm-symbolizer

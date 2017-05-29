@@ -1,4 +1,6 @@
 #include "libft.h"
+#include "mem.h"
+#include "str.h"
 
 void	ft_arraydel(char ***tab)
 {

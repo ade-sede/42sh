@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 19:37:48 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/24 20:01:20 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/29 16:27:08 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void	*ft_memalloc(size_t size);
 
 void	*ft_calloc(size_t count, size_t size);
 
+/*
+**	in file ft_realloc.c
+*/
+
+void	*ft_realloc(size_t	curr_size, void *ptr, size_t new_size);
+void	*cl_realloc(size_t	curr_size, void *ptr, size_t new_size);
 #endif

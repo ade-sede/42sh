@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 09:54:39 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/04/27 10:28:48 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/29 16:19:05 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(void)
 		printf("1 ---> %s @ %p\n", str[i], str[i]);
 	printf("\n");
 
-	test = (char**)ft_addcpy((void**)test, (const void **)str, 4);
+	test = ft_memcpy(test, str, sizeof(*str) * 4);
 
 	printf("\n");
 	printf("Test add = %p\n", test);
