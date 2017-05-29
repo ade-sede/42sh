@@ -1,5 +1,7 @@
 #include "completion.h"
 #include "line_editing.h"
+#include <stdio.h>
+#include <string.h>
 
 char	*get_word_slash(t_line *line)
 {
@@ -37,7 +39,7 @@ void	delete_word_cursor(t_line *line)
 	word = line->buff + line->pos;
 	while (word > line->buff && (*word != ' '))
 	{ 
-		//printf("\n%c\n", *word);
+		printf("\n%c\n", *word);
 		word--;
 	}
 	word = (*word == ' ') ? word + 1 : word;
@@ -97,13 +99,17 @@ char	**array_matches(char *dir_match, char *to_match)
 	matches = ft_memalloc(sizeof(char *) * 100); 
 	dir = (dir_match) ? opendir(dir_match) : opendir(".");
 	if (!dir)
+	{
+		printf("open was a failure\n");
 		return (matches);
+	}
 	while ((dirent = readdir(dir)) != NULL)
 	{
+		printf("\nd_name: %s to_match: %s\n", dirent->d_name, to_match);
 		if (!to_match || ft_strstr(dirent->d_name, to_match))
 		{
 			matches[i] = ft_strdup(dirent->d_name);
-			//printf("\nd_name: %s\n", matches[i]);
+			printf("\nd_name: %s\n", matches[i]);
 			i++;
 		}
 	}
@@ -131,12 +137,12 @@ char	**comple_file_matches(t_line *line)
 	dir_match = NULL;
 	to_match = get_current_word_cursor(line);
 	singleton_comple()->to_replace = get_start_word_cursor(line); 
-//	printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ? dir_match : "null");
+	printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ? dir_match : "null");
 	if (to_match && ft_strichr(to_match, '/') != -1)
 	{
 		singleton_comple()->to_replace = get_word_slash(line) + 1; 
 		split_word(to_match, ft_strrchr(to_match, '/'), &dir_match, &to_match); 
 	}
-//printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ? dir_match : "null");
+printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ? dir_match : "null");
 	return (array_matches(dir_match, to_match));
 }
