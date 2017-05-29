@@ -1,38 +1,54 @@
 #include "libft.h"
+#include "str.h"
+#include "alloc.h"
+#include "mem.h"
 
 char	*ft_strdup(const char *s1)
 {
-	int		i;
-	char	*dest;
+	char	*new_str;
+	size_t	len;
 
-	if (!s1 || *s1 == '\0')
-		return (NULL);
-	i = 0;
-	if ((dest = malloc(sizeof(char) * (ft_strlen(s1) + 1))) == NULL)
-		return (0);
-	while (s1[i])
-	{
-		dest[i] = s1[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	len = ft_strlen(s1) + 1;
+	new_str = palloc(sizeof(*new_str) * len);
+	memcpy(new_str, s1, len);
+	return (new_str);
 }
 
-char	**ft_arraydup(const char **original)
+char	*cl_strdup(const char *s1)
 {
-	char	**new_environ;
-	size_t	original_size;
-	size_t	i;
+	char	*new_str;
+	size_t	len;
 
-	i = 0;
-	original_size = (original == NULL) ? 0 : ft_arraylen(original);
-	new_environ = palloc(sizeof(char*) * original_size + 1, __func__);
-	while (i != original_size)
-	{
-		new_environ[i] = ft_strdup(original[i]);
-		i++;
-	}
-	new_environ[original_size] = NULL;
-	return (new_environ);
+	len = ft_strlen(s1) + 1;
+	new_str = ft_memalloc(sizeof(*new_str) * len);
+	memcpy(new_str, s1, len);
+	return (new_str);
+}
+
+char	*ft_strndup(const char *s1, size_t n)
+{
+	char	*new_str;
+	size_t	s1_len;
+
+	s1_len = ft_strlen(s1);
+	new_str = palloc(sizeof(*new_str) * n + 1);
+	memcpy(new_str, s1, n);
+	new_str[n] = 0;
+	if (n > s1_len)
+		ft_bzero(new_str + s1_len, n - s1_len);
+	return (new_str);
+}
+
+char	*cl_strndup(const char *s1, size_t n)
+{
+	char	*new_str;
+	size_t	s1_len;
+
+	s1_len = ft_strlen(s1);
+	new_str = ft_memalloc(sizeof(*new_str) * n + 1);
+	memcpy(new_str, s1, n);
+	new_str[n] = 0;
+	if (n > s1_len)
+		ft_bzero(new_str + s1_len, n - s1_len);
+	return (new_str);
 }

@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_buff_wchar.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/28 18:46:06 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/28 18:46:46 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+#include "mem.h"
+#include "str.h"
 
 char	*ft_buff_wchar(wchar_t c)
 {
@@ -27,4 +41,26 @@ char	*ft_buff_wchar(wchar_t c)
 		s[3] = ((c & 0x3F) + 0x80);
 	}
 	return (s);
+}
+
+char	*ft_buff_wstring(wchar_t *str)
+{
+	char	*new_str;
+	char	*old_str;
+	char	*tmp_wchar;
+
+	new_str = malloc(1);
+	if (!new_str)
+		exit(1);
+	new_str[0] = 0;
+	while (*str != 0)
+	{
+		tmp_wchar = ft_buff_wchar(*str);
+		old_str = new_str;
+		new_str = ft_strjoin(new_str, tmp_wchar);
+		str++;
+		free(old_str);
+		free(tmp_wchar);
+	}
+	return (new_str);
 }

@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "list.h"
 
 /*
 ** Get the n'th node of the list from where we are. first is node 1

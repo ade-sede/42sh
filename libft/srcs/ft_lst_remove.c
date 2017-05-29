@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "list.h"
 
 
 void	ft_simple_lst_remove(t_list	**first, void (*f)(void*))

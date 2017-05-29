@@ -1,14 +1,12 @@
 #include "libft.h"
-#include "printf.h"
+#include "list.h"
 
 void	ft_simple_lst_pushback(t_list **first, t_list *new_node)
 {
 	t_list	*tmp;
 	t_list	*old_tmp;
 
-	if (!new_node)
-		ft_dprintf(2, "Param new_node in fcts %s is null\n", __func__);
-	else
+	if (new_node)
 	{
 		tmp = *first;
 		while (tmp)
@@ -33,7 +31,5 @@ void	ft_double_lst_pushback(t_lst_head **head, t_list_d *new_node)
 		(*head)->shift_middle += 1;
 		(*head)->node_count += 1;
 	}
-	else
-		ft_dprintf(2, "Param new_node in fcts %s is null\n", __func__);
 	ft_lst_replace_middle(head);
 }

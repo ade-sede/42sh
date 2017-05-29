@@ -5,9 +5,9 @@ short int	charcmp(const char *str, size_t i, char c)
 {
 	int ret;
 
-	ret = false;
+	ret = FALSE;
 	if (str[i] != c)
-		return (false);
+		return (FALSE);
 	else
 		while (i != 0 && str[i - 1] == '\\')
 		{
@@ -15,8 +15,8 @@ short int	charcmp(const char *str, size_t i, char c)
 			ret = (ret) ? 0 : 1;
 		}
 	if (ret)
-		return (false);
-	return (true);
+		return (FALSE);
+	return (TRUE);
 }
 
 

@@ -1,5 +1,6 @@
 #include "libft.h"
-#include "printf.h"
+#include "str.h"
+#include "alloc.h"
 
 static short int		check_quotes_content(const char *str, const char *split_base, unsigned int *index)
 {
@@ -7,16 +8,16 @@ static short int		check_quotes_content(const char *str, const char *split_base, 
 	short	int	word_in_quotes;
 	unsigned int	i;
 
-	word_in_quotes = false;
-	in_quotes = true;
+	word_in_quotes = FALSE;
+	in_quotes = TRUE;
 	i = *index;
 	i++;
 	while (str[i] && in_quotes)
 	{
 		if (charcmp(str, i, '"'))
-			in_quotes = false;
+			in_quotes = FALSE;
 		if (!ft_is_one_of(str[i], split_base) && !charcmp(str, i, '"'))
-			word_in_quotes = true;
+			word_in_quotes = TRUE;
 		i++;
 	}
 	*index = i;
@@ -31,7 +32,7 @@ static unsigned int	count_words(const char *str, const char *split_base)
 
 	i = 0;
 	nb_words = 0;
-	word_in_quotes = false;
+	word_in_quotes = FALSE;
 	while (str[i])
 	{
 		while (str[i] && ft_is_one_of(str[i], split_base) && !charcmp(str, i, '"'))
@@ -44,7 +45,7 @@ static unsigned int	count_words(const char *str, const char *split_base)
 			i++;
 		if (word_in_quotes)
 			nb_words++;
-		word_in_quotes = false;
+		word_in_quotes = FALSE;
 	}
 	return (nb_words);
 }
@@ -56,7 +57,7 @@ static void	fill_word_tab(const char *str, const char *split_base, char **word_t
 	unsigned int	word_start;
 
 	i = 0;
-	word_in_quotes = false;
+	word_in_quotes = FALSE;
 	while (str[i])
 	{
 		while (str[i] && ft_is_one_of(str[i], split_base) && !charcmp(str, i, '"'))
@@ -81,7 +82,7 @@ static void	fill_word_tab(const char *str, const char *split_base, char **word_t
 			*word_tab = ft_strsub(str, word_start, (i - word_start));
 			word_tab++;
 		}
-		word_in_quotes = false;
+		word_in_quotes = FALSE;
 	}
 }
 
@@ -94,7 +95,7 @@ char		**ft_strsplit_quotes(const char *str, const char *split_base)
 	if (!str)
 		return (NULL);
 	nb_words = count_words(str, split_base);
-	word_tab = palloc(sizeof(char*) * (nb_words + 1), __func__);
+	word_tab = palloc(sizeof(char*) * (nb_words + 1));
 	word_tab[nb_words] = NULL;
 	fill_word_tab(str, split_base, word_tab);
 	return (word_tab);

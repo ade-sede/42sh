@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 01:28:00 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/04/04 18:39:35 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/29 15:56:43 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		start_conv(char **buffer, int *ret, const char *format, va_list ap)
 	char	*conv;
 	int		conv_size;
 
-	opt = get_opt(format, ap);
+	opt = get_opt(format);
 	conv = convert(format, ap, &opt, ret);
 	if (!(new_buff = ft_strjoin(*buffer, conv)))
 		exit(1);

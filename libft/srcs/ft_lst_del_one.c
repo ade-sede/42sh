@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_del_one.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/29 15:29:59 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/29 15:38:26 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+#include "list.h"
 
 
 static void	is_middle_right(t_lst_head **head)
@@ -118,7 +131,8 @@ void	ft_simple_lst_del_one(t_list **first, t_list *node, void(*f)(void*))
 			*first = node->next;
 		else
 			old_tmp->next = curr_tmp->next;
-		(f)(node->data);
+		if (f)
+			(f)(node->data);
 		free(node);
 	}
 }

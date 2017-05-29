@@ -1,4 +1,6 @@
 #include "libft.h"
+#include "str.h"
+#include "alloc.h"
 
 static unsigned int	count_words(const char *str, const char *split_base)
 {
@@ -63,7 +65,7 @@ char		**ft_strsplit_keep(const char *str, const char *split_base)
 	if (!str | !split_base)
 		return (NULL);
 	nb_words = count_words(str, split_base);
-	word_tab = palloc(sizeof(char*) * (nb_words + 1), __func__);
+	word_tab = palloc(sizeof(char*) * (nb_words + 1));
 	word_tab[nb_words] = NULL;
 	fill_word_tab(str, split_base, word_tab);
 	return (word_tab);

@@ -1,15 +1,38 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/26 12:32:27 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/26 12:34:51 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "str.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
+	const char	*found;
+	const char	*tmp;
 
-	i = 0;
-	while (s[i])
-		i++;
-	while (s[i] != c && i >= 0)
-		i--;
-	if (s[i] == c)
-		return ((char*)s + i);
-	return (NULL);
+	if (c == 0)
+		return (ft_strchr(s, 0));
+	found = NULL;
+	while ((tmp = ft_strchr(s, c)))
+	{
+		found = tmp;
+		s = tmp + 1;
+	}
+	return ((char*)found);
 }
+
+ssize_t	ft_strrichr(const char *s, int c)
+{
+	char	*ptr;
+
+	ptr = ft_strrchr(s, c);
+	return ((ptr) ? ptr - s : -1);
+}
+

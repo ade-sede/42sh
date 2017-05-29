@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "str.h"
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {

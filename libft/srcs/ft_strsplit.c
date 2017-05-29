@@ -1,4 +1,6 @@
 #include "libft.h"
+#include "str.h"
+#include "alloc.h"
 
 static unsigned int	ft_count_words(char const *s, const char *str)
 {
@@ -81,8 +83,7 @@ char				**ft_strsplit(char const *s, const char *str)
 		return (NULL);
 	nb_words = ft_count_words(s, str);
 	word_tab = NULL;
-	if (!(word_tab = (char **)malloc(sizeof(char *) * (nb_words + 1))))
-		return (NULL);
+	word_tab = (char **)palloc(sizeof(char *) * (nb_words + 1));
 	word_tab[nb_words] = NULL;
 	if (ft_malloc_tab(s, word_tab, str) == NULL)
 		return (NULL);

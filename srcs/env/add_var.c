@@ -11,7 +11,7 @@ void		env_add_var(t_env *env, const char *key, const char *value)
 
 	environ = env->environ;
 	new_environ_size = env->environ_size + 1;
-	new_environ = palloc(sizeof(char*) * (new_environ_size + 1), __func__);
+	new_environ = palloc(sizeof(char*) * (new_environ_size + 1));
 	new_key_value = ft_strsurround(key, "=", value);
 	ft_addrcpy((void**)new_environ, (const void**)environ, env->environ_size);
 	new_environ[new_environ_size - 1] = new_key_value;

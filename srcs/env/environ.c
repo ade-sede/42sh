@@ -1,7 +1,6 @@
 #include "env.h"
 #include "libft.h"
-#include "printf.h"
-#include <stdio.h>
+#include "array.h"
 
 void		env_print_environ(const char **environ)
 {

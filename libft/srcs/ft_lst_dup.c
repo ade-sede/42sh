@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "list.h"
 
 void	ft_simple_lst_dup(t_list **new_list_first, t_list *original)
 {

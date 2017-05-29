@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "str.h"
 
 void	ft_strnreplace(char *str, char target, char replace, int size)
 {

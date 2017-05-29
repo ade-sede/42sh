@@ -1,14 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/24 16:47:48 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/28 17:19:11 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+#include "mem.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+/*
+**	Align memory
+*/
+
+static void	align_memory(unsigned char **ptr, int c, size_t *n)
 {
-	unsigned char	*tmp;
-
-	tmp = b;
-	while (len--)
+	while (*n && (((t_ulong)*ptr & (ULONG_SIZE - 1)) != 0))
 	{
-		*tmp = c;
-		tmp++;
+		(*n)--;
+		**ptr = c;
+		(*ptr)++;
 	}
-	return (b);
+}
+
+/*
+**	Set len bytes from ptr to 0
+*/
+
+static void	cpy_longword(size_t	len, t_ulong **ul_ptr, int c)
+{
+	size_t	xlen;
+	xlen = (len / ULONG_SIZE) + 1;
+	while (--xlen)
+	{
+		**ul_ptr = (t_ulong)(CHAR_TO_LONG(c));
+		(*ul_ptr)++;
+	}
+}
+void		*ft_memset(void *ptr, int c, size_t len)
+{
+	t_ulong	*ul_ptr;
+	void	*origin;
+
+	origin = ptr;
+	align_memory((unsigned char**)&ptr, c, &len);
+	ul_ptr = (t_ulong*)ptr;
+	if (len >= ULONG_SIZE)
+		cpy_longword(len, &ul_ptr, c);
+	len %= ULONG_SIZE;
+	if (len > 0)
+	{
+		ptr = ul_ptr;
+		while (len)
+		{
+			len--;
+			*(unsigned char*)ptr = c;
+			ptr++;
+		}
+	}
+	return (origin);
 }

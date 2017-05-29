@@ -1,98 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/23 18:33:28 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/25 19:38:34 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "str.h"
 #include "libft.h"
-#include <stdio.h>
 
-/* static int	get_index(const char *cp) */
-/* { */
-/* 	if (cp[0] == 0) */
-/* 		return (0); */
-/* 	if (cp[1] == 0) */
-/* 		return (1); */
-/* 	if (cp[2] == 0) */
-/* 		return (2); */
-/* 	if (cp[3] == 0) */
-/* 		return (3); */
-/* 	/1* if (cp[4] == 0) *1/ */
-/* 	/1* 	return (4); *1/ */
-/* 	/1* if (cp[5] == 0) *1/ */
-/* 	/1* 	return (5); *1/ */
-/* 	/1* if (cp[6] == 0) *1/ */
-/* 	/1* 	return (6); *1/ */
-/* 	/1* if (cp[7] == 0) *1/ */
-/* 	/1* 	return (7); *1/ */
-/* 	return (-1); */
-/* } */
+/*
+**	1) Align memory
+**	2) Check if one of the Bytes in your 8 Bytes is set to 0
+**	3) Find wich one it is
+*/
 
-/* static size_t	align_memory(const char **str) */
-/* { */
-/* 	const char	*origin; */
-
-/* 	origin = *str; */
-/* 	while ((unsigned long int)*str & (sizeof(unsigned long int) - 1)) */
-/* 	{ */
-/* 		if (**str == 0) */
-/* 			return ((size_t)(*str - origin)); */
-/* 		*str = *str + 1; */
-/* 	} */
-/* 	return (0); */
-/* } */
-
-/* size_t	ft_strlen(const char *str) */
-/* { */
-/* 	unsigned long int	longword; */
-/* 	unsigned long int	himagic; */
-/* 	unsigned long int	lomagic; */
-/* 	unsigned long int	*longword_ptr; */
-/* 	const char		*origin; */
-/* 	int			ret; */
-
-/* 	origin = str; */
-/* 	if ((ret = (int)align_memory(&str)) != 0) */
-/* 		return ((size_t)ret); */
-/* 	longword_ptr = (unsigned long int *)str; */
-/* 	himagic = 0x80808080UL; */
-/* 	lomagic = 0x01010101UL; */
-/* 	while (1) */
-/* 	{ */
-/* 		longword = *longword_ptr; */
-/* 		longword_ptr++; */
-/* 		if ((longword - lomagic) & ~(longword) & himagic) */
-/* 		{ */
-/* 			ret = get_index((const char *)longword_ptr - 1); */
-/* 			if (ret != -1) */
-/* 			{ */
-/* 				return ((size_t)(((char *)longword_ptr + ret - origin))); */
-/* 			} */
-/* 		} */
-/* 	} */
-/* 	return (0); */
-/* } */
-
-size_t	ft_strlen(const char *s)
+static int		align_memory(const char **align_ptr)
 {
-	int i;
-
-	if (s == NULL)
-		return (-1);
-	i = 0;
-	while (*s != '\0')
+	while (((t_ulong)*align_ptr & (ULONG_SIZE - 1)) != 0)
 	{
-		i++;
-		s++;
+		if (**align_ptr == 0)
+			return (1);
+		(*align_ptr)++;
 	}
-	return (i);
+	return (0);
 }
 
-size_t	ft_arraylen(const char **s)
+static ssize_t	find_bit(const char *cp)
 {
-	int	i;
+	if (cp[0] == 0)
+		return (0);
+	if (cp[1] == 0)
+		return (1);
+	if (cp[2] == 0)
+		return (2);
+	if (cp[3] == 0)
+		return (3);
+	if (cp[4] == 0)
+		return (4);
+	if (cp[5] == 0)
+		return (5);
+	if (cp[6] == 0)
+		return (6);
+	if (cp[7] == 0)
+		return (7);
+	return (-1);
+}
 
-	if (s == NULL)
-		return (-1);
-	i = 0;
-	while (*s != '\0')
+size_t			ft_strlen(const char *origin)
+{
+	const char	*align_ptr;
+	t_ulong		*longword_ptr;
+	t_ulong		longword;
+	ssize_t		diff;
+	const char	*cp;
+
+	align_ptr = origin;
+	if (align_memory(&align_ptr))
+		return (align_ptr - origin);
+	longword_ptr = (t_ulong*)align_ptr;
+	while (42)
 	{
-		i++;
-		s++;
+		longword = *longword_ptr++;
+		if (HAS_ZERO(longword))
+		{
+			cp = (const char*)(longword_ptr - 1);
+			diff = find_bit(cp);
+			if (diff != -1)
+				return (cp + diff - origin);
+		}
 	}
-	return (i);
+	return (0);
 }

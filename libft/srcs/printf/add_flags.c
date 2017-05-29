@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 14:35:03 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/04/08 15:12:30 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/29 15:43:29 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		add_flags(char **str, t_opt **opt)
 	if ((conv_type(opt) == INT || conv_type(opt) == HEX
 				|| conv_type(opt)) == OCT && (*opt)->prec > 0)
 		(*opt)->pad_char = ' ';
-	neg = (*str && *str[0] == '-' && conv_type(opt) == INT) ? 1 : 0;
+	neg = (*str[0] == '-' && conv_type(opt) == INT) ? 1 : 0;
 	if (neg == 1)
 	{
 		unsigned_str = remove_sign(*str);

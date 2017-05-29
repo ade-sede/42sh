@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:37:00 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/03/27 19:09:58 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:40:58 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,9 @@ void		get_flags(t_opt **opt)
 		(*opt)->place_holder[flag_pos] = 127;
 }
 
-void		get_fields_info(t_opt **opt, va_list ap)
+void		get_fields_info(t_opt **opt)
 {
 	int		field_len_start;
-	int		prec_pos;
 
 	field_len_start = ft_strmatch((*opt)->digit_base, (*opt)->place_holder);
 	(*opt)->field_len = ft_abs(ft_atoi((*opt)->place_holder + field_len_start));
@@ -59,19 +58,6 @@ void		get_fields_info(t_opt **opt, va_list ap)
 	{
 		(*opt)->place_holder[field_len_start] = 127;
 		field_len_start++;
-	}
-	field_len_start = -10;
-	field_len_start = ft_strichr((*opt)->place_holder, '`');
-	if (field_len_start != -1 && field_len_start != -10)
-	{
-		(*opt)->field_len = va_arg(ap, int);
-		(*opt)->place_holder[field_len_start] = 127;
-	}
-	prec_pos = ft_strichr((*opt)->place_holder, '*');
-	if (prec_pos != -1)
-	{
-		(*opt)->prec = va_arg(ap, int);
-		(*opt)->place_holder[prec_pos] = 127;
 	}
 }
 

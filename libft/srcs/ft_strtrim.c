@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "str.h"
 
 static	int		ft_char_is_space(char c)
 {
