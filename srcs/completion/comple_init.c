@@ -21,6 +21,7 @@ int	comple_init_winch(t_comple *c)
 
 int	comple_init(t_line *line, t_comple *c)
 {
+	ft_bzero(c, sizeof(t_comple));
 	c->matches = comple_file_matches(line);
 	c->max_len = ft_arraymax_f((const char**)c->matches, ft_strlen);
 	c->nb_matches = ft_arraylen((const char**)c->matches);
