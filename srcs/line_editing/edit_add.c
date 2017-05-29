@@ -2,7 +2,7 @@
 
 void	edit_add(int keycode, t_line *line)
 {
-	if (line->pos == line->len - 1)
+	if (line->pos == line->len)
 		line->buff[line->len] = (char)keycode;
 	else
 	{

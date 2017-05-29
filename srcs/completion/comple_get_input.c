@@ -41,6 +41,11 @@ int		comple_get_input(t_line *line)
 	comple_set_signals();
 	while (42)
 	{
+		if (c->signum == SIGINT)
+		{
+			comple_handle_sigint(line, c);
+			return (0);
+		}
 		keycode = 0;
 		read(0, &keycode, 8);
 		if (keycode == KEY_ENTER || !(comple_loop(keycode, line, c)))

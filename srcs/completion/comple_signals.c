@@ -1,29 +1,32 @@
 #include "completion.h"
 #include "line_editing.h"
 
-void	comple_handle_sigwinch(int signum)
+void	comple_handle_sigwinch(t_line *line, t_comple *c)
 {
 	//put_termcap("cr");
 	//put_termcap("cd");
-	//comple_clear(*singleton_comple());
-	comple_init_winch(singleton_comple());
-	comple_clear(*singleton_comple());
+	//comple_clear(*c());
+	comple_init_winch(c);
+	comple_clear(*c);
 	put_termcap("cl");
-	comple_refresh(singleton_line(), *singleton_comple());
-	(void)signum;
+	comple_refresh(line, *c);
 }
 
-void	comple_handle_sigint(int signum)
+void	comple_handle_sigint(t_line *line, t_comple *c)
 {
-	move_cursor_lastline(singleton_line());
-	edit_line_init(singleton_line());
-	comple_clear(*singleton_comple());
+	move_cursor_lastline(line);
+	edit_line_init(line);
+	comple_clear(*c);
 	put_prompt(NULL);
-	(void)signum;
+}
+
+void	comple_set_comple_signum(signum)
+{
+	singleton_comple()->signum = signum;
 }
 
 void	comple_set_signals(void)
 {
-	signal(SIGWINCH, comple_handle_sigwinch);
-	signal(SIGINT, comple_handle_sigint);
+	signal(SIGWINCH, comple_set_comple_signum);
+	signal(SIGINT, comple_set_comple_signum);
 }

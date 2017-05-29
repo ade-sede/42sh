@@ -17,6 +17,7 @@ size_t	get_git_status(int fd)
 
 	get_next_line(fd, &line);
 	len = ft_strlen(line);
+	put_color(line, GRN);
 	singleton_env()->branch = line;
 	close(fd);
 	return (len);
@@ -25,12 +26,13 @@ size_t	get_git_status(int fd)
 size_t	print_git_status(t_env *env)
 {
 	pid_t	son;
+	int	ret;
 	int	fildes[2];
 	static char	*exec[] = {"git", "status", "--porcelain", "--branch", NULL};
 
 	if ((son = fork()))
 	{
-		wait(&son);
+		waitpid(son, &ret, WUNTRACED);
 		close(fildes[1]);
 		return (get_git_status(fildes[0]));
 	}
@@ -79,5 +81,5 @@ size_t	put_prompt(t_env *env)
 	put_color(" git:()", RED);
 	//put_color(env->branch, GRN);
 	put_color(" ✗ ", YEL);
-	return (len + 2 + 7 + 3);
+	return (3 + len + 7 + 3);
 }

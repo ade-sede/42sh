@@ -7,6 +7,7 @@ typedef struct		s_comple
 {
 	char		**matches;
 	int		pos;
+	int		signum;
 	size_t		ws_col;
 	size_t		max_len;
 	size_t		nb_lines;
@@ -22,8 +23,13 @@ typedef struct		s_comple_func
 	unsigned long long	keycode;
 	int			(*f)(t_comple *);
 }			t_comple_func;
-
+/*
+** signaux
+*/
 void	comple_set_signals(void);
+void	comple_handle_sigwinch(t_line *line, t_comple *c);
+void	comple_handle_sigint(t_line *line, t_comple *c);
+
 int	comple_init(t_line *line, t_comple *c);
 int	comple_init_winch(t_comple *c);
 int	comple_get_input(t_line *line);
