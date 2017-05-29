@@ -8,6 +8,8 @@ char	*get_word_slash(t_line *line)
 	char	*word;
 
 	word = line->buff + line->pos;
+	if (word > line->buff && *word == ' ')
+		word--;
 	while (word > line->buff && (*word != ' ') && (*word != '/'))
 	{ 
 		//printf("\n%c\n", *word);
@@ -21,6 +23,8 @@ char	*get_start_word_cursor(t_line *line)
 	char	*word;
 
 	word = line->buff + line->pos;
+	if (word > line->buff && *word == ' ')
+		word--;
 	while (word > line->buff && (*word != ' '))
 	{ 
 		//printf("\n%c\n", *word);
@@ -30,28 +34,28 @@ char	*get_start_word_cursor(t_line *line)
 	return (word);
 }
 
-void	delete_word_cursor(t_line *line)
-{
-	char	*word;
-	char	*end;
-	
-	end = NULL;
-	word = line->buff + line->pos;
-	while (word > line->buff && (*word != ' '))
-	{ 
-		printf("\n%c\n", *word);
-		word--;
-	}
-	word = (*word == ' ') ? word + 1 : word;
-	end = ft_strchr(word, ' ');
-	if (end)
-	{
-		ft_memmove(word, end, ft_strlen(end));
-		ft_strclr(word + ft_strlen(end));
-	}
-	else
-		ft_strclr(word);
-}
+//void	delete_word_cursor(t_line *line)
+//{
+	//char	*word;
+	//char	*end;
+	//
+	//end = NULL;
+	//word = line->buff + line->pos;
+	//while (word > line->buff && (*word != ' '))
+	//{ 
+		//printf("\n%c\n", *word);
+		//word--;
+	//}
+	//word = (*word == ' ') ? word + 1 : word;
+	//end = ft_strchr(word, ' ');
+	//if (end)
+	//{
+		//ft_memmove(word, end, ft_strlen(end));
+		//ft_strclr(word + ft_strlen(end));
+	//}
+	//else
+		//ft_strclr(word);
+//}
 
 void	delete_word(char *to_replace)
 {

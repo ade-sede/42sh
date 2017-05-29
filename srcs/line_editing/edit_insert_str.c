@@ -1,4 +1,5 @@
 #include "line_editing.h"
+#include "libft.h"
 
 int	ft_insert_str_dest(char *dest, char *str)
 {
