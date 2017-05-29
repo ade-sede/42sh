@@ -96,7 +96,7 @@ char	**array_matches(char *dir_match, char *to_match)
 
 	i = 0;
 	dir = NULL;
-	matches = ft_memalloc(sizeof(char *) * 100); 
+	matches = ft_memalloc(sizeof(char *) * 1000); ///////////////////////////////////////////////////
 	dir = (dir_match) ? opendir(dir_match) : opendir(".");
 	if (!dir)
 	{
@@ -105,7 +105,7 @@ char	**array_matches(char *dir_match, char *to_match)
 	}
 	while ((dirent = readdir(dir)) != NULL)
 	{
-		printf("\nd_name: %s to_match: %s\n", dirent->d_name, to_match);
+		//printf("\nd_name: %s to_match: %s\n", dirent->d_name, to_match);
 		if (!to_match || ft_strstr(dirent->d_name, to_match))
 		{
 			matches[i] = ft_strdup(dirent->d_name);
