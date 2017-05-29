@@ -81,5 +81,5 @@ size_t	put_prompt(t_env *env)
 	put_color(" git:()", RED);
 	//put_color(env->branch, GRN);
 	put_color(" ✗ ", YEL);
-	return (len + 2 + 7 + 3);
+	return (3 + len + 7 + 3);
 }
