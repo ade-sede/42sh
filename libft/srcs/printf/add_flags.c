@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 14:35:03 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/29 15:43:29 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/30 16:11:35 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		add_flags(char **str, t_opt **opt)
 
 	if ((conv_type(opt) == INT || conv_type(opt) == HEX
 				|| conv_type(opt)) == OCT && (*opt)->prec > 0)
-		(*opt)->pad_char = ' ';
+		(*opt)->printf_pad_char = ' ';
 	neg = (*str[0] == '-' && conv_type(opt) == INT) ? 1 : 0;
 	if (neg == 1)
 	{
@@ -48,13 +48,13 @@ void		add_flags(char **str, t_opt **opt)
 		free(*str);
 		*str = unsigned_str;
 	}
-	if ((*opt)->pad_char == ' ')
+	if ((*opt)->printf_pad_char == ' ')
 	{
 		add_prec(str, opt);
 		add_form(str, opt, neg);
 		create_field(str, opt, (int)ft_strlen(*str));
 	}
-	if ((*opt)->pad_char == '0')
+	if ((*opt)->printf_pad_char == '0')
 	{
 		add_prec(str, opt);
 		create_field(str, opt, get_form_size(opt, neg) + (int)ft_strlen(*str));

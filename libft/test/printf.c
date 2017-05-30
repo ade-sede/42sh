@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 01:30:15 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/29 15:59:28 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/30 15:06:03 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -558,9 +558,10 @@ void	random_test_behavior(void)
 	printf("-------------------------------\n");
 	printf("%d\n", ft_printf("%C\n", 203));
 	printf("%d\n", printf("%C\n", 203));
-
-
-
+	printf("-------------------------------\n");
+	printf("%d\n", ft_printf("%*d\n", 10, 42));
+	printf("%d\n", printf("%*d\n", 10, 42));
+	printf("%d\n", ft_printf("%10d\n", 42));
 }
 
 int		main(int ac, char *av[])
@@ -600,7 +601,7 @@ int		main(int ac, char *av[])
 		i++;
 	}
 	test_s();
-	//random_test_behavior();
+	random_test_behavior();
 	printf(CYN"||------------------------------RECAP--------------------------------||\n"RESET);
 	if (overall_ret != 0)
 	{

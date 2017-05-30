@@ -50,12 +50,9 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 
-/*
-** In file ft_putnstr.c
-*/
+
 
 void				ft_putnstr(char *str, size_t len);
-
 /*
 ** In file ft_putchar.c
 */
@@ -229,10 +226,11 @@ char				*ft_strtrim(char const *s);
 
 char				**ft_strsplit(char const *s, const char *str);
 
-
-char				**ft_strsplit_quotes(const char *str, const char *split_base);
 char				**ft_strsplit_keep(const char *str, const char *split_base);
 
+char				**ft_strsplit_quotes(const char *str, const char *split_base);
+
+void				*ft_strchange(void *old, void *new);
 
 /*
 **	Charcmp.c
@@ -271,12 +269,4 @@ void				ft_strnreplace(char *str, char target, char replace, int size);
 */
 
 char				*ft_strsurround(const char *s1, const char *s2, const char *s3);
-
-
-/*
-**	strchange.c
-*/
-
-
-void				*ft_strchange(void *old, void *new);
 #endif

@@ -28,7 +28,7 @@ static int	align_memory(unsigned char **s1, unsigned char **s2, size_t *n)
 
 static int	cmp_last_bits(unsigned char *s1, unsigned char *s2, size_t *n)
 {
-	while (n && *s1 && *s2)
+	while (*n && *s1 && *s2)
 	{
 		if (*s1 != *s2)
 			return (*s1 - *s2);
@@ -61,7 +61,6 @@ static int cmp_longword(const char **s1, const char **s2, size_t *n)
 	*s2 = (const char*)s2_ptr;
 	return (0);
 }
-
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {

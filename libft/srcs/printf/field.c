@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:35:40 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/02/10 14:51:31 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/30 16:11:36 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	create_field(char **str, t_opt **opt, int form_size)
 		pad_size = ((*opt)->field_len) - form_size;
 		if (pad_size > 0)
 		{
-			padded_str = pad(pad_size, (*opt)->pad_char);
+			padded_str = pad(pad_size, (*opt)->printf_pad_char);
 			if ((*opt)->minus_flag == 1)
 				new_str = ft_strjoin(*str, padded_str);
 			else

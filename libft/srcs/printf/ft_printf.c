@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 01:28:00 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/29 15:56:43 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/30 14:58:27 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int		ft_printf(const char *format, ...)
 		return (-1);
 	*buffer = 0;
 	printf_ret = bufferise(&buffer, format, ap);
-	if (ft_strichr(buffer, -10) != -1)
-		ft_strnreplace(buffer, -10, 0, printf_ret);
+	ft_strnreplace(buffer, -10, 0, printf_ret);
 	write(1, buffer, printf_ret);
 	free(buffer);
 	va_end(ap);
@@ -57,7 +56,7 @@ int		bufferise(char **buffer, const char *format, va_list ap)
 		{
 			last_join(buffer, (char*)format, &ret);
 		}
-		format += (i != -1) ? i + conv_size + 1 : (int)ft_strlen(format);
+		format += (i != -1) ? i + conv_size + 1 : ft_strlen(format);
 	}
 	return (ret);
 }
@@ -93,9 +92,11 @@ int		start_conv(char **buffer, int *ret, const char *format, va_list ap)
 	t_opt	*opt;
 	char	*new_buff;
 	char	*conv;
+	int		old_ret;
 	int		conv_size;
 
-	opt = get_opt(format);
+	old_ret = *ret;
+	opt = get_opt(format, ap);
 	conv = convert(format, ap, &opt, ret);
 	if (!(new_buff = ft_strjoin(*buffer, conv)))
 		exit(1);

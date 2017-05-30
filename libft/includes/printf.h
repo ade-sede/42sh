@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 01:26:22 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/29 15:56:18 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/30 16:11:33 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # define LL 8
 # define J 1
 # define Z 2
+# define RED "\x1B[31m"
+# define GRN "\x1B[32m"
+# define YEL "\x1B[33m"
+# define BLU "\x1B[34m"
+# define MAG "\x1B[35m"
+# define CYN "\x1B[36m"
+# define WHT "\x1B[37m"
+# define RESET "\x1B[0m"
 # define OCT 1
 # define HEX 1001
 # define INT 1002
@@ -36,7 +44,7 @@ typedef	struct	s_opt
 	int			plus_flag;
 	int			minus_flag;
 	int			space_flag;
-	char		pad_char;
+	char		printf_pad_char;
 	int			field_len;
 	int			prec;
 	int			len_mod;
@@ -50,7 +58,6 @@ typedef	struct	s_opt
 	int			conv_ret;
 }				t_opt;
 
-int				ft_dprintf(int fd, const char *format, ...);
 void			last_join(char **buffer, char *format, int *ret);
 void			ft_exception(t_opt **opt, char *str);
 int				is_opt(char c);
@@ -68,8 +75,8 @@ void			early_join(char **buffer, char *little, int *ret);
 void			fill_fcts(char *(**f)(t_opt**, va_list));
 void			get_mode(t_opt **opt);
 void			get_flags(t_opt **opt);
-void			get_prec(t_opt **opt);
-void			get_fields_info(t_opt **opt);
+void			get_prec(t_opt **opt, va_list ap);
+void			get_fields_info(t_opt **opt, va_list ap);
 char			*ft_s(t_opt **opt, va_list ap);
 char			*ft_upper_s(t_opt **opt, va_list ap);
 char			*ft_u(t_opt **opt, va_list ap);
@@ -85,6 +92,6 @@ int				bufferise(char **buffer, const char *format, va_list ap);
 char			*convert(const char *format, va_list ap, t_opt **opt, int *ret);
 int				conv_is_valid(char c);
 int				conv_size(const char *format);
-t_opt			*get_opt(const char *format);
+t_opt			*get_opt(const char *format, va_list ap);
 int				mode_is_valid(char c);
 #endif

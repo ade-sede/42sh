@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 12:21:04 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/25 23:16:01 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/30 13:25:36 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void print_type_size(void)
 	PRINTF_SIZEOF(t_ulong);
 	PRINTF_SIZEOF(intmax_t);
 	PRINTF_SIZEOF(uintmax_t);
+	PRINTF_SIZEOF(unsigned int);
 }
 
 int	main(void)

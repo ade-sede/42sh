@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "array.h"
 #include "env.h"
 
 int	env_copy_env(t_env *new_env, t_env *old_env)
