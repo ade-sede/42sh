@@ -1,5 +1,7 @@
 #include "completion.h"
 #include "line_editing.h"
+#include <signal.h>
+#include <stdio.h>
 
 void	comple_handle_sigwinch(t_line *line, t_comple *c)
 {
@@ -14,10 +16,13 @@ void	comple_handle_sigwinch(t_line *line, t_comple *c)
 
 void	comple_handle_sigint(t_line *line, t_comple *c)
 {
-	move_cursor_lastline(line);
-	edit_line_init(line);
+	//move_cursor_lastline(line);
+	//edit_line_init(line);
 	comple_clear(*c);
-	put_prompt(NULL);
+	put_termcap("up");	
+	comple_free(*c);
+	(void)line;
+	//put_prompt(NULL);
 }
 
 void	comple_set_comple_signum(signum)
@@ -27,6 +32,14 @@ void	comple_set_comple_signum(signum)
 
 void	comple_set_signals(void)
 {
-	signal(SIGWINCH, comple_set_comple_signum);
-	signal(SIGINT, comple_set_comple_signum);
+	struct sigaction sa;
+
+	sa.sa_handler = comple_set_comple_signum;
+	sa.sa_mask = 0;
+	sa.sa_flags = 0;
+	sigaction(SIGINT, &sa, NULL);
+
+	//signal(SIGWINCH, comple_set_comple_signum);
+	//signal(SIGINT, comple_set_comple_signum);
+
 }
