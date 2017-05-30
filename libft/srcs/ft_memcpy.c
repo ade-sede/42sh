@@ -3,24 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 16:03:27 by vcombey           #+#    #+#             */
-/*   Updated: 2016/11/15 03:28:12 by vcombey          ###   ########.fr       */
+/*   Created: 2017/05/25 17:54:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/05/29 18:46:32 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mem.h"
 #include "libft.h"
+#include <string.h>
+#include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+static void	copy_longword(void **dst, const void **src, size_t *n)
 {
-	unsigned int i;
+	size_t	xlen;
+	t_ulong	*dst_ptr;
+	t_ulong	*src_ptr;
 
-	i = 0;
-	while (i < n)
+	xlen = (*n / ULONG_SIZE);
+	dst_ptr = (t_ulong*)*dst;
+	src_ptr = (t_ulong*)*src;
+	while (xlen)
 	{
-		((unsigned char*)dest)[i] = ((unsigned char*)src)[i];
-		i++;
+		*dst_ptr = *src_ptr;
+		dst_ptr++;
+		src_ptr++;
+		xlen--;
 	}
-	return (dest);
+	*n %= ULONG_SIZE;
+	*dst = dst_ptr;
+	*src = src_ptr;
+}
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	void	*original;
+
+	original = dst;
+	if (n >= ULONG_SIZE)
+		copy_longword(&dst, &src, &n);
+	while (n)
+	{
+		n--;
+		*(unsigned char*)dst = *(unsigned char*)src;
+		dst++;
+		src++;
+	}
+	return (original);
 }
