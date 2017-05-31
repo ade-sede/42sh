@@ -5,6 +5,7 @@ INCLUDE_DIR = includes
 SRC_DIR = srcs
 
 # Flags at compile time
+SANITIZER = #-fsanitize=address -fno-omit-frame-pointer #&& ASAN_OPTIONS=symbolize=1 ASAN_SYMBOLIZER_PATH=$USER/.brew/opt/llvm/bin/llvm-symbolizer
 CFLAGS = -g -Wall -Wextra -Werror
 CC = gcc
 
@@ -77,7 +78,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ./libft/
-	$(CC) -g $(OBJS) -L libft  -ltermcap -lft -o $(NAME)
+	$(CC) -g $(OBJS) -L libft  -ltermcap -lft -o $(NAME) $(SANITIZER)
 
 clean:
 	make clean -C ./libft/
@@ -98,4 +99,4 @@ objs/%.o : %.c
 	@/bin/mkdir -p objs/srcs/line_editing
 	@/bin/mkdir -p objs/srcs/completion
 	@/bin/mkdir -p objs/srcs/history
-	gcc -g $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $<
+	gcc -g $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $< $(SANITIZER)
