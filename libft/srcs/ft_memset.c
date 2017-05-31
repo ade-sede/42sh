@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:47:48 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/28 17:19:11 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/31 13:00:15 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	align_memory(unsigned char **ptr, int c, size_t *n)
 	while (*n && (((t_ulong)*ptr & (ULONG_SIZE - 1)) != 0))
 	{
 		(*n)--;
-		**ptr = c;
+		**ptr = (unsigned char)c;
 		(*ptr)++;
 	}
 }
@@ -37,7 +37,7 @@ static void	cpy_longword(size_t	len, t_ulong **ul_ptr, int c)
 	xlen = (len / ULONG_SIZE) + 1;
 	while (--xlen)
 	{
-		**ul_ptr = (t_ulong)(CHAR_TO_LONG(c));
+		**ul_ptr = (t_ulong)(CHAR_TO_LONG((unsigned char)c));
 		(*ul_ptr)++;
 	}
 }
@@ -58,7 +58,7 @@ void		*ft_memset(void *ptr, int c, size_t len)
 		while (len)
 		{
 			len--;
-			*(unsigned char*)ptr = c;
+			*(unsigned char*)ptr = (unsigned char)c;
 			ptr++;
 		}
 	}

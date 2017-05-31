@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:54:37 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/28 17:20:52 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/30 17:11:03 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,6 @@
 #include "libft.h"
 #include <string.h>
 #include <stdio.h>
-
-/*
-**	Copies n bytes from src to dest.
-**	Copying 8 Bytes a time if the size allows it
-*/
-
-static void	align_memory(unsigned char **dst, unsigned char **src, size_t *n)
-{
-	while (n && (((t_ulong)*dst & (ULONG_SIZE - 1)) != 0))
-	{
-		n--;
-		**dst = **src;
-		(*dst)++;
-		(*src)++;
-	}
-}
 
 static void	copy_longword(void **dst, const void **src, size_t *n)
 {
@@ -57,7 +41,6 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	void	*original;
 
 	original = dst;
-	align_memory((unsigned char**)&dst, (unsigned char**)&src, &n);
 	if (n >= ULONG_SIZE)
 		copy_longword(&dst, &src, &n);
 	while (n)

@@ -1,6 +1,12 @@
 NAME = libft.a
+#NAME = libftprintf.a
 SRC = \
 	  ft_abs.c \
+	  get_next_line.c \
+	  ft_strchange.c \
+	  ft_putnstr.c \
+	  ft_arraymax_f.c \
+	  ft_arraychr.c \
 	  ft_strlen.c \
 	  ft_arraylen.c \
 	  palloc.c \
@@ -52,8 +58,9 @@ SRC = \
 	  ft_strsplit_keep.c \
 	  charcmp.c \
 	  ft_itoa.c \
+	  ft_arraydel.c \
 	  fatal.c \
-	  ft_free.c \
+	  free.c \
 	  ft_buff_wchar.c \
 	  ft_lst_add.c \
 	  ft_lst_create.c \

@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "str.h"
 
 void	*ft_strchange(void *old, void *new)
 {

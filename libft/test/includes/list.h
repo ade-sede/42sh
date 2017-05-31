@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 15:22:36 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/29 15:38:52 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/30 17:09:28 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void				ft_remove_head(t_lst_head **head, void (*f)(void*));
 **	In file ft_lst_return_if.c
 */
 
-t_list_d			*ft_double_lst_return_if(t_list_d *starting_point, int (*f)(void*));
+t_list_d			*ft_double_lst_return_if(t_list_d *starting_point, int (*f)(void*), int order);
 t_list				*ft_simple_lst_return_if(t_list *starting_point, int (*f)(void*));
 
 /*

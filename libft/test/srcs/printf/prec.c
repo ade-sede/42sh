@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:40:05 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/02/13 15:44:59 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/30 16:11:36 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	add_prec(char **str, t_opt **opt)
 	else if (conv_type(opt) != STR && missing_digits > 0
 			&& conv_type(opt) != CHAR && conv_is_valid((*opt)->conv_flag))
 	{
-		(*opt)->pad_char = ' ';
+		(*opt)->printf_pad_char = ' ';
 		padded_str = pad(missing_digits, '0');
 		new_str = ft_strjoin(padded_str, *str);
 		free(padded_str);

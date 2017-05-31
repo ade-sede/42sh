@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "array.h"
 
 static size_t ft_max_size_t(size_t a, size_t b)
 {
