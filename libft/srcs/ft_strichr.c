@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:12:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/31 16:05:36 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/26 01:12:57 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,43 +23,43 @@ static void	align_memory(const char **s, char c)
 
 static char *get_diff_end(const char *cp, char c)
 {
-	if (*cp == '\0')
-		return NULL;
-	else if (*++cp == c)
-		return (char *) cp;
-	if (*cp == '\0')
-		return NULL;
-	else if (*++cp == c)
-		return (char *) cp;
 	if (*++cp == c)
-		return NULL;
-	else if (*++cp == c)
 		return (char *) cp;
-	 if (*cp == '\0')
-		return NULL;
 	else if (*cp == '\0')
+		return NULL;
+	if (*++cp == c)
 		return (char *) cp;
+	else if (*cp == '\0')
+		return NULL;
+	if (*++cp == c)
+		return (char *) cp;
+	else if (*cp == '\0')
+		return NULL;
+	if (*++cp == c)
+		return (char *) cp;
+	else if (*cp == '\0')
+		return NULL;
 	return (NULL);
 }
 
 static char *get_diff_start(const char *cp, char c)
 {
-	if (*cp == '\0')
-		return NULL;
-	else if (*cp == c)
+	if (*cp == c)
 		return (char *) cp;
-	if (*cp == '\0')
+	else if (*cp == '\0')
 		return NULL;
-	else if (*++cp == c)
+	if (*++cp == c)
 		return (char *) cp;
-	if (*cp == '\0')
+	else if (*cp == '\0')
 		return NULL;
-	else if (*++cp == c)
+	if (*++cp == c)
 		return (char *) cp;
-	if (*cp == '\0')
+	else if (*cp == '\0')
 		return NULL;
-	else if (*++cp == c)
+	if (*++cp == c)
 		return (char *) cp;
+	else if (*cp == '\0')
+		return NULL;
 	return (get_diff_end(cp, c));
 }
 

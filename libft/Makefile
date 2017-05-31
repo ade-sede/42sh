@@ -91,7 +91,7 @@ SRC = \
 	  ft_realloc.c
 
 OPTI_FLAGS = -O2
-SANITIZER = #-fsanitize=address -fno-omit-frame-pointer #&& ASAN_OPTIONS=symbolize=1 ASAN_SYMBOLIZER_PATH=$USER/.brew/opt/llvm/bin/llvm-symbolizer
+SANITIZER =# -fsanitize=address -fno-omit-frame-pointer  && ASAN_OPTIONS=symbolize=1 ASAN_SYMBOLIZER_PATH=/Users/ade-sede/.brew/opt/llvm/bin/llvm-symbolizer
 SRCDIR = srcs
 OBJDIR = objs
 INCDIR = includes
@@ -122,7 +122,7 @@ fclean: clean
 re: fclean all
 
 test:	all 
-	@$(CC) -g $(TEST_FILE) -I$(INCDIR) -L. -lft $(SANITIZER)
+	@$(CC) -g $(TEST_FILE) -I$(INCDIR) -L. -lft
 	@echo "Launching LIBFT_TEST now !"
 	@./a.out
 

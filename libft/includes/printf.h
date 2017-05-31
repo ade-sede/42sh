@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 01:26:22 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/30 16:11:33 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/31 16:46:54 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void			early_join(char **buffer, char *little, int *ret);
 void			fill_fcts(char *(**f)(t_opt**, va_list));
 void			get_mode(t_opt **opt);
 void			get_flags(t_opt **opt);
-void			get_prec(t_opt **opt, va_list ap);
-void			get_fields_info(t_opt **opt, va_list ap);
+void			get_prec(t_opt **opt);
+void			get_fields_info(t_opt **opt);
 char			*ft_s(t_opt **opt, va_list ap);
 char			*ft_upper_s(t_opt **opt, va_list ap);
 char			*ft_u(t_opt **opt, va_list ap);
@@ -92,6 +92,6 @@ int				bufferise(char **buffer, const char *format, va_list ap);
 char			*convert(const char *format, va_list ap, t_opt **opt, int *ret);
 int				conv_is_valid(char c);
 int				conv_size(const char *format);
-t_opt			*get_opt(const char *format, va_list ap);
+t_opt			*get_opt(const char *format);
 int				mode_is_valid(char c);
 #endif

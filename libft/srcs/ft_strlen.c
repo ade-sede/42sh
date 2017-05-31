@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */ /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */ /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/23 18:33:28 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/25 19:38:34 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "str.h"
-#include "libft.h"
-
-/*
-**	1) Align memory
+#include "libft.h" /* **	1) Align memory
 **	2) Check if one of the Bytes in your 8 Bytes is set to 0
 **	3) Find wich one it is
 */

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 13:50:48 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/30 14:30:33 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/31 16:36:27 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char		*convert(const char *format, va_list ap, t_opt **opt, int *ret)
 	char	*str;
 
 	if (no_conv(format) == 1)
-
 		return (ft_chartostr(0));
 	i = 0;
 	fill_fcts(f);
