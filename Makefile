@@ -3,6 +3,7 @@ LIB_DIR = libft
 LIBFT_INCLUDE = $(LIB_DIR)/includes
 INCLUDE_DIR = includes
 SRC_DIR = srcs
+OBJ_DIR = objs
 
 # Flags at compile time
 SANITIZER = #-fsanitize=address -fno-omit-frame-pointer #&& ASAN_OPTIONS=symbolize=1 ASAN_SYMBOLIZER_PATH=$USER/.brew/opt/llvm/bin/llvm-symbolizer
@@ -70,15 +71,24 @@ SRC_FILE =	\
 	history/btsearch_add.c \
 	history/btsearch_move.c \
 
-SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
+SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
-OBJS = $(addprefix objs/, $(SRC:.c=.o))
+OBJS = $(addprefix $(OBJ_DIR)/,$(SRC_FILE:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): create_dir $(OBJS)
 	make -C ./libft/
 	$(CC) -g $(OBJS) -L libft  -ltermcap -lft -o $(NAME) $(SANITIZER)
+	
+create_dir:
+	@/bin/mkdir -p $(OBJ_DIR)
+	@/bin/mkdir -p $(OBJ_DIR)/builtin
+	@/bin/mkdir -p $(OBJ_DIR)/exec
+	@/bin/mkdir -p $(OBJ_DIR)/env
+	@/bin/mkdir -p $(OBJ_DIR)/line_editing
+	@/bin/mkdir -p $(OBJ_DIR)/completion
+	@/bin/mkdir -p $(OBJ_DIR)/history
 
 clean:
 	make clean -C ./libft/
@@ -90,13 +100,5 @@ fclean: clean
 
 re: fclean all
 
-objs/%.o : %.c
-	@/bin/mkdir -p objs
-	@/bin/mkdir -p objs/srcs
-	@/bin/mkdir -p objs/srcs/builtin
-	@/bin/mkdir -p objs/srcs/exec
-	@/bin/mkdir -p objs/srcs/env
-	@/bin/mkdir -p objs/srcs/line_editing
-	@/bin/mkdir -p objs/srcs/completion
-	@/bin/mkdir -p objs/srcs/history
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	gcc -g $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $< $(SANITIZER)

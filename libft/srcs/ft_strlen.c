@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:33:28 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/25 19:38:34 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/31 14:47:11 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ size_t			ft_strlen(const char *origin)
 	longword_ptr = (t_ulong*)align_ptr;
 	while (42)
 	{
-		longword = *longword_ptr++;
+		longword = *longword_ptr;
+		longword_ptr++;
 		if (HAS_ZERO(longword))
 		{
-			cp = (const char*)(longword_ptr - 1);
+			cp = (const char*)longword_ptr;
 			diff = find_bit(cp);
 			if (diff != -1)
 				return (cp + diff - origin);
