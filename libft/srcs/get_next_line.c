@@ -1,5 +1,6 @@
 #include "get_next_line.h"
 #include "libft.h"
+#include <stdio.h>
 
 static	t_l		*find_fd(t_l **list, int fd)
 {

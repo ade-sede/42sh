@@ -27,4 +27,5 @@ void		env_load_shlvl_pwd(t_env *env)
 		free(new_entry);
 	}
 	env_add_change(env, "SHELL", "minishell");
+	env_add_change(env, "HISTFILE", ".minishell_history");
 }

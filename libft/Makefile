@@ -2,6 +2,7 @@ NAME = libft.a
 #NAME = libftprintf.a
 SRC = \
 	  ft_abs.c \
+	  ft_lst_iteri.c \
 	  get_next_line.c \
 	  ft_strchange.c \
 	  ft_putnstr.c \

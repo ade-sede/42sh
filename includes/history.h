@@ -18,7 +18,7 @@ typedef struct	s_hist
 }		t_hist;
 
 t_hist	*singleton_hist(void);
-int	history_load(t_hist *h);
+int		history_load(t_hist *h, t_env *env);
 void	history_refresh(t_line *line);
 
 unsigned long	history_move_loop(t_line *line);

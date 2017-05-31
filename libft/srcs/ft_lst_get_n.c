@@ -10,12 +10,15 @@ t_list_d	*ft_double_lst_get_n(t_list_d *first, int n)
 {
 	if (n == 0)
 		return (NULL);
+	if (!first)
+		return (NULL);
 	if (n > 0)
 	{
 		while (first && n > 1)
 		{
 			n--;
-			first = first->next;
+			if (first->next)
+				first = first->next;
 		}
 	}
 	else if (n < 0)
@@ -23,11 +26,10 @@ t_list_d	*ft_double_lst_get_n(t_list_d *first, int n)
 		while (first && n < -1)
 		{
 			n++;
-			first = first->prev;
+			if (first->prev)
+				first = first->prev;
 		}
 	}
-	if (!first)
-		return (NULL);
 	return (first);
 }
 

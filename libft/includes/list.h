@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 15:22:36 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/30 17:09:28 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/05/31 18:00:45 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,3 +118,10 @@ t_list				*ft_simple_lst_return_if(t_list *starting_point, int (*f)(void*));
 void				ft_simple_lst_sort_insert(t_list **first, t_list *new_node, int (*f)(t_list*, t_list*));
 void				ft_lst_replace_middle(t_lst_head **head);
 void				ft_double_lst_sort_insert(t_lst_head **head, t_list_d *new_node, int (*f)(t_list_d*, t_list_d*));
+
+/*
+**	in file ft_lst_iteri.c
+*/
+
+void				ft_double_lst_iteri(t_list_d *start, t_list_d *end, void (*f)(t_list_d*, size_t), int order);
+void				ft_simple_lst_iteri(t_list *start, t_list *end, void (*f)(t_list*, size_t));

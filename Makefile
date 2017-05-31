@@ -30,6 +30,7 @@ SRC_FILE =	\
 	builtin/exec_builtin.c \
 	builtin/echo.c \
 	builtin/history.c \
+	builtin/history_handle_options.c \
 \
 	exec/exec_bin.c \
 	exec/main_loop.c \
@@ -79,7 +80,7 @@ all: $(NAME)
 
 $(NAME): create_dir $(OBJS)
 	make -C ./libft/
-	$(CC) -g $(OBJS) -L libft  -ltermcap -lft -o $(NAME) $(SANITIZER)
+	$(CC) $(CFLAGS) $(OBJS) -L libft  -ltermcap -lft -o $(NAME) $(SANITIZER)
 	
 create_dir:
 	@/bin/mkdir -p $(OBJ_DIR)
@@ -101,4 +102,4 @@ fclean: clean
 re: fclean all
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
-	gcc -g $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $< $(SANITIZER)
+	$(CC) $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $< $(SANITIZER)

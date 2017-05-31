@@ -11,7 +11,7 @@ int	main(void)
 
 	env_load_base_env(singleton_env(), environ);
 	conf_term_in();
-	history_load(singleton_hist());
+	history_load(singleton_hist(), singleton_env());
 	main_loop(singleton_env());
 	env_free_env(singleton_env());
 	return (0);
