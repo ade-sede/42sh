@@ -5,6 +5,7 @@
 #include "builtin.h"
 #include "line_editing.h"
 
+
 void	exec(t_env *env, const char **argv)
 {
 	if (!(exec_builtin(env, argv)))
@@ -14,6 +15,8 @@ void	exec(t_env *env, const char **argv)
 void	main_loop(t_env *env)
 {
 	char		**argv;
+/* # define NO_TERMCAPS */
+	char		*buf;
 
 	singleton_line()->len = 0;
 	singleton_line()->pos = 0;
@@ -25,7 +28,6 @@ void	main_loop(t_env *env)
 	{
 		//refresh_buff_and_history();
 		//line = get_input(env);
-# define NO_TERMCAPS
 #ifdef NO_TERMCAPS
 # define LOCAL_BUFF_SIZE 4096
 # define buf no_term_buff
@@ -34,7 +36,6 @@ void	main_loop(t_env *env)
 		read(0, buf, LOCAL_BUFF_SIZE);
 		*ft_strchr(buf, '\n') = '\0';
 # else
-		printf("termaps\n");
 		singleton_line()->prompt_len = put_prompt(env);
 		history_init(singleton_hist());
 		edit_line_init(singleton_line());
