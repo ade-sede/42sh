@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_test.c                               :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/27 20:40:07 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/02 14:55:32 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/01 13:54:55 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/01 13:59:03 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "printf.h"
 #include "get_next_line.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include <stdio.h>
+#include "fcntl.h"
 
-int	main(int ac, char **av)
+int		main(int ac, char *av[])
 {
-	int	fd = 0;
-	char	*line = NULL;
-	int	ret;
-	
-	if (av[1] != NULL)
-		fd = open(av[1], O_RDONLY);
-	while (1)
-	{
-		while ((ret = get_next_line(fd, &line)) >= 0)
-			ft_printf("line = %s\n", line);
+	char	*line;
+	int		fd;
+	char	*file;
 
-	}
+	file = (ac == 1) ? "Makefile" : av[1];
+	fd = open(file, O_RDONLY);
+	while (get_next_line(fd, &line))
+		printf("%s\n", line);
+	return (0);
 }

@@ -38,14 +38,17 @@ static	t_l		*new_elem(char *buff, size_t buff_size, int fd, t_l **list)
 
 static	int		fill_line(t_l **list, int fd, char **ret)
 {
+	printf("in fill_line\n");//			REMOVE		
 	t_l		*new_elem;
 	char	*tmp;
 	int		eol_index;
 
 	if (!(new_elem = find_fd(list, fd)))
 		return (-1);
+	printf("%s\n", new_elem->stock);
 	if ((eol_index = ft_strichr(new_elem->stock, '\n')) != -1)
 	{
+		printf("eol_index = %d\n", eol_index);//			REMOVE		
 		*ret = ft_strsub(new_elem->stock, 0, eol_index);
 		if (!(tmp = ft_strdup(new_elem->stock + eol_index + 1)))
 			return (-1);
