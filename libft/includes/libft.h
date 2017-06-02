@@ -27,6 +27,7 @@
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 # define WHITESPACES " 	\n\t\v"
+# define IS_WHITESPACE(c) (c == 32 || c == '\t' || c == '\n')
 # define PRINTF_SIZEOF(type) printf("sizeof(" #type ") = %zd.\n", sizeof(type))
 # define ft_ishex(x) ft_is_hex(x)
 
@@ -83,6 +84,13 @@ int					ft_is_upper(char c);
 int					ft_is_lower(char c);
 int					ft_is_space(char c);
 int					ft_is_one_of(char c, const char *that);
+
+
+/*
+**	In file ft_is_3.c
+*/
+
+int					is_quote(int c);
 
 /*
 ** 	In file toupper.c

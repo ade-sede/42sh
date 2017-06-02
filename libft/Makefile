@@ -89,9 +89,10 @@ SRC = \
 	  ft_strmatch.c \
 	  ft_strnreplace.c \
 	  ft_strsurround.c \
-	  ft_realloc.c
+	  ft_realloc.c \
+	  ft_is_3.c
 
-OPTI_FLAGS = -O2
+OPTI_FLAGS = #-O2
 SANITIZER =# -fsanitize=address -fno-omit-frame-pointer  && ASAN_OPTIONS=symbolize=1 ASAN_SYMBOLIZER_PATH=/Users/ade-sede/.brew/opt/llvm/bin/llvm-symbolizer
 SRCDIR = srcs
 OBJDIR = objs
