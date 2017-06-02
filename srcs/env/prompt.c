@@ -1,6 +1,7 @@
 #include "libft.h"
 #include "unistd.h"
 #include "env.h"
+#include "sys/wait.h"
 #include "get_next_line.h"
 
 void	put_color(char *str, char *color)

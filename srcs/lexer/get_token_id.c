@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 15:10:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/02 15:19:54 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/03 00:38:12 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,6 @@
 
 int		get_token_id(t_token *token)
 {
+	(void)token;
+	return (1);
 }

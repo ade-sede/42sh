@@ -8,11 +8,9 @@ static size_t ft_max_size_t(size_t a, size_t b)
 
 size_t	ft_arraymax_f(const char **str, size_t (*f)(const char *))
 {
-	const char **tmp;
 	size_t	max;
 
 	max = 0;
-	tmp = str;
 	while (*str)
 	{
 		max = ft_max_size_t(f(*str), max);

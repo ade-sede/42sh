@@ -25,7 +25,7 @@ void	comple_handle_sigint(t_line *line, t_comple *c)
 	//put_prompt(NULL);
 }
 
-void	comple_set_comple_signum(signum)
+void	comple_set_comple_signum(int signum)
 {
 	singleton_comple()->signum = signum;
 }
@@ -35,7 +35,7 @@ void	comple_set_signals(void)
 	struct sigaction sa;
 
 	sa.sa_handler = comple_set_comple_signum;
-	sa.sa_mask = 0;
+	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = 0;
 	sigaction(SIGINT, &sa, NULL);
 

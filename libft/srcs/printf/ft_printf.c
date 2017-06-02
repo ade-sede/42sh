@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 01:28:00 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/02/13 18:37:04 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/03 00:41:47 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		bufferise(char **buffer, const char *format, va_list ap)
 		{
 			last_join(buffer, (char*)format, &ret);
 		}
-		format += (i != -1) ? i + conv_size + 1 : ft_strlen(format);
+		format += (i != -1) ? i + conv_size + 1 : (int)ft_strlen(format);
 	}
 	return (ret);
 }
@@ -92,10 +92,8 @@ int		start_conv(char **buffer, int *ret, const char *format, va_list ap)
 	t_opt	*opt;
 	char	*new_buff;
 	char	*conv;
-	int		old_ret;
 	int		conv_size;
 
-	old_ret = *ret;
 	opt = get_opt(format);
 	conv = convert(format, ap, &opt, ret);
 	if (!(new_buff = ft_strjoin(*buffer, conv)))

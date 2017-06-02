@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/02 15:19:18 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/03 00:37:55 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 #  define IS_OPERATOR(c) (c == '<' || c == '>' || c == '|' || c == ';'\
 		|| c == '&')
 # endif
-# ifndef IS_SURROUNDED #  define IS_SURROUNDED(state) (state == 34 || state == 39 || state == PAREN)
+# ifndef IS_SURROUNDED
+#  define IS_SURROUNDED(state) (state == 34 || state == 39 || state == PAREN)
 # endif
 # ifndef IS_INPUT_END
 #  define IS_INPUT_END(c) (c == 0 || c == EOF)
@@ -143,4 +144,10 @@ int		token_match(t_lexer *lex, size_t token_start);
 
 t_token		*create_token(char *value, t_token_type type);
 t_lexer		init_lexer(const char *line);
+
+/*
+**	In file get_token_id.c
+*/
+
+int			get_token_id(t_token *token);
 #endif

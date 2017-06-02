@@ -98,7 +98,7 @@ SRCDIR = srcs
 OBJDIR = objs
 INCDIR = includes
 CFLAGS = -g -Wall -Wextra -Werror
-CC = clang
+CC = gcc 
 OBJ = $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
 
 

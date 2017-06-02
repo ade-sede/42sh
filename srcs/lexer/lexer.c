@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:16:43 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/02 15:19:35 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/03 00:37:27 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		update_state(t_lexer *lex)
 	{
 		if (IS_QUOTED(lex->state))
 		{
-			if(lex->state == lex->line[lex->index])
+			if(lex->state == (unsigned char)lex->line[lex->index])
 			{
 				lex->index++;
 				return (DEFAULT);
