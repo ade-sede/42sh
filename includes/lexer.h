@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/02 14:23:31 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/02 15:19:18 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 # endif
 # ifndef IS_OPERATOR
 #  define IS_OPERATOR(c) (c == '<' || c == '>' || c == '|' || c == ';'\
-		|| c == '!' || c == '&')
+		|| c == '&')
 # endif
-# ifndef IS_SURROUNDED
-#  define IS_SURROUNDED(state) (state == 34 || state == 39 || state == PAREN)
+# ifndef IS_SURROUNDED #  define IS_SURROUNDED(state) (state == 34 || state == 39 || state == PAREN)
 # endif
 # ifndef IS_INPUT_END
 #  define IS_INPUT_END(c) (c == 0 || c == EOF)
@@ -40,18 +39,18 @@ typedef enum
 {
 	TK_WORD,
 	TK_ASSIGNMENT_WORD,
-	TK_LESS = '<',
+	TK_LESS,
 	TK_DLESS,
 	TK_DGREAT,
-	TK_GREAT = '>',
+	TK_GREA,
 	TK_NAME,
-	TK_NEWLINE = '\n',
+	TK_NEWLINE,
 	TK_IO_NUMBER,
 	TK_AND_IF,
 	TK_OR_IF,
-	TK_PIPE = '|',
-	TK_AND = '&',
-	TK_SEMI = ';',
+	TK_PIPE,
+	TK_AND,
+	TK_SEMI,
 	TK_DSEMI,
 	TK_LESSAND,
 	TK_GREATAND,
@@ -101,10 +100,13 @@ typedef enum
 	INPUT_END
 }		t_lexer_state;
 
+typedef t_lexer_state t_token_type;
+
 typedef struct	s_token
 {
 	char			*value;
 	t_token_id		id;
+	t_token_type	type;
 	size_t			size;
 }				t_token;
 
@@ -139,6 +141,6 @@ int		token_match(t_lexer *lex, size_t token_start);
 **	In file init.c
 */
 
-t_token		*create_token(char *value);
+t_token		*create_token(char *value, t_token_type type);
 t_lexer		init_lexer(const char *line);
 #endif

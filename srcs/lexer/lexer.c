@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:16:43 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/02 14:36:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/02 15:19:35 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	t_list	*node;
 
 	value = ft_strsub(lex->line, token_start, token_end + 1 - token_start);
-	token = create_token(value);
+	token = create_token(value, lex->state);
+	get_token_id(token);
 	node = ft_simple_lst_create(token);
 	if (lex->stack == NULL)
 		lex->stack = node;
@@ -66,7 +67,9 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 
 
 /*
-**	Returns the new lexer state depending on the character we're reading and **	the current state.  */
+**	Returns the new lexer state depending on the character we're reading and
+**	the current state.
+*/
 
 int		update_state(t_lexer *lex)
 {
@@ -89,9 +92,7 @@ int		update_state(t_lexer *lex)
 			}
 		}
 		else
-		{
 			return (lex->line[lex->index++]);
-		}
 	}
 	else if (IS_WHITESPACE(lex->line[lex->index]))
 	{

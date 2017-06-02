@@ -74,6 +74,7 @@ SRC_FILE =	\
 	history/btsearch_move.c \
 \
 	lexer/lexer.c \
+	lexer/get_token_id.c \
 	lexer/init.c
 
 SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
@@ -84,7 +85,7 @@ all: $(NAME)
 
 $(NAME): create_dir $(OBJS)
 	make -C ./libft/
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME) $(SANITIZER)
+	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME) $(SANITIZER)
 	
 create_dir:
 	@/bin/mkdir -p $(OBJ_DIR)
@@ -111,5 +112,5 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 
 test: all
 	$(CC) $(CFLAGS) $(TEST_DEPS) $(TEST_FILE) $(LDFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) $(SANITIZER)
-	echo "Done compiling test"
-	./a.out
+	@echo "Done compiling test"
+	@./a.out
