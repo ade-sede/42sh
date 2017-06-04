@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/03 00:37:55 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/04 17:01:48 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # endif
 # ifndef IS_INPUT_END
 #  define IS_INPUT_END(c) (c == 0 || c == EOF)
+# endif
+# ifndef IS_WORD
+#   define IS_WORD(c) (ft_isalpha(c))
 # endif
 
 /*
@@ -135,7 +138,7 @@ typedef struct	s_lexer
 
 int		start_lex(t_lexer *lex);
 int		tokenize(t_lexer *lex, size_t token_start, size_t token_end);
-int		update_state(t_lexer *lex);
+int		start_token(t_lexer *lex, size_t *token_start);
 int		token_match(t_lexer *lex, size_t token_start);
 
 /*

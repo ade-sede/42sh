@@ -27,7 +27,7 @@
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 # define WHITESPACES " 	\n\t\v"
-# define IS_WHITESPACE(c) (c == 32 || c == '\t' || c == '\n')
+# define IS_WHITESPACE(c) (c == 32 || c == 9 || c == 10)
 # define PRINTF_SIZEOF(type) printf("sizeof(" #type ") = %zd.\n", sizeof(type))
 # define ft_ishex(x) ft_is_hex(x)
 

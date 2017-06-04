@@ -1,12 +1,11 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
+/*                                                                            */ /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:16:43 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/03 00:37:27 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/04 12:32:46 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +38,7 @@ int	start_lex(t_lexer *lex)
 	token_start = 0;
 	while (lex->line[lex->index])
 	{
-		token_start = lex->index;
-		lex->state = update_state(lex);
+		lex->state = start_token(lex, &token_start);
 		while (!(token_end = token_match(lex, token_start)))
 			lex->index++;
 		tokenize(lex, token_start, token_end);
@@ -56,8 +54,7 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 
 	value = ft_strsub(lex->line, token_start, token_end + 1 - token_start);
 	token = create_token(value, lex->state);
-	get_token_id(token);
-	node = ft_simple_lst_create(token);
+	get_token_id(token); node = ft_simple_lst_create(token);
 	if (lex->stack == NULL)
 		lex->stack = node;
 	else
@@ -66,41 +63,6 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 }
 
 
-/*
-**	Returns the new lexer state depending on the character we're reading and
-**	the current state.
-*/
-
-int		update_state(t_lexer *lex)
-{
-	if (IS_QUOTED(lex->state))
-	{
-		if (IS_QUOTED(lex->line[lex->index]))
-		{
-			lex->index++;
-			return (DEFAULT);
-		}
-	}
-	else if (IS_QUOTED(lex->line[lex->index]))
-	{
-		if (IS_QUOTED(lex->state))
-		{
-			if(lex->state == (unsigned char)lex->line[lex->index])
-			{
-				lex->index++;
-				return (DEFAULT);
-			}
-		}
-		else
-			return (lex->line[lex->index++]);
-	}
-	else if (IS_WHITESPACE(lex->line[lex->index]))
-	{
-		lex->index++;
-		return (DEFAULT);
-	}
-	return (lex->state);
-}
 
 /*
 **	DETERMINING WHERE A TOKEN START AND ENDS :
@@ -128,8 +90,16 @@ int		token_match(t_lexer *lex, size_t token_start)
 {
 	if (IS_INPUT_END(lex->line[lex->index]) && token_start + 1 != lex->index)
 		return (lex->index - 1);
-	else if (IS_QUOTED(lex->state) && charcmp(lex->line, lex->index, lex->state))
-		return (lex->index++);
+	else if (IS_QUOTED(lex->state))
+	{
+		if (charcmp(lex->line, lex->index, lex->state))
+			return (lex->index++);
+	}
+	else if (IS_WORD(lex->state))
+	{
+		if (!IS_WORD(lex->line[lex->index]))
+			return (lex->index - 1);
+	}
 	else if (IS_WHITESPACE(lex->line[lex->index]) && token_start + 1 != lex->index)
 		return (lex->index - 1);
 	return (0);

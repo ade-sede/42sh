@@ -8,7 +8,7 @@ OBJ_DIR = objs
 # Flags at compile time
 SANITIZER = #-fsanitize=address -fno-omit-frame-pointer #&& ASAN_OPTIONS=symbolize=1 ASAN_SYMBOLIZER_PATH=$USER/.brew/opt/llvm/bin/llvm-symbolizer
 CFLAGS = -g -Wall -Wextra -Werror
-LDFLAGS = -ltermcap -L $(LIB_DIR) -lft 
+LDFLAGS = -L $(LIB_DIR) -lft -ltermcap 
 CC = gcc
 
 # Sources
@@ -110,7 +110,7 @@ re: fclean all
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $< $(SANITIZER)
 
-test: all
+tests:
 	$(CC) $(CFLAGS) $(TEST_DEPS) $(TEST_FILE) $(LDFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) $(SANITIZER)
 	@echo "Done compiling test"
 	@./a.out

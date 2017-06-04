@@ -1,4 +1,9 @@
 #include "line_editing.h"
+#include "curses.h"
+#include "term.h"
+#ifdef __linux__
+# define tgoto(x,y,z) tparam(x, NULL, z, y)
+#endif
 
 int	int_putchar(int c)
 {
