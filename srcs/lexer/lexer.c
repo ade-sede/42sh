@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */ /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/01 18:16:43 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/04 12:32:46 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "lexer.h"
 #include "libft.h"
 #include <stdio.h>
@@ -23,46 +12,6 @@
 **	-	Assign an id (type ?) to the token.
 **	-	Push this token onto the stack (here adding it at the start of the list).
 */
-
-
-/*
-**	To determine the id of a token we used the state we were in when we were
-**	reading the token.
-*/
-
-int	start_lex(t_lexer *lex)
-{
-	size_t	token_start;
-	size_t	token_end;
-
-	token_start = 0;
-	while (lex->line[lex->index])
-	{
-		lex->state = start_token(lex, &token_start);
-		while (!(token_end = token_match(lex, token_start)))
-			lex->index++;
-		tokenize(lex, token_start, token_end);
-	}
-	return (1);
-}
-
-int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
-{
-	char	*value;
-	t_token	*token;
-	t_list	*node;
-
-	value = ft_strsub(lex->line, token_start, token_end + 1 - token_start);
-	token = create_token(value, lex->state);
-	get_token_id(token); node = ft_simple_lst_create(token);
-	if (lex->stack == NULL)
-		lex->stack = node;
-	else
-		ft_simple_lst_add(&(lex->stack), node);
-	return (1);
-}
-
-
 
 /*
 **	DETERMINING WHERE A TOKEN START AND ENDS :
@@ -81,26 +30,51 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 **	
 **	The index of the last char included in the token should be returned by the
 **	token_match() function.
-**
-**	In the second case, we want to increment index, so that index is
-**	positioned on the first char of the new token in every case
+**	We always want index to be on the char following the last char of the token
+**	we just closed.
 */
 
-int		token_match(t_lexer *lex, size_t token_start)
+/*
+**	To determine the id of a token we used the state we were in when we were
+**	reading the token.
+*/
+
+int	start_lex(t_lexer *lex)
 {
-	if (IS_INPUT_END(lex->line[lex->index]) && token_start + 1 != lex->index)
-		return (lex->index - 1);
-	else if (IS_QUOTED(lex->state))
+	size_t	token_start;
+	ssize_t	ret;
+	size_t	token_end;
+
+	token_start = 0;
+	token_end = 0;
+	while (lex->line[lex->index])
 	{
-		if (charcmp(lex->line, lex->index, lex->state))
-			return (lex->index++);
+		lex->state = start_token(lex, &token_start);
+		while ((ret = token_match(lex, token_start)) == -1)
+			lex->index++;
+		token_end = (size_t)ret;
+		tokenize(lex, token_start, token_end);
+		lex->state = DEFAULT;
 	}
-	else if (IS_WORD(lex->state))
-	{
-		if (!IS_WORD(lex->line[lex->index]))
-			return (lex->index - 1);
-	}
-	else if (IS_WHITESPACE(lex->line[lex->index]) && token_start + 1 != lex->index)
-		return (lex->index - 1);
-	return (0);
+	return (1);
 }
+
+int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
+{
+	char	*value;
+	t_token	*token;
+	t_list	*node;
+
+	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
+	token = create_token(value, lex->state);
+	token->id = get_token_id(token, lex->line[lex->index]);
+	node = ft_simple_lst_create(token);
+	if (lex->stack == NULL)
+		lex->stack = node;
+	else
+		ft_simple_lst_add(&(lex->stack), node);
+	return (1);
+}
+
+
+

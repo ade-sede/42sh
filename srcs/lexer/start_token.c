@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   start_token.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/04 16:44:43 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/04 17:06:00 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "lexer.h"
 #include "libft.h"
 #include <stdio.h>
@@ -25,18 +13,7 @@ int		start_token(t_lexer *lex, size_t *token_start)
 		while (lex->line[lex->index] && IS_WHITESPACE(lex->line[lex->index]))
 			lex->index++;
 	*token_start = lex->index;
-	if (IS_QUOTED(lex->state))
-	{
-		printf("%zu\n", lex->index);//			REMOVE		
-		if (IS_QUOTED(lex->line[lex->index - 1]))
-		{
-			lex->index++;
-			return (DEFAULT);
-		}
-		else
-			return (lex->state);
-	}
-	else if (IS_QUOTED(lex->line[lex->index]))
+	if (IS_QUOTED(lex->line[lex->index]))
 	{
 		if (IS_QUOTED(lex->state))
 		{
@@ -49,9 +26,12 @@ int		start_token(t_lexer *lex, size_t *token_start)
 		else
 			return (lex->line[lex->index++]);
 	}
-	else if (IS_WORD(lex->line[lex->index]))
+	else if (IS_OPERATOR(lex->line[lex->index]))
 	{
-		return (WORD);
+		lex->index++;
+		return (OPERATOR);
 	}
+	else if (IS_WORD(lex->line[lex->index]))
+		return (WORD);
 	return (DEFAULT);
 }

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 12:22:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/02 15:06:47 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/05 15:50:22 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ int		main(void)
 	while (lex.stack)
 	{
 		token = lex.stack->data;
-		printf("%s", token->value);
+		printf("#%s#", token->value);
 		printf(" --> ");
-		printf("%d\n", token->type);
+		printf("type is %d", token->type);
+		printf(" --> ");
+		printf("id is %d\n", token->id);
 		lex.stack = lex.stack->next;
 	}
 	return (0);

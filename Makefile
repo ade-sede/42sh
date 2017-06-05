@@ -75,7 +75,10 @@ SRC_FILE =	\
 \
 	lexer/lexer.c \
 	lexer/get_token_id.c \
-	lexer/init.c
+	lexer/init.c \
+	lexer/start_token.c \
+	lexer/match_operator.c \
+	lexer/check_match.c
 
 SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
@@ -110,7 +113,7 @@ re: fclean all
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) -c -o $@ $< $(SANITIZER)
 
-tests:
+test:
 	$(CC) $(CFLAGS) $(TEST_DEPS) $(TEST_FILE) $(LDFLAGS) -I $(LIBFT_INCLUDE) -I $(INCLUDE_DIR) $(SANITIZER)
 	@echo "Done compiling test"
 	@./a.out

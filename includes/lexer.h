@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/04 17:01:48 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/05 16:30:14 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 #  define IS_SURROUNDED(state) (state == 34 || state == 39 || state == PAREN)
 # endif
 # ifndef IS_INPUT_END
-#  define IS_INPUT_END(c) (c == 0 || c == EOF)
+#  define IS_INPUT_END(c) (c == 0)
 # endif
 # ifndef IS_WORD
-#   define IS_WORD(c) (ft_isalpha(c))
+#   define IS_WORD(c) (ft_isalpha(c) || c == '_' || c == '-' || ft_isdigit(c))
 # endif
 
 /*
@@ -36,34 +36,44 @@
 */
 
 /*
-**	Every type of token we can find accoring to the POSIX STANDARD
+**	Every type of token we can find accoring to the POSIX STANDARD should be
+**	listed in the following enums. The first enum of each groups starts at the
+**	last group's last element index + 1. As if they were all defined in one
+**	enum.  This will be usefull when matching them with the strings/index pair
+**	of a global variable.
+*/
+
+
+/*
+**	Words and assignement words.
 */
 
 typedef enum
 {
 	TK_WORD,
 	TK_ASSIGNMENT_WORD,
-	TK_LESS,
-	TK_DLESS,
-	TK_DGREAT,
-	TK_GREA,
 	TK_NAME,
 	TK_NEWLINE,
 	TK_IO_NUMBER,
-	TK_AND_IF,
-	TK_OR_IF,
+	TK_LESS = 5,
+	TK_GREAT,
+	TK_SEMI,
 	TK_PIPE,
 	TK_AND,
-	TK_SEMI,
+	TK_AND_IF,
+	TK_OR_IF,
 	TK_DSEMI,
+	TK_DLESS,
+	TK_DGREAT,
 	TK_LESSAND,
 	TK_GREATAND,
 	TK_LESSGREAT,
 	TK_DLESSDASH,
+	TK_CLOBBER,
 /*
-**	Strings below should be used to match shell reserved words
+**	Enum below is a list of the shell reserved words.
 */
-	If,
+	If = 20,
 	Then,
 	Else,
 	Elif,
@@ -77,8 +87,8 @@ typedef enum
 	For,
 	Lbrace,
 	Rbrace,
-	Bang = '!',
-	In,
+	Bang,
+	In
 }	t_token_id;
 
 /*
@@ -100,8 +110,7 @@ typedef enum
 	PAREN,
 	BACKQUOTES,
 	BRACES,
-	BRACKETS,
-	INPUT_END
+	BRACKETS
 }		t_lexer_state;
 
 typedef t_lexer_state t_token_type;
@@ -132,6 +141,7 @@ typedef struct	s_lexer
 /*
 **	FUNCTION DEFINITIONS
 */
+
 /*
 **	In file lexer.c
 */
@@ -152,5 +162,18 @@ t_lexer		init_lexer(const char *line);
 **	In file get_token_id.c
 */
 
-int			get_token_id(t_token *token);
+t_token_id		get_token_id(t_token *token, char delimiter);
+
+
+/*
+**	in file match_operator.c
+*/
+
+int			match_operator(const char	*value, size_t token_start, size_t token_end, t_token_id *token_id);
+
+/*
+**	In file id_word.c
+*/
+
+int			id_io_number(t_token *token, char delimiter, t_token_id *id);
 #endif
