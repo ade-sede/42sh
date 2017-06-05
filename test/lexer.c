@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 12:22:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/05 15:50:22 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/05 17:43:15 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		main(void)
 	while (lex.stack)
 	{
 		token = lex.stack->data;
-		printf("#%s#", token->value);
+		printf(MAG"#"CYN"%s"MAG"#"RESET, token->value);
 		printf(" --> ");
 		printf("type is %d", token->type);
 		printf(" --> ");
@@ -44,4 +44,5 @@ int		main(void)
 		lex.stack = lex.stack->next;
 	}
 	return (0);
+
 }

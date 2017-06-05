@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/05 16:30:14 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/05 18:04:08 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@
 # ifndef IS_INPUT_END
 #  define IS_INPUT_END(c) (c == 0)
 # endif
-# ifndef IS_WORD
-#   define IS_WORD(c) (ft_isalpha(c) || c == '_' || c == '-' || ft_isdigit(c))
-# endif
 
 /*
 **	Above we define macros to easily check wich type the character belongs to.
@@ -41,9 +38,10 @@
 **	last group's last element index + 1. As if they were all defined in one
 **	enum.  This will be usefull when matching them with the strings/index pair
 **	of a global variable.
-*/
+**
+**
 
-
+*/ 
 /*
 **	Words and assignement words.
 */
@@ -110,7 +108,8 @@ typedef enum
 	PAREN,
 	BACKQUOTES,
 	BRACES,
-	BRACKETS
+	BRACKETS,
+	INPUT_END
 }		t_lexer_state;
 
 typedef t_lexer_state t_token_type;
@@ -149,7 +148,13 @@ typedef struct	s_lexer
 int		start_lex(t_lexer *lex);
 int		tokenize(t_lexer *lex, size_t token_start, size_t token_end);
 int		start_token(t_lexer *lex, size_t *token_start);
+
+/*
+**	in file check_match.c
+*/
+
 int		token_match(t_lexer *lex, size_t token_start);
+int		check_word_end(t_lexer *lex);
 
 /*
 **	In file init.c
@@ -171,9 +176,16 @@ t_token_id		get_token_id(t_token *token, char delimiter);
 
 int			match_operator(const char	*value, size_t token_start, size_t token_end, t_token_id *token_id);
 
+
 /*
 **	In file id_word.c
 */
 
 int			id_io_number(t_token *token, char delimiter, t_token_id *id);
+
+/*
+**	In file update_state.c
+*/
+
+int			update_state(t_lexer *lex);
 #endif

@@ -119,15 +119,17 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +36 srcs/lexer/check_match.c
-badd +25 srcs/lexer/get_token_id.c
-badd +0 srcs/lexer/init.c
-badd +70 srcs/lexer/lexer.c
-badd +57 srcs/lexer/match_operator.c
-badd +9 srcs/lexer/start_token.c
-badd +173 includes/lexer.h
+badd +68 srcs/lexer/check_match.c
+badd +10 srcs/lexer/get_token_id.c
+badd +15 srcs/lexer/init.c
+badd +36 srcs/lexer/lexer.c
+badd +62 srcs/lexer/match_operator.c
+badd +8 srcs/lexer/start_token.c
+badd +177 includes/lexer.h
 badd +40 test/lexer.c
-badd +0 srcs/lexer/id_word.c
+badd +26 srcs/lexer/id_word.c
+badd +0 srcs/lexer/update_state.c
+badd +58 Makefile
 argglobal
 silent! argdel *
 $argadd srcs/lexer/check_match.c
@@ -136,7 +138,7 @@ $argadd srcs/lexer/init.c
 $argadd srcs/lexer/lexer.c
 $argadd srcs/lexer/match_operator.c
 $argadd srcs/lexer/start_token.c
-edit srcs/lexer/get_token_id.c
+edit srcs/lexer/check_match.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -149,11 +151,10 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 105 + 159) / 318)
-exe 'vert 2resize ' . ((&columns * 106 + 159) / 318)
+exe 'vert 1resize ' . ((&columns * 106 + 159) / 318)
+exe 'vert 2resize ' . ((&columns * 105 + 159) / 318)
 exe 'vert 3resize ' . ((&columns * 105 + 159) / 318)
 argglobal
-edit srcs/lexer/get_token_id.c
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -267,15 +268,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 20 - ((19 * winheight(0) + 35) / 71)
+let s:l = 69 - ((68 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-20
-normal! 09|
+69
+normal! 0
 wincmd w
 argglobal
-edit srcs/lexer/id_word.c
+edit srcs/lexer/start_token.c
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -389,15 +390,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 22 - ((21 * winheight(0) + 35) / 71)
+let s:l = 15 - ((14 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-22
-normal! 0
+15
+normal! 031|
 wincmd w
 argglobal
-edit includes/lexer.h
+edit srcs/lexer/update_state.c
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -431,8 +432,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'cpp'
-setlocal filetype=cpp
+if &filetype != 'c'
+setlocal filetype=c
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -496,8 +497,8 @@ setlocal statusline=%!Pl#Statusline(0,0)
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'cpp'
-setlocal syntax=cpp
+if &syntax != 'c'
+setlocal syntax=c
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -511,15 +512,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 178 - ((66 * winheight(0) + 35) / 71)
+let s:l = 27 - ((26 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-178
-normal! 073|
+27
+normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 105 + 159) / 318)
-exe 'vert 2resize ' . ((&columns * 106 + 159) / 318)
+exe 'vert 1resize ' . ((&columns * 106 + 159) / 318)
+exe 'vert 2resize ' . ((&columns * 105 + 159) / 318)
 exe 'vert 3resize ' . ((&columns * 105 + 159) / 318)
 tabnext 1
 if exists('s:wipebuf')

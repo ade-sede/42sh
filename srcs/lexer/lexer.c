@@ -35,8 +35,8 @@
 */
 
 /*
-**	To determine the id of a token we used the state we were in when we were
-**	reading the token.
+** Token id is determined by the immedaite context of the token and the state
+** of the lexer.
 */
 
 int	start_lex(t_lexer *lex)
@@ -50,11 +50,13 @@ int	start_lex(t_lexer *lex)
 	while (lex->line[lex->index])
 	{
 		lex->state = start_token(lex, &token_start);
+		if (lex->state == INPUT_END)
+			break;
 		while ((ret = token_match(lex, token_start)) == -1)
 			lex->index++;
 		token_end = (size_t)ret;
 		tokenize(lex, token_start, token_end);
-		lex->state = DEFAULT;
+		lex->state = WORD;
 	}
 	return (1);
 }
