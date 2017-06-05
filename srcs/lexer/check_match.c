@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 15:03:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/05 18:19:28 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/05 18:46:06 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int		token_match(t_lexer *lex, size_t token_start)
 
 	if (IS_INPUT_END(lex->line[lex->index]))
 		return (lex->index - 1);
+	else if (lex->state == EXPAND)
+	{
+	}
 	else if (lex->state == WORD)
 	{
 		if (check_word_end(lex))
@@ -65,5 +68,12 @@ int		check_word_end(t_lexer *lex)
 		return (1);
 	else if (update_state(lex) != WORD)
 		return (1);
+	return (0);
+}
+
+int		check_expand_end(t_lexer *lex, size_t token_start)
+{
+	if (lex->line[token_start] == '`')
+		;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/05 18:04:08 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/05 18:33:09 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@
 #  define IS_OPERATOR(c) (c == '<' || c == '>' || c == '|' || c == ';'\
 		|| c == '&')
 # endif
+# ifndef IS_EXPAND
+# define IS_EXPAND(c) (c == '$' || c == '`')
+# endif
 # ifndef IS_SURROUNDED
-#  define IS_SURROUNDED(state) (state == 34 || state == 39 || state == PAREN)
+#  define IS_SURROUNDED(state) (IS_QUOTED(state) || state == EXPAND)
 # endif
 # ifndef IS_INPUT_END
 #  define IS_INPUT_END(c) (c == 0)
@@ -105,10 +108,7 @@ typedef enum
 	QUOTED = 39,
 	BACKSLASH = 92,
 	OPERATOR,
-	PAREN,
-	BACKQUOTES,
-	BRACES,
-	BRACKETS,
+	EXPAND,
 	INPUT_END
 }		t_lexer_state;
 

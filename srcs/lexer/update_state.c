@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 18:01:22 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/05 18:15:58 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/05 18:32:31 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		update_state(t_lexer *lex)
 			return (lex->line[lex->index]);
 	else if (IS_OPERATOR(lex->line[lex->index]))
 		return (OPERATOR);
+	else if (IS_EXPAND(lex->line[lex->index]))
+		return (EXPAND);
 	if (!lex->line[lex->index])
 		return (INPUT_END);
 	return (WORD);
