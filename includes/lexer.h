@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/05 18:33:09 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/06 17:42:57 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "libft.h"
 # include <stdio.h>
 # ifndef IS_QUOTED
-#  define IS_QUOTED(state)	(state == 39 || state == 34 || state == 92)
+#  define IS_QUOTED(state)	(state == 39 || state == 34)
 # endif
 # ifndef IS_OPERATOR
 #  define IS_OPERATOR(c) (c == '<' || c == '>' || c == '|' || c == ';'\
@@ -23,9 +23,6 @@
 # endif
 # ifndef IS_EXPAND
 # define IS_EXPAND(c) (c == '$' || c == '`')
-# endif
-# ifndef IS_SURROUNDED
-#  define IS_SURROUNDED(state) (IS_QUOTED(state) || state == EXPAND)
 # endif
 # ifndef IS_INPUT_END
 #  define IS_INPUT_END(c) (c == 0)
@@ -154,7 +151,6 @@ int		start_token(t_lexer *lex, size_t *token_start);
 */
 
 int		token_match(t_lexer *lex, size_t token_start);
-int		check_word_end(t_lexer *lex);
 
 /*
 **	In file init.c
@@ -178,9 +174,10 @@ int			match_operator(const char	*value, size_t token_start, size_t token_end, t_
 
 
 /*
-**	In file id_word.c
+**	In file match_word.c
 */
 
+int			match_word(t_lexer *lex);
 int			id_io_number(t_token *token, char delimiter, t_token_id *id);
 
 /*
@@ -188,4 +185,11 @@ int			id_io_number(t_token *token, char delimiter, t_token_id *id);
 */
 
 int			update_state(t_lexer *lex);
+
+/*
+**			in file match_expand.c
+*/
+
+
+int			match_expand(t_lexer *lex, size_t token_start);
 #endif
