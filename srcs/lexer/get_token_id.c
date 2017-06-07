@@ -6,12 +6,18 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 15:10:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/06 18:28:20 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:04:12 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "libft.h"
+
+
+
+/*
+**	Work in progress
+*/
 
 /*
 **	Trying to determine the ID of the token using its context (delimiter, lexer
@@ -25,7 +31,7 @@ t_token_id		get_token_id(t_token *token, char delimiter)
 	id = -1;
 	(void)delimiter;
 	if (token->type == OPERATOR)
-		match_operator(token->value, 0, token->size, &id);
+		match_operator(token->value, 0, token->size);
 	else if (token->type == WORD)
 		id_io_number(token, delimiter, &id);
 	return (id);

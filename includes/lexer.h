@@ -6,12 +6,12 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/07 14:25:44 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:03:07 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H 
-# define LEXER_H 
+#ifndef LEXER_H
+# define LEXER_H
 # include "libft.h"
 # include <stdio.h>
 # ifndef IS_QUOTED
@@ -19,7 +19,8 @@
 # endif
 # ifndef IS_OPERATOR
 #  define IS_OPERATOR(c) (c == '<' || c == '>' || c == '|' || c == ';'\
-		|| c == '&') # endif
+		|| c == '&')
+# endif
 # ifndef IS_EXPAND
 # define IS_EXPAND(c) (c == '$' || c == '`')
 # endif
@@ -169,7 +170,7 @@ t_token_id		get_token_id(t_token *token, char delimiter);
 **	in file match_operator.c
 */
 
-int			match_operator(const char	*value, size_t token_start, size_t token_end, t_token_id *token_id);
+int				match_operator(const char *value, size_t token_start, size_t token_end);
 
 
 /*

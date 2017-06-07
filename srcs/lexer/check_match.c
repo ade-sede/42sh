@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 15:03:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/06 18:25:51 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:04:17 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		token_match(t_lexer *lex, size_t token_start)
 	{
 		if (IS_OPERATOR(lex->line[lex->index]) || (charcmp(lex->line, lex->index, '-') && charcmp(lex->line, lex->index - 1, '<')))
 		{
-			if (!match_operator(lex->line, token_start, lex->index, NULL))
+			if (!match_operator(lex->line, token_start, lex->index))
 				ret = lex->index - 1;
 		}
 		else
