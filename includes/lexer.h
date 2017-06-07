@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/06 17:42:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/07 14:25:44 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 # endif
 # ifndef IS_OPERATOR
 #  define IS_OPERATOR(c) (c == '<' || c == '>' || c == '|' || c == ';'\
-		|| c == '&')
-# endif
+		|| c == '&') # endif
 # ifndef IS_EXPAND
 # define IS_EXPAND(c) (c == '$' || c == '`')
 # endif

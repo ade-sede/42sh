@@ -39,7 +39,8 @@ int		match_word(t_lexer *lex)
 	ret = 0;
 	if (IS_WHITESPACE(lex->line[lex->index]))
 		return (1);
-	else if ((ret == update_state(lex)) != WORD && ret != '\\')
+	ret = update_state(lex);
+	if (ret != WORD && ret != BACKSLASH)
 		return (1);
 	return (0);
 }
