@@ -1,0 +1,1 @@
+test_dup2only_writefdIf this appears on standard output, we restored fd 1 successfully. This was called from test_dup2only_writefd
