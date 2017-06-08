@@ -80,7 +80,8 @@ SRC_FILE =	\
 	lexer/match_operator.c \
 	lexer/check_match.c \
 	lexer/update_state.c \
-	lexer/match_word.c
+	lexer/match_word.c \
+	lexer/match_expand.c
 
 SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 

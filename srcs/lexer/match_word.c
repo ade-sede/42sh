@@ -7,7 +7,7 @@
 **	Exhaustive list of reserved words
 */
 
-static char	*g_reserved_words_list[] = {
+static char	*g_reserved_word_list[] = {
 	"if",
 	"then",
 	"else",
@@ -27,6 +27,7 @@ static char	*g_reserved_words_list[] = {
 	NULL
 };
 
+
 /*
 **	As the default state is word, we need to check if char we are reading is
 **	starting a new token, thus closing the current one.
@@ -34,6 +35,7 @@ static char	*g_reserved_words_list[] = {
 
 int		match_word(t_lexer *lex)
 {
+	(void)g_reserved_word_list;
 	int	ret;
 
 	ret = 0;

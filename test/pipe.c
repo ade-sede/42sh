@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 16:47:40 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/07 18:44:47 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/08 13:41:56 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdio.h>
-# define WRITE_END 1 # define READ_END 0
-
+#define WRITE_END 1
+#define READ_END 0
 
 const char	*test_dup2only_writefd(short *error)
 {
@@ -31,16 +31,14 @@ const char	*test_dup2only_writefd(short *error)
 	path = "test/dup2only_writefd.txt";
 	str = __func__;
 
-
 	int		fd = open(path, O_CREAT | O_RDWR);
 	if (fd < 0)
 		dprintf(2, RED"CANT OPEN\n"RESET);
 	chmod(path, S_IRUSR | S_IWUSR | S_IXUSR);
 
 	/* Saving original fd 1, and dupping 1 onto fd such as if you try to access 1 you access fd instead */
-
 	dprintf(2, "Before dup, fd = "BLU"%d\n"RESET, fd);
-	save_stdout = 1;
+	save_stdout = dup(1);
 	dup2(fd, 1);
 	dprintf(2, "After dup, fd = "BLU"%d\n"RESET, fd);
 
@@ -95,9 +93,10 @@ const char	*test_dup2only_1(short *error)
 	/* Saving original fd 1, and dupping 1 onto fd such as if you try to access 1 you access fd instead */
 
 	dprintf(2, "Before dup, fd = "BLU"%d\n"RESET, fd);
-	save_stdout = 1;
+	save_stdout = dup(1);
 	dup2(fd, 1);
 	dprintf(2, "After dup, fd = "BLU"%d\n"RESET, fd);
+
 
 	/* Print on fd 1*/
 	ft_putstr_fd(str, 1);
@@ -111,8 +110,9 @@ const char	*test_dup2only_1(short *error)
 	read(fd, buff, 4096);
 
 	/* Restoring fd */
+	close(fd);
 	dup2(save_stdout, 1);
-	close(save_stdout);
+	/* close(save_stdout); */
 	/* Checking if fd 1 is still up */
 	dprintf(1, " If this appears on standard output, we restored fd 1 successfully. This was called from %s\n", __func__);
 
@@ -125,7 +125,6 @@ const char	*test_dup2only_1(short *error)
 	}
 	else
 		dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff);
-	close(fd);
 	return (__func__);
 }
 
