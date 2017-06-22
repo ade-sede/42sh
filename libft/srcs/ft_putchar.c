@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:18:17 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "str.h"
 #include "mem.h"
 
-int	ft_putchar(int c)
+int		ft_putchar(int c)
 {
 	char	s[5];
 
@@ -30,7 +42,6 @@ int	ft_putchar(int c)
 	ft_putstr(s);
 	return (1);
 }
-
 
 void	ft_putchar_fd(int c, int fd)
 {

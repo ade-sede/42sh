@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_pushback.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 16:23:53 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "list.h"
 
@@ -9,6 +21,7 @@ void	ft_simple_lst_pushback(t_list **first, t_list *new_node)
 	if (new_node)
 	{
 		tmp = *first;
+		old_tmp = tmp;
 		while (tmp)
 		{
 			old_tmp = tmp;

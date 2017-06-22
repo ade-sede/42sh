@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:02:48 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "str.h"
 #include <unistd.h>
 
@@ -22,7 +34,6 @@ void	ft_putendl(const char *s)
 	ft_putstr(s);
 	ft_putchar('\n');
 }
-
 
 void	ft_putendl_fd(const char *s, int fd)
 {

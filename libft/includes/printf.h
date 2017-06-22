@@ -5,93 +5,198 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 01:26:22 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/31 16:46:54 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/17 14:55:42 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 19:24:53 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
+# include <string.h>
 # include <stdarg.h>
-# include "libft.h"
-# include <wchar.h>
-# define H 6
-# define HH 12
-# define L 4
-# define LL 8
-# define J 1
-# define Z 2
-# define RED "\x1B[31m"
-# define GRN "\x1B[32m"
-# define YEL "\x1B[33m"
-# define BLU "\x1B[34m"
-# define MAG "\x1B[35m"
-# define CYN "\x1B[36m"
-# define WHT "\x1B[37m"
-# define RESET "\x1B[0m"
-# define OCT 1
-# define HEX 1001
-# define INT 1002
-# define STR 1003
-# define CHAR 1004
+# define P_BUFF_SIZE 4097
+# define P_ARG_SIZE 2049
 
-typedef	struct	s_opt
+/*
+**	Setting up a few macros:
+**	- P_ISLENMOD(c) returns 1 if char c is a valid lenght modifier.
+**	- P_ISOPT(c) returns 1 if char c is a valid printf option.
+**	- P_ISVALID(c) returns 1 if car c is either a len modifier or a valid
+**		option.
+**	- P_ISCONV(c) returns 1 if char c is a valid conversion specifier.
+*/
+
+# define P_ISLENMOD(c) (c == 'l' || c == 'h' || c == 'j' || c == 'z')
+# define P_ISOPT(c) (c == '-' ||  c == '+' || c == '#' || c == ' ' || c == '0')
+# define P_ISFW(c) (c == '*' || ft_isdigit(c))
+# define P_ISPREC(c) (c == '*' || c == '.' || ft_isdigit(c))
+# define P_ISVALID(c) (P_ISLENMOD(c) || P_ISOPT(c) || P_ISPREC(c) || P_ISFW(c))
+
+/*
+**	The following structure should contain the parsed infos when formating an
+**	argument. It should be suitable to use with every printf functions, wether
+**	it uses buffers, malloc, or not.
+*/
+
+typedef struct	s_printf_info
 {
-	int			exc;
-	int			dot_flag;
-	int			conv_index;
-	int			sharp_flag;
-	int			plus_flag;
-	int			minus_flag;
-	int			space_flag;
-	char		printf_pad_char;
-	int			field_len;
-	int			prec;
-	int			len_mod;
-	char		*conv_base;
-	char		*opt_base;
-	char		*flag_base;
-	char		*digit_base;
-	char		*len_mod_base;
-	char		*place_holder;
-	char		conv_flag;
-	int			conv_ret;
-}				t_opt;
+	int			p_lenmod;
+	int			p_prec;
+	int			p_opt;
+	int			p_fieldwidth;
+	char		p_convtype;
+}				t_pinfo;
 
-void			last_join(char **buffer, char *format, int *ret);
-void			ft_exception(t_opt **opt, char *str);
-int				is_opt(char c);
-int				is_len_mod(char c);
-int				conv_type(t_opt **opt);
-int				get_form_size(t_opt **opt, int neg);
-void			add_form(char **str, t_opt **opt, int neg_sign);
-void			add_prec(char **str, t_opt **opt);
-void			add_flags(char **str, t_opt **opt);
-char			*pad(int pad_size, char c);
-void			create_field(char **str, t_opt **opt, int form_size);
-int				start_conv(char **buffer, int *ret, const char *format,
-		va_list ap);
-void			early_join(char **buffer, char *little, int *ret);
-void			fill_fcts(char *(**f)(t_opt**, va_list));
-void			get_mode(t_opt **opt);
-void			get_flags(t_opt **opt);
-void			get_prec(t_opt **opt);
-void			get_fields_info(t_opt **opt);
-char			*ft_s(t_opt **opt, va_list ap);
-char			*ft_upper_s(t_opt **opt, va_list ap);
-char			*ft_u(t_opt **opt, va_list ap);
-char			*ft_d(t_opt **opt, va_list ap);
-char			*ft_c(t_opt **opt, va_list ap);
-char			*ft_p(t_opt	**opt, va_list ap);
-char			*ft_x(t_opt **opt, va_list ap);
-char			*ft_upper_x(t_opt **opt, va_list ap);
-char			*ft_o(t_opt **opt, va_list ap);
-char			*ft_b(t_opt **opt, va_list ap);
+/*
+**	Defining a few mask for options such as ' ' or '#' or '+'
+*/
+
+# define _P_PLUS (0b1)
+# define _P_SHARP (0b10)
+# define _P_ZERO (0b100)
+# define _P_SPACE (0b1000)
+# define _P_MINUS (0b10000)
+
+/*
+**	Corresponding macros.
+*/
+
+# define P_PLUS(x) (x & _P_PLUS)
+# define P_SHARP(x) (x & _P_SHARP)
+# define P_ZERO(x) (x & _P_ZERO)
+# define P_SPACE(x) (x & _P_SPACE)
+# define P_MINUS(x) (x & _P_MINUS)
+
+/*
+**	Defining masks for lenmod.
+*/
+
+# define _P_HMOD (0b1)
+# define _P_HHMOD (0b10)
+# define _P_LMOD (0b100)
+# define _P_LLMOD (0b1000)
+# define _P_JMOD (0b10000);
+# define _P_ZMOD (0b100000);
+
+/*
+**	Corresponding check macros.
+*/
+
+# define P_HMOD(x) (x & _P_HMOD)
+# define P_HHMOD(x) (x & _P_HHMOD)
+# define P_LMOD(x) (x & _P_LMOD)
+# define P_LLMOD(x) (x & _P_LLMOD)
+# define P_JMOD(x) (x & _P_JMOD)
+# define P_ZMOD(x) (x & _P_ZMOD)
+
+/*
+**	The printf struct used by the printf allocating buffers.
+*/
+
+typedef	struct	s_printf_allocated_buff
+{
+	char		*buf;
+	size_t		buf_size;
+	size_t		buf_index;
+}				t_pab;
+
+/*
+**	The structure allowing us to redirect to the right conversion function and
+**	the right stdarg argument..
+*/
+typedef struct	s_printf_conv
+{
+	char		key;
+	int			(*f)(t_pinfo, t_pab*, va_list);
+}				t_pconv;
+
+/*
+**	In file printf.c
+*/
+
 int				ft_printf(const char *format, ...);
-int				bufferise(char **buffer, const char *format, va_list ap);
-char			*convert(const char *format, va_list ap, t_opt **opt, int *ret);
-int				conv_is_valid(char c);
-int				conv_size(const char *format);
-t_opt			*get_opt(const char *format);
-int				mode_is_valid(char c);
+
+/*
+**	In file sprintf.c
+*/
+
+int				ft_sprintf(char *str, const char *format, ...);
+
+/*
+**	In file dprintf.c
+*/
+
+int				ft_dprintf(int fd, const char *format, ...);
+
+/*
+**	In file asprintf.c
+*/
+
+int				ft_asprintf(char **str, const char *format, ...);
+
+/*
+**	In file vasprintf.c
+*/
+
+int				ft_vasprintf(char **buffer, const char *format, va_list ap);
+
+/*
+**	In file buff_loop.c
+*/
+
+int				buff_loop(const char *format, char **str, va_list ap);
+
+/*
+**	In file buff_start_conv.c
+*/
+
+int				p_realloc_buffer(t_pab *s_buf);
+int				buff_start_conv(const char *format, size_t *format_index, \
+		t_pab *s_buf, va_list ap);
+
+/*
+**	In file printf_parse.c
+*/
+
+t_pinfo			printf_parse(const char *format, size_t	\
+		*format_index, va_list ap);
+
+/*
+**	In file s_conv.c
+*/
+
+int				p_sconv(t_pinfo pinfo, t_pab *buf, va_list ap);
+
+/*
+**	in file d_conv.c
+*/
+
+int				p_prec(t_pab *s_buf, size_t len, t_pinfo pinfo);
+int				p_padd(t_pab *s_buf, size_t len, t_pinfo pinfo);
+int				p_dconv(t_pinfo pinfo, t_pab *buf, va_list ap);
+
+/*
+**	in file c_conv.c
+*/
+
+int				p_cconv(t_pinfo pinfo, t_pab *s_buf, va_list ap);
+int				pbuff_char(t_pab *s_buf, size_t len, char c);
+/*
+**	In file p_padd.c
+*/
+
+int				p_padd(t_pab *s_buf, size_t len, t_pinfo pinfo);
+
+/*
+**	In file p_prec.c
+*/
+
+int				p_prec(t_pab *s_buf, size_t len, t_pinfo pinfo);
+
+/*
+**	In file numeric_conv.c
+*/
+
+int				numeric_conv(t_pab *s_buf, long long arg, \
+		int base, t_pinfo pinfo);
 #endif

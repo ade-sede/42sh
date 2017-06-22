@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/29 16:19:50 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/29 16:25:50 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:18:52 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "alloc.h"
 #include "mem.h"
 
-void	*ft_realloc(size_t	curr_size, void *ptr, size_t new_size)
+void	*ft_realloc(size_t curr_size, void *ptr, size_t new_size)
 {
 	void	*new_memory;
 
@@ -34,7 +34,7 @@ void	*ft_realloc(size_t	curr_size, void *ptr, size_t new_size)
 	return (new_memory);
 }
 
-void	*cl_realloc(size_t	curr_size, void *ptr, size_t new_size)
+void	*cl_realloc(size_t curr_size, void *ptr, size_t new_size)
 {
 	void	*new_memory;
 

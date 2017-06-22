@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/26 12:32:27 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/26 12:34:51 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 16:23:21 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:20:02 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ ssize_t	ft_strrichr(const char *s, int c)
 	ptr = ft_strrchr(s, c);
 	return ((ptr) ? ptr - s : -1);
 }
-

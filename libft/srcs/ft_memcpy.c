@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/25 17:54:37 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/01 14:26:23 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:01:49 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	copy_longword(void **dst, const void **src, size_t *n)
 	*src = src_ptr;
 }
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void		*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	void	*original;
 

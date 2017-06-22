@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit_quotes.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:23 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:36:05 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "str.h"
 #include "alloc.h"
 
-static short int		check_quotes_content(const char *str, const char *split_base, unsigned int *index)
+static short int	check_quotes_content(const char *str, \
+		const char *split_base, unsigned int *index)
 {
-	short int	in_quotes;
-	short	int	word_in_quotes;
+	short int		in_quotes;
+	short int		word_in_quotes;
 	unsigned int	i;
 
 	word_in_quotes = FALSE;
@@ -50,7 +63,7 @@ static unsigned int	count_words(const char *str, const char *split_base)
 	return (nb_words);
 }
 
-static void	fill_word_tab(const char *str, const char *split_base, char **word_tab)
+static void		fill_word_tab(const char *str, const char *split_base, char **word_tab)
 {
 	unsigned int	i;
 	short int		word_in_quotes;
@@ -86,7 +99,7 @@ static void	fill_word_tab(const char *str, const char *split_base, char **word_t
 	}
 }
 
-char		**ft_strsplit_quotes(const char *str, const char *split_base)
+char			**ft_strsplit_quotes(const char *str, const char *split_base)
 {
 	char			**word_tab;
 	unsigned int	nb_words;

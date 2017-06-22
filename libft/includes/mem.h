@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 20:17:05 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/28 18:43:45 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/21 19:12:26 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 **	ft_memdel.c
 */
 void	ft_memdel(void **ap);
-
 
 /*
 **	ft_free.c

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:23:24 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/26 14:17:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/15 12:00:34 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static const char	*casual_strcpy(short *error)
 	size_t	src_size = 10;
 
 	src = strndup("This is a test stringqwe qwe qwe qwe qew ", src_size);
-	dst = malloc(sizeof(*dst) * src_size);
+	dst = malloc(sizeof(*dst) * (src_size + 1));
 	printf("Source -> %s#END\n", src);
 	if (ft_strcpy(dst, src) != dst)
 		*error = TRUE;

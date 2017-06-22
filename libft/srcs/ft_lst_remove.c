@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_remove.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:01:16 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "list.h"
 
-
-void	ft_simple_lst_remove(t_list	**first, void (*f)(void*))
+void	ft_simple_lst_remove(t_list **first, void (*f)(void*))
 {
 	t_list	*node;
 
@@ -24,7 +35,9 @@ void	ft_double_lst_remove(t_lst_head **head, void (*f)(void*))
 	while (curr)
 	{
 		next = curr->next;
-		ft_double_lst_del_one(head, curr, (f));
+		if (curr->data)
+			(f)(curr->data);
+		free(curr);
 		curr = next;
 	}
 	(*head)->first = NULL;

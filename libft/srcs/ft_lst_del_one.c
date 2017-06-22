@@ -5,14 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/29 15:29:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/29 15:38:26 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:16:11 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "list.h"
-
 
 static void	is_middle_right(t_lst_head **head)
 {
@@ -48,45 +47,49 @@ static void	is_middle_left(t_lst_head **head)
 	}
 }
 
+static void	pos_2(t_lst_head **head)
+{
+	if ((*head)->shift_middle == -1)
+		is_middle_left(head);
+	if ((*head)->shift_middle == 1)
+		is_middle_right(head);
+	if ((*head)->shift_middle == 0)
+	{
+		if ((*head)->middle->next != NULL)
+		{
+			(*head)->shift_middle -= 1;
+			(*head)->middle = (*head)->middle->next;
+		}
+		else if ((*head)->middle->prev != NULL)
+		{
+			(*head)->shift_middle += 1;
+			(*head)->middle = (*head)->middle->prev;
+		}
+	}
+}
+
 static void	relink_head(t_lst_head **head, int pos)
 {
 	if (pos == 1)
-		if ((*head)->first->next != NULL)
+		if ((*head) && (*head)->first && (*head)->first->next != NULL)
 		{
 			(*head)->first = (*head)->first->next;
 			(*head)->first->prev = NULL;
 		}
 	if (pos == 3)
-		if ((*head)->last->prev != NULL)
+		if ((*head) && (*head)->last && (*head)->last->prev != NULL)
 		{
 			(*head)->last = (*head)->last->prev;
 			(*head)->last = NULL;
 		}
 	if (pos == 2)
-	{
-		if ((*head)->shift_middle == -1)
-			is_middle_left(head);
-		if ((*head)->shift_middle == 1)
-			is_middle_right(head);
-		if ((*head)->shift_middle == 0)
-		{
-			if ((*head)->middle->next != NULL)
-			{
-				(*head)->shift_middle -= 1;
-				(*head)->middle = (*head)->middle->next;
-			}
-			else if ((*head)->middle->prev != NULL)
-			{
-				(*head)->shift_middle += 1;
-				(*head)->middle = (*head)->middle->prev;
-			}
-		}
-	}
+		pos_2(head);
 }
 
-void	ft_double_lst_del_one(t_lst_head **head, t_list_d *node, void (*f)(void*))
+void		ft_double_lst_del_one(t_lst_head **head, t_list_d *node, \
+		void (*f)(void*))
 {
-	int	pos;
+	int			pos;
 	t_list_d	*prev;
 	t_list_d	*next;
 
@@ -101,8 +104,7 @@ void	ft_double_lst_del_one(t_lst_head **head, t_list_d *node, void (*f)(void*))
 			pos = 3;
 		prev = node->prev;
 		next = node->next;
-		if (f)
-			(f)(node->data);
+		(f != NULL) ? (f)(node->data) : 0;
 		free(node);
 		(*head)->node_count -= 1;
 		if (pos != 0)
@@ -111,28 +113,5 @@ void	ft_double_lst_del_one(t_lst_head **head, t_list_d *node, void (*f)(void*))
 			prev->next = next;
 		if (next != NULL)
 			next->prev = prev;
-	}
-}
-
-void	ft_simple_lst_del_one(t_list **first, t_list *node, void(*f)(void*))
-{
-	t_list	*old_tmp;
-	t_list	*curr_tmp;
-
-	if (node)
-	{
-		curr_tmp = *first;
-		while (curr_tmp && curr_tmp != node)
-		{
-			old_tmp = curr_tmp;
-			curr_tmp = curr_tmp->next;
-		}
-		if (*first == node)
-			*first = node->next;
-		else
-			old_tmp->next = curr_tmp->next;
-		if (f)
-			(f)(node->data);
-		free(node);
 	}
 }

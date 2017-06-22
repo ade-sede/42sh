@@ -53,7 +53,7 @@ static int	simple_is_okay(t_list *node1, t_list *node2)
 	return (0);
 }
 
-static int	is_okay(t_list_d *node1, t_list_d *node2)
+static int double_is_okay(t_list_d *node1, t_list_d *node2)
 {
 	int	i;
 	int	j;
@@ -223,6 +223,8 @@ static void	double_sort_insert(t_lst_head **head)
 	t_list_d	*node3;
 	t_list_d	*node4;
 	t_list_d	*node5;
+	t_list_d	*node6;
+	t_list_d	*node7;
 	t_list_d	*first;
 
 	node0 = ft_double_lst_create(ft_itoa_base(2, 10));
@@ -231,12 +233,16 @@ static void	double_sort_insert(t_lst_head **head)
 	node3 = ft_double_lst_create(ft_itoa_base(5, 10));
 	node4 = ft_double_lst_create(ft_itoa_base(1, 10));
 	node5 = ft_double_lst_create(ft_itoa_base(7, 10));
-	ft_double_lst_sort_insert(head, node0, is_okay);
-	ft_double_lst_sort_insert(head, node1, is_okay);
-	ft_double_lst_sort_insert(head, node2, is_okay);
-	ft_double_lst_sort_insert(head, node3, is_okay);
-	ft_double_lst_sort_insert(head, node4, is_okay);
-	ft_double_lst_sort_insert(head, node5, is_okay);
+	node6 = ft_double_lst_create(ft_itoa_base(1, 10));
+	node7 = ft_double_lst_create(ft_itoa_base(0, 10));
+	ft_double_lst_sort_insert(head, node0, double_is_okay);
+	ft_double_lst_sort_insert(head, node1, double_is_okay);
+	ft_double_lst_sort_insert(head, node2, double_is_okay);
+	ft_double_lst_sort_insert(head, node3, double_is_okay);
+	ft_double_lst_sort_insert(head, node4, double_is_okay);
+	ft_double_lst_sort_insert(head, node5, double_is_okay);
+	ft_double_lst_sort_insert(head, node6, double_is_okay);
+	ft_double_lst_sort_insert(head, node7, double_is_okay);
 	ft_printf("\n");
 	ft_double_lst_for_n((*head)->first, 10000, print_double, 1);
 }
@@ -262,12 +268,12 @@ static void	double_del_one_and_remove(t_lst_head **head)
 	node4 = ft_double_lst_create(ft_itoa_base(1, 10));
 	node5 = ft_double_lst_create(ft_itoa_base(7, 10));
 	node6 = ft_double_lst_create(ft_itoa_base(8, 10));
-	ft_double_lst_sort_insert(head, node0, is_okay);
-	ft_double_lst_sort_insert(head, node1, is_okay);
-	ft_double_lst_sort_insert(head, node2, is_okay);
-	ft_double_lst_sort_insert(head, node3, is_okay);
-	ft_double_lst_sort_insert(head, node4, is_okay);
-	ft_double_lst_sort_insert(head, node5, is_okay);
+	ft_double_lst_sort_insert(head, node0, double_is_okay);
+	ft_double_lst_sort_insert(head, node1, double_is_okay);
+	ft_double_lst_sort_insert(head, node2, double_is_okay);
+	ft_double_lst_sort_insert(head, node3, double_is_okay);
+	ft_double_lst_sort_insert(head, node4, double_is_okay);
+	ft_double_lst_sort_insert(head, node5, double_is_okay);
 	ft_double_lst_foreach((*head)->first, NULL, print_double, 1);
 	ft_printf("first is %s\n", (*head)->first->data);
 	ft_printf("middle is %s\n", (*head)->middle->data);
@@ -275,7 +281,7 @@ static void	double_del_one_and_remove(t_lst_head **head)
 	ft_printf(" List has %d\n", (*head)->node_count);
 	ft_double_lst_del_one(head, node3, del_str);
 	ft_printf(" List has %d\n", (*head)->node_count);
-	ft_double_lst_sort_insert(head, node6, is_okay);
+	ft_double_lst_sort_insert(head, node6, double_is_okay);
 	ft_double_lst_foreach((*head)->first, NULL, print_double, 1);
 	ft_printf("first is %s\n", (*head)->first->data);
 	ft_printf("middle is %s\n", (*head)->middle->data);
@@ -335,6 +341,16 @@ void	simple_pushback(void)
 	ft_simple_lst_foreach(node0, NULL, print_simple);
 	ft_printf("\n");
 	ft_printf("%s\n", ft_simple_lst_get_n(node0, 2)->data);
+}
+
+
+void	simple_del_one_and_remove2(void)
+{
+	ft_printf("\n%s\n", __func__);
+	t_list	*node0;
+
+	node0 = ft_simple_lst_create(ft_itoa_base(0, 10));
+	ft_simple_lst_del_one(&node0, node0, del_str);
 }
 
 void	simple_del_one_and_remove(void)
@@ -397,19 +413,19 @@ void	simple_sort_insert(void)
 int	main(void)
 {
 	t_lst_head	*head;
-	t_list_d	*node;
 	int		i = 0;
 
 	head = ft_create_head(ft_double_lst_create(ft_itoa_base(i, 10)));
 	/* double_add(&head); */
 	/* double_pushback(&head); */
 	/* double_sort_insert(&head); */
-	/* double_del_one_and_remove(&head); */
+	double_del_one_and_remove(&head);
 	/* simple_add(); */
 	/* simple_pushback(); */
 	/* simple_del_one_and_remove(); */
 	/* simple_sort_insert(); */
 	/* double_del_one_2(&head); */
+	/* simple_del_one_and_remove2(); */
 	return (0);
 }
 

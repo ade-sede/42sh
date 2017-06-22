@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/28 17:42:07 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/28 17:43:32 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/22 14:18:39 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "str.h"
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	int		neg;
 	int		res;
@@ -35,7 +35,6 @@ int		ft_atoi(const char *str)
 	}
 	return (neg ? -(res) : res);
 }
-
 
 static int	set_result(int *result)
 {
@@ -71,7 +70,6 @@ int			ft_atoi_safe(const char *str, int *result)
 	return (1);
 }
 
-
 intmax_t	ft_atoi_base(char *str, int base)
 {
 	int			i;
@@ -89,7 +87,7 @@ intmax_t	ft_atoi_base(char *str, int base)
 			neg = 1;
 		i++;
 	}
-	while (ft_ishex(str[i]))
+	while (ft_is_hex(str[i]))
 	{
 		if (str[i] - 'A' >= 0)
 			res = res * base + (str[i] - 55);

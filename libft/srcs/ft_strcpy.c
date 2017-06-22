@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/26 13:01:21 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/28 17:37:38 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 16:23:18 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 16:24:10 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,16 @@
 #include "str.h"
 #include "mem.h"
 
-static void	align_memory(char **dst, unsigned char **src)
-{
-	while (**src && (((t_ulong)*dst & (ULONG_SIZE - 1)) != 0))
-	{
-		**dst = **src;
-		(*dst)++;
-		(*src)++;
-	}
-}
-
-static void	cpy_last_bits(char *dst, char *src)
-{
-	while (*src != 0)
-	{
-		*dst = *src;
-		dst++;
-		src++;
-	}
-	*dst = *src;
-}
-
 char	*ft_strcpy(char *dst, const char *src)
 {
-	char	*origin;
-	t_ulong	*src_ptr;
-	t_ulong	*dst_ptr;
+	int		i;
 
-	origin = dst;
-	align_memory(&dst, (unsigned char**)&src);
-	if (*src == 0)
+	i = 0;
+	while (src[i])
 	{
-		*dst = 0;
-		return(origin);
+		dst[i] = src[i];
+		i++;
 	}
-	src_ptr = (t_ulong*)src;
-	dst_ptr = (t_ulong*)dst;
-	while (42)
-	{
-		if (HAS_ZERO((*src_ptr)))
-		{
-			cpy_last_bits((char*)dst_ptr, (char*)src_ptr);
-			return (origin);
-		}
-		else
-			*dst_ptr++ = *src_ptr++;
-	}
-	return (NULL);
+	dst[i] = 0;
+	return (dst);
 }

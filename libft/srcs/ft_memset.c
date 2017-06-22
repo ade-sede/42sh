@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/24 16:47:48 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/31 13:00:15 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:02:25 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ static void	align_memory(unsigned char **ptr, int c, size_t *n)
 **	Set len bytes from ptr to 0
 */
 
-static void	cpy_longword(size_t	len, t_ulong **ul_ptr, int c)
+static void	cpy_longword(size_t len, t_ulong **ul_ptr, int c)
 {
 	size_t	xlen;
+
 	xlen = (len / ULONG_SIZE) + 1;
 	while (--xlen)
 	{
@@ -41,6 +42,7 @@ static void	cpy_longword(size_t	len, t_ulong **ul_ptr, int c)
 		(*ul_ptr)++;
 	}
 }
+
 void		*ft_memset(void *ptr, int c, size_t len)
 {
 	t_ulong	*ul_ptr;

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:24:03 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/26 14:28:38 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/09 18:22:26 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ static const char	*big_addr_memcpy(short *error)
 		/* printf("%d -> %p\n", dst[i]); */
 		/* printf("%d -> %p\n", src[i]); */
 	}
-
+	for (int i = 0; i < src_size ; i++)
+		free(src[i]);
+	free(dst);
+	free(src);
 	return (__func__);
 }
 
@@ -86,7 +89,10 @@ static const char	*casual_addr_memcpy(short *error)
 		printf("%d -> %p\n", dst[i]);
 		printf("%d -> %p\n", src[i]);
 	}
-
+	for (int i = 0; i < src_size ; i++)
+		free(src[i]);
+	free(dst);
+	free(src);
 	return (__func__);
 }
 
@@ -112,6 +118,7 @@ static const char	*big_str_memcpy(short *error)
 		((unsigned char*)src)[memcpy_src_end] = 0;
 	if (strcmp(src + memcpy_src_start, dst + memcpy_dst_start) != 0)
 		*error = TRUE;
+	free(dst);
 	return (__func__);
 }
 
@@ -135,6 +142,7 @@ static const char	*casual_str_memcpy(short *error)
 		((unsigned char*)src)[memcpy_src_end] = 0;
 	if (strcmp(src + memcpy_src_start, dst + memcpy_src_start) != 0)
 		*error = TRUE;
+	free(dst);
 	return (__func__);
 }
 

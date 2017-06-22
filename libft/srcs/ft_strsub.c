@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:24 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:21:55 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "alloc.h"
 #include "mem.h"
@@ -13,7 +25,6 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	little_str[len] = '\0';
 	return (little_str);
 }
-
 
 char	*cl_strsub(char const *s, unsigned int start, size_t len)
 {

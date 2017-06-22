@@ -38,7 +38,7 @@ static void		print_unicode(const char *argv, size_t *i)
 	n = 4;
 	start = *i;
 	end = *i;
-	while (n && ft_ishex(argv[end]))
+	while (n && ft_is_hex(argv[end]))
 	{
 		n--;
 		end++;

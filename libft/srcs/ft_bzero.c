@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/24 16:13:37 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/28 17:19:42 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 16:23:42 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ void		ft_bzero(void *ptr, size_t len)
 	if (len > 0)
 	{
 		ptr = ul_ptr;
-		while (len)
+		while (len--)
 		{
-			len--;
 			*(unsigned char*)ptr = 0;
 			ptr++;
 		}

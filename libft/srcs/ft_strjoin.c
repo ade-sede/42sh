@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:18 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:19:52 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "str.h"
 #include "alloc.h"
@@ -19,7 +31,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memcpy(new_str + s1_len, s2, s2_len);
 	return (new_str);
 }
-
 
 char	*cl_strjoin(char const *s1, char const *s2)
 {

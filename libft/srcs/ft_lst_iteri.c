@@ -5,15 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 17:56:11 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/31 18:00:15 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:00:55 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "list.h"
 
-void	ft_simple_lst_iteri(t_list *start, t_list *end, void (*f)(t_list*, size_t))
+void	ft_simple_lst_iteri(t_list *start, t_list *end, \
+		void (*f)(t_list*, size_t))
 {
 	size_t	i;
 
@@ -27,9 +28,10 @@ void	ft_simple_lst_iteri(t_list *start, t_list *end, void (*f)(t_list*, size_t))
 			start = start->next;
 		}
 	}
-}	
+}
 
-void	ft_double_lst_iteri(t_list_d *start, t_list_d *end, void (*f)(t_list_d*, size_t), int order)
+void	ft_double_lst_iteri(t_list_d *start, t_list_d *end, \
+		void (*f)(t_list_d*, size_t), int order)
 {
 	size_t	i;
 
@@ -47,7 +49,6 @@ void	ft_double_lst_iteri(t_list_d *start, t_list_d *end, void (*f)(t_list_d*, si
 		}
 		else if (order == -1)
 		{
-
 			while (start != end)
 			{
 				(*f)(start, i);

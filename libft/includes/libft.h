@@ -2,10 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */ /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/13 15:46:58 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/28 17:51:12 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/21 19:14:39 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 19:16:26 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +28,11 @@
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 # define WHITESPACES " 	\n\t\v"
-# define PRINTF_SIZEOF(type) printf("sizeof(" #type ") = %zd.\n", sizeof(type))
-# define ft_ishex(x) ft_is_hex(x)
-
+# define IS_WHITESPACE(c) (c == 32 || c == 9 || c == 10)
 # ifndef T_ULONG
 #  define T_ULONG
-typedef unsigned long int t_ulong;
+
+typedef unsigned long int	t_ulong;
 # endif
 
 typedef struct		s_coordinates
@@ -40,7 +40,6 @@ typedef struct		s_coordinates
 	int		x;
 	int		y;
 }					t_coordinates;
-
 
 typedef struct		s_btree
 {
@@ -85,6 +84,12 @@ int					ft_is_space(char c);
 int					ft_is_one_of(char c, const char *that);
 
 /*
+**	In file ft_is_3.c
+*/
+
+int					is_quote(int c);
+
+/*
 ** 	In file toupper.c
 */
 
@@ -94,7 +99,6 @@ char				*ft_upstr(char *s);
 /*
 **	In file tolower.c
 */
-
 
 int					ft_tolower(int c);
 char				*ft_lowstr(char *s);
@@ -106,12 +110,18 @@ char				*ft_lowstr(char *s);
 char				*ft_itoa(int n);
 char				*ft_itoa_base(intmax_t value, int base);
 char				*ft_unsigned_itoa_base(uintmax_t value, int base);
-
+int					uitoa_base_len(uintmax_t value, int base);
+int					itoa_base_len(intmax_t value, int base);
 
 /*
 **	Fatal.c
 */
 
+/*
+**	in fule putnbr.c
+*/
+
+void				ft_putnbr(int n);
+
 void				fatal(const char *error_str);
 #endif
-

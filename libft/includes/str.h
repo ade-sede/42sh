@@ -4,10 +4,12 @@
 /*   str.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2017/05/26 01:05:29 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/26 17:59:27 by ade-sede         ###   ########.fr       */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 19:32:41 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 19:34:31 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef STR_H
 # define STR_H
 # include <string.h>
@@ -50,8 +52,6 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 
-
-
 void				ft_putnstr(char *str, size_t len);
 /*
 ** In file ft_putchar.c
@@ -76,7 +76,6 @@ ssize_t				ft_strichr(const char *s, int c);
 **	In file ft_strrchr.c
 */
 
-
 char				*ft_strrchr(const char *s, int c);
 ssize_t				ft_strrichr(const char *s, int c);
 
@@ -89,7 +88,6 @@ char				*ft_strcpy(char *dst, const char *src);
 /*
 **	In file ft_strncpy.c
 */
-
 
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 
@@ -121,10 +119,17 @@ char				*cl_strndup(const char *s1, size_t n);
 char				*ft_strstr(const char *big, const char *little);
 
 /*
-**	In ft_strstr.c
+**	In ft_strnstr.c
 */
 
-char				*ft_strnstr(const char *big, const char *little, size_t len);
+char				*ft_strnstr(const char *big, \
+		const char *little, size_t len);
+
+/*
+**	In ft_strrstr.c
+*/
+
+char				*ft_strrstr(const char *big, const char *little);
 
 /*
 **	In file ft_strcat.c
@@ -148,13 +153,11 @@ size_t				ft_strlcat(char *dst, const char *src, size_t size);
 ** 	In file ft_strnew.c
 */
 
-
 char				*ft_strnew(size_t size);
 
 /*
 ** ft_strdel.c
 */
-
 
 void				ft_strdel(char **as);
 
@@ -169,7 +172,6 @@ void				ft_strclr(char *s);
 */
 
 void				ft_striter(char *s, void (*f)(char *));
-
 
 /*
 **	striter.c
@@ -212,7 +214,6 @@ char				*cl_strsub(char const *s, unsigned int start, size_t len);
 **	Ft_strjoin.c
 */
 
-
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*cl_strjoin(char const *s1, char const *s2);
 
@@ -220,15 +221,14 @@ char				*cl_strjoin(char const *s1, char const *s2);
 **	strtrim.c
 */
 
-
 char				*ft_strtrim(char const *s);
-
 
 char				**ft_strsplit(char const *s, const char *str);
 
 char				**ft_strsplit_keep(const char *str, const char *split_base);
 
-char				**ft_strsplit_quotes(const char *str, const char *split_base);
+char				**ft_strsplit_quotes(const char *str, \
+		const char *split_base);
 
 void				*ft_strchange(void *old, void *new);
 
@@ -257,16 +257,29 @@ char				*ft_chartostr(char c);
 
 int					ft_strmatch(char *s1, char *s2);
 
-
 /*
 **	ft_strnreplace.c
 */
 
-void				ft_strnreplace(char *str, char target, char replace, int size);
+void				ft_strnreplace(char *str, char target, \
+		char replace, int size);
 
 /*
 ** 	In file ft_Strsurround.c
 */
 
-char				*ft_strsurround(const char *s1, const char *s2, const char *s3);
+char				*ft_strsurround(const char *s1, \
+		const char *s2, const char *s3);
+
+/*
+**	In file ft_strrcmp.c
+*/
+
+int					ft_strrcmp(const char *s1, const char *s2);
+
+/*
+**	In file ft_strrequ.c
+*/
+
+int					ft_strrequ(const char *s1, const char *s2);
 #endif

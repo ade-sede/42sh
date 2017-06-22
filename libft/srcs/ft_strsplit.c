@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:22 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:23:22 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "str.h"
 #include "alloc.h"
@@ -21,7 +33,7 @@ static unsigned int	ft_count_words(char const *s, const char *str)
 	return (nb_words);
 }
 
-static char			**ft_malloc_tab(char const *s, char **t, const  char *str)
+static char			**ft_malloc_tab(char const *s, char **t, const char *str)
 {
 	unsigned int	i;
 	unsigned int	no_words;

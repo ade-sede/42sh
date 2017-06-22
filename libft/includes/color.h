@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 19:38:13 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/29 16:07:28 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/15 16:09:18 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 # endif
 # ifndef WHT
 #  define WHT "\x1B[37m"
+# endif
+# ifndef PNK
+#  define PNK "\x1B[95m"
 # endif
 # ifndef RESET
 #  define RESET "\x1B[0m"

@@ -1,13 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_sort_insert.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:17:29 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "list.h"
 
-void	ft_simple_lst_sort_insert(t_list **first, t_list *new_node, int (*f)(t_list*, t_list*))
+void		ft_simple_lst_sort_insert(t_list **first, t_list *new_node, \
+		int (*f)(t_list*, t_list*))
 {
 	int		first_ret;
 	t_list	*curr_node;
 	t_list	*old_node;
 
 	curr_node = *first;
+	old_node = curr_node;
 	if (new_node)
 	{
 		if ((f)(*first, new_node) >= 0)
@@ -26,7 +40,8 @@ void	ft_simple_lst_sort_insert(t_list **first, t_list *new_node, int (*f)(t_list
 	}
 }
 
-static void	ft_lst_insert_after_middle(t_lst_head **head, t_list_d *new_node, int(*f)(t_list_d*, t_list_d*))
+static void	ft_lst_insert_after_middle(t_lst_head **head, t_list_d *new_node, \
+		int (*f)(t_list_d*, t_list_d*))
 {
 	t_list_d	*curr_node;
 	t_list_d	*prev_node;
@@ -44,7 +59,8 @@ static void	ft_lst_insert_after_middle(t_lst_head **head, t_list_d *new_node, in
 	(*head)->shift_middle += 1;
 }
 
-static void	ft_lst_insert_before_middle(t_lst_head **head, t_list_d *new_node, int(*f)(t_list_d*, t_list_d*))
+static void	ft_lst_insert_before_middle(t_lst_head **head, t_list_d *new_node, \
+		int (*f)(t_list_d*, t_list_d*))
 {
 	t_list_d	*curr_node;
 	t_list_d	*next_node;
@@ -64,7 +80,7 @@ static void	ft_lst_insert_before_middle(t_lst_head **head, t_list_d *new_node, i
 	(*head)->shift_middle -= 1;
 }
 
-void	ft_lst_replace_middle(t_lst_head **head)
+void		ft_lst_replace_middle(t_lst_head **head)
 {
 	if ((*head)->shift_middle == -2)
 	{
@@ -78,7 +94,8 @@ void	ft_lst_replace_middle(t_lst_head **head)
 	}
 }
 
-void	ft_double_lst_sort_insert(t_lst_head **head, t_list_d *new_node, int (*f)(t_list_d*, t_list_d*))
+void		ft_double_lst_sort_insert(t_lst_head **head, t_list_d *new_node, \
+		int (*f)(t_list_d*, t_list_d*))
 {
 	int		first_cmp;
 	int		middle_cmp;
@@ -88,10 +105,12 @@ void	ft_double_lst_sort_insert(t_lst_head **head, t_list_d *new_node, int (*f)(t
 	middle_cmp = (f)((*head)->middle, new_node);
 	last_cmp = (f)((*head)->last, new_node);
 	(first_cmp >= 0) ? ft_double_lst_add(head, new_node) : 0;
-	(last_cmp <= 0 && first_cmp < 0) ? ft_double_lst_pushback(head, new_node) : 0;
-	(middle_cmp <= 0 && last_cmp > 0) ? ft_lst_insert_after_middle(head, new_node, f) : 0;
-	(middle_cmp >= 0 && first_cmp < 0) ? ft_lst_insert_before_middle(head, new_node, f) : 0;
+	(last_cmp <= 0 && first_cmp < 0) ? \
+	ft_double_lst_pushback(head, new_node) : 0;
+	(middle_cmp <= 0 && last_cmp > 0) ? \
+	ft_lst_insert_after_middle(head, new_node, f) : 0;
+	(middle_cmp >= 0 && first_cmp < 0) ? \
+	ft_lst_insert_before_middle(head, new_node, f) : 0;
 	(*head)->node_count += 1;
 	ft_lst_replace_middle(head);
 }
-

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_get_n.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 17:05:34 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "list.h"
 
@@ -33,14 +45,14 @@ t_list_d	*ft_double_lst_get_n(t_list_d *first, int n)
 	return (first);
 }
 
-t_list	*ft_simple_lst_get_n(t_list	*first, size_t n)
+t_list		*ft_simple_lst_get_n(t_list *first, size_t n)
 {
-		if (n == 0)
-				return (NULL);
-		while (first && n > 1)
-		{
-				n--;
-				first = first->next;
-		}
-		return (first);
+	if (n == 0)
+		return (NULL);
+	while (first && n > 1)
+	{
+		n--;
+		first = first->next;
+	}
+	return (first);
 }

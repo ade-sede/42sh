@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/21 16:37:01 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "str.h"
 #include "alloc.h"
@@ -8,11 +20,12 @@ char	*ft_itoa(int n)
 	return (ft_itoa_base(n, 10));
 }
 
-
-static	int	get_nb_digit(intmax_t value, int base)
+int		itoa_base_len(intmax_t value, int base)
 {
 	int		nb_digit;
 
+	if (value == 0)
+		return (1);
 	value *= (value > 0) ? -1 : 1;
 	nb_digit = 0;
 	while (value < 0)
@@ -23,7 +36,7 @@ static	int	get_nb_digit(intmax_t value, int base)
 	return (nb_digit);
 }
 
-char		*ft_itoa_base(intmax_t value, int base)
+char	*ft_itoa_base(intmax_t value, int base)
 {
 	int		nb_digit;
 	int		neg;
@@ -31,7 +44,7 @@ char		*ft_itoa_base(intmax_t value, int base)
 
 	if (value == 0)
 		return (ft_strdup("0"));
-	nb_digit = get_nb_digit(value, base);
+	nb_digit = itoa_base_len(value, base);
 	neg = (base == 10 && value < 0) ? 1 : 0;
 	value *= (value > 0) ? -1 : 1;
 	str = (char *)palloc((sizeof(char) * nb_digit) + neg + 1);
@@ -47,8 +60,7 @@ char		*ft_itoa_base(intmax_t value, int base)
 	return (str);
 }
 
-
-static	int	uget_nb_digit(uintmax_t value, int base)
+int		uitoa_base_len(uintmax_t value, int base)
 {
 	int		nb_digit;
 
@@ -61,14 +73,14 @@ static	int	uget_nb_digit(uintmax_t value, int base)
 	return (nb_digit);
 }
 
-char		*ft_unsigned_itoa_base(uintmax_t value, int base)
+char	*ft_unsigned_itoa_base(uintmax_t value, int base)
 {
 	int		nb_digit;
 	char	*str;
 
 	if (value == 0)
 		return (ft_strdup("0"));
-	nb_digit = uget_nb_digit(value, base);
+	nb_digit = uitoa_base_len(value, base);
 	if (!(str = ft_strnew(nb_digit)))
 		return (NULL);
 	nb_digit--;
