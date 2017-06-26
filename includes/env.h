@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/05/29 16:11:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/26 15:41:35 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@
 typedef struct	s_env
 {
 	char		**environ;
-	size_t	environ_size;
-	int		previous_exit;
+	size_t		environ_size;
+	int			previous_exit;
 	char		*branch;
 	pid_t		child_pid;
-}			t_env;
+}				t_env;
 
 /*
 **	In file environ.c
@@ -55,8 +55,7 @@ typedef struct	s_env
 char			**env_create_environ(const char **original, size_t *new_size);
 void			env_print_environ(const char **environ);
 char			*env_getenv(const char **environ, const char *key, size_t *index);
-t_env	*singleton_env();
-void	set_signals();
+t_env			*singleton_env();
 
 /*
 **	In file load_base_env.c
@@ -69,7 +68,7 @@ void			env_load_base_env(t_env *env, const char **environ);
 **	In file return_failure.c
 */
 
-int			return_failure(const char *str, const char *error_msg);
+int				return_failure(const char *str, const char *error_msg);
 
 /*
 **	In file add_var.c
@@ -90,6 +89,6 @@ void			env_remove_var(t_env *env, const char *key);
 **	In file t_env.c
 */
 
-int			env_free_env(t_env *env);
-int			env_copy_env(t_env *new_env, t_env *old_env);
+int				env_free_env(t_env *env);
+int				env_copy_env(t_env *new_env, t_env *old_env);
 #endif 

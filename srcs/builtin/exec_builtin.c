@@ -1,16 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_builtin.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/26 14:43:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/26 14:43:57 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include "builtin.h"
 
-t_builtin g_builtin[] = 
-{ 
+t_builtin g_builtin[] =
+{
 	{"cd", &builtin_cd},
 	{"exit", &builtin_exit},
 	{"env", &builtin_env},
 	{"unsetenv", &builtin_unsetenv},
 	{"setenv", &builtin_setenv},
 	{"echo", &builtin_echo},
-	{"history", &builtin_history},
 	{NULL, NULL}
 };
 

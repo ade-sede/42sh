@@ -34,48 +34,10 @@ SRC_FILE =	\
 	builtin/exit.c \
 	builtin/exec_builtin.c \
 	builtin/echo.c \
-	builtin/history.c \
-	builtin/history_handle_options.c \
 \
 	exec/exec_bin.c \
 	exec/main_loop.c \
-	exec/expand_args.c \
-	exec/signals.c \
-\
-	line_editing/conf_term.c \
-	line_editing/edit_del.c \
-	line_editing/edit_move.c \
-	line_editing/get_input.c \
-	line_editing/edit_init.c \
-	line_editing/edit_refresh.c \
-	line_editing/put_termcap.c \
-	line_editing/edit_add.c \
-	line_editing/edit_signals.c \
-	line_editing/edit_move_cursor.c \
-	line_editing/edit_exit.c \
-	line_editing/edit_insert_str.c \
-	line_editing/copy_paste.c \
-\
-	completion/comple_exit_matched.c \
-	completion/comple_init.c \
-	completion/comple_signals.c \
-	completion/comple_get_input.c \
-	completion/comple_refresh.c \
-	completion/size_term.c \
-	completion/comple_move.c \
-	completion/comple_matches.c \
-\
-	history/load_history.c \
-	history/history_move.c \
-	history/history_init.c \
-	history/history_refresh.c \
-	history/history_move_loop.c \
-	history/btsearch_refresh.c \
-	history/btsearch_exit.c \
-	history/btsearch_get_input.c \
-	history/btsearch_init.c \
-	history/btsearch_add.c \
-	history/btsearch_move.c \
+	exec/expand_args.c
 
 NAME ?= minishell
 
@@ -118,7 +80,7 @@ lib:
 $(NAME): $(OBJS)
 	@printf "$(COLOR_GREEN)Successfully created objects files for binary $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 	@printf "$(COLOR_VIOLET)Creating $(NAME) ... $(COLOR_NOCOLOR)\n"
-	@$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION) 2> /dev/null
+	@$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION)
 	@printf "$(COLOR_UP)$(COLOR_CLEAR)"
 	
 $(OBJ_DIR):

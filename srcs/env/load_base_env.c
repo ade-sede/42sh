@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_base_env.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/26 15:17:13 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/26 15:18:28 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "libft.h"
 #include "printf.h"
@@ -13,7 +25,7 @@ void		env_load_base_env(t_env *env, const char **environ)
 void		env_load_shlvl_pwd(t_env *env)
 {
 	char		buf[PATH_MAX];
-	size_t	index;
+	size_t		index;
 	char		*new_entry;
 
 	if (env_getenv((const char**)env->environ, "PWD", &index) == NULL)

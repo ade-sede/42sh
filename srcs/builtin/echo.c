@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   echo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/26 14:56:45 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/26 15:15:25 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include <stdio.h>
 
-static const char **parse_options(const char **argv, short int *n_flag, short int *e_flag)
+static const char	**parse_options(const char **argv, short int *n_flag, \
+		short int *e_flag)
 {
 	char	*option_array[5];
 
@@ -27,13 +40,13 @@ static const char **parse_options(const char **argv, short int *n_flag, short in
 	return (argv);
 }
 
-static void		print_unicode(const char *argv, size_t *i)
+static void			print_unicode(const char *argv, size_t *i)
 {
 	size_t	n;
 	size_t	start;
 	size_t	end;
-	char		*unicode_char;
-	char		*tmp;
+	char	*unicode_char;
+	char	*tmp;
 
 	n = 4;
 	start = *i;
@@ -51,7 +64,7 @@ static void		print_unicode(const char *argv, size_t *i)
 	*i = end - 1;
 }
 
-static void		print_arg(const char *argv)
+static void			print_arg(const char *argv)
 {
 	size_t	i;
 
@@ -79,10 +92,10 @@ static void		print_arg(const char *argv)
 	}
 }
 
-int	builtin_echo(t_env *env, const char **argv)
+int					builtin_echo(t_env *env, const char **argv)
 {
-	short int n_flag;
-	short int e_flag;
+	short int	n_flag;
+	short int	e_flag;
 	const char	**tmp;
 
 	(void)env;

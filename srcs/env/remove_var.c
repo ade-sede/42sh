@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   remove_var.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/26 15:16:59 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/26 15:18:02 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "libft.h"
 
-
 void	env_remove_var_index(t_env *env, size_t key_index)
 {
-	size_t environ_size;
+	size_t	environ_size;
 	char	**environ;
 	char	**new_environ;
 
@@ -13,13 +24,13 @@ void	env_remove_var_index(t_env *env, size_t key_index)
 	new_environ = palloc(sizeof(char*) * (environ_size - 1 + 1));
 	free(environ[key_index]);
 	ft_memcpy(new_environ, environ, key_index * sizeof(*new_environ));
-	ft_memcpy(new_environ + key_index, environ + key_index + 1, (environ_size - key_index) * sizeof(*new_environ));
+	ft_memcpy(new_environ + key_index, environ + key_index + 1, \
+			(environ_size - key_index) * sizeof(*new_environ));
 	new_environ[environ_size - 1] = NULL;
 	free(env->environ);
 	env->environ = new_environ;
 	env->environ_size--;
 }
-
 
 void	env_remove_var(t_env *env, const char *key)
 {

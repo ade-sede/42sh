@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_var.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/26 15:16:03 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/26 15:16:51 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "libft.h"
 #include <stdio.h>
@@ -7,7 +19,7 @@ void		env_add_var(t_env *env, const char *key, const char *value)
 	char		**environ;
 	char		**new_environ;
 	char		*new_key_value;
-	size_t	new_environ_size;
+	size_t		new_environ_size;
 
 	environ = env->environ;
 	new_environ_size = env->environ_size + 1;
@@ -21,7 +33,8 @@ void		env_add_var(t_env *env, const char *key, const char *value)
 	env->environ_size++;
 }
 
-void		env_change_value(t_env *env, const char *key, size_t key_index, const char *new_value)
+void		env_change_value(t_env *env, const char *key, size_t key_index, \
+		const char *new_value)
 {
 	char	**environ;
 
@@ -40,7 +53,8 @@ void		env_add_change(t_env *env, const char *key, const char *value)
 		env_change_value(env, key, index, value);
 }
 
-void		env_add_var_from_string(t_env *env, char *key_value, ssize_t eq_index)
+void		env_add_var_from_string(t_env *env, char *key_value, \
+		ssize_t eq_index)
 {
 	key_value[eq_index] = '\0';
 	env_add_change(env, (const char*)key_value, \

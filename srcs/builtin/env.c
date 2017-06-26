@@ -1,22 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/26 14:46:14 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/26 14:56:33 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "exec.h"
 #include "libft.h"
 
-static const char	**apply_opt(t_env *env, const char **argv, int	*error)
+static const char	**handle_i(t_env *env, const char **argv)
+{
+	env_free_env(env);
+	env->environ = env_create_environ(NULL, &(env->environ_size));
+	return (argv + 1);
+}
+
+static const char	**apply_opt(t_env *env, const char **argv, int *error)
 {
 	while (*argv)
 	{
 		if (ft_strequ(*argv, "-i"))
-		{
-			env_free_env(env);
-			env->environ = env_create_environ(NULL, &(env->environ_size));
-			argv++;
-		}
+			argv = handle_i(env, argv);
 		else if (ft_strequ(*argv, "-u"))
 		{
 			if (!(*(argv + 1)))
 			{
-				return_failure("env: option requires an argument -- u", NULL);		
+				return_failure("env: option requires an argument -- u", NULL);
 				*error = 1;
 				return (argv);
 			}
@@ -58,10 +73,10 @@ static const char	**build_new_env(t_env *env, const char **argv, int *error)
 	return (argv);
 }
 
-int	builtin_env(t_env *old_env, const char **argv)
+int					builtin_env(t_env *old_env, const char **argv)
 {
 	t_env	new_env;
-	int	error;
+	int		error;
 
 	error = 0;
 	if (!env_copy_env(&new_env, old_env))
