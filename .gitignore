@@ -34,3 +34,4 @@
 
 # Vim swaps ( cus he cant build a correct vimrc)
 *.swp
+*.vim

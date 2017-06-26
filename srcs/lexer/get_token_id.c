@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   get_token_id.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/26 15:20:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/26 15:36:53 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/02 15:10:18 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/06/26 15:55:21 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lexer.h"
 #include "libft.h"
-#include "unistd.h"
-#include "env.h"
-#include "sys/wait.h"
-#include "get_next_line.h"
 
-size_t	put_prompt(t_env *env)
+/*
+**	Work in progress
+*/
+
+/*
+**	Trying to determine the ID of the token using its context (delimiter, lexer
+**	state).
+*/
+
+t_token_id		get_token_id(t_token *token, char delimiter)
 {
-	char	*prompt;
+	t_token_id	id;
 
-	prompt = NULL;
-	prompt = env_getenv((const char**)env->environ, "PS1", NULL);
-	if (!prompt)
-		prompt = "$> ";
-	ft_putstr(prompt);
-	return (ft_strlen(prompt));
+	id = -1;
+	(void)delimiter;
+	if (token->type == OPERATOR)
+		match_operator(token->value, 0, token->size);
+	else if (token->type == WORD)
+		id_io_number(token, delimiter, &id);
+	return (id);
 }
