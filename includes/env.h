@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/26 15:41:35 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/27 19:16:41 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct	s_env
 
 char			**env_create_environ(const char **original, size_t *new_size);
 void			env_print_environ(const char **environ);
-char			*env_getenv(const char **environ, const char *key, size_t *index);
+char			*env_getenv(const char **environ, \
+		const char *key, size_t *index);
 t_env			*singleton_env();
 
 /*
@@ -74,10 +75,12 @@ int				return_failure(const char *str, const char *error_msg);
 **	In file add_var.c
 */
 
-void			env_change_value(t_env *env, const char *key, size_t key_index, const char *new_value);
+void			env_change_value(t_env *env, const char *key, \
+		size_t key_index, const char *new_value);
 void			env_add_var(t_env *env, const char *key, const char *value);
 void			env_add_change(t_env *env, const char *key, const char *value);
-void			env_add_var_from_string(t_env *env, char *key_value, ssize_t eq_index);
+void			env_add_var_from_string(t_env *env, \
+		char *key_value, ssize_t eq_index);
 /*
 ** 	In file remove_var.c
 */
@@ -91,4 +94,4 @@ void			env_remove_var(t_env *env, const char *key);
 
 int				env_free_env(t_env *env);
 int				env_copy_env(t_env *new_env, t_env *old_env);
-#endif 
+#endif
