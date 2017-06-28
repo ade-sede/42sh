@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 12:22:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/05 17:43:15 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/28 13:57:47 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "color.h"
 #include "lexer.h"
+#include "parser.h"
 
 /*
 **	Going to send a line to the lexer and print the output top to bottom (last
@@ -25,6 +26,7 @@ int		main(void)
 	char	buff[4096];
 	t_token	*token;
 	t_lexer	lex;
+	t_ast	*ast;
 	
 	ft_putstr("Give me a string > ");
 	read(0, buff, 4096);
@@ -32,7 +34,7 @@ int		main(void)
 	if (strchr(buff, '\n') != NULL)
 		printf(RED"Found a newline in the buff\n"RESET);
 	lex = init_lexer(buff);
-	start_lex(&lex);
+	ast = start_lex(&lex);
 	while (lex.stack)
 	{
 		token = lex.stack->data;

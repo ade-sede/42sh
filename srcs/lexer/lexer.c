@@ -6,12 +6,13 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/26 15:58:05 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:06:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "libft.h"
+#include "parser.h"
 #include <stdio.h>
 
 /*
@@ -27,7 +28,8 @@
 */
 
 /*
-**	DETERMINING WHERE A TOKEN START AND ENDS :
+**		DETERMINING WHERE A TOKEN START AND ENDS :
+**
 **	See POSIX STANDARDS @ Token Recognition (2.3)
 **
 **	The last char of the token we matched is either the one we are on, or the
@@ -52,7 +54,7 @@
 ** of the lexer.
 */
 
-int		start_lex(t_lexer *lex)
+t_ast	*start_lex(t_lexer *lex)
 {
 	size_t	token_start;
 	ssize_t	ret;
@@ -71,7 +73,7 @@ int		start_lex(t_lexer *lex)
 		tokenize(lex, token_start, token_end);
 		lex->state = WORD;
 	}
-	return (1);
+	return (NULL);
 }
 
 int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
