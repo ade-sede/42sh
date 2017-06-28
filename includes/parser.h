@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 18:34:30 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/28 14:49:16 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/28 19:09:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef	struct	s_ast
 {
 	t_list		*child;
 	t_token		*token;
+	/*	GRAMMAR SYMBOL */
 }				t_ast;
 
 /*
@@ -63,7 +64,7 @@ typedef	struct	s_ast
 ** 	composed of other commands, or not).
 **	Consider the following command : ls > foo.
 **	A representation of the tree would be :
-**				 ____				
+**
 **				|	 |						|
 **				|ROOT|						|	The root node, linking all
 **				|____|						|	commands.
@@ -84,7 +85,7 @@ typedef	struct	s_ast
 ** 	IO_FILE. There is no point in keeping 'useless' nodes in the tree. This can
 ** 	also be explained by the recursive nature of the tree.We will prefer the
 ** 	absolutly equivalent tree:
-**			 ____				
+**
 **			|	 |				
 **			|ROOT|				
 **			|____|				
