@@ -91,7 +91,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/line_editing
 	@/bin/mkdir -p $(OBJ_DIR)/completion
 	@/bin/mkdir -p $(OBJ_DIR)/history
-	@/bin/mkdir -p $(OBJ_DIR)/lexer
+	@/bin/mkdir -p $(OBJ_DIR)/lexer-parser
 
 clean:
 	@make -C $(LIB_DIR) clean

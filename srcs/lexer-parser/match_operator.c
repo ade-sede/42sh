@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 12:51:27 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/26 15:56:10 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/29 11:26:22 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int					match_operator(const char *value, size_t token_start, \
 **	exists) with the defined value for this exact token. See INCLUDES/LEXER.H
 */
 
-t_token_id			id_operator(const char *value)
+t_token_id			lex_id_operator(const char *value)
 {
 	int		i;
 

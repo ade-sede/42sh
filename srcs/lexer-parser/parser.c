@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/28 13:34:01 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/28 19:12:54 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/29 10:46:53 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,11 @@
 **			will become its child. The new root would be created recursively,
 **			by a call to CREATE_AST with the remaining tokens, and a child of
 **			the new root as a temporary root.
-**
-**
 */
 
 
 
-t_ast	*CREATE_AST(t_ast **root, t_list *token_list)
+t_ast	*CREATE_AST(t_ast **root, t_list **token_list)
 {
 	return (*root);
 }

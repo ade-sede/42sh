@@ -6,13 +6,14 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/28 13:54:51 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/29 12:13:53 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 # include "libft.h"
+#include "parser.h"
 # include <stdio.h>
 
 /*
@@ -48,7 +49,9 @@
 */
 
 /*
-**	Words and assignement words.
+**	Words and assignement words. According to this enum, operator will have an
+**	id such that `5 <= id < 20', and reserved words will have an id such as `id
+**	>= 20'. From this, 2 easy macros :
 */
 
 typedef enum
@@ -174,14 +177,17 @@ t_token_id			get_token_id(t_token *token, char delimiter);
 
 int					match_operator(const char *value, \
 		size_t token_start, size_t token_end);
+t_token_id			lex_id_operator(const char *value);
 
 /*
 **	In file match_word.c
 */
 
 int					match_word(t_lexer *lex);
-int					id_io_number(t_token *token, \
+int					lex_id_io_number(t_token *token, \
 		char delimiter, t_token_id *id);
+int					lex_id_reserved_words(t_token *token, t_token_id *id);
+int					lex_id_word(t_token *token, t_token_id *id);
 
 /*
 **	In file update_state.c

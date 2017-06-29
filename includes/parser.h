@@ -6,13 +6,14 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 18:34:30 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/28 19:09:01 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/29 12:25:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 # include "lexer.h"
+
 /*
 **	After a token is delimited, it is sent to the parser, wich will build an
 **	AST (abstract syntax tree) from the stream of token it receives.
@@ -27,24 +28,6 @@
 **	according to the POSIX STANDARD found here:
 **	http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
 */
-
-/*
-**	The following structure represents a node of the AST.
-**	The node should contain the token it has been created from, and a list of
-**	its child such that child->data is a t_ast structure.
-**	As an example consider the command "ls foo bar":
-**
-**		The root node is considered to be a command. Its childs are the
-**		CMD_NAME `ls', and the CMD_PREFIX `foo bar' ,itself composed of
-**		CMD_PREFIX `foo' and CMD_PREFIX `bar' (see IMPLICIT SYMBOLS).
-*/
-
-typedef	struct	s_ast
-{
-	t_list		*child;
-	t_token		*token;
-	/*	GRAMMAR SYMBOL */
-}				t_ast;
 
 /*
 **	In some situations, the parser should expect a particular symbol to fit the
@@ -107,5 +90,28 @@ typedef	struct	s_ast
 **	solved. So that prioritary operations are executed first, they are always
 **	pushed to the left of the tree (wich is the start of the child list).
 */
+
+/*
+**	The following enumeration corresponds to different grammar symbols. Each
+**	node of our AST will correspond to one of those symbols.
+*/
+
+/*
+**	The following structure represents a node of the AST.
+**	The node should contain the token it has been created from, and a list of
+**	its child such that child->data is a t_ast structure.
+**	As an example consider the command "ls foo bar":
+**
+**		The root node is considered to be a command. Its childs are the
+**		CMD_NAME `ls', and the CMD_PREFIX `foo bar' ,itself composed of
+**		CMD_PREFIX `foo' and CMD_PREFIX `bar' (see IMPLICIT SYMBOLS).
+*/
+
+typedef	struct		s_ast
+{
+	t_list			*child;
+	struct s_token	*token;
+	/*	GRAMMAR SYMBOL */
+}					t_ast;
 
 #endif
