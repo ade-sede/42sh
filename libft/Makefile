@@ -73,6 +73,8 @@ SRC = \
 	  ft_strjoin.c \
 	  ft_strtrim.c \
 	  ft_strsplit.c \
+	  ft_strsplit_quotes.c \
+	  ft_strsplit_keep.c \
 	  charcmp.c \
 	  ft_itoa.c \
 	  ft_arraydel.c \
@@ -99,8 +101,6 @@ SRC = \
 	  ft_strrstr.c \
 	  ft_strrcmp.c \
 	  ft_strrequ.c \
-	  ft_strsplit_keep.c \
-	  ft_strsplit_quotes.c \
 	  ft_simple_lst_del_one.c \
 	  \
 	  printf/buff_loop.c \
@@ -120,12 +120,12 @@ SRC = \
 
 NAME ?= libft.a
 
+
 # Defining those variables allows auto completion to occure.
 APPEND=
 ASAN=
 TEST_FILE=
 
-# Optimizaiton flags appended at compile time
 OPTIMIZATION ?= -O0
 
 ifeq ($(ASAN),yes)
@@ -136,10 +136,9 @@ SRC_DIR = srcs
 OBJ_DIR = objs
 LOCAL_INC = includes
 CFLAGS ?= -g -Wall -Wextra -Werror
-CC ?= gcc
+CC = gcc
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
-.PHONY: all test Hello_word lib $(NAME) clean fclean re
 
 all: Hello_word $(OBJ_DIR) $(NAME)
 	@printf "$(COLOR_CLEAR)$(COLOR_GREEN)Successfully created $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"

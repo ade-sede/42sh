@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 12:13:53 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/29 13:29:10 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ t_lexer				init_lexer(const char *line);
 **	In file get_token_id.c
 */
 
-t_token_id			get_token_id(t_token *token, char delimiter);
+t_token_id			lex_get_token_id(t_token *token, char delimiter);
 
 /*
 **	in file match_operator.c

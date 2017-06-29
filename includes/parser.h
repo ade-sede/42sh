@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 18:34:30 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 12:25:40 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/29 15:44:56 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,18 @@
 */
 
 /*
-**	The following enumeration corresponds to different grammar symbols. Each
-**	node of our AST will correspond to one of those symbols.
+**	The following enumeration corresponds to different grammar symbols we'll be
+**	using in our tree. It is a simplified version of the one found on the POSIX
+**	STANDARD Each node of our AST will correspond to one of those.
+**	symbols.
 */
+
+typedef	enum {
+	SIMPLE_COMMAND,
+	IO_REDIRECT,
+	CMD_NAME,
+	CMD_SUFFIX
+}		t_symbol;
 
 /*
 **	The following structure represents a node of the AST.
@@ -111,7 +120,20 @@ typedef	struct		s_ast
 {
 	t_list			*child;
 	struct s_token	*token;
-	/*	GRAMMAR SYMBOL */
+	t_symbol		symbol;
 }					t_ast;
 
+/*
+**	In file parser.c
+*/
+
+t_ast				*ast_create_command(t_ast **root, t_list **token_list);
+t_ast				*ast_create_node_from_word(t_list **token_list);
+
+/*
+**	In file init.c
+*/
+
+t_ast				*ast_create_node(struct s_token *token, t_list *child, \
+		t_symbol symbol);
 #endif

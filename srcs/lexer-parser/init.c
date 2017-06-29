@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:23:00 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/28 13:42:55 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/29 14:09:53 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ t_token		*create_token(char *value, t_token_type type)
 **	list of childs.
 */
 
-t_ast		*create_ast_node(t_list	*child, t_token *token)
+t_ast		*ast_create_node(t_token *token, t_list *child, t_symbol symbol)
 {
 	t_ast	*node;
 
 	node = palloc(sizeof(*node));
 	node->child = child;
 	node->token = token;
+	node->symbol = symbol;
 	return (node);
 }

@@ -83,13 +83,6 @@ int					ft_is_lower(char c);
 int					ft_is_space(char c);
 int					ft_is_one_of(char c, const char *that);
 
-
-/*
-**	In file ft_is_3.c
-*/
-
-int					is_quote(int c);
-
 /*
 **	In file ft_is_3.c
 */

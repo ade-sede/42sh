@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 15:10:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 12:10:13 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/29 13:28:22 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 #include "libft.h"
 
 /*
-**	Work in progress
-*/
-
-/*
 **	Trying to determine the ID of the token using its context (delimiter, lexer
-**	state).
+**	state). This id will be used by the parser to help assign grammar symbol to
+**	the token and build the tree.
 */
 
-t_token_id		get_token_id(t_token *token, char delimiter)
+t_token_id		lex_get_token_id(t_token *token, char delimiter)
 {
 	t_token_id	id;
 	int			done;
