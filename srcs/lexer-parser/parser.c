@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 13:29:27 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 18:00:18 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/29 18:22:57 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 **		root node.
 **
 **	- If the token is an operator
-**		- If the token is a redirection / and IO_NUMBER
+**		- If the token is a redirection / an IO_NUMBER
 **
 **			A node representing an IO_REDIRECT should be created from every
 **			token belonging to the redirection. This node will not hold any
@@ -66,7 +66,7 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list)
 		token = (*token_list)->data;
 		if (token->id == TK_WORD)
 			new_node = ast_create_node_from_word(token_list);
-		tmp_root = ast_create_command(root, token_list);
+		tmp_root = ast_create_command(root, &(*token_list)->next);
 	}
 	return (tmp_root);
 }
