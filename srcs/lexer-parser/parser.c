@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 13:29:27 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 18:22:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/30 21:42:43 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,11 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list)
 	{
 		token = (*token_list)->data;
 		if (token->id == TK_WORD)
+		{
 			new_node = ast_create_node_from_word(token_list);
-		tmp_root = ast_create_command(root, &(*token_list)->next);
+			ft_simple_lst_pushback(&tmp_root->child, ft_simple_lst_create(new_node));
+			tmp_root = ast_create_command(root, &(*token_list)->next);
+		}
 	}
 	return (tmp_root);
 }

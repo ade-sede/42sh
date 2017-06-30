@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 13:29:11 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/06/30 21:44:30 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ t_ast	*start_lex(t_lexer *lex)
 	size_t	token_start;
 	ssize_t	ret;
 	size_t	token_end;
+	t_ast	*ast;
 
 	token_start = 0;
 	token_end = 0;
+	ast = NULL;
 	while (lex->line[lex->index])
 	{
 		lex->state = start_token(lex, &token_start);
@@ -73,7 +75,9 @@ t_ast	*start_lex(t_lexer *lex)
 		tokenize(lex, token_start, token_end);
 		lex->state = WORD;
 	}
-	return (NULL);
+	ast = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
+	ast = ast_create_command(&ast, &(lex->stack));
+	return (ast);
 }
 
 int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
@@ -89,6 +93,6 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	if (lex->stack == NULL)
 		lex->stack = node;
 	else
-		ft_simple_lst_add(&(lex->stack), node);
+		ft_simple_lst_pushback(&(lex->stack), node);
 	return (1);
 }
