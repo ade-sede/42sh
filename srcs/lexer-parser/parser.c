@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 13:29:27 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/04 16:00:49 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/04 18:44:53 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list)
 #endif
 		if (TK_IS_SEP(token->id))
 		{
+			tmp_root = ast_separator(tmp_root, token_list);
 		}
 		else
 		{
@@ -99,6 +100,21 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list)
 		}
 	}
 	return (tmp_root);
+}
+
+t_ast	*ast_separator(t_ast *current_tmp_root, t_list **token_list)
+{
+	t_ast	*new_root;
+	t_ast	*node;
+	t_list	*child_list;
+
+	child_list = NULL;
+	child_list = ft_simple_lst_create(current_tmp_root);
+	node = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
+	ft_simple_lst_pushback(&child_list, ft_simple_lst_create(node));
+	new_root = ast_create_node((*token_list)->data, child_list, PIPELINE);
+	ft_simple_lst_del_one(token_list, *token_list, NULL);
+	return (new_root);
 }
 
 /*
