@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/30 21:46:56 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/02 18:49:27 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_simple_lst_pushback(t_list **first, t_list *new_node)
 
 	if (new_node)
 	{
-		if (*first == NULL)
+		if (first == NULL || *first == NULL)
 			*first = new_node;
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 18:34:30 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 15:44:56 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/04 14:19:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef	struct		s_ast
 
 t_ast				*ast_create_command(t_ast **root, t_list **token_list);
 t_ast				*ast_create_node_from_word(t_list **token_list);
+t_ast				*ast_create_node_from_redir(t_list **token_list);
 
 /*
 **	In file init.c

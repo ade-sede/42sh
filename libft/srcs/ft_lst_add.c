@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 14:59:16 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/02 18:49:46 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_simple_lst_add(t_list **first, t_list *new_node)
 {
 	if (new_node)
 	{
-		if (!*first)
+		if (first == NULL || *first == NULL)
 			*first = new_node;
 		else
 		{

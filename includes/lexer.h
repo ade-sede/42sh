@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 13:29:10 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/03 14:11:43 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,13 @@ typedef enum
 	Bang,
 	In
 }	t_token_id;
+
+/*
+**	Macros to check if the id corresponds to a redirection, or a separator.
+*/
+
+#define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
+#define TK_IS_REDIR(id) (id == TK_IO_NUMBER || id == TK_GREAT || id == TK_LESS || (id >= TK_DLESS && id <= TK_CLOBBER))
 
 /*
 **	The lexer state indicates in wich context line[pos] is.

@@ -6,12 +6,13 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 13:29:27 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/30 21:42:43 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/04 16:00:49 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "parser.h"
+#include "color.h"
 #include "libft.h"
 
 /*
@@ -61,25 +62,103 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list)
 	t_token	*token;
 
 	tmp_root = *root;
-	if (*token_list)
+#ifdef PARSER_DEBUG
+	printf(CYN"------------------------------------------------\n"RESET);
+	printf("Addr of "BLU"token_list"RESET" && "MAG"*token_list"RESET" == "BLU"%p"RESET"  && "MAG"%p\n"RESET, token_list, *token_list);
+#endif
+	if (token_list && *token_list)
 	{
 		token = (*token_list)->data;
-		if (token->id == TK_WORD)
+#ifdef PARSER_DEBUG
+		printf("Treating token "MAG"#"CYN"%s"MAG"#\n"RESET, token->value);//			REMOVE		
+		printf("Token has id : "YEL);
+#endif
+		if (TK_IS_SEP(token->id))
 		{
-			new_node = ast_create_node_from_word(token_list);
-			ft_simple_lst_pushback(&tmp_root->child, ft_simple_lst_create(new_node));
-			tmp_root = ast_create_command(root, &(*token_list)->next);
+		}
+		else
+		{
+			if (token->id == TK_WORD)
+			{
+#ifdef PARSER_DEBUG
+				printf("TK_WORD\n"RESET);
+#endif
+				new_node = ast_create_node_from_word(token_list);
+				ft_simple_lst_pushback(&tmp_root->child, ft_simple_lst_create(new_node));
+			}
+			if (TK_IS_REDIR(token->id))
+			{
+#ifdef PARSER_DEBUG
+				printf("TK_REDIR\n"RESET);
+#endif
+				/* create new_node */
+				new_node = ast_create_node_from_redir(token_list);
+				ft_simple_lst_add(&tmp_root->child, ft_simple_lst_create(new_node));
+			}
+			tmp_root = ast_create_command(root, token_list);
 		}
 	}
 	return (tmp_root);
 }
+
+/*
+**	Creates a node from a word token, returns it.
+*/
 
 t_ast	*ast_create_node_from_word(t_list **token_list)
 {
 	t_ast	*node;
 
 	node = ast_create_node((*token_list)->data, NULL, 0);
+	ft_simple_lst_del_one(token_list, *token_list, NULL);
 	/*	ASSIGN THE RIGHT SYMBOL */
-	*token_list = (*token_list)->next;
+	return (node);
+}
+
+/*
+**	Creates an IO_REDIR node from 2 or 3 tokens. Returns this IO_REDIR node,
+**	wich should be appended at the start of the command's child list.
+**	The flag expected corresponds to what token the next part of the
+**	redirection should be according to the one we just read.
+**	1 = NAME
+**	2 = REDIR
+*/
+
+t_ast	*ast_create_node_from_redir(t_list **token_list)
+{
+	t_list	*child_list;
+	t_ast	*node;
+	t_token	*token;
+	int		expected;
+
+	child_list = NULL;
+	token = (*token_list)->data;
+	if (token->id == TK_IO_NUMBER)
+		expected = 2;
+	else
+		expected = 1;
+	ft_simple_lst_pushback(&child_list, ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+	ft_simple_lst_del_one(token_list, *token_list, NULL);
+	while (expected != 0)
+	{
+		token = (*token_list)->data;
+		if (expected == 2)
+		{
+			/* Raise an error if the token is not a redir operator */
+			ft_simple_lst_pushback(&child_list, ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+		}
+		if (expected == 1)
+		{
+			/* Raise an error if the token is not a valid filename */
+			ft_simple_lst_pushback(&child_list, ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+		}
+		ft_simple_lst_del_one(token_list, *token_list, NULL);
+		--expected;
+	}
+	node = ast_create_node(NULL, child_list, IO_REDIRECT);
+	t_ast	*tmp_node;
+	tmp_node= node->child->data;
+	token = tmp_node->token;
+	printf("%s\n", token->value);//			REMOVE		
 	return (node);
 }
