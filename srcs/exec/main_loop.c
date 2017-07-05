@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/26 15:43:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/05 16:57:59 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,53 @@
 #include "exec.h"
 #include "builtin.h"
 #include "line_editing.h"
+#include "lexer.h"
+#include "parser.h"
 #define LOCAL_BUFF_SIZE 4096
 
-void	exec(t_env *env, const char **argv)
+void	exec_tree(t_ast *ast, const char **argv)
 {
+	t_token	*token;
+	t_ast	*child_node;
+
+	if (ast->symbol == SIMPLE_COMMAND)
+	{
+		while (ast->child)
+		{
+			child_node = ast->child->data;
+			token = child_node->token;
+#ifdef EXEC_DEBUG
+			if (token && token->value)
+			{
+			printf("Token's value : "MAG"#"CYN"%s"MAG"\n"RESET, token->value);
+			}
+			printf("Symbol "YEL"%d\n"RESET, child_node->symbol);
+#endif
+			if (child_node->symbol == CMD_WORD)
+			{
+				*argv = ft_strdup(token->value);
+				argv++;
+			}
+			ast->child = ast->child->next;
+		}
+	}
+}
+
+void	exec(t_env *env, t_ast *ast)
+{
+	const char	**argv;
+
+	argv = ft_memalloc(sizeof(*argv) * (4096));
+	exec_tree(ast, argv);
 	if (!(exec_builtin(env, argv)))
 		fork_exec_bin(env, argv);
 }
 
 void	main_loop(t_env *env)
 {
-	char		**argv;
 	char		no_term_buff[LOCAL_BUFF_SIZE];
+	t_ast		*ast;
+	t_lexer		lex;
 
 	while (42)
 	{
@@ -35,9 +70,8 @@ void	main_loop(t_env *env)
 		ft_bzero(no_term_buff, LOCAL_BUFF_SIZE);
 		read(0, no_term_buff, LOCAL_BUFF_SIZE);
 		*ft_strchr(no_term_buff, '\n') = '\0';
-		argv = ft_strsplit_quotes(no_term_buff, " \t");
-		exec_expand_args(*env, argv);
-		exec(env, (const char **)argv);
-		ft_arraydel(&argv);
+		lex = init_lexer(no_term_buff);
+		ast = start_lex(&lex);
+		exec(env, ast);
 	}
 }

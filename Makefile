@@ -37,7 +37,20 @@ SRC_FILE =	\
 \
 	exec/exec_bin.c \
 	exec/main_loop.c \
-	exec/expand_args.c
+	exec/expand_args.c \
+\
+	lexer-parser/check_match.c \
+	lexer-parser/init.c \
+	lexer-parser/match_expand.c \
+	lexer-parser/match_word.c \
+	lexer-parser/redir.c \
+	lexer-parser/start_token.c \
+	lexer-parser/get_token_id.c \
+	lexer-parser/lexer.c \
+	lexer-parser/match_operator.c \
+	lexer-parser/parser.c \
+	lexer-parser/separator.c \
+	lexer-parser/update_state.c
 
 NAME ?= minishell
 
