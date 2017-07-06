@@ -38,6 +38,7 @@ SRC_FILE =	\
 	exec/exec_bin.c \
 	exec/main_loop.c \
 	exec/expand_args.c \
+	exec/word_expand.c \
 \
 	lexer-parser/check_match.c \
 	lexer-parser/init.c \

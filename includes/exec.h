@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/05 16:48:21 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/06 15:54:05 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,11 @@ void	main_loop(t_env *env);
 ** In expand_args.c
 */
 
-void	exec_expand_args(t_env env, char **argv);
+int		word_expand(t_token *token);
+
+/*
+** In word_expand.
+*/
+
+void	exec_expand_args(t_env env, t_token	*token);
 #endif

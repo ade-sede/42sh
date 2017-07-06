@@ -6,20 +6,13 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:18:41 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/26 15:44:20 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/06 15:50:57 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "libft.h"
 #include "array.h"
-
-t_env		*singleton_env(void)
-{
-	static t_env	env;
-
-	return (&env);
-}
 
 void		env_print_environ(const char **environ)
 {

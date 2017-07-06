@@ -46,31 +46,27 @@ static char	*expand_from_split(t_env env, char **split)
 	return (expanded_str);
 }
 
-void		exec_expand_args(t_env env, char **argv)
+void		exec_expand_args(t_env env, t_token	*token)
 {
-	size_t j;
 	size_t i;
 	short int	dollar_sign;
 	char	**split;
 
+	i = 0;
 	dollar_sign = FALSE;
-	j = 0;
-	while (argv[j])
+	while (token->value[i])
 	{
 		i = 0;
-		while (argv[j][i])
+		while (token->value[i])
 		{
-			if (!dollar_sign && argv[j][i] == '$')
-			{
-				dollar_sign = dollar_sign_is_valid((const char*)argv[j], i);
-			}
+			if (!dollar_sign && token->value[i] == '$')
+				dollar_sign = dollar_sign_is_valid((const char*)token->value, i);
 			i++;
 		}
 		if (dollar_sign)
 		{
-			split = ft_strsplit_keep((const char*)argv[j], WHITESPACES);
-			argv[j] = ft_strchange(argv[j], expand_from_split(env, split));
+			split = ft_strsplit_keep((const char*)token->value, WHITESPACES);
+			token->value = ft_strchange(token->value, expand_from_split(env, split));
 		}
-		j++;
 	}
 }

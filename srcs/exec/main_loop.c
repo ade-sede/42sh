@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/06 12:22:02 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/06 15:55:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ void	exec_tree(t_ast *ast, const char **argv)
 #ifdef EXEC_DEBUG
 			if (token && token->value)
 			{
-			printf("Token's value : "MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
+				printf("Token's value : "MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
 			}
 			printf("Symbol "YEL"%d"RESET"\n", child_node->symbol);
 #endif
 			if (child_node->symbol == CMD_WORD)
 			{
+				word_expand(token);
 				*argv = ft_strdup(token->value);
 				argv++;
 			}
@@ -60,18 +61,21 @@ void	exec(t_env *env, t_ast *ast)
 
 void	main_loop(t_env *env)
 {
-	char		no_term_buff[LOCAL_BUFF_SIZE];
 	t_ast		*ast;
+	char		buff[4096];
 	t_lexer		lex;
 
 	while (42)
 	{
 		put_prompt(env);
-		ft_bzero(no_term_buff, LOCAL_BUFF_SIZE);
-		read(0, no_term_buff, LOCAL_BUFF_SIZE);
-		*ft_strchr(no_term_buff, '\n') = '\0';
-		lex = init_lexer(no_term_buff);
-		ast = start_lex(&lex);
-		exec(env, ast);
+		ft_bzero(buff, LOCAL_BUFF_SIZE);
+		read(0, buff, LOCAL_BUFF_SIZE);
+		*ft_strchr(buff, '\n') = '\0';
+		if (*buff != 0)
+		{
+			lex = init_lexer(buff);
+			ast = start_lex(&lex);
+			exec(env, ast);
+		}
 	}
 }

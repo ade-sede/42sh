@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/06 13:31:28 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/06 15:59:36 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,21 +98,7 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 
 	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
 	token = create_token(value, lex->state);
-	/*
-	** Quote removal: next 11 lines
-	** tmp
-	*/
 	token->id = lex_get_token_id(token, lex->line[lex->index]);
-	if (token->type == DQUOTED || token->type == QUOTED)
-	{
-		*token->value = 0;
-		if (token->size > 2)
-		{
-			token->value++;
-			token->value[token->size - 2] = 0;
-		}
-		token->size -= 2;
-	}
 	node = ft_simple_lst_create(token);
 	if (lex->stack == NULL)
 		lex->stack = node;

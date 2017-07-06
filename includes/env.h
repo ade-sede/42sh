@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/27 19:16:41 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/06 15:51:19 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ char			**env_create_environ(const char **original, size_t *new_size);
 void			env_print_environ(const char **environ);
 char			*env_getenv(const char **environ, \
 		const char *key, size_t *index);
-t_env			*singleton_env();
 
 /*
 **	In file load_base_env.c
@@ -93,5 +92,6 @@ void			env_remove_var(t_env *env, const char *key);
 */
 
 int				env_free_env(t_env *env);
+t_env			*singleton_env();
 int				env_copy_env(t_env *new_env, t_env *old_env);
 #endif
