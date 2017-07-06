@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 12:22:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/05 16:43:15 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/06 12:34:50 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ static void	read_tree(t_ast *ast_start)
 	}
 }
 
+void	test_lexer(t_lexer *lex)
+{
+	t_token	*token;
+
+	while (lex->stack)
+	{
+		token = lex->stack->data;
+		printf(MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
+		lex->stack = lex->stack->next;
+	}
+}
+
 int		main(void)
 {
 	t_ast	*ast_start;
@@ -63,6 +75,7 @@ int		main(void)
 		printf(RED"Found a newline in the buff\n"RESET);
 	lex = init_lexer(buff);
 	ast_start = start_lex(&lex);
+	test_lexer(&lex);
 	printf(RED"-------------------------------------------\n"RESET);
 	printf("RESULTS !!!\n");
 	printf("Reading the tree, left recursive\n");

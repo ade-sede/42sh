@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/05 16:57:59 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/06 12:22:02 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	exec_tree(t_ast *ast, const char **argv)
 #ifdef EXEC_DEBUG
 			if (token && token->value)
 			{
-			printf("Token's value : "MAG"#"CYN"%s"MAG"\n"RESET, token->value);
+			printf("Token's value : "MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
 			}
-			printf("Symbol "YEL"%d\n"RESET, child_node->symbol);
+			printf("Symbol "YEL"%d"RESET"\n", child_node->symbol);
 #endif
 			if (child_node->symbol == CMD_WORD)
 			{

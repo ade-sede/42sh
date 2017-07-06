@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/05 13:19:12 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/06 13:31:28 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ t_ast	*start_lex(t_lexer *lex)
 	ssize_t	ret;
 	size_t	token_end;
 	t_ast	*ast;
+#ifdef LEXER_DEBUG
+	t_list	*list_start;
+#endif
 
 	token_start = 0;
 	token_end = 0;
@@ -75,8 +78,15 @@ t_ast	*start_lex(t_lexer *lex)
 		tokenize(lex, token_start, token_end);
 		lex->state = WORD;
 	}
+#ifdef LEXER_DEBUG
+	list_start = NULL;
+	ft_simple_lst_dup(&list_start, lex->stack);
+	ast = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
+	ast = ast_separator(&ast, &(list_start));
+#else
 	ast = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 	ast = ast_separator(&ast, &(lex->stack));
+#endif
 	return (ast);
 }
 
@@ -88,7 +98,21 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 
 	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
 	token = create_token(value, lex->state);
+	/*
+	** Quote removal: next 11 lines
+	** tmp
+	*/
 	token->id = lex_get_token_id(token, lex->line[lex->index]);
+	if (token->type == DQUOTED || token->type == QUOTED)
+	{
+		*token->value = 0;
+		if (token->size > 2)
+		{
+			token->value++;
+			token->value[token->size - 2] = 0;
+		}
+		token->size -= 2;
+	}
 	node = ft_simple_lst_create(token);
 	if (lex->stack == NULL)
 		lex->stack = node;

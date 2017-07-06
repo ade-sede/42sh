@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 15:03:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/30 21:17:59 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/06 13:27:02 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ static int	part_1(t_lexer *lex, size_t token_start)
 
 	ret = -1;
 	if (IS_INPUT_END(lex->line[lex->index]))
+	{
 		ret = lex->index - 1;
+	}
 	else if (lex->state == EXPAND)
 	{
 		if (match_expand(lex, token_start))
@@ -41,7 +43,9 @@ static int	part_1(t_lexer *lex, size_t token_start)
 	else if (IS_QUOTED(lex->state))
 	{
 		if (charcmp(lex->line, lex->index, lex->state))
+		{
 			ret = lex->index++;
+		}
 	}
 	return (ret);
 }
@@ -66,8 +70,6 @@ charcmp(lex->line, lex->index - 1, '<')))
 		else
 			ret = lex->index - 1;
 	}
-	else if (IS_WHITESPACE(lex->line[lex->index]))
-		ret = lex->index - 1;
 	if (lex->state == '\\')
 		lex->state = WORD;
 	return (ret);
