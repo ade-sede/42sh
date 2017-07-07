@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 17:37:49 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/06 16:00:38 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/07 13:14:11 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,27 @@
 #include "env.h"
 #include "exec.h"
 
-int		word_expand(t_token *token)
+/*
+**	TODO : A function to check if the token is subject to param expansion.
+**	Atm we're doing quote removal first, cus its easier, but that should come last
+*/
+
+void		exec_expand(t_token *token)
 {
 	t_env	*env;
-	int		ret;
 
-	ret = 1;
 	env = singleton_env();
-	if (token->type == EXPAND)
-	{
-		if (*token->value == '$' && *token->value + 1 != '(' && *token->value + 1 != '{')
-			exec_expand_args(*env, token);
-		else
-			ret = 0;
-	}
-	else if (token->type != QUOTED)
-			exec_expand_args(*env, token);
-	else
-		ret = 0;
+	/* Quote removal */
 	if (token->type == DQUOTED || token->type == QUOTED)
 	{
 		*token->value = 0;
 		if (token->size > 2)
-		{
-			token->value++;
-			token->value[token->size - 2] = 0;
-		}
+			token->value = ft_strchange(token->value, ft_strsub(token->value, 1, token->size - 2));
 		token->size -= 2;
 	}
-	return (ret);
+	/* Tilde expansion && Param expansion && command subst */
+	if (token->type != QUOTED)
+		parameter_expansion(env, token);
+	/* Field splitting */
+	/* Pathname expansion */
 }
