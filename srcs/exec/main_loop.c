@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/07 13:02:04 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/08 20:04:28 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	exec_tree(t_ast *ast, const char **argv)
 			}
 			printf("Symbol "YEL"%d"RESET"\n", child_node->symbol);
 #endif
-			if (child_node->symbol == CMD_WORD)
+			if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
 			{
 				exec_expand(token);
 				*argv = ft_strdup(token->value);

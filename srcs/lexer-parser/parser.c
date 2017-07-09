@@ -1,12 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*   parser.c                                           :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 13:29:27 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/05 16:53:28 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/08 20:22:23 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +55,7 @@
 **			.
 */
 
-t_ast	*ast_create_command(t_ast **root, t_list **token_list)
+t_ast	*ast_create_command(t_ast **root, t_list **token_list, int *command_name)
 {
 	t_ast	*tmp_root;
 	t_ast	*new_node;
@@ -85,7 +84,7 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list)
 		if (TK_IS_SEP(token->id))
 		{
 #ifdef PARSER_DEBUG
-				printf("SEPARATOR\n"RESET);
+			printf("SEPARATOR\n"RESET);
 #endif
 			return (tmp_root);
 		}
@@ -104,10 +103,10 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list)
 			}
 			else
 			{
-				new_node = ast_create_node_from_word(token_list);
+				new_node = ast_create_node_from_word(token_list, command_name);
 				ft_simple_lst_pushback(&tmp_root->child, ft_simple_lst_create(new_node));
 			}
-			tmp_root = ast_create_command(root, token_list);
+			tmp_root = ast_create_command(root, token_list, command_name);
 		}
 	}
 	return (tmp_root);
@@ -117,20 +116,23 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list)
 **	Creates a node from a word token, returns it.
 */
 
-t_ast	*ast_create_node_from_word(t_list **token_list)
+t_ast	*ast_create_node_from_word(t_list **token_list, int *command_name)
 {
 	t_ast	*node;
 	t_token	*token;
 
 	token = (*token_list)->data;
-	if (token->id == TK_ASSIGNMENT_WORD)
+	if ((token->id == TK_WORD || token->type == EXPAND) && *command_name == FALSE)
 	{
-		printf("assignement\n");
-		node = ast_create_node((*token_list)->data, NULL, CMD_PREFIX);
+		node = ast_create_node((*token_list)->data, NULL, CMD_NAME);
+		*command_name = TRUE;
 	}
 	else
 	{
-		node = ast_create_node((*token_list)->data, NULL, CMD_WORD);
+		if (*command_name == FALSE)
+			node = ast_create_node((*token_list)->data, NULL, CMD_PREFIX);
+		else
+			node = ast_create_node((*token_list)->data, NULL, CMD_SUFFIX);
 	}
 	ft_simple_lst_del_one(token_list, *token_list, NULL);
 	return (node);
