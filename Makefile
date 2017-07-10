@@ -37,8 +37,9 @@ SRC_FILE =	\
 \
 	exec/exec_bin.c \
 	exec/main_loop.c \
-	exec/expand_args.c \
+	exec/param_expansion.c \
 	exec/word_expand.c \
+	exec/tild_expansion.c \
 \
 	lexer-parser/check_match.c \
 	lexer-parser/init.c \

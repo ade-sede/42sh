@@ -45,7 +45,7 @@ void		parameter_expansion(t_env *env, t_token *token)
 #ifdef EXPAND_DEBUG
 				printf("Param is valid for expansion\n");
 #endif
-				param = env_getenv((const char **)env->environ, split[i] + offset + 1, NULL);
+				param = ft_strdup(env_getenv((const char **)env->environ, split[i] + offset + 1, NULL));
 				if (param)
 					split[i] = ft_strchange(split[i], param);
 				else

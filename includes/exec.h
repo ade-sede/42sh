@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/07 13:01:20 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/10 16:30:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	exec(t_env *env, t_ast *ast);
 void	main_loop(t_env *env);
 
 /*
-** In expand_args.c
+** In param_expansion.c
 */
 
 void	parameter_expansion(t_env *env, t_token *token);
@@ -39,4 +39,10 @@ void	parameter_expansion(t_env *env, t_token *token);
 */
 
 void	exec_expand(t_token *token);
+
+/*
+** In tild_expansion.c
+*/
+
+void	tild_expand(t_env *env, t_token *token);
 #endif
