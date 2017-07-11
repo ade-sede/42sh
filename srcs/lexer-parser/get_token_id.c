@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 15:10:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/29 13:28:22 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/11 17:21:46 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ t_token_id		lex_get_token_id(t_token *token, char delimiter)
 		if (!done)
 			done = lex_id_word(token, &id);
 	}
+	else if (token->type == DQUOTED || token->type == QUOTED)
+		id = TK_WORD;
 	return (id);
 }
