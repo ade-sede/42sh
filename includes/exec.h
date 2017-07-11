@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/10 16:30:01 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/11 12:40:17 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,10 @@ void	exec_expand(t_token *token);
 */
 
 void	tild_expand(t_env *env, t_token *token);
+
+/*
+** In exec_command.c
+*/
+
+void	exec_simple_command(t_ast *ast, const char **argv);
 #endif

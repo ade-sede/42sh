@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arraydup.c                                      :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/11 11:15:02 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/07/11 11:23:31 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/07/11 12:31:30 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
-#include "str.h"
-#include "alloc.h"
 #include "libft.h"
+#include "lexer.h"
+#include "parser.h"
+#include <stdio.h>
 
-char	**ft_arraydup(const char **original)
+void	free_token(t_token *token)
 {
-	char	**new_environ;
-	size_t	original_size;
-	size_t	i;
+	free(token->value);
+	free(token);
+}
 
-	i = 0;
-	original_size = (original == NULL) ? 0 : ft_arraylen(original);
-	new_environ = palloc(sizeof(char*) * (original_size + 1));
-	while (i != original_size)
+void	free_ast_node(t_ast *node)
+{
+	ft_simple_lst_remove(&node->child, NULL);
+	if (node->token)
 	{
-		new_environ[i] = ft_strdup(original[i]);
-		i++;
+		free_token(node->token);
 	}
-	new_environ[original_size] = NULL;
-	return (new_environ);
+	free(node);
 }

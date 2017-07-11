@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/08 20:04:28 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/11 15:35:29 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,41 +22,38 @@
 
 void	exec_tree(t_ast *ast, const char **argv)
 {
-	t_token	*token;
-	t_ast	*child_node;
-
 	if (ast->symbol == SIMPLE_COMMAND)
-	{
-		while (ast->child)
-		{
-			child_node = ast->child->data;
-			token = child_node->token;
-#ifdef EXEC_DEBUG
-			if (token && token->value)
-			{
-				printf("Token's value : "MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
-			}
-			printf("Symbol "YEL"%d"RESET"\n", child_node->symbol);
-#endif
-			if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
-			{
-				exec_expand(token);
-				*argv = ft_strdup(token->value);
-				argv++;
-			}
-			ast->child = ast->child->next;
-		}
-	}
+		exec_simple_command(ast, argv);
+	free_ast_node(ast);
 }
 
 void	exec(t_env *env, t_ast *ast)
 {
 	const char	**argv;
+	size_t		index;
+#ifdef EXEC_DEBUG
+	size_t		debug_index = 0;
+#endif
 
+	index = 0;
 	argv = ft_memalloc(sizeof(*argv) * (4096));
 	exec_tree(ast, argv);
+#ifdef EXEC_DEBUG
+	while (argv[debug_index] != NULL)
+	{
+		printf(RED"Printing content of argv\n"RESET);
+		printf(GRN"Argv[%zu] = "MAG"#"CYN"%s"MAG"#\n"RESET,debug_index, argv[debug_index]);
+		debug_index++;
+	}
+#endif
 	if (!(exec_builtin(env, argv)))
 		fork_exec_bin(env, argv);
+	while (argv[index] != NULL)
+	{
+		free((void*)(argv[index]));
+		index++;
+	}
+	free(argv);
 }
 
 void	main_loop(t_env *env)

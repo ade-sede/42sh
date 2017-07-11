@@ -40,6 +40,7 @@ SRC_FILE =	\
 	exec/param_expansion.c \
 	exec/word_expand.c \
 	exec/tild_expansion.c \
+	exec/exec_command.c \
 \
 	lexer-parser/check_match.c \
 	lexer-parser/init.c \
@@ -52,7 +53,8 @@ SRC_FILE =	\
 	lexer-parser/match_operator.c \
 	lexer-parser/parser.c \
 	lexer-parser/separator.c \
-	lexer-parser/update_state.c
+	lexer-parser/update_state.c \
+	lexer-parser/free.c
 
 NAME ?= minishell
 

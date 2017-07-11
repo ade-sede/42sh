@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/06 15:36:42 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/11 11:30:30 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,4 +207,12 @@ int					update_state(t_lexer *lex);
 */
 
 int					match_expand(t_lexer *lex, size_t token_start);
+
+/*
+**	In file free.c
+*/
+
+
+void				free_ast_node(t_ast *node);
+void				free_token(t_token *token);
 #endif

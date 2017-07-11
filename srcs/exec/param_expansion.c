@@ -30,9 +30,9 @@ void		parameter_expansion(t_env *env, t_token *token)
 	size_t	i;
 
 	i = 0;
-	result = ft_strnew(0);
 	if ((offset = valid_param_expansion(token->value)) != -1)
 	{
+		result = ft_strnew(0);
 		split = ft_strsplit_keep(token->value, WHITESPACES);
 		while (split[i])
 		{
@@ -61,6 +61,7 @@ void		parameter_expansion(t_env *env, t_token *token)
 			i++;
 		}
 		token->value = ft_strchange(token->value, result);
+		free(result);
 	}
 }
 

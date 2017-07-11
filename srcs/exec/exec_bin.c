@@ -17,16 +17,14 @@ void	ft_exec_bin_path(t_env *env, const char **argv)
 	char	*bin;
 	char	*path; 
 	char	**paths;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!(path = env_getenv((const char**)env->environ, "PATH", NULL)))
 		exit(return_failure("path unset", NULL));
-	//printf("%s\n", path);
 	paths = ft_strsplit(path + 5, ":");
 	while (paths[i])
 	{
-		//printf("%s\n", paths[i]);
 		bin = ft_strsurround(paths[i], "/", argv[0]);
 		if (access(bin, F_OK) == 0)
 		{

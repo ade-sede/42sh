@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/21 16:23:40 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/11 11:07:08 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_arraylen(const char **str)
 	const char **cp;
 
 	cp = str;
-	while (*cp)
-		cp++;
-	return ((cp - str));
+	while (str && *str)
+		str++;
+	return ((str - cp));
 }
