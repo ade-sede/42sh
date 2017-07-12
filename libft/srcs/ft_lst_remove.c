@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/21 17:01:16 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/12 10:29:48 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 void	ft_simple_lst_remove(t_list **first, void (*f)(void*))
 {
 	t_list	*node;
+	t_list	*tmp_next;
 
 	node = *first;
 	while (node)
 	{
+		tmp_next = node->next;
 		ft_simple_lst_del_one(first, node, (f));
-		node = node->next;
+		node = tmp_next;
 	}
 	*first = NULL;
 }

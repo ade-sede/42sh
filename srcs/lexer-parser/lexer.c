@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/11 12:29:07 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/12 10:25:51 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,11 @@ t_ast	*start_lex(t_lexer *lex)
 #ifdef LEXER_DEBUG
 	list_start = NULL;
 	ft_simple_lst_dup(&list_start, lex->stack);
-	ast = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 	ast = ast_separator(&ast, &(list_start));
 # ifdef PARSER_DEBUG
 	read_tree(ast);
 # endif
 #else
-	ast = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 	ast = ast_separator(&ast, &(lex->stack));
 # ifdef PARSER_DEBUG
 	read_tree(ast);

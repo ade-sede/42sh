@@ -47,12 +47,9 @@
 **
 **		- If the token is a separator
 **
-**			A node representing the separator will be created from that token.
-**			This node will be used as the new temporary root, and the old root
-**			will become its child. The new root would be created recursively,
-**			by a call to ast_create_command with the remaining tokens, and a child of
-**			the new root as a temporary root
-**			.
+**			The function stops, and stack goes back to ast_separator, bulding a
+**			new branch for the new command, and attaching the simple command we
+**			just created to a complexe one.
 */
 
 t_ast	*ast_create_command(t_ast **root, t_list **token_list, int *command_name)
@@ -72,15 +69,10 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list, int *command_name)
 	if (token_list && *token_list)
 	{
 		token = (*token_list)->data;
-
-
 #ifdef PARSER_DEBUG
 		printf("Treating token "MAG"#"CYN"%s"MAG"#\n"RESET, token->value);//			REMOVE		
 		printf("Token has id : "YEL);
 #endif
-
-
-
 		if (TK_IS_SEP(token->id))
 		{
 #ifdef PARSER_DEBUG
@@ -92,7 +84,6 @@ t_ast	*ast_create_command(t_ast **root, t_list **token_list, int *command_name)
 		{
 			if (TK_IS_REDIR(token->id))
 			{
-
 #ifdef PARSER_DEBUG
 				printf("TK_REDIR\n"RESET);
 #endif

@@ -1,6 +1,7 @@
 #include "libft.h"
 #include "env.h"
 #include "sys/wait.h"
+#include <stdio.h>
 
 void	ft_exec_bin_absolute(t_env *env, const char **argv)
 {
@@ -21,8 +22,8 @@ void	ft_exec_bin_path(t_env *env, const char **argv)
 
 	i = 0;
 	if (!(path = env_getenv((const char**)env->environ, "PATH", NULL)))
-		exit(return_failure("path unset", NULL));
-	paths = ft_strsplit(path + 5, ":");
+		exit(return_failure("PATH variable not set. Use Setenv to set", NULL));
+	paths = ft_strsplit(path, ":");
 	while (paths[i])
 	{
 		bin = ft_strsurround(paths[i], "/", argv[0]);

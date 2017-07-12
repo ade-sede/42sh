@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 17:37:49 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/11 14:51:28 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/12 12:34:17 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void		exec_expand(t_token *token)
 	/* Tilde expansion && Param expansion && command subst */
 	if (token->type != QUOTED && token->type != DQUOTED)
 	{
-		tild_expand(env, token);
+		if (ft_strchr(token->value, '~'))
+			tild_expand(env, token);
 		parameter_expansion(env, token);
 	}
 	/* Field splitting */

@@ -38,7 +38,7 @@ void		parameter_expansion(t_env *env, t_token *token)
 		{
 			param = NULL;
 #ifdef EXPAND_DEBUG
-				printf("Split[i] == "MAG"#"CYN"%s"MAG"#\n"RESET, split[i]);
+			printf("Split[i] == "MAG"#"CYN"%s"MAG"#\n"RESET, split[i]);
 #endif
 			if ((offset = valid_param_expansion(split[i])) != -1)
 			{
@@ -55,13 +55,14 @@ void		parameter_expansion(t_env *env, t_token *token)
 #endif
 			}
 			result = ft_strchange(result, ft_strjoin(result, split[i]));
+			free(split[i]);
 #ifdef EXPAND_DEBUG
 			printf("->value after join "MAG"#"CYN"%s"MAG"#"RESET"\n", result);
 #endif
 			i++;
 		}
+		free(split);
 		token->value = ft_strchange(token->value, result);
-		free(result);
 	}
 }
 
