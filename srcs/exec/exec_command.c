@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 12:38:09 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/12 10:51:27 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/12 16:44:11 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "lexer.h"
 #include "parser.h"
 #include <stdio.h>
+
 
 void	exec_simple_command(t_ast *ast, const char **argv)
 {
