@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 13:55:31 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/12 14:37:09 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/12 15:28:44 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	builtin_cd(t_env *env, const char **argv)
 	char	buf[PATH_MAX];
 	char	*cwd_before_chdir;
 	char	*new_pwd;
-
 
 	if (ft_arraylen(argv) == 1)
 	{
@@ -35,6 +34,8 @@ int	builtin_cd(t_env *env, const char **argv)
 		new_pwd = (char*)argv[1];
 	ft_bzero(buf, PATH_MAX);
 	cwd_before_chdir = ft_strdup(getcwd(buf, PATH_MAX));
+	/* Not sure if the string is always null terminated by getcwd, need to make sure*/
+	ft_bzero(buf, PATH_MAX);
 	if (chdir(new_pwd) == -1)
 	{
 		free(cwd_before_chdir);

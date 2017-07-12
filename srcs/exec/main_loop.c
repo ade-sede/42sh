@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/11 15:35:29 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/12 16:20:02 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@
 
 void	exec_tree(t_ast *ast, const char **argv)
 {
+	if (ast)
+	{
 	if (ast->symbol == SIMPLE_COMMAND)
 		exec_simple_command(ast, argv);
 	free_ast_node(ast);
+	}
 }
 
 void	exec(t_env *env, t_ast *ast)
@@ -46,8 +49,11 @@ void	exec(t_env *env, t_ast *ast)
 		debug_index++;
 	}
 #endif
+	if (*argv != NULL)
+	{
 	if (!(exec_builtin(env, argv)))
 		fork_exec_bin(env, argv);
+	}
 	while (argv[index] != NULL)
 	{
 		free((void*)(argv[index]));
