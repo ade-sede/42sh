@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 12:31:39 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/13 13:59:16 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,26 @@
 #include "lexer.h"
 #include "parser.h"
 #include <stdio.h>
+
+/*
+**	Delete the entire tree. Temporary to stop leaks.
+*/
+
+static t_ast *flush_tree(t_ast *ast)
+{
+	t_list	*child_list;
+	t_ast	*child_node;
+
+	child_list = ast->child;
+	while (child_list)
+	{
+		child_node = child_list->data;
+		flush_tree(child_node);
+		child_list = child_list->next;
+	}
+	free_ast_node(ast);
+	return (NULL);
+}
 
 /*
 **	The first time exec_tree is called, we give it our root node as an
@@ -42,7 +62,10 @@ void	exec_tree(t_ast *ast)
 				exec_tree(ast->child->data);
 				exec_tree(ast->child->next->data);
 			}
+			else
+				ast = flush_tree(ast);
 		}
-		free_ast_node(ast);
+		if (ast)
+			free_ast_node(ast);
 	}
 }

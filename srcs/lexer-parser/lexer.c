@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/12 10:25:51 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/13 13:11:55 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,9 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	t_list	*node;
 
 	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
+#ifdef LEXER_DEBUG
+	printf("Just created a token with value" MAG"#"CYN"%s"MAG"#\n"RESET, value);
+#endif
 	token = create_token(value, lex->state);
 	token->id = lex_get_token_id(token, lex->line[lex->index]);
 	node = ft_simple_lst_create(token);
