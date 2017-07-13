@@ -5,9 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/26 15:59:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/11 17:20:57 by ade-sede         ###   ########.fr       */
-/* ************************************************************************** */ 
+/*   Created: 2017/07/13 15:29:40 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/07/13 15:30:05 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lexer.h"
 #include "libft.h"
 #include <stdio.h>
@@ -32,7 +34,8 @@ static char	*g_reserved_word_list[] = {
 	"!",
 	"in",
 	NULL
-}; 
+};
+
 /*
 **	As the default state is word, we need to check if char we are reading is
 **	starting a new token, thus closing the current one.
@@ -86,7 +89,8 @@ int			lex_id_reserved_words(t_token *token, t_token_id *id)
 	size_t	i;
 
 	i = 0;
-	while (g_reserved_word_list[i] && !ft_strequ(g_reserved_word_list[i], token->value))
+	while (g_reserved_word_list[i] && !ft_strequ(g_reserved_word_list[i], \
+				token->value))
 		i++;
 	if (!g_reserved_word_list[i])
 		return (0);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   param_expansion.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/13 14:51:54 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/07/13 14:56:39 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include "exec.h"
@@ -21,6 +33,19 @@ static int	valid_param_expansion(char *str)
 	return (-1);
 }
 
+static char	*expand_from_env(t_env *env, char *key, int offset)
+{
+	char	*param;
+	char	*ret;
+
+	param = env_getenv((const char **)env->environ, key + offset + 1, NULL);
+	if (param)
+		ret = ft_strdup(param);
+	else
+		ret = ft_strnew(0);
+	return (ret);
+}
+
 void		parameter_expansion(t_env *env, t_token *token)
 {
 	char	**split;
@@ -37,32 +62,14 @@ void		parameter_expansion(t_env *env, t_token *token)
 		while (split[i])
 		{
 			param = NULL;
-#ifdef EXPAND_DEBUG
-			printf("Split[i] == "MAG"#"CYN"%s"MAG"#\n"RESET, split[i]);
-#endif
 			if ((offset = valid_param_expansion(split[i])) != -1)
-			{
-#ifdef EXPAND_DEBUG
-				printf("Param is valid for expansion\n");
-#endif
-				param = env_getenv((const char **)env->environ, split[i] + offset + 1, NULL);
-				if (param)
-					split[i] = ft_strchange(split[i], ft_strdup(param));
-				else
-					split[i] = ft_strchange(split[i], ft_strnew(0));
-#ifdef EXPAND_DEBUG
-				printf("After expand split[i] == "MAG"#"CYN"%s"MAG"#"RESET"\n", split[i]);
-#endif
-			}
+				split[i] = ft_strchange(split[i], \
+						expand_from_env(env, split[i], offset));
 			result = ft_strchange(result, ft_strjoin(result, split[i]));
 			free(split[i]);
-#ifdef EXPAND_DEBUG
-			printf("->value after join "MAG"#"CYN"%s"MAG"#"RESET"\n", result);
-#endif
 			i++;
 		}
 		free(split);
 		token->value = ft_strchange(token->value, result);
 	}
 }
-

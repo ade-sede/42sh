@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 13:11:55 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/13 15:29:11 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,48 +54,12 @@
 ** of the lexer.
 */
 
-#ifdef PARSER_DEBUG
-void	read_tree(t_ast *ast_start)
-{
-	size_t	index;
-	t_token	*token_parent;
-	char	*parent_name;
-	t_list	*first_child;
-
-	index = 0;
-	token_parent = ast_start->token;
-	printf(GRN"NODE = "RESET);
-	if (token_parent)
-		parent_name = token_parent->value;
-	else
-	{
-		if (ast_start->symbol == SIMPLE_COMMAND)
-			parent_name = "SIMPLE_COMMAND";
-		if (ast_start->symbol == IO_REDIRECT)
-			parent_name = "IO_REDIRECT";
-	}
-	printf(MAG"#"CYN"%s"MAG"#"RESET""YEL"(%d)\n"RESET, parent_name, ast_start->symbol);
-	first_child = ast_start->child;
-	while (first_child)
-	{
-		printf(RED"Starting treatment of child nb "BLU"%zu"RESET" of parent "MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET, index, parent_name, ast_start->symbol);
-		read_tree(first_child->data);
-		printf(PNK"\nBACK TO PARENT -> "RESET"Current node = "CYN"%s"RESET" !!!\n", parent_name);
-		first_child = first_child->next;
-		index++;
-	}
-}
-#endif
-
 t_ast	*start_lex(t_lexer *lex)
 {
 	size_t	token_start;
 	ssize_t	ret;
 	size_t	token_end;
 	t_ast	*ast;
-#ifdef LEXER_DEBUG
-	t_list	*list_start;
-#endif
 
 	token_start = 0;
 	token_end = 0;
@@ -111,19 +75,7 @@ t_ast	*start_lex(t_lexer *lex)
 		tokenize(lex, token_start, token_end);
 		lex->state = WORD;
 	}
-#ifdef LEXER_DEBUG
-	list_start = NULL;
-	ft_simple_lst_dup(&list_start, lex->stack);
-	ast = ast_separator(&ast, &(list_start));
-# ifdef PARSER_DEBUG
-	read_tree(ast);
-# endif
-#else
 	ast = ast_separator(&ast, &(lex->stack));
-# ifdef PARSER_DEBUG
-	read_tree(ast);
-# endif
-#endif
 	return (ast);
 }
 
@@ -134,9 +86,6 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	t_list	*node;
 
 	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
-#ifdef LEXER_DEBUG
-	printf("Just created a token with value" MAG"#"CYN"%s"MAG"#\n"RESET, value);
-#endif
 	token = create_token(value, lex->state);
 	token->id = lex_get_token_id(token, lex->line[lex->index]);
 	node = ft_simple_lst_create(token);

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 13:59:16 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/13 14:51:15 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **	Delete the entire tree. Temporary to stop leaks.
 */
 
-static t_ast *flush_tree(t_ast *ast)
+static t_ast	*flush_tree(t_ast *ast)
 {
 	t_list	*child_list;
 	t_ast	*child_node;
@@ -46,7 +46,7 @@ static t_ast *flush_tree(t_ast *ast)
 **	various commands.
 */
 
-void	exec_tree(t_ast *ast)
+void			exec_tree(t_ast *ast)
 {
 	t_token		*token;
 

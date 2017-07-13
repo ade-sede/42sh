@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 11:29:28 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/13 14:51:35 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 /*
 **	Receives an array containing the command name and its arguments.
 */
+
 void	exec(t_env *env, const char **argv)
 {
 	size_t		index;

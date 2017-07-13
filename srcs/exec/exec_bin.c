@@ -1,9 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_bin.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/13 14:19:04 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/07/13 14:25:23 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include "sys/wait.h"
 #include <stdio.h>
 
-void	ft_exec_bin_absolute(t_env *env, const char **argv)
+/*
+**		We forked, this is called in the child process. Try to use the absolute
+**		path to the binary.
+*/
+
+void		ft_exec_bin_absolute(t_env *env, const char **argv)
 {
 	if (access(argv[0], F_OK) == -1)
 		exit(return_failure(argv[0], " :no such file or directory"));
@@ -13,10 +30,21 @@ void	ft_exec_bin_absolute(t_env *env, const char **argv)
 		exit(return_failure(argv[0], " :command not found"));
 }
 
-void	ft_exec_bin_path(t_env *env, const char **argv)
+/*
+**		We forked, this is called in the child process. Looks for the binary in
+**		the path, exit_failure if we cant find id.
+*/
+
+static void	failure(const char *argv, char **paths)
+{
+	ft_arraydel(&paths);
+	exit(return_failure(argv, " :commmand not found"));
+}
+
+void		ft_exec_bin_path(t_env *env, const char **argv)
 {
 	char	*bin;
-	char	*path; 
+	char	*path;
 	char	**paths;
 	int		i;
 
@@ -39,11 +67,10 @@ void	ft_exec_bin_path(t_env *env, const char **argv)
 		free(bin);
 		i++;
 	}
-	ft_arraydel(&paths);
-	exit(return_failure(argv[0], " :commmand not found"));
+	failure(argv[0], paths);
 }
 
-int	fork_exec_bin(t_env *env, const char **argv)
+int			fork_exec_bin(t_env *env, const char **argv)
 {
 	pid_t		child;
 
