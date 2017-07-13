@@ -6,22 +6,13 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 12:58:22 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/12 16:15:01 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/13 11:32:19 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "lexer.h"
 #include "parser.h"
-
-/*
-**	Lexer call: empty ast (root), stack is token_list)
-**	Recursive: each time function separator=T, create child
-*/
-
-/*
-**	This function creates more
-*/
 
 t_ast	*ast_separator(t_ast **root, t_list **token_list)
 {
@@ -42,7 +33,7 @@ t_ast	*ast_separator(t_ast **root, t_list **token_list)
 			child = ft_simple_lst_create(*root);
 			new_branch_root = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 			ft_simple_lst_pushback(&child, ft_simple_lst_create(new_branch_root));
-			*root = ast_create_node(token, child, SIMPLE_COMMAND);
+			*root = ast_create_node(token, child, COMPLEXE_COMMAND);
 			ft_simple_lst_del_one(token_list, *token_list, NULL);
 			new_branch_root = ast_create_command(&new_branch_root, token_list, &command_name);
 			command_name = 0;

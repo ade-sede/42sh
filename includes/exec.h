@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/11 12:40:17 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/13 11:49:48 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		fork_exec_bin(t_env *env, const char **argv);
 ** In main_loop.c
 */
 
-void	exec(t_env *env, t_ast *ast);
+void	exec(t_env *env, const char **argv);
 void	main_loop(t_env *env);
 
 /*
@@ -47,8 +47,14 @@ void	exec_expand(t_token *token);
 void	tild_expand(t_env *env, t_token *token);
 
 /*
-** In exec_command.c
+** In exec_tree.c
 */
 
-void	exec_simple_command(t_ast *ast, const char **argv);
+void	exec_tree(t_ast *ast);
+
+/*
+** In exec_simple_commands.c
+*/
+
+void	exec_simple_command(t_ast *ast);
 #endif

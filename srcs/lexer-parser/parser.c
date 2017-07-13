@@ -1,11 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/29 13:29:27 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/08 20:22:23 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/07/13 11:31:52 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/07/13 11:34:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -13,13 +14,6 @@
 #include "parser.h"
 #include "color.h"
 #include "libft.h"
-
-/*
-**	NOTE TO SELF:
-**
-**	Commands need to be considered as nodes in order for the tree to be
-**	complete.
-*/
 
 /*
 **	As a token is considered to be a leaf of the tree, the tree is being built

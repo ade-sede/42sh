@@ -40,7 +40,8 @@ SRC_FILE =	\
 	exec/param_expansion.c \
 	exec/word_expand.c \
 	exec/tild_expansion.c \
-	exec/exec_command.c \
+	exec/exec_tree.c \
+	exec/exec_simple_commands.c \
 \
 	lexer-parser/check_match.c \
 	lexer-parser/init.c \
