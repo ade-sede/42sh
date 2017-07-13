@@ -6,14 +6,14 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/11 11:30:30 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/13 16:54:54 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 # include "libft.h"
-#include "parser.h"
+# include "parser.h"
 # include <stdio.h>
 
 /*
@@ -98,8 +98,9 @@ typedef enum
 **	Macros to check if the id corresponds to a redirection, or a separator.
 */
 
-#define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
-#define TK_IS_REDIR(id) (id == TK_IO_NUMBER || id == TK_GREAT || id == TK_LESS || (id >= TK_DLESS && id <= TK_CLOBBER))
+# define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
+# define TK_RP1(id) (id == TK_IO_NUMBER || id == TK_GREAT || id == TK_LESS)
+# define TK_IS_REDIR(id)  (TK_RP1(id) || (id >= TK_DLESS && id <= TK_CLOBBER))
 
 /*
 **	The lexer state indicates in wich context line[pos] is.
@@ -211,7 +212,6 @@ int					match_expand(t_lexer *lex, size_t token_start);
 /*
 **	In file free.c
 */
-
 
 void				free_ast_node(t_ast *node);
 void				free_token(t_token *token);

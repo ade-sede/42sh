@@ -73,7 +73,6 @@ SRC = \
 	  ft_strjoin.c \
 	  ft_strtrim.c \
 	  ft_strsplit.c \
-	  ft_strsplit_quotes.c \
 	  ft_strsplit_keep.c \
 	  charcmp.c \
 	  ft_itoa.c \

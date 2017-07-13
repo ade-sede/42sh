@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 18:34:30 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 13:26:41 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/13 16:55:34 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@
 ** 	also be explained by the recursive nature of the tree.We will prefer the
 ** 	absolutly equivalent tree:
 **
-**			|	 |				
-**			|ROOT|				
-**			|____|				
-**		 ____|	|____			
-**		|			|			
-**	CMD_NAME	IO_FILE			 
-**  WORD ('ls')	|	  |			 
+**			|	 |
+**			|ROOT|
+**			|____|
+**		 ____|	|____
+**		|			|
+**	CMD_NAME	IO_FILE
+**  WORD ('ls')	|	  |
 **          OP('>') FILENAME
 **              	WORD ('foo')
 **
@@ -110,7 +110,7 @@ typedef	enum {
 	CMD_NAME,
 	CMD_PREFIX,
 	CMD_SUFFIX
-}		t_symbol;
+}	t_symbol;
 
 /*
 **	The following structure represents a node of the AST.
