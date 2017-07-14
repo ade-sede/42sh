@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 14:51:54 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 14:56:39 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/14 14:58:21 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static char	*expand_from_env(t_env *env, char *key, int offset)
 void		parameter_expansion(t_env *env, t_token *token)
 {
 	char	**split;
-	char	*param;
 	int		offset;
 	char	*result;
 	size_t	i;
@@ -61,7 +60,6 @@ void		parameter_expansion(t_env *env, t_token *token)
 		split = ft_strsplit_keep(token->value, WHITESPACES);
 		while (split[i])
 		{
-			param = NULL;
 			if ((offset = valid_param_expansion(split[i])) != -1)
 				split[i] = ft_strchange(split[i], \
 						expand_from_env(env, split[i], offset));

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 14:51:35 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/14 15:09:07 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,15 @@ void	main_loop(t_env *env)
 	t_ast		*ast;
 	char		buff[LOCAL_BUFF_SIZE];
 	t_lexer		lex;
+	char		*nl;
 
 	while (42)
 	{
 		put_prompt(env);
 		ft_bzero(buff, LOCAL_BUFF_SIZE);
 		read(0, buff, LOCAL_BUFF_SIZE);
-		*ft_strchr(buff, '\n') = '\0';
+		if ((nl = ft_strchr(buff, '\n')))
+			*nl = '\0';
 		if (*buff != 0)
 		{
 			lex = init_lexer(buff);
