@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 15:29:11 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/14 17:42:15 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_ast	*start_lex(t_lexer *lex)
 		tokenize(lex, token_start, token_end);
 		lex->state = WORD;
 	}
-	ast = ast_separator(&ast, &(lex->stack));
+	ast = ast_parse(&ast, &(lex->stack));
 	return (ast);
 }
 

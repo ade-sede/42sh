@@ -53,7 +53,7 @@ SRC_FILE =	\
 	lexer-parser/lexer.c \
 	lexer-parser/match_operator.c \
 	lexer-parser/parser.c \
-	lexer-parser/separator.c \
+	lexer-parser/casual_node.c \
 	lexer-parser/update_state.c \
 	lexer-parser/free.c
 

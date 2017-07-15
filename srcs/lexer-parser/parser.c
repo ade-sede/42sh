@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:31:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 15:42:49 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/14 17:44:17 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	As a token is considered to be a leaf of the tree, the tree is being built
 **	from the leaves to the root. Upon reading, tokens are converted into the
 **	AST's nodes. Some nodes merely represent a symbol from our grammar, and do
-**	not hold a token. The function ast_create_command takes the full list of
+**	not hold a token. The function ast_create_simple_command takes the full list of
 **	tokens, and a temporary root to build upon. This temporary root is
 **	considered to be a `simple command'.  The function will create a node, that
 **	will act as a temporary root for our tree. For each token it reads from the
@@ -41,10 +41,54 @@
 **
 **		- If the token is a separator
 **
-**			The function stops, and stack goes back to ast_separator, bulding a
+**			The function stops, and stack goes back to ast_parse, bulding a
 **			new branch for the new command, and attaching the simple command we
 **			just created to a complexe one.
 */
+
+
+static void	start_simple_command(t_ast **root, t_list **token_list, \
+		int *command_name)
+{
+	*root = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
+	*root = ast_create_simple_command(root, token_list, command_name);
+	*command_name = 0;
+}
+
+static void	start_complexe_command(t_ast **root, t_list **token_list, \
+		int *command_name, t_token *token)
+{
+	t_ast	*new_branch_root;
+	t_list	*child;
+
+	child = ft_simple_lst_create(*root);
+	new_branch_root = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
+	ft_simple_lst_pushback(&child, ft_simple_lst_create(new_branch_root));
+	*root = ast_create_node(token, child, COMPLEXE_COMMAND);
+	ft_simple_lst_del_one(token_list, *token_list, NULL);
+	new_branch_root = ast_create_simple_command(&new_branch_root, \
+			token_list, command_name);
+	*command_name = 0;
+}
+
+t_ast		*ast_parse(t_ast **root, t_list **token_list)
+{
+	int		command_name;
+	t_token *token;
+
+	command_name = 0;
+	if (token_list && *token_list)
+	{
+		token = (*token_list)->data;
+		if (TK_IS_SEP(token->id))
+			start_complexe_command(root, token_list, &command_name, token);
+		else
+			start_simple_command(root, token_list, &command_name);
+		if (token_list && *token_list)
+			ast_parse(root, token_list);
+	}
+	return (*root);
+}
 
 static void	append_redir(t_ast **root, t_list **token_list)
 {
@@ -54,7 +98,7 @@ static void	append_redir(t_ast **root, t_list **token_list)
 	ft_simple_lst_add(&((*root)->child), ft_simple_lst_create(new_node));
 }
 
-t_ast		*ast_create_command(t_ast **root, t_list **token_list, \
+t_ast		*ast_create_simple_command(t_ast **root, t_list **token_list, \
 		int *command_name)
 {
 	t_ast	*new_node;
@@ -75,35 +119,8 @@ t_ast		*ast_create_command(t_ast **root, t_list **token_list, \
 				ft_simple_lst_pushback(&((*root)->child), \
 						ft_simple_lst_create(new_node));
 			}
-			*root = ast_create_command(root, token_list, command_name);
+			*root = ast_create_simple_command(root, token_list, command_name);
 		}
 	}
 	return (*root);
-}
-
-/*
-**	Creates a node from a word token, returns it.
-*/
-
-t_ast		*ast_create_node_from_word(t_list **token_list, int *command_name)
-{
-	t_ast	*node;
-	t_token	*token;
-
-	token = (*token_list)->data;
-	if ((token->id == TK_WORD || token->type == EXPAND) \
-			&& *command_name == FALSE)
-	{
-		node = ast_create_node((*token_list)->data, NULL, CMD_NAME);
-		*command_name = TRUE;
-	}
-	else
-	{
-		if (*command_name == FALSE)
-			node = ast_create_node((*token_list)->data, NULL, CMD_PREFIX);
-		else
-			node = ast_create_node((*token_list)->data, NULL, CMD_SUFFIX);
-	}
-	ft_simple_lst_del_one(token_list, *token_list, NULL);
-	return (node);
 }
