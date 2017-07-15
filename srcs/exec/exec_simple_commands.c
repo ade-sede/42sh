@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:51 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 14:59:14 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/15 13:45:36 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ static void	exec_redir(t_ast *ast)
 **	- Step two is creating an array which contains the command name, and the
 **	argument to this command.
 **	- Step three is sending this array to the exec function.
+**
+**	The ast node represents has a simple_command symbol. Treats every child one
+**	by one until no childs are left.
 ** 	---------------------------------------------------------
 ** 	Atm, word expansion takes place on step two.
 */
