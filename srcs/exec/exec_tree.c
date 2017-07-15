@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 14:51:15 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/15 16:25:33 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,32 @@ static t_ast	*flush_tree(t_ast *ast)
 	t_list	*child_list;
 	t_ast	*child_node;
 
-	child_list = ast->child;
-	while (child_list)
+	if (ast)
 	{
-		child_node = child_list->data;
-		flush_tree(child_node);
-		child_list = child_list->next;
+		child_list = ast->child;
+		while (child_list)
+		{
+			child_node = child_list->data;
+			flush_tree(child_node);
+			child_list = child_list->next;
+		}
+		free_ast_node(ast);
 	}
-	free_ast_node(ast);
 	return (NULL);
+}
+
+/*
+**	Code to be executed if the complexe command is a logical and.
+**	Must think about error handling in the parser/exec. (empty command for example)
+*/
+
+static void		logical_and(t_ast *ast)
+{
+	if (!ast->child->data)
+		singleton_env()->previous_exit = EXIT_FAILURE;
+	exec_tree(ast->child->data);
+	if (singleton_env()->previous_exit == 0)
+		exec_tree(ast->child->next->data);
 }
 
 /*
@@ -62,6 +79,8 @@ void			exec_tree(t_ast *ast)
 				exec_tree(ast->child->data);
 				exec_tree(ast->child->next->data);
 			}
+			else if (ft_strequ(token->value, "&&"))
+				logical_and(ast);
 			else
 				ast = flush_tree(ast);
 		}

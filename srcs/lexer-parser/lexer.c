@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/14 17:42:15 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/15 16:01:12 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,39 @@
 ** of the lexer.
 */
 
+#ifdef PARSER_DEBUG
+void	read_tree(t_ast *ast_start)
+{
+	size_t	index;
+	t_token	*token_parent;
+	char	*parent_name;
+	t_list	*first_child;
+
+	index = 0;
+	token_parent = ast_start->token;
+	printf(GRN"NODE = "RESET);
+	if (token_parent)
+		parent_name = token_parent->value;
+	else
+	{
+		if (ast_start->symbol == SIMPLE_COMMAND)
+			parent_name = "SIMPLE_COMMAND";
+		if (ast_start->symbol == IO_REDIRECT)
+			parent_name = "IO_REDIRECT";
+	}
+	printf(MAG"#"CYN"%s"MAG"#"RESET""YEL"(%d)\n"RESET, parent_name, ast_start->symbol);
+	first_child = ast_start->child;
+	while (first_child)
+	{
+		printf(RED"Starting treatment of child nb "BLU"%zu"RESET" of parent "MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET, index, parent_name, ast_start->symbol);
+		read_tree(first_child->data);
+		printf(PNK"\nBACK TO PARENT -> "RESET"Current node = "CYN"%s"RESET" !!!\n", parent_name);
+		first_child = first_child->next;
+		index++;
+	}
+}
+#endif
+
 t_ast	*start_lex(t_lexer *lex)
 {
 	size_t	token_start;
@@ -76,6 +109,9 @@ t_ast	*start_lex(t_lexer *lex)
 		lex->state = WORD;
 	}
 	ast = ast_parse(&ast, &(lex->stack));
+#ifdef PARSER_DEBUG
+	read_tree(ast);
+#endif
 	return (ast);
 }
 
