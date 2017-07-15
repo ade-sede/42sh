@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/15 16:25:33 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/15 17:37:22 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static t_ast	*flush_tree(t_ast *ast)
 
 /*
 **	Code to be executed if the complexe command is a logical and.
-**	Must think about error handling in the parser/exec. (empty command for example)
+**	Must think about error handling in the parser/exec. (empty command for
+**	example). Atm we're changing the previous exit, but it might not be right.
 */
 
 static void		logical_and(t_ast *ast)

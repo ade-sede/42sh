@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 14:14:28 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/15 17:10:40 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/15 17:32:48 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static void	pushback_redir(t_list *child_list, t_list **token_list, \
 		if (expected == 2)
 		{
 				ft_simple_lst_pushback(&child_list, \
-						ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+				ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 		}
 		if (expected == 1)
 		{
 				ft_simple_lst_pushback(&child_list, \
-						ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+				ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 		}
 		ft_simple_lst_del_one(token_list, *token_list, NULL);
 		--expected;
