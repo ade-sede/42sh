@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/15 17:37:22 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/17 14:41:41 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,14 @@ static t_ast	*flush_tree(t_ast *ast)
 }
 
 /*
-**	Code to be executed if the complexe command is a logical and.
-**	Must think about error handling in the parser/exec. (empty command for
-**	example). Atm we're changing the previous exit, but it might not be right.
+**	Code to be executed if the complexe command is a logical and.  Must think
+**	about error handling in the parser/exec. (empty command for example). Atm
+**	we're changing the previous exit, but it might not be right.
+*/
+
+/*
+**	Atm, error handling is poor. If an error is spotted, need to free the 2nd
+**	node.
 */
 
 static void		logical_and(t_ast *ast)
@@ -56,6 +61,8 @@ static void		logical_and(t_ast *ast)
 	exec_tree(ast->child->data);
 	if (singleton_env()->previous_exit == 0)
 		exec_tree(ast->child->next->data);
+	else
+		ast->child->data = flush_tree(ast->child->data);
 }
 
 /*
@@ -68,6 +75,7 @@ void			exec_tree(t_ast *ast)
 {
 	t_token		*token;
 
+	token = NULL;
 	if (ast)
 	{
 		if (ast->symbol == SIMPLE_COMMAND)
