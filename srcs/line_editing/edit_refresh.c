@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "line_editing.h"
+#include "env.h"
 
 void	edit_refresh_cursor(t_line *line)
 {
@@ -134,7 +135,7 @@ void	edit_refresh(t_line *line)
 	edit_refresh_clear(line);
 	//put_termcap("do");
 	//put_termcap("dl");
-	line->prompt_len = put_prompt(NULL);
+	line->prompt_len = put_prompt(singleton_env());
 	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }

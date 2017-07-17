@@ -44,6 +44,18 @@ void	exec(t_env *env, const char **argv)
 /*
 **	REPL. On this version, reading on static buff, or 4096.
 */
+void	init_main_loop(t_line *line, t_hist *hist)
+{	/*
+	**	Init everything thats necessary. Might need to do that in an another fcts
+	*/
+	hist->writen_buff = NULL;
+	line->len = 0;
+	line->pos = 0;
+	line->visu_mode = 0;
+	line->copied_text = NULL;
+	line->ws_col = get_ws_col();
+	line->buff = ft_strnew(4096);
+}
 
 void	main_loop(t_env *env)
 {
@@ -57,16 +69,7 @@ void	main_loop(t_env *env)
 	char		*nl;
 
 #ifndef NO_TERMCAPS
-	/*
-	**	Init everything thats necessary. Might need to do that in an another fcts
-	*/
-	singleton_hist()->writen_buff = NULL;
-	singleton_line()->len = 0;
-	singleton_line()->pos = 0;
-	singleton_line()->visu_mode = 0;
-	singleton_line()->copied_text = NULL;
-	singleton_line()->ws_col = get_ws_col();
-	singleton_line()->buff = ft_strnew(4096);
+	init_main_loop(singleton_line(), singleton_hist());
 #endif
 	while (42)
 	{
