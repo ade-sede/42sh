@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:17 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/17 13:13:58 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int	history_prev(t_line *line, t_hist *h)
 
 int	history_move_init(t_line *line, t_hist *h)
 {
-	ft_strcpy(h->writen_buff, line->buff);
+	if (h->writen_buff)
+		ft_strcpy(h->writen_buff, line->buff);
 //	printf("\n%s\n",h->writen_buff);
 	return (1);
 }

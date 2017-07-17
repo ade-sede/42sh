@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:21 by vcombey          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "line_editing.h"
 #include "completion.h"
 #include "history.h"
@@ -35,6 +23,12 @@ static t_edit_func	g_edit_func[] =
 	{0, NULL}
 };
 
+/*
+**	Calls the routine corresponding to the keycode. If the keycode doesnt
+**	correspond to a command, it is simply appended to the buffer. (and will be
+**	printed next time a refresh is called).
+*/
+
 int		edit_loop(unsigned long long keycode, t_line *line)
 {
 	int	i;
@@ -57,6 +51,14 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	return (1);
 }
 
+/*
+**	The function which starts the line editing, sets up the signals. Receives
+**	the keycode from history_move_loop(). Enters a loop in which each keycode
+**	is sent to edit_loop(), where it will be treated. If keycode is KEY_ENTER,
+**	editing is complete, and the line is returned. Every time is key is
+**	pressed, the displayed line is refreshed.
+*/
+
 char		*edit_get_input(t_env *env)
 {
 	unsigned long	keycode;
@@ -64,6 +66,7 @@ char		*edit_get_input(t_env *env)
 
 	l = singleton_line();
 	edit_set_signals();
+	keycode = 0;
 	while (42)
 	{
 		keycode = history_move_loop(l);
@@ -73,4 +76,5 @@ char		*edit_get_input(t_env *env)
 		edit_refresh(l);
 	}
 	(void)env;
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/17 12:53:58 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/17 13:14:46 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ void	main_loop(t_env *env)
 	char		*nl;
 
 #ifndef NO_TERMCAPS
+	/*
+	**	Init everything thats necessary. Might need to do that in an another fcts
+	*/
+	singleton_hist()->writen_buff = NULL;
 	singleton_line()->len = 0;
 	singleton_line()->pos = 0;
 	singleton_line()->visu_mode = 0;
