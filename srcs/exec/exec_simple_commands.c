@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:51 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/15 13:45:36 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/17 10:14:02 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ static void	exec_redir(t_ast *ast)
 **
 **	The ast node represents has a simple_command symbol. Treats every child one
 **	by one until no childs are left.
-** 	---------------------------------------------------------
-** 	Atm, word expansion takes place on step two.
 */
 
 void		exec_simple_command(t_ast *ast)
@@ -69,10 +67,7 @@ void		exec_simple_command(t_ast *ast)
 		if (child_node->symbol == IO_REDIRECT)
 			exec_redir(child_node);
 		if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
-		{
-			exec_expand(token);
 			argv[i++] = ft_strdup(token->value);
-		}
 		free_ast_node(child_node);
 		child_list = child_list->next;
 	}

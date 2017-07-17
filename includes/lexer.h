@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 16:54:54 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/17 10:49:38 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ typedef struct		s_token
 	t_token_id		id;
 	t_token_type	type;
 	size_t			size;
+	char			delimiter;
 }					t_token;
 
 /*
@@ -170,14 +171,14 @@ int					token_match(t_lexer *lex, size_t token_start);
 **	In file init.c
 */
 
-t_token				*create_token(char *value, t_token_type type);
+t_token				*create_token(char *value, t_token_type type, char delimiter);
 t_lexer				init_lexer(const char *line);
 
 /*
 **	In file get_token_id.c
 */
 
-t_token_id			lex_get_token_id(t_token *token, char delimiter);
+t_token_id			lex_get_token_id(t_token *token);
 
 /*
 **	in file match_operator.c
@@ -214,5 +215,5 @@ int					match_expand(t_lexer *lex, size_t token_start);
 */
 
 void				free_ast_node(t_ast *node);
-void				free_token(t_token *token);
+void				free_token(void *value);;
 #endif

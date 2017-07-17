@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 15:25:00 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 15:25:03 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/17 10:20:14 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ t_lexer		init_lexer(const char *line)
 **	Creates a token, storing the string value, its type and the value's lenght.
 */
 
-t_token		*create_token(char *value, t_token_type type)
+t_token		*create_token(char *value, t_token_type type, char delimiter)
 {
 	t_token		*token;
 
 	token = palloc(sizeof(*token));
+	token->delimiter = delimiter;
 	token->value = value;
 	token->id = 0;
 	token->type = type;

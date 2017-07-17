@@ -6,13 +6,14 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:56:59 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/15 16:01:12 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/17 10:30:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "libft.h"
 #include "parser.h"
+#include "exec.h"
 #include <stdio.h>
 
 /*
@@ -122,8 +123,9 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	t_list	*node;
 
 	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
-	token = create_token(value, lex->state);
-	token->id = lex_get_token_id(token, lex->line[lex->index]);
+	token = create_token(value, lex->state, lex->line[lex->index]);
+	token->id = lex_get_token_id(token);
+	exec_expand(token);
 	node = ft_simple_lst_create(token);
 	if (lex->stack == NULL)
 		lex->stack = node;

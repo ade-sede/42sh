@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 11:23:31 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 13:38:58 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/17 10:49:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 #include "parser.h"
 #include <stdio.h>
 
-void	free_token(t_token *token)
+void	free_token(void *value)
 {
+	t_token *token;
+
+	token = (t_token*)value;
 	if (token->value)
 		free(token->value);
 	free(token);

@@ -6,12 +6,13 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/15 13:43:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/17 10:15:20 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
+# include "env.h"
 # include "lexer.h"
 # include "parser.h"
 

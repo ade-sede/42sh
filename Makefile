@@ -38,7 +38,7 @@ SRC_FILE =	\
 	exec/exec_bin.c \
 	exec/main_loop.c \
 	exec/param_expansion.c \
-	exec/word_expand.c \
+	exec/word_expansion.c \
 	exec/tild_expansion.c \
 	exec/exec_tree.c \
 	exec/exec_simple_commands.c \
