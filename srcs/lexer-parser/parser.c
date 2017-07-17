@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:31:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/15 13:29:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/17 12:01:19 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 **	As a token is considered to be a leaf of the tree, the tree is being built
 **	from the leaves to the root. Upon reading, tokens are converted into the
 **	AST's nodes. Some nodes merely represent a symbol from our grammar, and do
-**	not hold a token. The function ast_create_simple_command takes the full list of
-**	tokens, and a temporary root to build upon. This temporary root is
+**	not hold a token. The function ast_create_simple_command takes the full
+**	list of tokens, and a temporary root to build upon. This temporary root is
 **	considered to be a `simple command'.  The function will create a node, that
 **	will act as a temporary root for our tree. For each token it reads from the
 **	list:
@@ -45,7 +45,6 @@
 **			new branch for the new command, and attaching the simple command we
 **			just created to a complexe one.
 */
-
 
 static void	start_simple_command(t_ast **root, t_list **token_list, \
 		int *command_name)
