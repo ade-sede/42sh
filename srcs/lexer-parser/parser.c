@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:31:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/17 12:01:19 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/19 12:04:03 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	append_redir(t_ast **root, t_list **token_list)
 	t_ast	*new_node;
 
 	new_node = ast_create_node_from_redir(token_list);
-	ft_simple_lst_add(&((*root)->child), ft_simple_lst_create(new_node));
+	ft_simple_lst_pushback(&((*root)->child), ft_simple_lst_create(new_node));
 }
 
 t_ast		*ast_create_simple_command(t_ast **root, t_list **token_list, \

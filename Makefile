@@ -42,6 +42,7 @@ SRC_FILE =	\
 	exec/tild_expansion.c \
 	exec/exec_tree.c \
 	exec/exec_simple_commands.c \
+	exec/redir.c \
 \
 	lexer-parser/check_match.c \
 	lexer-parser/init.c \
@@ -57,7 +58,7 @@ SRC_FILE =	\
 	lexer-parser/update_state.c \
 	lexer-parser/free.c
 
-NAME ?= minishell
+NAME ?= 21sh
 
 # Defining those variables allows auto completion to occure.
 APPEND=
