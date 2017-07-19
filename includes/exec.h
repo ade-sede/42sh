@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 13:47:37 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/19 17:26:39 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,13 @@ void			exec_simple_command(t_ast *ast);
 ** In redir.c
 */
 
-void				exec_redir(t_ast *ast);
-void				output_redir(int io_number, char *target);
+void				exec_redir(t_ast *ast, t_list **redir_stack);
+void				output_redir(int io_number, char *target, t_list **redir_stack);
+void				close_redir(t_list *redir_stack);
 
 typedef struct	s_redir
 {
 	int			id;
-	void		(*f)(int, char*);
+	void		(*f)(int, char*, t_list**);
 }				t_redir;
 #endif

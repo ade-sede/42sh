@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:31:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 12:04:03 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/19 16:07:08 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ static void	start_simple_command(t_ast **root, t_list **token_list, \
 	*command_name = 0;
 }
 
+
+/*
+**	Sometimes the token might represent a complexe command, but there was no
+**	initial simple command or nothing to build a new one. In this case, the
+**	corresponding child has a NULL ast.
+*/
+
 static void	start_complexe_command(t_ast **root, t_list **token_list, \
 		int *command_name, t_token *token)
 {
@@ -61,12 +68,15 @@ static void	start_complexe_command(t_ast **root, t_list **token_list, \
 	t_list	*child;
 
 	child = ft_simple_lst_create(*root);
-	new_branch_root = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
-	ft_simple_lst_pushback(&child, ft_simple_lst_create(new_branch_root));
-	*root = ast_create_node(token, child, COMPLEXE_COMMAND);
+	*root = ast_create_node(token, NULL, COMPLEXE_COMMAND);
 	ft_simple_lst_del_one(token_list, *token_list, NULL);
+	new_branch_root = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 	new_branch_root = ast_create_simple_command(&new_branch_root, \
 			token_list, command_name);
+	if (!new_branch_root->child)
+		new_branch_root = free_ast_node(new_branch_root);
+	ft_simple_lst_pushback(&child, ft_simple_lst_create(new_branch_root));
+	(*root)->child = child;
 	*command_name = 0;
 }
 

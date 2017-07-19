@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:51 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 11:29:20 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/19 17:25:27 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void		exec_simple_command(t_ast *ast)
 	t_list		*child_list;
 	size_t		i;
 	const char	**argv;
+	t_list		*redir_stack = NULL;
 
 	argv = ft_memalloc(sizeof(*argv) * (4096));
 	i = 0;
@@ -66,7 +67,7 @@ void		exec_simple_command(t_ast *ast)
 		token = child_node->token;
 		if (child_node->symbol == IO_REDIRECT)
 		{
-			exec_redir(child_node);
+			exec_redir(child_node, &redir_stack);
 			free_redir(child_node);
 		}
 		if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
@@ -76,4 +77,5 @@ void		exec_simple_command(t_ast *ast)
 	}
 	exec(singleton_env(), argv);
 	free(argv);
+	close_redir(redir_stack);
 }

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/14 15:09:07 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/19 14:30:34 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	exec(t_env *env, const char **argv)
 		if (!(exec_builtin(env, argv)))
 			fork_exec_bin(env, argv);
 	}
+	else
+		env->previous_exit = EXIT_FAILURE;
 	while (argv[index] != NULL)
 	{
 		free((void*)(argv[index]));
