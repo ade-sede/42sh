@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:18 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/19 10:25:51 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ int	copy(t_line *line)
 	if (line->visu_mode)
 	{
 		if (line->visu_start < line->pos)
-			line->copied_text = ft_strndup(line->buff + line->visu_start, line->pos - line->visu_start);
+			line->copied_text = ft_strndup(line->buff + line->visu_start, \
+					line->pos - line->visu_start);
 		else if (line->visu_start > line->pos)
-			line->copied_text = ft_strndup(line->buff + line->pos, line->visu_start - line->pos);
+			line->copied_text = ft_strndup(line->buff + line->pos, \
+					line->visu_start - line->pos);
 		line->visu_mode = 0;
 	}
 	return (1);

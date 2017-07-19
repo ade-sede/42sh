@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:20 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/19 10:32:07 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ void	edit_refresh_cursor(t_line *line)
 	put_ntermcap("up", src_line - dest_line);
 	if (dest_col > src_col)
 		put_ntermcap("nd", dest_col - src_col);
-	else 
+	else
 		put_ntermcap("le", src_col - dest_col);
 }
 
 /*
-** refresh line write buff on multiple lines per ws_col.
+** Refresh line write buff on multiple lines per ws_col.  If the cursor is in
+** the last colomn, move it to the next line.
 */
 
 void	edit_refresh_line(t_line *line)
@@ -52,9 +53,6 @@ void	edit_refresh_line(t_line *line)
 		ft_putnstr(line->buff + i, ws_col);
 		i += ws_col;
 	}
-	/*
-	**if the cursor is in the last colomn, move it to the next line.
-	*/
 	if ((line->len + line->prompt_len) % (ws_col) == 0)
 		put_termcap("do");
 }
@@ -87,9 +85,6 @@ size_t	edit_refresh_nchar(t_line *line, size_t padding, char *str, size_t n)
 		}
 		ft_putnstr(str + i, n - i);
 	}
-	/*
-	**if the cursor is in the last colomn, move it to the next line.
-	*/
 	if ((n + padding) % (ws_col) == 0)
 		put_termcap("do");
 	return ((n + padding) % (ws_col));
@@ -104,37 +99,34 @@ void	edit_refresh_visu(t_line *line)
 	{
 		start = edit_refresh_nchar(line, start, line->buff, line->pos);
 		ft_putstr("\e[39;42m");
-		start = edit_refresh_nchar(line, start, line->buff + line->pos,  line->visu_start - line->pos);
+		start = edit_refresh_nchar(line, start, line->buff + line->pos, \
+				line->visu_start - line->pos);
 		ft_putstr("\e[0m");
-		start = edit_refresh_nchar(line, start, line->buff + line->visu_start,  line->len - line->visu_start);
+		start = edit_refresh_nchar(line, start, line->buff + line->visu_start, \
+				line->len - line->visu_start);
 	}
 	else
 	{
 		start = edit_refresh_nchar(line, start, line->buff, line->visu_start);
 		ft_putstr("\e[39;42m");
-		start = edit_refresh_nchar(line, start, line->buff + line->visu_start, line->pos - line->visu_start);
+		start = edit_refresh_nchar(line, start, line->buff + line->visu_start, \
+				line->pos - line->visu_start);
 		ft_putstr("\e[0m");
-		start = edit_refresh_nchar(line, start, line->buff + line->pos, line->len - line->pos);
+		start = edit_refresh_nchar(line, start, line->buff + line->pos, \
+				line->len - line->pos);
 	}
-
 }
 
 void	edit_refresh_clear(t_line *line)
 {
 	put_ntermcap("up", (line->old_pos + line->prompt_len) / line->ws_col);
 	put_termcap("cr");
-	//put_ntermcap("dl", init_line);
 	put_termcap("cd");
-	//put_termcap("do");
 }
 
 void	edit_refresh(t_line *line)
 {
-	//ft_putchar('\n');
-	//put_termcap("up");
 	edit_refresh_clear(line);
-	//put_termcap("do");
-	//put_termcap("dl");
 	line->prompt_len = put_prompt(singleton_env());
 	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
 	edit_refresh_cursor(line);
