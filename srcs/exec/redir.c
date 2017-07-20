@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/19 10:50:13 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/20 11:29:20 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/20 12:32:59 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-
 static t_redir	g_redir[] =
 {
-	{TK_GREAT, &output_redir},
-	{TK_DGREAT, &output_redir},
-	{TK_LESS, &input_redir},
+	{TK_GREAT, &file_redir},
+	{TK_DGREAT, &file_redir},
+	{TK_LESS, &file_redir},
 	{-1, NULL}
 };
 
@@ -48,6 +47,7 @@ void	close_redir(t_list *redir_stack)
 		save = first->data;
 		dup2(save[1], save[0]);
 		close(save[1]);
+		close(save[2]);
 		first = first->next;
 	}
 	ft_simple_lst_remove(&redir_stack, ft_free);
@@ -88,37 +88,20 @@ int		redir_open_file(char *target, t_token_id id)
 **	save[1] is the dup.
 */
 
-void	input_redir(int io_number, char *target, t_list **redir_stack, t_token_id id)
+void	file_redir(int io_number, char *target, t_list **redir_stack, t_token_id id)
 {
 	int	target_fd;
 	int	*save;
 
 	if (io_number == -1)
-		io_number = 0;
+		io_number = (id == TK_LESS) ? 0 : 1;
 	target_fd = redir_open_file(target, id);
 	if (target_fd >= 0)
 	{
-		save = palloc(sizeof(*save) * 2);
+		save = palloc(sizeof(*save) * 3);
 		save[0] = io_number;
 		save[1] = dup(io_number);
-		ft_simple_lst_add(redir_stack, ft_simple_lst_create(save));
-		dup2(target_fd, io_number);
-	}
-}
-
-void	output_redir(int io_number, char *target, t_list **redir_stack, t_token_id id)
-{
-	int	target_fd;
-	int	*save;
-
-	if (io_number == -1)
-		io_number = 1;
-	target_fd = redir_open_file(target, id);
-	if (target_fd >= 0)
-	{
-		save = palloc(sizeof(*save) * 2);
-		save[0] = io_number;
-		save[1] = dup(io_number);
+		save[2] = target_fd;
 		ft_simple_lst_add(redir_stack, ft_simple_lst_create(save));
 		dup2(target_fd, io_number);
 	}
@@ -126,13 +109,13 @@ void	output_redir(int io_number, char *target, t_list **redir_stack, t_token_id 
 
 void	exec_redir(t_ast *ast, t_list **redir_stack)
 {
-	t_list	*child_list;
-	t_ast	*child_node;
-	int		io_number;
-	void	(*f)(int, char*, t_list**, t_token_id);
-	char	*target;
+	t_list		*child_list;
+	t_ast		*child_node;
+	int			io_number;
+	void		(*f)(int, char*, t_list**, t_token_id);
+	char		*target;
 	t_token_id id;
-	size_t	i = 0;
+	size_t		i = 0;
 
 	child_list = ast->child;
 	io_number = -1;
