@@ -5,33 +5,63 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/19 10:50:13 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/20 13:52:47 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/07/20 14:37:06 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/07/20 14:38:06 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
-#include "env.h"
-#include "exec.h"
-#include "builtin.h"
-#include "line_editing.h"
-#include "lexer.h"
-#include "parser.h"
 #include <stdio.h>
 #include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include "libft.h"
+#include "exec.h"
+#include "line_editing.h"
+#include "lexer.h"
+#include "parser.h"
 
 static t_redir	g_redir[] =
 {
 	{TK_GREAT, &file_redir},
 	{TK_DGREAT, &file_redir},
 	{TK_LESS, &file_redir},
+	{TK_LESSGREAT, &file_redir},
 	{TK_LESSAND, &merge_fd},
 	{TK_GREATAND, &merge_fd},
 	{-1, NULL}
 };
+
+/*
+**	This function is used to open the file with the right options depending on
+**	the operator's id. FD of the opened file will be returned.
+*/
+
+int		redir_open_file(char *target, t_token_id id)
+{
+	int	target_fd;
+	int	mode;
+
+	mode = 0;
+	if (id == TK_LESS)
+		mode |= O_RDONLY;
+	if (id != TK_LESS)
+	{
+		mode |= (id == TK_LESSGREAT) ? O_RDWR : O_WRONLY;
+		if (access(target, F_OK) == -1)
+			mode |= O_CREAT;
+		if (id == TK_DGREAT)
+			mode |= O_APPEND;
+		else if (id != TK_LESSGREAT && id != TK_DGREAT)
+			mode |= O_TRUNC;
+	}
+	if (mode & O_CREAT)
+		target_fd = open(target, mode, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	else
+		target_fd = open(target, mode);
+	return (target_fd);
+}
 
 /*
 **	save[0] is the original fd (source)
@@ -39,11 +69,9 @@ static t_redir	g_redir[] =
 **	save[2] is the fd of the opened file. -1 if no file was opened. (target)
 **	save[3] is a flag that indicates if save[1](target) is a fd that should or
 **	not be closed. If the fd shouldnt be closed its value is 1.
+**	Must be careful about never closing stdin stdout or stderr.
 */
 
-/*
-**	Must be careful about never closing stdin out err.
-*/
 /*
 **	Function used to restore all FDs after work is done.
 */
@@ -64,37 +92,6 @@ void	close_redir(t_list *redir_stack)
 		first = first->next;
 	}
 	ft_simple_lst_remove(&redir_stack, ft_free);
-}
-
-
-/*
-**	This function is used to open the file with the right options depending on
-**	the operator's id. FD of the opened file will be returned.
-*/
-
-int		redir_open_file(char *target, t_token_id id)
-{
-	int	target_fd;
-	int	mode;
-
-	mode = 0;
-	if (id == TK_LESS)
-		mode |= O_RDONLY;
-	else
-	{
-		mode |= O_WRONLY;
-		if (access(target, F_OK) == -1)
-			mode |= O_CREAT;
-		if (id == TK_DGREAT)
-			mode |= O_APPEND;
-		else
-			mode |= O_TRUNC;
-	}
-	if (mode & O_CREAT)
-		target_fd = open(target, mode, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	else
-		target_fd = open(target, mode);
-	return (target_fd);
 }
 
 /*
@@ -135,7 +132,7 @@ void	file_redir(int io_number, char *target, t_list **redir_stack, t_token_id id
 	int	*save;
 
 	if (io_number == -1)
-		io_number = (id == TK_LESS) ? 0 : 1;
+		io_number = (id == TK_LESS || id == TK_LESSGREAT) ? 0 : 1;
 	target_fd = redir_open_file(target, id);
 	if (target_fd >= 0)
 	{
@@ -177,5 +174,6 @@ void	exec_redir(t_ast *ast, t_list **redir_stack)
 			target = child_node->token->value;
 		child_list = child_list->next;
 	}
+	if (f)
 	f(io_number, target, redir_stack, id);
 }
