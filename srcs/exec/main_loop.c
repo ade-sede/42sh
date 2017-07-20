@@ -48,7 +48,7 @@ void	init_main_loop(t_line *line, t_hist *hist)
 {	/*
 	**	Init everything thats necessary. Might need to do that in an another fcts
 	*/
-	hist->writen_buff = NULL;
+	(void)hist;
 	line->len = 0;
 	line->pos = 0;
 	line->visu_mode = 0;

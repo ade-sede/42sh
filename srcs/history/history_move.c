@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "history.h"
+	#include <stdio.h>
 
 int		strnequ_writen_buff(void *data)
 {
@@ -21,7 +22,7 @@ int		strnequ_writen_buff(void *data)
 		return (1);
 	if (ft_strnequ(data, singleton_hist()->writen_buff, len))
 	{
-//		printf("\n writen buff %s data %s len %d\n", singleton_hist()->writen_buff, data, len);
+		printf("\n writen buff %s data %s len %d\n", singleton_hist()->writen_buff, data, len);
 		return (1);
 	}
 	return (0);
