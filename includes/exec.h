@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/20 12:22:18 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/20 13:52:16 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void			exec_redir(t_ast *ast, t_list **redir_stack);
 void			close_redir(t_list *redir_stack);
 void			file_redir(int io_number, char *target, \
 		t_list **redir_stack, t_token_id id);
+void			merge_fd(int io_number, char *target, t_list **redir_stack, t_token_id id);
 
 typedef struct	s_redir
 {

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/19 10:50:13 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/20 12:32:59 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/20 13:52:47 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,22 @@ static t_redir	g_redir[] =
 	{TK_GREAT, &file_redir},
 	{TK_DGREAT, &file_redir},
 	{TK_LESS, &file_redir},
+	{TK_LESSAND, &merge_fd},
+	{TK_GREATAND, &merge_fd},
 	{-1, NULL}
 };
 
+/*
+**	save[0] is the original fd (source)
+**	save[1] The duplicate of the source fd save[0]
+**	save[2] is the fd of the opened file. -1 if no file was opened. (target)
+**	save[3] is a flag that indicates if save[1](target) is a fd that should or
+**	not be closed. If the fd shouldnt be closed its value is 1.
+*/
 
+/*
+**	Must be careful about never closing stdin out err.
+*/
 /*
 **	Function used to restore all FDs after work is done.
 */
@@ -46,12 +58,14 @@ void	close_redir(t_list *redir_stack)
 	{
 		save = first->data;
 		dup2(save[1], save[0]);
+		if (save[3] != TRUE)
+			close(save[2]);
 		close(save[1]);
-		close(save[2]);
 		first = first->next;
 	}
 	ft_simple_lst_remove(&redir_stack, ft_free);
 }
+
 
 /*
 **	This function is used to open the file with the right options depending on
@@ -84,9 +98,36 @@ int		redir_open_file(char *target, t_token_id id)
 }
 
 /*
-**	save[0] is the original fd.
-**	save[1] is the dup.
+**	Fd merging with op >& and <&
 */
+
+void	merge_fd(int io_number, char *target, t_list **redir_stack, t_token_id id)
+{
+	int	target_fd;
+	int	*save;
+	int	natural_fd;
+
+	natural_fd = TRUE;
+	if (io_number == -1)
+		io_number = (id == TK_LESSAND) ? 0 : 1;
+	if (ft_strequ(target, "-"))
+	{
+		natural_fd = FALSE;
+		target_fd = open("/dev/null", O_WRONLY);
+	}
+	else
+		target_fd = ft_atoi(target);
+	if (target_fd >= 0)
+	{
+		save = palloc(sizeof(*save) * 4);
+		save[0] = io_number;
+		save[1] = dup(io_number);
+		save[2] = target_fd;
+		save[3] = natural_fd;
+		ft_simple_lst_add(redir_stack, ft_simple_lst_create(save));
+		dup2(target_fd, io_number);
+	}
+}
 
 void	file_redir(int io_number, char *target, t_list **redir_stack, t_token_id id)
 {
@@ -98,10 +139,11 @@ void	file_redir(int io_number, char *target, t_list **redir_stack, t_token_id id
 	target_fd = redir_open_file(target, id);
 	if (target_fd >= 0)
 	{
-		save = palloc(sizeof(*save) * 3);
+		save = palloc(sizeof(*save) * 4);
 		save[0] = io_number;
 		save[1] = dup(io_number);
 		save[2] = target_fd;
+		save[3] = FALSE;
 		ft_simple_lst_add(redir_stack, ft_simple_lst_create(save));
 		dup2(target_fd, io_number);
 	}
