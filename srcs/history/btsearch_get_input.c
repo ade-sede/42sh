@@ -34,10 +34,7 @@ int		btsearch_get_input(t_line *line)
 		else if (ft_isprint(keycode))
 			btsearch_add(keycode, line, h);
 		else if (keycode == KEY_ENTER || !ft_isprint(keycode))
-		{
-			btsearch_exit(line, h);
-			return (1);
-		}
+			return (btsearch_exit(line, h));
 		btsearch_refresh(line, h);
 	}
 	return (0);

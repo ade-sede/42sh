@@ -19,7 +19,7 @@ void	btsearch_change_line(t_line *line, t_hist *h, t_list_d *node)
 	ft_strclr(line->buff);
 	ft_strcpy(line->buff, h->btsearch_cur->data);
 	line->pos = 0;
-	line->len = 0;
+	line->len = ft_strlen(line->buff);
 }
 
 int	btsearch_next(t_line *line, t_hist *h)

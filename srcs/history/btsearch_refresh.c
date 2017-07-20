@@ -23,7 +23,7 @@ void	btsearch_refresh(t_line *line, t_hist *h)
 	ft_putchar('_');
 	put_termcap("up");
 	move_cursor_firstline_from_lastline(line);
-	line->prompt_len = put_prompt(NULL);
+	line->prompt_len = put_prompt(singleton_env());
 	edit_refresh_line(line);
 	edit_refresh_cursor(line);
 	(void)h;
