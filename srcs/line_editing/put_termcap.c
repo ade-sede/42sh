@@ -6,13 +6,13 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:21 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/19 10:32:47 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_editing.h"
 
-int	int_putchar(int c)
+int		int_putchar(int c)
 {
 	ft_putchar((char)c);
 	return (0);

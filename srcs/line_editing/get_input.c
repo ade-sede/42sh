@@ -46,8 +46,6 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	}
 	if (ft_isprint((char)keycode))
 		edit_add(keycode, line);
-	//ft_putnbr(keycode);
-	//ft_putchar('\n');
 	return (1);
 }
 
@@ -59,10 +57,10 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 **	pressed, the displayed line is refreshed.
 */
 
-char		*edit_get_input(t_env *env)
+char	*edit_get_input(t_env *env)
 {
 	unsigned long	keycode;
-	t_line		*l;
+	t_line			*l;
 
 	l = singleton_line();
 	edit_set_signals();
