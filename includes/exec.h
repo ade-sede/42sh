@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 17:26:39 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/20 11:24:33 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@
 **	- Treatment of command prefix ( mainly variable assignement)
 **	- The cmd name and all of its suffix are appended to an array.
 **	- Every redirection we found in the tree is treated. Informations about the
-**	redirections are kept in a list, allowing us to restore the original FDs			/TODO
-**	when all operations are over.
+**	redirections are kept in a list, allowing us to restore the original FDs
+**	when all operations are over. The list's data is a malloc'ed int array of
+**	size 2, where index 0 contains the original FD, and 1 the new file it is
+**	mapped to.
 **
+** TODO
 **	The array is then sent to execution routines where the following occures:
 **	- Try to execute the command as a builtin (by matching it to the list of
 **	existing builtins). If this step is a success, execution is over.
@@ -87,13 +90,16 @@ void			exec_simple_command(t_ast *ast);
 ** In redir.c
 */
 
-void				exec_redir(t_ast *ast, t_list **redir_stack);
-void				output_redir(int io_number, char *target, t_list **redir_stack);
-void				close_redir(t_list *redir_stack);
+void			exec_redir(t_ast *ast, t_list **redir_stack);
+void			output_redir(int io_number, char *target, \
+		t_list **redir_stack, t_token_id id);
+void			close_redir(t_list *redir_stack);
+void			input_redir(int io_number, char *target, \
+		t_list **redir_stack, t_token_id id);
 
 typedef struct	s_redir
 {
 	int			id;
-	void		(*f)(int, char*, t_list**);
+	void		(*f)(int, char*, t_list**, t_token_id);
 }				t_redir;
 #endif

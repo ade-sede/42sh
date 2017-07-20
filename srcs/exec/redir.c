@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/19 10:50:13 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 18:03:01 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/20 11:29:20 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 static t_redir	g_redir[] =
 {
 	{TK_GREAT, &output_redir},
+	{TK_DGREAT, &output_redir},
+	{TK_LESS, &input_redir},
 	{-1, NULL}
 };
 
@@ -51,41 +53,73 @@ void	close_redir(t_list *redir_stack)
 	ft_simple_lst_remove(&redir_stack, ft_free);
 }
 
-int		get_fd_link(t_list *redir, int io_ref)
-{
-	int		*save;
+/*
+**	This function is used to open the file with the right options depending on
+**	the operator's id. FD of the opened file will be returned.
+*/
 
-	while (redir)
+int		redir_open_file(char *target, t_token_id id)
+{
+	int	target_fd;
+	int	mode;
+
+	mode = 0;
+	if (id == TK_LESS)
+		mode |= O_RDONLY;
+	else
 	{
-		save = redir->data;
-		if (save[0] == io_ref)
-			return (save[1]);
-		redir = redir->next;
+		mode |= O_WRONLY;
+		if (access(target, F_OK) == -1)
+			mode |= O_CREAT;
+		if (id == TK_DGREAT)
+			mode |= O_APPEND;
+		else
+			mode |= O_TRUNC;
 	}
-	return (io_ref);
+	if (mode & O_CREAT)
+		target_fd = open(target, mode, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	else
+		target_fd = open(target, mode);
+	return (target_fd);
 }
+
 /*
 **	save[0] is the original fd.
 **	save[1] is the dup.
 */
 
-void	output_redir(int io_number, char *target, t_list **redir_stack)
+void	input_redir(int io_number, char *target, t_list **redir_stack, t_token_id id)
 {
 	int	target_fd;
 	int	*save;
 
-	errno = 0;
-	target_fd = open(target, O_RDWR | O_CREAT);
-	if (target_fd < 0)
-		perror(NULL);
-	chmod(target, S_IRUSR | S_IWUSR | S_IXUSR);
+	if (io_number == -1)
+		io_number = 0;
+	target_fd = redir_open_file(target, id);
 	if (target_fd >= 0)
 	{
 		save = palloc(sizeof(*save) * 2);
 		save[0] = io_number;
 		save[1] = dup(io_number);
 		ft_simple_lst_add(redir_stack, ft_simple_lst_create(save));
-		/* } */
+		dup2(target_fd, io_number);
+	}
+}
+
+void	output_redir(int io_number, char *target, t_list **redir_stack, t_token_id id)
+{
+	int	target_fd;
+	int	*save;
+
+	if (io_number == -1)
+		io_number = 1;
+	target_fd = redir_open_file(target, id);
+	if (target_fd >= 0)
+	{
+		save = palloc(sizeof(*save) * 2);
+		save[0] = io_number;
+		save[1] = dup(io_number);
+		ft_simple_lst_add(redir_stack, ft_simple_lst_create(save));
 		dup2(target_fd, io_number);
 	}
 }
@@ -95,12 +129,13 @@ void	exec_redir(t_ast *ast, t_list **redir_stack)
 	t_list	*child_list;
 	t_ast	*child_node;
 	int		io_number;
-	void	(*f)(int, char*, t_list**);
+	void	(*f)(int, char*, t_list**, t_token_id);
 	char	*target;
+	t_token_id id;
 	size_t	i = 0;
 
 	child_list = ast->child;
-	io_number = 1;
+	io_number = -1;
 	while (child_list)
 	{
 		child_node = child_list->data;
@@ -111,11 +146,11 @@ void	exec_redir(t_ast *ast, t_list **redir_stack)
 			while (g_redir[i].f && g_redir[i].id != child_node->token->id)
 				i++;
 			f = g_redir[i].f;
+			id = child_node->token->id;
 		}
 		else
 			target = child_node->token->value;
 		child_list = child_list->next;
 	}
-	if (target)
-		f(io_number, target, redir_stack);
+	f(io_number, target, redir_stack, id);
 }
