@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 14:37:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/20 14:38:06 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/20 14:58:35 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,8 @@ void	merge_fd(int io_number, char *target, t_list **redir_stack, t_token_id id)
 	}
 	else
 		target_fd = ft_atoi(target);
-	if (target_fd >= 0)
+	errno = 0;
+	if (target_fd >= 0 && (fcntl(target_fd, F_GETFD) != -1 && errno != EBADF))
 	{
 		save = palloc(sizeof(*save) * 4);
 		save[0] = io_number;
