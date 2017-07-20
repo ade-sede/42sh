@@ -33,7 +33,7 @@ void	edit_handle_sigint(int signum)
 	move_cursor_lastline(singleton_line());
 	edit_line_init(singleton_line());
 	ft_putchar('\n');
-	put_prompt(NULL);
+	put_prompt(singleton_env());
 	(void)signum;
 }
 
