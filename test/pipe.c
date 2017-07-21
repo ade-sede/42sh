@@ -5,159 +5,124 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/07 16:47:40 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 17:22:45 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/07/21 10:35:30 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/07/21 13:23:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "errno.h"
-#include "fcntl.h"
-#include "color.h"
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
 #define WRITE_END 1
 #define READ_END 0
 
-const char	*test_dup2only_writefd(short *error)
+int		main(void)
 {
-	dprintf(2, CYN"\nLaunching test %s\n"RESET, __func__);
-	char	*path;
-	const char	*str;
+	int		*fd1;
+	int		*fd2;
+	int		out_save1;
+	int		in_save1;
+	int		out_save2;
+	int		in_save2;
+	pid_t	child1;
+	pid_t	child2;
+	pid_t	child3;
 	char	buff[4096];
-	int		save_stdout;
+	
 
-	path = "test/dup2only_writefd.txt";
-	str = __func__;
+	bzero(buff, 4096);
+	/* Starting first pipe */
+	fd1 = malloc(sizeof(*pipe) * 3);
+	fd1[2] = -1;
+	if (pipe(fd1) == -1)
+		printf("Error opening pipe 1\n");
 
-	int		fd = open(path, O_CREAT | O_RDWR);
-	if (fd < 0)
-		dprintf(2, RED"CANT OPEN\n"RESET);
-	chmod(path, S_IRUSR | S_IWUSR | S_IXUSR);
+	/* Saving 1 for pipe 1*/
+	out_save1 = dup(1);
 
-	/* Saving original fd 1, and dupping 1 onto fd such as if you try to access 1 you access fd instead */
-	dprintf(2, "Before dup, fd = "BLU"%d\n"RESET, fd);
-	save_stdout = dup(1);
-	dup2(fd, 1);
-	dprintf(2, "After dup, fd = "BLU"%d\n"RESET, fd);
-
-	/* Print on fd*/
-	ft_putstr_fd(str, fd);
-
-	/* Reset needle. */
-	close(fd);
-	fd = open(path, O_CREAT | O_RDWR);
-	if (fd < 0)
-		dprintf(2, RED"CANT OPEN\n"RESET);
-	/* Read into buff */
-	read(fd, buff, 4096);
-
-	/* Restoring fd */
-	dup2(save_stdout, 1);
-	fflush(stdout);
-	close(save_stdout);
-	/* Checking if fd 1 is still up */
-	dprintf(1, " If this appears on standard output, we restored fd 1 successfully. This was called from %s\n", __func__);
-
-	/* Cmp */
-	if (strcmp(buff, str) != 0)
+	/* Launching cmd 1 */
+	child1 = fork();
+	if (child1 == 0)
 	{
-		dprintf(2, "str = "MAG"#"CYN"%s"MAG"#\n", str);
-		dprintf(2, "buff = "MAG"#"CYN"%s"MAG"#\n", buff);
-		*error = TRUE;
+		/* Link 1 to write_end of p1*/
+		dup2(fd1[WRITE_END], 1);
+		exit(system("ls"));
 	}
 	else
-		dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff);
-	close(fd);
-	return (__func__);
-}
-
-const char	*test_dup2only_1(short *error)
-{
-	dprintf(2, CYN"\nLaunching test %s\n"RESET, __func__);
-	char	*path;
-	const char	*str;
-	char	buff[4096];
-	int		save_stdout;
-
-	path = "test/dup2only_1.txt";
-	str = __func__;
-
-
-	int		fd = open(path, O_CREAT | O_RDWR);
-	if (fd < 0)
-		dprintf(2, RED"CANT OPEN\n"RESET);
-	chmod(path, S_IRUSR | S_IWUSR | S_IXUSR);
-
-	/* Saving original fd 1, and dupping 1 onto fd such as if you try to access 1 you access fd instead */
-
-	dprintf(2, "Before dup, fd = "BLU"%d\n"RESET, fd);
-	save_stdout = dup(1);
-	dup2(fd, 1);
-	dprintf(2, "After dup, fd = "BLU"%d\n"RESET, fd);
-
-
-	/* Print on fd 1*/
-	ft_putstr_fd(str, 1);
-
-	/* Reset needle. */
-	close(fd);
-	fd = open(path, O_CREAT | O_RDWR);
-	if (fd < 0)
-		dprintf(2, RED"CANT OPEN\n"RESET);
-	/* Read into buff */
-	read(fd, buff, 4096);
-
-	/* Restoring fd */
-	close(fd);
-	dup2(save_stdout, 1);
-	/* close(save_stdout); */
-	/* Checking if fd 1 is still up */
-	dprintf(1, " If this appears on standard output, we restored fd 1 successfully. This was called from %s\n", __func__);
-
-	/* Cmp */
-	if (strcmp(buff, str) != 0)
 	{
-		dprintf(2, "str = "MAG"#"CYN"%s"MAG"#\n", str);
-		dprintf(2, "buff = "MAG"#"CYN"%s"MAG"#\n", buff);
-		*error = TRUE;
+		wait(&child1);
+		dprintf(2, "Done with cmd1 \n");
+	}
+
+
+	/* Restoring 1 after pipe 1*/
+	dup2(1, out_save1);
+
+	/* Saving 1 for pipe2*/
+	out_save2 = dup(1);
+
+	/* Saving 0 for pipe1*/
+	in_save1 = dup(0);
+
+	/* Starting 2nd pipe */
+	fd2 = malloc(sizeof(*pipe) * 3);
+	fd2[2] = -1;
+	if (pipe(fd2) == -1)
+		printf("Error opening pipe 2\n");
+
+	/* Starting 2nd command */
+	child2 = fork();
+	if (child2 == 0)
+	{
+		/* Link 0 to read_end of p1 */
+		dup2(fd1[READ_END], 0);
+		read(0, buff, 4096);
+		/* dprintf(2, "Command 2 received from cmd 1 :\n"MAG"#"CYN"%s"MAG"#\n"RESET, buff); */
+		/* Link 1 to write_end of p2*/
+		dup2(fd2[WRITE_END], 1);
+
+		exit(system("echo yup"));
 	}
 	else
-		dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff);
-	return (__func__);
-}
+	{
+		wait(&child2);
+		dprintf(2, "Done with cmd2 \n");
+	}
 
-int	main(void)
-{
-	size_t nb_func = 2, index = 0;
-	const char *error_list[nb_func + 1];
-	short int error = FALSE, nb_error = 0;
-	const char *(*f[nb_func])(short int*);
-	const char	*func_ret;
-	bzero(f, nb_func);
-	bzero(error_list, nb_func + 1);
-	f[0] = &test_dup2only_1;
-	f[1] = &test_dup2only_writefd;
-	while (index < nb_func)
+	/* Restoring 1 after pipe1 */
+	dup2(1, out_save2);
+
+	/* Restoring 0 after pipe1 */
+	dup2(0, in_save1);
+
+	/* Saving 0 for pipe2 */
+	in_save2 = dup(0);
+	close(fd1[0]);
+	close(fd1[1]);
+
+	/* Starting cmd3 */
+	bzero(buff, 4096);
+	child3 = fork();
+	if (child3 == 0)
 	{
-		error = FALSE;
-		func_ret = f[index](&error);
-		if (error)
-		{
-			dprintf(2, RED"FAIL @ %s\n"RESET, func_ret);
-			error_list[nb_error] = func_ret;
-			nb_error++;
-		}
-		else
-			dprintf(2, GRN"SUCCESS @ %s\n"RESET, func_ret);
-		index++;
+		/* Link 0 to read_end of p2 */
+		dup2(fd2[READ_END], 0);
+		read(0, buff, 4096);
+		/* dprintf(2, "Command 3 received from cmd 2 :\n"MAG"#"CYN"%s"MAG"#\n"RESET, buff); */
+
+		exit(system("ls -l"));
 	}
-	if (nb_error)
+	else
 	{
-		dprintf(2, MAG"\nReminder of failed tests\n"RESET);
-		for (int i = 0; i < nb_error; i++)
-			dprintf(2, "- %s\n", error_list[i]);
+		wait(&child3);
+		dprintf(2, "Done with cmd3 \n");
 	}
+
+	/* Restoring 0 after p2 */
+	dup2(0, in_save2);
+	close(fd2[0]);
+	close(fd2[1]);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:51 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 17:25:27 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/21 16:57:58 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	free_redir(t_ast *ast)
 **	by one until no childs are left.
 */
 
-void		exec_simple_command(t_ast *ast)
+void		exec_simple_command(t_ast *ast, t_lst_head *head)
 {
 	t_token		*token;
 	t_ast		*child_node;
@@ -75,7 +75,9 @@ void		exec_simple_command(t_ast *ast)
 		free_ast_node(child_node);
 		child_list = child_list->next;
 	}
-	exec(singleton_env(), argv);
+	exec(singleton_env(), argv, head, &redir_stack);
 	free(argv);
 	close_redir(redir_stack);
+	if (head->middle)
+	head->middle = head->middle->next;
 }

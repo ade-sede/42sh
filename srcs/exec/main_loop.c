@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 14:30:34 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/21 16:40:05 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **	Receives an array containing the command name and its arguments.
 */
 
-void	exec(t_env *env, const char **argv)
+void	exec(t_env *env, const char **argv, t_lst_head *head, t_list **redir_stack)
 {
 	size_t		index;
 
@@ -32,7 +32,7 @@ void	exec(t_env *env, const char **argv)
 	if (*argv != NULL)
 	{
 		if (!(exec_builtin(env, argv)))
-			fork_exec_bin(env, argv);
+			fork_exec_bin(env, argv, head, redir_stack);
 	}
 	else
 		env->previous_exit = EXIT_FAILURE;
@@ -44,7 +44,7 @@ void	exec(t_env *env, const char **argv)
 }
 
 /*
-**	REPL. On this version, reading on static buff, or 4096.
+**	REPL. On this version, reading on non-dynamic buff, 4096.
 */
 
 void	main_loop(t_env *env)
@@ -65,7 +65,10 @@ void	main_loop(t_env *env)
 		{
 			lex = init_lexer(buff);
 			ast = start_lex(&lex);
-			exec_tree(ast);
+#ifdef PIPE_DEBUG
+			dprintf(2, "Creating the initial empty node\n");//			REMOVE		
+#endif
+			exec_tree(ast, ft_create_head(ft_double_lst_create(NULL)));
 		}
 	}
 }

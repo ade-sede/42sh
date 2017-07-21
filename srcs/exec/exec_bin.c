@@ -6,13 +6,14 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 14:19:04 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/13 14:25:23 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/21 16:57:53 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "env.h"
 #include "sys/wait.h"
+#include "exec.h"
 #include <stdio.h>
 
 /*
@@ -70,13 +71,61 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 	failure(argv[0], paths);
 }
 
-int			fork_exec_bin(t_env *env, const char **argv)
+static void	redir_pipe(t_lst_head *head, t_list **redir_stack)
+{
+	int			*p_right;
+	int			*p_left;
+	t_list_d	*cur;
+
+	cur = head->middle;
+	p_right = cur->data;
+	p_left = (cur->prev) ? cur->prev->data : NULL;
+
+#ifdef PIPE_DEBUG
+		dprintf(2, RED"----------------------------------------------------\n"RESET);//			REMOVE		
+#endif
+	if (p_right)
+	{
+		if (!p_left)
+		{
+		dprintf(2, "Left // Write side\n");//			REMOVE		
+			exec_dup(STDOUT_FILENO, p_right[WRITE_END], FALSE, redir_stack);
+		}
+		else
+		{
+#ifdef PIPE_DEBUG
+		dprintf(2, "Between // Read side + Write side\n");//			REMOVE		
+#endif
+			exec_dup(STDOUT_FILENO, p_right[WRITE_END], FALSE, redir_stack);
+			exec_dup(STDIN_FILENO, p_left[READ_END], FALSE, redir_stack);
+		}
+	}
+	else
+	{
+		if (p_left)
+		{
+
+#ifdef PIPE_DEBUG
+		dprintf(2, "Right // Read side\n");//			REMOVE		
+#endif
+			exec_dup(STDIN_FILENO, p_left[READ_END], FALSE, redir_stack);
+		}
+	}
+
+#ifdef PIPE_DEBUG
+		dprintf(2, RED"----------------------------------------------------\n"RESET);//			REMOVE		
+#endif
+}
+
+int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head, t_list **redir_stack)
 {
 	pid_t		child;
 
 	child = fork();
 	if (child == 0)
 	{
+		if (head)
+			redir_pipe(head, redir_stack);
 		if (ft_strchr(argv[0], '/'))
 			ft_exec_bin_absolute(env, argv);
 		else

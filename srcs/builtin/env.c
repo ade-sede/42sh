@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 14:46:14 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/26 14:56:33 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/21 15:31:30 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int					builtin_env(t_env *old_env, const char **argv)
 	if (!(*argv))
 		env_print_environ((const char**)new_env.environ);
 	else
-		fork_exec_bin(&new_env, argv);
+		fork_exec_bin(&new_env, argv, NULL, NULL);
 	env_free_env(&new_env);
 	return (EXIT_SUCCESS);
 }
