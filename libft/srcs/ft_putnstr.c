@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/21 16:24:07 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/22 20:29:58 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 void	ft_putnstr(char *str, size_t len)
 {
-	write(1, str, len);
+    unsigned int strlen;
+
+    strlen = ft_strlen(str);
+    if (strlen > len)
+        write(1, str, len);
+    else
+        write(1, str, strlen);
 }

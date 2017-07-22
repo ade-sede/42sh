@@ -6,18 +6,18 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 18:57:54 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/22 22:07:21 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_editing.h"
 #include "libft.h"
 
-int	ft_insert_str_dest(char *dest, char *str)
+int	ft_insert_str_dest(char *dest, char *str, size_t dest_len)
 {
 	size_t	len;
 	len = ft_strlen(str);
-	ft_memmove((void*)(dest + len), (void*)(dest), ft_strlen(dest));
+	ft_memmove((void*)(dest + len), (void*)(dest), dest_len);
 	ft_strncpy(dest, str, len);
 	return (1);
 }
@@ -25,12 +25,16 @@ int	ft_insert_str_dest(char *dest, char *str)
 int	edit_insert_str(t_line *line, char *dest, char *str)
 {
 	size_t	len;
+	size_t	dest_pos;
+	size_t	dest_len;
 
+	dest_pos = dest - line->buff;
+	dest_len = ft_strlen(dest);
 	len = ft_strlen(str);
 	if (line->len + len >= line->size)
 	    realoc_line_buff(&line->buff, &line->size, line->len + len);
-	ft_insert_str_dest(dest, str);
-	line->pos = dest - line->buff + len;
+	ft_insert_str_dest(line->buff + dest_pos, str, dest_len);
+	line->pos = dest_pos + len;
 	line->len = ft_strlen(line->buff);
 	return (1);
 }

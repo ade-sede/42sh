@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 19:55:10 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/22 22:00:53 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define KEY_ALT_P 32975
 # define KEY_ALT_V 10127586
 # define KEY_ALT_R 44738
-# define BUFF_LINE_SIZE 4000
+# define BUFF_LINE_SIZE 10
 
 typedef struct			s_line
 {
@@ -96,7 +96,7 @@ void	move_cursor_firstline_from_lastline(t_line *line);
 void	move_cursor_bufflen_from_lastline(t_line *line);
 char	*edit_exit(t_line *line);
 
-int	ft_insert_str_dest(char *str, char *dest);
+int	ft_insert_str_dest(char *str, char *dest, size_t dest_len);
 int	edit_insert_str(t_line *line, char *dest, char *str);
 
 void	realoc_line_buff(char **buff, unsigned int *size, unsigned int size_needed);
