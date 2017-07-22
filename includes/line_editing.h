@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 19:03:46 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/22 19:55:10 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define KEY_ALT_P 32975
 # define KEY_ALT_V 10127586
 # define KEY_ALT_R 44738
-# define LINE_BUFF_SIZE 10
+# define BUFF_LINE_SIZE 4000
 
 typedef struct			s_line
 {
