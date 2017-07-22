@@ -72,6 +72,7 @@ SRC_FILE =	\
 	line_editing/put_termcap.c \
 \
 	history/btsearch_add.c \
+	history/btsearch_del.c \
 	history/btsearch_exit.c \
 	history/btsearch_get_input.c \
 	history/btsearch_init.c \

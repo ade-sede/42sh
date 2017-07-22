@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 14:52:29 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/22 15:44:40 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ int		btsearch_get_input(t_line *line)
 		if (keycode == KEY_ALT_R) 
 			btsearch_next(line, h);
 		else if (keycode == KEY_DELETE) 
-			btsearch_prev(line, h);
+			btsearch_del(line, h);
+		/*
+**			else if (keycode == KEY??)
+**				btsearch_prev(line, h);
+*/
 		else if (ft_isprint(keycode))
 			btsearch_add(keycode, line, h);
 		else if (keycode == KEY_ENTER || !ft_isprint(keycode))

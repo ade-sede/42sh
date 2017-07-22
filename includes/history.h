@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 14:43:52 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/22 15:44:20 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ void	btsearch_change_line(t_line *line, t_hist *h, t_list_d *node);
 int	btsearch_handle_sigwinch(t_line *line, t_hist *h);
 int	btsearch_handle_sigint(t_line *line, t_hist *h);
 void	btsearch_set_signals(void);
+void	btsearch_del(t_line *line, t_hist *h);
+void	btsearch_first_search(t_hist *h);
+void	create_strstr_btsearch_buff(t_list_d *item);
 
 # endif
