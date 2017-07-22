@@ -6,13 +6,13 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 15:54:17 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/01 13:48:24 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/22 18:38:45 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 1
+# define BUFF_SIZE 100
 # include <stdlib.h>
 
 typedef struct	s_l

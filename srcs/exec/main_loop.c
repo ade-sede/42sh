@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/17 13:14:46 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/22 19:00:26 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->visu_mode = 0;
 	line->copied_text = NULL;
 	line->ws_col = get_ws_col();
-	line->buff = ft_strnew(4096);
+	line->buff = ft_strnew(LINE_BUFF_SIZE);
+	line->size = LINE_BUFF_SIZE;
 }
 
 void	main_loop(t_env *env)
