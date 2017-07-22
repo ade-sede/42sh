@@ -77,6 +77,7 @@ SRC_FILE =	\
 	history/btsearch_init.c \
 	history/btsearch_move.c \
 	history/btsearch_refresh.c \
+	history/btsearch_signals.c \
 	history/history_init.c \
 	history/history_move.c \
 	history/history_move_loop.c \

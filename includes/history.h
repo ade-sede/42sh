@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:21:49 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/22 14:43:52 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_hist
 	t_list_d	*btsearch_cur;
 	char		*btsearch_buff;
 	size_t		btsearch_buff_len;
+	int		signum; // pour sortir du btsearch et kill le read avec sigaction
 }		t_hist;
 
 t_hist	*singleton_hist(void);
@@ -54,6 +55,8 @@ int	btsearch_prev(t_line *line, t_hist *h);
 int	btsearch_next(t_line *line, t_hist *h);
 void	btsearch_refresh(t_line *line, t_hist *h);
 void	btsearch_change_line(t_line *line, t_hist *h, t_list_d *node);
-
+int	btsearch_handle_sigwinch(t_line *line, t_hist *h);
+int	btsearch_handle_sigint(t_line *line, t_hist *h);
+void	btsearch_set_signals(void);
 
 # endif

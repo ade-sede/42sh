@@ -1,44 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btsearch_move.c                                    :+:      :+:    :+:   */
+/*   btsearch_signals.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 14:04:04 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/22 14:46:09 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "line_editing.h"
 #include "history.h"
+#include "line_editing.h"
+#include <signal.h>
+#include <stdio.h>
 
-void	btsearch_change_line(t_line *line, t_hist *h, t_list_d *node)
+int	btsearch_handle_sigwinch(t_line *line, t_hist *h)
 {
-	h->btsearch_cur = node;
+	//put_termcap("cr");
+	//put_termcap("cd");
+	//btsearch_clear(*h());
+    (void)line;
+    (void)h;
+	return (1);
+}
+
+int	btsearch_handle_sigint(t_line *line, t_hist *h)
+{
+	btsearch_exit(line, h);
+	h->signum = 0;
 	ft_strclr(line->buff);
-	if (h->btsearch_cur)
-	    ft_strcpy(line->buff, h->btsearch_cur->data);
-	line->pos = 0;
-	line->len = ft_strlen(line->buff);
+	line->len = 0;
+	return (1);
+	//put_prompt(NULL);
 }
 
-int	btsearch_next(t_line *line, t_hist *h)
+void	btsearch_set_btsearch_signum(signum)
 {
-	if (h->btsearch_cur && h->btsearch_cur->next)
-	{
-		btsearch_change_line(line, h, h->btsearch_cur->next);
-		return (1);
-	}
-	return (0);
+	singleton_hist()->signum = signum;
 }
 
-int	btsearch_prev(t_line *line, t_hist *h)
+void	btsearch_set_signals(void)
 {
-	if (h->btsearch_cur && h->btsearch_cur->prev)
-	{
-		btsearch_change_line(line, h, h->btsearch_cur->prev);
-		return (1);
-	}
-	return (0);
+	struct sigaction sa;
+
+	sa.sa_handler = btsearch_set_btsearch_signum;
+	sa.sa_mask = 0;
+	sa.sa_flags = 0;
+	sigaction(SIGINT, &sa, NULL);
 }
