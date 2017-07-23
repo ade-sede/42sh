@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 11:23:31 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 15:51:18 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/23 18:13:49 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,12 @@ void	free_token(void *value)
 
 t_ast	*free_ast_node(t_ast *node)
 {
-	ft_simple_lst_remove(&node->child, NULL);
-	if (node->token)
-		free_token(node->token);
-	free(node);
+	if (node)
+	{
+		ft_simple_lst_remove(&node->child, NULL);
+		if (node->token)
+			free_token(node->token);
+		free(node);
+	}
 	return (NULL);
 }

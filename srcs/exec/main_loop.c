@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/21 16:40:05 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/23 17:19:31 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **	Receives an array containing the command name and its arguments.
 */
 
-void	exec(t_env *env, const char **argv, t_lst_head *head, t_list **redir_stack)
+void	exec(t_env *env, const char **argv, t_lst_head *head)
 {
 	size_t		index;
 
@@ -32,7 +32,7 @@ void	exec(t_env *env, const char **argv, t_lst_head *head, t_list **redir_stack)
 	if (*argv != NULL)
 	{
 		if (!(exec_builtin(env, argv)))
-			fork_exec_bin(env, argv, head, redir_stack);
+			fork_exec_bin(env, argv, head);
 	}
 	else
 		env->previous_exit = EXIT_FAILURE;
@@ -53,6 +53,7 @@ void	main_loop(t_env *env)
 	char		buff[LOCAL_BUFF_SIZE];
 	t_lexer		lex;
 	char		*nl;
+	t_lst_head	*head;
 
 	while (42)
 	{
@@ -68,7 +69,9 @@ void	main_loop(t_env *env)
 #ifdef PIPE_DEBUG
 			dprintf(2, "Creating the initial empty node\n");//			REMOVE		
 #endif
-			exec_tree(ast, ft_create_head(ft_double_lst_create(NULL)));
+			head = ft_create_head(ft_double_lst_create(NULL));
+			exec_tree(ast, head);
+			ft_remove_head(&head, ft_free);
 		}
 	}
 }

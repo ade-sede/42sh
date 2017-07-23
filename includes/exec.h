@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/21 15:15:11 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/23 18:11:12 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,13 @@
 ** In exec_bin.c
 */
 
-int				fork_exec_bin(t_env *env, const char **argv, t_lst_head *head, t_list **redir_stack);
+int				fork_exec_bin(t_env *env, const char **argv, t_lst_head *head);
 
 /*
 ** In main_loop.c
 */
 
-void			exec(t_env *env, const char **argv, t_lst_head *head, t_list **redir_stack);
+void			exec(t_env *env, const char **argv, t_lst_head *head);
 void			main_loop(t_env *env);
 
 /*
@@ -145,7 +145,9 @@ void			tild_expand(t_env *env, t_token *token);
 ** In exec_tree.c
 */
 
-void			exec_tree(t_ast *ast, t_lst_head *head);
+int				end_branch(int error, t_ast *ast);
+int				exec_tree(t_ast *ast, t_lst_head *head);
+t_ast			*flush_tree(t_ast *ast);
 
 /*
 ** In exec_simple_commands.c

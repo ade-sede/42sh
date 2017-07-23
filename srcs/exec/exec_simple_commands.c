@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:51 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/21 16:57:58 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/23 20:04:07 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,19 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 		free_ast_node(child_node);
 		child_list = child_list->next;
 	}
-	exec(singleton_env(), argv, head, &redir_stack);
+	exec(singleton_env(), argv, head);
+	/* dprintf(2, BLU"Finished executing command %s %s\n"RESET, argv[0], argv[1]);//			REMOVE */		
 	free(argv);
 	close_redir(redir_stack);
 	if (head->middle)
-	head->middle = head->middle->next;
+	{
+#ifdef PIPE_DEBUG
+		dprintf(2, YEL"Before : %s\n" ,(head->middle->data) ? "On pipe" : "Not on pipe");
+		dprintf(2, YEL"Advancing\n"RESET);//			REMOVE		
+#endif
+		head->middle = head->middle->next;
+#ifdef PIPE_DEBUG
+		dprintf(2, YEL"After : %s\n" ,(head->middle && head->middle->data) ? "On pipe" : "Not on pipe");
+#endif
+	}
 }
