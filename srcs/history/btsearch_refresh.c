@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 14:05:14 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/23 21:07:03 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 
 void	btsearch_refresh(t_line *line, t_hist *h)
 {
+	char	*search_line;
+
 	edit_refresh_clear(line);
 	move_cursor_lastline(line);
 	ft_putchar('\n');
-	(h->btsearch_cur == NULL) ? ft_putstr("failing bck-i-search: ") : ft_putstr("bck-i-search: ");
-	ft_putstr(h->btsearch_buff);
+	search_line = (h->btsearch_cur == NULL) ? "failing bck-i-search: " : "bck-i-search: ";
+	search_line = ft_strjoin_free(search_line, h->btsearch_buff, 0);
+	edit_refresh_nchar(line, 0, search_line, ft_strlen(search_line));
 	ft_putchar('_');
-	put_termcap("up");
+	put_ntermcap("up", ft_strlen(search_line) / line->ws_col + 1);
 	move_cursor_firstline_from_lastline(line);
 	line->prompt_len = put_prompt(singleton_env());
 	edit_refresh_line(line);

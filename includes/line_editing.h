@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/23 19:17:41 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/23 21:04:34 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	edit_word_left(t_line *line);
 int	edit_backspace(t_line *line);
 void	edit_add(int keycode, t_line *line);
 void	edit_refresh(t_line *line);
+size_t	edit_refresh_nchar(t_line *line, size_t padding, char *str, size_t n);
 void	edit_refresh_clear(t_line *line);
 void	edit_refresh_cursor(t_line *line);
 void	edit_refresh_line(t_line *line);
