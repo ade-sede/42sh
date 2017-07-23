@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/21 16:23:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/21 17:19:52 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/06/08 23:46:39 by vcombey           #+#    #+#             */
+/*   Updated: 2017/07/23 17:46:33 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (new_str);
 }
 
+
 char	*cl_strjoin(char const *s1, char const *s2)
 {
 	char	*new_str;
@@ -46,4 +47,26 @@ char	*cl_strjoin(char const *s1, char const *s2)
 	ft_memcpy(new_str, s1, s1_len);
 	ft_memcpy(new_str + s1_len, s2, s2_len);
 	return (new_str);
+}
+
+static void		ft_strdelete(char *s1, char *s2, int delete)
+{
+	if (delete == 3)
+	{
+		free(s1);
+		free(s2);
+	}
+	if (delete == 2)
+		free(s1);
+	else if (delete == 1)
+		free(s2);
+}
+
+char			*ft_strjoin_free(char *s1, char *s2, int delete)
+{
+	char	*res;
+
+	res = ft_strjoin(s1, s2);
+	ft_strdelete(s1, s2, delete);
+	return (res);
 }

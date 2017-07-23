@@ -56,7 +56,44 @@ SRC_FILE =	\
 	lexer-parser/parser.c \
 	lexer-parser/casual_node.c \
 	lexer-parser/update_state.c \
-	lexer-parser/free.c
+	lexer-parser/free.c \
+\
+	line_editing/conf_term.c \
+	line_editing/copy_paste.c \
+	line_editing/edit_add.c \
+	line_editing/edit_del.c \
+	line_editing/edit_exit.c \
+	line_editing/edit_init.c \
+	line_editing/edit_insert_str.c \
+	line_editing/edit_move.c \
+	line_editing/edit_move_cursor.c \
+	line_editing/edit_refresh.c \
+	line_editing/edit_signals.c \
+	line_editing/get_input.c \
+	line_editing/put_termcap.c \
+\
+	history/btsearch_add.c \
+	history/btsearch_del.c \
+	history/btsearch_exit.c \
+	history/btsearch_get_input.c \
+	history/btsearch_init.c \
+	history/btsearch_move.c \
+	history/btsearch_refresh.c \
+	history/btsearch_signals.c \
+	history/history_init.c \
+	history/history_move.c \
+	history/history_move_loop.c \
+	history/history_refresh.c \
+	history/load_history.c \
+\
+	completion/comple_exit_matched.c \
+	completion/comple_get_input.c \
+	completion/comple_init.c \
+	completion/comple_matches.c \
+	completion/comple_move.c \
+	completion/comple_refresh.c \
+	completion/comple_signals.c \
+	completion/size_term.c
 
 NAME ?= 21sh
 

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/12 10:29:48 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/22 14:53:22 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_double_lst_remove(t_lst_head **head, void (*f)(void*))
 	while (curr)
 	{
 		next = curr->next;
-		if (curr->data)
+		if (curr->data && f)
 			(f)(curr->data);
 		free(curr);
 		curr = next;

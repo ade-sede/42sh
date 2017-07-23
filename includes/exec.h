@@ -1,20 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exec.h                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/22 12:59:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/23 18:11:12 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef EXEC_H
 # define EXEC_H
 # include "env.h"
 # include "lexer.h"
 # include "parser.h"
+# include "history.h"
+# include "line_editing.h"
 
 /*
 **	After lexing and parsing, an AST is created.  If complexe commands are
@@ -122,6 +112,7 @@ int				fork_exec_bin(t_env *env, const char **argv, t_lst_head *head);
 
 void			exec(t_env *env, const char **argv, t_lst_head *head);
 void			main_loop(t_env *env);
+char		 	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist);
 
 /*
 ** In param_expansion.c
