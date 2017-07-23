@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:23:16 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/02 18:49:46 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/21 14:18:50 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,20 @@ void	ft_double_lst_add(t_lst_head **head, t_list_d *new_node)
 {
 	if (new_node)
 	{
-		new_node->next = (*head)->first;
-		(*head)->first->prev = new_node;
-		(*head)->first = new_node;
-		(*head)->shift_middle -= 1;
-		(*head)->node_count += 1;
+		if ((*head)->first)
+		{
+			new_node->next = (*head)->first;
+			(*head)->first->prev = new_node;
+			(*head)->first = new_node;
+			(*head)->shift_middle -= 1;
+			(*head)->node_count += 1;
+		}
+		else
+		{
+			(*head)->node_count += 1;
+			(*head)->first = new_node;
+			(*head)->middle = new_node;
+		}
 	}
 	ft_lst_replace_middle(head);
 }

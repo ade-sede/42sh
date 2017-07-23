@@ -12,7 +12,7 @@
 **	Receives an array containing the command name and its arguments.
 */
 
-void	exec(t_env *env, const char **argv)
+void	exec(t_env *env, const char **argv, t_lst_head *head)
 {
 	size_t		index;
 
@@ -20,7 +20,7 @@ void	exec(t_env *env, const char **argv)
 	if (*argv != NULL)
 	{
 		if (!(exec_builtin(env, argv)))
-			fork_exec_bin(env, argv);
+			fork_exec_bin(env, argv, head);
 	}
 	else
 		env->previous_exit = EXIT_FAILURE;
@@ -32,7 +32,7 @@ void	exec(t_env *env, const char **argv)
 }
 
 /*
-**	REPL. On this version, reading on static buff, or 4096.
+**	REPL. On this version, reading on non-dynamic buff, 4096.
 */
 void	init_main_loop(t_line *line, t_hist *hist)
 {	/*
@@ -70,6 +70,7 @@ void	main_loop(t_env *env)
 #endif
 	t_lexer		lex;
 	char		*nl;
+	t_lst_head	*head;
 
 #ifndef NO_TERMCAPS
 	init_main_loop(singleton_line(), singleton_hist());
@@ -90,7 +91,12 @@ void	main_loop(t_env *env)
 		{
 			lex = init_lexer(buff);
 			ast = start_lex(&lex);
-			exec_tree(ast);
+#ifdef PIPE_DEBUG
+			dprintf(2, "Creating the initial empty node\n");//			REMOVE		
+#endif
+			head = ft_create_head(ft_double_lst_create(NULL));
+			exec_tree(ast, head);
+			ft_remove_head(&head, ft_free);
 		}
 	}
 }
