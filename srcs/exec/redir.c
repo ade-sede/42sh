@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 14:37:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/21 14:54:09 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/22 15:13:19 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void	exec_redir(t_ast *ast, t_list **redir_stack)
 			io_number = ft_atoi(child_node->token->value);
 		else if TK_IS_REDIR((child_node->token->id))
 		{
-			while (g_redir[i].f && g_redir[i].id != child_node->token->id)
+			while (g_redir[i].f && g_redir[i].id != (int)child_node->token->id)
 				i++;
 			f = g_redir[i].f;
 			id = child_node->token->id;

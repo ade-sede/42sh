@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 14:19:04 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/21 16:57:53 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/22 15:32:51 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,10 @@ static void	redir_pipe(t_lst_head *head, t_list **redir_stack)
 	{
 		if (!p_left)
 		{
+#ifdef PIPE_DEBUG
 		dprintf(2, "Left // Write side\n");//			REMOVE		
+#endif
+			close(p_right[READ_END]);
 			exec_dup(STDOUT_FILENO, p_right[WRITE_END], FALSE, redir_stack);
 		}
 		else
@@ -96,6 +99,8 @@ static void	redir_pipe(t_lst_head *head, t_list **redir_stack)
 #ifdef PIPE_DEBUG
 		dprintf(2, "Between // Read side + Write side\n");//			REMOVE		
 #endif
+			close(p_right[READ_END]);
+			close(p_left[WRITE_END]);
 			exec_dup(STDOUT_FILENO, p_right[WRITE_END], FALSE, redir_stack);
 			exec_dup(STDIN_FILENO, p_left[READ_END], FALSE, redir_stack);
 		}
@@ -108,6 +113,7 @@ static void	redir_pipe(t_lst_head *head, t_list **redir_stack)
 #ifdef PIPE_DEBUG
 		dprintf(2, "Right // Read side\n");//			REMOVE		
 #endif
+			close(p_left[WRITE_END]);
 			exec_dup(STDIN_FILENO, p_left[READ_END], FALSE, redir_stack);
 		}
 	}
@@ -120,6 +126,13 @@ static void	redir_pipe(t_lst_head *head, t_list **redir_stack)
 int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head, t_list **redir_stack)
 {
 	pid_t		child;
+	int			*p_right;
+	int			*p_left;
+	t_list_d	*cur;
+
+	cur = head->middle;
+	p_right = cur->data;
+	p_left = (cur->prev) ? cur->prev->data : NULL;
 
 	child = fork();
 	if (child == 0)
@@ -133,6 +146,13 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head, t_list **re
 	}
 	if (child > 0)
 	{
+		if (p_right)
+			close(p_right[WRITE_END]);
+		if (p_left)
+		{
+			close(p_left[WRITE_END]);
+			close(p_left[READ_END]);
+		}
 		env->child_pid = child;
 		wait(&child);
 		env->previous_exit = WEXITSTATUS(child);
