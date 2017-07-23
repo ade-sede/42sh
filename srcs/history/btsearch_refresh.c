@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/23 21:07:03 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/23 21:12:05 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	btsearch_refresh(t_line *line, t_hist *h)
 	line->prompt_len = put_prompt(singleton_env());
 	edit_refresh_line(line);
 	edit_refresh_cursor(line);
+	free(search_line);
 	(void)h;
 }
