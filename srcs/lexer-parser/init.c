@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 15:25:00 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/17 10:20:14 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/23 17:55:35 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_lexer		init_lexer(const char *line)
 {
 	t_lexer		lex;
 
-	lex.line = line;
+	lex.line = ft_strdup(line);
 	lex.index = 0;
 	lex.stack = NULL;
 	lex.state = DEFAULT;

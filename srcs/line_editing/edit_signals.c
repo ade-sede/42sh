@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:21 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/23 18:47:05 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	edit_handle_sigint(int signum)
 	move_cursor_lastline(singleton_line());
 	edit_line_init(singleton_line());
 	ft_putchar('\n');
-	put_prompt(singleton_env());
+	singleton_line()->put_prompt(singleton_env());
 	(void)signum;
 }
 

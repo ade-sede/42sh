@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/22 22:09:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/23 18:49:59 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->ws_col = get_ws_col();
 	line->buff = ft_strnew(BUFF_LINE_SIZE);
 //	printf("\n, %s, \n", line->buff);
+	env_add_change(singleton_env(), "PS2", "dquote> ");
+	env_add_change(singleton_env(), "PS3", "quote> ");
 	line->size = BUFF_LINE_SIZE;
+	line->put_prompt = &put_prompt;
 }
 
 void	main_loop(t_env *env)
@@ -83,6 +86,7 @@ void	main_loop(t_env *env)
 		singleton_line()->prompt_len = put_prompt(env);
 		history_init(singleton_hist());
 		edit_line_init(singleton_line());
+		singleton_line()->put_prompt = &put_prompt;
 		buff = edit_get_input(env);
 #endif
 		if ((nl = ft_strchr(buff, '\n')))

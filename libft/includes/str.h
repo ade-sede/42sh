@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 19:32:41 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/21 19:34:31 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/23 17:28:25 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ char				*cl_strsub(char const *s, unsigned int start, size_t len);
 */
 
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin_free(char *s1, char *s2, int delete);
 char				*cl_strjoin(char const *s1, char const *s2);
 
 /*

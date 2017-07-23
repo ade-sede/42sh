@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 21:52:45 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/23 18:31:56 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	edit_refresh_clear(t_line *line)
 void	edit_refresh(t_line *line)
 {
 	edit_refresh_clear(line);
-	line->prompt_len = put_prompt(singleton_env());
+	line->prompt_len = line->put_prompt(singleton_env());
 	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }
