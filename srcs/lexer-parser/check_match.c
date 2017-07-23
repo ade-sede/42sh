@@ -6,12 +6,13 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 15:03:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/23 18:50:42 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/23 19:29:07 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "libft.h"
+#include "exec.h"
 #include <stdio.h>
 #include "line_editing.h"
 #include "history.h"
@@ -29,18 +30,10 @@ void	reopen_line_editing(t_lexer *lex)
 	char	*new_command;
 	
 	if (lex->state == '"')
-	{
-		singleton_line()->prompt_len = put_ps2(singleton_env());
 		singleton_line()->put_prompt = &put_ps2;
-	}
 	if (lex->state == '\'')
-	{
-		singleton_line()->prompt_len = put_ps3(singleton_env());
 		singleton_line()->put_prompt = &put_ps3;
-	}
-	history_init(singleton_hist());
-	edit_line_init(singleton_line());
-	new_command = edit_get_input(singleton_env());
+	new_command = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist()); 
 //	dprintf(2, "New command = "MAG"#"CYN"%s"MAG"#\n"RESET, new_command);
 	lex->line = ft_strjoin_free((char *)lex->line, new_command, 0);
 //	dprintf(2, "\nreopen line editing\n");

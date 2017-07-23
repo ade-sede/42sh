@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/17 14:41:41 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/19 16:48:25 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "lexer.h"
 #include "parser.h"
 #include <stdio.h>
+#include "printf.h"
 
 /*
 **	Delete the entire tree. Temporary to stop leaks.
@@ -56,13 +57,18 @@ static t_ast	*flush_tree(t_ast *ast)
 
 static void		logical_and(t_ast *ast)
 {
-	if (!ast->child->data)
-		singleton_env()->previous_exit = EXIT_FAILURE;
+	int		stop;
+
+
+	stop = 0;
+	if (!ast->child->data || !ast->child->next->data)
+	{
+		stop = 1;
+		ft_dprintf(2, "Parse error near %s\n", ast->token->value);
+	}
 	exec_tree(ast->child->data);
-	if (singleton_env()->previous_exit == 0)
+	if (singleton_env()->previous_exit == 0 && !stop)
 		exec_tree(ast->child->next->data);
-	else
-		ast->child->data = flush_tree(ast->child->data);
 }
 
 /*
@@ -83,8 +89,13 @@ void			exec_tree(t_ast *ast)
 		if (ast->symbol == COMPLEXE_COMMAND)
 		{
 			token = ast->token;
+			if (ft_strequ(token->value, "|"))
+			{
+			}
 			if (ft_strequ(token->value, ";"))
 			{
+				if (!ast->child->data || !ast->child->next->data)
+					ft_dprintf(2, "Parse error near %s\n", token->value);
 				exec_tree(ast->child->data);
 				exec_tree(ast->child->next->data);
 			}

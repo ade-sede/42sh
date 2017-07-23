@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main_loop.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/26 15:39:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/23 18:49:59 by vcombey          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 #include <unistd.h>
 #include "env.h"
@@ -34,6 +22,8 @@ void	exec(t_env *env, const char **argv)
 		if (!(exec_builtin(env, argv)))
 			fork_exec_bin(env, argv);
 	}
+	else
+		env->previous_exit = EXIT_FAILURE;
 	while (argv[index] != NULL)
 	{
 		free((void*)(argv[index]));
@@ -62,6 +52,14 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->put_prompt = &put_prompt;
 }
 
+char 	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
+{
+	line->prompt_len = line->put_prompt(env);
+	history_init(hist);
+	edit_line_init(line);
+	return (edit_get_input(env));
+}
+
 void	main_loop(t_env *env)
 {
 	t_ast		*ast;
@@ -83,11 +81,8 @@ void	main_loop(t_env *env)
 		ft_bzero(buff, LOCAL_BUFF_SIZE);
 		read(0, buff, LOCAL_BUFF_SIZE);
 #else
-		singleton_line()->prompt_len = put_prompt(env);
-		history_init(singleton_hist());
-		edit_line_init(singleton_line());
 		singleton_line()->put_prompt = &put_prompt;
-		buff = edit_get_input(env);
+		buff = line_editing_get_input(env, singleton_line(), singleton_hist());
 #endif
 		if ((nl = ft_strchr(buff, '\n')))
 			*nl = '\0';

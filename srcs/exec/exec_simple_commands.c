@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:51 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/17 10:14:02 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/19 17:25:27 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **	Atm, this function just frees all node so that it doesnt leaks.
 */
 
-static void	exec_redir(t_ast *ast)
+static void	free_redir(t_ast *ast)
 {
 	t_list	*child_list;
 	t_ast	*child_node;
@@ -56,6 +56,7 @@ void		exec_simple_command(t_ast *ast)
 	t_list		*child_list;
 	size_t		i;
 	const char	**argv;
+	t_list		*redir_stack = NULL;
 
 	argv = ft_memalloc(sizeof(*argv) * (4096));
 	i = 0;
@@ -65,7 +66,10 @@ void		exec_simple_command(t_ast *ast)
 		child_node = child_list->data;
 		token = child_node->token;
 		if (child_node->symbol == IO_REDIRECT)
-			exec_redir(child_node);
+		{
+			exec_redir(child_node, &redir_stack);
+			free_redir(child_node);
+		}
 		if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
 			argv[i++] = ft_strdup(token->value);
 		free_ast_node(child_node);
@@ -73,4 +77,5 @@ void		exec_simple_command(t_ast *ast)
 	}
 	exec(singleton_env(), argv);
 	free(argv);
+	close_redir(redir_stack);
 }
