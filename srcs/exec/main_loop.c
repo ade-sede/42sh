@@ -19,7 +19,7 @@ void	exec(t_env *env, const char **argv, t_lst_head *head)
 	index = 0;
 	if (*argv != NULL)
 	{
-		if (!(exec_builtin(env, argv)))
+		if (!(exec_builtin(env, argv, head)))
 			fork_exec_bin(env, argv, head);
 	}
 	else
@@ -31,9 +31,7 @@ void	exec(t_env *env, const char **argv, t_lst_head *head)
 	}
 }
 
-/*
-**	REPL. On this version, reading on non-dynamic buff, 4096.
-*/
+
 void	init_main_loop(t_line *line, t_hist *hist)
 {	/*
 	**	Init everything thats necessary. Might need to do that in an another fcts
@@ -59,6 +57,10 @@ char 	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
 	edit_line_init(line);
 	return (edit_get_input(env));
 }
+
+/*
+**	REPL.
+*/
 
 void	main_loop(t_env *env)
 {

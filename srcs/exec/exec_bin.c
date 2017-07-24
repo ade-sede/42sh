@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 14:19:04 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/23 19:49:43 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 13:03:36 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 	failure(argv[0], paths);
 }
 
-static void	redir_pipe(t_lst_head *head)
+static void	redir_pipe_bin(t_lst_head *head)
 {
 	int			*p_right;
 	int			*p_left;
@@ -80,28 +80,20 @@ static void	redir_pipe(t_lst_head *head)
 	cur = head->middle;
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
-#ifdef PIPE_DEBUG
-	dprintf(2, RED"----------------------------------------------------\n"RESET);//			REMOVE		
-	dprintf(2, "Addr of p_right = %p\nAddr of p_left = %p\n", p_right, p_left);//			REMOVE		
-#endif
 		if (p_right)
 		{
+#ifdef PIPE_DEBUG
 			if (!p_left)
-			{
-#ifdef PIPE_DEBUG
-				dprintf(2, "Left // Write side\n");//			REMOVE		
+				dprintf(2, "Binary is on the left of the pipe // dup 1 to p_right[WRITE_END], close p_right[READ_END]\n");//			REMOVE		
 #endif
 				close(p_right[READ_END]);
 				dup2(p_right[WRITE_END], STDOUT_FILENO);
-			}
-			else
+			if (p_left)
 			{
 #ifdef PIPE_DEBUG
-				dprintf(2, "Between // Read side + Write side\n");//			REMOVE		
+				dprintf(2, "Command is in between 2 pipes. dup 1 to p_right[WRITE_END], dup 0 to p_left[READ_END], closing p_right[READ_END] & p_left[WRITE_END]\n");//			REMOVE		
 #endif
-				close(p_right[READ_END]);
 				close(p_left[WRITE_END]);
-				dup2(p_right[WRITE_END], STDOUT_FILENO);
 				dup2(p_left[READ_END], STDIN_FILENO);
 			}
 		}
@@ -110,18 +102,15 @@ static void	redir_pipe(t_lst_head *head)
 			if (p_left)
 			{
 #ifdef PIPE_DEBUG
-				dprintf(2, "Right // Read side\n");//			REMOVE		
+				dprintf(2, "Command is on the right of the pipe // dup 0 to p_left[READ_END], closing p_left[WRITE_END]\n");//			REMOVE		
 #endif
 				close(p_left[WRITE_END]);
 				dup2(p_left[READ_END], STDIN_FILENO);
 			}
 		}
-#ifdef PIPE_DEBUG
-	dprintf(2, RED"----------------------------------------------------\n"RESET);//			REMOVE		
-#endif
 }
 
-static void	close_parent(t_lst_head *head)
+static void	close_parent_bin(t_lst_head *head)
 {
 	int			*p_right;
 	int			*p_left;
@@ -140,7 +129,7 @@ static void	close_parent(t_lst_head *head)
 	if (p_left)
 	{
 #ifdef PIPE_DEBUG
-		dprintf(2, "closing p_left[WRITE_END] in parent \n");//			REMOVE		
+		dprintf(2, "closing p_left[WRITE_END] in parent process \n");//			REMOVE		
 		/* dprintf(2, "closing p_left[READ_END] in parent \n");//			REMOVE */		
 #endif
 		close(p_left[WRITE_END]);
@@ -158,11 +147,12 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	cur = head->middle;
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
+	conf_term_out();
 	child = fork();
 	if (child == 0)
 	{
 		if (p_right != NULL || p_left != NULL)
-			redir_pipe(head);
+			redir_pipe_bin(head);
 #ifdef PIPE_DEBUG
 		else
 			dprintf(2, "Not related to a pipe !!\n");//			REMOVE		
@@ -175,9 +165,10 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	if (child > 0)
 	{
 		if (p_right != NULL || p_left != NULL)
-			close_parent(head);
+			close_parent_bin(head);
 		env->child_pid = child;
 		wait(&child);
+		conf_term_in();
 		env->previous_exit = WEXITSTATUS(child);
 		return (WEXITSTATUS(child));
 	}

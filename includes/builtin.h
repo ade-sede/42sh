@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 19:10:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/27 19:10:21 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 10:51:59 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int				builtin_cd(t_env *env, const char **argv);
 ** In exec_builtin.c
 */
 
-int				exec_builtin(t_env *env, const char **argv);
+int				exec_builtin(t_env *env, const char **argv, t_lst_head *head);
 
 /*
 ** In echo.c

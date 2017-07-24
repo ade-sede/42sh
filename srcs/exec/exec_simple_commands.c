@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:51 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/23 20:04:07 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 12:18:14 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 		free_ast_node(child_node);
 		child_list = child_list->next;
 	}
+#ifdef PIPE_DEBUG
+	dprintf(2, "Sending the following into exec :\n");
+	for (int j = 0; argv[j] ; j++)
+dprintf(2, "argv["YEL"%d"RESET"] = "MAG"#"CYN"%s"MAG"#\n"RESET, j, argv[j]);
+#endif
 	exec(singleton_env(), argv, head);
 	/* dprintf(2, BLU"Finished executing command %s %s\n"RESET, argv[0], argv[1]);//			REMOVE */		
 	free(argv);
@@ -82,12 +87,12 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 	if (head->middle)
 	{
 #ifdef PIPE_DEBUG
-		dprintf(2, YEL"Before : %s\n" ,(head->middle->data) ? "On pipe" : "Not on pipe");
-		dprintf(2, YEL"Advancing\n"RESET);//			REMOVE		
+		dprintf(2, "When executing, head->middle : %s\n" ,(head->middle->data) ? "On pipe" : "Not on pipe");
+		dprintf(2, "Advancing\n");//			REMOVE		
 #endif
 		head->middle = head->middle->next;
 #ifdef PIPE_DEBUG
-		dprintf(2, YEL"After : %s\n" ,(head->middle && head->middle->data) ? "On pipe" : "Not on pipe");
+		dprintf(2, "After executing: %s\n" ,(head->middle && head->middle->data) ? "On pipe" : "Not on pipe");
 #endif
 	}
 }
