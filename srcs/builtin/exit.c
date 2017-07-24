@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 14:43:09 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 10:46:25 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 15:13:52 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int	builtin_exit(t_env *env, const char **argv)
 		return (return_failure("exit: numeric argument required", NULL));
 	else
 	{
+#ifndef NO_TERMCAPS
 		conf_term_out();
+#endif
 		exit(exit_status);
 	}
 	return (EXIT_SUCCESS);

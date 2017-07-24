@@ -8,6 +8,42 @@
 #include "parser.h"
 #define LOCAL_BUFF_SIZE 4096
 
+
+
+#ifdef PARSER_DEBUG
+void	read_tree(t_ast *ast_start)
+{
+	size_t	index;
+	t_token	*token_parent;
+	char	*parent_name;
+	t_list	*first_child;
+
+	index = 0;
+	token_parent = ast_start->token;
+	printf(GRN"NODE = "RESET);
+	if (token_parent)
+		parent_name = token_parent->value;
+	else
+	{
+		if (ast_start->symbol == SIMPLE_COMMAND)
+			parent_name = "SIMPLE_COMMAND";
+		if (ast_start->symbol == IO_REDIRECT)
+			parent_name = "IO_REDIRECT";
+	}
+	printf(MAG"#"CYN"%s"MAG"#"RESET""YEL"(%d)\n"RESET, parent_name, ast_start->symbol);
+	first_child = ast_start->child;
+	while (first_child)
+	{
+		printf(RED"Starting treatment of child nb "BLU"%zu"RESET" of parent "MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET, index, parent_name, ast_start->symbol);
+		if (first_child->data)
+			read_tree(first_child->data);
+		printf(PNK"\nBACK TO PARENT -> "RESET"Current node = "CYN"%s"RESET" !!!\n", parent_name);
+		first_child = first_child->next;
+		index++;
+	}
+}
+#endif
+
 /*
 **	Receives an array containing the command name and its arguments.
 */
@@ -73,6 +109,7 @@ void	main_loop(t_env *env)
 	t_lexer		lex;
 	char		*nl;
 	t_lst_head	*head;
+	t_list		*token_list;
 
 #ifndef NO_TERMCAPS
 	init_main_loop(singleton_line(), singleton_hist());
@@ -92,7 +129,12 @@ void	main_loop(t_env *env)
 		if (*buff != 0)
 		{
 			lex = init_lexer(buff);
-			ast = start_lex(&lex);
+			token_list = start_lex(&lex);
+			ast = NULL;	// VERY IMPORTANT. Everything crash with a wrong init.
+			ast = ast_parse(&ast, &token_list);
+#ifdef PARSER_DEBUG
+	read_tree(ast);
+#endif
 #ifdef PIPE_DEBUG
 			dprintf(2, "Creating the initial empty node\n");//			REMOVE		
 #endif

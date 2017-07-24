@@ -6,14 +6,16 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:31:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/23 18:15:53 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 15:44:57 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
 #include "color.h"
 #include "libft.h"
+#include "exec.h"
 
 /*
 **	As a token is considered to be a leaf of the tree, the tree is being built
@@ -54,6 +56,19 @@ static void	start_simple_command(t_ast **root, t_list **token_list, \
 	*command_name = 0;
 }
 
+static t_list *reopen_command(t_token *token)
+{
+	char	*new_command;
+	t_list	*token_list;
+	t_lexer	lex;
+
+	(void)token;
+	singleton_line()->put_prompt = &put_ps3;
+	new_command = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist()); 
+	lex = init_lexer(new_command);
+	token_list = start_lex(&lex);
+	return (token_list);
+}
 
 /*
 **	Sometimes the token might represent a complexe command, but there was no
@@ -74,7 +89,17 @@ static void	start_complexe_command(t_ast **root, t_list **token_list, \
 	new_branch_root = ast_create_simple_command(&new_branch_root, \
 			token_list, command_name);
 	if (!new_branch_root->child)
-		new_branch_root = free_ast_node(new_branch_root);
+	{
+		if (ft_strequ((*root)->token->value, ";"))
+			new_branch_root = free_ast_node(new_branch_root);
+		else
+		{
+			if (!token_list || !(*token_list))
+			*token_list = reopen_command((*root)->token);
+		new_branch_root = ast_create_simple_command(&new_branch_root, \
+				token_list, command_name);
+		}
+	}
 	ft_simple_lst_pushback(&child, ft_simple_lst_create(new_branch_root));
 	(*root)->child = child;
 	*command_name = 0;

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/19 15:51:43 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 14:46:12 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ typedef struct		s_lexer
 **	In file lexer.c
 */
 
-t_ast				*start_lex(t_lexer *lex);
+t_list				*start_lex(t_lexer *lex);
 int					tokenize(t_lexer *lex, size_t token_start, \
 		size_t token_end);
 int					start_token(t_lexer *lex, size_t *token_start);

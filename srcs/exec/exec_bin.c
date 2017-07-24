@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 14:19:04 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 13:03:36 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 15:12:48 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,9 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	cur = head->middle;
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
+#ifndef NO_TERMCAPS
 	conf_term_out();
+#endif
 	child = fork();
 	if (child == 0)
 	{
@@ -168,7 +170,9 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 			close_parent_bin(head);
 		env->child_pid = child;
 		wait(&child);
+#ifndef NO_TERMCAPS
 		conf_term_in();
+#endif
 		env->previous_exit = WEXITSTATUS(child);
 		return (WEXITSTATUS(child));
 	}

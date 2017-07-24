@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/23 20:06:20 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 15:24:46 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,12 @@ static int		logical_or(t_ast *ast, t_lst_head *head)
 	}
 	if (error != 0)
 	{
-		flush_tree(ast->child->data);
-		flush_tree(ast->child->next->data);
+		dprintf(2, "error spotted\n");//			REMOVE		
+		ast->child->data = flush_tree(ast->child->data);
+		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
 	if (cmd1_exit == 0)
-		flush_tree(ast->child->next->data);
+		ast->child->next->data = flush_tree(ast->child->next->data);
 	return ((cmd1_exit == 0 || error != 0) ? 1 : 0);
 }
 
@@ -131,11 +132,12 @@ static int		logical_and(t_ast *ast, t_lst_head *head)
 	}
 	if (error != 0)
 	{
-		flush_tree(ast->child->data);
-		flush_tree(ast->child->next->data);
+		dprintf(2, "Error spotted\n");
+		ast->child->data = flush_tree(ast->child->data);
+		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
 	if (cmd1_exit != 0)
-		flush_tree(ast->child->next->data);
+		ast->child->next->data = flush_tree(ast->child->next->data);
 	return ((cmd1_exit != 0 || error != 0) ? 1 : 0);
 }
 
@@ -154,8 +156,8 @@ static int		exec_pipe(t_ast *ast, t_lst_head *head)
 		exec_tree(ast->child->next->data, head);
 	else
 	{
-		flush_tree(ast->child->next->data);
-		/* head->middle = head->middle->next; */
+		ast->child->data = flush_tree(ast->child->next->data);
+		head->middle = head->middle->next;
 	}
 	return (0);
 }
