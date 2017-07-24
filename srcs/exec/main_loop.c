@@ -130,6 +130,18 @@ void	main_loop(t_env *env)
 		{
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
+#ifdef LEXER_DEBUG
+			t_list	*token_debug = token_list;
+			t_token *token;
+
+			token = NULL;
+			while (token_debug)
+			{
+				token = token_debug->data;
+				dprintf(2, MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET,token->value, token->id);//			REMOVE		
+				token_debug = token_debug->next;
+			}
+#endif
 			ast = NULL;	// VERY IMPORTANT. Everything crash with a wrong init.
 			ast = ast_parse(&ast, &token_list);
 #ifdef PARSER_DEBUG

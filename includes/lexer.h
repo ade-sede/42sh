@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 14:46:12 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 17:15:59 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef enum
 	TK_NEWLINE,
 	TK_IO_NUMBER,
 	TK_LESS = 5,
+	TK_HERE,
 	TK_GREAT,
 	TK_SEMI,
 	TK_PIPE,
@@ -99,7 +100,7 @@ typedef enum
 */
 
 # define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
-# define TK_RP1(id) (id == TK_IO_NUMBER || id == TK_GREAT || id == TK_LESS)
+# define TK_RP1(id) (id == TK_IO_NUMBER || id == TK_GREAT || id == TK_LESS || id == TK_HERE)
 # define TK_IS_REDIR(id)  (TK_RP1(id) || (id >= TK_DLESS && id <= TK_CLOBBER))
 
 /*

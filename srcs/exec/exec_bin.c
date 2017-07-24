@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 14:19:04 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 15:12:48 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 17:18:06 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,6 @@ static void	close_parent_bin(t_lst_head *head)
 	cur = head->middle;
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
-	/* if (p_right) */
-	/* { */
-/* #ifdef PIPE_DEBUG */
-	/* 	dprintf(2, "closing p_right[WRITE_END] in parent \n");//			REMOVE */		
-/* #endif */
-	/* 	/1* close(p_right[WRITE_END]); *1/ */
-	/* } */
 	if (p_left)
 	{
 #ifdef PIPE_DEBUG
@@ -133,7 +126,6 @@ static void	close_parent_bin(t_lst_head *head)
 		/* dprintf(2, "closing p_left[READ_END] in parent \n");//			REMOVE */		
 #endif
 		close(p_left[WRITE_END]);
-		/* close(p_left[READ_END]); */
 	}
 }
 
@@ -148,7 +140,7 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 #ifndef NO_TERMCAPS
-	conf_term_out();
+	/* conf_term_out(); */
 #endif
 	child = fork();
 	if (child == 0)
@@ -171,7 +163,7 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 		env->child_pid = child;
 		wait(&child);
 #ifndef NO_TERMCAPS
-		conf_term_in();
+		/* conf_term_in(); */
 #endif
 		env->previous_exit = WEXITSTATUS(child);
 		return (WEXITSTATUS(child));
