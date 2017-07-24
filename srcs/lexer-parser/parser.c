@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:31:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 15:44:57 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 16:23:25 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,17 @@ static void	start_complexe_command(t_ast **root, t_list **token_list, \
 			token_list, command_name);
 	if (!new_branch_root->child)
 	{
+		dprintf(2, "In 1 %p\n", new_branch_root->child);
 		if (ft_strequ((*root)->token->value, ";"))
 			new_branch_root = free_ast_node(new_branch_root);
-		else
+		else if (!*token_list)
 		{
-			if (!token_list || !(*token_list))
 			*token_list = reopen_command((*root)->token);
-		new_branch_root = ast_create_simple_command(&new_branch_root, \
-				token_list, command_name);
+			new_branch_root = ast_create_simple_command(&new_branch_root, \
+					token_list, command_name);
 		}
+		else
+			new_branch_root = free_ast_node(new_branch_root);
 	}
 	ft_simple_lst_pushback(&child, ft_simple_lst_create(new_branch_root));
 	(*root)->child = child;

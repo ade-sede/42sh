@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:46:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 15:24:46 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 16:17:35 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int		logical_or(t_ast *ast, t_lst_head *head)
 
 	error = 0;
 	cmd1_exit = 0;
-	if (!ast->child->data)
+	if (!ast->child->data || !ast->child->next->data)
 	{
 		error = 1;
 		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
@@ -113,7 +113,7 @@ static int		logical_and(t_ast *ast, t_lst_head *head)
 
 	error = 0;
 	cmd1_exit = 0;
-	if (!ast->child->data)
+	if (!(ast->child->data) || !(ast->child->next->data))
 	{
 		error = 1;
 		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
@@ -132,7 +132,6 @@ static int		logical_and(t_ast *ast, t_lst_head *head)
 	}
 	if (error != 0)
 	{
-		dprintf(2, "Error spotted\n");
 		ast->child->data = flush_tree(ast->child->data);
 		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
@@ -144,20 +143,35 @@ static int		logical_and(t_ast *ast, t_lst_head *head)
 static int		exec_pipe(t_ast *ast, t_lst_head *head)
 {
 	int			*p;
+	int			error;
 
-	p = palloc(sizeof(*p) * 2);
-	pipe(p);
+	error = 0;
+	if (!(ast->child->data) || !(ast->child->next->data))
+	{
+		error = 1;
+		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
+	}
+	if (error == 0)
+	{
+		p = palloc(sizeof(*p) * 2);
+		pipe(p);
 #ifdef PIPE_DEBUG
-	dprintf(2, "Creating 1 full node\n");//			REMOVE		
+		dprintf(2, "Creating 1 full node\n");//			REMOVE		
 #endif
-	ft_double_lst_add(&head, ft_double_lst_create(p));
-	head->middle = head->first;
-	if (exec_tree(ast->child->data, head) == 0)
-		exec_tree(ast->child->next->data, head);
+		ft_double_lst_add(&head, ft_double_lst_create(p));
+		head->middle = head->first;
+		if (exec_tree(ast->child->data, head) == 0)
+			exec_tree(ast->child->next->data, head);
+		else
+		{
+			ast->child->data = flush_tree(ast->child->next->data);
+			head->middle = head->middle->next;
+		}
+	}
 	else
 	{
-		ast->child->data = flush_tree(ast->child->next->data);
-		head->middle = head->middle->next;
+		ast->child->data = flush_tree(ast->child->data);
+		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
 	return (0);
 }
@@ -188,7 +202,7 @@ int				exec_tree(t_ast *ast, t_lst_head *head)
 			token = ast->token;
 			if (ft_strequ(token->value, "|"))
 				exec_pipe(ast, head);
-			if (ft_strequ(token->value, ";"))
+			else if (ft_strequ(token->value, ";"))
 				return (end_branch(semi_colon(ast, head), ast));
 			else if (ft_strequ(token->value, "&&"))
 				return (end_branch(logical_and(ast, head), ast));

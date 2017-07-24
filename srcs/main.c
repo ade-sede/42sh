@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 13:54:35 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 15:11:59 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 16:26:19 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 int	main(void)
 {
+	printf("%d\n", getpid());
 	extern const char	**environ;
 
 	env_load_base_env(singleton_env(), environ);
