@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 14:37:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 17:24:27 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 18:09:06 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,8 @@ void	exec_dup(int io_number, int target_fd, int natural_fd, t_list **redir_stack
 
 void	heredoc(int io_number, char *target, t_list **redir_stack, t_token_id id)
 {
-	dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, target);//			REMOVE		
-	char	buff[4096];
 	int		fd;
+	char		*buff;
 
 	(void)id;
 	/* buff = NULL; */
@@ -129,12 +128,10 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, t_token_id id)
 	errno = 0;
 	if ((fd = open("/tmp/42sh_heredoc", O_WRONLY|O_CREAT|O_EXCL|O_TRUNC, 0600)) < 0)
 		dprintf(2, "Open : %s\n", strerror(errno));
-	while (fd >= 0 && !ft_strequ(buff, target))
+	while (fd >= 0 && buff && !ft_strequ(buff, target))
 	{
-		ft_bzero(buff, 4096);
-		read(0, buff, 4096);
-		*ft_strchr(buff, '\n') = 0;
-		/* buff = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist()); */ 
+		singleton_line()->put_prompt = &put_prompt;
+		buff = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist());
 		if (!ft_strequ(buff, target))
 			write(fd, buff, ft_strlen(buff));
 	}
