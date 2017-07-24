@@ -44,7 +44,7 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 		}
 		i++;
 	}
-	if (ft_isprint((char)keycode))
+	if (ft_isprint((char)keycode) && keycode != KEY_DELETE)
 		edit_add(keycode, line);
 	return (1);
 }
