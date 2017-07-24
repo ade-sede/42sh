@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 11:31:52 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 16:23:25 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/24 19:04:12 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static t_list *reopen_command(t_token *token)
 	t_lexer	lex;
 
 	(void)token;
-	singleton_line()->put_prompt = &put_ps3;
+	load_prompt(singleton_env(), singleton_line(), "reopen_command", "command> ");
 	new_command = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist()); 
 	lex = init_lexer(new_command);
 	token_list = start_lex(&lex);

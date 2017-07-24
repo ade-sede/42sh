@@ -80,15 +80,16 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->ws_col = get_ws_col();
 	line->buff = ft_strnew(BUFF_LINE_SIZE);
 //	printf("\n, %s, \n", line->buff);
+	env_add_change(singleton_env(), "PS1", "$> ");
 	env_add_change(singleton_env(), "PS2", "dquote> ");
 	env_add_change(singleton_env(), "PS3", "quote> ");
 	line->size = BUFF_LINE_SIZE;
-	line->put_prompt = &put_prompt;
+	load_prompt(singleton_env(), line, "PS1", "$> ");
 }
 
 char 	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
 {
-	line->prompt_len = line->put_prompt(env);
+	put_prompt(line);
 	history_init(hist);
 	edit_line_init(line);
 	return (edit_get_input(env));
@@ -121,7 +122,7 @@ void	main_loop(t_env *env)
 		ft_bzero(buff, LOCAL_BUFF_SIZE);
 		read(0, buff, LOCAL_BUFF_SIZE);
 #else
-		singleton_line()->put_prompt = &put_prompt;
+		load_prompt(singleton_env(), singleton_line(), "PS1", "$> ");
 		buff = line_editing_get_input(env, singleton_line(), singleton_hist());
 #endif
 		if ((nl = ft_strchr(buff, '\n')))

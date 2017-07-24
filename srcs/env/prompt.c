@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:20:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/23 18:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/24 18:42:44 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,21 @@
 #include "env.h"
 #include "sys/wait.h"
 #include "get_next_line.h"
+#include "line_editing.h"
 
-size_t	put_prompt(t_env *env)
+void	put_prompt(t_line *line)
 {
-	char	*prompt;
-
-	prompt = NULL;
-	prompt = env_getenv((const char**)env->environ, "PS1", NULL);
-	if (!prompt)
-		prompt = "$> ";
-	ft_putstr(prompt);
-	return (ft_strlen(prompt));
+	ft_putstr(line->prompt);
 }
 
-size_t	put_ps2(t_env *env)
+void	load_prompt(t_env *env, t_line *line, char *var, char *defaut)
 {
 	char	*prompt;
 
 	prompt = NULL;
-	prompt = env_getenv((const char**)env->environ, "PS2", NULL);
+	prompt = env_getenv((const char**)env->environ, var, NULL);
 	if (!prompt)
-		prompt = "-> ";
-	ft_putstr(prompt);
-	return (ft_strlen(prompt));
-}
-
-size_t	put_ps3(t_env *env)
-{
-	char	*prompt;
-
-	prompt = NULL;
-	prompt = env_getenv((const char**)env->environ, "PS3", NULL);
-	if (!prompt)
-		prompt = "-> ";
-	ft_putstr(prompt);
-	return (ft_strlen(prompt));
+		prompt = defaut;
+	line->prompt_len = ft_strlen(prompt);
+	line->prompt = prompt;
 }

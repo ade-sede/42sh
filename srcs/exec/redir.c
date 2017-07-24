@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 14:37:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 18:09:06 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/24 19:02:53 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, t_token_id id)
 		dprintf(2, "Open : %s\n", strerror(errno));
 	while (fd >= 0 && buff && !ft_strequ(buff, target))
 	{
-		singleton_line()->put_prompt = &put_prompt;
+		load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
 		buff = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist());
 		if (!ft_strequ(buff, target))
 			write(fd, buff, ft_strlen(buff));

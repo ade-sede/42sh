@@ -6,7 +6,6 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/23 21:04:34 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +52,7 @@ typedef struct			s_line
 	int			visu_mode;
 	size_t			visu_start;
 	char			*copied_text;
-	size_t			(*put_prompt)(t_env*);
+	char			*prompt;
 }				t_line;
 
 typedef struct		s_edit_func
@@ -88,8 +87,6 @@ void	edit_refresh_clear(t_line *line);
 void	edit_refresh_cursor(t_line *line);
 void	edit_refresh_line(t_line *line);
 
-size_t	put_prompt(t_env *env);
-
 void	goto_termcap(char *capacity, int co, int li);
 void	put_ntermcap(char *capacity, int n);
 
@@ -109,6 +106,13 @@ void	realoc_line_buff(char **buff, unsigned int *size, unsigned int size_needed)
 int	enter_visual_mode(t_line *line);
 int	copy(t_line *line);
 int	paste(t_line *line);
+/*
+**	In file prompt.c
+*/
+
+void			load_prompt(t_env *env, t_line *line, char *var, char *defaut);
+void			put_prompt(t_line *line);
+
 
 /*
 ** manipulation of cursor word func

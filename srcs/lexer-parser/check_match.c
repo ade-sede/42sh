@@ -18,9 +18,9 @@ void	reopen_line_editing(t_lexer *lex)
 	char	*new_command;
 	
 	if (lex->state == '"')
-		singleton_line()->put_prompt = &put_ps2;
+		load_prompt(singleton_env(), singleton_line(), "PS2", "dquote> ");
 	if (lex->state == '\'')
-		singleton_line()->put_prompt = &put_ps3;
+		load_prompt(singleton_env(), singleton_line(), "PS3", "dquote> ");
 	new_command = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist()); 
 //	dprintf(2, "New command = "MAG"#"CYN"%s"MAG"#\n"RESET, new_command);
 	lex->line = ft_strjoin_free((char *)lex->line, new_command, 0);
