@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:12 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 15:06:52 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	comple_init(t_line *line, t_comple *c)
 	if (c->nb_matches == 1)
 	{
 		c->pos = 0;
-		comple_exit_matched(line, *c);
+		comple_exit_matched(line, *c, 0);
 		return (0);
 	}
 	else if (c->nb_matches == 0)

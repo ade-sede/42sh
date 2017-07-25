@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:21:48 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 15:06:19 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int	comple_refresh(t_line *line, t_comple c);
 
 void	comple_clear(t_comple c);
 void	comple_free(t_comple c);
-int	comple_exit_matched(t_line *line, t_comple c);
+int	comple_exit_matched(t_line *line, t_comple c, unsigned long long keycode);
 
 # endif

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:11 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 15:05:14 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ void	comple_free(t_comple c)
 	ft_arraydel(&c.matches);
 }
 
-int	comple_exit_matched(t_line *line, t_comple c)
+int	comple_exit_matched(t_line *line, t_comple c, unsigned long long keycode)
 {
 	(void)line;
 	//printf("\nto_replace %s, match %s\n", c.to_replace, c.matches[c.pos]);
 	delete_word(c.to_replace);
 	//printf("\nto_replace %s, match %s\n", c.to_replace, c.matches[c.pos]);
-	edit_insert_str(line, c.to_replace, c.matches[c.pos]);
+	if (keycode == KEY_ENTER)
+		edit_insert_str(line, c.to_replace, c.matches[c.pos]);
 	//ft_strncpy(c.to_replace, c.matches[c.pos], ft_strlen(c.matches[c.pos]));
 	comple_clear(c);
 	put_termcap("up");
