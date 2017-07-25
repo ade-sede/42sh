@@ -103,6 +103,23 @@ char	*get_current_word_cursor(t_line *line)
 	return (word);
 }
 
+int isDirectory(const char *path)
+{
+   struct stat statbuf;
+   if (stat(path, &statbuf) != 0)
+       return 0;
+   return S_ISDIR(statbuf.st_mode);
+}
+
+char	*get_file_name(struct dirent dirent)
+{
+	if (dirent->d_type == DT_DIR)
+	{
+		return (ft_strjoin3_free(RED, dirent->d_name, RESET, 0));
+	}
+	return (dirent->d_name);
+}
+
 char	**array_matches(char *dir_match, char *to_match)
 {
 	struct dirent	*dirent;
@@ -146,30 +163,30 @@ void	split_word(char *str, char *separator, char **head, char **queu)
 
 char    **comple_file_matches(t_line *line)
 {
-        char            *to_match;
-        char            *current_word;
-        char            *dir_match;
-        char            **matches;
+	char            *to_match;
+	char            *current_word;
+	char            *dir_match;
+	char            **matches;
 
-        to_match = NULL;
-        dir_match = NULL;
-        current_word = get_current_word_cursor(line);
-        singleton_comple()->to_replace = get_start_word_cursor(line);
-        //printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ?
-// dir_match : "null");
-        if (current_word && ft_strichr(current_word, '/') != -1)
-        {
-                singleton_comple()->to_replace = get_word_slash(line) + 1;
-                split_word(current_word, ft_strrchr(current_word, '/'), &dir_match, &to_match);
-                free(current_word);
-                matches = array_matches(dir_match, to_match);
-                free(dir_match);
-                free(to_match);
-                return (matches);
-        }
-        //printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ?
- //dir_match : "null");
-        matches = array_matches(NULL, current_word);
-        free(current_word);
-        return (matches);
+	to_match = NULL;
+	dir_match = NULL;
+	current_word = get_current_word_cursor(line);
+	singleton_comple()->to_replace = get_start_word_cursor(line);
+	//printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ?
+	// dir_match : "null");
+	if (current_word && ft_strichr(current_word, '/') != -1)
+	{
+		singleton_comple()->to_replace = get_word_slash(line) + 1;
+		split_word(current_word, ft_strrchr(current_word, '/'), &dir_match, &to_match);
+		free(current_word);
+		matches = array_matches(dir_match, to_match);
+		free(dir_match);
+		free(to_match);
+		return (matches);
+	}
+	//printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ?
+	//dir_match : "null");
+	matches = array_matches(NULL, current_word);
+	free(current_word);
+	return (matches);
 }
