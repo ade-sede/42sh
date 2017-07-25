@@ -93,7 +93,9 @@ SRC_FILE =	\
 	completion/comple_move.c \
 	completion/comple_refresh.c \
 	completion/comple_signals.c \
-	completion/size_term.c
+	completion/size_term.c \
+\
+	hash_table/hash.c \
 
 NAME ?= 21sh
 
@@ -148,6 +150,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/completion
 	@/bin/mkdir -p $(OBJ_DIR)/history
 	@/bin/mkdir -p $(OBJ_DIR)/lexer-parser
+	@/bin/mkdir -p $(OBJ_DIR)/hash_table
 
 clean:
 	@make -C $(LIB_DIR) clean
