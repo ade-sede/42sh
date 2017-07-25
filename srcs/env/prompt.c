@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:20:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/25 15:00:38 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 16:51:48 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "sys/wait.h"
 #include "get_next_line.h"
 #include "line_editing.h"
+	#include <stdio.h>
 
 void	put_prompt(t_line *line)
 {
@@ -27,10 +28,14 @@ char	*read_git_status(int fd, size_t *len)
         char    *branch;
         char    *git_status;
 
-        line = NULL;
-        get_next_line(fd, &line);
+        line = ft_strnew(50);
+	read(fd, line, 30);
+	if (ft_strchr(line, '\n'))
+		*ft_strchr(line, '\n') = 0;
+        //get_next_line(fd, &line);
 	if (!line)
 	{
+	//	printf("\nline est null\n");
 		close(fd);
 		return (ft_strnew(1));
 	}
@@ -40,6 +45,7 @@ char	*read_git_status(int fd, size_t *len)
                 branch = ft_strdup(line + 3);
 	*len += ft_strlen(branch);
         git_status = ft_strjoin3_free(" \x1b[38;5;47mgit:(\x1b[38;5;203m", branch, "\x1b[38;5;47m)", 0);
+	*len += 7;
         ft_strdel(&line);
         ft_strdel(&branch);
         if (!get_next_line(fd, &line))
