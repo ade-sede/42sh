@@ -16,13 +16,28 @@ size_t	hash(unsigned char *str)
 
 char	*hash_get(t_list **hash_table, char *value)
 {
-	return (hash_table[hash((unsigned char *)value)]->data);
+	t_list	*tmp;
+
+	tmp = hash_table[hash((unsigned char *)value)];
+	while (tmp)
+	{
+		/*
+**			printf("\n%s\n", ft_strrchr(tmp->data, '/'));
+*/
+		if (ft_strequ(ft_strrchr(tmp->data, '/') + 1, value))
+			return (tmp->data);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }
 
-void	hash_add(t_list **hash_table, char *value)
+void	hash_add(t_list **hash_table, char *value, char *name)
 {
-	ft_simple_lst_add(hash_table + hash((unsigned char *)value), ft_simple_lst_create(value));
-	//printf("\nname: %s \n",hash_table[hash((unsigned char *)value)]);
+	/*
+**		printf("\nd_name: %s \n", name);
+**		printf("\n%zu\n", hash((unsigned char *)name));
+*/
+	ft_simple_lst_add(hash_table + hash((unsigned char *)name), ft_simple_lst_create(value));
 }
 
 void	hash_add_dir(t_list **hash_table, char *dir_path)
@@ -37,9 +52,11 @@ void	hash_add_dir(t_list **hash_table, char *dir_path)
 		return ;
 	while ((dirent = readdir(dir)) != NULL)
 	{
-	//	printf("\nd_name: %s \n", dirent->d_name);
+		/*
+**			printf("\nd_name: %s \n", dirent->d_name);
+*/
 		if (dirent->d_name[0] != '.')
-			hash_add(hash_table, ft_strjoin3_free(dir_path, "/" ,dirent->d_name, 0));
+			hash_add(hash_table, ft_strjoin3_free(dir_path, "/" ,dirent->d_name, 0), dirent->d_name);
 		//printf("\nd_name: %s\n", bins[i]);
 		i++;
 	}
@@ -55,7 +72,7 @@ int	create_hash_table(t_env *env)
 	i = 0;
 	if (!(path = env_getenv((const char**)env->environ, "PATH", NULL)))
 		return (0);
-	env->hash_table = ft_memalloc(sizeof(t_list *) * 997);
+	env->hash_table = ft_memalloc(sizeof(t_list *) * 998);
 	paths = ft_strsplit(path, ":");
 	while (paths[i])
 	{
