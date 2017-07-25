@@ -124,6 +124,7 @@ void	main_loop(t_env *env)
 #else
 		load_prompt(singleton_env(), singleton_line(), "PS1", "$> ");
 		buff = line_editing_get_input(env, singleton_line(), singleton_hist());
+		history_refresh(buff);
 #endif
 		if ((nl = ft_strchr(buff, '\n')))
 			*nl = '\0';

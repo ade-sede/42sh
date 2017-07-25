@@ -32,7 +32,7 @@ typedef struct	s_hist
 
 t_hist	*singleton_hist(void);
 int		history_load(t_hist *h, t_env *env);
-void	history_refresh(t_line *line);
+void	history_refresh(char *command);
 
 unsigned long	history_move_loop(t_line *line);
 void	history_init(t_hist *h);

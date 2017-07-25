@@ -133,7 +133,10 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, t_token_id id)
 		load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
 		buff = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist());
 		if (!ft_strequ(buff, target))
+		{
 			write(fd, buff, ft_strlen(buff));
+			write(fd, "\n", 1);
+		}
 	}
 	close(fd);
 	errno = 0;
