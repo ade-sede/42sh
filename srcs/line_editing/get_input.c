@@ -39,8 +39,8 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	{
 		if (g_edit_func[i].keycode == keycode)
 		{
-			g_edit_func[i].f(line);
-			return (1);
+			keycode = g_edit_func[i].f(line);
+			//return (1);
 		}
 		i++;
 	}

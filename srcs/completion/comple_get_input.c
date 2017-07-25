@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/25 15:05:31 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 17:39:09 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ int		comple_get_input(t_line *line)
 			return (0);
 		}
 		if (keycode == KEY_ENTER || !(comple_loop(keycode, line, c)))
-		{
-			(c->pos != -1) ? comple_exit_matched(line, *c, keycode) : comple_free(*c);
-			return (1);
-		}
+			return (comple_exit_matched(line, *c, keycode));
 		comple_refresh(line, *c);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 15:25:42 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/24 20:25:08 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 17:00:46 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void		ft_strdelete(char *s1, char *s2, char *s3, int delete)
 {
-	if (delete == 1)
+	if (delete & 1)
 		free(s3);
-	if (delete == 2)
+	if (delete & 2)
 		free(s2);
-	else if (delete == 4)
+	else if (delete & 4)
 		free(s1);
 }
 

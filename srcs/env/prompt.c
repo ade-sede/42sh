@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:20:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/25 16:51:48 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 17:26:07 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,15 @@ char	*read_git_status(int fd, size_t *len)
         else
                 branch = ft_strdup(line + 3);
 	*len += ft_strlen(branch);
-        git_status = ft_strjoin3_free(" \x1b[38;5;47mgit:(\x1b[38;5;203m", branch, "\x1b[38;5;47m)", 0);
+        git_status = ft_strjoin3_free(" \x1b[38;5;47mgit:(\x1b[38;5;203m", branch, "\x1b[38;5;47m)", 2);
 	*len += 7;
-        ft_strdel(&line);
-        ft_strdel(&branch);
-        if (!get_next_line(fd, &line))
-                git_status = ft_strjoin_free(git_status, "\x1b[38;5;83m ✓ \x1B[0m", 4);
+        if (!read(fd, line, 30))
+                git_status = ft_strjoin_free(git_status, "\x1b[38;5;83m ✓ \x1B[0m", 2);
         else
-                git_status = ft_strjoin_free(git_status, "\x1b[38;5;11m ✗ \x1B[0m", 4);
+                git_status = ft_strjoin_free(git_status, "\x1b[38;5;11m ✗ \x1B[0m", 2);
 	*len += 3;
         close(fd);
+        ft_strdel(&line);
         return (git_status);
 }
 
@@ -112,9 +111,9 @@ char	*get_ps1(t_env *env, size_t *len)
 	*len += 3;
 	current_dir = get_current_directory();
 	*len += ft_strlen(current_dir);
-	current_dir = ft_strjoin3_free(BLU, get_current_directory(), RESET, 2);
+	current_dir = ft_strjoin3_free(CYN, current_dir, RESET, 2);
 	git_status = get_git_status(len);
-	return (ft_strjoin3_free(previous_exit, current_dir, git_status, 3));
+	return (ft_strjoin3_free(previous_exit, current_dir, git_status, 7));
 }
 
 void	load_prompt(t_env *env, t_line *line, char *var, char *defaut)
@@ -134,5 +133,7 @@ void	load_prompt(t_env *env, t_line *line, char *var, char *defaut)
 		line->prompt_len = len;
 	else
 		line->prompt_len = ft_strlen(prompt);
+	if (line->prompt)
+		free(line->prompt);
 	line->prompt = prompt;
 }
