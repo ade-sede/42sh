@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/13 14:19:04 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 17:18:06 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/28 19:32:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,10 @@ static void	redir_pipe_bin(t_lst_head *head)
 
 static void	close_parent_bin(t_lst_head *head)
 {
-	int			*p_right;
 	int			*p_left;
 	t_list_d	*cur;
 
 	cur = head->middle;
-	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 	if (p_left)
 	{

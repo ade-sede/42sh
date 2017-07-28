@@ -103,6 +103,7 @@ void	main_loop(t_env *env)
 {
 	t_ast		*ast;
 #ifdef NO_TERMCAPS
+	(void)env;
 	char		buff[LOCAL_BUFF_SIZE];
 #else
 	char		*buff;
@@ -118,7 +119,7 @@ void	main_loop(t_env *env)
 	while (42)
 	{
 #ifdef NO_TERMCAPS
-		put_prompt(env);
+		printf("$> ");
 		ft_bzero(buff, LOCAL_BUFF_SIZE);
 		read(0, buff, LOCAL_BUFF_SIZE);
 #else
