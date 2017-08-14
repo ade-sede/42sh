@@ -79,5 +79,6 @@ int	create_hash_table(t_env *env)
 		hash_add_dir(env->hash_table, paths[i]);
 		i++;
 	}
+	ft_arraydel(&paths);
 	return (1);
 }

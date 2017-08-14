@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 14:43:38 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 13:31:19 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/07/28 19:32:16 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "env.h"
 #include "builtin.h"
 #include "exec.h"
+#include <sys/wait.h>
 #include <fcntl.h>
 
 t_builtin g_builtin[] =

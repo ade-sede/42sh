@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exec_bin.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/13 14:19:04 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/25 19:54:43 by vcombey          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 #include "env.h"
 #include "sys/wait.h"
@@ -92,12 +80,10 @@ static void	redir_pipe_bin(t_lst_head *head)
 
 static void	close_parent_bin(t_lst_head *head)
 {
-	int			*p_right;
 	int			*p_left;
 	t_list_d	*cur;
 
 	cur = head->middle;
-	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 	if (p_left)
 	{

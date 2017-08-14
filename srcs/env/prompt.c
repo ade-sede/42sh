@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:20:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/25 17:26:07 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/14 14:34:42 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,10 @@ char	*read_git_status(int fd, size_t *len)
         char    *branch;
         char    *git_status;
 
-        line = ft_strnew(50);
-	read(fd, line, 30);
-	if (ft_strchr(line, '\n'))
-		*ft_strchr(line, '\n') = 0;
-        //get_next_line(fd, &line);
-	if (!line)
+	line = NULL;
+        get_next_line(fd, &line);
+	if (!(line))
 	{
-	//	printf("\nline est null\n");
 		close(fd);
 		return (ft_strnew(1));
 	}
@@ -43,16 +39,20 @@ char	*read_git_status(int fd, size_t *len)
                 branch = ft_strdup(ft_strrchr(line, '/') + 1);
         else
                 branch = ft_strdup(line + 3);
+	if (ft_strchr(branch, ' '))
+		*ft_strchr(branch, ' ') = 0;
+        ft_strdel(&line);
 	*len += ft_strlen(branch);
         git_status = ft_strjoin3_free(" \x1b[38;5;47mgit:(\x1b[38;5;203m", branch, "\x1b[38;5;47m)", 2);
 	*len += 7;
-        if (!read(fd, line, 30))
-                git_status = ft_strjoin_free(git_status, "\x1b[38;5;83m ✓ \x1B[0m", 2);
-        else
+        if (get_next_line(fd, &line))
                 git_status = ft_strjoin_free(git_status, "\x1b[38;5;11m ✗ \x1B[0m", 2);
+        else
+                git_status = ft_strjoin_free(git_status, "\x1b[38;5;83m ✓ \x1B[0m", 2);
 	*len += 3;
-        close(fd);
         ft_strdel(&line);
+	while (get_next_line(fd, &line))
+		free(line);
         return (git_status);
 }
 
@@ -68,7 +68,10 @@ char	*get_git_status(size_t *len)
         {
                 waitpid(son, &ret, WUNTRACED);
                	if (WEXITSTATUS(ret))
-			return (ft_strnew(1));
+		{
+			*len = *len + 1;
+			return (ft_strdup(" "));
+		}
                 close(fildes[1]);
                 return (read_git_status(fildes[0], len));
         }
