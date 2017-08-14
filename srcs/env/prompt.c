@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:20:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/08/14 14:19:40 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/14 14:25:56 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ char	*read_git_status(int fd, size_t *len)
         git_status = ft_strjoin3_free(" \x1b[38;5;47mgit:(\x1b[38;5;203m", branch, "\x1b[38;5;47m)", 2);
 	*len += 7;
         if (get_next_line(fd, &line))
-                git_status = ft_strjoin_free(git_status, "\x1b[38;5;83m ✓ \x1B[0m", 2);
-        else
                 git_status = ft_strjoin_free(git_status, "\x1b[38;5;11m ✗ \x1B[0m", 2);
+        else
+                git_status = ft_strjoin_free(git_status, "\x1b[38;5;83m ✓ \x1B[0m", 2);
 	*len += 3;
         ft_strdel(&line);
 	while (get_next_line(fd, &line))
