@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 15:20:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/08/14 14:25:56 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/14 14:28:33 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*read_git_status(int fd, size_t *len)
                 branch = ft_strdup(ft_strrchr(line, '/') + 1);
         else
                 branch = ft_strdup(line + 3);
+	if (ft_strchr(branch, ' '))
+		*ft_strchr(branch, ' ') = 0;
         ft_strdel(&line);
 	*len += ft_strlen(branch);
         git_status = ft_strjoin3_free(" \x1b[38;5;47mgit:(\x1b[38;5;203m", branch, "\x1b[38;5;47m)", 2);
