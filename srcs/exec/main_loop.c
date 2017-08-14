@@ -8,8 +8,6 @@
 #include "parser.h"
 #define LOCAL_BUFF_SIZE 4096
 
-
-
 #ifdef PARSER_DEBUG
 void	read_tree(t_ast *ast_start)
 {
