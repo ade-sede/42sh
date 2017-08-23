@@ -79,7 +79,7 @@ char	**comple_matching(t_line *line, t_comple *c)
 		else
 		{
 			printf("\ncomple bin  matches\n");
-			return (NULL); //comple bin
+			return (comple_bin_matches(line, c, current_word));
 		}
 	}
 	printf("\ncomple bin  matches\n");

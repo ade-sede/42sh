@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/23 23:43:38 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/24 00:54:17 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	comple_init(t_line *line, t_comple *c);
 int	comple_init_winch(t_comple *c);
 int	comple_get_input(t_line *line);
 char	**comple_file_matches(t_line *line, t_comple *c, char *current_word);
+char	**comple_bin_matches(t_line *line, t_comple *c, char *current_word);
 
 int		comple_right(t_comple *c);
 int		comple_left(t_comple *c);
