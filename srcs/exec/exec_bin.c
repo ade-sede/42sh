@@ -1,20 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exec_bin.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/13 14:19:04 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 17:18:06 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 #include "env.h"
 #include "sys/wait.h"
 #include "exec.h"
 #include <stdio.h>
+#include "hash_table.h"
 
 /*
 **		We forked, this is called in the child process. Try to use the absolute
@@ -36,39 +25,18 @@ void		ft_exec_bin_absolute(t_env *env, const char **argv)
 **		the path, exit_failure if we cant find id.
 */
 
-static void	failure(const char *argv, char **paths)
-{
-	ft_arraydel(&paths);
-	exit(return_failure(argv, " :commmand not found"));
-}
-
 void		ft_exec_bin_path(t_env *env, const char **argv)
 {
 	char	*bin;
-	char	*path;
-	char	**paths;
-	int		i;
-
-	i = 0;
-	if (!(path = env_getenv((const char**)env->environ, "PATH", NULL)))
-		exit(return_failure("PATH variable not set. Use Setenv to set", NULL));
-	paths = ft_strsplit(path, ":");
-	while (paths[i])
+		
+	bin = hash_get(env->hash_table, (char *)argv[0]);
+	if (access(bin, F_OK) == 0)
 	{
-		bin = ft_strsurround(paths[i], "/", argv[0]);
-		if (access(bin, F_OK) == 0)
-		{
-			if (access(bin, X_OK) == -1)
-			{
-				ft_arraydel(&paths);
-				exit(return_failure(bin, " :permission denied "));
-			}
-			execve(bin, (char**)argv, env->environ);
-		}
-		free(bin);
-		i++;
+		if (access(bin, X_OK) == -1)
+			exit(return_failure(bin, " :permission denied "));
+		execve(bin, (char**)argv, env->environ);
 	}
-	failure(argv[0], paths);
+	exit(return_failure((const char *)*argv, " :commmand not found"));
 }
 
 static void	redir_pipe_bin(t_lst_head *head)
@@ -80,44 +48,42 @@ static void	redir_pipe_bin(t_lst_head *head)
 	cur = head->middle;
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
-		if (p_right)
+	if (p_right)
+	{
+#ifdef PIPE_DEBUG
+		if (!p_left)
+			dprintf(2, "Binary is on the left of the pipe // dup 1 to p_right[WRITE_END], close p_right[READ_END]\n");//			REMOVE		
+#endif
+		close(p_right[READ_END]);
+		dup2(p_right[WRITE_END], STDOUT_FILENO);
+		if (p_left)
 		{
 #ifdef PIPE_DEBUG
-			if (!p_left)
-				dprintf(2, "Binary is on the left of the pipe // dup 1 to p_right[WRITE_END], close p_right[READ_END]\n");//			REMOVE		
+			dprintf(2, "Command is in between 2 pipes. dup 1 to p_right[WRITE_END], dup 0 to p_left[READ_END], closing p_right[READ_END] & p_left[WRITE_END]\n");//			REMOVE		
 #endif
-				close(p_right[READ_END]);
-				dup2(p_right[WRITE_END], STDOUT_FILENO);
-			if (p_left)
-			{
-#ifdef PIPE_DEBUG
-				dprintf(2, "Command is in between 2 pipes. dup 1 to p_right[WRITE_END], dup 0 to p_left[READ_END], closing p_right[READ_END] & p_left[WRITE_END]\n");//			REMOVE		
-#endif
-				close(p_left[WRITE_END]);
-				dup2(p_left[READ_END], STDIN_FILENO);
-			}
+			close(p_left[WRITE_END]);
+			dup2(p_left[READ_END], STDIN_FILENO);
 		}
-		else
+	}
+	else
+	{
+		if (p_left)
 		{
-			if (p_left)
-			{
 #ifdef PIPE_DEBUG
-				dprintf(2, "Command is on the right of the pipe // dup 0 to p_left[READ_END], closing p_left[WRITE_END]\n");//			REMOVE		
+			dprintf(2, "Command is on the right of the pipe // dup 0 to p_left[READ_END], closing p_left[WRITE_END]\n");//			REMOVE		
 #endif
-				close(p_left[WRITE_END]);
-				dup2(p_left[READ_END], STDIN_FILENO);
-			}
+			close(p_left[WRITE_END]);
+			dup2(p_left[READ_END], STDIN_FILENO);
 		}
+	}
 }
 
 static void	close_parent_bin(t_lst_head *head)
 {
-	int			*p_right;
 	int			*p_left;
 	t_list_d	*cur;
 
 	cur = head->middle;
-	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 	if (p_left)
 	{

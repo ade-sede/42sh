@@ -3,131 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/21 16:23:26 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/21 16:24:25 by ade-sede         ###   ########.fr       */
+/*   Created: 2016/11/18 21:36:40 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/14 13:58:56 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "libft.h"
-#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include "get_next_line.h"
 
-static	t_l		*find_fd(t_l **list, int fd)
+char		*ft_strdupn(const char *s, size_t n)
 {
-	t_l	*tmp;
+	char	*dst;
 
-	tmp = *list;
-	while (tmp)
-	{
-		if (fd == tmp->fd)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	return (tmp);
-}
-
-static	t_l		*new_elem(char *buff, size_t buff_size, int fd, t_l **list)
-{
-	t_l		*new_elem;
-	char	*new_stock;
-
-	if (buff == NULL)
-	{
-		new_stock = NULL;
-		buff_size = 0;
-	}
-	new_stock = ft_strdup(buff);
-	if ((new_elem = (t_l*)malloc(sizeof(t_l))) == NULL || !new_stock)
+	dst = (char *)malloc((n + 1) * sizeof(char));
+	if (dst == NULL)
 		return (NULL);
-	new_elem->stock_size = buff_size;
-	new_elem->fd = fd;
-	new_elem->stock = new_stock;
-	*list = new_elem;
-	return (new_elem);
+	ft_strncpy(dst, s, n);
+	dst[n] = 0;
+	return (dst);
 }
 
-static	int		fill_line(t_l **list, int fd, char **ret)
+int			grow_buffer(const int fd, char **original_buffer)
 {
-	t_l		*new_elem;
-	char	*tmp;
-	int		eol_index;
+	char	tmp[BUFF_SIZE + 1];
+	char	*new_buffer;
+	int		ret;
 
-	if (!(new_elem = find_fd(list, fd)))
-		return (-1);
-	if ((eol_index = ft_strichr(new_elem->stock, '\n')) != -1)
+	ret = read(fd, tmp, BUFF_SIZE);
+	if (ret > 0)
 	{
-		*ret = ft_strsub(new_elem->stock, 0, eol_index);
-		if (!(tmp = ft_strdup(new_elem->stock + eol_index + 1)))
-			return (-1);
-		free(new_elem->stock);
-		new_elem->stock = tmp;
+		tmp[ret] = '\0';
+		new_buffer = ft_strjoin(*original_buffer, tmp);
+		free(*original_buffer);
+		*original_buffer = new_buffer;
 	}
-	else
+	return (ret);
+}
+
+int			get_next_line(const int fd, char **line)
+{
+	char		*tmp;
+	static char	*buf = NULL;
+	int			ret;
+
+	ret = 1;
+	if (buf == NULL && (buf = ft_strnew(0)) == NULL)
+		return (-1);
+	while (ret > 0)
 	{
-		if (!new_elem->stock || !(*ret = ft_strdup(new_elem->stock)))
+		if ((tmp = ft_strchr(buf, '\n')) != NULL)
 		{
-			*ret = NULL;
-			return (-1);
-		}
-		free(new_elem->stock);
-		new_elem->stock = NULL;
-	}
-	return ((ft_strlen(*ret) == 0 && eol_index != 0) ? 0 : 1);
-}
-
-static	int		check_list(t_l **list, int fd, char *buff)
-{
-	char	*new_stock;
-	t_l		*tmp;
-	t_l		*swap;
-
-	swap = *list;
-	tmp = find_fd(list, fd);
-	if (!tmp)
-	{
-		tmp = new_elem(buff, ft_strlen(buff), fd, list);
-		if (!tmp)
-			return (-1);
-		tmp->next = swap;
-		*list = tmp;
-	}
-	else
-	{
-		if ((new_stock = ft_strjoin(tmp->stock, buff)) == NULL)
-			return (-1);
-		free(tmp->stock);
-		tmp->stock = new_stock;
-		tmp->stock_size = ft_strlen(new_stock);
-	}
-	return ((ft_strichr(tmp->stock, '\n') != -1) ? 0 : 1);
-}
-
-int				get_next_line(const int fd, char **line)
-{
-	static t_l		*elem;
-	char			*buff;
-	int				ret;
-
-	if (!(buff = malloc(sizeof(char) * BUFF_SIZE + 1)))
-		return (-1);
-	if (fd < 0)
-		return (-1);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
-	{
-		if (ret < 0)
-			return (-1);
-		buff[ret] = '\0';
-		if ((check_list(&elem, fd, buff)) == 0)
-		{
-			if (fill_line(&elem, fd, &*line) == -1)
-				return (-1);
+			*line = ft_strdupn(buf, tmp - buf);
+			*tmp = '\0';
+			ft_memmove(buf, tmp + 1, ft_strlen(tmp + 1) + 1);
 			return (1);
 		}
+		ret = grow_buffer(fd, &buf);
 	}
-	free(buff);
-	if (fill_line(&elem, fd, &*line) == 1)
+	if (*buf != '\0')
+	{
+		*line = ft_strdup(buf);
+		*buf = '\0';
 		return (1);
+	}
 	return (0);
 }

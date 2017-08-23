@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:46:39 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/23 17:46:33 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 17:01:14 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,9 @@ char	*cl_strjoin(char const *s1, char const *s2)
 
 static void		ft_strdelete(char *s1, char *s2, int delete)
 {
-	if (delete == 3)
-	{
+	if (delete & 2)
 		free(s1);
-		free(s2);
-	}
-	if (delete == 2)
-		free(s1);
-	else if (delete == 1)
+	else if (delete & 1)
 		free(s2);
 }
 

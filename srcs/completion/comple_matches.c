@@ -6,13 +6,13 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:12 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 19:25:21 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "completion.h"
 #include "line_editing.h"
-#include <stdio.h>
+	#include <stdio.h>
 #include <string.h>
 
 char	*get_word_slash(t_line *line)

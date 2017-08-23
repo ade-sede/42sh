@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 14:57:34 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/28 19:33:54 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	btsearch_first_search(t_hist *h)
 
 void	debug(t_list_d *item)
 {
-    printf("%s\n", item->data);
+    printf("%s\n", (char*)item->data);
 }
 
 void	btsearch_add(char keycode, t_line *line, t_hist *h)

@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 18:24:19 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/07/25 19:42:32 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@
 typedef struct	s_env
 {
 	char		**environ;
+	t_list		**hash_table;
 	size_t		environ_size;
-	int			previous_exit;
+	int		previous_exit;
 	char		*branch;
 	pid_t		child_pid;
 }				t_env;
