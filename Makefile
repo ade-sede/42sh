@@ -94,6 +94,7 @@ SRC_FILE =	\
 	completion/comple_refresh.c \
 	completion/comple_signals.c \
 	completion/size_term.c \
+	completion/ternary_search_tree.c \
 \
 	hash_table/hash.c \
 
