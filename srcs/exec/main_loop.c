@@ -96,6 +96,19 @@ char 	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
 /*
 **	REPL.
 */
+void	lexer_debug(t_list *token_list)
+{
+	t_list	*token_debug = token_list;
+	t_token *token;
+
+	token = NULL;
+	while (token_debug)
+	{
+		token = token_debug->data;
+		dprintf(2, MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET,token->value, token->id);//			REMOVE		
+		token_debug = token_debug->next;
+	}
+}
 
 void	main_loop(t_env *env)
 {
@@ -146,7 +159,7 @@ void	main_loop(t_env *env)
 			ast = NULL;	// VERY IMPORTANT. Everything crash with a wrong init.
 			ast = ast_parse(&ast, &token_list);
 #ifdef PARSER_DEBUG
-	read_tree(ast);
+			read_tree(ast);
 #endif
 #ifdef PIPE_DEBUG
 			dprintf(2, "Creating the initial empty node\n");//			REMOVE		

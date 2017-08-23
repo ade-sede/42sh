@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 17:15:59 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/08/23 20:34:00 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ typedef struct		s_lexer
 **	FUNCTION DEFINITIONS
 */
 
+void	lexer_debug(t_list *token_list);
 /*
 **	In file lexer.c
 */

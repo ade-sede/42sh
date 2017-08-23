@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/25 19:25:21 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/14 18:32:24 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,22 +144,20 @@ void	split_word(char *str, char *separator, char **head, char **queu)
 	*separator = tmp;
 }
 
-char    **comple_file_matches(t_line *line)
+char    **comple_file_matches(t_line *line, t_comple *c, char *current_word)
 {
         char            *to_match;
-        char            *current_word;
         char            *dir_match;
         char            **matches;
 
         to_match = NULL;
         dir_match = NULL;
-        current_word = get_current_word_cursor(line);
-        singleton_comple()->to_replace = get_start_word_cursor(line);
+        c->to_replace = get_start_word_cursor(line);
         //printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ?
 // dir_match : "null");
         if (current_word && ft_strichr(current_word, '/') != -1)
         {
-                singleton_comple()->to_replace = get_word_slash(line) + 1;
+                c->to_replace = get_word_slash(line) + 1;
                 split_word(current_word, ft_strrchr(current_word, '/'), &dir_match, &to_match);
                 free(current_word);
                 matches = array_matches(dir_match, to_match);
