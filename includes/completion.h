@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/23 23:11:09 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/23 23:43:38 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,6 @@
 # define COMPLETION_H
 # include "line_editing.h"
 # include <dirent.h>
-
-typedef struct		s_ternary_tree
-{
-	char			c;
-	char			*match;
-	struct s_ternary_tree	*left;
-	struct s_ternary_tree	*right;
-	struct s_ternary_tree	*down;
-}			t_ternary_tree;
-
-void		test_ternary_tree();
-void	ternary_tree_add(t_ternary_tree *node, char *cur, char *str);
-t_ternary_tree		*ternary_tree_new_down(char *str, char *cur);
-t_ternary_tree		*ternary_tree_new(char c);
-void			ternary_tree_print(t_ternary_tree *node);
 
 typedef struct		s_comple
 {

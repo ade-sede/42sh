@@ -65,8 +65,8 @@ char	**comple_matching(t_line *line, t_comple *c)
 	lex = init_lexer(line->buff);
 	token_list = start_lex(&lex);
 	//lexer_debug(token_list);
-	printf("\n%s|\n", line->buff);
-	printf("\n%d\n", line->pos);
+	//printf("\n%s|\n", line->buff);
+	//printf("\n%d\n", line->pos);
 	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' ' || line->buff[line->pos] == '\0') && line->buff[line->pos - 1] == ' ')) // cas 1.
 	{
 		last = ft_last_simple_lst(token_list);
