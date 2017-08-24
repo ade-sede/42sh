@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/24 18:13:06 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/24 21:41:53 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,6 @@ char	*get_current_word_cursor(t_line *line)
 	return (word);
 }
 
-char	*get_color_file(char *name, char *dir)
-
 char	**array_matches(char *dir_match, char *to_match)
 {
 	struct dirent	*dirent;
@@ -124,9 +122,12 @@ char	**array_matches(char *dir_match, char *to_match)
 	while ((dirent = readdir(dir)) != NULL)
 	{
 		//printf("\nd_name: %s to_match: %s\n", dirent->d_name, to_match);
-		if ((!to_match && dirent->d_name[0] != '.') || ft_strstr(dirent->d_name, to_match))
+		if ((!to_match[0] && dirent->d_name[0] != '.') || (to_match[0] && ft_strstr(dirent->d_name, to_match)))
 		{
-			matches[i] = ft_strjoin3_free("\x1b[38;5;203m", dirent->d_name, "\e[0m", 0);
+			if (dirent->d_type == DT_DIR)
+				matches[i] = ft_strjoin_free("\e[31m", dirent->d_name, 0);
+			else
+				matches[i] = ft_strdup(dirent->d_name);
 			//printf("\nd_name: %s\n", matches[i]);
 			i++;
 		}

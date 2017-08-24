@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:23:18 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/08/24 17:45:10 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/24 18:34:40 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ size_t	ft_strlen_color(char *str)
 		{
 			while (*str && *str != 'm')
 				str++;
+			str++;
 			if (!*str)
-				break;
+				return (i);
 		}
 		str++;
 		i++;

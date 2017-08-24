@@ -49,7 +49,7 @@ int	create_ternary_tree(t_env *env)
 		create_ternary_tree_dir(paths[i], env);
 		i++;
 	}
-ternary_tree_print(env->tree);
+	//ternary_tree_print(env->tree);
 	ft_arraydel(&paths);
 	return (1);
 }

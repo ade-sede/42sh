@@ -74,27 +74,38 @@ char	**comple_matching(t_line *line, t_comple *c)
 	{
 		if (!last || (last && ((t_token *)last->data)->id == 0))
 		{
-			printf("\ncomple file matches\n");
+//			printf("\ncomple file matches\n");
+			free_token_list(token_list);
 			return (comple_file_matches(line, c, current_word));
 		}
 		else
 		{
-			printf("\ncomple bin  matches\n");
+//			printf("\ncomple bin  matches\n");
+			free_token_list(token_list);
 			return (comple_bin_matches(line, c, current_word));
 		}
 	}
 	else 
 	{
 		if (!token_list->next) // cas 2.
+		{
+			free_token_list(token_list);
 			return (comple_bin_matches(line, c, current_word));
+		}
 		prev_last = ft_previous_last_simple_lst(token_list);
 		if (((t_token *)prev_last->data)->id == 0)
+		{
+			free_token_list(token_list);
 			return (comple_file_matches(line, c, current_word));
+		}
 		else	
+		{
+			free_token_list(token_list);
 			return (comple_bin_matches(line, c, current_word));
+		}
 		
 	}
-	printf("\nNULL\n");
+//	printf("\nNULL\n");
 	return (NULL);
 
 	//	prev_last = ft_previous_last_simple_lst(token_list);
@@ -118,6 +129,9 @@ int	comple_init(t_line *line, t_comple *c)
 		return (0);
 	}
 	else if (c->nb_matches == 0)
+	{
+		comple_exit_matched(line, *c, 0);
 		return (0);
+	}
 	return (1);
 }

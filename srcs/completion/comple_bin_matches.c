@@ -61,6 +61,6 @@ char	**comple_bin_matches(t_line *line, t_comple *c, char *current_word)
 	matches = ft_memalloc(sizeof(char *) * 2000); ///////////////////////////////////////////////////
 //	printf("\ncurrent_word is |%s|\n", current_word);
 	comple_bin_matches_tripping_tree(singleton_env()->tree, matches, current_word);
-	getchar();
+	free(current_word);
 	return (matches);
 }
