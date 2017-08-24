@@ -107,7 +107,7 @@ int	comple_init(t_line *line, t_comple *c)
 {
 	ft_bzero(c, sizeof(t_comple));
 	c->matches = comple_matching(line, c);
-	c->max_len = ft_arraymax_f((const char**)c->matches, ft_strlen);
+	c->max_len = ft_arraymax_f((char**)c->matches, ft_strlen_color);
 	c->nb_matches = ft_arraylen((const char**)c->matches);
 	comple_init_winch(c);
 	c->pos = -1;

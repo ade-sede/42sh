@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:12 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/24 17:47:45 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putstr_padding_space(char *str, unsigned int size)
 {
 	unsigned int len;
 
-	len = ft_strlen(str);
+	len = ft_strlen_color(str);
 	ft_putstr(str);
 	while ((size - len) > 0)
 	{
