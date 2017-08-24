@@ -67,11 +67,12 @@ void	ternary_tree_insert_left(t_ternary_tree *node, char *cur, char *str)
 	t_ternary_tree *new_down;
 	t_ternary_tree *left;
 	
+	left = NULL;
 	new_down = ternary_tree_new_down(str, cur);
 	left = node->left;
 	node->left = new_down;
 	if (left)
-		left->right = new_down;
+		new_down->left = left;
 }
 
 void	ternary_tree_insert_right(t_ternary_tree *node, char *cur, char *str)
@@ -79,17 +80,20 @@ void	ternary_tree_insert_right(t_ternary_tree *node, char *cur, char *str)
 	t_ternary_tree *new_down;
 	t_ternary_tree *right;
 	
+	right = NULL;
 	new_down = ternary_tree_new_down(str, cur);
 	right = node->right;
 	node->right = new_down;
 	if (right)
-		right->left = new_down;
+		new_down->right = right;
 }
 
 void	ternary_tree_insert_down(t_ternary_tree *node, char *cur, char *str)
 {
 	t_ternary_tree *new_down;
-	
+
+	if (!*cur) // cela signifie que str avait deja ete insere dans l arbre
+		return ;
 	new_down = ternary_tree_new_down(str, cur);
 	node->down = new_down;
 }
@@ -108,7 +112,7 @@ void	ternary_tree_add(t_ternary_tree *node, char *cur, char *str)
 	else if (*cur == node->c && node->down)
 		return ternary_tree_add(node->down, cur + 1, str);
 	else if (*cur == node->c && !node->down)
-		return ternary_tree_insert_down(node, cur, str);
+		return ternary_tree_insert_down(node, cur + 1, str);
 }
 
 void		test_ternary_tree()

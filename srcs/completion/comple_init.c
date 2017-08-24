@@ -40,14 +40,15 @@ t_list	*ft_previous_last_simple_lst(t_list *lst)
 **	pour determiner completion binaire ou completion fichier :
 **	on lance un lexer sur la line avec le current word inclu.
 **	deux cas:
-**		1.le curseur est sur un mot a complete.
-**		2.le curseur est sur un espace preceder d un espace.
+**		1.le curseur est sur un espace preceder d un espace.
+**		2.le curseur est sur un mot a complete.
 **	
-**	2. on recupere le dernier token "last"
+**	1. on recupere le dernier token "last"
 **	si c'est un TK_WORD -> completion fichier;
 **	sinon completion binaire
 **	
-**	1. on recupere le dernier token "last" l avant dernier token "prev_last" :
+**	2. si il n y a q un seul mayon -> binaire sinon 
+**	on recupere le dernier token "last" l avant dernier token "prev_last" :
 **		si last est un '&&' ';' ou un connerie du genre -> completion binaire sur le mot d apres
 **		si prev
 **	
@@ -57,7 +58,7 @@ char	**comple_matching(t_line *line, t_comple *c)
 {
 	t_lexer		lex;
 	t_list		*last;
-//	t_list		*prev_last;
+	t_list		*prev_last;
 	t_list		*token_list;
 	char		*current_word;
 	
@@ -67,10 +68,10 @@ char	**comple_matching(t_line *line, t_comple *c)
 	//lexer_debug(token_list);
 	//printf("\n%s|\n", line->buff);
 	//printf("\n%d\n", line->pos);
+	last = ft_last_simple_lst(token_list);
+	current_word = get_current_word_cursor(line);
 	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' ' || line->buff[line->pos] == '\0') && line->buff[line->pos - 1] == ' ')) // cas 1.
 	{
-		last = ft_last_simple_lst(token_list);
-		current_word = get_current_word_cursor(line);
 		if (!last || (last && ((t_token *)last->data)->id == 0))
 		{
 			printf("\ncomple file matches\n");
@@ -82,7 +83,18 @@ char	**comple_matching(t_line *line, t_comple *c)
 			return (comple_bin_matches(line, c, current_word));
 		}
 	}
-	printf("\ncomple bin  matches\n");
+	else 
+	{
+		if (!token_list->next) // cas 2.
+			return (comple_bin_matches(line, c, current_word));
+		prev_last = ft_previous_last_simple_lst(token_list);
+		if (((t_token *)prev_last->data)->id == 0)
+			return (comple_file_matches(line, c, current_word));
+		else	
+			return (comple_bin_matches(line, c, current_word));
+		
+	}
+	printf("\nNULL\n");
 	return (NULL);
 
 	//	prev_last = ft_previous_last_simple_lst(token_list);

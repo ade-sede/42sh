@@ -2,7 +2,7 @@
 #include "env.h"
 #include "completion.h"
 
-void	comple_bin_matches_extract_tree(t_ternary_tree *node, char **matches)
+void	comple_bin_matches_extract_tree(t_ternary_tree *node, char **matches, int *i)
 {
 	if (!node)
 		return ;
@@ -15,29 +15,30 @@ void	comple_bin_matches_extract_tree(t_ternary_tree *node, char **matches)
 */
 	if (node->match)
 	{
-		*matches = ft_strdup(node->match);
-		printf("match is %s\n", *matches);
-		matches++;
+		matches[*i] = ft_strdup(node->match);
+	//	printf("match is %s\n", matches[*i]);
+		*i = *i + 1;
 	}
-	comple_bin_matches_extract_tree(node->left, matches);
+	comple_bin_matches_extract_tree(node->left, matches, i);
 	/*
 **		if (node->down)
 **			printf("\n down \n");
 */
-	comple_bin_matches_extract_tree(node->down, matches);
+	comple_bin_matches_extract_tree(node->down, matches, i);
 	//put_termcap("do");
 	/*
 **		if (node->right)
 **			printf("\n right\n");
 */
-	comple_bin_matches_extract_tree(node->right, matches);
+	comple_bin_matches_extract_tree(node->right, matches, i);
 }
 
 void	comple_bin_matches_tripping_tree(t_ternary_tree *node, char **matches, char *cur)
 {
-	printf("c is %c\n", node->c);
+	int	i = 0;
+	//printf("c is %c\n", node->c);
 	if (!cur[0]) 
-		return comple_bin_matches_extract_tree(node, matches);
+		return comple_bin_matches_extract_tree(node, matches, &i);
 	if (*cur < node->c && (!node->left || (node->left && *cur > node->left->c)))// aret
 		return ;
 	else if (*cur > node->c && (!node->right || (node->right && *cur < node->right->c))) // aret
@@ -55,16 +56,11 @@ void	comple_bin_matches_tripping_tree(t_ternary_tree *node, char **matches, char
 char	**comple_bin_matches(t_line *line, t_comple *c, char *current_word)
 {
 	char		**matches;
-	char		**tmp;
 	
 	c->to_replace = get_start_word_cursor(line);
-	matches = ft_memalloc(sizeof(char *) * 1000); ///////////////////////////////////////////////////
-	printf("\ncurrent_word is |%s|\n", current_word);
+	matches = ft_memalloc(sizeof(char *) * 2000); ///////////////////////////////////////////////////
+//	printf("\ncurrent_word is |%s|\n", current_word);
 	comple_bin_matches_tripping_tree(singleton_env()->tree, matches, current_word);
-	tmp = matches;
-	while (*tmp)	
-	{
-		printf(%
-	}
+	getchar();
 	return (matches);
 }
