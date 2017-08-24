@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/24 18:01:29 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/24 18:13:06 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ char	*get_current_word_cursor(t_line *line)
 	return (word);
 }
 
+char	*get_color_file(char *name, char *dir)
+
 char	**array_matches(char *dir_match, char *to_match)
 {
 	struct dirent	*dirent;
@@ -112,7 +114,7 @@ char	**array_matches(char *dir_match, char *to_match)
 
 	i = 0;
 	dir = NULL;
-	matches = ft_memalloc(sizeof(char *) * 1000); ///////////////////////////////////////////////////
+	matches = ft_memalloc(sizeof(char *) * 1000); ////////////////////////////////////
 	dir = (dir_match) ? opendir(dir_match) : opendir(".");
 	if (!dir)
 	{
@@ -124,7 +126,7 @@ char	**array_matches(char *dir_match, char *to_match)
 		//printf("\nd_name: %s to_match: %s\n", dirent->d_name, to_match);
 		if ((!to_match && dirent->d_name[0] != '.') || ft_strstr(dirent->d_name, to_match))
 		{
-			matches[i] = ft_strdup(dirent->d_name);
+			matches[i] = ft_strjoin3_free("\x1b[38;5;203m", dirent->d_name, "\e[0m", 0);
 			//printf("\nd_name: %s\n", matches[i]);
 			i++;
 		}
