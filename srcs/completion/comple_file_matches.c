@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   comple_matches.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/24 21:41:53 by vcombey          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "completion.h"
 #include "line_editing.h"
 	#include <stdio.h>
@@ -125,7 +113,7 @@ char	**array_matches(char *dir_match, char *to_match)
 		if ((!to_match[0] && dirent->d_name[0] != '.') || (to_match[0] && ft_strstr(dirent->d_name, to_match)))
 		{
 			if (dirent->d_type == DT_DIR)
-				matches[i] = ft_strjoin_free("\e[31m", dirent->d_name, 0);
+				matches[i] = ft_strjoin_free("\e[1;31m", dirent->d_name, 0);
 			else
 				matches[i] = ft_strdup(dirent->d_name);
 			//printf("\nd_name: %s\n", matches[i]);

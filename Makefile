@@ -91,7 +91,7 @@ SRC_FILE =	\
 	completion/comple_exit_matched.c \
 	completion/comple_get_input.c \
 	completion/comple_init.c \
-	completion/comple_matches.c \
+	completion/comple_file_matches.c \
 	completion/comple_move.c \
 	completion/comple_refresh.c \
 	completion/comple_signals.c \
