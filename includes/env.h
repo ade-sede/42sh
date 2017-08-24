@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/08/23 23:44:50 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/24 23:37:29 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct	s_env
 	pid_t		child_pid;
 }				t_env;
 
+void	free_ternary_tree(t_ternary_tree *node);
 void		test_ternary_tree();
 void	ternary_tree_add(t_ternary_tree *node, char *cur, char *str);
 t_ternary_tree		*ternary_tree_new_down(char *str, char *cur);

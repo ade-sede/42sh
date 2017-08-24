@@ -1,6 +1,7 @@
 #include <stdio.h>
 # include <dirent.h>
 # include "libft.h"
+# include "hash_table.h"
 # include "env.h"
 
 size_t	hash(unsigned char *str)
@@ -62,6 +63,28 @@ void	hash_add_dir(t_list **hash_table, char *dir_path)
 	}
 	closedir(dir);
 }
+void	free_hash_table(t_list **hash_table)
+{
+	t_list	*tmp;
+	t_list	*elem;
+	size_t	i;
+
+	i = 0;
+	while (i < HASH_TABLE_SIZE)
+	{
+		elem = hash_table[i];
+		while (elem)
+		{
+			tmp = elem->next;
+			ft_strdel((char **)&elem->data);
+			free(elem);
+			elem = tmp;
+		}
+		hash_table[i] = NULL;
+		i++;
+	}
+	free(hash_table);
+}
 
 int	create_hash_table(t_env *env)
 {
@@ -72,7 +95,7 @@ int	create_hash_table(t_env *env)
 	i = 0;
 	if (!(path = env_getenv((const char**)env->environ, "PATH", NULL)))
 		return (0);
-	env->hash_table = ft_memalloc(sizeof(t_list *) * 998);
+	env->hash_table = ft_memalloc(sizeof(t_list *) * HASH_TABLE_SIZE);
 	paths = ft_strsplit(path, ":");
 	while (paths[i])
 	{

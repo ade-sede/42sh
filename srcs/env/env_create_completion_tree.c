@@ -34,6 +34,44 @@ void	create_ternary_tree_dir(char *dir_path, t_env *env)
 	closedir(dir);
 }
 
+void	free_ternary_tree(t_ternary_tree *node)
+{
+	t_ternary_tree	*left;
+	t_ternary_tree	*down;
+	t_ternary_tree	*right;
+
+	if (!node)
+		return ;
+	/*
+**		printf("c is %c\n", node->c);
+**		if (node->match)
+**			printf("match is %s\n", node->match);
+**		if (node->left)
+**			printf("\n left \n");
+*/
+	left = node->left;
+	right = node->right;
+	down = node->down;
+	if (node->match)
+	{
+		free(node->match);
+	//	printf("match is %s\n", matches[*i]);
+	}
+	free_ternary_tree(left);
+	/*
+**		if (node->down)
+**			printf("\n down \n");
+*/
+	free_ternary_tree(down);
+	//put_termcap("do");
+	/*
+**		if (node->right)
+**			printf("\n right\n");
+*/
+	free_ternary_tree(right);
+	free(node);
+}
+
 int	create_ternary_tree(t_env *env)
 {
 	char	**paths;
