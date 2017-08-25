@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/25 22:40:23 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 
 void	comple_handle_sigwinch(t_line *line, t_comple *c)
 {
+	edit_handle_sigwinch(0);
 	//put_termcap("cr");
 	//put_termcap("cd");
 	//comple_clear(*c());
+	put_termcap("cd");	
 	comple_init_winch(c);
-	comple_clear(*c);
-	put_termcap("cl");
+//	comple_clear(*c);
+	//put_termcap("cl");
 	comple_refresh(line, *c);
 }
 
@@ -51,7 +53,7 @@ void	comple_set_signals(void)
 	sa.sa_flags = 0;
 	sigaction(SIGINT, &sa, NULL);
 
-	//signal(SIGWINCH, comple_set_comple_signum);
+	signal(SIGWINCH, comple_set_comple_signum);
 	//signal(SIGINT, comple_set_comple_signum);
 
 }

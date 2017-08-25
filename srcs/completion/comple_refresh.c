@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/24 21:32:33 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/25 23:39:36 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,22 @@ void	comple_line_refresh(t_line *line, t_comple c)
 */
 }
 
+
 int	comple_refresh(t_line *line, t_comple c)
 {
 	size_t	co;
 	size_t	li;
+	size_t	li_start;
 
+	li_start = 0;
+	if (c.nb_lines > c.ws_row)
+	{
+		li_start = (c.pos / (c.ws_row - 1)) * (c.ws_row - 1);
+	}
 	move_cursor_lastline(line);
 	//comple_clear(c);
-	li = 0;
-	while (li < c.nb_lines)
+	li = li_start;
+	while (li < c.nb_lines && li - li_start < c.ws_row - 1)
 	{
 		co = 0;
 		put_termcap("do");

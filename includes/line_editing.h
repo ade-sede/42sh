@@ -62,10 +62,12 @@ typedef struct		s_edit_func
 }			t_edit_func;
 
 size_t				get_ws_col(void);
+size_t				get_ws_row(void);
 
 void	edit_line_init(t_line *line);
 char	*edit_get_input(t_env *env);
 void	edit_set_signals(void);
+void	edit_handle_sigwinch(int signum);
 void	conf_term_in(void);
 void	conf_term_out(void);
 void	put_termcap(char *capacity);

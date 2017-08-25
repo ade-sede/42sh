@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/24 00:54:17 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/25 23:02:01 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct		s_comple
 	int		pos;
 	int		signum;
 	size_t		ws_col;
+	size_t		ws_row;
 	size_t		max_len;
 	size_t		nb_lines;
 	size_t		nb_colones;

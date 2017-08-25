@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/25 17:39:09 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/25 22:28:50 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int		comple_get_input(t_line *line)
 	{
 		keycode = 0;
 		read(0, &keycode, 8);
+		if (c->signum == SIGWINCH)
+			comple_handle_sigwinch(line, c);
 		if (c->signum == SIGINT)
 		{
 			comple_handle_sigint(line, c);
