@@ -14,13 +14,13 @@ void	create_ternary_tree_dir(char *dir_path, t_env *env)
 	while ((dirent = readdir(dir)) != NULL)
 	{
 		//	printf("\nd_name: %s \n", dirent->d_name);
-		if (dirent->d_name[0] != '.')
+		if (dirent->d_name[0] != '.' && ft_is_executable(dir_path, dirent->d_name))
 		{
 			if (!env->tree)
 			{
-				if ((dirent = readdir(dir)) != NULL)
+				if ((dirent = readdir(dir)) != NULL )
 					env->tree = ternary_tree_new_down(dirent->d_name, dirent->d_name);
-				ternary_tree_print(env->tree);
+//				ternary_tree_print(env->tree);
 			}
 			else
 			{
@@ -29,7 +29,7 @@ void	create_ternary_tree_dir(char *dir_path, t_env *env)
 		}
 
 	}
-	printf("\n TEST \n");
+//	printf("\n TEST \n");
 	//ternary_tree_print(env->tree);
 	closedir(dir);
 }

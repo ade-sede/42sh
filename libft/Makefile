@@ -19,6 +19,7 @@ COLOR_WHITE		= \033[1;37m
 
 SRC = \
       ft_strjoin3_free.c \
+      ft_is_executable.c \
 	  ft_strlen.c \
 	  ft_strchr.c \
 	  ft_strrchr.c \

@@ -56,7 +56,7 @@ void	hash_add_dir(t_list **hash_table, char *dir_path)
 		/*
 **			printf("\nd_name: %s \n", dirent->d_name);
 */
-		if (dirent->d_name[0] != '.')
+		if (dirent->d_name[0] != '.' && ft_is_executable(dir_path, dirent->d_name))
 			hash_add(hash_table, ft_strjoin3_free(dir_path, "/" ,dirent->d_name, 0), dirent->d_name);
 		//printf("\nd_name: %s\n", bins[i]);
 		i++;

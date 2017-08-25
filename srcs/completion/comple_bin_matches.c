@@ -37,7 +37,7 @@ void	comple_bin_matches_tripping_tree(t_ternary_tree *node, char **matches, char
 {
 	int	i = 0;
 	//printf("c is %c\n", node->c);
-	if (!cur[0]) 
+	if (!cur[0] || !node) 
 		return comple_bin_matches_extract_tree(node, matches, &i);
 	if (*cur < node->c && (!node->left || (node->left && *cur > node->left->c)))// aret
 		return ;
