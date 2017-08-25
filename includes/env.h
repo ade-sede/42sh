@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/25 19:42:32 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/24 23:37:29 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,33 @@
 #  define RESET "\x1B[0m"
 # endif
 
+typedef struct		s_ternary_tree
+{
+	char			c;
+	char			*match;
+	struct s_ternary_tree	*left;
+	struct s_ternary_tree	*right;
+	struct s_ternary_tree	*down;
+}			t_ternary_tree;
+
 typedef struct	s_env
 {
 	char		**environ;
 	t_list		**hash_table;
+	t_ternary_tree	*tree;
 	size_t		environ_size;
 	int		previous_exit;
 	char		*branch;
 	pid_t		child_pid;
 }				t_env;
+
+void	free_ternary_tree(t_ternary_tree *node);
+void		test_ternary_tree();
+void	ternary_tree_add(t_ternary_tree *node, char *cur, char *str);
+t_ternary_tree		*ternary_tree_new_down(char *str, char *cur);
+t_ternary_tree		*ternary_tree_new(char c);
+void			ternary_tree_print(t_ternary_tree *node);
+int	create_ternary_tree(t_env *env);
 
 /*
 **	In file environ.c

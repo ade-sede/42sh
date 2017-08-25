@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 11:23:31 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/23 18:13:49 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/08/24 22:03:49 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,19 @@
 #include "lexer.h"
 #include "parser.h"
 #include <stdio.h>
+
+void	free_token_list(t_list *token_list)
+{
+	t_list	*tmp;
+
+	while (token_list)
+	{
+		tmp = token_list->next;
+		free_token(token_list->data);
+		free(token_list);
+		token_list = tmp;
+	}
+}
 
 void	free_token(void *value)
 {

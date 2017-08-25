@@ -124,4 +124,5 @@ int					itoa_base_len(intmax_t value, int base);
 void				ft_putnbr(int n);
 
 void				fatal(const char *error_str);
+int	ft_is_executable(char *dir, char *file);
 #endif

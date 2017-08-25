@@ -6,18 +6,19 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:12 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/24 21:32:33 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "completion.h"
 #include "line_editing.h"
+#include <stdio.h>
 
 void	ft_putstr_padding_space(char *str, unsigned int size)
 {
 	unsigned int len;
 
-	len = ft_strlen(str);
+	len = ft_strlen_color(str);
 	ft_putstr(str);
 	while ((size - len) > 0)
 	{
@@ -29,7 +30,7 @@ void	ft_putstr_padding_space(char *str, unsigned int size)
 void	comple_refresh_elem(t_comple c, int indice)
 {
 	if (indice == c.pos)
-		put_termcap("mr");
+		ft_putstr("\e[;30;47m");
 	ft_putstr_padding_space(c.matches[indice], c.max_len);
 	put_termcap("me");
 	write(1, "  ", 2);

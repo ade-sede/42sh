@@ -4,6 +4,7 @@
 #include "printf.h"
 #include "line_editing.h"
 #include "history.h"
+#include "completion.h"
 
 int	main(void)
 {
@@ -11,6 +12,7 @@ int	main(void)
 	extern const char	**environ;
 
 	env_load_base_env(singleton_env(), environ);
+	create_ternary_tree(singleton_env());
 #ifndef NO_TERMCAPS
 	history_load(singleton_hist(), singleton_env());
 	conf_term_in();

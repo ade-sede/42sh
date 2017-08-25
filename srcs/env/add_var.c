@@ -1,16 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   add_var.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/26 15:16:03 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/26 15:16:51 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "env.h"
+#include "hash_table.h"
 #include "libft.h"
 #include <stdio.h>
 
@@ -33,6 +22,16 @@ void		env_add_var(t_env *env, const char *key, const char *value)
 	env->environ_size++;
 }
 
+void	env_reload_tree_hash(t_env	*env)
+{
+	free_ternary_tree(env->tree);
+	env->tree = NULL;
+	create_ternary_tree(env);
+	free_hash_table(env->hash_table);
+	create_hash_table(env);
+}
+
+
 void		env_change_value(t_env *env, const char *key, size_t key_index, \
 		const char *new_value)
 {
@@ -41,6 +40,8 @@ void		env_change_value(t_env *env, const char *key, size_t key_index, \
 	environ = env->environ;
 	free(environ[key_index]);
 	environ[key_index] = ft_strsurround(key, "=", new_value);
+	if (ft_strnequ(environ[key_index], "PATH", 4))
+		env_reload_tree_hash(env);
 }
 
 void		env_add_change(t_env *env, const char *key, const char *value)

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   comple_matches.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/25 19:25:21 by vcombey          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "completion.h"
 #include "line_editing.h"
 	#include <stdio.h>
@@ -103,21 +91,14 @@ char	*get_current_word_cursor(t_line *line)
 	return (word);
 }
 
-int isDirectory(const char *path)
-{
-   struct stat statbuf;
-   if (stat(path, &statbuf) != 0)
-       return 0;
-   return S_ISDIR(statbuf.st_mode);
-}
-
-char	*get_file_name(struct dirent dirent)
+char	*get_file_color(char *dir, char *file, struct dirent *dirent)
 {
 	if (dirent->d_type == DT_DIR)
-	{
-		return (ft_strjoin3_free(RED, dirent->d_name, RESET, 0));
-	}
-	return (dirent->d_name);
+		return ft_strjoin_free("\e[1;31m", dirent->d_name, 0);
+	else if (ft_is_executable(dir, file))
+		return ft_strjoin_free("\e[1;32m", dirent->d_name, 0);
+	else
+		return ft_strdup(dirent->d_name);
 }
 
 char	**array_matches(char *dir_match, char *to_match)
@@ -129,7 +110,7 @@ char	**array_matches(char *dir_match, char *to_match)
 
 	i = 0;
 	dir = NULL;
-	matches = ft_memalloc(sizeof(char *) * 1000); ///////////////////////////////////////////////////
+	matches = ft_memalloc(sizeof(char *) * 1000); ////////////////////////////////////
 	dir = (dir_match) ? opendir(dir_match) : opendir(".");
 	if (!dir)
 	{
@@ -139,9 +120,9 @@ char	**array_matches(char *dir_match, char *to_match)
 	while ((dirent = readdir(dir)) != NULL)
 	{
 		//printf("\nd_name: %s to_match: %s\n", dirent->d_name, to_match);
-		if (!to_match || ft_strstr(dirent->d_name, to_match))
+		if ((!to_match[0] && dirent->d_name[0] != '.') || (to_match[0] && ft_strstr(dirent->d_name, to_match)))
 		{
-			matches[i] = ft_strdup(dirent->d_name);
+			matches[i] = get_file_color(dir_match, dirent->d_name, dirent);
 			//printf("\nd_name: %s\n", matches[i]);
 			i++;
 		}
@@ -156,27 +137,28 @@ void	split_word(char *str, char *separator, char **head, char **queu)
 
 	tmp = *separator;
 	*separator = '\0';
-	*head = ft_strdup(str);
+	if (*str == '\0') //gere le cas str = /something
+		*head = ft_strdup("/");
+	else
+		*head = ft_strdup(str);
 	*queu = ft_strdup(separator + 1);
 	*separator = tmp;
 }
 
-char    **comple_file_matches(t_line *line)
+char    **comple_file_matches(t_line *line, t_comple *c, char *current_word)
 {
 	char            *to_match;
-	char            *current_word;
 	char            *dir_match;
 	char            **matches;
 
 	to_match = NULL;
 	dir_match = NULL;
-	current_word = get_current_word_cursor(line);
-	singleton_comple()->to_replace = get_start_word_cursor(line);
+	c->to_replace = get_start_word_cursor(line);
 	//printf("\nto_match: %s, dir_match: %s\n", (to_match) ? to_match : "null", (dir_match) ?
 	// dir_match : "null");
 	if (current_word && ft_strichr(current_word, '/') != -1)
 	{
-		singleton_comple()->to_replace = get_word_slash(line) + 1;
+		c->to_replace = get_word_slash(line) + 1;
 		split_word(current_word, ft_strrchr(current_word, '/'), &dir_match, &to_match);
 		free(current_word);
 		matches = array_matches(dir_match, to_match);
