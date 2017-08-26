@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   history_init.c                                     :+:      :+:    :+:   */
+/*   hash_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 01:14:57 by vcombey          ###   ########.fr       */
+/*   Created: 2017/08/27 01:17:33 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 01:17:40 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "history.h"
+# include <dirent.h>
+# include "libft.h"
+# include "hash_table.h"
+# include "env.h"
 
-t_hist	*singleton_hist(void)
+void	free_hash_table(t_list **hash_table)
 {
-	static t_hist	h;
+	t_list	*tmp;
+	t_list	*elem;
+	size_t	i;
 
-	return (&h);
-}
-
-void	history_init(t_hist *h)
-{
-	h->cur = NULL;
+	i = 0;
+	while (i < HASH_TABLE_SIZE)
+	{
+		elem = hash_table[i];
+		while (elem)
+		{
+			tmp = elem->next;
+			ft_strdel((char **)&elem->data);
+			free(elem);
+			elem = tmp;
+		}
+		hash_table[i] = NULL;
+		i++;
+	}
+	free(hash_table);
 }

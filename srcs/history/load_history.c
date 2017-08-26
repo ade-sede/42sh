@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:18 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 01:14:03 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	history_load(t_hist *h, t_env *env)
 {
-	int		fd;
+	int			fd;
 	char		*line;
 	char		*hist_file;
 	t_list_d	*list;
@@ -37,7 +37,6 @@ int	history_load(t_hist *h, t_env *env)
 	chmod(h->file, S_IRUSR | S_IWUSR | S_IRGRP);
 	while (get_next_line(fd, &line))
 	{
-		//printf("%s\n", line);
 		list = ft_double_lst_create(line);
 		if (h->list == NULL)
 			h->list = ft_create_head(list);

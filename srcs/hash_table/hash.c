@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hash.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/26 23:48:45 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 01:12:26 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
-# include <dirent.h>
-# include "libft.h"
-# include "hash_table.h"
-# include "env.h"
+#include <dirent.h>
+#include "libft.h"
+#include "hash_table.h"
+#include "env.h"
 
 size_t	hash(unsigned char *str)
 {
-    unsigned long hash = 5381;
-    int c;
+	unsigned long	hash;
+	int				c;
 
-    while ((c = *str++))
-        hash = ((hash << 5) + hash) + c;
-    return hash % 997;
+	hash = 5381;
+	while ((c = *str++))
+		hash = ((hash << 5) + hash) + c;
+	return (hash % 997);
 }
-
 
 char	*hash_get(t_list **hash_table, char *value)
 {
@@ -22,9 +34,6 @@ char	*hash_get(t_list **hash_table, char *value)
 	tmp = hash_table[hash((unsigned char *)value)];
 	while (tmp)
 	{
-		/*
-**			printf("\n%s\n", ft_strrchr(tmp->data, '/'));
-*/
 		if (ft_strequ(ft_strrchr(tmp->data, '/') + 1, value))
 			return (tmp->data);
 		tmp = tmp->next;
@@ -34,18 +43,15 @@ char	*hash_get(t_list **hash_table, char *value)
 
 void	hash_add(t_list **hash_table, char *value, char *name)
 {
-	/*
-**		printf("\nd_name: %s \n", name);
-**		printf("\n%zu\n", hash((unsigned char *)name));
-*/
-	ft_simple_lst_add(hash_table + hash((unsigned char *)name), ft_simple_lst_create(value));
+	ft_simple_lst_add(hash_table + hash((unsigned char *)name), \
+			ft_simple_lst_create(value));
 }
 
 void	hash_add_dir(t_list **hash_table, char *dir_path)
 {
 	struct dirent	*dirent;
-	DIR		*dir;
-	int		i;
+	DIR				*dir;
+	int				i;
 
 	i = 0;
 	dir = NULL;
@@ -53,40 +59,16 @@ void	hash_add_dir(t_list **hash_table, char *dir_path)
 		return ;
 	while ((dirent = readdir(dir)) != NULL)
 	{
-		/*
-**			printf("\nd_name: %s \n", dirent->d_name);
-*/
-		if (dirent->d_name[0] != '.' && ft_is_executable(dir_path, dirent->d_name))
-			hash_add(hash_table, ft_strjoin3_free(dir_path, "/" ,dirent->d_name, 0), dirent->d_name);
-		//printf("\nd_name: %s\n", bins[i]);
+		if (dirent->d_name[0] != '.' && ft_is_executable(dir_path, \
+					dirent->d_name))
+			hash_add(hash_table, ft_strjoin3_free(dir_path, "/", \
+						dirent->d_name, 0), dirent->d_name);
 		i++;
 	}
 	closedir(dir);
 }
-void	free_hash_table(t_list **hash_table)
-{
-	t_list	*tmp;
-	t_list	*elem;
-	size_t	i;
 
-	i = 0;
-	while (i < HASH_TABLE_SIZE)
-	{
-		elem = hash_table[i];
-		while (elem)
-		{
-			tmp = elem->next;
-			ft_strdel((char **)&elem->data);
-			free(elem);
-			elem = tmp;
-		}
-		hash_table[i] = NULL;
-		i++;
-	}
-	free(hash_table);
-}
-
-int	create_hash_table(t_env *env)
+int		create_hash_table(t_env *env)
 {
 	char	**paths;
 	char	*path;

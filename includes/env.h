@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/08/24 23:37:29 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/26 23:40:58 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,12 @@ void			env_add_var_from_string(t_env *env, \
 void			env_remove_var_index(t_env *env, size_t key_index);
 void			env_remove_var(t_env *env, const char *key);
 
+/*
+**	In file t_env.c
+*/
+
+char			*get_ps1(t_env *env, size_t *len);
+int				env_free_env(t_env *env);
 /*
 **	In file t_env.c
 */

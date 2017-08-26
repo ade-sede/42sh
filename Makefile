@@ -103,6 +103,7 @@ SRC_FILE =	\
 	completion/ternary_search_tree_add.c \
 \
 	hash_table/hash.c \
+	hash_table/hash_free.c \
 
 NAME ?= 21sh
 

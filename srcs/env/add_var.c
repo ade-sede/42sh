@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_var.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/26 23:29:12 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/26 23:47:41 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "hash_table.h"
 #include "libft.h"
@@ -22,7 +34,7 @@ void		env_add_var(t_env *env, const char *key, const char *value)
 	env->environ_size++;
 }
 
-void	env_reload_tree_hash(t_env	*env)
+void	env_reload_tree_hash(t_env *env)
 {
 	free_ternary_tree(env->tree);
 	env->tree = NULL;
@@ -30,7 +42,6 @@ void	env_reload_tree_hash(t_env	*env)
 	free_hash_table(env->hash_table);
 	create_hash_table(env);
 }
-
 
 void		env_change_value(t_env *env, const char *key, size_t key_index, \
 		const char *new_value)
