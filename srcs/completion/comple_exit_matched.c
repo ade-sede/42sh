@@ -29,7 +29,7 @@ void	comple_free(t_comple c)
 	ft_arraydel(&c.matches);
 }
 
-char	*extract_color(char	*str)
+char	*extract_color(char *str)
 {
 	char	*res;
 	char	*res_dup;
@@ -60,7 +60,7 @@ int	comple_exit_matched(t_line *line, t_comple c, unsigned long long keycode)
 	//printf("\nto_replace %s, match %s\n", c.to_replace, c.matches[c.pos]);
 	char	*matched;
 
-	if ((keycode == KEY_ENTER && c.pos != -1)|| c.nb_matches == 1)
+	if ((keycode == KEY_ENTER && c.pos != -1) || c.nb_matches == 1)
 	{
 		delete_word(c.to_replace);
 		matched = extract_color(c.matches[c.pos]);

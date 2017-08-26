@@ -29,9 +29,18 @@ void	ft_putstr_padding_space(char *str, unsigned int size)
 
 void	comple_refresh_elem(t_comple c, int indice)
 {
+	char	*word;
+
 	if (indice == c.pos)
-		ft_putstr("\e[;30;47m");
-	ft_putstr_padding_space(c.matches[indice], c.max_len);
+	{
+		//ft_putstr("\e[;30;47m");
+		put_termcap("mr");
+		word = extract_color(c.matches[indice]);
+		ft_putstr_padding_space(word, c.max_len);
+		free(word);
+	}
+	else 
+		ft_putstr_padding_space(c.matches[indice], c.max_len);
 	put_termcap("me");
 	write(1, "  ", 2);
 }

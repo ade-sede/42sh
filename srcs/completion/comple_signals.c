@@ -15,8 +15,11 @@
 #include <signal.h>
 #include <stdio.h>
 
-void	comple_handle_sigwinch(t_line *line, t_comple *c)
+void	comple_handle_sigwinch(int signum)
 {
+	(void)signum;
+	t_comple	*c;
+	c = singleton_comple();
 	edit_handle_sigwinch(0);
 	//put_termcap("cr");
 	//put_termcap("cd");
@@ -25,7 +28,7 @@ void	comple_handle_sigwinch(t_line *line, t_comple *c)
 	comple_init_winch(c);
 //	comple_clear(*c);
 	//put_termcap("cl");
-	comple_refresh(line, *c);
+	comple_refresh(singleton_line(), *c);
 }
 
 void	comple_handle_sigint(t_line *line, t_comple *c)
@@ -53,7 +56,7 @@ void	comple_set_signals(void)
 	sa.sa_flags = 0;
 	sigaction(SIGINT, &sa, NULL);
 
-	signal(SIGWINCH, comple_set_comple_signum);
+	signal(SIGWINCH, comple_handle_sigwinch);
 	//signal(SIGINT, comple_set_comple_signum);
 
 }

@@ -56,8 +56,6 @@ int		comple_get_input(t_line *line)
 	{
 		keycode = 0;
 		read(0, &keycode, 8);
-		if (c->signum == SIGWINCH)
-			comple_handle_sigwinch(line, c);
 		if (c->signum == SIGINT)
 		{
 			comple_handle_sigint(line, c);
