@@ -88,6 +88,7 @@ size_t	edit_refresh_nchar(t_line *line, size_t padding, char *str, size_t n);
 void	edit_refresh_clear(t_line *line);
 void	edit_refresh_cursor(t_line *line);
 void	edit_refresh_line(t_line *line);
+void	edit_refresh_visu(t_line *line);
 
 void	goto_termcap(char *capacity, int co, int li);
 void	put_ntermcap(char *capacity, int n);

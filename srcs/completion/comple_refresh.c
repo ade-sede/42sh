@@ -65,10 +65,14 @@ int	comple_refresh(t_line *line, t_comple c)
 	size_t	li;
 	size_t	li_start;
 
+	put_termcap("cd");	
 	li_start = 0;
 	if (c.nb_lines > c.ws_row)
 	{
-		li_start = (c.pos / (c.ws_row - 1)) * (c.ws_row - 1);
+		if (c.pos == -1)
+			li_start = 0;
+		else
+			li_start = (c.pos % c.nb_lines / (c.ws_row - 1)) * (c.ws_row - 1);
 	}
 	move_cursor_lastline(line);
 	//comple_clear(c);
@@ -87,7 +91,9 @@ int	comple_refresh(t_line *line, t_comple c)
 		li++;
 	}
 	put_ntermcap("up", c.nb_lines);
-	move_cursor_bufflen_from_lastline(line);
+	move_cursor_firstline_from_lastline(line);
+	put_prompt(line);
+	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
 	edit_refresh_cursor(line);
 	//comple_line_refresh(line, c);
 	return (1);
