@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 14:54:49 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 01:23:03 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		btsearch_exit(t_line *line, t_hist *h)
 		ft_strclr(h->btsearch_buff);
 		h->btsearch_buff_len = 0;
 	}
-		line->pos = line->len;
+	line->pos = line->len;
 	(void)line;
 	return (1);
 }

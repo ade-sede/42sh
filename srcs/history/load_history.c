@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 01:14:03 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 01:38:10 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include "env.h"
-	#include <stdio.h>
 
 int	history_load(t_hist *h, t_env *env)
 {
@@ -29,7 +28,7 @@ int	history_load(t_hist *h, t_env *env)
 	if (!hist_file)
 		hist_file = ".minishell_history";
 	h->file = hist_file;
-	h->list = NULL; 
+	h->list = NULL;
 	h->writen_buff = ft_strnew(4096);
 	h->btsearch_buff = ft_strnew(4096);
 	if ((fd = open(h->file, O_RDWR | O_CREAT)) == -1)
@@ -41,7 +40,7 @@ int	history_load(t_hist *h, t_env *env)
 		if (h->list == NULL)
 			h->list = ft_create_head(list);
 		else
-			ft_double_lst_add(&h->list, list); 
+			ft_double_lst_add(&h->list, list);
 	}
 	close(fd);
 	return (1);

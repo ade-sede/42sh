@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btsearch_signals.c                                   :+:      :+:    :+:   */
+/*   btsearch_signals.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/22 14:46:09 by vcombey          ###   ########.fr       */
+/*   Created: 2017/08/27 01:27:42 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 01:36:23 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,25 @@
 #include <signal.h>
 #include <stdio.h>
 
-int	btsearch_handle_sigwinch(t_line *line, t_hist *h)
+int		btsearch_handle_sigwinch(t_line *line, t_hist *h)
 {
-	//put_termcap("cr");
-	//put_termcap("cd");
-	//btsearch_clear(*h());
-    (void)line;
-    (void)h;
+	(void)line;
+	(void)h;
 	return (1);
 }
 
-int	btsearch_handle_sigint(t_line *line, t_hist *h)
+int		btsearch_handle_sigint(t_line *line, t_hist *h)
 {
 	btsearch_exit(line, h);
 	h->signum = 0;
 	ft_strclr(line->buff);
 	line->len = 0;
 	return (1);
-	//put_prompt(NULL);
 }
 
-void	btsearch_set_btsearch_signum(signum)
+void	btsearch_set_btsearch_signum(int num)
 {
-	singleton_hist()->signum = signum;
+	singleton_hist()->signum = num;
 }
 
 void	btsearch_set_signals(void)

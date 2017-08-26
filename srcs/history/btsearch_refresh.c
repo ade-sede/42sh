@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/24 18:34:45 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 01:36:48 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	btsearch_refresh(t_line *line, t_hist *h)
 	edit_refresh_clear(line);
 	move_cursor_lastline(line);
 	ft_putchar('\n');
-	search_line = (h->btsearch_cur == NULL) ? "failing bck-i-search: " : "bck-i-search: ";
+	search_line = (h->btsearch_cur == NULL) ? "failing bck-i-search: " : \
+				"bck-i-search: ";
 	search_line = ft_strjoin_free(search_line, h->btsearch_buff, 0);
 	edit_refresh_nchar(line, 0, search_line, ft_strlen(search_line));
 	ft_putchar('_');

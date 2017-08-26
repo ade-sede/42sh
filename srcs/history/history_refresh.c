@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/06/08 23:20:18 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 01:40:32 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	history_refresh(char *command)
 	if (h->list == NULL)
 		h->list = ft_create_head(list);
 	else
-		ft_double_lst_add(&h->list, list); 
+		ft_double_lst_add(&h->list, list);
 }
