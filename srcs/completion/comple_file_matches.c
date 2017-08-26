@@ -94,9 +94,9 @@ char	*get_current_word_cursor(t_line *line)
 char	*get_file_color(char *dir, char *file, struct dirent *dirent)
 {
 	if (dirent->d_type == DT_DIR)
-		return ft_strjoin_free("\e[1;31m", dirent->d_name, 0);
+		return ft_strjoin3_free("\e[1;31m", dirent->d_name, "/", 0);
 	else if (ft_is_executable(dir, file))
-		return ft_strjoin_free("\e[1;32m", dirent->d_name, 0);
+		return ft_strjoin3_free("\e[1;32m", dirent->d_name, "/", 0);
 	else
 		return ft_strdup(dirent->d_name);
 }

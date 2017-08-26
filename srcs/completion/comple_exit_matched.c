@@ -64,18 +64,12 @@ int	comple_exit_matched(t_line *line, t_comple c, unsigned long long keycode)
 	{
 		delete_word(c.to_replace);
 		matched = extract_color(c.matches[c.pos]);
-		if (c.nb_matches == 1)
-		{
-			matched = ft_strjoin_free(matched, "/", 2);
-			edit_insert_str(line, c.to_replace, matched);
-		}
-		else
-			edit_insert_str(line, c.to_replace, matched);
+		edit_insert_str(line, c.to_replace, matched);
 		free(matched);
 	}
 	//ft_strncpy(c.to_replace, c.matches[c.pos], ft_strlen(c.matches[c.pos]));
-	comple_clear(c);
-	put_termcap("up");
+	//comple_clear(c);
+	//put_termcap("up");
 	comple_free(c);
 	return (keycode);
 }
