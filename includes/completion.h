@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/24 00:54:17 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/26 22:02:01 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ typedef struct		s_comple
 	int		pos;
 	int		signum;
 	size_t		ws_col;
+	size_t		ws_row;
 	size_t		max_len;
 	size_t		nb_lines;
 	size_t		nb_colones;
 	size_t		nb_matches;
 	char		*to_replace;
+	char		*current_word;
 }			t_comple;
 
 t_comple	*singleton_comple(void);
@@ -38,15 +40,17 @@ typedef struct		s_comple_func
 /*
 ** signaux
 */
+char	**comple_matching(t_line *line, t_comple *c);
 void	comple_set_signals(void);
-void	comple_handle_sigwinch(t_line *line, t_comple *c);
+void	comple_handle_sigwinch(int signum);
 void	comple_handle_sigint(t_line *line, t_comple *c);
 
 int	comple_init(t_line *line, t_comple *c);
 int	comple_init_winch(t_comple *c);
 int	comple_get_input(t_line *line);
-char	**comple_file_matches(t_line *line, t_comple *c, char *current_word);
-char	**comple_bin_matches(t_line *line, t_comple *c, char *current_word);
+char    **comple_file_matches(t_line *line, t_comple *c);
+char	*extract_color(char *str);
+char	**comple_bin_matches(t_line *line, t_comple *c);
 
 int		comple_right(t_comple *c);
 int		comple_left(t_comple *c);
@@ -59,4 +63,8 @@ void	comple_clear(t_comple c);
 void	comple_free(t_comple c);
 int	comple_exit_matched(t_line *line, t_comple c, unsigned long long keycode);
 
+char	*get_word_slash(t_line *line);
+char	*get_start_word_cursor(t_line *line);
+void	delete_word(char *to_replace);
+char	*get_current_word_cursor(t_line *line);
 # endif

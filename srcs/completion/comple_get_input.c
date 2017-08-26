@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   comple_get_input.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/26 21:13:27 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/26 22:29:17 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "completion.h"
 #include "line_editing.h"
 #include <stdio.h>
@@ -12,7 +24,8 @@ static t_comple_func	g_comple_func[] =
 	{0, NULL}
 };
 
-int		comple_loop(unsigned long long keycode, t_line *line, t_comple *c)
+int		comple_loop(unsigned long long keycode, t_line *line,
+		t_comple *c)
 {
 	int	i;
 
@@ -33,7 +46,7 @@ int		comple_loop(unsigned long long keycode, t_line *line, t_comple *c)
 int		comple_get_input(t_line *line)
 {
 	unsigned long long	keycode;
-	t_comple		*c;
+	t_comple			*c;
 
 	c = singleton_comple();
 	if (!(comple_init(line, c)))

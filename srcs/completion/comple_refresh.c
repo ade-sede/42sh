@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   comple_refresh.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/26 21:13:27 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/26 22:35:05 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "completion.h"
 #include "line_editing.h"
 #include <stdio.h>
@@ -17,59 +29,62 @@ void	ft_putstr_padding_space(char *str, unsigned int size)
 
 void	comple_refresh_elem(t_comple c, int indice)
 {
+	char	*word;
+
 	if (indice == c.pos)
-		ft_putstr("\e[;30;47m");
-	ft_putstr_padding_space(c.matches[indice], c.max_len);
+	{
+		put_termcap("mr");
+		word = extract_color(c.matches[indice]);
+		ft_putstr_padding_space(word, c.max_len);
+		free(word);
+	}
+	else
+		ft_putstr_padding_space(c.matches[indice], c.max_len);
 	put_termcap("me");
 	write(1, "  ", 2);
 }
 
-void	comple_line_refresh(t_line *line, t_comple c)
+void	comple_refresh_line(t_line *line, t_comple c)
 {
-(void)line;
-(void)c;
-	/*
-	size_t	n;
-
-	put_termcap("cr");
-	put_termcap("dl");
-	put_prompt(NULL);
-	ft_putnstr(line->buff, line->pos);
-	if (c.pos != -1)
-		ft_putstr(c.matches[c.pos]);
-	ft_putstr(line->buff + line->pos);
-	n = line->len - line->pos;
-	if (c.pos != -1)
-		n += ft_strlen(c.matches[c.pos]);
-	put_ntermcap("le", n);
-
-*/
+	put_ntermcap("up", c.nb_lines);
+	move_cursor_firstline_from_lastline(line);
+	put_prompt(line);
+	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
+	edit_refresh_cursor(line);
 }
 
-int	comple_refresh(t_line *line, t_comple c)
+size_t	comple_listart_big_completion(t_comple c)
+{
+	if (c.pos == -1)
+		return (0);
+	else
+		return (c.pos % c.nb_lines / (c.ws_row - 1)) * (c.ws_row - 1);
+}
+
+int		comple_refresh(t_line *line, t_comple c)
 {
 	size_t	co;
 	size_t	li;
+	size_t	li_start;
 
+	put_termcap("cd");
+	li_start = 0;
+	if (c.nb_lines > c.ws_row)
+		li_start = comple_listart_big_completion(c);
 	move_cursor_lastline(line);
-	//comple_clear(c);
-	li = 0;
-	while (li < c.nb_lines)
+	li = li_start;
+	while (li < c.nb_lines && li - li_start < c.ws_row - 1)
 	{
 		co = 0;
 		put_termcap("do");
 		put_termcap("cr");
 		while (co < c.nb_colones && co * c.nb_lines + li < c.nb_matches)
 		{
-			//goto_termcap("ch", co, 0);
 			comple_refresh_elem(c, co * c.nb_lines + li);
 			co++;
 		}
 		li++;
 	}
-	put_ntermcap("up", c.nb_lines);
-	move_cursor_bufflen_from_lastline(line);
-	edit_refresh_cursor(line);
-	//comple_line_refresh(line, c);
+	comple_refresh_line(line, c);
 	return (1);
 }

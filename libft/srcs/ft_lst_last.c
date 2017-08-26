@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   size_term.c                                        :+:      :+:    :+:   */
+/*   ft_lst_last.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/26 21:13:27 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/26 21:13:43 by vcombey          ###   ########.fr       */
+/*   Created: 2017/08/26 21:24:14 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/26 21:24:16 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/ioctl.h>
-#include <stdio.h>
+#include "libft.h"
 
-size_t				get_ws_col(void)
+t_list	*ft_last_simple_lst(t_list *lst)
 {
-	struct winsize	w;
-
-	ioctl(0, TIOCGWINSZ, &w);
-	return (w.ws_col);
+	while (lst && lst->next)
+		lst = lst->next;
+	return (lst);
 }
 
-size_t				get_ws_row(void)
+t_list	*ft_previous_last_simple_lst(t_list *lst)
 {
-	struct winsize	w;
-
-	ioctl(0, TIOCGWINSZ, &w);
-	return (w.ws_row);
+	if (!lst || !lst->next)
+		return (lst);
+	while (lst && lst->next && lst->next->next)
+		lst = lst->next;
+	return (lst);
 }

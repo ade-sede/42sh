@@ -26,6 +26,7 @@ SRC_FILE =	\
 	env/remove_var.c \
 	env/t_env.c \
 	env/prompt.c \
+	env/prompt_zsh.c \
 	env/env_create_completion_tree.c \
 \
 	builtin/cd.c \
@@ -88,6 +89,7 @@ SRC_FILE =	\
 	history/load_history.c \
 \
 	completion/comple_bin_matches.c \
+	completion/comple_matches.c \
 	completion/comple_exit_matched.c \
 	completion/comple_get_input.c \
 	completion/comple_init.c \
@@ -96,7 +98,9 @@ SRC_FILE =	\
 	completion/comple_refresh.c \
 	completion/comple_signals.c \
 	completion/size_term.c \
+	completion/comple_get_word_cursor.c \
 	completion/ternary_search_tree.c \
+	completion/ternary_search_tree_add.c \
 \
 	hash_table/hash.c \
 
