@@ -1,17 +1,5 @@
 #include <stdio.h>
 #include "completion.h"
-/*
-**	
-**	parcours l arbre jusqu'a ce qu il nexiste plus de node qui match *cur, appelle alors une des fonction d insertion
-**	
-*/
-
-
-/*
-**	
-**	insere le nouveau neud new_down a gauche de node comme dans un liste doublement chaine 
-**	
-*/
 
 t_ternary_tree		*ternary_tree_new(char c)
 {
@@ -36,7 +24,6 @@ void			ternary_tree_print(t_ternary_tree *node)
 	if (node->down)
 		printf("\n down \n");
 	ternary_tree_print(node->down);
-	//put_termcap("do");
 	if (node->right)
 		printf("\n right\n");
 	ternary_tree_print(node->right);

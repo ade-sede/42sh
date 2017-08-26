@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 14:56:45 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 13:26:50 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/08/25 21:55:41 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,25 +92,12 @@ static void			print_arg(const char *argv)
 	}
 }
 
-/*
-**	Test designed to see if a builtin on the right end of a pipe can read from 0 correctly.
-*/
-
-/* static void	read_test(void) */
-/* { */
-/* 	char buf[4096]; */
-
-/* 	read(0, buf, 4096); */
-/* 	dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buf); */
-/* } */
-
 int					builtin_echo(t_env *env, const char **argv)
 {
 	short int	n_flag;
 	short int	e_flag;
 	const char	**tmp;
 
-	/* read_test(); */
 	(void)env;
 	n_flag = FALSE;
 	e_flag = FALSE;

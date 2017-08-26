@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 14:43:38 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/28 19:32:16 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/08/25 21:58:41 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int		exec_builtin(t_env *env, const char **argv, t_lst_head *head)
 	cur = head->middle;
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
-
 	child = 0;
 	i = 0;
 	while (g_builtin[i].key && !ft_strequ(g_builtin[i].key, argv[0]))
@@ -53,11 +52,11 @@ int		exec_builtin(t_env *env, const char **argv, t_lst_head *head)
 		child = fork();
 	if (p_left && !p_right)
 	{
-			save = dup(STDIN_FILENO);
-			close(p_left[WRITE_END]);
-			dup2(p_left[READ_END], STDIN_FILENO);
+		save = dup(STDIN_FILENO);
+		close(p_left[WRITE_END]);
+		dup2(p_left[READ_END], STDIN_FILENO);
 	}
-	if (child == 0) // The child if we forked, the main process otherwise.
+	if (child == 0)
 	{
 		if (p_right)
 		{
