@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:15:53 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 09:04:05 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ char	*edit_get_input(t_env *env);
 void	edit_set_signals(void);
 void	edit_handle_sigwinch(int signum);
 void	conf_term_in(void);
-void	conf_term_canonical(t_line *line);
-void	conf_term_normal(t_line *line);
+void	conf_term_canonical(void);
+void	conf_term_normal(void);
 void	put_termcap(char *capacity);
 t_line	*singleton_line(void);
 

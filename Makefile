@@ -39,6 +39,7 @@ SRC_FILE =	\
 \
 	exec/exec_signals.c \
 	exec/exec_bin.c \
+	exec/exec_operator.c \
 	exec/main_loop.c \
 	exec/param_expansion.c \
 	exec/word_expansion.c \

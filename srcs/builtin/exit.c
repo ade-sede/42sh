@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:07:37 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 09:04:23 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	builtin_exit(t_env *env, const char **argv)
 		return (return_failure("exit: numeric argument required", NULL));
 	else
 	{
-		conf_term_normal(singleton_line());
+		conf_term_normal();
 		exit(exit_status);
 	}
 	return (EXIT_SUCCESS);

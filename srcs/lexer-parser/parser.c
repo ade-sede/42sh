@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:35 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 10:26:43 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static t_list	*reopen_command(t_token *token)
 	t_lexer	lex;
 
 	(void)token;
-	load_prompt(singleton_env(), singleton_line(), "reopen_command",
+	load_prompt(singleton_env(), singleton_line(), "reopen_command", \
 			"command> ");
 	new_command = line_editing_get_input(singleton_env(), singleton_line(),
 			singleton_hist());

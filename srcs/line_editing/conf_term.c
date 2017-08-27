@@ -6,22 +6,22 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:38 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 09:03:26 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_editing.h"
 #include <stdio.h>
 
-void	conf_term_canonical(t_line *line)
+void	conf_term_canonical(void)
 {
-	if (tcsetattr(0, TCSADRAIN, &line->canonical_mode))
+	if (tcsetattr(0, TCSADRAIN, &singleton_line()->canonical_mode))
 		fatal("tcsetattr error");
 }
 
-void	conf_term_normal(t_line *line)
+void	conf_term_normal(void)
 {
-	if (tcsetattr(0, TCSADRAIN, &line->normal_mode))
+	if (tcsetattr(0, TCSADRAIN, &singleton_line()->normal_mode))
 		fatal("tcsetattr error");
 }
 

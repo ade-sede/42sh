@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:04 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 10:31:06 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,90 +56,17 @@ t_ast		*flush_tree(t_ast *ast)
 **	node.
 */
 
-static int		logical_or(t_ast *ast, t_lst_head *head)
-{
-	int		error;
-	int		cmd1_exit;
-
-	error = 0;
-	cmd1_exit = 0;
-	if (!ast->child->data || !ast->child->next->data)
-	{
-		error = 1;
-		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
-	}
-	if (!error)
-	{
-		ft_double_lst_add(&head, ft_double_lst_create(NULL));
-		head->middle = head->first;
-		exec_tree(ast->child->data, head);
-		if ((cmd1_exit = singleton_env()->previous_exit) != 0)
-			exec_tree(ast->child->next->data, head);
-	}
-	if (error != 0)
-	{
-		ft_dprintf(2, "error spotted\n");
-		ast->child->data = flush_tree(ast->child->data);
-		ast->child->next->data = flush_tree(ast->child->next->data);
-	}
-	if (cmd1_exit == 0)
-		ast->child->next->data = flush_tree(ast->child->next->data);
-	return ((cmd1_exit == 0 || error != 0) ? 1 : 0);
-}
-
-static int		semi_colon(t_ast *ast, t_lst_head *head)
-{
-	if (!ast->child->data)
-		ft_dprintf(2, "Parse error near %s\n", ast->token->value);
-	ft_double_lst_add(&head, ft_double_lst_create(NULL));
-	head->middle = head->first;
-	exec_tree(ast->child->data, head);
-	exec_tree(ast->child->next->data, head);
-	return (0);
-}
-
-static int		logical_and(t_ast *ast, t_lst_head *head)
-{
-	int		error;
-	int		cmd1_exit;
-
-	error = 0;
-	cmd1_exit = 0;
-	if (!(ast->child->data) || !(ast->child->next->data))
-	{
-		error = 1;
-		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
-	}
-	if (!error)
-	{
-		ft_double_lst_add(&head, ft_double_lst_create(NULL));
-		head->middle = head->first;
-		exec_tree(ast->child->data, head);
-		if ((cmd1_exit = singleton_env()->previous_exit) == 0)
-			exec_tree(ast->child->next->data, head);
-	}
-	if (error != 0)
-	{
-		ast->child->data = flush_tree(ast->child->data);
-		ast->child->next->data = flush_tree(ast->child->next->data);
-	}
-	if (cmd1_exit != 0)
-		ast->child->next->data = flush_tree(ast->child->next->data);
-	return ((cmd1_exit != 0 || error != 0) ? 1 : 0);
-}
-
-static int		exec_pipe(t_ast *ast, t_lst_head *head)
+static int	exec_pipe(t_ast *ast, t_lst_head *head)
 {
 	int			*p;
-	int			error;
 
-	error = 0;
 	if (!(ast->child->data) || !(ast->child->next->data))
 	{
-		error = 1;
 		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
+		ast->child->data = flush_tree(ast->child->data);
+		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
-	if (error == 0)
+	else
 	{
 		p = palloc(sizeof(*p) * 2);
 		pipe(p);
@@ -153,11 +80,6 @@ static int		exec_pipe(t_ast *ast, t_lst_head *head)
 			head->middle = head->middle->next;
 		}
 	}
-	else
-	{
-		ast->child->data = flush_tree(ast->child->data);
-		ast->child->next->data = flush_tree(ast->child->next->data);
-	}
 	return (0);
 }
 
@@ -167,13 +89,13 @@ static int		exec_pipe(t_ast *ast, t_lst_head *head)
 **	various commands.
 */
 
-int				end_branch(int error, t_ast *ast)
+int			end_branch(int error, t_ast *ast)
 {
 	ast = free_ast_node(ast);
 	return (error);
 }
 
-int				exec_tree(t_ast *ast, t_lst_head *head)
+int			exec_tree(t_ast *ast, t_lst_head *head)
 {
 	t_token		*token;
 

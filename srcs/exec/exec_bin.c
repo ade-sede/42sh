@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:02 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 10:09:52 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void		ft_exec_bin_absolute(t_env *env, const char **argv)
 		exit(return_failure(argv[0], " :no such file or directory"));
 	else if (access(argv[0], X_OK) == -1)
 		exit(return_failure(argv[0], " :permission denied "));
-	else if (execve(argv[0], (char**)argv, env->environ) != -1)
+	else if (execve(argv[0], (char**)argv, env->environ) == -1)
 		exit(return_failure(argv[0], " :command not found"));
+	exit(1);
 }
 
 /*
@@ -46,7 +47,8 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 	{
 		if (access(bin, X_OK) == -1)
 			exit(return_failure(bin, " :permission denied "));
-		execve(bin, (char**)argv, env->environ);
+		else if (execve(bin, (char**)argv, env->environ) == -1)
+			exit(return_failure(argv[0], " :command not found"));
 	}
 	exit(return_failure((const char *)*argv, " :commmand not found"));
 }
@@ -103,7 +105,7 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	cur = head->middle;
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
-	conf_term_normal(singleton_line());
+	conf_term_normal();
 	no_handle_signals();
 	child = fork();
 	if (child == 0)
@@ -121,7 +123,7 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 			close_parent_bin(head);
 		env->child_pid = child;
 		wait(&child);
-		conf_term_canonical(singleton_line());
+		conf_term_canonical();
 		env->previous_exit = WEXITSTATUS(child);
 		return (WEXITSTATUS(child));
 	}

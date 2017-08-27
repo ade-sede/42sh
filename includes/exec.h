@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:34:06 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 10:27:02 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,14 @@ t_ast			*flush_tree(t_ast *ast);
 */
 
 void			exec_simple_command(t_ast *ast, t_lst_head *head);
+
+/*
+** In exec_operator.c
+*/
+
+int				logical_or(t_ast *ast, t_lst_head *head);
+int				semi_colon(t_ast *ast, t_lst_head *head);
+int				logical_and(t_ast *ast, t_lst_head *head);
 
 /*
 ** In redir.c
