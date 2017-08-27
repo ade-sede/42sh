@@ -38,6 +38,7 @@ SRC_FILE =	\
 	builtin/echo.c \
 \
 	exec/exec_signals.c \
+	exec/redir_utils.c \
 	exec/exec_bin.c \
 	exec/exec_operator.c \
 	exec/main_loop.c \
