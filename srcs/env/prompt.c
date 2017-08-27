@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/26 23:29:12 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/26 23:39:42 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 04:14:48 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	load_prompt(t_env *env, t_line *line, char *var, char *defaut)
 	if (ft_strequ(var, "PS1"))
 		prompt = get_ps1(env, &len);
 	else
-		prompt = env_getenv((const char**)env->environ, var, NULL);
+		prompt = ft_strdup(env_getenv((const char**)env->environ, var, NULL));
 	if (!prompt)
 		prompt = defaut;
 	if (ft_strequ(var, "PS1"))

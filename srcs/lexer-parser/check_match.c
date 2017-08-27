@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_match.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/27 04:09:02 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 04:15:40 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lexer.h"
 #include "libft.h"
 #include "exec.h"
@@ -16,15 +28,15 @@
 void	reopen_line_editing(t_lexer *lex)
 {
 	char	*new_command;
-	
+
 	if (lex->state == '"')
 		load_prompt(singleton_env(), singleton_line(), "PS2", "dquote> ");
 	if (lex->state == '\'')
 		load_prompt(singleton_env(), singleton_line(), "PS3", "dquote> ");
 	new_command = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist()); 
-//	dprintf(2, "New command = "MAG"#"CYN"%s"MAG"#\n"RESET, new_command);
-	lex->line = ft_strjoin_free((char *)lex->line, new_command, 0);
-//	dprintf(2, "\nreopen line editing\n");
+	//	dprintf(2, "New command = "MAG"#"CYN"%s"MAG"#\n"RESET, new_command);
+	lex->line = ft_strjoin_free((char *)lex->line, new_command, 3);
+	//	dprintf(2, "\nreopen line editing\n");
 }
 
 static int	part_1(t_lexer *lex, size_t token_start)
@@ -50,9 +62,9 @@ static int	part_1(t_lexer *lex, size_t token_start)
 	{
 		if (lex->line[lex->index] == '\0')
 		{
-//			dprintf(2, "Line before = "MAG"#"CYN"%s"MAG"#\n"RESET, lex->line);
+			//			dprintf(2, "Line before = "MAG"#"CYN"%s"MAG"#\n"RESET, lex->line);
 			reopen_line_editing(lex);
-//			dprintf(2, "Line after = "MAG"#"CYN"%s"MAG"#\n"RESET, lex->line);
+			//			dprintf(2, "Line after = "MAG"#"CYN"%s"MAG"#\n"RESET, lex->line);
 		}
 		if (charcmp(lex->line, lex->index, lex->state))
 		{
