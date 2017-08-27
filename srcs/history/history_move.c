@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 01:40:11 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 03:20:44 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ int		history_next(t_line *line, t_hist *h)
 	if (tmp)
 	{
 		h->cur = tmp;
-		edit_line_init(line);
 		ft_strclr(line->buff);
-		ft_strcpy(line->buff, (const char *)h->cur->data);
+		edit_insert_str(line, line->buff, h->cur->data);
 		line->len = ft_strlen((const char *)h->cur->data);
 		line->pos = line->len;
 	}
@@ -57,9 +56,8 @@ int		history_prev(t_line *line, t_hist *h)
 	if (tmp)
 	{
 		h->cur = tmp;
-		edit_line_init(line);
 		ft_strclr(line->buff);
-		ft_strcpy(line->buff, (const char *)h->cur->data);
+		edit_insert_str(line, line->buff, h->cur->data);
 		line->len = ft_strlen((const char *)h->cur->data);
 		line->pos = line->len;
 	}
