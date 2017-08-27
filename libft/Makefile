@@ -105,21 +105,6 @@ SRC = \
 	  ft_strrcmp.c \
 	  ft_strrequ.c \
 	  ft_simple_lst_del_one.c \
-	  \
-	  printf/buff_loop.c \
-	  printf/numeric_conv.c \
-	  printf/p_padd.c \
-	  printf/p_prec.c \
-	  printf/s_conv.c \
-	  printf/c_conv.c \
-	  printf/d_conv.c \
-	  printf/buff_start_conv.c \
-	  printf/printf_parse.c \
-	  printf/sprintf.c \
-	  printf/vasprintf.c \
-	  printf/dprintf.c \
-	  printf/asprintf.c \
-	  printf/printf.c
 
 NAME ?= libft.a
 

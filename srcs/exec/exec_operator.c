@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 10:33:23 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 10:36:16 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 12:48:57 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include "lexer.h"
 #include "parser.h"
 #include <stdio.h>
-#include "printf.h"
 
 int		logical_or(t_ast *ast, t_lst_head *head)
 {
@@ -31,7 +30,7 @@ int		logical_or(t_ast *ast, t_lst_head *head)
 	if (!ast->child->data || !ast->child->next->data)
 	{
 		error = 1;
-		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
+		return_failure("Parse error near ", ast->token->value);
 		ast->child->data = flush_tree(ast->child->data);
 		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
@@ -51,7 +50,7 @@ int		logical_or(t_ast *ast, t_lst_head *head)
 int		semi_colon(t_ast *ast, t_lst_head *head)
 {
 	if (!ast->child->data)
-		ft_dprintf(2, "Parse error near %s\n", ast->token->value);
+		return_failure("Parse error near ", ast->token->value);
 	ft_double_lst_add(&head, ft_double_lst_create(NULL));
 	head->middle = head->first;
 	exec_tree(ast->child->data, head);
@@ -69,7 +68,7 @@ int		logical_and(t_ast *ast, t_lst_head *head)
 	if (!(ast->child->data) || !(ast->child->next->data))
 	{
 		error = 1;
-		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
+		return_failure("Parse error near ", ast->token->value);
 		ast->child->data = flush_tree(ast->child->data);
 		ast->child->next->data = flush_tree(ast->child->next->data);
 	}

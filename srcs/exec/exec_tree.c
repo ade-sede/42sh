@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 10:31:06 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 12:48:58 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include "lexer.h"
 #include "parser.h"
 #include <stdio.h>
-#include "printf.h"
 
 /*
 **	Delete the entire tree. Temporary to stop leaks.
@@ -62,7 +61,7 @@ static int	exec_pipe(t_ast *ast, t_lst_head *head)
 
 	if (!(ast->child->data) || !(ast->child->next->data))
 	{
-		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
+		return_failure("Parse error near ", ast->token->value);
 		ast->child->data = flush_tree(ast->child->data);
 		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
