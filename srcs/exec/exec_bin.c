@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 10:46:15 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 11:01:06 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,7 @@ static void	close_parent_bin(t_lst_head *head)
 	cur = head->middle;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 	if (p_left)
-	{
 		close(p_left[WRITE_END]);
-	}
 }
 
 int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
