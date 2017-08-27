@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_operator.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/27 10:33:23 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 10:36:16 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <unistd.h>
 #include "env.h"
@@ -20,20 +32,16 @@ int		logical_or(t_ast *ast, t_lst_head *head)
 	{
 		error = 1;
 		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
+		ast->child->data = flush_tree(ast->child->data);
+		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
-	if (!error)
+	else
 	{
 		ft_double_lst_add(&head, ft_double_lst_create(NULL));
 		head->middle = head->first;
 		exec_tree(ast->child->data, head);
 		if ((cmd1_exit = singleton_env()->previous_exit) != 0)
 			exec_tree(ast->child->next->data, head);
-	}
-	if (error != 0)
-	{
-		ft_dprintf(2, "error spotted\n");
-		ast->child->data = flush_tree(ast->child->data);
-		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
 	if (cmd1_exit == 0)
 		ast->child->next->data = flush_tree(ast->child->next->data);
@@ -62,19 +70,16 @@ int		logical_and(t_ast *ast, t_lst_head *head)
 	{
 		error = 1;
 		ft_dprintf(2, "Parse error near '%s'\n", ast->token->value);
+		ast->child->data = flush_tree(ast->child->data);
+		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
-	if (!error)
+	else
 	{
 		ft_double_lst_add(&head, ft_double_lst_create(NULL));
 		head->middle = head->first;
 		exec_tree(ast->child->data, head);
 		if ((cmd1_exit = singleton_env()->previous_exit) == 0)
 			exec_tree(ast->child->next->data, head);
-	}
-	if (error != 0)
-	{
-		ast->child->data = flush_tree(ast->child->data);
-		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
 	if (cmd1_exit != 0)
 		ast->child->next->data = flush_tree(ast->child->next->data);

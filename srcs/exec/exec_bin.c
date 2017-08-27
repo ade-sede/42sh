@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 10:09:52 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 10:46:15 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,25 +107,19 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 	conf_term_normal();
 	no_handle_signals();
-	child = fork();
-	if (child == 0)
+	if ((child = fork()) == 0)
 	{
-		if (p_right != NULL || p_left != NULL)
-			redir_pipe_bin(head);
-		if (ft_strchr(argv[0], '/'))
-			ft_exec_bin_absolute(env, argv);
-		else
+		(p_right || p_left) ? redir_pipe_bin(head) : 0;
+		ft_strchr(argv[0], '/') ? ft_exec_bin_absolute(env, argv) : \
 			ft_exec_bin_path(env, argv);
 	}
 	if (child > 0)
 	{
-		if (p_right != NULL || p_left != NULL)
-			close_parent_bin(head);
+		(p_right || p_left) ? close_parent_bin(head) : 0;
 		env->child_pid = child;
 		wait(&child);
 		conf_term_canonical();
-		env->previous_exit = WEXITSTATUS(child);
-		return (WEXITSTATUS(child));
+		return (env->previous_exit = WEXITSTATUS(child));
 	}
 	return (1);
 }
