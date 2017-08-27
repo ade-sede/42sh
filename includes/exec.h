@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 11:07:18 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 12:33:41 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void			heredoc(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id);
 void			exec_dup(int io_number, int target_fd, int natural_fd, \
 		t_list **redir_stack);
-void			exec_redir(t_ast *ast, t_list **redir_stack);
+void			exec_redir(t_list *child_list, t_list **redir_stack);
 void			close_redir(t_list *redir_stack);
 void			file_redir(int io_number, char *target, \
 		t_list **redir_stack, t_token_id id);

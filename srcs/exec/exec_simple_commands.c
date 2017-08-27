@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 07:56:08 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 12:33:08 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	treat_node(t_ast *child_node, t_list **redir_stack, \
 {
 	if (child_node->symbol == IO_REDIRECT)
 	{
-		exec_redir(child_node, redir_stack);
+		exec_redir(child_node->child, redir_stack);
 		free_redir(child_node);
 	}
 	if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)

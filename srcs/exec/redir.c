@@ -6,12 +6,11 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 11:55:14 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 12:33:49 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -34,6 +33,16 @@ static t_redir	g_redir[] =
 	{-1, NULL}
 };
 
+void	*get_exec_redir_func(t_ast *child_node)
+{
+	size_t		i;
+
+	i = 0;
+	while (g_redir[i].f && g_redir[i].id != (int)child_node->token->id)
+		i++;
+	return (g_redir[i].f);
+}
+
 /*
 **	This function is used to open the file with the right options depending on
 **	the operator's id. FD of the opened file will be returned.
@@ -52,10 +61,9 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 	(void)id;
 	if (io_number == -1)
 		io_number = 0;
-	errno = 0;
 	if ((fd = open("/tmp/42sh_heredoc", \
 					O_WRONLY | O_CREAT | O_EXCL | O_TRUNC, 0600)) < 0)
-		dprintf(2, "Open : %s\n", strerror(errno));
+		return_failure("Open error", "");
 	while (fd >= 0 && buff && !ft_strequ(buff, target))
 	{
 		load_prompt(singleton_env(), singleton_line(), \
@@ -69,9 +77,8 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		}
 	}
 	close(fd);
-	errno = 0;
 	if ((fd = open("/tmp/42sh_heredoc", O_RDONLY)) > 0)
-		dprintf(2, "Open : %s\n", strerror(errno));
+		return_failure("Open error", "");
 	exec_dup(io_number, fd, FALSE, redir_stack);
 }
 
@@ -91,9 +98,8 @@ void	merge_fd(int io_number, char *target, t_list **redir_stack, \
 	}
 	else
 		target_fd = ft_atoi(target);
-	errno = 0;
 	if (target_fd >= STDIN_FILENO && (fcntl(target_fd, F_GETFD) \
-				!= -1 && errno != EBADF))
+				!= -1))
 		exec_dup(io_number, target_fd, natural_fd, redir_stack);
 }
 
@@ -110,18 +116,14 @@ void	file_redir(int io_number, char *target, t_list **redir_stack, \
 		exec_dup(io_number, target_fd, FALSE, redir_stack);
 }
 
-void	exec_redir(t_ast *ast, t_list **redir_stack)
+void	exec_redir(t_list *child_list, t_list **redir_stack)
 {
-	t_list		*child_list;
 	t_ast		*child_node;
 	int			io_number;
 	void		(*f)(int, char*, t_list**, t_token_id);
 	char		*target;
 	t_token_id	id;
-	size_t		i;
 
-	i = 0;
-	child_list = ast->child;
 	io_number = -1;
 	while (child_list)
 	{
@@ -130,9 +132,7 @@ void	exec_redir(t_ast *ast, t_list **redir_stack)
 			io_number = ft_atoi(child_node->token->value);
 		else if (TK_IS_REDIR(child_node->token->id))
 		{
-			while (g_redir[i].f && g_redir[i].id != (int)child_node->token->id)
-				i++;
-			f = g_redir[i].f;
+			f = get_exec_redir_func(child_node);
 			id = child_node->token->id;
 		}
 		else
