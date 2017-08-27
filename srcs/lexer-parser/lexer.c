@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 04:09:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 04:09:11 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 04:18:44 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@
 ** Token id is determined by the immedaite context of the token and the state
 ** of the lexer.
 */
-
 
 t_list	*start_lex(t_lexer *lex)
 {

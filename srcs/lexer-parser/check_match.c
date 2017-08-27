@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 04:09:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 04:15:40 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 04:22:45 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **	and putting lex->index on the first char of the next potential token.
 */
 
-void	reopen_line_editing(t_lexer *lex)
+void		reopen_line_editing(t_lexer *lex)
 {
 	char	*new_command;
 
@@ -33,10 +33,9 @@ void	reopen_line_editing(t_lexer *lex)
 		load_prompt(singleton_env(), singleton_line(), "PS2", "dquote> ");
 	if (lex->state == '\'')
 		load_prompt(singleton_env(), singleton_line(), "PS3", "dquote> ");
-	new_command = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist()); 
-	//	dprintf(2, "New command = "MAG"#"CYN"%s"MAG"#\n"RESET, new_command);
+	new_command = line_editing_get_input(singleton_env(), singleton_line(), \
+			singleton_hist());
 	lex->line = ft_strjoin_free((char *)lex->line, new_command, 3);
-	//	dprintf(2, "\nreopen line editing\n");
 }
 
 static int	part_1(t_lexer *lex, size_t token_start)
@@ -45,9 +44,7 @@ static int	part_1(t_lexer *lex, size_t token_start)
 
 	ret = -1;
 	if (IS_INPUT_END(lex->line[lex->index]) && !(IS_QUOTED(lex->state)))
-	{
 		ret = lex->index - 1;
-	}
 	else if (lex->state == EXPAND)
 	{
 		if (match_expand(lex, token_start))
@@ -61,15 +58,9 @@ static int	part_1(t_lexer *lex, size_t token_start)
 	else if (IS_QUOTED(lex->state))
 	{
 		if (lex->line[lex->index] == '\0')
-		{
-			//			dprintf(2, "Line before = "MAG"#"CYN"%s"MAG"#\n"RESET, lex->line);
 			reopen_line_editing(lex);
-			//			dprintf(2, "Line after = "MAG"#"CYN"%s"MAG"#\n"RESET, lex->line);
-		}
 		if (charcmp(lex->line, lex->index, lex->state))
-		{
 			ret = lex->index++;
-		}
 	}
 	return (ret);
 }
@@ -86,7 +77,7 @@ int			token_match(t_lexer *lex, size_t token_start)
 	{
 		if (IS_OPERATOR(lex->line[lex->index]) || \
 				(charcmp(lex->line, lex->index, '-') && \
-				 charcmp(lex->line, lex->index - 1, '<')))
+				charcmp(lex->line, lex->index - 1, '<')))
 		{
 			if (!match_operator(lex->line, token_start, lex->index))
 				ret = lex->index - 1;

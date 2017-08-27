@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/26 23:29:12 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/26 23:47:41 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 04:50:31 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-void		env_add_var(t_env *env, const char *key, const char *value)
+void	env_add_var(t_env *env, const char *key, const char *value)
 {
 	char		**environ;
 	char		**new_environ;
@@ -43,7 +43,7 @@ void	env_reload_tree_hash(t_env *env)
 	create_hash_table(env);
 }
 
-void		env_change_value(t_env *env, const char *key, size_t key_index, \
+void	env_change_value(t_env *env, const char *key, size_t key_index, \
 		const char *new_value)
 {
 	char	**environ;
@@ -55,7 +55,7 @@ void		env_change_value(t_env *env, const char *key, size_t key_index, \
 		env_reload_tree_hash(env);
 }
 
-void		env_add_change(t_env *env, const char *key, const char *value)
+void	env_add_change(t_env *env, const char *key, const char *value)
 {
 	size_t	index;
 
@@ -65,7 +65,7 @@ void		env_add_change(t_env *env, const char *key, const char *value)
 		env_change_value(env, key, index, value);
 }
 
-void		env_add_var_from_string(t_env *env, char *key_value, \
+void	env_add_var_from_string(t_env *env, char *key_value, \
 		ssize_t eq_index)
 {
 	key_value[eq_index] = '\0';

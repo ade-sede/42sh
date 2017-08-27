@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 03:58:18 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 04:56:24 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	conf_term_in(void)
 	if (tcgetattr(0, &term) == -1)
 		fatal("getattr error");
 	ft_memcpy(&line->normal_mode, &term, sizeof(struct termios));
-	ft_memcpy(&line->canonical_mode, &line->normal_mode, sizeof(struct termios));
+	ft_memcpy(&line->canonical_mode, &line->normal_mode,
+			sizeof(struct termios));
 	line->canonical_mode.c_lflag &= ~(ICANON);
 	line->canonical_mode.c_lflag &= ~(ECHO);
 	line->canonical_mode.c_cc[VMIN] = 1;

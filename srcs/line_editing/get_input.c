@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_input.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/27 04:54:39 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 04:54:46 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 #include "completion.h"
 #include "history.h"
@@ -17,8 +29,6 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_V, &enter_visual_mode},
 	{KEY_ALT_P, &paste},
 	{KEY_ALT_R, &btsearch_get_input},
-	//{KEY_SHIFT_UP},
-	//{KEY_SHIFT_DOWN},
 	{KEY_TAB, comple_get_input},
 	{0, NULL}
 };

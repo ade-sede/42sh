@@ -150,6 +150,7 @@ void			exec_simple_command(t_ast *ast, t_lst_head *head);
 ** In redir.c
 */
 
+void			append_redir(t_ast **root, t_list **token_list);
 void			heredoc(int io_number, char *target, t_list **redir_stack, t_token_id id);
 void			exec_dup(int io_number, int target_fd, int natural_fd, t_list **redir_stack);
 void			exec_redir(t_ast *ast, t_list **redir_stack);

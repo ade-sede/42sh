@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_bin.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/27 04:40:02 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 04:49:27 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include "sys/wait.h"
@@ -28,7 +40,7 @@ void		ft_exec_bin_absolute(t_env *env, const char **argv)
 void		ft_exec_bin_path(t_env *env, const char **argv)
 {
 	char	*bin;
-		
+
 	bin = hash_get(env->hash_table, (char *)argv[0]);
 	if (access(bin, F_OK) == 0)
 	{
@@ -50,17 +62,10 @@ static void	redir_pipe_bin(t_lst_head *head)
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 	if (p_right)
 	{
-#ifdef PIPE_DEBUG
-		if (!p_left)
-			dprintf(2, "Binary is on the left of the pipe // dup 1 to p_right[WRITE_END], close p_right[READ_END]\n");//			REMOVE		
-#endif
 		close(p_right[READ_END]);
 		dup2(p_right[WRITE_END], STDOUT_FILENO);
 		if (p_left)
 		{
-#ifdef PIPE_DEBUG
-			dprintf(2, "Command is in between 2 pipes. dup 1 to p_right[WRITE_END], dup 0 to p_left[READ_END], closing p_right[READ_END] & p_left[WRITE_END]\n");//			REMOVE		
-#endif
 			close(p_left[WRITE_END]);
 			dup2(p_left[READ_END], STDIN_FILENO);
 		}
@@ -69,9 +74,6 @@ static void	redir_pipe_bin(t_lst_head *head)
 	{
 		if (p_left)
 		{
-#ifdef PIPE_DEBUG
-			dprintf(2, "Command is on the right of the pipe // dup 0 to p_left[READ_END], closing p_left[WRITE_END]\n");//			REMOVE		
-#endif
 			close(p_left[WRITE_END]);
 			dup2(p_left[READ_END], STDIN_FILENO);
 		}
@@ -87,10 +89,6 @@ static void	close_parent_bin(t_lst_head *head)
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 	if (p_left)
 	{
-#ifdef PIPE_DEBUG
-		dprintf(2, "closing p_left[WRITE_END] in parent process \n");//			REMOVE		
-		/* dprintf(2, "closing p_left[READ_END] in parent \n");//			REMOVE */		
-#endif
 		close(p_left[WRITE_END]);
 	}
 }

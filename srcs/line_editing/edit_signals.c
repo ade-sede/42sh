@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 02:54:38 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 04:53:14 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,8 @@
 
 void	edit_handle_sigwinch(int signum)
 {
-	//put_termcap("cr");
-	//put_termcap("cd");
-	//comple_clear(*singleton_comple());
 	singleton_comple()->ws_col = get_ws_col();
 	singleton_line()->ws_col = get_ws_col();
-	//edit_clear(*singleton_comple());
-	//put_termcap("cl");
 	edit_refresh(singleton_line());
 	(void)signum;
 }

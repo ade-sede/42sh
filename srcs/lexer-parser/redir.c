@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 04:09:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 04:09:16 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 04:25:51 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static void	pushback_redir(t_list *child_list, t_list **token_list, \
 		token = (*token_list)->data;
 		if (expected == 2)
 		{
-				ft_simple_lst_pushback(&child_list, \
+			ft_simple_lst_pushback(&child_list, \
 				ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 		}
 		if (expected == 1)
 		{
-				ft_simple_lst_pushback(&child_list, \
+			ft_simple_lst_pushback(&child_list, \
 				ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 		}
 		ft_simple_lst_del_one(token_list, *token_list, NULL);
@@ -71,4 +71,12 @@ t_ast		*ast_create_node_from_redir(t_list **token_list)
 	pushback_redir(child_list, token_list, expected);
 	node = ast_create_node(NULL, child_list, IO_REDIRECT);
 	return (node);
+}
+
+void		append_redir(t_ast **root, t_list **token_list)
+{
+	t_ast	*new_node;
+
+	new_node = ast_create_node_from_redir(token_list);
+	ft_simple_lst_pushback(&((*root)->child), ft_simple_lst_create(new_node));
 }

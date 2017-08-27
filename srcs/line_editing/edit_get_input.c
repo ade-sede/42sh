@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_get_input.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/27 04:54:27 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 04:54:45 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 #include "completion.h"
 
@@ -8,13 +20,7 @@ static t_edit_func	g_edit_func[] =
 	{KEY_HOME, &edit_home},
 	{KEY_END, &edit_end},
 	{KEY_BACKSPACE, &edit_backspace},
-//	{KEY_UP, &edit_up},
-//	{KEY_DOWN, &edit_down},
-	//{KEY_SHIFT_UP},
-	//{KEY_SHIFT_DOWN},
 	{KEY_TAB, comple_get_input},
-	//{},
-	//{},
 	{0, NULL}
 };
 
@@ -34,8 +40,6 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	}
 	if (ft_isprint((char)keycode))
 		edit_add(keycode, line);
-	//ft_putnbr(keycode);
-	//ft_putchar('\n');
 	return (1);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/13 11:46:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/07/24 16:17:35 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/08/27 04:40:02 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 04:48:53 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,13 @@ static int		logical_or(t_ast *ast, t_lst_head *head)
 	{
 		ft_double_lst_add(&head, ft_double_lst_create(NULL));
 		head->middle = head->first;
-#ifdef PIPE_DEBUG
-		dprintf(2, "Creating 1 empty node\n");//			REMOVE		
-#endif
 		exec_tree(ast->child->data, head);
-
 		if ((cmd1_exit = singleton_env()->previous_exit) != 0)
 			exec_tree(ast->child->next->data, head);
 	}
 	if (error != 0)
 	{
-		dprintf(2, "error spotted\n");//			REMOVE		
+		ft_dprintf(2, "error spotted\n");
 		ast->child->data = flush_tree(ast->child->data);
 		ast->child->next->data = flush_tree(ast->child->next->data);
 	}
@@ -91,16 +87,12 @@ static int		logical_or(t_ast *ast, t_lst_head *head)
 	return ((cmd1_exit == 0 || error != 0) ? 1 : 0);
 }
 
-
 static int		semi_colon(t_ast *ast, t_lst_head *head)
 {
 	if (!ast->child->data)
 		ft_dprintf(2, "Parse error near %s\n", ast->token->value);
 	ft_double_lst_add(&head, ft_double_lst_create(NULL));
 	head->middle = head->first;
-#ifdef PIPE_DEBUG
-	dprintf(2, "Creating 1 empty node\n");//			REMOVE		
-#endif
 	exec_tree(ast->child->data, head);
 	exec_tree(ast->child->next->data, head);
 	return (0);
@@ -122,11 +114,7 @@ static int		logical_and(t_ast *ast, t_lst_head *head)
 	{
 		ft_double_lst_add(&head, ft_double_lst_create(NULL));
 		head->middle = head->first;
-#ifdef PIPE_DEBUG
-		dprintf(2, "Creating 1 empty node\n");//			REMOVE		
-#endif
 		exec_tree(ast->child->data, head);
-
 		if ((cmd1_exit = singleton_env()->previous_exit) == 0)
 			exec_tree(ast->child->next->data, head);
 	}
@@ -155,9 +143,6 @@ static int		exec_pipe(t_ast *ast, t_lst_head *head)
 	{
 		p = palloc(sizeof(*p) * 2);
 		pipe(p);
-#ifdef PIPE_DEBUG
-		dprintf(2, "Creating 1 full node\n");//			REMOVE		
-#endif
 		ft_double_lst_add(&head, ft_double_lst_create(p));
 		head->middle = head->first;
 		if (exec_tree(ast->child->data, head) == 0)

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 04:09:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 04:09:14 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 04:26:59 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 **			just created to a complexe one.
 */
 
-static void	start_simple_command(t_ast **root, t_list **token_list, \
+static void		start_simple_command(t_ast **root, t_list **token_list, \
 		int *command_name)
 {
 	*root = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
@@ -56,15 +56,17 @@ static void	start_simple_command(t_ast **root, t_list **token_list, \
 	*command_name = 0;
 }
 
-static t_list *reopen_command(t_token *token)
+static t_list	*reopen_command(t_token *token)
 {
 	char	*new_command;
 	t_list	*token_list;
 	t_lexer	lex;
 
 	(void)token;
-	load_prompt(singleton_env(), singleton_line(), "reopen_command", "command> ");
-	new_command = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist()); 
+	load_prompt(singleton_env(), singleton_line(), "reopen_command",
+			"command> ");
+	new_command = line_editing_get_input(singleton_env(), singleton_line(),
+			singleton_hist());
 	lex = init_lexer(new_command);
 	token_list = start_lex(&lex);
 	return (token_list);
@@ -76,7 +78,7 @@ static t_list *reopen_command(t_token *token)
 **	corresponding child has a NULL ast.
 */
 
-static void	start_complexe_command(t_ast **root, t_list **token_list, \
+static void		start_complexe_command(t_ast **root, t_list **token_list, \
 		int *command_name, t_token *token)
 {
 	t_ast	*new_branch_root;
@@ -90,7 +92,6 @@ static void	start_complexe_command(t_ast **root, t_list **token_list, \
 			token_list, command_name);
 	if (!new_branch_root->child)
 	{
-		dprintf(2, "In 1 %p\n", new_branch_root->child);
 		if (ft_strequ((*root)->token->value, ";"))
 			new_branch_root = free_ast_node(new_branch_root);
 		else if (!*token_list)
@@ -107,7 +108,7 @@ static void	start_complexe_command(t_ast **root, t_list **token_list, \
 	*command_name = 0;
 }
 
-t_ast		*ast_parse(t_ast **root, t_list **token_list)
+t_ast			*ast_parse(t_ast **root, t_list **token_list)
 {
 	int		command_name;
 	t_token *token;
@@ -126,15 +127,7 @@ t_ast		*ast_parse(t_ast **root, t_list **token_list)
 	return (*root);
 }
 
-static void	append_redir(t_ast **root, t_list **token_list)
-{
-	t_ast	*new_node;
-
-	new_node = ast_create_node_from_redir(token_list);
-	ft_simple_lst_pushback(&((*root)->child), ft_simple_lst_create(new_node));
-}
-
-t_ast		*ast_create_simple_command(t_ast **root, t_list **token_list, \
+t_ast			*ast_create_simple_command(t_ast **root, t_list **token_list, \
 		int *command_name)
 {
 	t_ast	*new_node;
