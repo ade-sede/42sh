@@ -5,13 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 23:21:43 by vcombey           #+#    #+#             */
+/*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 05:15:53 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LINE_EDITING_H
 # define LINE_EDITING_H
 
+# include "line_editing_struct.h"
 # include "env.h"
 # include "termios.h"
 # include "term.h"
@@ -25,7 +27,7 @@
 # define KEY_BACKSPACE 0x7F
 # define KEY_DELETE 0x7E335B1B
 # define KEY_HOME 4741915
-# define KEY_END 4610843 
+# define KEY_END 4610843
 # define KEY_TAB 9
 # define KEY_SHIFT_UP 71683997260571
 # define KEY_SHIFT_DOWN 72783508888347
@@ -39,31 +41,8 @@
 # define KEY_ALT_R 44738
 # define BUFF_LINE_SIZE 10
 
-typedef struct			s_line
-{
-	unsigned int		pos;
-	unsigned int		old_pos;
-	unsigned int		len;
-	unsigned int		size;
-	unsigned int		prompt_len;
-	size_t			ws_col;
-	char			*buff;
-	struct termios		canonical_mode;
-	struct termios		normal_mode;
-	int			visu_mode;
-	size_t			visu_start;
-	char			*copied_text;
-	char			*prompt;
-}				t_line;
-
-typedef struct		s_edit_func
-{
-	unsigned long long	keycode;
-	int			(*f)(t_line *);
-}			t_edit_func;
-
-size_t				get_ws_col(void);
-size_t				get_ws_row(void);
+size_t	get_ws_col(void);
+size_t	get_ws_row(void);
 
 void	edit_line_init(t_line *line);
 char	*edit_get_input(t_env *env);
@@ -75,15 +54,15 @@ void	conf_term_normal(t_line *line);
 void	put_termcap(char *capacity);
 t_line	*singleton_line(void);
 
-int	edit_end(t_line *line);
-int	edit_home(t_line *line);
-int	edit_right(t_line *line);
-int	edit_left(t_line *line);
-int	edit_down(t_line *line);
-int	edit_up(t_line *line);
-int	edit_word_right(t_line *line);
-int	edit_word_left(t_line *line);
-int	edit_backspace(t_line *line);
+int		edit_end(t_line *line);
+int		edit_home(t_line *line);
+int		edit_right(t_line *line);
+int		edit_left(t_line *line);
+int		edit_down(t_line *line);
+int		edit_up(t_line *line);
+int		edit_word_right(t_line *line);
+int		edit_word_left(t_line *line);
+int		edit_backspace(t_line *line);
 void	edit_add(int keycode, t_line *line);
 void	edit_refresh(t_line *line);
 size_t	edit_refresh_nchar(t_line *line, size_t padding, char *str, size_t n);
@@ -100,24 +79,24 @@ void	move_cursor_firstline_from_lastline(t_line *line);
 void	move_cursor_bufflen_from_lastline(t_line *line);
 char	*edit_exit(t_line *line);
 
-int	ft_insert_str_dest(char *str, char *dest, size_t dest_len);
-int	edit_insert_str(t_line *line, char *dest, char *str);
+int		ft_insert_str_dest(char *str, char *dest, size_t dest_len);
+int		edit_insert_str(t_line *line, char *dest, char *str);
 
-void	realoc_line_buff(char **buff, unsigned int *size, unsigned int size_needed);
+void	realoc_line_buff(char **buff, unsigned int *size,
+		unsigned int size_needed);
 /*
 ** copy_paste func
 */
 
-int	enter_visual_mode(t_line *line);
-int	copy(t_line *line);
-int	paste(t_line *line);
+int		enter_visual_mode(t_line *line);
+int		copy(t_line *line);
+int		paste(t_line *line);
 /*
 **	In file prompt.c
 */
 
-void			load_prompt(t_env *env, t_line *line, char *var, char *defaut);
-void			put_prompt(t_line *line);
-
+void	load_prompt(t_env *env, t_line *line, char *var, char *defaut);
+void	put_prompt(t_line *line);
 
 /*
 ** manipulation of cursor word func
@@ -128,4 +107,4 @@ void	delete_word_cursor(t_line *line);
 char	*get_current_word_cursor(t_line *line);
 void	delete_word(char *to_replace);
 
-# endif
+#endif

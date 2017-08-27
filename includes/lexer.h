@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/01 15:26:55 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/08/24 21:56:47 by vcombey          ###   ########.fr       */
+/*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 05:41:32 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ typedef enum
 */
 
 # define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
-# define TK_RP1(id) (id == TK_IO_NUMBER || id == TK_GREAT || id == TK_LESS || id == TK_HERE)
+# define TK_IS_GREAT_LESS(id) ( id == TK_GREAT || id == TK_LESS )
+# define TK_RP1(id) id == TK_IO_NUMBER || TK_IS_GREAT_LESS(id) || id == TK_HERE
 # define TK_IS_REDIR(id)  (TK_RP1(id) || (id >= TK_DLESS && id <= TK_CLOBBER))
 
 /*
@@ -153,7 +154,7 @@ typedef struct		s_lexer
 **	FUNCTION DEFINITIONS
 */
 
-void	lexer_debug(t_list *token_list);
+void				lexer_debug(t_list *token_list);
 /*
 **	In file lexer.c
 */

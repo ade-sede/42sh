@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 05:34:06 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef EXEC_H
 # define EXEC_H
 # include "env.h"
@@ -50,24 +62,21 @@
 **	malloc, and of size3. This array will be given to pipe(2), making array[0]
 **	and array[1] a pipe. array[2] will be used to store the position of the
 **	command : Is it on the write side (array[2] == 1) or on the read side
-**	(array[2] == 0) ? 
+**	(array[2] == 0) ?
 **	When both array[0] and array[1] have been treated, list goes to the next
 **	node.
 **	We can identify the different cases:
 **	array = list->data;
 **	if (!array)
 **		list->next;
-**	else if (array[2] == 1) // We're on the write side of the current pipe
-**	{
-**		dup2(array[WRITE_END], STDOUT) // DONT FORGET TO SAVE STDOUT with dup
-**		if (list->prev != NULL) // Theres a piped command before us, and we're on its read side.
-**			dup2(array[READ_END], STDIN) // DONT FORGET TO SAVE STDIN with dup
-**	}
-**	else if (array[2] == 2)
-**	{
-**		dup2(array[READ_END], STDIN) // DONT FORGET TO SAVE STDIN with dup
-**		if (list->next != NULL) // Theres a piped command in front of us, we're on its write side.
-**			dup2(array[WRITE_END], STDOUT) // DONT FORGET TO SAVE STDOUT with dup
+**	else if (array[2] == 1) // We're on the write side of the current pipe {
+**	dup2(array[WRITE_END], STDOUT) // DONT FORGET TO SAVE STDOUT with dup if
+**	(list->prev != NULL) // Theres a piped command before us, and we're on its
+**	read side.  dup2(array[READ_END], STDIN) // DONT FORGET TO SAVE STDIN with
+**	dup } else if (array[2] == 2) { dup2(array[READ_END], STDIN) // DONT FORGET
+**	TO SAVE STDIN with dup if (list->next != NULL) // Theres a piped command in
+**	front of us, we're on its write side.  dup2(array[WRITE_END], STDOUT) //
+**	DONT FORGET TO SAVE STDOUT with dup
 **		list->next;
 **	}
 */
@@ -112,7 +121,7 @@ int				fork_exec_bin(t_env *env, const char **argv, t_lst_head *head);
 
 void			exec(t_env *env, const char **argv, t_lst_head *head);
 void			main_loop(t_env *env);
-char		 	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist);
+char			*line_editing_get_input(t_env *env, t_line *line, t_hist *hist);
 
 /*
 ** In param_expansion.c
@@ -151,13 +160,16 @@ void			exec_simple_command(t_ast *ast, t_lst_head *head);
 */
 
 void			append_redir(t_ast **root, t_list **token_list);
-void			heredoc(int io_number, char *target, t_list **redir_stack, t_token_id id);
-void			exec_dup(int io_number, int target_fd, int natural_fd, t_list **redir_stack);
+void			heredoc(int io_number, char *target, t_list **redir_stack, \
+		t_token_id id);
+void			exec_dup(int io_number, int target_fd, int natural_fd, \
+		t_list **redir_stack);
 void			exec_redir(t_ast *ast, t_list **redir_stack);
 void			close_redir(t_list *redir_stack);
 void			file_redir(int io_number, char *target, \
 		t_list **redir_stack, t_token_id id);
-void			merge_fd(int io_number, char *target, t_list **redir_stack, t_token_id id);
+void			merge_fd(int io_number, char *target, t_list **redir_stack, \
+		t_token_id id);
 int				redir_open_file(char *target, t_token_id id);
 
 typedef struct	s_redir
@@ -166,5 +178,5 @@ typedef struct	s_redir
 	void		(*f)(int, char*, t_list**, t_token_id);
 }				t_redir;
 
-void	no_handle_signals(void);
+void			no_handle_signals(void);
 #endif

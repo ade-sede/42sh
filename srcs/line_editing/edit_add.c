@@ -5,17 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 04:51:13 by vcombey          ###   ########.fr       */
+/*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 05:08:40 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_editing.h"
 #include <stdio.h>
 
-void	realoc_line_buff(char **buff, unsigned int *size, unsigned int size_needed)
+void	realoc_line_buff(char **buff, unsigned int *size, \
+		unsigned int size_needed)
 {
-	char	*new;
+	char			*new;
 	unsigned int	new_size;
 
 	new_size = (size_needed / BUFF_LINE_SIZE + 2) * BUFF_LINE_SIZE;

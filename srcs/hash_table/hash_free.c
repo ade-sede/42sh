@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/27 01:17:33 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 01:17:40 by vcombey          ###   ########.fr       */
+/*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 05:08:12 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <dirent.h>
-# include "libft.h"
-# include "hash_table.h"
-# include "env.h"
+#include <dirent.h>
+#include "libft.h"
+#include "hash_table.h"
+#include "env.h"
 
 void	free_hash_table(t_list **hash_table)
 {

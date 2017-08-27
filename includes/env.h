@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/18 15:41:53 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/08/26 23:40:58 by vcombey          ###   ########.fr       */
+/*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 05:36:12 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,33 +39,33 @@
 #  define RESET "\x1B[0m"
 # endif
 
-typedef struct		s_ternary_tree
+typedef struct	s_ternary_tree
 {
-	char			c;
-	char			*match;
+	char					c;
+	char					*match;
 	struct s_ternary_tree	*left;
 	struct s_ternary_tree	*right;
 	struct s_ternary_tree	*down;
-}			t_ternary_tree;
+}				t_ternary_tree;
 
 typedef struct	s_env
 {
-	char		**environ;
-	t_list		**hash_table;
+	char			**environ;
+	t_list			**hash_table;
 	t_ternary_tree	*tree;
-	size_t		environ_size;
-	int		previous_exit;
-	char		*branch;
-	pid_t		child_pid;
+	size_t			environ_size;
+	int				previous_exit;
+	char			*branch;
+	pid_t			child_pid;
 }				t_env;
 
-void	free_ternary_tree(t_ternary_tree *node);
-void		test_ternary_tree();
-void	ternary_tree_add(t_ternary_tree *node, char *cur, char *str);
-t_ternary_tree		*ternary_tree_new_down(char *str, char *cur);
-t_ternary_tree		*ternary_tree_new(char c);
+void			free_ternary_tree(t_ternary_tree *node);
+void			test_ternary_tree();
+void			ternary_tree_add(t_ternary_tree *node, char *cur, char *str);
+t_ternary_tree	*ternary_tree_new_down(char *str, char *cur);
+t_ternary_tree	*ternary_tree_new(char c);
 void			ternary_tree_print(t_ternary_tree *node);
-int	create_ternary_tree(t_env *env);
+int				create_ternary_tree(t_env *env);
 
 /*
 **	In file environ.c
@@ -74,7 +74,7 @@ int	create_ternary_tree(t_env *env);
 char			**env_create_environ(const char **original, size_t *new_size);
 void			env_print_environ(const char **environ);
 char			*env_getenv(const char **environ, \
-		const char *key, size_t *index);
+				const char *key, size_t *index);
 
 /*
 **	In file load_base_env.c

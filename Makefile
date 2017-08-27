@@ -69,6 +69,7 @@ SRC_FILE =	\
 	line_editing/edit_init.c \
 	line_editing/edit_insert_str.c \
 	line_editing/edit_move.c \
+	line_editing/edit_move_arrows.c \
 	line_editing/edit_move_cursor.c \
 	line_editing/edit_refresh.c \
 	line_editing/edit_signals.c \

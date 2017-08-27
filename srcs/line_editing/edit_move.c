@@ -5,26 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 23:19:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/19 10:27:46 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 05:08:45 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_editing.h"
-
-int		edit_left(t_line *line)
-{
-	if (line->pos > 0)
-		line->pos--;
-	return (1);
-}
-
-int		edit_right(t_line *line)
-{
-	if (line->pos < line->len)
-		line->pos++;
-	return (1);
-}
 
 int		edit_word_left(t_line *line)
 {
@@ -34,20 +20,6 @@ int		edit_word_left(t_line *line)
 		line->pos--;
 	while (line->pos > 0 && line->buff[line->pos] != ' ')
 		line->pos--;
-	return (1);
-}
-
-int		edit_up(t_line *line)
-{
-	if (line->pos >= line->ws_col)
-		line->pos -= line->ws_col;
-	return (1);
-}
-
-int		edit_down(t_line *line)
-{
-	if (line->pos + line->ws_col <= line->len)
-		line->pos += line->ws_col;
 	return (1);
 }
 

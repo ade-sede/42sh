@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/27 05:03:41 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 05:03:55 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "exec.h"
 #include "libft.h"
@@ -8,7 +20,6 @@
 
 int	main(void)
 {
-	printf("%d\n", getpid());
 	extern const char	**environ;
 
 	env_load_base_env(singleton_env(), environ);

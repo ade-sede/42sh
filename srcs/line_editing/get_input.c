@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/27 04:54:39 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 04:54:46 by vcombey          ###   ########.fr       */
+/*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 05:08:50 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	while (g_edit_func[i].keycode)
 	{
 		if (g_edit_func[i].keycode == keycode)
-		{
 			keycode = g_edit_func[i].f(line);
-			//return (1);
-		}
 		i++;
 	}
 	if (ft_isprint((char)keycode))

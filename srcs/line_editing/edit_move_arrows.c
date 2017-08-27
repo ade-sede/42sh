@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btsearch_exit.c                                    :+:      :+:    :+:   */
+/*   edit_move_arrows.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:15 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 05:08:46 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_editing.h"
-#include "history.h"
-#include <stdio.h>
 
-int		btsearch_exit(t_line *line, t_hist *h)
+int		edit_up(t_line *line)
 {
-	if (h->btsearch_list)
-	{
-		ft_remove_head(&h->btsearch_list, NULL);
-		h->btsearch_cur = NULL;
-		ft_strclr(h->btsearch_buff);
-		h->btsearch_buff_len = 0;
-	}
-	line->pos = line->len;
-	(void)line;
+	if (line->pos >= line->ws_col)
+		line->pos -= line->ws_col;
+	return (1);
+}
+
+int		edit_down(t_line *line)
+{
+	if (line->pos + line->ws_col <= line->len)
+		line->pos += line->ws_col;
+	return (1);
+}
+
+int		edit_left(t_line *line)
+{
+	if (line->pos > 0)
+		line->pos--;
+	return (1);
+}
+
+int		edit_right(t_line *line)
+{
+	if (line->pos < line->len)
+		line->pos++;
 	return (1);
 }
