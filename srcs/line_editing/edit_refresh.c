@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:48 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 08:52:25 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,66 +55,6 @@ void	edit_refresh_line(t_line *line)
 	}
 	if ((line->len + line->prompt_len) % (ws_col) == 0)
 		put_termcap("do");
-}
-
-size_t	edit_refresh_nchar(t_line *line, size_t padding, char *str, size_t n)
-{
-	size_t	i;
-	size_t	ws_col;
-
-	i = 0;
-	ws_col = line->ws_col;
-	if (n > ws_col - padding)
-	{
-		ft_putnstr(str, ws_col - padding);
-		i = ws_col - padding;
-	}
-	while (i + ws_col < n)
-	{
-		put_termcap("do");
-		put_termcap("cr");
-		ft_putnstr(str + i, ws_col);
-		i += ws_col;
-	}
-	if (i < n)
-	{
-		if (n > ws_col - padding)
-		{
-			put_termcap("do");
-			put_termcap("cr");
-		}
-		ft_putnstr(str + i, n - i);
-	}
-	if ((n + padding) % (ws_col) == 0)
-		put_termcap("do");
-	return ((n + padding) % (ws_col));
-}
-
-void	edit_refresh_visu(t_line *line)
-{
-	size_t start;
-
-	start = line->prompt_len;
-	if (line->pos < line->visu_start)
-	{
-		start = edit_refresh_nchar(line, start, line->buff, line->pos);
-		ft_putstr("\e[39;42m");
-		start = edit_refresh_nchar(line, start, line->buff + line->pos, \
-				line->visu_start - line->pos);
-		ft_putstr("\e[0m");
-		start = edit_refresh_nchar(line, start, line->buff + line->visu_start, \
-				line->len - line->visu_start);
-	}
-	else
-	{
-		start = edit_refresh_nchar(line, start, line->buff, line->visu_start);
-		ft_putstr("\e[39;42m");
-		start = edit_refresh_nchar(line, start, line->buff + line->visu_start, \
-				line->pos - line->visu_start);
-		ft_putstr("\e[0m");
-		start = edit_refresh_nchar(line, start, line->buff + line->pos, \
-				line->len - line->pos);
-	}
 }
 
 void	edit_refresh_clear(t_line *line)

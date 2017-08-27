@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 15:22:36 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/08/26 21:22:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 07:33:06 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ t_list				*ft_simple_lst_get_n(t_list	*first, size_t n);
 t_list				*ft_last_simple_lst(t_list *lst);
 t_list				*ft_previous_last_simple_lst(t_list *lst);
 
-
 /*
 **	In file ft_lst_pushback.c
 */
@@ -148,4 +147,5 @@ void				ft_double_lst_iteri(t_list_d *start, \
 void				ft_simple_lst_iteri(t_list *start, \
 		t_list *end, void (*f)(t_list*, size_t));
 
+size_t				ft_lst_len(t_list *lst);
 #endif

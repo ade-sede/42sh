@@ -62,6 +62,7 @@ SRC_FILE =	\
 	lexer-parser/free.c \
 \
 	line_editing/conf_term.c \
+	line_editing/edit_refresh_visu.c \
 	line_editing/copy_paste.c \
 	line_editing/edit_add.c \
 	line_editing/edit_del.c \

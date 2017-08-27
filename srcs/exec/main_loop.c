@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:05 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 07:45:08 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	exec(t_env *env, const char **argv, t_lst_head *head)
 		free((void*)(argv[index]));
 		index++;
 	}
+	free(argv);
 }
 
 void	init_main_loop(t_line *line, t_hist *hist)

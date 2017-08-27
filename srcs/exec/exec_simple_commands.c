@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:03 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 07:56:08 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,34 +49,37 @@ static void	free_redir(t_ast *ast)
 **	by one until no childs are left.
 */
 
+static void	treat_node(t_ast *child_node, t_list **redir_stack, \
+		char **argv, size_t i)
+{
+	if (child_node->symbol == IO_REDIRECT)
+	{
+		exec_redir(child_node, redir_stack);
+		free_redir(child_node);
+	}
+	if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
+		argv[i] = ft_strdup(child_node->token->value);
+	free_ast_node(child_node);
+}
+
 void		exec_simple_command(t_ast *ast, t_lst_head *head)
 {
-	t_token		*token;
-	t_ast		*child_node;
 	t_list		*child_list;
 	size_t		i;
 	const char	**argv;
-	t_list		*redir_stack = NULL;
+	t_list		*redir_stack;
 
-	argv = ft_memalloc(sizeof(*argv) * (4096));
 	i = 0;
+	redir_stack = NULL;
 	child_list = ast->child;
+	argv = ft_memalloc(sizeof(*argv) * (ft_lst_len(child_list) + 1));
 	while (child_list)
 	{
-		child_node = child_list->data;
-		token = child_node->token;
-		if (child_node->symbol == IO_REDIRECT)
-		{
-			exec_redir(child_node, &redir_stack);
-			free_redir(child_node);
-		}
-		if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
-			argv[i++] = ft_strdup(token->value);
-		free_ast_node(child_node);
+		treat_node(child_list->data, &redir_stack, (char**)argv, i);
 		child_list = child_list->next;
+		i++;
 	}
 	exec(singleton_env(), argv, head);
-	free(argv);
 	close_redir(redir_stack);
 	if (head->middle)
 		head->middle = head->middle->next;

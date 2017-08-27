@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   len.c                                              :+:      :+:    :+:   */
+/*   ft_lst_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/28 16:57:01 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/04/28 17:01:15 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/08/27 07:56:46 by vcombey           #+#    #+#             */
+/*   Updated: 2017/08/27 07:56:48 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "printf.h"
 
-int	main()
+size_t	ft_lst_len(t_list *lst)
 {
-	char	*str[] = { "lol", "lul", "lil", 0, "lol"};
-	ft_printf("%zu\n", ft_arraylen((const char**)str));
-	return (0);
+	return (!lst ? 0 : 1 + ft_lst_len(lst->next));
 }

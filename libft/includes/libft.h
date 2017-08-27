@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 19:14:39 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/06/21 19:16:26 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/08/27 06:57:08 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,5 @@ int					itoa_base_len(intmax_t value, int base);
 void				ft_putnbr(int n);
 
 void				fatal(const char *error_str);
-int	ft_is_executable(char *dir, char *file);
+int					ft_is_executable(char *dir, char *file);
 #endif

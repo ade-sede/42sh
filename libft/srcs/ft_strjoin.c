@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 23:46:39 by vcombey           #+#    #+#             */
-/*   Updated: 2017/07/25 17:01:14 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 06:57:59 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "alloc.h"
 #include "mem.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*new_str;
 	size_t	s1_len;
@@ -32,8 +32,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (new_str);
 }
 
-
-char	*cl_strjoin(char const *s1, char const *s2)
+char			*cl_strjoin(char const *s1, char const *s2)
 {
 	char	*new_str;
 	size_t	s1_len;
