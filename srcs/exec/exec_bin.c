@@ -105,18 +105,13 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	cur = head->middle;
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
-#ifndef NO_TERMCAPS
-	/* conf_term_out(); */
-#endif
+	conf_term_normal(singleton_line());
+	no_handle_signals();
 	child = fork();
 	if (child == 0)
 	{
 		if (p_right != NULL || p_left != NULL)
 			redir_pipe_bin(head);
-#ifdef PIPE_DEBUG
-		else
-			dprintf(2, "Not related to a pipe !!\n");//			REMOVE		
-#endif
 		if (ft_strchr(argv[0], '/'))
 			ft_exec_bin_absolute(env, argv);
 		else
@@ -128,9 +123,7 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 			close_parent_bin(head);
 		env->child_pid = child;
 		wait(&child);
-#ifndef NO_TERMCAPS
-		/* conf_term_in(); */
-#endif
+		conf_term_canonical(singleton_line());
 		env->previous_exit = WEXITSTATUS(child);
 		return (WEXITSTATUS(child));
 	}

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/26 23:39:26 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/26 23:46:43 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/27 01:56:57 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ char	*read_git_status(int fd, size_t *len, char *git_status)
 	char	*line;
 
 	if (get_next_line(fd, &line))
+	{
 		git_status = ft_strjoin_free(git_status, "\x1b[38;5;11m ✗ \x1B[0m", 2);
+		ft_strdel(&line);
+	}
 	else
 		git_status = ft_strjoin_free(git_status, "\x1b[38;5;83m ✓ \x1B[0m", 2);
 	*len += 3;
-	ft_strdel(&line);
 	while (get_next_line(fd, &line))
 		free(line);
 	return (git_status);

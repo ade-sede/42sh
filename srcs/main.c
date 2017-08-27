@@ -13,10 +13,8 @@ int	main(void)
 
 	env_load_base_env(singleton_env(), environ);
 	create_ternary_tree(singleton_env());
-#ifndef NO_TERMCAPS
 	history_load(singleton_hist(), singleton_env());
 	conf_term_in();
-#endif
 	main_loop(singleton_env());
 	env_free_env(singleton_env());
 	return (0);

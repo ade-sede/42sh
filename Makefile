@@ -37,6 +37,7 @@ SRC_FILE =	\
 	builtin/exec_builtin.c \
 	builtin/echo.c \
 \
+	exec/exec_signals.c \
 	exec/exec_bin.c \
 	exec/main_loop.c \
 	exec/param_expansion.c \
@@ -105,6 +106,17 @@ SRC_FILE =	\
 	hash_table/hash.c \
 	hash_table/hash_free.c \
 
+INCLUDES_FILES = \
+	builtin.h      \
+	completion.h   \
+	env.h          \
+	exec.h         \
+	hash_table.h   \
+	history.h      \
+	lexer.h        \
+	line_editing.h \
+	parser.h \
+
 NAME ?= 21sh
 
 # Defining those variables allows auto completion to occure.
@@ -127,6 +139,7 @@ CC ?= gcc
 LDFLAGS = -L$(LIB_DIR) -lft -ltermcap
 INCLUDES = $(LOCAL_INC) $(LIB_INC)
 
+INCLUDES_DEP = $(addprefix $(INCLUDES_FILES)/, ./includes)
 
 SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
@@ -143,7 +156,7 @@ Hello_word:
 lib:
 	@make -C $(LIB_DIR) APPEND="$(APPEND)" OPTIMIZATION="$(OPTIMIZATION)" CC="$(CC)"
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) 
 	@printf "$(COLOR_GREEN)Successfully created objects files for binary $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 	@printf "$(COLOR_VIOLET)Creating $(NAME) ... $(COLOR_NOCOLOR)\n"
 	@$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION)

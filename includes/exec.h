@@ -164,4 +164,6 @@ typedef struct	s_redir
 	int			id;
 	void		(*f)(int, char*, t_list**, t_token_id);
 }				t_redir;
+
+void	no_handle_signals(void);
 #endif

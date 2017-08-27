@@ -48,7 +48,8 @@ typedef struct			s_line
 	unsigned int		prompt_len;
 	size_t			ws_col;
 	char			*buff;
-	struct termios		*old_term;
+	struct termios		canonical_mode;
+	struct termios		normal_mode;
 	int			visu_mode;
 	size_t			visu_start;
 	char			*copied_text;
@@ -69,7 +70,8 @@ char	*edit_get_input(t_env *env);
 void	edit_set_signals(void);
 void	edit_handle_sigwinch(int signum);
 void	conf_term_in(void);
-void	conf_term_out(void);
+void	conf_term_canonical(t_line *line);
+void	conf_term_normal(t_line *line);
 void	put_termcap(char *capacity);
 t_line	*singleton_line(void);
 
