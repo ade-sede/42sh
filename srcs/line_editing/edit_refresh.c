@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 08:52:25 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 17:03:22 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,8 @@ void	edit_refresh_cursor(t_line *line)
 
 void	edit_refresh_line(t_line *line)
 {
-	size_t	i;
-	size_t	ws_col;
-
-	ws_col = line->ws_col;
-	ft_putnstr(line->buff, ws_col - line->prompt_len);
-	i = ws_col - line->prompt_len;
-	while (i < line->len)
-	{
-		put_termcap("do");
-		put_termcap("cr");
-		ft_putnstr(line->buff + i, ws_col);
-		i += ws_col;
-	}
-	if ((line->len + line->prompt_len) % (ws_col) == 0)
+	ft_putstr(line->buff);
+	if ((((line->prompt_len + line->pos)) % line->ws_col) == line->ws_col - 1)
 		put_termcap("do");
 }
 

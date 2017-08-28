@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:50 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 17:03:32 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ char	*edit_get_input(t_env *env)
 		if (keycode == KEY_ENTER)
 			return (edit_exit(l));
 		edit_loop(keycode, l);
-		edit_refresh(l);
 	}
 	(void)env;
 	return (NULL);

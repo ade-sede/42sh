@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:40 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 16:32:29 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	realoc_line_buff(char **buff, unsigned int *size, \
 
 void	edit_add(int keycode, t_line *line)
 {
+	size_t	s;
+
 	if (line->len >= line->size)
 		realoc_line_buff(&line->buff, &line->size, line->len + 1);
 	if (line->pos == line->len)
@@ -39,6 +41,16 @@ void	edit_add(int keycode, t_line *line)
 				(void*)(line->buff + line->pos), line->len - line->pos);
 		line->buff[line->pos] = (char)keycode;
 	}
+	ft_putstr(line->buff + line->pos);
+	s = ft_strlen(line->buff + line->pos);
+	put_ntermcap("le", s - 1);
 	line->pos++;
 	line->len++;
+	if (((((line->prompt_len + ft_strlen(line->buff))) % line->ws_col) == 0) && (line->buff[line->pos] != '\0'))
+		put_termcap("nd");
+	else if (((((line->prompt_len + ft_strlen(line->buff))) % line->ws_col) == 0) && (line->buff[line->pos] == '\0'))
+	{
+		ft_putchar(' ');
+		put_termcap("le");
+	}
 }

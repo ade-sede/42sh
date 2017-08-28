@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:49 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 16:41:33 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	edit_handle_sigwinch(int signum)
 {
 	singleton_comple()->ws_col = get_ws_col();
 	singleton_line()->ws_col = get_ws_col();
-	edit_refresh(singleton_line());
 	(void)signum;
 }
 
