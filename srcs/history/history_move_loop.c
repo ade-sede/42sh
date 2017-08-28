@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 17:08:34 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 18:03:45 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,27 @@
 **	Otherwise returns the keycode (to edit_get_input()).
 */
 
-unsigned long	history_move_loop(t_line *line)
+void	history_move_loop(t_line *line, unsigned long keycode, int *history)
 {
-	unsigned long	keycode;
 	t_hist			*h;
 
 	h = singleton_hist();
-	history_move_init(line, h);
-	while (42)
+	if (keycode == KEY_UP || keycode == KEY_DOWN)
 	{
-		keycode = 0;
-		read(0, &keycode, 8);
-		if (keycode == KEY_UP || keycode == KEY_DOWN)
+		if (!(*history))
 		{
-			if (keycode == KEY_UP)
-				history_next(line, h);
-			else if (keycode == KEY_DOWN)
-				history_prev(line, h);
-			edit_refresh(line);
+			history_move_init(line, h);
+			*history = 1;
 		}
-		else
-		{
-			history_move_exit(line, h);
-			return (keycode);
-		}
+		if (keycode == KEY_UP)
+			history_next(line, h);
+		else if (keycode == KEY_DOWN)
+			history_prev(line, h);
 		edit_refresh(line);
+	}
+	else if (*history)
+	{
+		*history = 0;
+		history_move_exit(line, h);
 	}
 }

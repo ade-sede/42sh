@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 17:03:32 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 18:09:04 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,22 @@ char	*edit_get_input(t_env *env)
 {
 	unsigned long	keycode;
 	t_line			*l;
+	int				history;
 
+	history = 0;
 	l = singleton_line();
 	edit_set_signals();
-	keycode = 0;
 	while (42)
 	{
-		keycode = history_move_loop(l);
+		keycode = 0;
+		read(0, &keycode, 1);
+		if (keycode == 27)
+			read(0, (char *)&keycode + 1, 7);
 		if (keycode == KEY_ENTER)
 			return (edit_exit(l));
-		edit_loop(keycode, l);
+		history_move_loop(l, keycode, &history);
+		if (keycode != KEY_UP && keycode != KEY_DOWN)
+			edit_loop(keycode, l);
 	}
 	(void)env;
 	return (NULL);
