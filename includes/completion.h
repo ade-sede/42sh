@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 18:31:19 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 19:48:28 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ typedef struct	s_comple_func
 char			**comple_matching(t_line *line, t_comple *c);
 void			comple_set_signals(void);
 void			comple_handle_sigwinch(int signum);
-void			comple_handle_sigint(t_line *line, t_comple *c);
+void			comple_handle_sigint(int signum);
 
 int				comple_init(t_line *line, t_comple *c);
 int				comple_init_winch(t_comple *c);
-int				comple_get_input(t_line *line, int keycode, int *completion);
+int				comple_get_input(t_line *line, int keycode);
 char			**comple_file_matches(t_line *line, t_comple *c);
 char			*extract_color(char *str);
 char			**comple_bin_matches(t_line *line, t_comple *c);

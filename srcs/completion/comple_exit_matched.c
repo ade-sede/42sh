@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 18:55:22 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 19:12:47 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		comple_exit_matched(t_line *line, t_comple c,
 		edit_insert_str(line, c.to_replace, matched);
 		free(matched);
 	}
+	edit_set_signals();
 	edit_refresh(line);
 	comple_free(c);
 	return (keycode);

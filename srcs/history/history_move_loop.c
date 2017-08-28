@@ -6,18 +6,12 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 18:29:18 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 19:01:18 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "history.h"
 #include "line_editing.h"
-
-/*
-**	Reads from standard input. If the pressed key is related to history
-**	browsing, triggers the coresponding routine and refreshes the display.
-**	Otherwise returns the keycode (to edit_get_input()).
-*/
 
 int		history_get_input(t_line *line, unsigned long keycode, int *history)
 {

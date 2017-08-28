@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:17:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:17:43 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 19:50:32 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_line
 	struct termios		canonical_mode;
 	struct termios		normal_mode;
 	int					visu_mode;
+	int					completion;
 	size_t				visu_start;
 	char				*copied_text;
 	char				*prompt;

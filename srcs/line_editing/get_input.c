@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 18:51:40 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 19:50:12 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,8 @@ char	*edit_get_input(t_env *env)
 	unsigned long	keycode;
 	t_line			*l;
 	int				history;
-	int				completion;
 
 	history = 0;
-	completion = 0;
 	l = singleton_line();
 	edit_set_signals();
 	while (42)
@@ -80,7 +78,7 @@ char	*edit_get_input(t_env *env)
 		read(0, &keycode, 1);
 		if (keycode == 27)
 			read(0, (char *)&keycode + 1, 7);
-		if (comple_get_input(l, keycode, &completion))
+		if (comple_get_input(l, keycode))
 			continue ;
 		if (keycode == KEY_ENTER)
 			return (edit_exit(l));

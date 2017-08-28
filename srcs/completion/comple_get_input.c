@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 18:48:54 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 19:45:25 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,35 +43,36 @@ int		comple_loop(unsigned long long keycode, t_line *line,
 	(void)line;
 }
 
-int		comple_get_input(t_line *line, int keycode, int *completion)
+int		comple_get_input(t_line *line, int keycode)
 {
 	t_comple			*c;
 
 	c = singleton_comple();
-	if (*completion)
+	if (line->completion)
 	{
 		if (keycode == KEY_ENTER)
 		{
-			*completion = 0;
+			line->completion = 0;
 			comple_exit_matched(line, *c, keycode);
 			return (1);
 		}
 		else if (!comple_loop(keycode, line, c))
 		{
-			*completion = 0;
+			line->completion = 0;
 			comple_exit_matched(line, *c, keycode);
 			return (0);
 		}
 		comple_refresh(line, *c);
 		return (1);
 	}
-	if (!(*completion) && keycode == KEY_TAB)
+	if (!(line->completion) && keycode == KEY_TAB)
 	{
+		comple_set_signals();
 		if (!(comple_init(line, c)))
 			return (0);
 		comple_refresh(line, *c);
 		//comple_set_signals();
-		*completion = 1;
+		line->completion = 1;
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:07:50 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 20:02:36 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,18 @@ void	comple_handle_sigwinch(int signum)
 	(void)signum;
 }
 
-void	comple_handle_sigint(t_line *line, t_comple *c)
+void	comple_handle_sigint(int signum)
 {
+	t_comple	*c;
+
+	c = singleton_comple();
 	comple_clear(*c);
 	put_termcap("up");
 	comple_free(*c);
-	(void)line;
+	singleton_line()->completion = 0;
+	edit_set_signals();
+	edit_refresh(singleton_line());
+	(void)signum;
 }
 
 void	comple_set_comple_signum(int num)
@@ -41,11 +47,6 @@ void	comple_set_comple_signum(int num)
 
 void	comple_set_signals(void)
 {
-	struct sigaction sa;
-
-	sa.sa_handler = comple_set_comple_signum;
-	sa.sa_mask = 0;
-	sa.sa_flags = 0;
-	sigaction(SIGINT, &sa, NULL);
+	signal(SIGINT, comple_handle_sigint);
 	signal(SIGWINCH, comple_handle_sigwinch);
 }
