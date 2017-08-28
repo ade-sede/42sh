@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 18:09:04 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 18:51:40 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_V, &enter_visual_mode},
 	{KEY_ALT_P, &paste},
 	{KEY_ALT_R, &btsearch_get_input},
-	{KEY_TAB, comple_get_input},
 	{0, NULL}
 };
 
@@ -69,8 +68,10 @@ char	*edit_get_input(t_env *env)
 	unsigned long	keycode;
 	t_line			*l;
 	int				history;
+	int				completion;
 
 	history = 0;
+	completion = 0;
 	l = singleton_line();
 	edit_set_signals();
 	while (42)
@@ -79,11 +80,13 @@ char	*edit_get_input(t_env *env)
 		read(0, &keycode, 1);
 		if (keycode == 27)
 			read(0, (char *)&keycode + 1, 7);
+		if (comple_get_input(l, keycode, &completion))
+			continue ;
 		if (keycode == KEY_ENTER)
 			return (edit_exit(l));
-		history_move_loop(l, keycode, &history);
-		if (keycode != KEY_UP && keycode != KEY_DOWN)
-			edit_loop(keycode, l);
+		if (history_get_input(l, keycode, &history))
+			continue ;
+		edit_loop(keycode, l);
 	}
 	(void)env;
 	return (NULL);

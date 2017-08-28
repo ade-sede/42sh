@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:07:44 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 18:48:54 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,36 @@ int		comple_loop(unsigned long long keycode, t_line *line,
 	(void)line;
 }
 
-int		comple_get_input(t_line *line)
+int		comple_get_input(t_line *line, int keycode, int *completion)
 {
-	unsigned long long	keycode;
 	t_comple			*c;
 
 	c = singleton_comple();
-	if (!(comple_init(line, c)))
-		return (0);
-	comple_refresh(line, *c);
-	comple_set_signals();
-	while (42)
+	if (*completion)
 	{
-		keycode = 0;
-		read(0, &keycode, 8);
-		if (c->signum == SIGINT)
+		if (keycode == KEY_ENTER)
 		{
-			comple_handle_sigint(line, c);
+			*completion = 0;
+			comple_exit_matched(line, *c, keycode);
+			return (1);
+		}
+		else if (!comple_loop(keycode, line, c))
+		{
+			*completion = 0;
+			comple_exit_matched(line, *c, keycode);
 			return (0);
 		}
-		if (keycode == KEY_ENTER || !(comple_loop(keycode, line, c)))
-			return (comple_exit_matched(line, *c, keycode));
 		comple_refresh(line, *c);
+		return (1);
 	}
-	return (1);
+	if (!(*completion) && keycode == KEY_TAB)
+	{
+		if (!(comple_init(line, c)))
+			return (0);
+		comple_refresh(line, *c);
+		//comple_set_signals();
+		*completion = 1;
+		return (1);
+	}
+	return (0);
 }

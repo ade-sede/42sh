@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 18:03:35 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 18:30:00 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_hist			*singleton_hist(void);
 int				history_load(t_hist *h, t_env *env);
 void			history_refresh(char *command);
 
-void			history_move_loop(t_line *line, unsigned long keycode, int *history);
+int				history_get_input(t_line *line, unsigned long keycode, int *history);
 void			history_init(t_hist *h);
 int				history_move_exit(t_line *line, t_hist *hist);
 int				history_move_init(t_line *line, t_hist *hist);

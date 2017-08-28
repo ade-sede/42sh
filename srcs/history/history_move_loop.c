@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 18:03:45 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 18:29:18 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	Otherwise returns the keycode (to edit_get_input()).
 */
 
-void	history_move_loop(t_line *line, unsigned long keycode, int *history)
+int		history_get_input(t_line *line, unsigned long keycode, int *history)
 {
 	t_hist			*h;
 
@@ -36,10 +36,13 @@ void	history_move_loop(t_line *line, unsigned long keycode, int *history)
 		else if (keycode == KEY_DOWN)
 			history_prev(line, h);
 		edit_refresh(line);
+		return (1);
 	}
 	else if (*history)
 	{
 		*history = 0;
 		history_move_exit(line, h);
+		return (0);
 	}
+	return (0);
 }
