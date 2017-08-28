@@ -6,13 +6,14 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 20:02:36 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 21:25:54 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "completion.h"
 #include "line_editing.h"
 #include <signal.h>
+#include <stdio.h>
 
 void	comple_handle_sigwinch(int signum)
 {
@@ -21,6 +22,8 @@ void	comple_handle_sigwinch(int signum)
 	c = singleton_comple();
 	edit_handle_sigwinch(0);
 	put_termcap("cd");
+	comple_clear(*c);
+	put_termcap("up");
 	comple_init_winch(c);
 	comple_refresh(singleton_line(), *c);
 	(void)signum;
@@ -47,6 +50,13 @@ void	comple_set_comple_signum(int num)
 
 void	comple_set_signals(void)
 {
+   struct sigaction sa;
+	sigset_t			block_mask;
+
+	sigemptyset(&block_mask);
+    sa.sa_handler = comple_handle_sigwinch;
+	sa.sa_flags = SA_RESTART;
+	sa.sa_mask = block_mask;
+    sigaction(SIGWINCH, &sa, NULL);
 	signal(SIGINT, comple_handle_sigint);
-	signal(SIGWINCH, comple_handle_sigwinch);
 }
