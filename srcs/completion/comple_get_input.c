@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 21:36:00 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 00:16:17 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		comple_get_input(t_line *line, int keycode)
 		{
 			line->completion = 0;
 			comple_exit_matched(line, *c, keycode);
-			return (keycode == KEY_ENTER ? 1: 0);
+			return (keycode == KEY_ENTER ? 1 : 0);
 		}
 		comple_refresh(line, *c);
 		return (1);

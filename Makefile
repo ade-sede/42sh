@@ -121,7 +121,7 @@ INCLUDES_FILES = \
 	line_editing.h \
 	parser.h \
 
-NAME ?= 21sh
+NAME ?= minishell
 
 # Defining those variables allows auto completion to occure.
 APPEND=
