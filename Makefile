@@ -89,7 +89,7 @@ SRC_FILE =	\
 	history/btsearch_signals.c \
 	history/history_init.c \
 	history/history_move.c \
-	history/history_move_loop.c \
+	history/history_get_input.c \
 	history/history_refresh.c \
 	history/load_history.c \
 \

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 21:25:54 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 21:29:01 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void	comple_set_comple_signum(int num)
 
 void	comple_set_signals(void)
 {
-   struct sigaction sa;
+	struct sigaction	sa;
 	sigset_t			block_mask;
 
 	sigemptyset(&block_mask);
-    sa.sa_handler = comple_handle_sigwinch;
+	sa.sa_handler = comple_handle_sigwinch;
 	sa.sa_flags = SA_RESTART;
 	sa.sa_mask = block_mask;
-    sigaction(SIGWINCH, &sa, NULL);
+	sigaction(SIGWINCH, &sa, NULL);
 	signal(SIGINT, comple_handle_sigint);
 }

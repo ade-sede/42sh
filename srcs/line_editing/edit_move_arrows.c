@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 16:58:51 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 21:34:28 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		edit_down(t_line *line)
 {
 	size_t	i;
 	size_t	n;
+
 	if (line->pos + line->ws_col > line->len)
 		return (0);
 	n = line->ws_col;
@@ -47,8 +48,7 @@ int		edit_right(t_line *line)
 {
 	if (line->pos >= line->len)
 		return (0);
-
-	if ((((line->prompt_len  + line->pos)) % line->ws_col) == line->ws_col - 1)
+	if ((((line->prompt_len + line->pos)) % line->ws_col) == line->ws_col - 1)
 		put_termcap("do");
 	else
 		put_termcap("nd");

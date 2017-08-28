@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 16:50:37 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 21:29:54 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	edit_backspace(t_line *line)
 	write(1, line->buff + line->pos, s);
 	ft_putchar(' ');
 	put_ntermcap("le", s + 1);
-	if ((((line->prompt_len + ft_strlen(line->buff))) % line->ws_col) == line->ws_col - 1)
+	if ((((line->prompt_len + ft_strlen(line->buff))) % line->ws_col) == \
+			line->ws_col - 1)
 		put_termcap("nd");
 	return (1);
 }

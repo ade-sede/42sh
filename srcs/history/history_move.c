@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 18:12:26 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/28 21:45:31 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int		strnequ_writen_buff(void *data)
 	if (len == 0)
 		return (1);
 	if (ft_strnequ(data, singleton_hist()->writen_buff, len))
-	{
 		return (1);
-	}
 	return (0);
 }
 
@@ -52,7 +50,7 @@ int		history_prev(t_line *line, t_hist *h)
 
 	tmp = NULL;
 	tmp = ft_double_lst_return_if((h->cur) ? h->cur->prev : NULL, \
-			strnequ_writen_buff, -1);
+			strnequ_writen_buff, 2);
 	if (tmp)
 	{
 		h->cur = tmp;
