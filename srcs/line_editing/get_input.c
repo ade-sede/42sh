@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/29 05:43:34 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 06:13:08 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ char	*edit_get_input(t_env *env)
 	edit_set_signals();
 	while (42)
 	{
+		l->old_pos = l->pos;
 		keycode = 0;
 		read(0, &keycode, 1);
 		if (keycode == 27)

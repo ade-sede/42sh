@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/29 05:43:32 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 06:17:15 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		history_prev(t_line *line, t_hist *h)
 	{
 		put_termcap("bl");
 		line->pos = ft_strlen(h->writen_buff);
+		edit_refresh(line);
 	}
 	return (1);
 }

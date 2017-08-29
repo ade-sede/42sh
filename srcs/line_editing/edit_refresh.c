@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/29 05:36:56 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 06:14:40 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	edit_refresh_line(t_line *line)
 
 void	edit_refresh_clear(t_line *line)
 {
-	put_ntermcap("up", (line->pos + line->prompt_len) / line->ws_col);
+	put_ntermcap("up", (line->old_pos + line->prompt_len) / line->ws_col);
 	put_termcap("cr");
 	put_termcap("cd");
 }

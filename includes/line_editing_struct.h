@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:17:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/29 05:37:53 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 06:13:04 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_line
 	size_t				visu_start;
 	char				*copied_text;
 	char				*prompt;
+	unsigned int		old_pos;
 }				t_line;
 
 typedef struct	s_edit_func
