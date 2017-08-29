@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/29 00:38:24 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 05:43:34 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	int	i;
 
 	i = 0;
-	line->old_pos = line->pos;
 	while (g_edit_func[i].keycode)
 	{
 		if (g_edit_func[i].keycode == keycode)

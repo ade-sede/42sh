@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 19:01:18 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 05:40:09 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		history_get_input(t_line *line, unsigned long keycode, int *history)
 			history_next(line, h);
 		else if (keycode == KEY_DOWN)
 			history_prev(line, h);
-		edit_refresh(line);
 		return (1);
 	}
 	else if (*history)

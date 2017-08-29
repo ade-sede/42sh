@@ -6,11 +6,12 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 21:45:31 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 05:43:32 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "history.h"
+#include "stdio.h"
 
 int		strnequ_writen_buff(void *data)
 {
@@ -24,6 +25,17 @@ int		strnequ_writen_buff(void *data)
 	return (0);
 }
 
+void	history_line_refresh(t_line *line, char *new_line)
+{
+	edit_refresh_clear(line);
+	ft_strclr(line->buff);
+	edit_insert_str(line, line->buff, new_line);
+	line->len = ft_strlen((const char *)new_line);
+	line->pos = line->len;
+	put_prompt(line);
+	edit_refresh_line(line);
+}
+
 int		history_next(t_line *line, t_hist *h)
 {
 	t_list_d	*tmp;
@@ -34,10 +46,7 @@ int		history_next(t_line *line, t_hist *h)
 	if (tmp)
 	{
 		h->cur = tmp;
-		ft_strclr(line->buff);
-		edit_insert_str(line, line->buff, h->cur->data);
-		line->len = ft_strlen((const char *)h->cur->data);
-		line->pos = line->len;
+		history_line_refresh(line, h->cur->data);
 	}
 	else
 		put_termcap("bl");
@@ -54,10 +63,7 @@ int		history_prev(t_line *line, t_hist *h)
 	if (tmp)
 	{
 		h->cur = tmp;
-		ft_strclr(line->buff);
-		edit_insert_str(line, line->buff, h->cur->data);
-		line->len = ft_strlen((const char *)h->cur->data);
-		line->pos = line->len;
+		history_line_refresh(line, h->cur->data);
 	}
 	else
 	{

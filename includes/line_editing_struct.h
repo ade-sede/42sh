@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:17:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 19:50:32 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 05:37:53 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 typedef struct	s_line
 {
 	unsigned int		pos;
-	unsigned int		old_pos;
 	unsigned int		len;
 	unsigned int		size;
 	unsigned int		prompt_len;
