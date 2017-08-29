@@ -6,13 +6,14 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:07:35 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 04:51:54 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "exec.h"
 #include "libft.h"
+#include "hash_table.h"
 
 static const char	**handle_i(t_env *env, const char **argv)
 {
@@ -87,7 +88,10 @@ int					builtin_env(t_env *old_env, const char **argv)
 	if (!(*argv))
 		env_print_environ((const char**)new_env.environ);
 	else
+	{
+		create_hash_table(&new_env);
 		fork_exec_bin(&new_env, argv, NULL);
+	}
 	env_free_env(&new_env);
 	return (EXIT_SUCCESS);
 }

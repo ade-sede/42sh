@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 11:01:06 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 05:01:25 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "env.h"
 #include "sys/wait.h"
 #include "exec.h"
-#include <stdio.h>
 #include "hash_table.h"
 
 /*
@@ -42,7 +41,8 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 {
 	char	*bin;
 
-	bin = hash_get(env->hash_table, (char *)argv[0]);
+	if (!(bin = hash_get(env->hash_table, (char *)argv[0])))
+		exit(return_failure(argv[0], " :command not found"));
 	if (access(bin, F_OK) == 0)
 	{
 		if (access(bin, X_OK) == -1)
@@ -100,7 +100,7 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	int			*p_left;
 	t_list_d	*cur;
 
-	cur = head->middle;
+	cur = (head) ? head->middle : NULL;
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 	conf_term_normal();
