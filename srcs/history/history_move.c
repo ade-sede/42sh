@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/29 06:17:15 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 06:23:19 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ int		strnequ_writen_buff(void *data)
 
 void	history_line_refresh(t_line *line, char *new_line)
 {
-	edit_refresh_clear(line);
 	ft_strclr(line->buff);
 	edit_insert_str(line, line->buff, new_line);
 	line->len = ft_strlen((const char *)new_line);
 	line->pos = line->len;
-	put_prompt(line);
-	edit_refresh_line(line);
+	edit_refresh(line);
 }
 
 int		history_next(t_line *line, t_hist *h)
