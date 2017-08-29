@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:11 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 03:52:31 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*hash_get(t_list **hash_table, char *value)
 {
 	t_list	*tmp;
 
+	if (!hash_table)
+		return (NULL);
 	tmp = hash_table[hash((unsigned char *)value)];
 	while (tmp)
 	{

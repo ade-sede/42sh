@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 21:26:46 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 00:45:46 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	comple_refresh_line(t_line *line, t_comple c)
 	put_ntermcap("up", c.nb_lines);
 	move_cursor_firstline_from_lastline(line);
 	put_prompt(line);
-	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
+	edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }
 

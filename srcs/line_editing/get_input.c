@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 19:50:12 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 00:38:24 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_C, &copy},
 	{KEY_ALT_V, &enter_visual_mode},
 	{KEY_ALT_P, &paste},
-	{KEY_ALT_R, &btsearch_get_input},
 	{0, NULL}
 };
 

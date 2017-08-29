@@ -6,11 +6,12 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:07:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 04:17:13 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+#include "hash_table.h"
 #include "libft.h"
 
 void	env_remove_var_index(t_env *env, size_t key_index)

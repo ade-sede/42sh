@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:07:54 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 04:23:20 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	env_reload_tree_hash(t_env *env)
 	free_ternary_tree(env->tree);
 	env->tree = NULL;
 	create_ternary_tree(env);
-	free_hash_table(env->hash_table);
+	free_hash_table(&env->hash_table);
+	env->hash_table = NULL;
 	create_hash_table(env);
 }
 
@@ -51,8 +52,6 @@ void	env_change_value(t_env *env, const char *key, size_t key_index, \
 	environ = env->environ;
 	free(environ[key_index]);
 	environ[key_index] = ft_strsurround(key, "=", new_value);
-	if (ft_strnequ(environ[key_index], "PATH", 4))
-		env_reload_tree_hash(env);
 }
 
 void	env_add_change(t_env *env, const char *key, const char *value)

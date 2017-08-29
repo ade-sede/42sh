@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:36:12 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 03:22:34 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ void			env_change_value(t_env *env, const char *key, \
 void			env_add_var(t_env *env, const char *key, const char *value);
 void			env_add_change(t_env *env, const char *key, const char *value);
 void			env_add_var_from_string(t_env *env, \
-		char *key_value, ssize_t eq_index);
+	char *key_value, ssize_t eq_index);
+void			env_reload_tree_hash(t_env *env);
 /*
 ** 	In file remove_var.c
 */

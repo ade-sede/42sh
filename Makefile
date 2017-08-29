@@ -143,7 +143,7 @@ CC ?= gcc
 LDFLAGS = -L$(LIB_DIR) -lft -ltermcap
 INCLUDES = $(LOCAL_INC) $(LIB_INC)
 
-INCLUDES_DEP = $(addprefix $(INCLUDES_FILES)/, ./includes)
+INCLUDES_DEP = $(addprefix ./includes/, $(INCLUDES_FILES))
 
 SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
@@ -151,7 +151,7 @@ OBJS = $(addprefix $(OBJ_DIR)/,$(SRC_FILE:.c=.o))
 
 .PHONY: all test Hello_word lib $(OBJ_DIR) $(NAME) clean fclean re
 
-all: Hello_word lib $(OBJ_DIR) $(NAME)
+all: Hello_word lib $(OBJ_DIR) $(NAME) $(INCLUDES_DEP)
 	@printf "$(COLOR_CLEAR)$(COLOR_GREEN)Successfully created $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 
 Hello_word:
@@ -163,7 +163,7 @@ lib:
 $(NAME): $(OBJS) 
 	@printf "$(COLOR_GREEN)Successfully created objects files for binary $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 	@printf "$(COLOR_VIOLET)Creating $(NAME) ... $(COLOR_NOCOLOR)\n"
-	@$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION)
 	@printf "$(COLOR_UP)$(COLOR_CLEAR)"
 	
 $(OBJ_DIR):

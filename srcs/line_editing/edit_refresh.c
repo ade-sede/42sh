@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 19:01:14 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 00:40:56 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	edit_refresh(t_line *line)
 {
 	edit_refresh_clear(line);
 	put_prompt(line);
-	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
+	edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }

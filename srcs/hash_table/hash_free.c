@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:12 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 03:50:27 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,20 @@
 #include "hash_table.h"
 #include "env.h"
 
-void	free_hash_table(t_list **hash_table)
+void	free_hash_table(t_list ***hash_table)
 {
 	t_list	*tmp;
 	t_list	*elem;
 	size_t	i;
+	t_list	**table;
 
+	table = *hash_table;
+	if (!table)
+		return ;
 	i = 0;
 	while (i < HASH_TABLE_SIZE)
 	{
-		elem = hash_table[i];
+		elem = table[i];
 		while (elem)
 		{
 			tmp = elem->next;
@@ -32,8 +36,9 @@ void	free_hash_table(t_list **hash_table)
 			free(elem);
 			elem = tmp;
 		}
-		hash_table[i] = NULL;
+		table[i] = NULL;
 		i++;
 	}
-	free(hash_table);
+	free(*hash_table);
+	*hash_table = NULL;
 }

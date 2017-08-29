@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:07:39 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 04:24:00 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	builtin_unsetenv(t_env *env, char **argv)
 	while (i < argc)
 	{
 		env_remove_var(env, argv[i]);
+		if (ft_strequ(argv[i], "PATH"))
+			env_reload_tree_hash(env);
 		i++;
 	}
 	return (EXIT_SUCCESS);

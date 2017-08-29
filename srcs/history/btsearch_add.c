@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/29 00:35:12 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ void	btsearch_first_search(t_hist *h)
 	ft_double_lst_foreach(h->list->first, NULL, create_strstr_btsearch_buff, 1);
 }
 
-void	debug(t_list_d *item)
-{
-	printf("%s\n", (char*)item->data);
-}
+/*
+**	void	debug(t_list_d *item)
+**	{
+**		printf("%s\n", (char*)item->data);
+**	}
+*/
 
 void	btsearch_add(char keycode, t_line *line, t_hist *h)
 {
