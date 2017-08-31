@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:07:47 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/31 07:25:31 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ char	**comple_matching_cursorword(t_line *line, t_comple *c)
 	lex = init_lexer(line->buff);
 	token_list = start_lex(&lex);
 	last = ft_last_simple_lst(token_list);
-	if (!token_list->next)
+	if (ft_strchr(c->current_word, '/'))
+		res = comple_file_matches(line, c);
+	else if (!token_list->next)
 		res = comple_bin_matches(line, c);
 	else
 	{

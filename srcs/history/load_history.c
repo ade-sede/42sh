@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 07:27:19 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/31 07:20:24 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int			history_load(t_hist *h, t_env *env)
 	t_list_d	*list;
 
 	init_hist_struct(h, env);
-	if ((fd = open(h->file, O_RDWR | O_CREAT)) == -1)
+	if ((fd = open(h->file, O_RDWR | O_CREAT, 0644)) == -1)
 		return (0);
-	chmod(h->file, S_IRUSR | S_IWUSR | S_IRGRP);
+	h->fd = fd;
 	while (get_next_line(fd, &line))
 	{
 		list = ft_double_lst_create(line);
@@ -48,6 +48,5 @@ int			history_load(t_hist *h, t_env *env)
 		else
 			ft_double_lst_add(&h->list, list);
 	}
-	close(fd);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:08:19 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/28 21:38:37 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/31 06:53:13 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_hist
 	char		*btsearch_buff;
 	size_t		btsearch_buff_len;
 	int			signum;
+	int			fd;
 }				t_hist;
 
 t_hist			*singleton_hist(void);

@@ -6,11 +6,18 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 05:07:29 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 05:08:25 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/08/31 07:21:22 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "history.h"
+#include <stdio.h>
+#include <errno.h>
+
+void	history_refresh_command(t_hist *h, char *command)
+{
+	write(h->fd, command, ft_strlen(command));
+}
 
 void	history_refresh(char *command)
 {
@@ -25,4 +32,5 @@ void	history_refresh(char *command)
 		h->list = ft_create_head(list);
 	else
 		ft_double_lst_add(&h->list, list);
+	history_refresh_command(h, command);
 }
