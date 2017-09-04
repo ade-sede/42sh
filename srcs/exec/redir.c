@@ -8,6 +8,7 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
+#include <errno.h>
 
 static t_redir	g_redir[] =
 {
@@ -36,39 +37,37 @@ void	*get_exec_redir_func(t_ast *child_node)
 **	the operator's id. FD of the opened file will be returned.
 */
 
-/*
-**	Fd merging with op >& and <&
-*/
-
 void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id)
 {
-	int		fd;
-	char	*buff;
+	int		fd[2];
+	char		*buff;
 
 	(void)id;
 	if (io_number == -1)
 		io_number = 0;
-	if ((fd = open("/tmp/42sh_heredoc", \
-					O_WRONLY | O_CREAT | O_EXCL | O_TRUNC, 0600)) < 0)
-		return_failure("Open error", "");
-	while (fd >= 0 && buff && !ft_strequ(buff, target))
+	errno = 0;
+	if (pipe(fd) == 0)
 	{
-		load_prompt(singleton_env(), singleton_line(), \
-				"heredoc", "heredoc> ");
-		buff = line_editing_get_input(singleton_env(), \
-				singleton_line(), singleton_hist());
-		if (!ft_strequ(buff, target))
-		{
-			write(fd, buff, ft_strlen(buff));
-			write(fd, "\n", 1);
-		}
+		while (!ft_strequ(buff, target))
+			{
+				load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
+				buff = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist());
+				if (!ft_strequ(buff, target))
+				{
+					write(fd[WRITE_END], buff, ft_strlen(buff));
+					write(fd[WRITE_END], "\n", 1);
+				}
+			}
+		close(fd[WRITE_END]);
+		errno = 0;
+		exec_dup(io_number, fd[READ_END], FALSE, redir_stack);
 	}
-	close(fd);
-	if ((fd = open("/tmp/42sh_heredoc", O_RDONLY)) > 0)
-		return_failure("Open error", "");
-	exec_dup(io_number, fd, FALSE, redir_stack);
 }
+
+/*
+**	Fd merging with op >& and <&
+*/
 
 void	merge_fd(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id)
