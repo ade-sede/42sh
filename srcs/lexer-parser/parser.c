@@ -4,6 +4,7 @@
 #include "color.h"
 #include "libft.h"
 #include "exec.h"
+#include "printf.h"
 
 /*
 **	As a token is considered to be a leaf of the tree, the tree is being built
@@ -69,19 +70,28 @@ static t_list	*reopen_command(t_token *token)
 static void		start_complexe_command(t_ast **root, t_list **token_list, \
 		int *command_name, t_token *token)
 {
+	t_ast	*left_branch;
 	t_ast	*new_branch_root;
 	t_list	*child;
 
+	left_branch = *root;
 	child = ft_simple_lst_create(*root);
 	*root = ast_create_node(token, NULL, COMPLEXE_COMMAND);
 	ft_simple_lst_del_one(token_list, *token_list, NULL);
 	new_branch_root = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 	new_branch_root = ast_create_simple_command(&new_branch_root, \
 			token_list, command_name);
-	if (!new_branch_root->child)
+	if (!left_branch || (left_branch && !left_branch->child))
+	{
+		ft_simple_lst_remove(token_list, NULL);
+		dprintf(2, "Parse error near '%s'\n", (*root)->token->value);
+		left_branch = flush_tree(left_branch);
+		*root = flush_tree(*root);
+	}
+	else if (!new_branch_root->child)
 	{
 		if (ft_strequ((*root)->token->value, ";"))
-			new_branch_root = free_ast_node(new_branch_root);
+			new_branch_root = flush_tree(new_branch_root);
 		else if (!*token_list)
 		{
 			*token_list = reopen_command((*root)->token);
@@ -89,10 +99,16 @@ static void		start_complexe_command(t_ast **root, t_list **token_list, \
 					token_list, command_name);
 		}
 		else
-			new_branch_root = free_ast_node(new_branch_root);
+		{
+			ft_simple_lst_remove(token_list, NULL);
+			dprintf(2, "Parse error near '%s'\n", (*root)->token->value);
+			*root = flush_tree(*root);
+			new_branch_root = flush_tree(new_branch_root);
+		}
 	}
 	ft_simple_lst_pushback(&child, ft_simple_lst_create(new_branch_root));
-	(*root)->child = child;
+	if (*root)
+		(*root)->child = child;
 	*command_name = 0;
 }
 

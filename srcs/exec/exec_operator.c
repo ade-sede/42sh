@@ -15,21 +15,11 @@ int		logical_or(t_ast *ast, t_lst_head *head)
 
 	error = 0;
 	cmd1_exit = 0;
-	if (!ast->child->data || !ast->child->next->data)
-	{
-		error = 1;
-		return_failure("Parse error near ", ast->token->value);
-		ast->child->data = flush_tree(ast->child->data);
-		ast->child->next->data = flush_tree(ast->child->next->data);
-	}
-	else
-	{
-		ft_double_lst_add(&head, ft_double_lst_create(NULL));
-		head->middle = head->first;
-		exec_tree(ast->child->data, head);
-		if ((cmd1_exit = singleton_env()->previous_exit) != 0)
-			exec_tree(ast->child->next->data, head);
-	}
+	ft_double_lst_add(&head, ft_double_lst_create(NULL));
+	head->middle = head->first;
+	exec_tree(ast->child->data, head);
+	if ((cmd1_exit = singleton_env()->previous_exit) != 0)
+		exec_tree(ast->child->next->data, head);
 	if (cmd1_exit == 0)
 		ast->child->next->data = flush_tree(ast->child->next->data);
 	return ((cmd1_exit == 0 || error != 0) ? 1 : 0);
@@ -53,21 +43,11 @@ int		logical_and(t_ast *ast, t_lst_head *head)
 
 	error = 0;
 	cmd1_exit = 0;
-	if (!(ast->child->data) || !(ast->child->next->data))
-	{
-		error = 1;
-		return_failure("Parse error near ", ast->token->value);
-		ast->child->data = flush_tree(ast->child->data);
-		ast->child->next->data = flush_tree(ast->child->next->data);
-	}
-	else
-	{
-		ft_double_lst_add(&head, ft_double_lst_create(NULL));
-		head->middle = head->first;
-		exec_tree(ast->child->data, head);
-		if ((cmd1_exit = singleton_env()->previous_exit) == 0)
-			exec_tree(ast->child->next->data, head);
-	}
+	ft_double_lst_add(&head, ft_double_lst_create(NULL));
+	head->middle = head->first;
+	exec_tree(ast->child->data, head);
+	if ((cmd1_exit = singleton_env()->previous_exit) == 0)
+		exec_tree(ast->child->next->data, head);
 	if (cmd1_exit != 0)
 		ast->child->next->data = flush_tree(ast->child->next->data);
 	return ((cmd1_exit != 0 || error != 0) ? 1 : 0);

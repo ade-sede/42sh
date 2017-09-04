@@ -47,27 +47,18 @@ static int	exec_pipe(t_ast *ast, t_lst_head *head)
 {
 	int			*p;
 
-	if (!(ast->child->data) || !(ast->child->next->data))
-	{
-		return_failure("Parse error near ", ast->token->value);
-		ast->child->data = flush_tree(ast->child->data);
-		ast->child->next->data = flush_tree(ast->child->next->data);
-	}
+	p = palloc(sizeof(*p) * 2);
+	pipe(p);
+	ft_double_lst_add(&head, ft_double_lst_create(p));
+	head->middle = head->first;
+	if (exec_tree(ast->child->data, head) == 0)
+		exec_tree(ast->child->next->data, head);
 	else
 	{
-		p = palloc(sizeof(*p) * 2);
-		pipe(p);
-		ft_double_lst_add(&head, ft_double_lst_create(p));
-		head->middle = head->first;
-		if (exec_tree(ast->child->data, head) == 0)
-			exec_tree(ast->child->next->data, head);
-		else
-		{
-			ast->child->data = flush_tree(ast->child->next->data);
-			head->middle = head->middle->next;
-		}
+		ast->child->data = flush_tree(ast->child->next->data);
+		head->middle = head->middle->next;
 	}
-	return (0);
+return (0);
 }
 
 /*
