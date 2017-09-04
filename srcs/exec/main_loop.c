@@ -117,7 +117,7 @@ void	main_loop(t_env *env)
 	t_ast		*ast;
 	char		*buff;
 	t_lexer		lex;
-	t_lst_head	*head;
+	t_lst_head	*head = NULL;
 	t_list		*token_list;
 
 	init_main_loop(singleton_line(), singleton_hist());
@@ -131,8 +131,10 @@ void	main_loop(t_env *env)
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
 			ast = NULL;
-			ast = ast_parse(&ast, &token_list);
-			head = ft_create_head(ft_double_lst_create(NULL));
+#ifdef PIPE_DEBUG
+			dprintf(2, "Creating %s\n", "an empty node");
+#endif
+			ast = ast_parse(&ast, &token_list, &head);
 #ifdef PARSER_DEBUG
 			read_tree(ast);
 #endif

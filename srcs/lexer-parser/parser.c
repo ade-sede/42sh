@@ -112,21 +112,51 @@ static void		start_complexe_command(t_ast **root, t_list **token_list, \
 	*command_name = 0;
 }
 
-t_ast			*ast_parse(t_ast **root, t_list **token_list)
+/*
+**	This function starts the creation of the tree's branch.
+*/
+
+t_ast			*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head)
 {
 	int		command_name;
 	t_token *token;
+	int 	*p;
 
+	p = NULL;
 	command_name = 0;
 	if (token_list && *token_list)
 	{
 		token = (*token_list)->data;
 		if (TK_IS_SEP(token->id))
+		{
 			start_complexe_command(root, token_list, &command_name, token);
+			if (ft_strequ(token->value, "|"))
+			{
+				p = palloc(sizeof(*p) * 2);
+				pipe(p);
+			}
+#ifdef PIPE_DEBUG
+			dprintf(2, "Creating %s at the start of the list\n", (p != NULL) ? "a full node" : "an empty node");
+#endif
+			if (*head == NULL)
+				*head = ft_create_head(ft_double_lst_create(p));
+			else
+				ft_double_lst_pushback(head, ft_double_lst_create(p));
+		}
 		else
 			start_simple_command(root, token_list, &command_name);
 		if (token_list && *token_list)
-			ast_parse(root, token_list);
+			ast_parse(root, token_list, head);
+		else
+		{
+			if (*head == NULL)
+				*head = ft_create_head(ft_double_lst_create(p));
+			else
+			{
+				ft_double_lst_pushback(head, ft_double_lst_create(NULL));
+				(*head)->middle = (*head)->first;
+			}
+		}
 	}
 	return (*root);
 }

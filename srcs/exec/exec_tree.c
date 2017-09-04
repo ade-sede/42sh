@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 /*
-**	Delete the entire tree. Temporary to stop leaks.
+**	Deletes the entire tree, from the given node to the last leaf
 */
 
 t_ast		*flush_tree(t_ast *ast)
@@ -33,24 +33,13 @@ t_ast		*flush_tree(t_ast *ast)
 }
 
 /*
-**	Code to be executed if the complexe command is a logical and.  Must think
-**	about error handling in the parser/exec. (empty command for example). Atm
-**	we're changing the previous exit, but it might not be right.
-*/
-
-/*
-**	Atm, error handling is poor. If an error is spotted, need to free the 2nd
-**	node.
+** 	List of pipes should be generated during parsing and creation of the tree.
+** 	Fork and execute the 1st branch in the child, meanwhile everything keeps going in the parent.
+** 	Redirection should occure here, (in the child ?) not at the binary / builtin call time.
 */
 
 static int	exec_pipe(t_ast *ast, t_lst_head *head)
 {
-	int			*p;
-
-	p = palloc(sizeof(*p) * 2);
-	pipe(p);
-	ft_double_lst_add(&head, ft_double_lst_create(p));
-	head->middle = head->first;
 	if (exec_tree(ast->child->data, head) == 0)
 		exec_tree(ast->child->next->data, head);
 	else
@@ -58,7 +47,7 @@ static int	exec_pipe(t_ast *ast, t_lst_head *head)
 		ast->child->data = flush_tree(ast->child->next->data);
 		head->middle = head->middle->next;
 	}
-return (0);
+	return (0);
 }
 
 /*

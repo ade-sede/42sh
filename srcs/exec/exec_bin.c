@@ -92,6 +92,19 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	p_right = (cur != NULL) ? cur->data : NULL;
 	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 	conf_term_normal();
+#ifdef PIPE_DEBUG
+	dprintf(2, "Command ");
+	for (int i = 0; argv[i] != NULL; i++)
+		dprintf(2, MAG"#"CYN"%s"MAG"# "RESET, argv[i]);
+	if (p_left && p_right)
+		dprintf(2, "is between 2 pipes\n");
+	else if (p_left)
+		dprintf(2, "is after a pipe\n");
+	else if (p_right)
+		dprintf(2, "is before a pipe\n");
+	else
+		dprintf(2, "is not piped\n");
+#endif
 	no_handle_signals();
 	if ((child = fork()) == 0)
 	{

@@ -122,7 +122,7 @@ typedef	struct		s_ast
 **	In file parser.c
 */
 
-t_ast				*ast_parse(t_ast **root, t_list **token_list);
+t_ast				*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head);
 t_ast				*ast_create_simple_command(t_ast **root, \
 		t_list **token_list, int *command_name);
 
