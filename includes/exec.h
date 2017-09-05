@@ -91,6 +91,12 @@
 */
 
 /*
+**	Cur is the node representing the separator at the right of the current command.
+**	p_right != NULL if the command is before a pipe.
+**	p_left != NULL if the command is after a pipe.
+*/
+
+/*
 **	Defines for an easier use of the pipe function.
 */
 

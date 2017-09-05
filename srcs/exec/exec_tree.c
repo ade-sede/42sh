@@ -70,7 +70,10 @@ int			exec_tree(t_ast *ast, t_lst_head *head)
 	if (ast)
 	{
 		if (ast->symbol == SIMPLE_COMMAND)
+		{
+			// Potential fork. Work in Progress
 			exec_simple_command(ast, head);
+		}
 		if (ast->symbol == COMPLEXE_COMMAND)
 		{
 			token = ast->token;
