@@ -71,10 +71,74 @@ int			exec_tree(t_ast *ast, t_lst_head *head)
 	{
 		if (ast->symbol == SIMPLE_COMMAND)
 		{
-			// Potential fork. Work in Progress
-			exec_simple_command(ast, head);
+			pid_t		child;
+			int			*p_right;
+			int			*p_left;
+			t_list_d	*cur;
+
+			cur = head->middle;
+			p_right = (cur != NULL) ? cur->data : NULL;
+			p_left = (cur && cur->prev) ? cur->prev->data : NULL;
+
+			if (p_right) // If our command is on the left of a pipe (WRITE_END)
+			{
+				child = fork();
+				if (child == 0) // In child process
+				{
+					/*
+					** Write to the pipe to the right
+					*/
+					dup2(p_right[WRITE_END], STDOUT_FILENO);
+					/* close(p_right[READ_END]); */
+					if (p_left) // Between pipes
+					{
+						/*
+						** Read from the pipe to the left
+						*/
+						dup2(p_left[READ_END], STDIN_FILENO);
+						close(p_left[WRITE_END]);
+					}
+
+					/*
+					**	Execute the command (execve call)
+					*/
+					exec_simple_command(ast, head);
+
+					/* Test */
+					char buff[4096];
+					read(p_right[READ_END], buff, 4096);
+					dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff);
+					close(p_right[READ_END]);
+					dprintf(2, "Addr of p_right in child is %p\n", p_right);
+					dprintf(2, "Addr of p_left in child is %p\n", p_left);
+
+					exit(0);
+				}
+			}
+			else if (p_left) // Right of a pipe
+			{
+				dprintf(2, "Addr of p_right in parent is %p\n", p_right);
+				dprintf(2, "Addr of p_left in parent is %p\n", p_left);
+				int	save = dup(STDIN_FILENO);
+
+				/* Test */
+				/* char	buff2[4096]; */
+				/* read(p_left[READ_END], buff2, 4096); */
+				/* dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff2); */
+
+				dup2(p_left[READ_END], STDIN_FILENO);
+				close(p_left[WRITE_END]);
+				exec_simple_command(ast, head);
+				/* Restore fd 0 as the STD IN */
+				dup2(STDIN_FILENO, save);
+				close(p_left[READ_END]);
+			}
+			if (!p_right && !p_left)
+				exec_simple_command(ast, head);
+			if (head->middle)
+				head->middle = head->middle->next;
 		}
-		if (ast->symbol == COMPLEXE_COMMAND)
+		else if (ast->symbol == COMPLEXE_COMMAND)
 		{
 			token = ast->token;
 			if (ft_strequ(token->value, "|"))

@@ -41,45 +41,45 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 	exit(return_failure((const char *)*argv, " :commmand not found"));
 }
 
-static void	redir_pipe_bin(t_lst_head *head)
-{
-	int			*p_right;
-	int			*p_left;
-	t_list_d	*cur;
+/* static void	redir_pipe_bin(t_lst_head *head) */
+/* { */
+/* 	int			*p_right; */
+/* 	int			*p_left; */
+/* 	t_list_d	*cur; */
 
-	cur = head->middle;
-	p_right = (cur != NULL) ? cur->data : NULL;
-	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
-	if (p_right)
-	{
-		close(p_right[READ_END]);
-		dup2(p_right[WRITE_END], STDOUT_FILENO);
-		if (p_left)
-		{
-			close(p_left[WRITE_END]);
-			dup2(p_left[READ_END], STDIN_FILENO);
-		}
-	}
-	else
-	{
-		if (p_left)
-		{
-			close(p_left[WRITE_END]);
-			dup2(p_left[READ_END], STDIN_FILENO);
-		}
-	}
-}
+/* 	cur = head->middle; */
+/* 	p_right = (cur != NULL) ? cur->data : NULL; */
+/* 	p_left = (cur && cur->prev) ? cur->prev->data : NULL; */
+/* 	if (p_right) */
+/* 	{ */
+/* 		close(p_right[READ_END]); */
+/* 		dup2(p_right[WRITE_END], STDOUT_FILENO); */
+/* 		if (p_left) */
+/* 		{ */
+/* 			close(p_left[WRITE_END]); */
+/* 			dup2(p_left[READ_END], STDIN_FILENO); */
+/* 		} */
+/* 	} */
+/* 	else */
+/* 	{ */
+/* 		if (p_left) */
+/* 		{ */
+/* 			close(p_left[WRITE_END]); */
+/* 			dup2(p_left[READ_END], STDIN_FILENO); */
+/* 		} */
+/* 	} */
+/* } */
 
-static void	close_parent_bin(t_lst_head *head)
-{
-	int			*p_left;
-	t_list_d	*cur;
+/* static void	close_parent_bin(t_lst_head *head) */
+/* { */
+/* 	int			*p_left; */
+/* 	t_list_d	*cur; */
 
-	cur = head->middle;
-	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
-	if (p_left)
-		close(p_left[WRITE_END]);
-}
+/* 	cur = head->middle; */
+/* 	p_left = (cur && cur->prev) ? cur->prev->data : NULL; */
+/* 	if (p_left) */
+/* 		close(p_left[WRITE_END]); */
+/* } */
 
 int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 {
@@ -108,13 +108,13 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	no_handle_signals();
 	if ((child = fork()) == 0)
 	{
-		(p_right || p_left) ? redir_pipe_bin(head) : 0;
+		/* (p_right || p_left) ? redir_pipe_bin(head) : 0; */
 		ft_strchr(argv[0], '/') ? ft_exec_bin_absolute(env, argv) : \
 			ft_exec_bin_path(env, argv);
 	}
 	if (child > 0)
 	{
-		(p_right || p_left) ? close_parent_bin(head) : 0;
+		/* (p_right || p_left) ? close_parent_bin(head) : 0; */
 		env->child_pid = child;
 		wait(&child);
 		conf_term_canonical();

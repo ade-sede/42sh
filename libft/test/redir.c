@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/05 12:42:06 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/09/05 13:54:47 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/09/05 15:27:05 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		main(void)
 		dup2(p0[WRITE_END], STDOUT_FILENO);
 		close(p0[READ_END]);
 
+		/* exec */
 		ret = system("base64 /dev/urandom");
 		dprintf(2, "Child 0 returned %d\n", ret);
 		exit(ret);
@@ -59,6 +60,7 @@ int		main(void)
 			dup2(p1[WRITE_END], STDOUT_FILENO);
 			close(p1[READ_END]);
 
+			/* exec */
 			ret = system("head -c 1000");
 			printf("\n");
 			dprintf(2, "Child 1 returned %d\n", ret);
