@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "completion.h"
 #include "line_editing.h"
 
@@ -40,3 +41,4 @@ int		comple_down(t_comple *c)
 	c->pos %= c->nb_matches;
 	return (1);
 }
+#endif

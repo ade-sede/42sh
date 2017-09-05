@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "history.h"
 #include <stdio.h>
@@ -15,3 +16,4 @@ int		btsearch_exit(t_line *line, t_hist *h)
 	(void)line;
 	return (1);
 }
+#endif

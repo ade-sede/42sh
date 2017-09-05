@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 
 t_line		*singleton_line(void)
@@ -20,3 +21,4 @@ void		edit_line_init(t_line *line)
 	line->pos = 0;
 	line->len = 0;
 }
+#endif

@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "history.h"
 #include "get_next_line.h"
 #include <sys/types.h>
@@ -38,3 +39,4 @@ int			history_load(t_hist *h, t_env *env)
 	}
 	return (1);
 }
+#endif

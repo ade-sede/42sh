@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "env.h"
 
@@ -65,3 +66,4 @@ void	edit_refresh_visu(t_line *line)
 				line->len - line->pos);
 	}
 }
+#endif

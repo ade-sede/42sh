@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "completion.h"
 #include "line_editing.h"
 
@@ -46,3 +47,4 @@ int			comple_init(t_line *line, t_comple *c)
 	}
 	return (1);
 }
+#endif

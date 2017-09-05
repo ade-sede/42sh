@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "completion.h"
 #include "line_editing.h"
 #include <signal.h>
@@ -48,3 +49,4 @@ void	comple_set_signals(void)
 	sigaction(SIGWINCH, &sa, NULL);
 	signal(SIGINT, comple_handle_sigint);
 }
+#endif

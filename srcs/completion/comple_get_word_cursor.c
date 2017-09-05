@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "completion.h"
 #include "line_editing.h"
 #include <string.h>
@@ -60,3 +61,4 @@ char	*get_current_word_cursor(t_line *line)
 		*end = tmp;
 	return (word);
 }
+#endif

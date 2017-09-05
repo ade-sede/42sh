@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 
 int		edit_word_left(t_line *line)
@@ -34,3 +35,4 @@ int		edit_end(t_line *line)
 		edit_right(line);
 	return (1);
 }
+#endif

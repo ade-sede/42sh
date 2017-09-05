@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "history.h"
 #include "line_editing.h"
 #include <signal.h>
@@ -33,3 +34,4 @@ void	btsearch_set_signals(void)
 	sa.sa_flags = 0;
 	sigaction(SIGINT, &sa, NULL);
 }
+#endif

@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include <stdio.h>
 #include "env.h"
 #include "completion.h"
@@ -50,3 +51,4 @@ char	**comple_bin_matches(t_line *line, t_comple *c)
 			c->current_word);
 	return (matches);
 }
+#endif

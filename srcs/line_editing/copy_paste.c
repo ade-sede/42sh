@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 
 int	enter_visual_mode(t_line *line)
@@ -28,3 +29,4 @@ int	paste(t_line *line)
 		edit_insert_str(line, line->buff + line->pos, line->copied_text);
 	return (1);
 }
+#endif

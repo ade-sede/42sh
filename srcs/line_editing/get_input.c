@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "completion.h"
 #include "history.h"
@@ -76,3 +77,4 @@ char	*edit_get_input(t_env *env)
 	(void)env;
 	return (NULL);
 }
+#endif

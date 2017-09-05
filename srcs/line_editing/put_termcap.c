@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 
 int		int_putchar(int c)
@@ -27,3 +28,4 @@ void	goto_termcap(char *capacity, int co, int li)
 {
 	tputs(tgoto(tgetstr(capacity, NULL), co, li), 1, int_putchar);
 }
+#endif

@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 
 void	move_cursor_lastline(t_line *line)
@@ -19,3 +20,4 @@ void	move_cursor_bufflen_from_lastline(t_line *line)
 	put_termcap("cr");
 	put_ntermcap("nd", (line->len + line->prompt_len) % (line->ws_col));
 }
+#endif

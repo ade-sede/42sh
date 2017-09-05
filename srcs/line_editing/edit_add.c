@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include <stdio.h>
 
@@ -41,3 +42,4 @@ void	edit_add(int keycode, t_line *line)
 		put_termcap("le");
 	}
 }
+#endif

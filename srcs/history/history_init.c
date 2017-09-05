@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "history.h"
 
 t_hist	*singleton_hist(void)
@@ -11,3 +12,4 @@ void	history_init(t_hist *h)
 {
 	h->cur = NULL;
 }
+#endif

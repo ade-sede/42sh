@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "completion.h"
 
 void	ternary_tree_insert_left(t_ternary_tree *node, char *cur, char *str)
@@ -52,3 +53,4 @@ void	ternary_tree_add(t_ternary_tree *node, char *cur, char *str)
 	else if (*cur == node->c && !node->down)
 		return (ternary_tree_insert_down(node, cur + 1, str));
 }
+#endif

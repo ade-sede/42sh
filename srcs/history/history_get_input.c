@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "history.h"
 #include "line_editing.h"
 
@@ -27,3 +28,4 @@ int		history_get_input(t_line *line, unsigned long keycode, int *history)
 	}
 	return (0);
 }
+#endif

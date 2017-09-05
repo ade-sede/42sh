@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "completion.h"
 #include "history.h"
 #include "line_editing.h"
@@ -24,3 +25,4 @@ void	edit_set_signals(void)
 	signal(SIGINT, edit_handle_sigint);
 	signal(SIGWINCH, edit_handle_sigwinch);
 }
+#endif

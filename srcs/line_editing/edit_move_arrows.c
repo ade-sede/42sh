@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 
 int		edit_up(t_line *line)
@@ -43,3 +44,4 @@ int		edit_right(t_line *line)
 	line->pos++;
 	return (1);
 }
+#endif

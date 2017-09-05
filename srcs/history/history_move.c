@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "history.h"
 #include "stdio.h"
 
@@ -73,3 +74,4 @@ int		history_move_exit(t_line *line, t_hist *h)
 	(void)line;
 	return (1);
 }
+#endif

@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "history.h"
 #include <stdio.h>
@@ -55,3 +56,4 @@ void	btsearch_add(char keycode, t_line *line, t_hist *h)
 	else
 		btsearch_change_line(line, h, NULL);
 }
+#endif

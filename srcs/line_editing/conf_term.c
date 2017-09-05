@@ -1,3 +1,4 @@
+#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include <stdio.h>
 
@@ -36,3 +37,4 @@ void	conf_term_in(void)
 	if (tcsetattr(0, TCSADRAIN, &line->canonical_mode) < 0)
 		fatal("tcsetattr error");
 }
+#endif

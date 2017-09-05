@@ -83,14 +83,15 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 
 int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 {
+	(void)head;
 	pid_t		child;
-	int			*p_right;
-	int			*p_left;
-	t_list_d	*cur;
+	/* int			*p_right; */
+	/* int			*p_left; */
+	/* t_list_d	*cur; */
 
-	cur = (head) ? head->middle : NULL;
-	p_right = (cur != NULL) ? cur->data : NULL;
-	p_left = (cur && cur->prev) ? cur->prev->data : NULL;
+	/* cur = (head) ? head->middle : NULL; */
+	/* p_right = (cur != NULL) ? cur->data : NULL; */
+	/* p_left = (cur && cur->prev) ? cur->prev->data : NULL; */
 	conf_term_normal();
 #ifdef PIPE_DEBUG
 	dprintf(2, "Command ");
