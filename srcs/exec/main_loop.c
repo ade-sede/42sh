@@ -71,6 +71,7 @@ void	exec(t_env *env, const char **argv, t_lst_head *head)
 	free(argv);
 }
 
+#ifndef NO_TERMCAPS
 void	init_main_loop(t_line *line, t_hist *hist)
 {
 	(void)hist;
@@ -94,6 +95,7 @@ char	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
 	edit_line_init(line);
 	return (edit_get_input(env));
 }
+#endif
 
 /*
 **	void	lexer_debug(t_list *token_list)
@@ -115,31 +117,48 @@ char	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
 void	main_loop(t_env *env)
 {
 	t_ast		*ast;
+#ifndef NO_TERMCAPS
 	char		*buff;
+#else
+	char		buff[4096];
+	(void)env;
+#endif
 	t_lexer		lex;
 	t_lst_head	*head = NULL;
 	t_list		*token_list;
 
+#ifndef NO_TERMCAPS
 	init_main_loop(singleton_line(), singleton_hist());
+#endif
 	while (42)
 	{
+#ifndef NO_TERMCAPS
 		load_prompt(singleton_env(), singleton_line(), "PS1", "$> ");
 		buff = line_editing_get_input(env, singleton_line(), singleton_hist());
 		history_refresh(buff);
+#else
+		dprintf(1, "?> ");
+		bzero(buff, 4096);
+		read(0, buff, 4096);
+#endif
 		if (*buff != 0)
 		{
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
 			ast = NULL;
-#ifdef PIPE_DEBUG
-			dprintf(2, "Creating %s\n", "an empty node");
-#endif
 			ast = ast_parse(&ast, &token_list, &head);
+
 #ifdef PARSER_DEBUG
 			read_tree(ast);
 #endif
 			exec_tree(ast, head);
 			ft_remove_head(&head, ft_free);
 		}
+#ifdef NO_TERMCAPS
+		else
+		{
+			dprintf(2, "*buff == 0");
+		}
+#endif
 	}
 }

@@ -69,6 +69,4 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 	}
 	exec(singleton_env(), argv, head);
 	close_redir(redir_stack);
-	/* if (head->middle) */
-	/* 	head->middle = head->middle->next; */
 }

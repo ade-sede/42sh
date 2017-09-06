@@ -47,15 +47,25 @@ static void		start_simple_command(t_ast **root, t_list **token_list, \
 
 static t_list	*reopen_command(t_token *token)
 {
+#ifndef NO_TERMCAPS
 	char	*new_command;
+#else
+	char	new_command[4096];
+#endif
 	t_list	*token_list;
 	t_lexer	lex;
 
 	(void)token;
+#ifndef NO_TERMCAPS
 	load_prompt(singleton_env(), singleton_line(), "reopen_command", \
 			"command> ");
-	new_command = line_editing_get_input(singleton_env(), singleton_line(),
+	new_command = line_editing_get_input(singleton_env(), singleton_line(), \
 			singleton_hist());
+#else
+	bzero(new_command, 4096);
+	read(0, new_command, 4096);
+	*strchr(new_command, '\n') = 0;
+#endif
 	lex = init_lexer(new_command);
 	token_list = start_lex(&lex);
 	return (token_list);

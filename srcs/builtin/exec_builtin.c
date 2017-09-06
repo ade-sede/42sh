@@ -16,19 +16,21 @@ static t_builtin	g_builtin[] =
 	{NULL, NULL}
 };
 
-/* static void	redir_pipe_built(int *p_right, int *p_left) */
-/* { */
-/* 	if (p_right) */
-/* 	{ */
-/* 		close(p_right[READ_END]); */
-/* 		dup2(p_right[WRITE_END], STDOUT_FILENO); */
-/* 		if (p_left) */
-/* 		{ */
-/* 			close(p_left[WRITE_END]); */
-/* 			dup2(p_left[READ_END], STDIN_FILENO); */
-/* 		} */
-/* 	} */
-/* } */
+#if 0
+static void	redir_pipe_built(int *p_right, int *p_left)
+{
+	if (p_right)
+	{
+		close(p_right[READ_END]);
+		dup2(p_right[WRITE_END], STDOUT_FILENO);
+		if (p_left)
+		{
+			close(p_left[WRITE_END]);
+			dup2(p_left[READ_END], STDIN_FILENO);
+		}
+	}
+}
+#endif
 
 void		*get_exec_builtin(const char **argv)
 {
@@ -75,7 +77,7 @@ int			exec_builtin(t_env *env, const char **argv, t_lst_head *head)
 	/* if ((child = (p_right) ? fork() : 0) == 0) */
 	/* { */
 	/* 	redir_pipe_built(p_right, p_left); */
-		env->previous_exit = f(env, argv);
+	env->previous_exit = f(env, argv);
 	/* 	(p_left && !p_right) ? dup2(save, STDIN_FILENO) : 0; */
 	/* 	(p_right) ? exit(env->previous_exit) : 0; */
 	/* } */

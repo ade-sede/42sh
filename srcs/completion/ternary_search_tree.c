@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include <stdio.h>
 #include "completion.h"
 
@@ -63,4 +62,3 @@ t_ternary_tree	*ternary_tree_new(char c)
 **		ternary_tree_print(tree);
 **	}
 */
-#endif

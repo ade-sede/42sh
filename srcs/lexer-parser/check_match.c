@@ -15,14 +15,26 @@
 
 void		reopen_line_editing(t_lexer *lex)
 {
+#ifndef NO_TERMCAPS
 	char	*new_command;
+#else
+	char	new_command[4096];
+#endif
 
+#ifndef NO_TERMCAPS
 	if (lex->state == '"')
 		load_prompt(singleton_env(), singleton_line(), "PS2", "dquote> ");
 	if (lex->state == '\'')
 		load_prompt(singleton_env(), singleton_line(), "PS3", "dquote> ");
+#endif
+#ifndef NO_TERMCAPS
 	new_command = line_editing_get_input(singleton_env(), singleton_line(), \
 			singleton_hist());
+#else
+	bzero(new_command, 4096);
+	read(0, new_command, 4096);
+	*strchr(new_command, '\n') = 0;
+#endif
 	lex->line = ft_strjoin_free((char *)lex->line, new_command, 3);
 }
 
