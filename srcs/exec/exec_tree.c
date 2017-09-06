@@ -81,44 +81,64 @@ int			exec_tree(t_ast *ast, t_lst_head *head)
 			p_right = (cur != NULL) ? cur->data : NULL;
 			p_left = (cur && cur->prev) ? cur->prev->data : NULL;
 
-			if (p_right) // If our command is on the left of a pipe (WRITE_END)
+			if (p_right && p_left) // Between pipes
+			{
+				child = fork();
+				if (child == 0)
+				{
+					/* Read from the pipe on the left */
+					dup2(p_left[READ_END], STDIN_FILENO);
+					close(p_left[WRITE_END]);
+
+
+					/* Write to the next pipe */
+					dup2(p_right[WRITE_END], STDOUT_FILENO);
+					close(p_right[READ_END]);
+
+					/* char buff[4096]; */
+					/* bzero(buff, 4096); */
+					/* read(STDIN_FILENO, buff, 4096); */
+					/* dprintf(2,"Following is read from the middle command on input\n"MAG"#"CYN"%s"MAG"#\n"RESET, buff); */
+
+
+					/* Execute the command (execve call) */
+					exec_simple_command(ast, head);
+					/* int	ret = system("wc -l"); */
+					/* dprintf(2, "Ret ="RED"%d\n"RESET, ret); */
+
+					/* write(STDOUT_FILENO, buff, 4096); */
+					/* char	buff2[4096]; */
+					/* bzero(buff, 4096); */
+					/* read(p_right[READ_END], buff2, 4096); */
+					/* dprintf(2,"Following is read from the middle command on output\n"MAG"#"CYN"%s"MAG"#\n"RESET, buff2); */
+
+					exit(0);
+				}
+				else
+				{
+					close(p_left[WRITE_END]);
+				}
+			}
+			else if (p_right) // If our command is on the left of a pipe (WRITE_END)
 			{
 				child = fork();
 				if (child == 0) // In child process
 				{
-					dprintf(2, "Addr of p_right in child is %p\n", p_right);
-					dprintf(2, "Addr of p_left in child is %p\n", p_left);
-
-					// Write to the pipe to the right
+					/* Write to the pipe to the right */
 					dup2(p_right[WRITE_END], STDOUT_FILENO);
-					close(p_right[READ_END]);
+					close(p_right[READ_END]); // Looks like its optional
 
-					if (p_left) // Between pipes
-					{
-						dprintf(2, RED"YUP\n"RESET);//			REMOVE		
-						// Read from the pipe to the left
-						dup2(p_left[READ_END], STDIN_FILENO);
-						close(p_left[WRITE_END]);
-					}
-
-					// Execute the command (execve call)
+					/* Execute the command (execve call) */
 					exec_simple_command(ast, head);
 					
 					/* All FDs are closed from this process */
-					close(p_right[WRITE_END]);
-					if (p_left)
-						close(p_left[READ_END]);
+					close(p_right[WRITE_END]); // Looks like its optional
 					exit(0);
-					
-					/* Checking exit did happen */
-					dprintf(2, RED"Didnt exit\n");
 				}
 			}
 			else if (p_left) // Right of the pipe ; happens in the main process.
 			{
-				dprintf(2, "Addr of p_right in parent is %p\n", p_right);
-				dprintf(2, "Addr of p_left in parent is %p\n", p_left);
-				// Save STD INPUT
+				/* Save STD INPUT */
 				save = dup(STDIN_FILENO);
 
 				/* Read from the pipe on the left */
@@ -126,6 +146,12 @@ int			exec_tree(t_ast *ast, t_lst_head *head)
 				close(p_left[WRITE_END]);
 
 				/* Execute the command */
+
+				/* char	buff3[4096]; */
+				/* bzero(buff3, 4096); */
+				/* read(p_left[READ_END], buff3, 4096); */
+				/* dprintf(2, "read from the last command\n"MAG"#"CYN"%s"MAG"#\n"RESET, buff3); */
+
 				exec_simple_command(ast, head);
 
 				/* Restore fd 0 as the STD INPUT */
@@ -133,10 +159,10 @@ int			exec_tree(t_ast *ast, t_lst_head *head)
 				dup2(save, 0);
 				close(save);
 			}
-			if (!p_right && !p_left) // Not related to a pipe in anyway.
+			else
 				exec_simple_command(ast, head);
 
-			// Command execution is done : move to the next node in the list.
+			/* Command execution is done : move to the next node in the list. */
 			if (head->middle)
 				head->middle = head->middle->next;
 		}
