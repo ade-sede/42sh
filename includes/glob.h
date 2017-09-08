@@ -1,8 +1,7 @@
 #ifndef GLOB_H
-# define GLOB_H
+#define GLOB_H
 
-# include "libft.h"
-# include "list.h"
+#include "libft.h"
 
 typedef	struct	s_matches
 {
@@ -24,6 +23,8 @@ int	func_square_bracket(t_matches *m, int to_match_i, int regex_i);
 int	valid_square_bracket(char *regex, int regex_i);
 int	func_star(t_matches *m, int to_match_i, int regex_i);
 int	func_cmp(t_matches *m, int to_match_i, int regex_i);
+
 t_list	*expand_curly_brackets(char *expr);
 void	curly_brackets(t_list **res, char *expr);
+char	**ft_strsplit_coma_bracket(char *expr);
 #endif

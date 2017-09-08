@@ -110,10 +110,12 @@ SRC_FILE =	\
 	hash_table/hash.c \
 	hash_table/hash_free.c \
 \
-	globing/glob.c \
-	globing/match_open_dir.c \
-	globing/square_bracket.c \
-	globing/star.c
+	globing/curly_bracket_split.c	\
+	globing/curly_brackets.c	\
+	globing/glob.c	\
+	globing/match_open_dir.c	\
+	globing/square_bracket.c	\
+	globing/star.c	\
 
 INCLUDES_FILES = \
 	builtin.h      \

@@ -11,12 +11,10 @@
 */
 
 
-t_list	*propRe(const char *value)
+t_list	*propRe(t_list *list)
 {
-	t_list	*list = NULL;
 	t_list	*first = NULL;
 
-	list = glob((char*)value);
 	first = list;
 	while (list)
 	{
@@ -32,10 +30,14 @@ t_list	*pathname_expansion(t_token *token)
 
 	first = NULL;
 	if (token->type != QUOTED && token->type != DQUOTED)
-			if (ft_strchr(token->value, '*'))
-				first = propRe(token->value);
+	{
+		if (ft_strchr(token->value, '*'))
+			first = propRe(glob(token->value));
+		else if (ft_strchr(token->value, '{'))
+			first = propRe(expand_curly_brackets(token->value));
 //	if (first != NULL)
 		//free_token(token);
+	}
 	return (first);
 }
 
