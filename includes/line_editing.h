@@ -7,6 +7,7 @@
 # include "term.h"
 # define KEY_ESCAPE 0x1B
 # define KEY_SPACE 0x20
+# define KEY_CTRL_D 4
 # define KEY_UP 0x415B1B
 # define KEY_DOWN 0x425B1B
 # define KEY_RIGHT 0x435B1B
@@ -42,6 +43,7 @@ void	conf_term_normal(void);
 void	put_termcap(char *capacity);
 t_line	*singleton_line(void);
 
+int		control_d(t_line *line);
 int		edit_end(t_line *line);
 int		edit_home(t_line *line);
 int		edit_right(t_line *line);

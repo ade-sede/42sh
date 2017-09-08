@@ -2,6 +2,7 @@
 #include "line_editing.h"
 #include "completion.h"
 #include "history.h"
+#include <stdio.h>
 
 static t_edit_func	g_edit_func[] =
 {
@@ -17,6 +18,7 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_C, &copy},
 	{KEY_ALT_V, &enter_visual_mode},
 	{KEY_ALT_P, &paste},
+	{KEY_CTRL_D, &control_d},
 	{0, NULL}
 };
 
