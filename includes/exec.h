@@ -103,6 +103,15 @@
 # define READ_END 0
 # define WRITE_END 1
 
+typedef struct	s_pipe
+{
+	int			*p;
+	pid_t		pid;
+#ifdef PIPE_DEBUG
+	size_t		nb;
+#endif
+}				t_pipe;
+
 /*
 ** In exec_bin.c
 */

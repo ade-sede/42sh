@@ -122,6 +122,18 @@ static void		start_complexe_command(t_ast **root, t_list **token_list, \
 	*command_name = 0;
 }
 
+
+t_pipe	*create_pipe(int *p)
+{
+	t_pipe	*new;
+
+	if (!p)
+		return (NULL);
+	new = ft_memalloc(sizeof(*new));
+	new->p = p;
+	return (new);
+}
+
 /*
 **	This function starts the creation of the tree's branch.
 */
@@ -131,7 +143,12 @@ t_ast			*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head)
 	int		command_name;
 	t_token *token;
 	int 	*p;
-
+	t_pipe	*spipe = NULL;
+#ifdef PIPE_DEBUG
+	static	int	pipe_nb = 0;
+	if (head && *head == NULL)
+		pipe_nb = 0;
+#endif
 	p = NULL;
 	command_name = 0;
 	if (token_list && *token_list)
@@ -145,13 +162,12 @@ t_ast			*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head)
 				p = palloc(sizeof(*p) * 2);
 				pipe(p);
 			}
-#ifdef PIPE_DEBUG
-			dprintf(2, "Creating %s at the start of the list\n", (p != NULL) ? "a full node" : "an empty node");
-#endif
+
+			spipe = create_pipe(p);
 			if (*head == NULL)
-				*head = ft_create_head(ft_double_lst_create(p));
+				*head = ft_create_head(ft_double_lst_create(spipe));
 			else
-				ft_double_lst_pushback(head, ft_double_lst_create(p));
+				ft_double_lst_pushback(head, ft_double_lst_create(spipe));
 		}
 		else
 			start_simple_command(root, token_list, &command_name);
@@ -159,8 +175,9 @@ t_ast			*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head)
 			ast_parse(root, token_list, head);
 		else
 		{
+			spipe = create_pipe(p);
 			if (*head == NULL)
-				*head = ft_create_head(ft_double_lst_create(p));
+				*head = ft_create_head(ft_double_lst_create(spipe));
 			else
 			{
 				ft_double_lst_pushback(head, ft_double_lst_create(NULL));
