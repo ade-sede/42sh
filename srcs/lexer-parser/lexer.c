@@ -66,6 +66,11 @@ t_list	*start_lex(t_lexer *lex)
 	return (lex->stack);
 }
 
+	/*
+	**	Rajouter le token qu'on vient de creer a lex->stack
+	**	exec_expand prend la t_list lex->stack en argument. Se base sur le dernier token.
+	*/
+
 int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 {
 	char	*value;
@@ -75,8 +80,7 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
 	token = create_token(value, lex->state, lex->line[lex->index]);
 	token->id = lex_get_token_id(token);
-	exec_expand(token);
-	node = ft_simple_lst_create(token);
+	node = exec_expand(token);
 	if (lex->stack == NULL)
 		lex->stack = node;
 	else

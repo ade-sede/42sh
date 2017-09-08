@@ -127,7 +127,7 @@ void			parameter_expansion(t_env *env, t_token *token);
 ** In word_expand.
 */
 
-void			exec_expand(t_token *token);
+t_list			*exec_expand(t_token *token);
 
 /*
 ** In tild_expansion.c

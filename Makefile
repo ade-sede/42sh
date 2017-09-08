@@ -109,6 +109,11 @@ SRC_FILE =	\
 \
 	hash_table/hash.c \
 	hash_table/hash_free.c \
+\
+	globing/glob.c \
+	globing/match_open_dir.c \
+	globing/square_bracket.c \
+	globing/star.c
 
 INCLUDES_FILES = \
 	builtin.h      \
@@ -176,6 +181,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/history
 	@/bin/mkdir -p $(OBJ_DIR)/lexer-parser
 	@/bin/mkdir -p $(OBJ_DIR)/hash_table
+	@/bin/mkdir -p $(OBJ_DIR)/globing
 
 clean:
 	@make -C $(LIB_DIR) clean
@@ -189,7 +195,7 @@ re: fclean all
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf "$(COLOR_VIOLET)Creating objects files for library $(COLOR_BLUE)$(NAME) ... \n$(COLOR_CYAN)"
-	$(CC) $(OPTIMIZATION) $(CFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) -c -o $@ $^ 
+	$(CC) $(OPTIMIZATION) $(CFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) -c -o $@ $^
 	@printf "\n$(COLOR_NOCOLOR)$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_UP)$(COLOR_CLEAR)"
 
 test: all 

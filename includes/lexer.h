@@ -127,7 +127,6 @@ typedef struct		s_token
 **	Line is the string we are tokenizing.
 **	Index represents our position on the string.
 **	stack->data should contain a t_token.
-**	Stack is pointing on the "top" of the stack, the last token we added.
 */
 
 typedef struct		s_lexer

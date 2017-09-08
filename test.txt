@@ -1,0 +1,3 @@
+ >& <<EOF <<EOF -fsanitize=address
+ heredocs + Ctrl + D
+ cd ~ quand HOME est unset 
