@@ -62,6 +62,84 @@ int			end_branch(int error, t_ast *ast)
 	return (error);
 }
 
+int			p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
+{
+	pid_t		child;
+
+	child = fork();
+	if (child == 0)
+	{
+		dup2(pr->p[WRITE_END], STDOUT_FILENO);
+		close(pr->p[READ_END]);
+		exec_simple_command(ast, head);
+		close(pr->p[WRITE_END]);
+		exit(0);
+	}
+	else
+	{
+		pr->pid = child;
+	}
+	return (1);
+}
+
+int			p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
+{
+	pid_t		child;
+
+	child = fork();
+	if (child == 0)
+	{
+		dup2(pl->p[READ_END], STDIN_FILENO);
+		close(pl->p[WRITE_END]);
+		dup2(pr->p[WRITE_END], STDOUT_FILENO);
+		close(pr->p[READ_END]);
+		exec_simple_command(ast, head);
+		exit(0);
+	}
+	else
+	{
+		close(pl->p[WRITE_END]);
+		pr->pid = child;
+	}
+	return (1);
+}
+
+
+
+int			p_left(t_pipe *pl, t_ast *ast, t_lst_head *head)
+{
+	int		save;
+
+	save = dup(STDIN_FILENO);
+	dup2(pl->p[READ_END], STDIN_FILENO);
+	close(pl->p[WRITE_END]);
+	exec_simple_command(ast, head);
+	close(pl->p[READ_END]);
+	dup2(save, STDIN_FILENO);
+	close(save);
+	return (1);
+}
+
+int			check_pipes(t_ast *ast, t_lst_head *head)
+{
+	t_list_d	*cur;
+	t_pipe		*pr;
+	t_pipe		*pl;
+
+	cur = head->middle;
+	pr = (cur != NULL) ? cur->data : NULL;
+	pl = (cur && cur->prev) ? cur->prev->data : NULL;
+	if (pr && !pl)
+		p_right(pr, ast, head);
+	else if (pr && pl)
+		p_both(pr, pl, ast, head);
+	else if (!pr && pl)
+		p_left(pl, ast, head);
+	else
+		exec_simple_command(ast, head);
+	return (1);
+}
+
 int			exec_tree(t_ast *ast, t_lst_head *head)
 {
 	t_token		*token;
@@ -71,7 +149,7 @@ int			exec_tree(t_ast *ast, t_lst_head *head)
 	{
 		if (ast->symbol == SIMPLE_COMMAND)
 		{
-			exec_simple_command(ast, head);
+			check_pipes(ast, head);
 			if (head->middle)
 				head->middle = head->middle->next;
 		}

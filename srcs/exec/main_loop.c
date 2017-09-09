@@ -151,7 +151,13 @@ void	main_loop(t_env *env)
 #ifdef PARSER_DEBUG
 			read_tree(ast);
 #endif
+#ifndef NO_TERMCAPS
+			conf_term_normal();
+#endif
 			exec_tree(ast, head);
+#ifndef NO_TERMCAPS
+			conf_term_canonical();
+#endif
 			ft_remove_head(&head, ft_free);
 		}
 #ifdef NO_TERMCAPS

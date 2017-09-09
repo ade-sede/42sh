@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 16:35:33 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/09/09 17:46:44 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/09/09 18:09:45 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@
 
 static void		print_alias(t_list *alias)
 {
-	while (alias)
-	{
 		ft_putendl(alias->data);
-		alias = alias->next;
-	}
 }
 
 t_list	*find_alias(t_list *alias, const char *argv, size_t len)
@@ -52,13 +48,9 @@ int				builtin_alias(t_env *env, const char **argv)
 			if (node)
 			{
 				ft_putstr(node->data);
-				ret = EXIT_SUCCESS;
 			}
 			else
-			{
-				dprintf(2, "alias : %s not found\n", argv[i]);
 				ret = EXIT_FAILURE;
-			}
 		}
 		else
 		{

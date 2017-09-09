@@ -51,6 +51,7 @@ static void	treat_node(t_ast *child_node, t_list **redir_stack, \
 	free_ast_node(child_node);
 }
 
+
 void		exec_simple_command(t_ast *ast, t_lst_head *head)
 {
 	t_list		*child_list;
