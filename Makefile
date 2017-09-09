@@ -36,6 +36,7 @@ SRC_FILE =	\
 	builtin/exit.c \
 	builtin/exec_builtin.c \
 	builtin/echo.c \
+	builtin/alias.c \
 \
 	exec/exec_signals.c \
 	exec/redir_utils.c \

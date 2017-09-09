@@ -40,6 +40,7 @@ typedef struct	s_env
 {
 	char			**environ;
 	t_list			**hash_table;
+	t_list			*alias;
 	t_ternary_tree	*tree;
 	size_t			environ_size;
 	int				previous_exit;

@@ -7,6 +7,7 @@ void		env_load_base_env(t_env *env, const char **environ)
 {
 	env->environ = NULL;
 	env->previous_exit = 0;
+	env->alias = NULL;
 	env->environ = env_create_environ(environ, &(env->environ_size));
 	env_load_shlvl_pwd(env);
 	create_hash_table(env);
@@ -28,6 +29,6 @@ void		env_load_shlvl_pwd(t_env *env)
 		env_change_value(env, "SHLVL", index, new_entry);
 		free(new_entry);
 	}
-	env_add_change(env, "SHELL", "minishell");
-	env_add_change(env, "HISTFILE", ".minishell_history");
+	env_add_change(env, "SHELL", "21sh");
+	env_add_change(env, "HISTFILE", ".21sh_history");
 }

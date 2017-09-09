@@ -47,6 +47,13 @@ int				exec_builtin(t_env *env, const char **argv, t_lst_head *head);
 int				builtin_echo(t_env *env, const char **argv);
 
 /*
+** In alias.c
+*/
+
+int				builtin_alias(t_env *env, const char **argv);
+int				builtin_unalias(t_env *env, const char **argv);
+
+/*
 ** In file history.c
 */
 
