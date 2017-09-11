@@ -2,6 +2,7 @@
 #include "env.h"
 #include "sys/wait.h"
 #include "exec.h"
+#include <errno.h>
 #include "hash_table.h"
 
 /*
@@ -34,9 +35,13 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 	if (access(bin, F_OK) == 0)
 	{
 		if (access(bin, X_OK) == -1)
+		{
 			exit(return_failure(bin, " :permission denied "));
+		}
 		else if (execve(bin, (char**)argv, env->environ) == -1)
+		{
 			exit(return_failure(argv[0], " :command not found"));
+		}
 	}
 	exit(return_failure((const char *)*argv, " :commmand not found"));
 }
@@ -46,13 +51,14 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	t_list_d	*cur;
 	t_pipe		*pr;
 	t_pipe		*pl;
+	int			ret;
 
 	cur = head->middle;
 	pr = (cur != NULL) ? cur->data : NULL;
 	pl = (cur && cur->prev) ? cur->prev->data : NULL;
 
 	pid_t		child;
-
+	dprintf(2, RED"%d 00000\n"RESET, errno);
 	no_handle_signals();
 	if ((pl && !pr) || (!pl && !pr))
 	{
@@ -63,8 +69,11 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 		}
 		if (child > 0)
 		{
+			dprintf(2, "I wait my child ! %s\n", argv[0]);
 			env->child_pid = child;
-			wait(&child);
+			int res =  waitpid(child, &ret, WUNTRACED);//wait(&child);
+			dprintf(2, "wait return %d ! %s\n", res, strerror(errno));
+			dprintf(2, "my child died =) !!! %s\n", argv[0]);
 			return (env->previous_exit = WEXITSTATUS(child));
 		}
 	}

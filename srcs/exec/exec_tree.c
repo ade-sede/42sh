@@ -3,10 +3,12 @@
 #include "env.h"
 #include "exec.h"
 #include "builtin.h"
+#include "color.h"
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
 #include <stdio.h>
+#include <errno.h>
 
 /*
 **	Deletes the entire tree, from the given node to the last leaf
@@ -66,14 +68,21 @@ int			p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 {
 	pid_t		child;
 
+	dprintf(2 ,"in p_right\n");
 	child = fork();
+	if (child == -1)
+	{
+		dprintf(2 ,"fork error = %s\n", strerror(errno));
+		return (0);
+	}
+	dprintf(2 ,"errno = %s\n", strerror(errno));
 	if (child == 0)
 	{
-		dup2(pr->p[WRITE_END], STDOUT_FILENO);
-		close(pr->p[READ_END]);
+		int ret = close(pr->p[READ_END]);
+		dprintf(2 ,"p_right close read-end %d error = %s\n", ret, strerror(errno));
+		if ((ret = dup2(pr->p[WRITE_END], STDOUT_FILENO)) == -1)
+			dprintf(2 ,"p right dup2 error %d error = %s\n", ret, strerror(errno));
 		exec_simple_command(ast, head);
-		close(pr->p[WRITE_END]);
-		exit(0);
 	}
 	else
 	{
@@ -85,20 +94,33 @@ int			p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 int			p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
 {
 	pid_t		child;
+		int ret;
 
 	child = fork();
+	if (child == -1)
+	{
+		dprintf(2 ,"fork error = %s\n", strerror(errno));
+		return (0);
+	}
 	if (child == 0)
 	{
-		dup2(pl->p[READ_END], STDIN_FILENO);
-		close(pl->p[WRITE_END]);
-		dup2(pr->p[WRITE_END], STDOUT_FILENO);
-		close(pr->p[READ_END]);
+		dprintf(2 ,"in both\n");
+		if ((ret = dup2(pl->p[READ_END], STDIN_FILENO)) == -1)
+			dprintf(2 ,"dup2 error %d error = %s\n", ret, strerror(errno));
+		ret = close(pl->p[WRITE_END]);
+		dprintf(2 ,"p_left close write-end %d error = %s\n", ret, strerror(errno));
+		ret = close(pr->p[READ_END]);
+		dprintf(2 ,"p_right close read-end %d error = %s\n", ret, strerror(errno));
+		if ((ret = dup2(pr->p[WRITE_END], STDOUT_FILENO)) == -1)
+			dprintf(2 ,"p right dup2 error %d error = %s\n", ret, strerror(errno));
 		exec_simple_command(ast, head);
-		exit(0);
 	}
 	else
 	{
-		close(pl->p[WRITE_END]);
+		ret = close(pl->p[WRITE_END]);
+		dprintf(2 ,"p_both close write-end %d error = %s\n", ret, strerror(errno));
+		ret = close(pl->p[READ_END]);
+		dprintf(2 ,"p_both close read-end %d error = %s\n", ret, strerror(errno));
 		pr->pid = child;
 	}
 	return (1);
@@ -108,15 +130,27 @@ int			p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
 
 int			p_left(t_pipe *pl, t_ast *ast, t_lst_head *head)
 {
+	dprintf(2, RED"%d\n"RESET, errno);
 	int		save;
+	int ret;
 
-	save = dup(STDIN_FILENO);
-	dup2(pl->p[READ_END], STDIN_FILENO);
-	close(pl->p[WRITE_END]);
+	dprintf(2 ,"in left\n");
+	if ((save = dup(STDIN_FILENO)) == -1)
+		dprintf(2 ,"dup error %d error = %s\n", save, strerror(errno));
+	if ((ret = dup2(pl->p[READ_END], STDIN_FILENO)) == -1)
+		dprintf(2 ,"dup2 error %d error = %s\n", ret, strerror(errno));
+	ret = close(pl->p[WRITE_END]);
+	dprintf(2 ,"p_left close write-end %d error = %s\n", ret, strerror(errno));
+
 	exec_simple_command(ast, head);
-	close(pl->p[READ_END]);
-	dup2(save, STDIN_FILENO);
-	close(save);
+
+	(void)ast, (void)head;
+	ret = close(pl->p[READ_END]);
+	dprintf(2 ,"p_left close read-end %d error = %s\n", ret, strerror(errno));
+	if ((ret = dup2(save, STDIN_FILENO)) == -1)
+		dprintf(2 ,"dup2 error %d error = %s\n", ret, strerror(errno));
+	ret = close(save);
+	dprintf(2 ,"close save %d error = %s\n", ret, strerror(errno));
 	return (1);
 }
 
@@ -134,7 +168,10 @@ int			check_pipes(t_ast *ast, t_lst_head *head)
 	else if (pr && pl)
 		p_both(pr, pl, ast, head);
 	else if (!pr && pl)
+	{
+		dprintf(2, "\n\n\n\n");
 		p_left(pl, ast, head);
+	}
 	else
 		exec_simple_command(ast, head);
 	return (1);

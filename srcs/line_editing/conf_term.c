@@ -1,17 +1,26 @@
 #ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include <stdio.h>
+#include <errno.h>
 
 void	conf_term_canonical(void)
 {
-	if (tcsetattr(0, TCSADRAIN, &singleton_line()->canonical_mode))
+	dprintf(2 ,"conf_term_canonical\n");
+	if (tcsetattr(0, TCSADRAIN, &singleton_line()->canonical_mode) < 0)
+	{
+		dprintf(2 ,"error = %s\n", strerror(errno));
 		fatal("tcsetattr error");
+	}
 }
 
 void	conf_term_normal(void)
 {
-	if (tcsetattr(0, TCSADRAIN, &singleton_line()->normal_mode))
+	dprintf(2 ,"conf_term_normal\n");
+	if (tcsetattr(0, TCSADRAIN, &singleton_line()->normal_mode) < 0)
+	{
+		dprintf(2 ,"error = %s\n", strerror(errno));
 		fatal("tcsetattr error");
+	}
 }
 
 void	conf_term_in(void)
@@ -34,7 +43,7 @@ void	conf_term_in(void)
 	line->canonical_mode.c_lflag &= ~(ECHO);
 	line->canonical_mode.c_cc[VMIN] = 1;
 	line->canonical_mode.c_cc[VTIME] = 0;
-	if (tcsetattr(0, TCSADRAIN, &line->canonical_mode) < 0)
+	if (tcsetattr(0, TCSANOW, &line->canonical_mode) < 0)
 		fatal("tcsetattr error");
 }
 #endif
