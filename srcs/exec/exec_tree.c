@@ -9,6 +9,7 @@
 #include "parser.h"
 #include <stdio.h>
 #include <errno.h>
+#include <signal.h>
 
 /*
 **	Deletes the entire tree, from the given node to the last leaf
@@ -85,6 +86,7 @@ int			p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 	else
 	{
 		pr->pid = child;
+		return (1);
 	}
 	return (1);
 }
@@ -122,7 +124,25 @@ int			p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
 	return (1);
 }
 
+int		wait_zombies(t_lst_head *head)
+{
+	t_list_d	*cur;
+	t_pipe		*pipe;
+	int			ret;
 
+	cur = head->first;
+	while (cur)
+	{
+		pipe = (t_pipe *)cur->data;
+		if (pipe)
+		{
+			if (pipe->pid != 0)
+				waitpid(pipe->pid, &ret, 0);
+		}
+		cur = cur->next;
+	}
+	return (1);
+}
 
 int			p_left(t_pipe *pl, t_ast *ast, t_lst_head *head)
 {
@@ -144,6 +164,7 @@ int			p_left(t_pipe *pl, t_ast *ast, t_lst_head *head)
 		dprintf(2 ,"dup2 error  error = %s\n", strerror(errno));
 	if (close(save) == -1)
 		dprintf(2 ,"close save  error = %s\n", strerror(errno));
+	wait_zombies(head);
 	return (1);
 }
 
