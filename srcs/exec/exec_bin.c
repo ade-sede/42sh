@@ -58,7 +58,6 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	pl = (cur && cur->prev) ? cur->prev->data : NULL;
 
 	pid_t		child;
-	dprintf(2, RED"%d 00000\n"RESET, errno);
 	no_handle_signals();
 	if ((pl && !pr) || (!pl && !pr))
 	{
@@ -69,12 +68,9 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 		}
 		if (child > 0)
 		{
-			dprintf(2, "I wait my child ! %s\n", argv[0]);
 			env->child_pid = child;
-			int res =  waitpid(child, &ret, WUNTRACED);//wait(&child);
-			dprintf(2, "wait return %d ! %s\n", res, strerror(errno));
-			dprintf(2, "my child died =) !!! %s\n", argv[0]);
-			return (env->previous_exit = WEXITSTATUS(child));
+			waitpid(child, &ret, WUNTRACED);//wait(&child);
+			return (env->previous_exit = WEXITSTATUS(ret));
 		}
 	}
 	else

@@ -5,7 +5,6 @@
 
 void	conf_term_canonical(void)
 {
-	dprintf(2 ,"conf_term_canonical\n");
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->canonical_mode) < 0)
 	{
 		dprintf(2 ,"error = %s\n", strerror(errno));
@@ -15,7 +14,6 @@ void	conf_term_canonical(void)
 
 void	conf_term_normal(void)
 {
-	dprintf(2 ,"conf_term_normal\n");
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->normal_mode) < 0)
 	{
 		dprintf(2 ,"error = %s\n", strerror(errno));
