@@ -123,6 +123,7 @@ static void		start_complexe_command(t_ast **root, t_list **token_list, \
 }
 
 
+
 t_pipe	*create_pipe(int *p)
 {
 	t_pipe	*new;
@@ -162,7 +163,6 @@ t_ast			*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head)
 				p = palloc(sizeof(*p) * 2);
 				pipe(p);
 			}
-
 			spipe = create_pipe(p);
 			if (*head == NULL)
 				*head = ft_create_head(ft_double_lst_create(spipe));
@@ -173,9 +173,10 @@ t_ast			*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head)
 			start_simple_command(root, token_list, &command_name);
 		if (token_list && *token_list)
 			ast_parse(root, token_list, head);
-		else
+		else // La liste de token est vide
 		{
-			spipe = create_pipe(p);
+			/* spipe = create_pipe(p); */
+			spipe = NULL;
 			if (*head == NULL)
 				*head = ft_create_head(ft_double_lst_create(spipe));
 			else

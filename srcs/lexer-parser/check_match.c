@@ -30,6 +30,7 @@ void		reopen_line_editing(t_lexer *lex)
 #ifndef NO_TERMCAPS
 	new_command = line_editing_get_input(singleton_env(), singleton_line(), \
 			singleton_hist());
+	new_command = ft_strjoin_free(new_command, "\n", 0);
 #else
 	bzero(new_command, 4096);
 	read(0, new_command, 4096);

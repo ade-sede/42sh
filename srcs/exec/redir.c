@@ -47,6 +47,9 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 #else
 	char	buff[4096];
 #endif
+#ifndef NO_TERMCAPS
+	buff = NULL;
+#endif
 
 	(void)id;
 	if (io_number == -1)
@@ -54,7 +57,7 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 	errno = 0;
 	if (pipe(fd) == 0)
 	{
-		while (!ft_strequ(buff, target) && ft_strchr(buff, 4) == NULL)
+		while (1)
 		{
 #ifndef NO_TERMCAPS
 			conf_term_canonical();
@@ -68,11 +71,10 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 			read(0, buff, 4096);
 			*strchr(buff, '\n') = 0;
 #endif
-			if (!ft_strequ(buff, target) && ft_strchr(buff, 4) == NULL)
-			{
-				write(fd[WRITE_END], buff, ft_strlen(buff));
-				write(fd[WRITE_END], "\n", 1);
-			}
+			if (ft_strequ(buff, target) || ft_strchr(buff, 4))
+				break;
+			write(fd[WRITE_END], buff, ft_strlen(buff));
+			write(fd[WRITE_END], "\n", 1);
 		}
 		close(fd[WRITE_END]);
 		errno = 0;

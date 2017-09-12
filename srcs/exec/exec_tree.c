@@ -11,29 +11,6 @@
 #include <errno.h>
 #include <signal.h>
 
-/*
-**	Deletes the entire tree, from the given node to the last leaf
-*/
-
-t_ast		*flush_tree(t_ast *ast)
-{
-	t_list	*child_list;
-	t_ast	*child_node;
-
-	if (ast)
-	{
-		child_list = ast->child;
-		while (child_list)
-		{
-			child_node = child_list->data;
-			if (child_node)
-				flush_tree(child_node);
-			child_list = child_list->next;
-		}
-		free_ast_node(ast);
-	}
-	return (NULL);
-}
 
 /*
 ** 	List of pipes should be generated during parsing and creation of the tree.
@@ -58,12 +35,6 @@ static int	exec_pipe(t_ast *ast, t_lst_head *head)
 **	argument. Depending on the node symbol, it will start the execution of the
 **	various commands.
 */
-
-int			end_branch(int error, t_ast *ast)
-{
-	ast = free_ast_node(ast);
-	return (error);
-}
 
 int			p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 {
@@ -207,16 +178,16 @@ int			exec_tree(t_ast *ast, t_lst_head *head)
 		{
 			token = ast->token;
 			if (ft_strequ(token->value, "|"))
-				exec_pipe(ast, head);
+				return (exec_pipe(ast, head));
 			else if (ft_strequ(token->value, ";"))
-				return (end_branch(semi_colon(ast, head), ast));
+				return (semi_colon(ast, head));
 			else if (ft_strequ(token->value, "&&"))
-				return (end_branch(logical_and(ast, head), ast));
+				return(logical_and(ast, head));
 			else if (ft_strequ(token->value, "||"))
-				return (end_branch(logical_or(ast, head), ast));
+				return (logical_or(ast, head));
 		}
 		if (ast)
-			return (end_branch(0, ast));
+			return (0);
 	}
 	return (1);
 }

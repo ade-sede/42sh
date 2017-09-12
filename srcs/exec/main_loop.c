@@ -159,8 +159,9 @@ void	main_loop(t_env *env)
 #ifndef NO_TERMCAPS
 			conf_term_canonical();
 #endif
+			ast = flush_tree(ast);
 			if (head != NULL)
-				ft_remove_head(&head, ft_free);
+				ft_remove_head(&head, free_pipe);
 		}
 #ifdef NO_TERMCAPS
 		else
