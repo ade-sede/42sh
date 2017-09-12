@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 12:42:28 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 12:45:19 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/12 23:53:53 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,4 +289,5 @@ int					ft_strrcmp(const char *s1, const char *s2);
 */
 
 int					ft_strrequ(const char *s1, const char *s2);
+int					ft_str_is_clr(char *str);
 #endif
