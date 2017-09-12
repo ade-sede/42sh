@@ -7,7 +7,7 @@ void	conf_term_canonical(void)
 {
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->canonical_mode) < 0)
 	{
-		dprintf(2 ,"error = %s\n", strerror(errno));
+		dprintf(2 ,"aaaerror = %s\n", strerror(errno));
 		fatal("tcsetattr error");
 	}
 }
@@ -16,7 +16,7 @@ void	conf_term_normal(void)
 {
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->normal_mode) < 0)
 	{
-		dprintf(2 ,"error = %s\n", strerror(errno));
+		dprintf(2 ,"bbberror = %s\n", strerror(errno));
 		fatal("tcsetattr error");
 	}
 }

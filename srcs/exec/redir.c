@@ -40,7 +40,8 @@ void	*get_exec_redir_func(t_ast *child_node)
 void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id)
 {
-	int		fd[2];
+	int		*fd;
+	fd = ft_memalloc(sizeof(*fd) * 2);
 #ifndef NO_TERMCAPS
 	char	*buff;
 #else
@@ -56,7 +57,7 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		while (!ft_strequ(buff, target) && ft_strchr(buff, 4) == NULL)
 		{
 #ifndef NO_TERMCAPS
-			conf_term_in();
+			conf_term_canonical();
 			singleton_line()->heredoc = 1;
 			load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
 			buff = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist());
@@ -74,7 +75,7 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		}
 		close(fd[WRITE_END]);
 		errno = 0;
-		exec_dup(io_number, fd[READ_END], FALSE, redir_stack);
+		push_dup(io_number, fd[READ_END], FALSE, redir_stack);
 	}
 }
 
@@ -100,7 +101,7 @@ void	merge_fd(int io_number, char *target, t_list **redir_stack, \
 		target_fd = ft_atoi(target);
 	if (target_fd >= STDIN_FILENO && (fcntl(target_fd, F_GETFD) \
 				!= -1))
-		exec_dup(io_number, target_fd, natural_fd, redir_stack);
+		push_dup(io_number, target_fd, natural_fd, redir_stack);
 }
 
 void	file_redir(int io_number, char *target, t_list **redir_stack, \
@@ -113,7 +114,7 @@ void	file_redir(int io_number, char *target, t_list **redir_stack, \
 					STDIN_FILENO : STDOUT_FILENO;
 	target_fd = redir_open_file(target, id);
 	if (target_fd >= STDIN_FILENO)
-		exec_dup(io_number, target_fd, FALSE, redir_stack);
+		push_dup(io_number, target_fd, FALSE, redir_stack);
 }
 
 void	exec_redir(t_list *child_list, t_list **redir_stack)

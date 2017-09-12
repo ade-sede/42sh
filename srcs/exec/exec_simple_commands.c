@@ -51,7 +51,6 @@ static void	treat_node(t_ast *child_node, t_list **redir_stack, \
 	free_ast_node(child_node);
 }
 
-
 void		exec_simple_command(t_ast *ast, t_lst_head *head)
 {
 	t_list		*child_list;
@@ -69,6 +68,7 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 		child_list = child_list->next;
 		i++;
 	}
+	exec_dup(redir_stack);
 	exec(singleton_env(), argv, head);
-	close_redir(redir_stack);
+	close_dup(redir_stack);
 }

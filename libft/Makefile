@@ -105,6 +105,7 @@ SRC = \
 	  ft_strrcmp.c \
 	  ft_strrequ.c \
 	  ft_simple_lst_del_one.c \
+	  ft_lst_rev.c
 
 NAME ?= libft.a
 

@@ -166,6 +166,16 @@ int				logical_or(t_ast *ast, t_lst_head *head);
 int				semi_colon(t_ast *ast, t_lst_head *head);
 int				logical_and(t_ast *ast, t_lst_head *head);
 
+
+/*
+** In redir_utils.c
+*/
+
+int				exec_dup(t_list *redir_stack);
+void			push_dup(int io_number, int target_fd, int natural_fd, \
+		t_list **redir_stack);
+void			close_dup(t_list *redir_stack);
+int				redir_open_file(char *target, t_token_id id);
 /*
 ** In redir.c
 */
@@ -173,15 +183,11 @@ int				logical_and(t_ast *ast, t_lst_head *head);
 void			append_redir(t_ast **root, t_list **token_list);
 void			heredoc(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id);
-void			exec_dup(int io_number, int target_fd, int natural_fd, \
-		t_list **redir_stack);
 void			exec_redir(t_list *child_list, t_list **redir_stack);
-void			close_redir(t_list *redir_stack);
 void			file_redir(int io_number, char *target, \
 		t_list **redir_stack, t_token_id id);
 void			merge_fd(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id);
-int				redir_open_file(char *target, t_token_id id);
 
 typedef struct	s_redir
 {

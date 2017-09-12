@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 12:42:28 by vcombey           #+#    #+#             */
-/*   Updated: 2017/08/27 12:42:36 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/12 14:48:26 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,4 +148,11 @@ void				ft_simple_lst_iteri(t_list *start, \
 		t_list *end, void (*f)(t_list*, size_t));
 
 size_t				ft_lst_len(t_list *lst);
+
+/*
+**	in file ft_lst_iteri.c
+*/
+void			   ft_simple_lst_rev(t_list **lst);
+
+
 #endif

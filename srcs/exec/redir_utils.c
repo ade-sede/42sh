@@ -48,12 +48,13 @@ int		redir_open_file(char *target, t_token_id id)
 **	Function used to restore all FDs after work is done.
 */
 
-void	close_redir(t_list *redir_stack)
+void	close_dup(t_list *redir_stack)
 {
 	t_list	*first;
 	int		*save;
 
 	first = redir_stack;
+	redir_stack = first;
 	while (first)
 	{
 		save = first->data;
@@ -71,7 +72,7 @@ void	close_redir(t_list *redir_stack)
 **	the operation onto our stack.
 */
 
-void	exec_dup(int io_number, int target_fd, int natural_fd, \
+void	push_dup(int io_number, int target_fd, int natural_fd, \
 		t_list **redir_stack)
 {
 	int	*save;
@@ -81,6 +82,19 @@ void	exec_dup(int io_number, int target_fd, int natural_fd, \
 	save[1] = dup(io_number);
 	save[2] = target_fd;
 	save[3] = natural_fd;
-	ft_simple_lst_add(redir_stack, ft_simple_lst_create(save));
-	dup2(target_fd, io_number);
+	ft_simple_lst_pushback(redir_stack, ft_simple_lst_create(save));
 }
+
+int		exec_dup(t_list *redir_stack)
+{
+	int		*save;
+
+	while (redir_stack)
+	{
+		save = redir_stack->data;
+		dup2(save[2], save[0]);
+		redir_stack = redir_stack->next;
+	}
+	return (1);
+}
+
