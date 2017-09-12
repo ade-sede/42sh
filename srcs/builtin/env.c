@@ -76,10 +76,7 @@ int					builtin_env(t_env *old_env, const char **argv)
 	if (!(*argv))
 		env_print_environ((const char**)new_env.environ);
 	else
-	{
-		create_hash_table(&new_env);
 		fork_exec_bin(&new_env, argv, NULL);
-	}
 	env_free_env(&new_env);
 	return (EXIT_SUCCESS);
 }

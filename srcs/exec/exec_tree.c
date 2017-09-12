@@ -82,6 +82,7 @@ int			p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 		if (dup2(pr->p[WRITE_END], STDOUT_FILENO) == -1)
 			dprintf(2 ,"pright dup2 error = %s\n", strerror(errno));
 		exec_simple_command(ast, head);
+		exit(0);
 	}
 	else
 	{
@@ -112,6 +113,7 @@ int			p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
 		if (dup2(pr->p[WRITE_END], STDOUT_FILENO) == -1)
 			dprintf(2 ,"p_bothdup2 error  error = %s\n", strerror(errno));
 		exec_simple_command(ast, head);
+		exit(0);
 	}
 	else
 	{
