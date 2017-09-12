@@ -11,13 +11,23 @@ int		btsearch_handle_sigwinch(t_line *line, t_hist *h)
 	return (1);
 }
 
-int		btsearch_handle_sigint(t_line *line, t_hist *h)
+void	btsearch_handle_sigint(int keycode)
 {
+	t_line	*line;
+	t_hist	*h;
+
+	(void)keycode;
+	line = singleton_line();
+	h = singleton_hist();
 	btsearch_exit(line, h);
+	line->btsearch = 0;
+//	btsearch_refresh(line, h);
 	h->signum = 0;
 	ft_strclr(line->buff);
 	line->len = 0;
-	return (1);
+	line->pos = 0;
+	edit_set_signals();
+	edit_refresh(singleton_line());
 }
 
 void	btsearch_set_btsearch_signum(int num)
@@ -25,13 +35,8 @@ void	btsearch_set_btsearch_signum(int num)
 	singleton_hist()->signum = num;
 }
 
-void	btsearch_set_signals(void)
+void	btsearch_handle_signals(void)
 {
-	struct sigaction sa;
-
-	sa.sa_handler = btsearch_set_btsearch_signum;
-	sa.sa_mask = 0;
-	sa.sa_flags = 0;
-	sigaction(SIGINT, &sa, NULL);
+	signal(SIGINT, &btsearch_handle_sigint);
 }
 #endif

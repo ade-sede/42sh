@@ -15,6 +15,7 @@ typedef struct	s_line
 	struct termios		normal_mode;
 	int					visu_mode;
 	int					completion;
+	int					btsearch;
 	size_t				visu_start;
 	char				*copied_text;
 	char				*prompt;
