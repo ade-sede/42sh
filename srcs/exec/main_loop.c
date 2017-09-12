@@ -86,6 +86,7 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	env_add_change(singleton_env(), "PS3", "quote> ");
 	line->size = BUFF_LINE_SIZE;
 	load_prompt(singleton_env(), line, "PS1", "$> ");
+	line->heredoc = 0;
 }
 
 char	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)

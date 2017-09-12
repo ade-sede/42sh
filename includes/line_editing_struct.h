@@ -19,6 +19,7 @@ typedef struct	s_line
 	char				*copied_text;
 	char				*prompt;
 	unsigned int		old_pos;
+	int					heredoc;
 }				t_line;
 
 typedef struct	s_edit_func
