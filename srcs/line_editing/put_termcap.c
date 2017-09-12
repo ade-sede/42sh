@@ -3,7 +3,7 @@
 
 int		int_putchar(int c)
 {
-	ft_putchar((char)c);
+	ft_putchar_fd((char)c, 2);
 	return (0);
 }
 

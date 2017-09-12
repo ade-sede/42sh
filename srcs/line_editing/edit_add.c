@@ -28,7 +28,7 @@ void	edit_add(int keycode, t_line *line)
 				(void*)(line->buff + line->pos), line->len - line->pos);
 		line->buff[line->pos] = (char)keycode;
 	}
-	ft_putstr(line->buff + line->pos);
+	ft_putstr_fd(line->buff + line->pos, 2);
 	put_ntermcap("le", ft_strlen(line->buff + line->pos) - 1);
 	line->pos++;
 	line->len++;
@@ -38,7 +38,7 @@ void	edit_add(int keycode, t_line *line)
 	else if (((((line->prompt_len + ft_strlen(line->buff))) % line->ws_col) \
 				== 0) && (line->buff[line->pos] == '\0'))
 	{
-		ft_putchar(' ');
+		ft_putchar_fd(' ', 2);
 		put_termcap("le");
 	}
 }

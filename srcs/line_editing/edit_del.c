@@ -15,7 +15,7 @@ int	edit_backspace(t_line *line)
 	put_termcap("le");
 	s = ft_strlen(line->buff + line->pos);
 	write(1, line->buff + line->pos, s);
-	ft_putchar(' ');
+	ft_putchar_fd(' ', 2);
 	put_ntermcap("le", s + 1);
 	if ((((line->prompt_len + ft_strlen(line->buff))) % line->ws_col) == \
 			line->ws_col - 1)

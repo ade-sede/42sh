@@ -21,6 +21,8 @@ void	ft_double_lst_remove(t_lst_head **head, void (*f)(void*))
 	t_list_d	*curr;
 	t_list_d	*next;
 
+	if (!head)
+		return ;
 	curr = ((*head)->first);
 	while (curr)
 	{

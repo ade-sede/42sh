@@ -15,7 +15,7 @@ void	edit_handle_sigint(int signum)
 	history_init(singleton_hist());
 	move_cursor_lastline(singleton_line());
 	edit_line_init(singleton_line());
-	ft_putchar('\n');
+	ft_putchar_fd('\n', 2);
 	put_prompt(singleton_line());
 	(void)signum;
 }

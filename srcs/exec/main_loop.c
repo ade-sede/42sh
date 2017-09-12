@@ -159,7 +159,8 @@ void	main_loop(t_env *env)
 #ifndef NO_TERMCAPS
 			conf_term_canonical();
 #endif
-			ft_remove_head(&head, ft_free);
+			if (head != NULL)
+				ft_remove_head(&head, ft_free);
 		}
 #ifdef NO_TERMCAPS
 		else

@@ -66,7 +66,7 @@ char	*edit_get_input(t_env *env)
 		l->old_pos = l->pos;
 		keycode = 0;
 		read(0, &keycode, 1);
-		if (keycode == KEY_CTRL_D && l->heredoc && l->pos == 0)
+		if (keycode == KEY_CTRL_D && l->heredoc && l->len == 0)
 		{
 			edit_add(4,l);
 			return (edit_exit(l));

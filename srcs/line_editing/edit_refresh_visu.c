@@ -8,7 +8,7 @@ void	edit_refresh_nchar_2(size_t n, size_t *i, char *str, size_t ws_col)
 	{
 		put_termcap("do");
 		put_termcap("cr");
-		ft_putnstr(str + *i, ws_col);
+		ft_putnstr(str + *i, ws_col); // passer sur la sortie 2
 		*i += ws_col;
 	}
 }

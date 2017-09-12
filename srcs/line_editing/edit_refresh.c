@@ -29,7 +29,7 @@ void	edit_refresh_cursor(t_line *line)
 
 void	edit_refresh_line(t_line *line)
 {
-	ft_putstr(line->buff);
+	ft_putstr_fd(line->buff, 2);
 	if ((((line->prompt_len + line->pos)) % line->ws_col) == line->ws_col - 1)
 		put_termcap("do");
 }
