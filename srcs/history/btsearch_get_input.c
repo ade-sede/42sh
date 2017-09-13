@@ -31,7 +31,7 @@ int		btsearch_get_input(t_line *line, unsigned long keycode)
 		btsearch_refresh(line, h);
 		return (1);
 	}
-	else
+	else if (line->btsearch)
 	{
 		line->btsearch = 0;
 		btsearch_exit(line, h);
