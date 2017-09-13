@@ -7,7 +7,7 @@ void	btsearch_change_line(t_line *line, t_hist *h, t_list_d *node)
 	h->btsearch_cur = node;
 	ft_strclr(line->buff);
 	if (h->btsearch_cur)
-		ft_strcpy(line->buff, h->btsearch_cur->data);
+		edit_insert_str(line, line->buff, h->btsearch_cur->data);
 	line->pos = 0;
 	line->len = ft_strlen(line->buff);
 }

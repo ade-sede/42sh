@@ -1,15 +1,18 @@
 #ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "history.h"
+#include <stdio.h>
 
 int		btsearch_get_input(t_line *line, unsigned long keycode)
 {
 	t_hist				*h;
 
 	h = singleton_hist();
-	if ((keycode == KEY_ALT_R) || (keycode == KEY_DELETE))
+	if (!(line->btsearch) && (keycode == KEY_BACKSPACE))
+		return (0);
+	if ((keycode == KEY_ALT_R) || (keycode == KEY_BACKSPACE))
 	{
-		if (!(line->btsearch))
+		if (keycode == KEY_ALT_R && !(line->btsearch))
 		{
 			line->btsearch = 1;
 			btsearch_handle_signals();
@@ -17,7 +20,7 @@ int		btsearch_get_input(t_line *line, unsigned long keycode)
 		}
 		if (keycode == KEY_ALT_R)
 			btsearch_next(line, h);
-		else if (keycode == KEY_DELETE)
+		else if (keycode == KEY_BACKSPACE)
 			btsearch_del(line, h);
 		btsearch_refresh(line, h);
 		return (1);
