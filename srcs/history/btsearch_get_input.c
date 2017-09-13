@@ -33,6 +33,7 @@ int		btsearch_get_input(t_line *line, unsigned long keycode)
 	}
 	else if (line->btsearch)
 	{
+		edit_set_signals();
 		line->btsearch = 0;
 		btsearch_exit(line, h);
 		edit_refresh(line);
