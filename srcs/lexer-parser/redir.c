@@ -61,10 +61,11 @@ t_ast		*ast_create_node_from_redir(t_list **token_list)
 	return (node);
 }
 
-void		append_redir(t_ast **root, t_list **token_list)
+t_ast		*append_redir(t_ast *root, t_list **token_list)
 {
 	t_ast	*new_node;
 
 	new_node = ast_create_node_from_redir(token_list);
-	ft_simple_lst_pushback(&((*root)->child), ft_simple_lst_create(new_node));
+	ft_simple_lst_pushback(&(root->child), ft_simple_lst_create(new_node));
+	return (root);
 }

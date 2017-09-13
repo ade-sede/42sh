@@ -122,9 +122,11 @@ typedef	struct		s_ast
 **	In file parser.c
 */
 
-t_ast				*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head);
-t_ast				*ast_create_simple_command(t_ast **root, \
+t_ast				*ast_parse(t_ast *simple_command, t_list **token_list, t_lst_head **head);
+t_ast				*fill_simple_command(t_ast *simple_command, \
 		t_list **token_list, int *command_name);
+t_ast			 	*create_simple_command(t_ast *ast, t_list **token_list, \
+		int *command_name);
 
 /*
 **	In file casual_node.c
@@ -138,6 +140,7 @@ t_ast				*ast_create_node_from_word(t_list **token_list, \
 */
 
 t_ast				*ast_create_node_from_redir(t_list **token_list);
+t_ast				*append_redir(t_ast *root, t_list **token_list);
 
 /*
 **	In file init.c

@@ -10,7 +10,7 @@
 
 
 #ifdef PARSER_DEBUG
-void	read_tree(t_ast *ast_start)
+static void	read_tree(t_ast *ast_start)
 {
 	size_t	index;
 	t_token	*token_parent;
@@ -148,12 +148,12 @@ void	main_loop(t_env *env)
 			dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff);//			REMOVE		
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
-			ast = NULL;
-			ast = ast_parse(&ast, &token_list, &head);
+			ast = ast_parse(NULL, &token_list, &head);
 
 #ifdef PARSER_DEBUG
 			read_tree(ast);
 #endif
+
 #ifndef NO_TERMCAPS
 			conf_term_normal();
 #endif
