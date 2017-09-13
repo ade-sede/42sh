@@ -6,6 +6,7 @@
 void	history_refresh_command(t_hist *h, char *command)
 {
 	write(h->fd, command, ft_strlen(command));
+	write(h->fd, "\n", 1);
 }
 
 void	history_refresh(char *command)
@@ -14,7 +15,7 @@ void	history_refresh(char *command)
 	t_list_d	*list;
 
 	h = singleton_hist();
-	if (command[0] == '\0')
+	if (command[0] == '\0' || ft_str_is_clr(command))
 		return ;
 	list = ft_double_lst_create(ft_strdup(command));
 	if (h->list == NULL)
