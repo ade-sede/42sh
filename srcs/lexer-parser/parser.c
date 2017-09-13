@@ -81,33 +81,31 @@ static void		start_complexe_command(t_ast **root, t_list **token_list, \
 		int *command_name, t_token *token)
 {
 	t_ast	*left_branch;
-	t_ast	*right_branch;
+	t_ast	*new_branch_root;
 	t_list	*child;
 
 	left_branch = *root;
 	child = ft_simple_lst_create(*root);
 	*root = ast_create_node(token, NULL, COMPLEXE_COMMAND);
 	ft_simple_lst_del_one(token_list, *token_list, NULL);
-	right_branch = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
-	right_branch = ast_create_simple_command(&right_branch, \
+	new_branch_root = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
+	new_branch_root = ast_create_simple_command(&new_branch_root, \
 			token_list, command_name);
-	if (!left_branch || (left_branch && !left_branch->child)) // Gauche du separateur vide
+	if (!left_branch || (left_branch && !left_branch->child))
 	{
 		ft_simple_lst_remove(token_list, NULL);
-		*token_list = NULL;
 		dprintf(2, "Parse error near '%s'\n", (*root)->token->value);
 		left_branch = flush_tree(left_branch);
-		right_branch = flush_tree(right_branch);
 		*root = flush_tree(*root);
 	}
-	else if (!right_branch->child) // Droite du separateur vide
+	else if (!new_branch_root->child)
 	{
 		if (ft_strequ((*root)->token->value, ";"))
-			right_branch = flush_tree(right_branch);
+			new_branch_root = flush_tree(new_branch_root);
 		else if (!*token_list)
 		{
 			*token_list = reopen_command((*root)->token);
-			right_branch = ast_create_simple_command(&right_branch, \
+			new_branch_root = ast_create_simple_command(&new_branch_root, \
 					token_list, command_name);
 		}
 		else
@@ -115,17 +113,13 @@ static void		start_complexe_command(t_ast **root, t_list **token_list, \
 			ft_simple_lst_remove(token_list, NULL);
 			dprintf(2, "Parse error near '%s'\n", (*root)->token->value);
 			*root = flush_tree(*root);
-			right_branch = flush_tree(right_branch);
+			new_branch_root = flush_tree(new_branch_root);
 		}
 	}
+	ft_simple_lst_pushback(&child, ft_simple_lst_create(new_branch_root));
 	if (*root)
-	{
-		ft_simple_lst_pushback(&child, ft_simple_lst_create(right_branch));
 		(*root)->child = child;
-		*command_name = 0;
-	}
-	else
-		ft_simple_lst_remove(&child, NULL);
+	*command_name = 0;
 }
 
 
@@ -164,19 +158,16 @@ t_ast			*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head)
 		if (TK_IS_SEP(token->id))
 		{
 			start_complexe_command(root, token_list, &command_name, token);
-			if (*token_list)
+			if (ft_strequ(token->value, "|"))
 			{
-				if (ft_strequ(token->value, "|"))
-				{
-					p = palloc(sizeof(*p) * 2);
-					pipe(p);
-				}
-				spipe = create_pipe(p);
-				if (*head == NULL)
-					*head = ft_create_head(ft_double_lst_create(spipe));
-				else
-					ft_double_lst_pushback(head, ft_double_lst_create(spipe));
+				p = palloc(sizeof(*p) * 2);
+				pipe(p);
 			}
+			spipe = create_pipe(p);
+			if (*head == NULL)
+				*head = ft_create_head(ft_double_lst_create(spipe));
+			else
+				ft_double_lst_pushback(head, ft_double_lst_create(spipe));
 		}
 		else
 			start_simple_command(root, token_list, &command_name);
