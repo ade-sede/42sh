@@ -34,7 +34,6 @@ void		reopen_line_editing(t_lexer *lex)
 #else
 	bzero(new_command, 4096);
 	read(0, new_command, 4096);
-	*strchr(new_command, '\n') = 0;
 #endif
 	lex->line = ft_strchange((void*)lex->line, ft_strjoin((char*)lex->line, new_command));
 	free(new_command);

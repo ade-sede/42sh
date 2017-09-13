@@ -96,7 +96,8 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	token = create_token(value, lex->state, lex->line[lex->index]);
 	token->id = lex_get_token_id(token);
 #ifdef LEXER_DEBUG
-	dprintf(2, "Token->value = "MAG"#"CYN"%s"MAG"#\n"RESET"Token->id = "YEL"%d\n"RESET"Token->type = "BLU"%d\n"RESET, token->value, token->id, token->type);//			REMOVE		
+	if (lex->reopen)
+		dprintf(2, "Token->value = "MAG"#"CYN"%s"MAG"#\n"RESET"Token->id = "YEL"%d\n"RESET"Token->type = "BLU"%d\n"RESET, token->value, token->id, token->type);//			REMOVE		
 #endif
 	node = exec_expand(token);
 	if (lex->stack == NULL)

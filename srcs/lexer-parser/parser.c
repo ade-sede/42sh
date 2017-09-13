@@ -145,11 +145,6 @@ t_ast			*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head)
 	t_token *token;
 	int 	*p;
 	t_pipe	*spipe = NULL;
-#ifdef PIPE_DEBUG
-	static	int	pipe_nb = 0;
-	if (head && *head == NULL)
-		pipe_nb = 0;
-#endif
 	p = NULL;
 	command_name = 0;
 	if (token_list && *token_list)
@@ -173,9 +168,8 @@ t_ast			*ast_parse(t_ast **root, t_list **token_list, t_lst_head **head)
 			start_simple_command(root, token_list, &command_name);
 		if (token_list && *token_list)
 			ast_parse(root, token_list, head);
-		else // La liste de token est vide
+		else
 		{
-			/* spipe = create_pipe(p); */
 			spipe = NULL;
 			if (*head == NULL)
 				*head = ft_create_head(ft_double_lst_create(spipe));

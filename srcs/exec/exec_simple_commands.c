@@ -26,7 +26,8 @@ static void	treat_node(t_ast *child_node, t_list **redir_stack, \
 	if (child_node->symbol == IO_REDIRECT)
 		exec_redir(child_node->child, redir_stack);
 	if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
-		argv[i] = ft_strdup(child_node->token->value);
+		if (*child_node->token->value != '\n')
+			argv[i] = ft_strdup(child_node->token->value);
 }
 
 void		exec_simple_command(t_ast *ast, t_lst_head *head)

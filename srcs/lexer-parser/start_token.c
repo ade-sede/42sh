@@ -12,7 +12,8 @@ int		start_token(t_lexer *lex, size_t *token_start)
 	int		ret;
 
 	ret = 0;
-	while (lex->line[lex->index] && IS_WHITESPACE(lex->line[lex->index]))
+	while (lex->line[lex->index] && (IS_WHITESPACE(lex->line[lex->index]) \
+				&& lex->line[lex->index] != '\n'))
 		lex->index++;
 	*token_start = lex->index;
 	ret = update_state(lex);

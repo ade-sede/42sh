@@ -135,7 +135,7 @@ void	main_loop(t_env *env)
 	{
 #ifndef NO_TERMCAPS
 		load_prompt(singleton_env(), singleton_line(), "PS1", "$> ");
-		buff = line_editing_get_input(env, singleton_line(), singleton_hist());
+		buff = ft_strdup(line_editing_get_input(env, singleton_line(), singleton_hist()));
 		history_refresh(buff);
 #else
 		dprintf(1, "?> ");
@@ -144,6 +144,8 @@ void	main_loop(t_env *env)
 #endif
 		if (*buff != 0)
 		{
+			buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
+			dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff);//			REMOVE		
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
 			ast = NULL;
@@ -162,6 +164,7 @@ void	main_loop(t_env *env)
 			ast = flush_tree(ast);
 			if (head != NULL)
 				ft_remove_head(&head, free_pipe);
+			free(buff);
 		}
 #ifdef NO_TERMCAPS
 		else
