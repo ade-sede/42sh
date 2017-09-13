@@ -1,5 +1,6 @@
 #ifndef NO_TERMCAPS
 #include "line_editing.h"
+#include <stdio.h>
 
 int		int_putchar(int c)
 {

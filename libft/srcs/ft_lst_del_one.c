@@ -92,14 +92,16 @@ void		ft_double_lst_del_one(t_lst_head **head, t_list_d *node, \
 			pos = 3;
 		prev = node->prev;
 		next = node->next;
+		if (pos != 0)
+			relink_head(head, pos);
+		else {
+			if (prev != NULL)
+				prev->next = next;
+			if (next != NULL)
+				next->prev = prev;
+		}
 		(f != NULL) ? (f)(node->data) : 0;
 		free(node);
 		(*head)->node_count -= 1;
-		if (pos != 0)
-			relink_head(head, pos);
-		if (prev != NULL)
-			prev->next = next;
-		if (next != NULL)
-			next->prev = prev;
 	}
 }

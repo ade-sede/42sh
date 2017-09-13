@@ -35,7 +35,7 @@ int				history_prev(t_line *line, t_hist *h);
 ** fonction du backtracking search avec <C-R>
 */
 
-int				btsearch_get_input(t_line *line);
+int		btsearch_get_input(t_line *line, unsigned long keycode);
 int				btsearch_init(t_line *line, t_hist *h);
 int				btsearch_exit(t_line *line, t_hist *hist);
 int				btsearch_init(t_line *line, t_hist *hist);
@@ -45,8 +45,8 @@ int				btsearch_next(t_line *line, t_hist *h);
 void			btsearch_refresh(t_line *line, t_hist *h);
 void			btsearch_change_line(t_line *line, t_hist *h, t_list_d *node);
 int				btsearch_handle_sigwinch(t_line *line, t_hist *h);
-int				btsearch_handle_sigint(t_line *line, t_hist *h);
-void			btsearch_set_signals(void);
+void			btsearch_handle_sigint(int keycode);
+void	btsearch_handle_signals(void);
 void			btsearch_del(t_line *line, t_hist *h);
 void			btsearch_first_search(t_hist *h);
 void			create_strstr_btsearch_buff(t_list_d *item);

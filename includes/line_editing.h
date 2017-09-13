@@ -65,6 +65,8 @@ void	goto_termcap(char *capacity, int co, int li);
 void	put_ntermcap(char *capacity, int n);
 
 void	move_cursor_lastline(t_line *line);
+void	move_cursor_lastline_from_first_line(t_line *line);
+void	move_cursor_firstline_from_prev_pos(t_line *line);
 void	move_cursor_firstline_from_lastline(t_line *line);
 void	move_cursor_bufflen_from_lastline(t_line *line);
 char	*edit_exit(t_line *line);

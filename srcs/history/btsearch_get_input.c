@@ -1,31 +1,42 @@
 #ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "history.h"
+#include <stdio.h>
 
-int		btsearch_get_input(t_line *line)
+int		btsearch_get_input(t_line *line, unsigned long keycode)
 {
-	unsigned long long	keycode;
 	t_hist				*h;
 
 	h = singleton_hist();
-	btsearch_init(line, h);
-	btsearch_refresh(line, h);
-	btsearch_set_signals();
-	while (42)
+	if (!(line->btsearch) && (keycode == KEY_BACKSPACE))
+		return (0);
+	if ((keycode == KEY_ALT_R) || (keycode == KEY_BACKSPACE))
 	{
-		keycode = 0;
-		read(0, &keycode, 8);
-		if (h->signum == SIGINT)
-			return (btsearch_handle_sigint(line, h));
+		if (keycode == KEY_ALT_R && !(line->btsearch))
+		{
+			line->btsearch = 1;
+			btsearch_handle_signals();
+			btsearch_init(line, h);
+		}
 		if (keycode == KEY_ALT_R)
 			btsearch_next(line, h);
-		else if (keycode == KEY_DELETE)
+		else if (keycode == KEY_BACKSPACE)
 			btsearch_del(line, h);
-		else if (ft_isprint(keycode))
-			btsearch_add(keycode, line, h);
-		else if (keycode == KEY_ENTER || !ft_isprint(keycode))
-			return (btsearch_exit(line, h));
 		btsearch_refresh(line, h);
+		return (1);
+	}
+	else if (line->btsearch && ft_isprint(keycode))
+	{
+		btsearch_add(keycode, line, h);
+		btsearch_refresh(line, h);
+		return (1);
+	}
+	else if (line->btsearch)
+	{
+		edit_set_signals();
+		line->btsearch = 0;
+		btsearch_exit(line, h);
+		edit_refresh(line);
 	}
 	return (0);
 }
