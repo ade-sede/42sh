@@ -134,6 +134,7 @@ typedef struct		s_lexer
 	const char		*line;
 	size_t			index;
 	t_list			*stack;
+	int				reopen;
 	t_lexer_state	state;
 }					t_lexer;
 

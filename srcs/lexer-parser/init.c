@@ -13,6 +13,7 @@ t_lexer		init_lexer(const char *line)
 	lex.line = ft_strdup(line);
 	lex.index = 0;
 	lex.stack = NULL;
+	lex.reopen = 1;
 	lex.state = DEFAULT;
 	return (lex);
 }

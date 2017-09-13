@@ -51,7 +51,7 @@ t_list	*start_lex(t_lexer *lex)
 
 	token_start = 0;
 	token_end = 0;
-	while (lex->line[lex->index])
+	while (lex->line && lex->line[lex->index])
 	{
 		lex->state = start_token(lex, &token_start);
 		if (lex->state == INPUT_END)
@@ -66,10 +66,10 @@ t_list	*start_lex(t_lexer *lex)
 	return (lex->stack);
 }
 
-	/*
-	**	Rajouter le token qu'on vient de creer a lex->stack
-	**	exec_expand prend la t_list lex->stack en argument. Se base sur le dernier token.
-	*/
+/*
+**	Rajouter le token qu'on vient de creer a lex->stack
+**	exec_expand prend la t_list lex->stack en argument. Se base sur le dernier token.
+*/
 
 /* static int	first_word(t_list *stack) */
 /* { */

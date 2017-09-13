@@ -28,18 +28,19 @@ void		reopen_line_editing(t_lexer *lex)
 		load_prompt(singleton_env(), singleton_line(), "PS3", "dquote> ");
 #endif
 #ifndef NO_TERMCAPS
-	new_command = line_editing_get_input(singleton_env(), singleton_line(), \
-			singleton_hist());
-	new_command = ft_strjoin_free(new_command, "\n", 0);
+	new_command = ft_strdup(line_editing_get_input(singleton_env(), singleton_line(), \
+			singleton_hist()));
+	new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n"));
 #else
 	bzero(new_command, 4096);
 	read(0, new_command, 4096);
 	*strchr(new_command, '\n') = 0;
 #endif
-	lex->line = ft_strjoin_free((char *)lex->line, new_command, 3);
+	lex->line = ft_strchange((void*)lex->line, ft_strjoin((char*)lex->line, new_command));
+	free(new_command);
 }
 
-static int	part_1(t_lexer *lex, size_t token_start)
+static int	match_part_1(t_lexer *lex, size_t token_start)
 {
 	int		ret;
 
@@ -59,7 +60,14 @@ static int	part_1(t_lexer *lex, size_t token_start)
 	else if (IS_QUOTED(lex->state))
 	{
 		if (lex->line[lex->index] == '\0')
-			reopen_line_editing(lex);
+		{
+			if (lex->reopen)
+				reopen_line_editing(lex);
+			else
+			{
+				// Error, treat it
+			}
+		}
 		if (charcmp(lex->line, lex->index, lex->state))
 			ret = lex->index++;
 	}
@@ -71,7 +79,7 @@ int			token_match(t_lexer *lex, size_t token_start)
 	int	ret;
 
 	ret = -1;
-	ret = part_1(lex, token_start);
+	ret = match_part_1(lex, token_start);
 	if (ret != -1)
 		return (ret);
 	else if (lex->state == OPERATOR)

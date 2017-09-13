@@ -28,6 +28,7 @@ char	**comple_matching_no_cursorword(t_line *line, t_comple *c)
 	char		**res;
 
 	lex = init_lexer(line->buff);
+	lex.reopen = 0;
 	token_list = start_lex(&lex);
 	last = ft_last_simple_lst(token_list);
 	if (!last || (last && ((t_token *)last->data)->id == 0))
@@ -47,6 +48,7 @@ char	**comple_matching_cursorword(t_line *line, t_comple *c)
 	char		**res;
 
 	lex = init_lexer(line->buff);
+	lex.reopen = 0;
 	token_list = start_lex(&lex);
 	last = ft_last_simple_lst(token_list);
 	if (ft_strchr(c->current_word, '/'))
