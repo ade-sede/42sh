@@ -143,7 +143,6 @@ void	main_loop(t_env *env)
 		if (*buff != 0)
 		{
 			buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
-			dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff);//			REMOVE		
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
 			ast = ast_parse(NULL, &token_list, &head);
@@ -156,6 +155,8 @@ void	main_loop(t_env *env)
 			conf_term_normal();
 #endif
 			exec_tree(ast, head);
+			if (token_list)
+				ft_simple_lst_remove(&token_list, free_token);
 #ifndef NO_TERMCAPS
 			conf_term_canonical();
 #endif

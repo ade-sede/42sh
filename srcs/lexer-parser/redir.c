@@ -1,6 +1,7 @@
 #include "libft.h"
 #include "lexer.h"
 #include "parser.h"
+#include "exec.h"
 
 /*
 **	Creates an IO_REDIR node from 2 or 3 tokens. Returns this IO_REDIR node,
@@ -32,6 +33,11 @@ static int	pushback_redir(t_list *child_list, t_list **token_list, \
 		}
 		if (expected == 1)
 		{
+			if (token->id != TK_WORD)
+			{
+				dprintf(2, "Parse error near %s\n", token->value);
+				return (0);
+			}
 			ft_simple_lst_pushback(&child_list, \
 				ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 		}
@@ -59,8 +65,7 @@ t_ast		*ast_create_node_from_redir(t_list **token_list)
 	ft_simple_lst_del_one(token_list, *token_list, NULL);
 	node = ast_create_node(NULL, child_list, IO_REDIRECT);
 	if ((pushback_redir(child_list, token_list, expected)) == 0)
-	{
-	}
+		node = flush_tree(node);
 	return (node);
 }
 
@@ -70,5 +75,7 @@ t_ast		*append_redir(t_ast *root, t_list **token_list)
 
 	new_node = ast_create_node_from_redir(token_list);
 	ft_simple_lst_pushback(&(root->child), ft_simple_lst_create(new_node));
+	if (!new_node)
+		root = flush_tree(root);
 	return (root);
 }
