@@ -47,8 +47,7 @@ static t_list	*reopen_command(t_token *token)
 #endif
 	t_list	*token_list;
 	t_lexer	lex;
-
-	(void)token;
+(void)token;
 #ifndef NO_TERMCAPS
 	load_prompt(singleton_env(), singleton_line(), "reopen_command", \
 			"command> ");
@@ -80,6 +79,11 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, \
 	t_ast	*complexe_command;
 	t_list	*child;
 
+
+	/* Safe init */
+	left_branch = NULL;
+	right_branch = NULL;
+	complexe_command = NULL;
 
 	/* Getting ready to use it as the child of another node */
 	child = ft_simple_lst_create(ast);
@@ -166,7 +170,7 @@ t_ast			*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 		token = (*token_list)->data;
 		if (TK_IS_SEP(token->id))
 		{
-			ast = start_complexe_command(ast, token_list, &command_name, token);
+			if ((ast = start_complexe_command(ast, token_list, &command_name, token)) == NULL)
 			if (ft_strequ(token->value, "|"))
 			{
 				p = palloc(sizeof(*p) * 2);
@@ -179,9 +183,13 @@ t_ast			*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 				ft_double_lst_pushback(head, ft_double_lst_create(spipe));
 		}
 		else
-			ast = create_simple_command(ast, token_list, &command_name);
+			if ((ast = create_simple_command(ast, token_list, &command_name)) == NULL)
+					return (NULL);
 		if (token_list && *token_list)
-			ast = ast_parse(ast, token_list, head);
+		{
+			if ((ast = ast_parse(ast, token_list, head)) == NULL)
+				return (NULL);
+		}
 		else
 		{
 			spipe = NULL;

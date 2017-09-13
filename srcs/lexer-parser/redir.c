@@ -17,7 +17,7 @@
 **	(FALSE); ++str; } return (TRUE); }
 */
 
-static void	pushback_redir(t_list *child_list, t_list **token_list, \
+static int	pushback_redir(t_list *child_list, t_list **token_list, \
 		int expected)
 {
 	t_token	*token;
@@ -38,6 +38,7 @@ static void	pushback_redir(t_list *child_list, t_list **token_list, \
 		ft_simple_lst_del_one(token_list, *token_list, NULL);
 		--expected;
 	}
+	return (1);
 }
 
 t_ast		*ast_create_node_from_redir(t_list **token_list)
@@ -56,8 +57,10 @@ t_ast		*ast_create_node_from_redir(t_list **token_list)
 	ft_simple_lst_pushback(&child_list, \
 			ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 	ft_simple_lst_del_one(token_list, *token_list, NULL);
-	pushback_redir(child_list, token_list, expected);
 	node = ast_create_node(NULL, child_list, IO_REDIRECT);
+	if ((pushback_redir(child_list, token_list, expected)) == 0)
+	{
+	}
 	return (node);
 }
 

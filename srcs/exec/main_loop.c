@@ -8,7 +8,6 @@
 #include "parser.h"
 #define LOCAL_BUFF_SIZE 4096
 
-
 #ifdef PARSER_DEBUG
 static void	read_tree(t_ast *ast_start)
 {
@@ -45,7 +44,6 @@ static void	read_tree(t_ast *ast_start)
 	}
 }
 #endif
-
 
 /*
 **	Receives an array containing the command name and its arguments.
