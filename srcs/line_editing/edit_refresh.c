@@ -45,7 +45,7 @@ void	edit_refresh(t_line *line)
 {
 	edit_refresh_clear(line);
 	put_prompt(line);
-	edit_refresh_line(line);
+	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }
 #endif
