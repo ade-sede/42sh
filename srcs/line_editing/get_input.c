@@ -35,7 +35,6 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	i = 0;
 	while (g_edit_func[i].keycode)
 	{
-		//printf("\nkeycode= %llu, func_keycode= %llu\n", keycode, g_edit_func[i].keycode);
 		if (g_edit_func[i].keycode == keycode)
 			keycode = g_edit_func[i].f(line);
 		i++;
@@ -74,7 +73,7 @@ char	*edit_get_input(t_env *env)
 			edit_add(4,l);
 			return (edit_exit(l));
 		}
-		if (keycode == 27 || keycode == 194)
+		if (keycode == 27 || keycode == 194 || keycode > 127)
 			read(0, (char *)&keycode + 1, 7);
 		if (btsearch_get_input(l, keycode))
 			continue ;
@@ -85,6 +84,8 @@ char	*edit_get_input(t_env *env)
 		if (history_get_input(l, keycode, &history))
 			continue ;
 		edit_loop(keycode, l);
+		if (l->visu_mode)
+			edit_refresh(l);
 	}
 	(void)env;
 	return (NULL);
