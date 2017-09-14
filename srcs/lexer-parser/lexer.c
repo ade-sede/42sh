@@ -2,6 +2,7 @@
 #include "libft.h"
 #include "parser.h"
 #include "exec.h"
+#include "builtin.h"
 #include <stdio.h>
 
 /*
@@ -71,6 +72,66 @@ t_list	*start_lex(t_lexer *lex)
 **	exec_expand prend la t_list lex->stack en argument. Se base sur le dernier token.
 */
 
+int	lexer_insert_str_dest(char *dest, char *str, size_t dest_len)
+{
+	size_t	len;
+
+	len = ft_strlen(str);
+	ft_memmove((void*)(dest + len), (void*)(dest), dest_len);
+	ft_strncpy(dest, str, len);
+	return (1);
+}
+
+int	lexer_insert_str(t_lexer *lex, char *dest, char *str)
+{
+	size_t	len;
+	size_t	dest_pos;
+	size_t	dest_len;
+	char	*tmp;
+
+	dest_pos = dest - lex->line;
+	dest_len = ft_strlen(dest);
+	len = ft_strlen(str);
+	tmp = ft_strnew(ft_strlen(lex->line) + len);
+	ft_strcpy(tmp, lex->line);
+	free((char *)lex->line);
+	lex->line = tmp;
+	ft_insert_str_dest((char *)lex->line + dest_pos, str, dest_len);
+	return (1);
+}
+
+void	lexer_delete_word(char *to_replace)
+{
+	char	*end;
+
+	end = ft_strchr(to_replace, ' ');
+	if (end)
+	{
+		ft_memmove(to_replace, end, ft_strlen(end));
+		ft_strclr(to_replace + ft_strlen(end));
+	}
+	else
+		ft_strclr(to_replace);
+}
+
+int		check_alias(t_lexer *lex, t_token *token)
+{
+	t_list	*alias;
+
+	alias = NULL;
+	if (token->cmd_name)
+	{
+		alias = find_alias(singleton_env()->alias, token->value, ft_strlen(token->value));
+		if (!alias)
+			return (0);
+		lexer_insert_str(lex, (char *)(lex->line + lex->index), ft_strchr(alias->data, '=') + 1);
+		free_token(token);
+		lex->cmd_name_open = 0;
+		return (1);
+	}
+	return (0);
+}
+
 int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 {
 	char	*value;
@@ -86,12 +147,8 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 #ifdef LEXER_DEBUG
 		dprintf(2, "Token->value = "MAG"#"CYN"%s"MAG"#\n"RESET"Token->id = "YEL"%d\n"RESET"Token->type = "BLU"%d\n"RESET"Token->cmd_name = "PNK"%d\n"RESET, token->value, token->id, token->type, token->cmd_name);//			REMOVE		
 #endif
-	if (token->cmd_name)
-	{
-		/*
-		** lex->cmd_name_open = 0;
-		*/
-	}
+	if (check_alias(lex, token))
+		return (1);
 	node = exec_expand(token);
 	if (lex->stack == NULL)
 		lex->stack = node;
