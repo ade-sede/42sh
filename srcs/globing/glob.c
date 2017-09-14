@@ -104,6 +104,6 @@ t_list	*glob(char *regex)
 	//printf("dir_name: %s\n", dir_name);
 	//if (ft_strequ(dir_name, "."))
 	if (!match_open_dir(&m, to_match_i, regex_i, dir_name))
-		return (ft_simple_lst_create(m.regex));
+		return (ft_simple_lst_create(strdup(m.regex)));
 	return (m.list);
 }
