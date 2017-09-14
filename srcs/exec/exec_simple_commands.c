@@ -21,13 +21,16 @@
 */
 
 static void	treat_node(t_ast *child_node, t_list **redir_stack, \
-		char **argv, size_t i)
+		char **argv, size_t *i)
 {
 	if (child_node->symbol == IO_REDIRECT)
 		exec_redir(child_node->child, redir_stack);
 	if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
 		if (child_node->token->id != TK_NEWLINE)
-			argv[i] = ft_strdup(child_node->token->value);
+		{
+			argv[*i] = ft_strdup(child_node->token->value);
+			(*i)++;
+		}
 }
 
 void		exec_simple_command(t_ast *ast, t_lst_head *head)
@@ -43,9 +46,8 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 	argv = ft_memalloc(sizeof(*argv) * (ft_lst_len(child_list) + 1));
 	while (child_list)
 	{
-		treat_node(child_list->data, &redir_stack, (char**)argv, i);
+		treat_node(child_list->data, &redir_stack, (char**)argv, &i);
 		child_list = child_list->next;
-		i++;
 	}
 	exec_dup(redir_stack);
 	exec(singleton_env(), argv, head);
