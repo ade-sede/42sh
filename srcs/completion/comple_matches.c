@@ -26,7 +26,10 @@ char	**comple_matching_no_cursorword(t_line *line, t_comple *c)
 	t_list		*last;
 	t_list		*token_list;
 	char		**res;
+	char		line_pos_char;
 
+	line_pos_char = line->buff[line->pos];
+	line->buff[line->pos] = '\0';
 	lex = init_lexer(line->buff);
 	lex.reopen = 0;
 	token_list = start_lex(&lex);
@@ -36,6 +39,7 @@ char	**comple_matching_no_cursorword(t_line *line, t_comple *c)
 	else
 		res = comple_bin_matches(line, c);
 	free_token_list(token_list);
+	line->buff[line->pos] = line_pos_char;
 	return (res);
 }
 
@@ -46,7 +50,10 @@ char	**comple_matching_cursorword(t_line *line, t_comple *c)
 	t_list		*last;
 	t_list		*prev_last;
 	char		**res;
+	char		line_pos_char;
 
+	line_pos_char = line->buff[line->pos];
+	line->buff[line->pos] = '\0';
 	lex = init_lexer(line->buff);
 	lex.reopen = 0;
 	token_list = start_lex(&lex);
@@ -64,6 +71,7 @@ char	**comple_matching_cursorword(t_line *line, t_comple *c)
 			res = comple_bin_matches(line, c);
 	}
 	free_token_list(token_list);
+	line->buff[line->pos] = line_pos_char;
 	return (res);
 }
 
