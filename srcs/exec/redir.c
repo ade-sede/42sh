@@ -41,7 +41,7 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id)
 {
 	int		*fd;
-	fd = ft_memalloc(sizeof(*fd) * 2);
+
 #ifndef NO_TERMCAPS
 	char	*buff;
 #else
@@ -51,6 +51,7 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 	buff = NULL;
 #endif
 
+	fd = ft_memalloc(sizeof(*fd) * 2);
 	(void)id;
 	if (io_number == -1)
 		io_number = 0;
@@ -80,6 +81,7 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		errno = 0;
 		push_dup(io_number, fd[READ_END], FALSE, redir_stack);
 	}
+	free(fd);
 }
 
 /*

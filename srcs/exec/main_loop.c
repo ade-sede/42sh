@@ -113,6 +113,8 @@ char	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
 **	}
 */
 
+void	history_write_last_command();
+
 void	main_loop(t_env *env)
 {
 	t_ast		*ast;
@@ -146,6 +148,9 @@ void	main_loop(t_env *env)
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
 			ast = ast_parse(NULL, &token_list, &head);
+#ifndef NO_TERMCAPS
+			history_write_last_command();
+#endif
 
 #ifdef PARSER_DEBUG
 			read_tree(ast);
@@ -163,7 +168,7 @@ void	main_loop(t_env *env)
 			ast = flush_tree(ast);
 			if (head != NULL)
 				ft_remove_head(&head, free_pipe);
-			free(buff);
+			/* free(buff); */
 		}
 #ifdef NO_TERMCAPS
 		else
