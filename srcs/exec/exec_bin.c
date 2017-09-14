@@ -53,7 +53,7 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	t_pipe		*pl;
 	int			ret;
 
-	cur = head->middle;
+	cur = (head) ? head->middle : NULL;
 	pr = (cur != NULL) ? cur->data : NULL;
 	pl = (cur && cur->prev) ? cur->prev->data : NULL;
 

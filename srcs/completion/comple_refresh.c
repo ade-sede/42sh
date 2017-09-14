@@ -8,10 +8,10 @@ void	ft_putstr_padding_space(char *str, unsigned int size)
 	unsigned int len;
 
 	len = ft_strlen_color(str);
-	ft_putstr(str);
+	ft_putstr_fd(str, 2);
 	while ((size - len) > 0)
 	{
-		write(1, " ", 1);
+		write(2, " ", 1);
 		size--;
 	}
 }
@@ -30,7 +30,7 @@ void	comple_refresh_elem(t_comple c, int indice)
 	else
 		ft_putstr_padding_space(c.matches[indice], c.max_len);
 	put_termcap("me");
-	write(1, "  ", 2);
+	write(2, "  ", 2);
 }
 
 void	comple_refresh_line(t_line *line, t_comple c)
