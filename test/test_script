@@ -1,0 +1,8 @@
+||
+&&
+2>1
+2>&1
+ls || ls -l
+echo "it works " | cat -e
+ls && ;
+kls ; 123 ; ls ; ls <
