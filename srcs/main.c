@@ -15,7 +15,7 @@ int	file_script(char **av, t_env *env)
 	char	*buff;
 	int		fd;
 	t_lexer	lex;
-	t_lst_head	*head;
+	t_lst_head	*head = NULL;
 	t_ast	*ast;
 	t_list	*token_list;
 	extern	const char **environ;
@@ -25,17 +25,21 @@ int	file_script(char **av, t_env *env)
 	fd = open(av[1], O_RDONLY);
 	while (get_next_line(fd, &buff))
 	{
+		dprintf(2, "Line = "MAG"#"CYN"%s"MAG"#\n"RESET, buff);
 		buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
 		lex = init_lexer(buff);
 		token_list = start_lex(&lex);
 		ast = NULL;
-		ast = ast_parse(&ast, &token_list, &head);
+		ast = ast_parse(ast, &token_list, &head);
 		exec_tree(ast, head);
+		if (token_list)
+			ft_simple_lst_remove(&token_list, free_token);
 		ast = flush_tree(ast);
 		if (head != NULL)
 			ft_remove_head(&head, free_pipe);
 		free(buff);
 	}
+	sleep(120);
 	return (1);
 }
 
