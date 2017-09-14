@@ -20,29 +20,21 @@
 **		si prev
 */
 
-/*
-**	TK_WORD le mot peut etre un fichier ou un argument
-**	TK_NAME le mot est un fichier ou un FD.
-**	token->cmd_name == 1 -> le mot est un binaire
-*/
-
 char	**comple_matching_no_cursorword(t_line *line, t_comple *c)
 {
 	t_lexer		lex;
 	t_list		*last;
 	t_list		*token_list;
-	char		**res = NULL;
+	char		**res;
 
 	lex = init_lexer(line->buff);
 	lex.reopen = 0;
 	token_list = start_lex(&lex);
 	last = ft_last_simple_lst(token_list);
-	// Si la ligne est vide (bug si on press tab et qu'il affiche tout bin. Prompte ? (Afficher tous les resultats y/n ?)
-	if (!last || (last && lex.cmd_name_open))
-		res = comple_bin_matches(line, c);
-	// Si la ligne est pleine.
-	else
+	if (!last || (last && ((t_token *)last->data)->id == 0))
 		res = comple_file_matches(line, c);
+	else
+		res = comple_bin_matches(line, c);
 	free_token_list(token_list);
 	return (res);
 }
@@ -52,7 +44,8 @@ char	**comple_matching_cursorword(t_line *line, t_comple *c)
 	t_lexer		lex;
 	t_list		*token_list;
 	t_list		*last;
-	char		**res = NULL;
+	t_list		*prev_last;
+	char		**res;
 
 	lex = init_lexer(line->buff);
 	lex.reopen = 0;
@@ -64,9 +57,10 @@ char	**comple_matching_cursorword(t_line *line, t_comple *c)
 		res = comple_bin_matches(line, c);
 	else
 	{
-		if (last && ((t_token*)last->data)->cmd_name)
-			res = comple_bin_matches(line, c);
-		else if (last && (((t_token*)last->data)->id == TK_WORD || ((t_token*)last->data)->id == TK_NAME if (last && !lex.cmd_name_open)))
+		prev_last = ft_previous_last_simple_lst(token_list);
+		if (((t_token *)prev_last->data)->id == 0)
+			res = comple_file_matches(line, c);
+		else
 			res = comple_bin_matches(line, c);
 	}
 	free_token_list(token_list);
