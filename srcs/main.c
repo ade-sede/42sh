@@ -10,6 +10,7 @@
 #include "color.h"
 #include <stdio.h>
 
+#ifndef CRASH_COURSE
 int	file_script(char **av, t_env *env)
 {
 	char	*buff;
@@ -23,12 +24,12 @@ int	file_script(char **av, t_env *env)
 	env_load_base_env(env, environ);
 	history_load(singleton_hist(), env);
 	fd = open(av[1], O_RDONLY);
-	lex.reopen = 0;
 	while (get_next_line(fd, &buff))
 	{
 		dprintf(2, "Line = "MAG"#"CYN"%s"MAG"#\n"RESET, buff);
 		buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
 		lex = init_lexer(buff);
+		lex.reopen = 0;
 		token_list = start_lex(&lex);
 		ast = NULL;
 		ast = ast_parse(ast, &token_list, &head);
@@ -43,16 +44,22 @@ int	file_script(char **av, t_env *env)
 	sleep(120);
 	return (1);
 }
+#endif
 
+#ifdef CRASH_COURSE
 int	main(int ac, char *av[])
+#else
+int	main(void)
+#endif
 {
 	extern const char	**environ;
 	t_env	*env;
 
-	(void)ac;
 	env = singleton_env();
+#ifdef CRASH_COURSE
 	if (ac == 2)
 		return (file_script(av, env));
+#endif
 #ifdef PID
 	dprintf(2, BLU"%d\n"RESET, getpid());
 #endif
