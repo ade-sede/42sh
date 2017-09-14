@@ -1,21 +1,3 @@
-ls | cat -e
-exit
-ls
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls &&
-make re
-exit
-exit
-ls
 exit
 echo "
 exit

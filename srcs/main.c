@@ -23,6 +23,7 @@ int	file_script(char **av, t_env *env)
 	env_load_base_env(env, environ);
 	history_load(singleton_hist(), env);
 	fd = open(av[1], O_RDONLY);
+	lex.reopen = 0;
 	while (get_next_line(fd, &buff))
 	{
 		dprintf(2, "Line = "MAG"#"CYN"%s"MAG"#\n"RESET, buff);
