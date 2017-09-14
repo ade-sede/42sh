@@ -125,7 +125,7 @@ typedef	struct		s_ast
 t_ast				*ast_parse(t_ast *simple_command, t_list **token_list, t_lst_head **head);
 t_ast				*fill_simple_command(t_ast *simple_command, \
 		t_list **token_list, int *command_name);
-t_ast			 	*create_simple_command(t_ast *ast, t_list **token_list, \
+t_ast			 	*create_simple_command(t_list **token_list, \
 		int *command_name);
 
 /*

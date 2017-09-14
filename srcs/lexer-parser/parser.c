@@ -37,8 +37,45 @@
 **			just created to a complexe one.
 */
 
+#ifdef PARSER_DEBUG
+static void	read_tree(t_ast *ast_start)
+{
+	size_t	index;
+	t_token	*token_parent;
+	char	*parent_name;
+	t_list	*first_child;
+
+	index = 0;
+	token_parent = ast_start->token;
+	printf(GRN"NODE = "RESET);
+	if (token_parent)
+		parent_name = token_parent->value;
+	else
+	{
+		if (ast_start->symbol == SIMPLE_COMMAND)
+			parent_name = "SIMPLE_COMMAND";
+		if (ast_start->symbol == IO_REDIRECT)
+			parent_name = "IO_REDIRECT";
+	}
+	printf(MAG"#"CYN"%s"MAG"#"RESET""YEL"(%d)\n"RESET, parent_name,
+			ast_start->symbol);
+	first_child = ast_start->child;
+	while (first_child)
+	{
+		printf(RED"Starting treatment of child nb "BLU"%zu"RESET" of parent"
+				MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET, index, parent_name, \
+				ast_start->symbol);
+		if (first_child->data)
+			read_tree(first_child->data);
+		printf(PNK"\nBACK TO PARENT -> "RESET"Current node = "CYN"%s"RESET" !!!\n", parent_name);
+		first_child = first_child->next;
+		index++;
+	}
+}
+#endif
 
 void	append_history(char *command); // In file srcs/lexer-parser/check_match.c
+
 static t_list	*reopen_command(void)
 {
 #ifndef NO_TERMCAPS
@@ -85,24 +122,21 @@ t_ast			*create_right_branch(t_token *command_token, t_list **token_list, int *c
 	right_branch = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 	right_branch = fill_simple_command(right_branch, \
 			token_list, command_name);
-	if (right_branch)
+	if (right_branch && right_branch->child)
 	{
 		command_child = right_branch->child->data;
 		token = command_child->token;
 	}
-	if (!right_branch)
+	else
 	{
 		dprintf(2, "Parse error near '%s'\n", command_token->value);
-		return (NULL);
+		return (flush_tree(right_branch));
 	}
 	if (!token || ft_strequ(token->value , "\n"))
 	{
-		if (ft_strequ(token->value , "\n"))
-		{
-			command_child = flush_tree(command_child);
-			right_branch->child = NULL;
-		}
+		right_branch = flush_tree(right_branch);
 		*token_list = reopen_command();
+		right_branch = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 		right_branch = fill_simple_command(right_branch, token_list, command_name);
 	}
 	return (right_branch);
@@ -123,21 +157,18 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, \
 		dprintf(2, "Parse error near '%s'\n", token->value);
 		return (NULL);
 	}
-
-	/* Creating the new root */
 	complexe_command = ast_create_node((t_token*)(*token_list)->data, NULL, COMPLEXE_COMMAND);
 	ft_simple_lst_del_one(token_list, *token_list, NULL);
-
-	/* Creating the right branch */
-	right_branch = create_right_branch(complexe_command->token, token_list, command_name);
-	/* Push both branches as the child of the complexe commands */
-	/* This should occure only if no error has been spotted */
+	if (!(right_branch = create_right_branch(complexe_command->token, token_list, command_name)))
+	{
+		complexe_command = flush_tree(complexe_command);
+		left_branch = flush_tree(left_branch);
+		return (NULL);
+	}
 	child = ft_simple_lst_create(left_branch);
 	ft_simple_lst_pushback(&child, ft_simple_lst_create(right_branch));
-	if (complexe_command)
-		(complexe_command)->child = child;
+	(complexe_command)->child = child;
 	*command_name = 0;
-
 	return (complexe_command);
 }
 
@@ -190,7 +221,7 @@ t_ast			*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 		}
 		else
 		{
-			if ((ast = create_simple_command(ast, token_list, &command_name)) == NULL)
+			if ((ast = create_simple_command(token_list, &command_name)) == NULL)
 				return (NULL);
 		}
 		if (token_list && *token_list)
@@ -213,9 +244,11 @@ t_ast			*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 	return (ast);
 }
 
-t_ast 	*create_simple_command(t_ast *ast, t_list **token_list, \
+t_ast 	*create_simple_command(t_list **token_list, \
 		int *command_name)
 {
+	t_ast	*ast;
+
 	ast = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 	ast = fill_simple_command(ast, token_list, command_name);
 	*command_name = 0;

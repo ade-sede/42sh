@@ -144,7 +144,9 @@ void	main_loop(t_env *env)
 #endif
 		if (*buff != 0)
 		{
+#ifndef NO_TERMCAPS
 			buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
+#endif
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
 			ast = ast_parse(NULL, &token_list, &head);
@@ -168,7 +170,7 @@ void	main_loop(t_env *env)
 			ast = flush_tree(ast);
 			if (head != NULL)
 				ft_remove_head(&head, free_pipe);
-			/* free(buff); */
+			free(buff);
 		}
 #ifdef NO_TERMCAPS
 		else
