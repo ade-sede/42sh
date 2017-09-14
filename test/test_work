@@ -1,0 +1,22 @@
+base64 /dev/urandom | head -c 50 | grep a
+ls *
+ls [a]*
+ls [!a]*
+ls [!a-e]*
+ls [a-e]*
+ls {a..z}
+ls {a..z}{1..10}
+ls {a,{b,c}{1..10}}
+ls {a,{b,c}{1..10}}{a..b}
+ls {a,{b,c}{1..10}}{a..b}
+
+||
+&&
+2>1
+2>&1
+ls || ls -l
+echo "it works " | cat -e
+ls && ;
+kls ; 123 ; ls ; ls <
+base64 /dev/urandom | head -c 1000 | grep 42 | sed -e 's/Yes/g' -e 's/No/g'
+find ./srcs -type f -name "*" -exec cat {} \; | sed '/^\s*$/d' | sed -e '/^\//d' | sed -e '/^\*\*/d' | sed -e '/^\*/d' | wc -l

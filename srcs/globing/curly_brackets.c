@@ -35,7 +35,7 @@ int	curly_brackets_is_range(char *str)
 		return (0);
 	i += 2;
 	////printf("str %s\n", str + i);
-	if (!(ft_atoi_safe(str + i, &end_range)) && (str[i + 1] || ((start_range >= 10 || start_range <= 10) && !str[i + 1])))
+	if (!str[i] || !str[i + 1] || (!(ft_atoi_safe(str + i, &end_range)) && (((start_range >= 10 || start_range <= 10) && !str[i + 1]))))
 		return (0);
 	//printf("star_range: %d, end_range: %d\n", start_range, end_range);
 	return (1);

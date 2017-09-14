@@ -1,99 +1,45 @@
-ls | cat -e
-exit
+
 ls
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls &&
-make re
-exit
-exit
+
 ls
-exit
-echo "
-exit
-echo "
-exit
-echo "
-exit
-echo 
-echo ""
-echo "
-exit
-echo "
-e
-exit
-echo "
-exit
+
 ls
-echo "
-ls | cat -e
-echo "
-echo "
-echo "
-exit
-exit
-echo "
-echo "
-exit
-echo "
-exit
-echo "
-exit
-echo "
-exit
-echo "
-exit
-echo "
-exit
+
 ls
-exit
+
 ls
-exit
+
 ls
-exit
+
 ls
-exit
-ls
-exit
-ls
-exit
-ls
-exit
-exit
+
+
 ls
 ls
 ls
 ls
-exit
+
 ls
 ls | cat -e
 ls | cat -e
 &&
 && ls
-exit
+
 ls
-exit
-exit
-exit 1
-exit
+
+
+ 1
+
 ls
 cat <<
 ls
 ls | cat -e
 while
 ls | cat -e
-exit
+
 ls &&
 clear
-exit
+
 ls > "lol"
 cat lol
 =======
@@ -209,7 +155,7 @@ mkdir bultin
 mv echo.c bultin
 mv cd.c bultin
 mv pwd.c bultin
-mv exit.c bultin
+mv .c bultin
 mv setenv.c bultin
 mv unsetenv.c bultin
 mv env.c bultin
@@ -541,7 +487,7 @@ ls srcs/*array*
 man dirret
 man dirrent
 mv comple_init.c completion
-mv comple_exit_matched.c completion
+mv comple__matched.c completion
 cd  42sjh
 gc "ecriture de completion bientot finie"
 vi palloc.c
@@ -572,7 +518,7 @@ vi ft_putnstr.c
 vi srcs/completion/size_term.c
 gc "plus d erreur de compil 
 gc "plus d erreur de compil! "
-vi builtin/exit.c 
+vi builtin/.c 
 vi exec/exec_bin.c
 env -i ./minishell
 brew install ghi
@@ -586,7 +532,7 @@ ghi edit
 ghi edit 8
 ls completion
 v completion/comple_refresh.c
-vi comple_exit_matched.c
+vi comple__matched.c
 mkdir test_comple
 vi put_termcap.c
 vi edit_del.c
@@ -601,12 +547,12 @@ git diff | uniq | xargs vim
 git diff | vim
 git merge --abort
 vi srcs/line_editing/put_termcap.c
-echo #$@#££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£
-echo #$@#££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£"
-echo "#$@#££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£"
-echo $@#££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£
-echo #££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£
-echo ££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£
+echo #$@#Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£
+echo #$@#Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£"
+echo "#$@#Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£"
+echo $@#Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£
+echo #Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£
+echo Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£
 echo "fsfesfesfsefcdescfes"
 echo \\\n
 rm -rf 42shgithub
@@ -727,10 +673,10 @@ vi srcs/completion/comple_get_input.c
 mskr
 vi edit_move_cursor.c
 mv edit_move_cursor.c srcs/line_editing
-gc "edit exit et fonction qui bouge le curseur"
+gc "edit  et fonction qui bouge le curseur"
 vi vi srcs/exec/main_loop.c
 vi srcs/completion/comple_refresh.c
-vi srcs/completion/comple_exit_matched.c
+vi srcs/completion/comple__matched.c
 gc "prompt variable [ok] ;)"
 mv copy_paste.c srcs/line_editing
 mv edit_insert_str.c srcs/line_editing
@@ -916,7 +862,7 @@ cp ../minishell/minishell.h .
 vi minishell
 vi minishell.h
 rm minishell.h
-eexit
+e
 gc "essai d'un prompt"
 vi srcs/line_editing/*
 ghi
@@ -1017,12 +963,12 @@ ctags srcs/*
 ctag -r srcs
 ctags -r srcs
 man ctags
-ctags builtin/cd.c builtin/echo.c builtin/env.c builtin/exec_builtin.c builtin/exit.c builtin/history.c builtin/history_handle_options.c builtin/setenv.c builtin/unsetenv.c completion/comple_exit_matched.c completion/comple_get_input.c completion/comple_init.c completion/comple_matches.c completion/comple_move.c completion/comple_refresh.c completion/comple_signals.c completion/size_term.c env/add_var.c env/environ.c env/load_base_env.c env/prompt.c env/remove_var.c env/t_env.c exec/exec_bin.c exec/expand_args.c exec/main_loop.c exec/signals.c history/btsearch_add.c history/btsearch_exit.c history/btsearch_get_input.c history/btsearch_init.c history/btsearch_move.c history/btsearch_refresh.c history/history_init.c history/history_move.c history/history_move_loop.c history/history_refresh.c history/load_history.c line_editing/conf_term.c line_editing/copy_paste.c line_editing/edit_add.c line_editing/edit_del.c line_editing/edit_exit.c line_editing/edit_init.c line_editing/edit_insert_str.c line_editing/edit_move.c line_editing/edit_move_cursor.c line_editing/edit_refresh.c line_editing/edit_signals.c line_editing/get_input.c line_editing/put_termcap.c 
-ctags builtin/cd.c builtin/echo.c builtin/env.c builtin/exec_builtin.c builtin/exit.c builtin/history.c builtin/history_handle_options.c builtin/setenv.c builtin/unsetenv.c completion/comple_exit_matched.c completion/comple_get_input.c completion/comple_init.c completion/comple_matches.c completion/comple_move.c completion/comple_refresh.c completion/comple_signals.c completion/size_term.c env/add_var.c env/environ.c env/load_base_env.c env/prompt.c env/remove_var.c env/t_env.c exec/exec_bin.c exec/expand_args.c exec/main_loop.c exec/signals.c history/btsearch_add.c history/btsearch_exit.c history/btsearch_get_input.c history/btsearch_init.c history/btsearch_move.c history/btsearch_refresh.c history/history_init.c history/history_move.c history/history_move_loop.c history/history_refresh.c history/load_history.c line_editing/conf_term.c line_editing/copy_paste.c line_editing/edit_add.c line_editing/edit_del.c line_editing/edit_exit.c line_editing/edit_init.c line_editing/edit_insert_str.c line_editing/edit_move.c line_editing/edit_move_cursor.c line_editing/edit_refresh.c line_editing/edit_signals.c line_editing/get_input.c line_editing/put_termcap.c main.c return_failure.c
+ctags builtin/cd.c builtin/echo.c builtin/env.c builtin/exec_builtin.c builtin/.c builtin/history.c builtin/history_handle_options.c builtin/setenv.c builtin/unsetenv.c completion/comple__matched.c completion/comple_get_input.c completion/comple_init.c completion/comple_matches.c completion/comple_move.c completion/comple_refresh.c completion/comple_signals.c completion/size_term.c env/add_var.c env/environ.c env/load_base_env.c env/prompt.c env/remove_var.c env/t_env.c exec/exec_bin.c exec/expand_args.c exec/main_loop.c exec/signals.c history/btsearch_add.c history/btsearch_.c history/btsearch_get_input.c history/btsearch_init.c history/btsearch_move.c history/btsearch_refresh.c history/history_init.c history/history_move.c history/history_move_loop.c history/history_refresh.c history/load_history.c line_editing/conf_term.c line_editing/copy_paste.c line_editing/edit_add.c line_editing/edit_del.c line_editing/edit_.c line_editing/edit_init.c line_editing/edit_insert_str.c line_editing/edit_move.c line_editing/edit_move_cursor.c line_editing/edit_refresh.c line_editing/edit_signals.c line_editing/get_input.c line_editing/put_termcap.c 
+ctags builtin/cd.c builtin/echo.c builtin/env.c builtin/exec_builtin.c builtin/.c builtin/history.c builtin/history_handle_options.c builtin/setenv.c builtin/unsetenv.c completion/comple__matched.c completion/comple_get_input.c completion/comple_init.c completion/comple_matches.c completion/comple_move.c completion/comple_refresh.c completion/comple_signals.c completion/size_term.c env/add_var.c env/environ.c env/load_base_env.c env/prompt.c env/remove_var.c env/t_env.c exec/exec_bin.c exec/expand_args.c exec/main_loop.c exec/signals.c history/btsearch_add.c history/btsearch_.c history/btsearch_get_input.c history/btsearch_init.c history/btsearch_move.c history/btsearch_refresh.c history/history_init.c history/history_move.c history/history_move_loop.c history/history_refresh.c history/load_history.c line_editing/conf_term.c line_editing/copy_paste.c line_editing/edit_add.c line_editing/edit_del.c line_editing/edit_.c line_editing/edit_init.c line_editing/edit_insert_str.c line_editing/edit_move.c line_editing/edit_move_cursor.c line_editing/edit_refresh.c line_editing/edit_signals.c line_editing/get_input.c line_editing/put_termcap.c main.c return_failure.c
 mv tags ..
 vi builtin/history
 vi builtin/*
-vi builtin/cd.c builtin/echo.c builtin/env.c builtin/exec_builtin.c builtin/exit.c builtin/history.c builtin/history_handle_options.c builtin/setenv.c builtin/unsetenv.c completion/comple_exit_matched.c completion/comple_get_input.c completion/comple_init.c completion/comple_matches.c completion/comple_move.c completion/comple_refresh.c completion/comple_signals.c completion/size_term.c env/add_var.c env/environ.c env/load_base_env.c env/prompt.c env/remove_var.c env/t_env.c exec/exec_bin.c exec/expand_args.c exec/main_loop.c exec/signals.c history/btsearch_add.c history/btsearch_exit.c history/btsearch_get_input.c history/btsearch_init.c history/btsearch_move.c history/btsearch_refresh.c history/history_init.c history/history_move.c history/history_move_loop.c history/history_refresh.c history/load_history.c line_editing/conf_term.c line_editing/copy_paste.c line_editing/edit_add.c line_editing/edit_del.c line_editing/edit_exit.c line_editing/edit_init.c line_editing/edit_insert_str.c line_editing/edit_move.c line_editing/edit_move_cursor.c line_editing/edit_refresh.c line_editing/edit_signals.c line_editing/get_input.c line_editing/put_termcap.c 
+vi builtin/cd.c builtin/echo.c builtin/env.c builtin/exec_builtin.c builtin/.c builtin/history.c builtin/history_handle_options.c builtin/setenv.c builtin/unsetenv.c completion/comple__matched.c completion/comple_get_input.c completion/comple_init.c completion/comple_matches.c completion/comple_move.c completion/comple_refresh.c completion/comple_signals.c completion/size_term.c env/add_var.c env/environ.c env/load_base_env.c env/prompt.c env/remove_var.c env/t_env.c exec/exec_bin.c exec/expand_args.c exec/main_loop.c exec/signals.c history/btsearch_add.c history/btsearch_.c history/btsearch_get_input.c history/btsearch_init.c history/btsearch_move.c history/btsearch_refresh.c history/history_init.c history/history_move.c history/history_move_loop.c history/history_refresh.c history/load_history.c line_editing/conf_term.c line_editing/copy_paste.c line_editing/edit_add.c line_editing/edit_del.c line_editing/edit_.c line_editing/edit_init.c line_editing/edit_insert_str.c line_editing/edit_move.c line_editing/edit_move_cursor.c line_editing/edit_refresh.c line_editing/edit_signals.c line_editing/get_input.c line_editing/put_termcap.c 
 vi */*
 ls */*
 vi line_editing/get_input.c
@@ -1247,7 +1193,7 @@ gc "globing marche bine avec [ * et / a tester"
 ./a.out "[g]"
 ./a.out "[*]"
 ./a.out "[asaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaady-pnfg*]*"
-cat srcs/builtin/cd.c srcs/builtin/echo.c srcs/builtin/env.c srcs/builtin/exec_builtin.c srcs/builtin/exit.c srcs/builtin/history.c srcs/builtin/history_handle_options.c srcs/builtin/setenv.c srcs/builtin/unsetenv.c srcs/completion/comple_exit_matched.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_matches.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/env/add_var.c srcs/env/environ.c srcs/env/load_base_env.c srcs/env/prompt.c srcs/env/remove_var.c srcs/env/t_env.c srcs/exec/exec_bin.c srcs/exec/expand_args.c srcs/exec/main_loop.c srcs/exec/signals.c srcs/globing/glob.c srcs/globing/square_bracket.c srcs/globing/star.c srcs/history/btsearch_add.c srcs/history/btsearch_exit.c srcs/history/btsearch_get_input.c srcs/history/btsearch_init.c srcs/history/btsearch_move.c srcs/history/btsearch_refresh.c srcs/history/history_init.c srcs/history/history_move.c srcs/history/history_move_loop.c srcs/history/history_refresh.c srcs/history/load_history.c srcs/line_editing/conf_term.c srcs/line_editing/copy_paste.c srcs/line_editing/edit_add.c srcs/line_editing/edit_del.c srcs/line_editing/edit_exit.c srcs/line_editing/edit_init.c srcs/line_editing/edit_insert_str.c srcs/line_editing/edit_move.c srcs/line_editing/edit_move_cursor.c srcs/line_editing/edit_refresh.c srcs/line_editing/edit_signals.c srcs/line_editing/get_input.c srcs/line_editing/put_termcap.c srcs/main.c srcs/return_failure.c | wc -l
+cat srcs/builtin/cd.c srcs/builtin/echo.c srcs/builtin/env.c srcs/builtin/exec_builtin.c srcs/builtin/.c srcs/builtin/history.c srcs/builtin/history_handle_options.c srcs/builtin/setenv.c srcs/builtin/unsetenv.c srcs/completion/comple__matched.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_matches.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/env/add_var.c srcs/env/environ.c srcs/env/load_base_env.c srcs/env/prompt.c srcs/env/remove_var.c srcs/env/t_env.c srcs/exec/exec_bin.c srcs/exec/expand_args.c srcs/exec/main_loop.c srcs/exec/signals.c srcs/globing/glob.c srcs/globing/square_bracket.c srcs/globing/star.c srcs/history/btsearch_add.c srcs/history/btsearch_.c srcs/history/btsearch_get_input.c srcs/history/btsearch_init.c srcs/history/btsearch_move.c srcs/history/btsearch_refresh.c srcs/history/history_init.c srcs/history/history_move.c srcs/history/history_move_loop.c srcs/history/history_refresh.c srcs/history/load_history.c srcs/line_editing/conf_term.c srcs/line_editing/copy_paste.c srcs/line_editing/edit_add.c srcs/line_editing/edit_del.c srcs/line_editing/edit_.c srcs/line_editing/edit_init.c srcs/line_editing/edit_insert_str.c srcs/line_editing/edit_move.c srcs/line_editing/edit_move_cursor.c srcs/line_editing/edit_refresh.c srcs/line_editing/edit_signals.c srcs/line_editing/get_input.c srcs/line_editing/put_termcap.c srcs/main.c srcs/return_failure.c | wc -l
 touch {a..z}{1..10}
 ls {a-z}[1-5]
 ls {a..z}[1-5]
@@ -1289,7 +1235,6 @@ rm \{ab..cd\}
 ./a.out "a{1..3}b{1..3}c{1..3}e"
 ./a.out "a{1..3}b{1..3}c{1..3}d"
 touch {1...}
-touch {1..}}
 touch {..1}
 touch {...1}
 rm 0 1
@@ -1567,7 +1512,7 @@ gc "premier commit : correction du segf qq entre en envoyant a exec que si argv[
 git push --set-upstream intra master
 v libft
 rm -rf a.out.dSYM
-v srcs/builtin/cd.c srcs/builtin/echo.c srcs/builtin/env.c srcs/builtin/exec_builtin.c srcs/builtin/exit.c srcs/builtin/history.c srcs/builtin/history_handle_options.c srcs/builtin/setenv.c srcs/builtin/unsetenv.c srcs/completion/comple_exit_matched.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_matches.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/env/add_var.c srcs/env/environ.c srcs/env/load_base_env.c srcs/env/prompt.c srcs/env/remove_var.c srcs/env/t_env.c srcs/exec/exec_bin.c srcs/exec/expand_args.c srcs/exec/main_loop.c srcs/exec/signals.c srcs/history/btsearch_add.c srcs/history/btsearch_exit.c srcs/history/btsearch_get_input.c srcs/history/btsearch_init.c srcs/history/btsearch_move.c srcs/history/btsearch_refresh.c srcs/history/history_init.c srcs/history/history_move.c srcs/history/history_move_loop.c srcs/history/history_refresh.c srcs/history/load_history.c srcs/line_editing/conf_term.c srcs/line_editing/copy_paste.c srcs/line_editing/edit_add.c srcs/line_editing/edit_del.c srcs/line_editing/edit_exit.c srcs/line_editing/edit_init.c srcs/line_editing/edit_insert_str.c srcs/line_editing/edit_move.c srcs/line_editing/edit_move_cursor.c srcs/line_editing/edit_refresh.c srcs/line_editing/edit_signals.c srcs/line_editing/get_input.c srcs/line_editing/put_termcap.c 
+v srcs/builtin/cd.c srcs/builtin/echo.c srcs/builtin/env.c srcs/builtin/exec_builtin.c srcs/builtin/.c srcs/builtin/history.c srcs/builtin/history_handle_options.c srcs/builtin/setenv.c srcs/builtin/unsetenv.c srcs/completion/comple__matched.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_matches.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/env/add_var.c srcs/env/environ.c srcs/env/load_base_env.c srcs/env/prompt.c srcs/env/remove_var.c srcs/env/t_env.c srcs/exec/exec_bin.c srcs/exec/expand_args.c srcs/exec/main_loop.c srcs/exec/signals.c srcs/history/btsearch_add.c srcs/history/btsearch_.c srcs/history/btsearch_get_input.c srcs/history/btsearch_init.c srcs/history/btsearch_move.c srcs/history/btsearch_refresh.c srcs/history/history_init.c srcs/history/history_move.c srcs/history/history_move_loop.c srcs/history/history_refresh.c srcs/history/load_history.c srcs/line_editing/conf_term.c srcs/line_editing/copy_paste.c srcs/line_editing/edit_add.c srcs/line_editing/edit_del.c srcs/line_editing/edit_.c srcs/line_editing/edit_init.c srcs/line_editing/edit_insert_str.c srcs/line_editing/edit_move.c srcs/line_editing/edit_move_cursor.c srcs/line_editing/edit_refresh.c srcs/line_editing/edit_signals.c srcs/line_editing/get_input.c srcs/line_editing/put_termcap.c 
 vi .dotfiles/zaz_header.vim
 vi includes/*
 cat * |less
@@ -1677,7 +1622,7 @@ v srcs/builtin
 cd srcs/builtin
 v echo.c
 cd line_editing
-v edit_exit.c
+v edit_.c
 git remote add https://github.com/vcombey/minishell_intra.git
 git remote add github https://github.com/vcombey/minishell_intra.git
 gp github
@@ -1699,7 +1644,7 @@ v base/base.sql
 v base.sql
 rm -rf database.php
 v User.php
-/Users/vcombey/Downloads/httpd-2.4.25/buildconf ; exit;
+/Users/vcombey/Downloads/httpd-2.4.25/buildconf ; ;
 cp -rf ~/42/camagru
 v config/User.php
 cp -rf ~/42/camagru/ .
@@ -2234,20 +2179,20 @@ echo $$ | echo $$
 echo lala | echo $dsdf
 echo $?
 echo lala | fesfes
-echo lala | exit efsfessef
-exit efsefs
-exit deesefs
-exit deesefs | cat -e
-ls | exit deesefs 
+echo lala |  efsfessef
+ efsefs
+ deesefs
+ deesefs | cat -e
+ls |  deesefs 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-$> $> e$> ex$> exi$> exit
+$> $> e$> ex$> exi$> 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-⃾��  42sh git:(buff_size) ⃼�� $> $> e$> ex$> exi$> exit
-⃾��  42sh git:(buff_size) >....
+â¾¼  42sh git:(buff_size) â¼· $> $> e$> ex$> exi$> 
+â¾¼  42sh git:(buff_size) >....
 git merge buff_size
 v includes/line_editing.h 
-rm $ e$ ex$ exi$ exit
+rm $ e$ ex$ exi$ 
 gc "remalloc a buff_line_size dans edit line init"
 git checkout -b reopen_prompt
 cp ~/42/minishell_rendu/libft/srcs/ft_strjoin.c
@@ -2367,7 +2312,7 @@ gco master
 cd ~/42/42sh
 find . -name prompt
 git merge prompt
-gc "reglage du prompt et exit dans la completion si on appui sur un charactere"
+gc "reglage du prompt et  dans la completion si on appui sur un charactere"
 git merge
 ls {1..10}
 ls {1..10}{a..z}
@@ -2390,7 +2335,7 @@ man read
 man 2 read
 gc "le prompt remarche en metant un read a la place d un get_next_line -> get next line doit beuger"
 v libft/srcs/ft_strjoin.c
-v srcs/completion/comple_exit_matched.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_matches.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c 
+v srcs/completion/comple__matched.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_matches.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c 
 gc "modifie edit loop to get keycode form completion"
 while 1\
 
@@ -2535,7 +2480,7 @@ gc "changement de get next line, petite erreur dans ft_strjoin3_free corigee, pr
 git merge prompt_2
 v srcs/env/prompt.c 
 git commit -m "supresion de ahead dans la branche de git du prompt"
-v srcs/line_editing/edit_exit.c
+v srcs/line_editing/edit_.c
 v srcs/history/history_init.c
 v srcs/lexer-parser/lexer.c 
 gc "free du lex->line a la fin du lexer"
@@ -2715,7 +2660,7 @@ v libft/includes/list.h
 v libft/srcs/ft_simple_lst_del_one.c 
 [make
 v srcs/lexer-parser/free.c
-v srcs/completion/comple_bin_matches.c srcs/completion/comple_exit_matched.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_matches.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/completion/ternary_search_tree.c 
+v srcs/completion/comple_bin_matches.c srcs/completion/comple__matched.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_matches.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/completion/ternary_search_tree.c 
 cd 412
 gc "plus de leaks et correction qq il n y a pas de match de completion"
 mv srcs/completion/comple_matches.c srcs/completion/comple_file_matches.c
@@ -2725,14 +2670,14 @@ gc "la completion marche bien sauf pour /"
 export PATH=/Users/vcombey/42/42sh
 21sh
 v srcs/builtin/setenv.c
-v srcs/completion/comple_exit_matched.c
+v srcs/completion/comple__matched.c
 ls 
 gc "la recreation de l arbre marche pas"
 norminette srcs/* 
 norminette srcs/*  libft/*
 norminette srcs/*  libft/* | wc -l
 norminette libft/*
-v srcs/builtin/cd.c srcs/builtin/echo.c srcs/builtin/env.c srcs/builtin/exec_builtin.c srcs/builtin/exit.c srcs/builtin/history.c srcs/builtin/history_handle_options.c srcs/builtin/setenv.c srcs/builtin/unsetenv.c srcs/completion/comple_bin_matches.c srcs/completion/comple_exit_matched.c srcs/completion/comple_file_matches.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/completion/ternary_search_tree.c srcs/env/add_var.c srcs/env/env_create_completion_tree.c srcs/env/environ.c srcs/env/load_base_env.c srcs/env/prompt.c srcs/env/remove_var.c srcs/env/t_env.c srcs/exec/exec_bin.c srcs/exec/exec_simple_commands.c srcs/exec/exec_tree.c srcs/exec/expand_args.c srcs/exec/main_loop.c srcs/exec/param_expansion.c srcs/exec/pipe.c srcs/exec/redir.c srcs/exec/signals.c srcs/exec/tild_expansion.c srcs/exec/word_expansion.c srcs/hash_table/a.out srcs/hash_table/hash.c srcs/hash_table/log srcs/hash_table/random srcs/history/btsearch_add.c srcs/history/btsearch_del.c srcs/history/btsearch_exit.c srcs/history/btsearch_get_input.c srcs/history/btsearch_init.c srcs/history/btsearch_move.c srcs/history/btsearch_refresh.c srcs/history/btsearch_signals.c srcs/history/history_init.c srcs/history/history_move.c srcs/history/history_move_loop.c srcs/history/history_refresh.c srcs/history/load_history.c srcs/lexer-parser/casual_node.c srcs/lexer-parser/check_match.c srcs/lexer-parser/free.c srcs/lexer-parser/get_token_id.c srcs/lexer-parser/init.c srcs/lexer-parser/lexer.c srcs/lexer-parser/match_expand.c srcs/lexer-parser/match_operator.c srcs/lexer-parser/match_word.c srcs/lexer-parser/parser.c srcs/lexer-parser/redir.c srcs/lexer-parser/start_token.c srcs/lexer-parser/update_state.c srcs/line_editing/conf_term.c srcs/line_editing/copy_paste.c srcs/line_editing/edit_add.c srcs/line_editing/edit_del.c srcs/line_editing/edit_exit.c srcs/line_editing/edit_get_input.c srcs/line_editing/edit_init.c srcs/line_editing/edit_insert_str.c srcs/line_editing/edit_move.c srcs/line_editing/edit_move_cursor.c srcs/line_editing/edit_refresh.c srcs/line_editing/edit_signals.c srcs/line_editing/get_input.c srcs/line_editing/put_termcap.c 
+v srcs/builtin/cd.c srcs/builtin/echo.c srcs/builtin/env.c srcs/builtin/exec_builtin.c srcs/builtin/.c srcs/builtin/history.c srcs/builtin/history_handle_options.c srcs/builtin/setenv.c srcs/builtin/unsetenv.c srcs/completion/comple_bin_matches.c srcs/completion/comple__matched.c srcs/completion/comple_file_matches.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/completion/ternary_search_tree.c srcs/env/add_var.c srcs/env/env_create_completion_tree.c srcs/env/environ.c srcs/env/load_base_env.c srcs/env/prompt.c srcs/env/remove_var.c srcs/env/t_env.c srcs/exec/exec_bin.c srcs/exec/exec_simple_commands.c srcs/exec/exec_tree.c srcs/exec/expand_args.c srcs/exec/main_loop.c srcs/exec/param_expansion.c srcs/exec/pipe.c srcs/exec/redir.c srcs/exec/signals.c srcs/exec/tild_expansion.c srcs/exec/word_expansion.c srcs/hash_table/a.out srcs/hash_table/hash.c srcs/hash_table/log srcs/hash_table/random srcs/history/btsearch_add.c srcs/history/btsearch_del.c srcs/history/btsearch_.c srcs/history/btsearch_get_input.c srcs/history/btsearch_init.c srcs/history/btsearch_move.c srcs/history/btsearch_refresh.c srcs/history/btsearch_signals.c srcs/history/history_init.c srcs/history/history_move.c srcs/history/history_move_loop.c srcs/history/history_refresh.c srcs/history/load_history.c srcs/lexer-parser/casual_node.c srcs/lexer-parser/check_match.c srcs/lexer-parser/free.c srcs/lexer-parser/get_token_id.c srcs/lexer-parser/init.c srcs/lexer-parser/lexer.c srcs/lexer-parser/match_expand.c srcs/lexer-parser/match_operator.c srcs/lexer-parser/match_word.c srcs/lexer-parser/parser.c srcs/lexer-parser/redir.c srcs/lexer-parser/start_token.c srcs/lexer-parser/update_state.c srcs/line_editing/conf_term.c srcs/line_editing/copy_paste.c srcs/line_editing/edit_add.c srcs/line_editing/edit_del.c srcs/line_editing/edit_.c srcs/line_editing/edit_get_input.c srcs/line_editing/edit_init.c srcs/line_editing/edit_insert_str.c srcs/line_editing/edit_move.c srcs/line_editing/edit_move_cursor.c srcs/line_editing/edit_refresh.c srcs/line_editing/edit_signals.c srcs/line_editing/get_input.c srcs/line_editing/put_termcap.c 
 git checkout 
 git checkout master --form
 git checkout master --force
@@ -2746,7 +2691,7 @@ git checkout -b vcombeyIntra
 apm install linter
 which norminette
 k 
-norminette srcs/builtin/exit.c
+norminette srcs/builtin/.c
 norminette srcs/echo
 v builtin/echo.c
 v builtin/*
@@ -2756,7 +2701,7 @@ rm -rf 42sh
 git clone https://github.com/Ixskill/42sh.git
 rm exfile
 cd 4
-v srcs/completion/comple_bin_matches.c srcs/completion/comple_exit_matched.c srcs/completion/comple_file_matches.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/completion/ternary_search_tree.c 
+v srcs/completion/comple_bin_matches.c srcs/completion/comple__matched.c srcs/completion/comple_file_matches.c srcs/completion/comple_get_input.c srcs/completion/comple_init.c srcs/completion/comple_move.c srcs/completion/comple_refresh.c srcs/completion/comple_signals.c srcs/completion/size_term.c srcs/completion/ternary_search_tree.c 
 ls ls
 git clone https://github.com/Zevran/Norme-C.git Norme
 cd Norme
@@ -2822,7 +2767,7 @@ norminette srcs/completion/comple_init.c
 norminette srcs/completion/comple_file_matches.c
 norminette srcs/completion/
 norminette srcs/* | wc -l
-norminette srcs/completion/comple_exit_matched.c
+norminette srcs/completion/comple__matched.c
 norminette srcs/completion/comple_get_word_cursor.c
 norminette srcs/completion/*
 ga srcs/completion/* libft/*
@@ -2843,7 +2788,7 @@ find -name hash
 find . -name hash
 v ../minishell/srcs/hash_table/hash.c
 gc "env et hash table norme"
-norminette srcs/history/btsearch_exit.c
+norminette srcs/history/btsearch_.c
 norminette srcs/history
 norminette srcs/history/btsearch_get_input.c
 norminette srcs/history/*
@@ -2962,8 +2907,8 @@ norminette | grep "error" -B 1
 rm -rf test
 norminette | grep "Error" -B 2
 v srcs/exec/pipe.c
-v srcs/history/btsearch_exit.c
-v srcs/builtin/exit.c
+v srcs/history/btsearch_.c
+v srcs/builtin/.c
 v srcs/exec
 ./21sh]
 norminette srcs/exec/exec_simple_commands.c | grep "Error" -B 1
@@ -2980,7 +2925,7 @@ v srcs/exec/exec_operator.c
 norminette exec/exec_bin.c | grep "Error" -B 1
 gc "exec bin norme difficile"
 v srcs/builtin/exec_builtin.c
-sddsexit
+sdds
 gc "quasi a la norme"
 norminette  | grep "Error" -B 1
 rm srcs/exec/redir_utils.c
@@ -3068,7 +3013,7 @@ make
 mqke
 make
 ./21sh.dSYM
-exit
+
 cd 42
 cd minishel_intra
 ..
@@ -3403,7 +3348,7 @@ make
 ./21sh
 make
 v srcs/completion/comple_signals.c
-exit
+
 make re
 ./21sh
 ls
@@ -3446,7 +3391,7 @@ pkill -SIGSEGV 21sh
 make ASAN=yes
 ./21sh
 pkill -SIGSEGV 21sh
-exit
+
 cd 42
 cd 42sj
 cd 42sh
@@ -3459,7 +3404,7 @@ norminette
 ls
 v srcs/history/*
 ./21sh
-exit
+
 pkill -SIGSEGV 21sh
 sl;mdvlm;vd
 cd 42
@@ -3560,7 +3505,7 @@ gs
 ls
 la
 ./minishell
-exit
+
 cd 42
 cd minishell
 ls
@@ -4418,7 +4363,7 @@ ls
 cd 
 cd Downloads
 ls
-mv Numérisation_20170829.png attestation_Combey_Henri
+mv NumÃ©risation_20170829.png attestation_Combey_Henri
 mv attestation_Combey_Henri attestation_Combey_Henri.pdf
 open attestation_Combey_Henri.pdf
 npm run dev
@@ -4624,8 +4569,8 @@ pkill -SIGSEGV ft_select
 ./ft_select /*
 ./ft_select 1 2 3 1 4 54 1
 ./ft_select 1 2 3 1 4 54 1 1 2 12 1 1 2
-./ft_select  七�快中僯�僯�僼� 怃�絃�活治起孃�僼��＃�水人倃� 
-./ft_select  七�快中僯�僯�僼� 怃�絃�活治起孃�僼��＃�水人倃� 亂惵�偃�惶��烴�烴��價�
+./ft_select  ä¸ªå¿«ä¸­å¯«å¯¤å¼¨ æ½çµ°æ´»æ²»èµ·å­°å¼«ï¼ºæ°´äººå± 
+./ft_select  ä¸ªå¿«ä¸­å¯«å¯¤å¼¨ æ½çµ°æ´»æ²»èµ·å­°å¼«ï¼ºæ°´äººå± äºæµ¸å§æ¶§ç´¢ç´¿å¹¨
 ls -l
 ls -l srcs
 ls -l includes
@@ -5199,7 +5144,7 @@ htop
 ls
 cd /tmp
 ls
-exit
+
 git clone https://github.com/w0dm4n/ft_select.git select
 cd select
 ls
@@ -5214,7 +5159,7 @@ make re
 `./ft_select "echo"`
 htop
 ps -a
-exit
+
 ps -a
 killall "ft_select"
 khjfew
@@ -5271,7 +5216,7 @@ env -i ./ft_select env
 fg
 ./ft_select `env`
 ..
-exit
+
 make
 ./ft_select `env`
 ./21sh
@@ -5521,7 +5466,7 @@ v test/glob.c
 v srcs/globing/*
 make test_glob
 ./a.out "*"
-exit
+
 vls
 ls
 ./21sh
@@ -7072,7 +7017,7 @@ make
 leaks rtv1
 make
 ./rtv1 demo.1
- �
+â¸
 ./rtv1 demo.1
 leaks rtv1
 make
@@ -8553,7 +8498,7 @@ make APPEND="-D PID"
 cd. ../42sh
 cd ../42sh
 clear
-¬./21
+Â¬./21
 ./21sh
 v libft/srcs/ft_memcpy.c
 v libft/srcs/ft_strtrim.c
@@ -8653,7 +8598,7 @@ make
 clear
 make
 ./21sh
-exit
+
 cd 42
 cd 42sh
 make
@@ -8670,7 +8615,7 @@ clear
 v srcs/lexer-parser/lexer.c
 v includes/lexer.h
 clear
-exit
+
 mk{dir,dor}
 ls
 rm mkdor
@@ -8680,7 +8625,7 @@ bash
 v srcs/lexer-parser/match_word.c
 cat >{<,2}
 cat <{<,2}
-exit
+
 ls -{a,l}
 ls -{a,srcs/*}
 ls {a,srcs/*}
@@ -8690,7 +8635,7 @@ ls s{rdsfdfs,rcs/*}
 bash}
 bash
 clear
-exit
+
 ls
 cd 42
 ls
@@ -8700,15 +8645,15 @@ clear
 make
 clear
 ./21sh
-exit
+
 make
 make re
 clear
 ls
 ./21sh
-exit
+
 make
-exit
+
 make re
 make fclean
 make
@@ -8716,7 +8661,7 @@ make re
 clear
 ./21sh
 clear
-exit
+
 ks
 ls
 make
@@ -8724,9 +8669,9 @@ make
 make re
 make
 ./21sh
-exit
+
 Kt
-exit
+
 ls
 ./21sh
 leaks 42sh
@@ -8748,7 +8693,7 @@ bash
 touch lol
 open lol
 ls
-exit
+
 ..
 ls
 cd rtv1
@@ -8804,7 +8749,7 @@ make
 make ASAN=yes
 ./21sh
 pkill 21sh
-exit
+
 cd 42/42sh
 ld
 ls
@@ -8874,7 +8819,7 @@ make
 make ASAN=yes
 ./21sh
 pkill 21sh
-exit
+
 ls
 make re
 make re ASAN=yes
@@ -9180,7 +9125,7 @@ cat
 ./21sh
 ls
 ca
-exit
+
 cd 42
 cd 42sh
 ca
@@ -9654,7 +9599,7 @@ time
 date
 make re APPEND="-D PID -D NO_TERMCAPS"
 lldb ./21sh
-exit
+
 cd 42/42sh
 ls
 ./21sh
@@ -9954,13 +9899,13 @@ while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "70
 ls | cat -e
 ls
 cat
-exit
+
 make   APPEND="-D PID"
 ./21sh
 while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "71066"; sleep 1 ; done
-ls | cat -e | exit
+ls | cat -e | 
 fg
-ls | cat -e | exit
+ls | cat -e | 
 ls
 cd 42
 cd 42sh
@@ -10011,7 +9956,7 @@ cat
 make   APPEND="-D PID"
 ./21sh
 while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "83900"; sleep 1 ; done
-exit
+
 make
 make   APPEND="-D PID"
 ./21sh
@@ -10106,7 +10051,7 @@ gs
 git diff
 gs
 ga .
-gc "exit for env"
+gc " for env"
 gp
 gs
 make
@@ -10259,7 +10204,7 @@ cd Library
 ls
 rm -rf *
 pkill 21sh
-exit
+
 cd
 cd 42
 cd 42sh
@@ -10390,75 +10335,75 @@ make ASAN=yes
 v ~/.zsh_history
 cp ~/.zsh_history .
 exxit
-exit
-exit
+
+
 ls -k
 cp ../ft_select/includes/struct.h .
 ls
 rm struct.h
 gs
 git status
-exit
-exit
+
+
 ls
 ls -kl
 v libft/srcs/ft_strstr.c
 vim libft/srcs/ft_strstr.c
 vim libft/srcs/ft_strnstr.c
-exit
-exit
-exit
-exit
-exit
-exit
-exit
+
+
+
+
+
+
+
 ls
 ls
-exit
+
 ls
-exit
-exit
+
+
 xit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
+
+
+
+
+
+
+
+
 v .21sh_history
 vim .21sh_history
-exit
-exit
+
+
 ls
 gs
 ./21sh
-cexit
-exit
+c
+
 ls && ||
 ls
 ls
 ls | cat -e
-exit
+
 ls
-exit
+
 ls
-exit
+
 ls
 echo "
 ls &&
 ls &&
-exit
+
 env -i ls
 ls
-exit
+
 ls
 ls
 ls ||
-exit
+
 ls
-exit
+
 en -u ls
 env -u ls
 env -u PATH ls
@@ -10473,21 +10418,21 @@ env
 env ls
 env ls
 env -i ls
-exit
+
 env ls
 env -i ls
 env -u PATH ls
 env lala=lolo ls
 exiy
-exit
+
 ls [a
 ls [a]
 ls [a]*
 ls {a,b,c,d}
 ls {a,{1..10},c,d}
 ls {a,{c,d}{1..10},c,d}
-exit
-exiteexit
+
+e
 xit
 ls *
 ls [c]
@@ -10504,69 +10449,69 @@ ls {,}
 ls [,]
 ls [cd,cd]
 ls
-exit
+
 ||
 || &&
-exit
-exit
+
+
 ls
-exit
-exit
+
+
 ls | cat -e
-exit
+
 ls
-ls
-ls | cat -e
-ls
-exit
 ls
 ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
+ls
+
 ls
 ls | cat -e
-exit
+
 ls | cat -e
-exit
+
 ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
+
 ls
-exit
+ls | cat -e
+
+ls | cat -e
+
+ls | cat -e
+
+ls | cat -e
+
+ls | cat -e
+
+ls | cat -e
+
+ls | cat -e
+
+ls
+
 it
 ls | cat -e
-exit
+
 ls | cat -e
 git s
 git diff
 git diff srcs/lexer-parser/parser.c
 git diff srcs/exec/main_loop.c
 clear
-exit
+
 ls
 ls && ls
 ls | cat -e
 clear
-exit
+
 ls | cat -e
-exit
+
 ls | cat -e
-exit
+
 ls | cat -e
-exit
+
 ls | cat -e
 clear
-exit
+
 ls > foo
 cat foo
 rm foo
@@ -10576,46 +10521,46 @@ cat bar
 rm foo rm bar
 ls
 clear
-exit
-exit
+
+
 cat <<
 cat <<
 cat <<
 cat <
 ls < ; ls
-exit
+
 ls < ; ls
 clear
 < ls
 < ls
-exit
+
 < ls
 < ls
 ls < ; ls
 ls < && ; ls
-exit
+
 ls && ls < ; ls lol
 ls && ls < ; ls lol
 ls
 ls
-exit
+
 ls
 ls
-exit
+
 ls < ; ls
-exit
+
 ls | cat -e
-exit
+
 ls | cat -e
-exit
+
 ls < ; ls ls ls ; ls ; ls ; ls
 ls < & l 
 ls && < ls
-exit
+
 <<
 << EOF
-exit
-exit
+
+
 ls &&
 ls &&
 ls &&
@@ -10645,7 +10590,7 @@ ls
 ls
 ls
 ls
-exit
+
 ls
 ls
 ls
@@ -10661,7 +10606,7 @@ ls
 ls
 ls
 ls
-exit
+
 ls
 ls
 ls
@@ -10670,184 +10615,184 @@ ls
 ls
 ls | cat -e
 ls
-exit
-exit
+
+
 ls
 ls << EOF
-exit
+
 ls <<
-exit
+
 ls
 ls | cat -e
 ls > foo
 rm foo
 ls <<
 cat << EOF
-exit
+
 cat << EOF
-exit
+
 cat << EOF
-exit
+
 cat << EOF
-exit
+
 cat << EOF
-exit
+
 cat << EOF
-exit
+
 ls | cat -e
 ls && ls
-ls && echo "lol" && 1312312 || exit
+ls && echo "lol" && 1312312 || 
 ls && echo "lol" && 1312312 || echo "well"
-exit
+
 ls &&
-exit
+
 && ls
 && ls
 && ls
 && ls
 && ls
-exit
+
 && ls
-exit
+
 ls &&
-exit
+
 && ls
 ls &&
 ls ;
-exit
+
 ls ;
-exit
+
 ls &&
 ls &&
 ls | cat -e
-exit
+
 ls | cat -e
 ls |
-exit
-exit
+
+
 ls | cat -e
 ls && 
-exit
+
 ls
 ls &&
 ls && 
-exit
+
 ls &&
-exit
+
 ls |
 ls && echo "qeqweqe"
 ls &&
 clear
 ls &&
-exit
+
 ls 
-exit
+
 ls | cat -e
 ls | cat -e
-exit
+
 ls &&
 ls |
-exit
+
 ls &&
-exit
+
 ls
 ls &&
-exit
+
 ls &&
-exit
+
 ls && ls
-exit
+
 ls &&
-exit
+
 ls &&
-exit
+
 ls &&
 ls &&
 ls &&
-exit
+
 echo "
 echo "lol"
 echo "
-exit
+
 echo "
 $(echo ls)
-exit
+
 ""
-exit
-exit
-exit
-exit
+
+
+
+
 ls | cat -e
 echo "
-exit
+
 echo "
-exit
+
 ls
 echo "
-exit
-exit
-exit
+
+
+
 ls 
 echo "
-exit
+
 &&
 && ls
 || ls
 ls <
 ls >
-exit
+
 echo "
-exit
+
 echo "
-exit
+
 echo "
 echo "ls"
 
-exit
+
 echo "
 echo "ls"
-exit
+
 echo "ls"
 ls "libft"
 libft
 ls
-exit
+
 echo "echo "
 ls &&ls && ls
-exit
-exit
+
+
 ls && ls && ls
-exit
+
 ls && 
-ls &&  ls && exit
-ls && ls && exit
-exit
+ls &&  ls && 
+ls && ls && 
+
 ls && ls
-exit
+
 ls && ls
-exit
+
 ls && ls
-exit
+
 echo "ls"
 echo "ls"
-exit
+
 ls && ls
-exit
+
 echo "ls"
-exit
+
 ls && ls
 clear
-exit
+
 < auteur
 < command
 ls
-exit
+
 ls | cat -e
 clear
-exit
+
 ls && ls
 ls && ; ; && ls
-exit
+
 ls && ;
 ls && ;
 &&
@@ -10866,7 +10811,7 @@ ls && ls && cat
 ls && ls && efsefes
 ls && ls &&  cat
 ls && ls && ; ; ; ; ls
-exit
+
 ls && ls && ls
 ls && ls && ;
 ls && ls && ; ; ; ; ls
@@ -10874,14 +10819,14 @@ ls && cat
 ls && cat
 ls &&  dsdsd
 cat .21sh_history
-exit
+
 ||
-exit
-exit
+
+
 ls
 ||
 || && &&
-exit
+
 clear
 ls
 pwd
@@ -10918,207 +10863,14 @@ ls {a,{b,c}{1..10}}{a..b}
 ls {a,{b,c}{1..10}}{a..b}
 v .21sh_history
 vim .21sh_history
-exit
-exit
-exit
-exit
-exit
-clear
-ls 
-ls kdfjhgkug
-efjlksdf
-ls
-clear
-ls
-ls -G
-cd Makefile
-ls
-clear
-cd MakefileLKDFJGLKDFG
-CD
-cd
-cd- 
-cd
-git status
-ls
-ls | cd | git
-cat *.c
-cat *c -> blabla.c
-cat *c -> blabla.c | mv blabla.c ../
-cd -
-cd 42/42sh
-ls
-v srcs/line_editing/*
-exit
-exit
-exit
-exit
-eixt
-exit
-exit
-makexit
-makeexit
-exit
-sddsdssdsddsdssdsddsdssdsddsdssd
-exit
-exit
-mxit
-make
-exit
-exit
-exit
-exit
-exit
-clear
-ls
-gs
-exit
-ls > foo
-exit
-cat << FOO
-ls > foo
-cat foo
-rm foo
-clear
-ls | cat -e
-exit
-ls
-ls
-clear
-exit
-ls
-2>&1 ls
-exit
-ls
-exit
-ls
-exit
-ls
-2>&1 ls
-exit
-cat > foo
-exit
-cat > foo
-exit
-ls > foo
-cat foo
-rm foo
-clear
-exit
-2>&1 ls | 2>&1 cat -e ls
-clear
-exit
-ls | cat -e
-2>&1 ls | cat -e
-2>&1 ls | 2>&1 cat -e exit
-2>&1 ls | 2>&1 cat -e exit
-2>&1 ls | 2>&1 wc -l echo "lol"
-exit
-ls | cat -e
-2>&1 ls | 2>&1 cat -e exit
-2>&1 ls | 2>&1 cat exit
-2>&1 ls && 2>&1 exit exit
-ls && cat
-clear
-2>&1 ls | 2>&1 cat -e exit
-ls | cat -e
-2>&1 ls | cat -e
-2>&1 ls 123123 libft | 2>&1 cat -e
-exit
-2>&1 ls 123123 libft | 2>&1 cat -e
-exit
-ls
-ls | cat -e
-clear
-cat << EOF
-cat <<
-cat >
-exit
-ls && 
-ls && 
-exit
-ls && 
-exit
-exit
-exi
-exit
-exit
-exit
-exit
-ls exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-clear
-exit
-exit
-exit
-alias
-alias lolo="ls -l"
-alias
-lolo
-alias lolo="ls -l"
-lolo
-alias lolo="ls -l"
-alias lolo="ls -l"
-lolo
-lolo
-alias lolo="ls -l"
-exit
-alias lolo="ls -l"
-alias lolo="ls -l"
-lolo
-exit
-alias lolo="ls -l"
-lolo
-alias lolo="lssddfsdsffds"
-lolo
-exit
-alias lolo="lssddfsdsffds"
-lolo
-eixt
-exit
-alias lolo="ls -l"
-lolo
-lolo
-alias lolo=""
-lolo
-alias lolo="ls | cat -e"
-lolo
-exit
-ks
-ls
-exit
-ft_select **/*
-**/*
-ls **/*
-ls *[a]
-ls [a]*
-ls [a]*[r]
-ls [a]**[r]
-ls [a]**[r]/
-ls 
-ls t*
-ls t*/*
-ls t*/*[t]
-ls t*/**[t]
-ft_select **/*
-./ft_select **/*
-ls {{1..
-ls {{1..
-ls {1..}}
-ls {1..}}
-ls {1..10}
-ls {{1..}}
-ls {{1..}}}}
-ls }}
-ls {{
-ls {{fsdfds}
-ls {{fsdfds},}
-ls
-exit
+
+||
+&&
+2>1
+2>&1
+ls || ls -l
+echo "it works " | cat -e
+ls && ;
+kls ; 123 ; ls ; ls <
+base64 /dev/urandom | head -c 1000 | grep 42 | sed -e 's/Yes/g' -e 's/No/g'
+find ./srcs -type f -name "*" -exec cat {} \; | sed '/^\s*$/d' | sed -e '/^\//d' | sed -e '/^\*\*/d' | sed -e '/^\*/d' | wc -l
