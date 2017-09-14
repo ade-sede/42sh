@@ -69,6 +69,6 @@ t_token_id			lex_id_operator(const char *value)
 	while (g_operator_list[i] != NULL && !ft_strequ(g_operator_list[i], value))
 		i++;
 	if (g_operator_list[i])
-		return (i + 5);
+		return (i + 6);
 	return (-1);
 }

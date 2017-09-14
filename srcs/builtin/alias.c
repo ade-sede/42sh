@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 16:35:33 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/09/09 18:09:45 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/09/14 18:23:14 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int			builtin_unalias(t_env *env, const char **argv)
 		}
 		else
 		{
-				dprintf(2, "alias : %s not found\n", argv[i]);
+				dprintf(2, "alias : %s not found\n", argv[i]); // Change dprintf
 				ret = EXIT_FAILURE;
 		}
 		i++;

@@ -41,7 +41,7 @@ static void	complete_assignement_word(t_list **token_list)
 **	Creates a node from a word token, returns it.
 */
 
-t_ast		*ast_create_node_from_word(t_list **token_list, int *command_name)
+t_ast		*ast_create_node_from_word(t_list **token_list)
 {
 	t_ast	*node;
 	t_token	*token;
@@ -51,14 +51,11 @@ t_ast		*ast_create_node_from_word(t_list **token_list, int *command_name)
 			(token->delimiter == '"' || token->delimiter == 39))
 		complete_assignement_word(token_list);
 	if ((token->id == TK_WORD || token->type == EXPAND) \
-			&& *command_name == FALSE)
-	{
+			&& token->cmd_name)
 		node = ast_create_node((*token_list)->data, NULL, CMD_NAME);
-		*command_name = TRUE;
-	}
 	else
 	{
-		if (*command_name == FALSE)
+		if (token->cmd_name)
 			node = ast_create_node((*token_list)->data, NULL, CMD_PREFIX);
 		else
 			node = ast_create_node((*token_list)->data, NULL, CMD_SUFFIX);

@@ -33,7 +33,7 @@ static int	pushback_redir(t_list *child_list, t_list **token_list, \
 		}
 		if (expected == 1)
 		{
-			if (token->id != TK_WORD)
+			if (token->id != TK_NAME && token->id != TK_WORD)
 			{
 				dprintf(2, "Parse error near %s\n", token->value);
 				return (0);

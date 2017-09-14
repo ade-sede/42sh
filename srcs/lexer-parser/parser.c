@@ -113,7 +113,7 @@ static t_list	*reopen_command(void)
 **	corresponding child has a NULL ast.
 */
 
-t_ast			*create_right_branch(t_token *command_token, t_list **token_list, int *command_name)
+t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
 {
 	t_token		*token;
 	t_ast		*right_branch;
@@ -121,7 +121,13 @@ t_ast			*create_right_branch(t_token *command_token, t_list **token_list, int *c
 
 	right_branch = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 	right_branch = fill_simple_command(right_branch, \
-			token_list, command_name);
+			token_list);
+
+#ifdef PARSER_DEBUG
+	dprintf(2, "\n\n-----------------------------------------------------------------------------\n");
+	read_tree(right_branch);
+	dprintf(2, "\n\n-----------------------------------------------------------------------------\n");
+#endif
 	if (right_branch && right_branch->child)
 	{
 		command_child = right_branch->child->data;
@@ -132,12 +138,12 @@ t_ast			*create_right_branch(t_token *command_token, t_list **token_list, int *c
 		dprintf(2, "Parse error near '%s'\n", command_token->value);
 		return (flush_tree(right_branch));
 	}
-	if (!token || ft_strequ(token->value , "\n"))
+	if (!command_child || (token && token->id == TK_NEWLINE))
 	{
 		right_branch = flush_tree(right_branch);
 		*token_list = reopen_command();
 		right_branch = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
-		right_branch = fill_simple_command(right_branch, token_list, command_name);
+		right_branch = fill_simple_command(right_branch, token_list);
 	}
 	return (right_branch);
 }
@@ -159,7 +165,7 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, \
 	}
 	complexe_command = ast_create_node((t_token*)(*token_list)->data, NULL, COMPLEXE_COMMAND);
 	ft_simple_lst_del_one(token_list, *token_list, NULL);
-	if (!(right_branch = create_right_branch(complexe_command->token, token_list, command_name)))
+	if (!(right_branch = create_right_branch(complexe_command->token, token_list)))
 	{
 		complexe_command = flush_tree(complexe_command);
 		left_branch = flush_tree(left_branch);
@@ -221,7 +227,7 @@ t_ast			*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 		}
 		else
 		{
-			if ((ast = create_simple_command(token_list, &command_name)) == NULL)
+			if ((ast = create_simple_command(token_list)) == NULL)
 				return (NULL);
 		}
 		if (token_list && *token_list)
@@ -244,19 +250,16 @@ t_ast			*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 	return (ast);
 }
 
-t_ast 	*create_simple_command(t_list **token_list, \
-		int *command_name)
+t_ast 	*create_simple_command(t_list **token_list)
 {
 	t_ast	*ast;
 
 	ast = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
-	ast = fill_simple_command(ast, token_list, command_name);
-	*command_name = 0;
+	ast = fill_simple_command(ast, token_list);
 	return (ast);
 }
 
-t_ast			*fill_simple_command(t_ast *simple_command, t_list **token_list, \
-		int *command_name)
+t_ast			*fill_simple_command(t_ast *simple_command, t_list **token_list)
 {
 	t_ast	*new_node;
 	t_token	*token;
@@ -275,11 +278,11 @@ t_ast			*fill_simple_command(t_ast *simple_command, t_list **token_list, \
 			}
 			else
 			{
-				new_node = ast_create_node_from_word(token_list, command_name);
+				new_node = ast_create_node_from_word(token_list);
 				ft_simple_lst_pushback(&((simple_command)->child), \
 						ft_simple_lst_create(new_node));
 			}
-			simple_command = fill_simple_command(simple_command, token_list, command_name);
+			simple_command = fill_simple_command(simple_command, token_list);
 		}
 	}
 	return (simple_command);

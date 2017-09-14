@@ -52,6 +52,7 @@ int				builtin_echo(t_env *env, const char **argv);
 
 int				builtin_alias(t_env *env, const char **argv);
 int				builtin_unalias(t_env *env, const char **argv);
+t_list			*find_alias(t_list *alias, const char *argv, size_t len);
 
 /*
 ** In file history.c

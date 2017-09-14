@@ -42,6 +42,11 @@
 **	>= 20'. From this, 2 easy macros :
 */
 
+/*
+**	Added TK_CMD_NAME because it gives a lot of advantages to have this
+**	information when lexing.
+*/
+
 typedef enum
 {
 	TK_WORD,
@@ -49,7 +54,7 @@ typedef enum
 	TK_NAME,
 	TK_NEWLINE,
 	TK_IO_NUMBER,
-	TK_LESS = 5,
+	TK_LESS = 6,
 	TK_HERE,
 	TK_GREAT,
 	TK_SEMI,
@@ -65,7 +70,7 @@ typedef enum
 	TK_LESSGREAT,
 	TK_DLESSDASH,
 	TK_CLOBBER,
-	If = 20,
+	If = 21,
 	Then,
 	Else,
 	Elif,
@@ -90,7 +95,7 @@ typedef enum
 # define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
 # define TK_IS_GREAT_LESS(id) ( id == TK_GREAT || id == TK_LESS )
 # define TK_RP1(id) id == TK_IO_NUMBER || TK_IS_GREAT_LESS(id) || id == TK_HERE
-# define TK_IS_REDIR(id)  (TK_RP1(id) || (id >= TK_DLESS && id <= TK_CLOBBER))
+# define TK_IS_REDIR(id) (TK_RP1(id) || (id >= TK_DLESS && id <= TK_CLOBBER))
 
 /*
 **	The lexer state indicates in wich context line[pos] is.
@@ -120,6 +125,7 @@ typedef struct		s_token
 	t_token_id		id;
 	t_token_type	type;
 	size_t			size;
+	int				cmd_name;
 	char			delimiter;
 }					t_token;
 
@@ -136,6 +142,8 @@ typedef struct		s_lexer
 	t_list			*stack;
 	int				reopen;
 	t_lexer_state	state;
+	t_token_id		last_id;
+	int				cmd_name_open;
 }					t_lexer;
 
 /*
@@ -170,7 +178,7 @@ t_lexer				init_lexer(const char *line);
 **	In file get_token_id.c
 */
 
-t_token_id			lex_get_token_id(t_token *token);
+t_token_id			lex_get_token_id(t_lexer *lex, t_token *token);
 
 /*
 **	in file match_operator.c
@@ -188,7 +196,7 @@ int					match_word(t_lexer *lex);
 int					lex_id_io_number(t_token *token, \
 		char delimiter, t_token_id *id);
 int					lex_id_reserved_words(t_token *token, t_token_id *id);
-int					lex_id_word(t_token *token, t_token_id *id);
+int					lex_id_word(t_lexer *lex, t_token *token, t_token_id *id);
 
 /*
 **	In file update_state.c

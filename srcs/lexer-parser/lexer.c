@@ -71,21 +71,6 @@ t_list	*start_lex(t_lexer *lex)
 **	exec_expand prend la t_list lex->stack en argument. Se base sur le dernier token.
 */
 
-/* static int	first_word(t_list *stack) */
-/* { */
-/* 	int		res = 0; */
-/* 	t_token *token; */
-/* 	while (stack) */
-/* 	{ */
-/* 		token = stack->data; */
-/* 		if (TK_IS_SEP(token->id)) */
-/* 			res = 0; */
-/* 		if (token->id == TK_WORD) */
-/* 			res = 1; */
-/* 		stack = stack->next; */
-/* 	} */
-/* 	return (res == 0 ? 1 : 0); */
-/* } */
 int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 {
 	char	*value;
@@ -94,11 +79,19 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 
 	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
 	token = create_token(value, lex->state, lex->line[lex->index]);
-	token->id = lex_get_token_id(token);
+	token->id = lex_get_token_id(lex, token);
+	lex->last_id = token->id;
+	if (TK_IS_SEP(token->id))
+		lex->cmd_name_open = 1;
 #ifdef LEXER_DEBUG
-	if (lex->reopen)
-		dprintf(2, "Token->value = "MAG"#"CYN"%s"MAG"#\n"RESET"Token->id = "YEL"%d\n"RESET"Token->type = "BLU"%d\n"RESET, token->value, token->id, token->type);//			REMOVE		
+		dprintf(2, "Token->value = "MAG"#"CYN"%s"MAG"#\n"RESET"Token->id = "YEL"%d\n"RESET"Token->type = "BLU"%d\n"RESET"Token->cmd_name = "PNK"%d\n"RESET, token->value, token->id, token->type, token->cmd_name);//			REMOVE		
 #endif
+	if (token->cmd_name)
+	{
+		/*
+		** lex->cmd_name_open = 0;
+		*/
+	}
 	node = exec_expand(token);
 	if (lex->stack == NULL)
 		lex->stack = node;

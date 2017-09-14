@@ -15,6 +15,7 @@ t_lexer		init_lexer(const char *line)
 	lex.stack = NULL;
 	lex.reopen = 1;
 	lex.state = DEFAULT;
+	lex.last_id = TK_WORD;
 	return (lex);
 }
 
@@ -32,6 +33,7 @@ t_token		*create_token(char *value, t_token_type type, char delimiter)
 	token->id = 0;
 	token->type = type;
 	token->size = ft_strlen(value);
+	token->cmd_name = 0;
 	return (token);
 }
 
