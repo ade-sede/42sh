@@ -8,9 +8,8 @@
 #include "parser.h"
 #define LOCAL_BUFF_SIZE 4096
 
-
 #ifdef PARSER_DEBUG
-void	read_tree(t_ast *ast_start)
+static void	read_tree(t_ast *ast_start)
 {
 	size_t	index;
 	t_token	*token_parent;
@@ -45,7 +44,6 @@ void	read_tree(t_ast *ast_start)
 	}
 }
 #endif
-
 
 /*
 **	Receives an array containing the command name and its arguments.
@@ -115,6 +113,8 @@ char	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
 **	}
 */
 
+void	history_write_last_command();
+
 void	main_loop(t_env *env)
 {
 	t_ast		*ast;
@@ -150,16 +150,21 @@ void	main_loop(t_env *env)
 //			dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff);//			REMOVE		
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
-			ast = NULL;
-			ast = ast_parse(&ast, &token_list, &head);
+			ast = ast_parse(NULL, &token_list, &head);
+#ifndef NO_TERMCAPS
+			history_write_last_command();
+#endif
 
 #ifdef PARSER_DEBUG
 			read_tree(ast);
 #endif
+
 #ifndef NO_TERMCAPS
 			conf_term_normal();
 #endif
 			exec_tree(ast, head);
+			if (token_list)
+				ft_simple_lst_remove(&token_list, free_token);
 #ifndef NO_TERMCAPS
 			conf_term_canonical();
 #endif

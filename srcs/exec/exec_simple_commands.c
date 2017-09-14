@@ -26,7 +26,7 @@ static void	treat_node(t_ast *child_node, t_list **redir_stack, \
 	if (child_node->symbol == IO_REDIRECT)
 		exec_redir(child_node->child, redir_stack);
 	if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
-		if (*child_node->token->value != '\n')
+		if (child_node->token->id != TK_NEWLINE)
 			argv[i] = ft_strdup(child_node->token->value);
 }
 

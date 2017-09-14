@@ -13,6 +13,21 @@
 **	and putting lex->index on the first char of the next potential token.
 */
 
+
+void	append_history(char *command)
+{
+	t_hist	*h;
+	t_list_d	*list;
+	char	*full_command;
+
+	h = singleton_hist();
+	list = h->list->first;
+
+	command[ft_strlen(command) - 1] = 0;
+	full_command = ft_strjoin(list->data, command);
+	list->data = ft_strchange(list->data, full_command);
+}
+
 void		reopen_line_editing(t_lexer *lex)
 {
 #ifndef NO_TERMCAPS
@@ -35,6 +50,7 @@ void		reopen_line_editing(t_lexer *lex)
 	bzero(new_command, 4096);
 	read(0, new_command, 4096);
 #endif
+	append_history(new_command);
 	lex->line = ft_strchange((void*)lex->line, ft_strjoin((char*)lex->line, new_command));
 	free(new_command);
 }
