@@ -59,7 +59,7 @@ static t_list	*reopen_command(t_token *token)
 #ifndef NO_TERMCAPS
 	load_prompt(singleton_env(), singleton_line(), "reopen_command", \
 			"command> ");
-	new_command = line_editing_get_input(singleton_env(), singleton_line(), \
+	new_command = line_editing_get_input(singleton_line(), \
 			singleton_hist());
 #else
 	bzero(new_command, 4096);

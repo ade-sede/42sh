@@ -63,7 +63,7 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 			conf_term_canonical();
 			singleton_line()->heredoc = 1;
 			load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
-			buff = line_editing_get_input(singleton_env(), singleton_line(), singleton_hist());
+			buff = line_editing_get_input(singleton_line(), singleton_hist());
 			conf_term_normal();
 			singleton_line()->heredoc = 0;
 #else

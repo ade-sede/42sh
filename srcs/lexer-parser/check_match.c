@@ -28,7 +28,7 @@ void		reopen_line_editing(t_lexer *lex)
 		load_prompt(singleton_env(), singleton_line(), "PS3", "dquote> ");
 #endif
 #ifndef NO_TERMCAPS
-	new_command = ft_strdup(line_editing_get_input(singleton_env(), singleton_line(), \
+	new_command = ft_strdup(line_editing_get_input(singleton_line(), \
 			singleton_hist()));
 	new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n"));
 #else
