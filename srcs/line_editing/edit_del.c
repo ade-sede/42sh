@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "line_editing.h"
 
 int	edit_backspace(t_line *line)
@@ -22,4 +21,3 @@ int	edit_backspace(t_line *line)
 		put_termcap("nd");
 	return (1);
 }
-#endif

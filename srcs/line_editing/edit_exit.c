@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "history.h"
 
@@ -9,4 +8,3 @@ char	*edit_exit(t_line *line)
 	ft_putchar_fd('\n', 2);
 	return (line->buff);
 }
-#endif

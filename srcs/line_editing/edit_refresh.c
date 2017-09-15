@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "env.h"
 
@@ -48,4 +47,3 @@ void	edit_refresh(t_line *line)
 	edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }
-#endif

@@ -33,8 +33,9 @@
 size_t	get_ws_col(void);
 size_t	get_ws_row(void);
 
+char	*control_d_heredoc(t_line *line);
 void	edit_line_init(t_line *line);
-char	*edit_get_input(t_env *env);
+char	*edit_get_input(void);
 void	edit_set_signals(void);
 void	edit_handle_sigwinch(int signum);
 void	conf_term_in(void);

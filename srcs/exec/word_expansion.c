@@ -35,8 +35,6 @@ t_list	*pathname_expansion(t_token *token)
 			first = propRe(glob(token->value));
 		else if (ft_strchr(token->value, '{'))
 			first = propRe(expand_curly_brackets(token->value));
-//	if (first != NULL)
-		//free_token(token);
 	}
 	return (first);
 }

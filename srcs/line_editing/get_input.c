@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "completion.h"
 #include "history.h"
@@ -35,7 +34,6 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	i = 0;
 	while (g_edit_func[i].keycode)
 	{
-		//printf("\nkeycode= %llu, func_keycode= %llu\n", keycode, g_edit_func[i].keycode);
 		if (g_edit_func[i].keycode == keycode)
 			keycode = g_edit_func[i].f(line);
 		i++;
@@ -53,16 +51,12 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 **	pressed, the displayed line is refreshed.
 */
 
-char	*edit_get_input(t_env *env)
+char	*edit_get_input(void)
 {
 	unsigned long	keycode;
 	t_line			*l;
-	int				history;
 
-	history = 0;
 	l = singleton_line();
-	l->completion = 0;
-	l->btsearch = 0;
 	edit_set_signals();
 	while (42)
 	{
@@ -70,10 +64,7 @@ char	*edit_get_input(t_env *env)
 		keycode = 0;
 		read(0, &keycode, 1);
 		if (keycode == KEY_CTRL_D && l->heredoc && l->len == 0)
-		{
-			edit_add(4,l);
-			return (edit_exit(l));
-		}
+			return (control_d_heredoc(l));
 		if (keycode == 27 || keycode == 194)
 			read(0, (char *)&keycode + 1, 7);
 		if (btsearch_get_input(l, keycode))
@@ -82,11 +73,9 @@ char	*edit_get_input(t_env *env)
 			continue ;
 		if (keycode == KEY_ENTER)
 			return (edit_exit(l));
-		if (history_get_input(l, keycode, &history))
+		if (history_get_input(l, keycode))
 			continue ;
 		edit_loop(keycode, l);
 	}
-	(void)env;
 	return (NULL);
 }
-#endif

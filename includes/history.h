@@ -22,8 +22,7 @@ t_hist			*singleton_hist(void);
 int				history_load(t_hist *h, t_env *env);
 void			history_refresh(char *command);
 
-int				history_get_input(t_line *line, unsigned long keycode,
-		int *history);
+int				history_get_input(t_line *line, unsigned long keycode);
 void			history_init(t_hist *h);
 int				history_move_exit(t_line *line, t_hist *hist);
 int				history_move_init(t_line *line, t_hist *hist);
@@ -51,4 +50,5 @@ void			btsearch_del(t_line *line, t_hist *h);
 void			btsearch_first_search(t_hist *h);
 void			create_strstr_btsearch_buff(t_list_d *item);
 
+void	history_line_refresh(t_line *line, char *new_line);
 #endif

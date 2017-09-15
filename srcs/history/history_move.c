@@ -1,6 +1,4 @@
-#ifndef NO_TERMCAPS
 #include "history.h"
-#include "stdio.h"
 
 int		strnequ_writen_buff(void *data)
 {
@@ -12,15 +10,6 @@ int		strnequ_writen_buff(void *data)
 	if (ft_strnequ(data, singleton_hist()->writen_buff, len))
 		return (1);
 	return (0);
-}
-
-void	history_line_refresh(t_line *line, char *new_line)
-{
-	ft_strclr(line->buff);
-	edit_insert_str(line, line->buff, new_line);
-	line->len = ft_strlen((const char *)new_line);
-	line->pos = line->len;
-	edit_refresh(line);
 }
 
 int		history_next(t_line *line, t_hist *h)
@@ -78,4 +67,3 @@ int		history_move_exit(t_line *line, t_hist *h)
 	(void)line;
 	return (1);
 }
-#endif

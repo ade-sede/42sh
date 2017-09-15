@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "history.h"
 #include <stdio.h>
@@ -21,4 +20,3 @@ void	btsearch_del(t_line *line, t_hist *h)
 			btsearch_change_line(line, h, NULL);
 	}
 }
-#endif

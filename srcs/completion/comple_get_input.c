@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "completion.h"
 #include "line_editing.h"
 #include <stdio.h>
@@ -59,4 +58,3 @@ int		comple_get_input(t_line *line, int keycode)
 	}
 	return (0);
 }
-#endif

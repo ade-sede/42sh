@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "env.h"
 
@@ -8,7 +7,7 @@ void	edit_refresh_nchar_2(size_t n, size_t *i, char *str, size_t ws_col)
 	{
 		put_termcap("do");
 		put_termcap("cr");
-		ft_putnstr(str + *i, ws_col); // passer sur la sortie 2
+		ft_putnstr(str + *i, ws_col);
 		*i += ws_col;
 	}
 }
@@ -66,4 +65,3 @@ void	edit_refresh_visu(t_line *line)
 				line->len - line->pos);
 	}
 }
-#endif

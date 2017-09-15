@@ -89,6 +89,7 @@ SRC_FILE =	\
 	history/btsearch_move.c \
 	history/btsearch_refresh.c \
 	history/btsearch_signals.c \
+	history/history_line_refresh.c \
 	history/history_init.c \
 	history/history_move.c \
 	history/history_get_input.c \
@@ -113,6 +114,8 @@ SRC_FILE =	\
 	hash_table/hash_free.c \
 \
 	globing/curly_bracket_split.c	\
+	globing/curly_brackets_is_range.c	\
+	globing/curly_brackets_range.c	\
 	globing/curly_brackets.c	\
 	globing/glob.c	\
 	globing/match_open_dir.c	\

@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "libft.h"
 
@@ -28,4 +27,3 @@ int	edit_insert_str(t_line *line, char *dest, char *str)
 	line->len = ft_strlen(line->buff);
 	return (1);
 }
-#endif

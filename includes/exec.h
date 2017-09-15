@@ -124,7 +124,7 @@ int				fork_exec_bin(t_env *env, const char **argv, t_lst_head *head);
 
 void			exec(t_env *env, const char **argv, t_lst_head *head);
 void			main_loop(t_env *env);
-char			*line_editing_get_input(t_env *env, t_line *line, t_hist *hist);
+char			*line_editing_get_input(t_line *line, t_hist *hist);
 
 /*
 ** In param_expansion.c

@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "history.h"
 #include <stdio.h>
 #include <errno.h>
@@ -24,4 +23,3 @@ void	history_refresh(char *command)
 		ft_double_lst_add(&h->list, list);
 	history_refresh_command(h, command);
 }
-#endif

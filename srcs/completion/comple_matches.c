@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "lexer.h"
 #include "completion.h"
 
@@ -78,4 +77,3 @@ char	**comple_matching(t_line *line, t_comple *c)
 		return (comple_matching_cursorword(line, c));
 	return (NULL);
 }
-#endif

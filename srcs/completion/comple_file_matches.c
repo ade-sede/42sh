@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "completion.h"
 #include "line_editing.h"
 #include <string.h>
@@ -75,4 +74,3 @@ char	**comple_file_matches(t_line *line, t_comple *c)
 	matches = array_matches(NULL, c->current_word);
 	return (matches);
 }
-#endif

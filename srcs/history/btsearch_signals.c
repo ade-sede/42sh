@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "history.h"
 #include "line_editing.h"
 #include <signal.h>
@@ -21,7 +20,6 @@ void	btsearch_handle_sigint(int keycode)
 	h = singleton_hist();
 	btsearch_exit(line, h);
 	line->btsearch = 0;
-//	btsearch_refresh(line, h);
 	h->signum = 0;
 	ft_strclr(line->buff);
 	line->len = 0;
@@ -39,4 +37,3 @@ void	btsearch_handle_signals(void)
 {
 	signal(SIGINT, &btsearch_handle_sigint);
 }
-#endif

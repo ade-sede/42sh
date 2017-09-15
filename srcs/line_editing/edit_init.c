@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "line_editing.h"
 
 t_line		*singleton_line(void)
@@ -17,8 +16,10 @@ void		edit_line_init(t_line *line)
 		line->buff = ft_strnew(BUFF_LINE_SIZE);
 		line->size = BUFF_LINE_SIZE;
 	}
+	line->completion = 0;
+	line->btsearch = 0;
+	line->history = 0;
 	line->visu_mode = 0;
 	line->pos = 0;
 	line->len = 0;
 }
-#endif

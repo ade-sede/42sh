@@ -1,6 +1,5 @@
 #include "line_editing.h"
 
-#include <stdio.h>
 int		control_d(t_line *line)
 {
 	if (line->len != 0)
@@ -10,4 +9,10 @@ int		control_d(t_line *line)
 	(void)line;
 	ft_putchar('\n');
 	exit(0);
+}
+
+char	*control_d_heredoc(t_line *line)
+{
+	edit_add(4, line);
+	return (edit_exit(line));
 }

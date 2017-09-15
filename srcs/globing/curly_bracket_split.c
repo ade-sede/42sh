@@ -7,7 +7,7 @@ static unsigned int	ft_count_words(char const *s, char c)
 {
 	unsigned int	i;
 	unsigned int	nb_words;
-	int	depth;
+	int				depth;
 
 	depth = 0;
 	i = 0;
@@ -35,7 +35,7 @@ static char			**ft_malloc_t(char const *s, char **t, char c)
 	unsigned int	i;
 	unsigned int	no_words;
 	unsigned int	nb_letters;
-	int	depth;
+	int				depth;
 
 	depth = 0;
 	i = 0;
@@ -70,7 +70,7 @@ static void			ft_fill_t(char const *s, char **t, char c)
 	unsigned int	i;
 	unsigned int	no_words;
 	unsigned int	no_letters;
-	int	depth;
+	int				depth;
 
 	depth = 0;
 	i = 0;
@@ -100,7 +100,7 @@ char				**ft_strsplit_coma_bracket(char *s)
 	unsigned int	nb_words;
 	unsigned int	i;
 	char			**t;
-	char		c;
+	char			c;
 
 	c = ',';
 	if (!s)

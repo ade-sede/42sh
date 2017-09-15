@@ -46,7 +46,6 @@ void	read_tree(t_ast *ast_start)
 }
 #endif
 
-
 /*
 **	Receives an array containing the command name and its arguments.
 */
@@ -89,12 +88,12 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->heredoc = 0;
 }
 
-char	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
+char	*line_editing_get_input(t_line *line, t_hist *hist)
 {
 	put_prompt(line);
 	history_init(hist);
 	edit_line_init(line);
-	return (edit_get_input(env));
+	return (edit_get_input());
 }
 #endif
 
@@ -134,8 +133,8 @@ void	main_loop(t_env *env)
 	while (42)
 	{
 #ifndef NO_TERMCAPS
-		load_prompt(singleton_env(), singleton_line(), "PS1", "$> ");
-		buff = ft_strdup(line_editing_get_input(env, singleton_line(), singleton_hist()));
+		load_prompt(env, singleton_line(), "PS1", "$> ");
+		buff = ft_strdup(line_editing_get_input(singleton_line(), singleton_hist()));
 		history_refresh(buff);
 #else
 		dprintf(1, "?> ");

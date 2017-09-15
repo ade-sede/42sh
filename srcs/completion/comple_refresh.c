@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "completion.h"
 #include "line_editing.h"
 #include <stdio.h>
@@ -77,4 +76,3 @@ int		comple_refresh(t_line *line, t_comple c)
 	comple_refresh_line(line, c);
 	return (1);
 }
-#endif

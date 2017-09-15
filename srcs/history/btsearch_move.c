@@ -1,4 +1,3 @@
-#ifndef NO_TERMCAPS
 #include "line_editing.h"
 #include "history.h"
 
@@ -33,4 +32,3 @@ int		btsearch_prev(t_line *line, t_hist *h)
 	}
 	return (0);
 }
-#endif
