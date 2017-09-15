@@ -11,7 +11,6 @@
 #include <errno.h>
 #include <signal.h>
 
-
 /*
 ** 	List of pipes should be generated during parsing and creation of the tree.
 */

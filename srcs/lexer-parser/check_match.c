@@ -46,12 +46,13 @@ void		reopen_line_editing(t_lexer *lex)
 	new_command = ft_strdup(line_editing_get_input(singleton_env(), singleton_line(), \
 			singleton_hist()));
 	new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n"));
+	dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, new_command);//			REMOVE		
 #else
 	bzero(new_command, 4096);
 	read(0, new_command, 4096);
 #endif
-	append_history(new_command);
-	lex->line = ft_strchange((void*)lex->line, ft_strjoin((char*)lex->line, new_command));
+	lex->line = ft_strchange((char*)lex->line, ft_strjoin((char*)lex->line, new_command));
+	append_history(new_command);	// This line removes the \n, everything gets fucked up
 	free(new_command);
 }
 
