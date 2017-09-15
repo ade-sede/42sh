@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/16 01:37:06 by vcombey           #+#    #+#             */
+/*   Updated: 2017/09/16 01:43:51 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef EXEC_H
 # define EXEC_H
 # include "env.h"
@@ -91,7 +103,7 @@
 */
 
 /*
-**	Cur is the node representing the separator at the right of the current command.
+**	Cur is the node represent the separator at the right of the current command.
 **	p_right != NULL if the command is before a pipe.
 **	p_left != NULL if the command is after a pipe.
 */
@@ -107,9 +119,6 @@ typedef struct	s_pipe
 {
 	int			*p;
 	pid_t		pid;
-#ifdef PIPE_DEBUG
-	size_t		nb;
-#endif
 }				t_pipe;
 
 /*
@@ -165,7 +174,6 @@ void			exec_simple_command(t_ast *ast, t_lst_head *head);
 int				logical_or(t_ast *ast, t_lst_head *head);
 int				semi_colon(t_ast *ast, t_lst_head *head);
 int				logical_and(t_ast *ast, t_lst_head *head);
-
 
 /*
 ** In redir_utils.c

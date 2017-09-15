@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   history.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/16 01:37:06 by vcombey           #+#    #+#             */
+/*   Updated: 2017/09/16 01:44:33 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HISTORY_H
 # define HISTORY_H
 # include "libft.h"
@@ -34,7 +46,7 @@ int				history_prev(t_line *line, t_hist *h);
 ** fonction du backtracking search avec <C-R>
 */
 
-int		btsearch_get_input(t_line *line, unsigned long keycode);
+int				btsearch_get_input(t_line *line, unsigned long keycode);
 int				btsearch_init(t_line *line, t_hist *h);
 int				btsearch_exit(t_line *line, t_hist *hist);
 int				btsearch_init(t_line *line, t_hist *hist);
@@ -45,11 +57,11 @@ void			btsearch_refresh(t_line *line, t_hist *h);
 void			btsearch_change_line(t_line *line, t_hist *h, t_list_d *node);
 int				btsearch_handle_sigwinch(t_line *line, t_hist *h);
 void			btsearch_handle_sigint(int keycode);
-void	btsearch_handle_signals(void);
+void			btsearch_handle_signals(void);
 void			btsearch_del(t_line *line, t_hist *h);
 void			btsearch_first_search(t_hist *h);
 void			create_strstr_btsearch_buff(t_list_d *item);
 
-void	history_line_refresh(t_line *line, char *new_line);
-void	history_write_last_command();
+void			history_line_refresh(t_line *line, char *new_line);
+void			history_write_last_command();
 #endif

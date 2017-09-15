@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_table.h                                       :+:      :+:    :+:   */
+/*   glob_struct.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/16 01:37:06 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 01:37:10 by vcombey          ###   ########.fr       */
+/*   Created: 2017/09/16 01:41:53 by vcombey           #+#    #+#             */
+/*   Updated: 2017/09/16 01:42:55 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HASH_TABLE_H
-# define HASH_TABLE_H
-# include "env.h"
+#ifndef GLOB_STRUCT_H
+# define GLOB_STRUCT_H
 
-# define HASH_TABLE_SIZE 998
+typedef	struct	s_matches
+{
+	t_list	*list;
+	char	*to_match;
+	char	*regex;
+	char	*dir;
+}				t_matches;
 
-void	free_hash_table(t_list ***has_table);
-char	*hash_get(t_list **hash_table, char *value);
-int		create_hash_table(t_env *env);
 #endif

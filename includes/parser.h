@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/16 01:37:06 by vcombey           #+#    #+#             */
+/*   Updated: 2017/09/16 01:45:06 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSER_H
 # define PARSER_H
 # include "lexer.h"
@@ -122,10 +134,11 @@ typedef	struct		s_ast
 **	In file parser.c
 */
 
-t_ast				*ast_parse(t_ast *simple_command, t_list **token_list, t_lst_head **head);
+t_ast				*ast_parse(t_ast *simple_command, \
+		t_list **token_list, t_lst_head **head);
 t_ast				*fill_simple_command(t_ast *simple_command, \
 		t_list **token_list);
-t_ast			 	*create_simple_command(t_list **token_list);
+t_ast				*create_simple_command(t_list **token_list);
 
 /*
 **	In file casual_node.c
