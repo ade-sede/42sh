@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 00:57:38 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	curly_brackets_is_range(char *str)
 	is_number = ft_atoi_safe(str, &start_range);
 	*point = '.';
 	if (!is_number)
-		return ((!(str[0] && str[1] && str[2] && str[3] && \
-					str[1] == '.' && str[2] == '.' && !str[4])) ? 0 : 1);
+		return (IS_RANGE_A(str) ? 1 : 0);
 	i = 0;
 	while (str[i] && (ft_is_start_of_digit(str[i])))
 		i++;

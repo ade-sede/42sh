@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 01:02:20 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,17 @@ void	curly_brackets_range_num(t_list **res, char *expr, char *str, int end)
 		i++;
 	i += 2;
 	ft_atoi_safe(str + i, &end_range);
-	if (start_range <= end_range)
+	while (start_range != end_range)
 	{
-		while (start_range <= end_range)
-		{
-			curly_brackets(res, ft_strjoin3_free(expr, \
-						ft_itoa(start_range), expr + end + 1, 2));
+		curly_brackets(res, ft_strjoin3_free(expr, \
+					ft_itoa(start_range), expr + end + 1, 2));
+		if (start_range < end_range)
 			start_range++;
-		}
-	}
-	else
-	{
-		while (start_range >= end_range)
-		{
-			curly_brackets(res, ft_strjoin3_free(expr, \
-						ft_itoa(start_range), expr + end + 1, 2));
+		else
 			start_range--;
-		}
 	}
+	curly_brackets(res, ft_strjoin3_free(expr, \
+				ft_itoa(start_range), expr + end + 1, 2));
 	free(str);
 	free(expr);
 }

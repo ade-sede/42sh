@@ -2,6 +2,8 @@
 #define GLOB_H
 
 #include "libft.h"
+#define IS_RANGE_A(str) str[0] && str[1] && str[2] && str[3] && \
+str[1] == '.' && str[2] == '.' && !str[4]
 
 typedef	struct	s_matches
 {

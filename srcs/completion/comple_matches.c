@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:05 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 00:36:40 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 00:54:31 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
 	return (res);
 }
 
-static t_lex	get_lex_line_cursor(t_line *line)
+static t_lexer	get_lex_line_cursor(t_line *line)
 {
 	char		line_pos_char;
 	t_lexer		lex;
@@ -75,7 +75,7 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c)
 	t_list		*prev_last;
 	char		**res;
 
-	lex = get_lex_line(line);
+	lex = get_lex_line_cursor(line);
 	token_list = start_lex(&lex);
 	last = ft_last_simple_lst(token_list);
 	if (ft_strchr(c->current_word, '/'))
