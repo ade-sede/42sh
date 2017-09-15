@@ -107,6 +107,8 @@ static t_list	*reopen_command(void)
 	return (token_list);
 }
 
+
+
 /*
 **	Sometimes the token might represent a complexe command, but there was no
 **	initial simple command or nothing to build a new one. In this case, the

@@ -4,6 +4,10 @@
 #include "env.h"
 #include "exec.h"
 
+/*
+**		LEAKS
+*/
+
 static void	split_on_slash(t_env *env, char **split_space, size_t index_space)
 {
 	char	**split_slash;

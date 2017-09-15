@@ -41,9 +41,16 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id)
 {
 	int		*fd;
-	char	*buff;
 
+#ifndef NO_TERMCAPS
+	char	*buff;
+#else
+	char	buff[4096];
+#endif
+#ifndef NO_TERMCAPS
 	buff = NULL;
+#endif
+
 	fd = ft_memalloc(sizeof(*fd) * 2);
 	(void)id;
 	if (io_number == -1)
@@ -53,12 +60,18 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 	{
 		while (1)
 		{
+#ifndef NO_TERMCAPS
 			conf_term_canonical();
 			singleton_line()->heredoc = 1;
 			load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
 			buff = line_editing_get_input(singleton_line(), singleton_hist());
 			conf_term_normal();
 			singleton_line()->heredoc = 0;
+#else
+			bzero(buff, 4096);
+			read(0, buff, 4096);
+			*strchr(buff, '\n') = 0;
+#endif
 			if (ft_strequ(buff, target) || ft_strchr(buff, 4))
 				break;
 			write(fd[WRITE_END], buff, ft_strlen(buff));
