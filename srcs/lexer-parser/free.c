@@ -43,7 +43,7 @@ t_ast	*free_ast_node(t_ast *node)
 **	Deletes the entire tree, from the given node to the last leaf
 */
 
-t_ast		*flush_tree(t_ast *ast)
+t_ast	*flush_tree(t_ast *ast)
 {
 	t_list	*child_list;
 	t_ast	*child_node;
@@ -63,7 +63,7 @@ t_ast		*flush_tree(t_ast *ast)
 	return (NULL);
 }
 
-void		free_pipe(void *pipe)
+void	free_pipe(void *pipe)
 {
 	t_pipe *a;
 

@@ -8,9 +8,9 @@ void	history_refresh_command(t_hist *h, char *command)
 	write(h->fd, "\n", 1);
 }
 
-void	history_write_last_command()
+void	history_write_last_command(void)
 {
-	t_hist	*h;
+	t_hist		*h;
 	t_list_d	*list;
 
 	h = singleton_hist();

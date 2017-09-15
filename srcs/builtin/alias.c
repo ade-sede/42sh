@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   alias.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/09 16:35:33 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/09/14 18:23:14 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "env.h"
 #include "builtin.h"
 #include "libft.h"
@@ -18,7 +6,7 @@
 
 static void		print_alias(t_list *alias)
 {
-		ft_putendl(alias->data);
+	ft_putendl(alias->data);
 }
 
 t_list	*find_alias(t_list *alias, const char *argv, size_t len)
@@ -32,10 +20,12 @@ int				builtin_alias(t_env *env, const char **argv)
 {
 	int		eq_index;
 	int		argc;
-	int		i = 1;
+	int		i;
 	t_list	*node;
-	int		ret = EXIT_SUCCESS;
+	int		ret;
 
+	i = 1;
+	ret = EXIT_SUCCESS;
 	argc = ft_arraylen(argv);
 	if (argc == 1)
 		ft_simple_lst_foreach(env->alias, NULL, print_alias);
@@ -58,7 +48,8 @@ int				builtin_alias(t_env *env, const char **argv)
 			if (node)
 				node->data = ft_strchange(node->data, ft_strdup(argv[i]));
 			else
-				ft_simple_lst_pushback(&env->alias, ft_simple_lst_create(ft_strdup(argv[i])));
+				ft_simple_lst_pushback(&env->alias, \
+						ft_simple_lst_create(ft_strdup(argv[i])));
 			ret = EXIT_SUCCESS;
 		}
 		i++;
@@ -69,10 +60,12 @@ int				builtin_alias(t_env *env, const char **argv)
 int			builtin_unalias(t_env *env, const char **argv)
 {
 	int		argc;
-	int		i = 1;
+	int		i;
 	t_list	*node;
-	int		ret = EXIT_SUCCESS;
+	int		ret;
 
+	i = 1;
+	ret = EXIT_SUCCESS;
 	argc = ft_arraylen(argv);
 	if (argc == 1)
 		return (return_failure(NULL, "unalias : Argument required"));
@@ -86,8 +79,8 @@ int			builtin_unalias(t_env *env, const char **argv)
 		}
 		else
 		{
-				dprintf(2, "alias : %s not found\n", argv[i]); // Change dprintf
-				ret = EXIT_FAILURE;
+			return_failure("alias not found : ", argv[i]);
+			ret = EXIT_FAILURE;
 		}
 		i++;
 	}

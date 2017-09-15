@@ -12,7 +12,6 @@ void	btsearch_refresh(t_line *line, t_hist *h)
 	search_line = (h->btsearch_cur == NULL) ? "failing bck-i-search: " : \
 				"bck-i-search: ";
 	search_line = ft_strjoin_free(search_line, h->btsearch_buff, 0);
-//	edit_refresh_nchar(line, 0, search_line, ft_strlen(search_line));
 	ft_putstr_fd(search_line, 2);
 	ft_putchar_fd('_', 2);
 	put_ntermcap("up", ft_strlen(search_line) / line->ws_col + 1);

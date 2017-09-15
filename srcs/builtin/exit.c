@@ -16,9 +16,7 @@ int	builtin_exit(t_env *env, const char **argv)
 		return (return_failure("exit: numeric argument required", NULL));
 	else
 	{
-#ifndef NO_TERMCAPS
 		conf_term_normal();
-#endif
 		exit(exit_status);
 	}
 	return (EXIT_SUCCESS);

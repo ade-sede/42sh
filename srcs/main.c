@@ -6,7 +6,6 @@
 #include "history.h"
 #include "completion.h"
 #include "get_next_line.h"
-
 #include "color.h"
 #include <stdio.h>
 
@@ -60,15 +59,10 @@ int	main(void)
 	if (ac == 2)
 		return (file_script(av, env));
 #endif
-#ifdef PID
-	dprintf(2, BLU"%d\n"RESET, getpid());
-#endif
 	env_load_base_env(env, environ);
-#ifndef NO_TERMCAPS
 	create_ternary_tree(env);
 	history_load(singleton_hist(), env);
 	conf_term_in();
-#endif
 	main_loop(env);
 	env_free_env(env);
 	return (0);

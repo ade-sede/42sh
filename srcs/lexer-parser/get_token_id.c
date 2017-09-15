@@ -7,7 +7,7 @@
 **	the token and build the tree.
 */
 
-t_token_id		lex_get_token_id(t_lexer *lex ,t_token *token)
+t_token_id		lex_get_token_id(t_lexer *lex, t_token *token)
 {
 	t_token_id	id;
 	int			done;

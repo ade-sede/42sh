@@ -51,6 +51,7 @@ SRC_FILE =	\
 	exec/redir.c \
 \
 	lexer-parser/check_match.c \
+	lexer-parser/alias.c \
 	lexer-parser/init.c \
 	lexer-parser/match_expand.c \
 	lexer-parser/match_word.c \

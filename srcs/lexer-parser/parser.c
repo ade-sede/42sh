@@ -32,73 +32,22 @@
 **
 **		- If the token is a separator
 **
-**			The function stops, and stack pointer goes back to ast_parse, bulding a
-**			new branch for the new command, and attaching the simple command we
-**			just created to a complexe one.
+**			The function stops, and stack pointer goes back to ast_parse,
+**			bulding a new branch for the new command, and attaching the simple
+**			command we just created to a complexe one.
 */
-
-#ifdef PARSER_DEBUG
-# ifdef IN
-static void	read_tree(t_ast *ast_start)
-{
-	size_t	index;
-	t_token	*token_parent;
-	char	*parent_name;
-	t_list	*first_child;
-
-	index = 0;
-	token_parent = ast_start->token;
-	printf(GRN"NODE = "RESET);
-	if (token_parent)
-		parent_name = token_parent->value;
-	else
-	{
-		if (ast_start->symbol == SIMPLE_COMMAND)
-			parent_name = "SIMPLE_COMMAND";
-		if (ast_start->symbol == IO_REDIRECT)
-			parent_name = "IO_REDIRECT";
-	}
-	printf(MAG"#"CYN"%s"MAG"#"RESET""YEL"(%d)\n"RESET, parent_name,
-			ast_start->symbol);
-	first_child = ast_start->child;
-	while (first_child)
-	{
-		printf(RED"Starting treatment of child nb "BLU"%zu"RESET" of parent"
-				MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET, index, parent_name, \
-				ast_start->symbol);
-		if (first_child->data)
-			read_tree(first_child->data);
-		printf(PNK"\nBACK TO PARENT -> "RESET"Current node = "CYN"%s"RESET" !!!\n", parent_name);
-		first_child = first_child->next;
-		index++;
-	}
-}
-# endif
-#endif
-
-void	append_history(char *command); // In file srcs/lexer-parser/check_match.c
 
 static t_list	*reopen_command(void)
 {
-#ifndef NO_TERMCAPS
 	char	*new_command;
-#else
-	char	new_command[4096];
-#endif
 	t_list	*token_list;
 	t_lexer	lex;
 
-#ifndef NO_TERMCAPS
 	load_prompt(singleton_env(), singleton_line(), "reopen_command", \
 			"command> ");
 	new_command = ft_strdup(line_editing_get_input(singleton_line(), \
 			singleton_hist()));
 	new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n"));
-#else
-	bzero(new_command, 4096);
-	read(0, new_command, 4096);
-	*strchr(new_command, '\n') = 0;
-#endif
 	lex = init_lexer(new_command);
 	token_list = start_lex(&lex);
 	new_command = ft_strchange(new_command, ft_strjoin(" ", new_command));
@@ -106,8 +55,6 @@ static t_list	*reopen_command(void)
 	free(new_command);
 	return (token_list);
 }
-
-
 
 /*
 **	Sometimes the token might represent a complexe command, but there was no
@@ -124,7 +71,6 @@ t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
 	right_branch = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
 	right_branch = fill_simple_command(right_branch, \
 			token_list);
-
 	if (right_branch && right_branch->child)
 	{
 		command_child = right_branch->child->data;
@@ -140,12 +86,6 @@ t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
 		right_branch = flush_tree(right_branch);
 		*token_list = reopen_command();
 		right_branch = create_right_branch(command_token, token_list);
-#ifdef PARSER_DEBUG
-# ifdef IN
-	dprintf(2, "\n\n"RED"--------------Right Branch ---------\n"RESET);
-	read_tree(right_branch);
-# endif
-#endif
 	}
 	return (right_branch);
 }
@@ -180,8 +120,6 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, \
 	return (complexe_command);
 }
 
-
-
 t_pipe	*create_pipe(int *p)
 {
 	t_pipe	*new;
@@ -201,7 +139,7 @@ t_ast			*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 {
 	int		command_name;
 	t_token *token;
-	int 	*p;
+	int		*p;
 	t_pipe	*spipe;
 	t_ast	*ast;
 
@@ -252,7 +190,7 @@ t_ast			*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 	return (ast);
 }
 
-t_ast 	*create_simple_command(t_list **token_list)
+t_ast			*create_simple_command(t_list **token_list)
 {
 	t_ast	*ast;
 

@@ -29,15 +29,15 @@ int			p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 	child = fork();
 	if (child == -1)
 	{
-		dprintf(2 ,"fork error = %s\n", strerror(errno));
+		dprintf(2, "fork error = %s\n", strerror(errno));
 		return (0);
 	}
 	if (child == 0)
 	{
 		if (close(pr->p[READ_END]) == -1)
-			dprintf(2 ,"p_right close read-end error = %s\n",strerror(errno));
+			dprintf(2, "p_right close read-end error = %s\n",strerror(errno));
 		if (dup2(pr->p[WRITE_END], STDOUT_FILENO) == -1)
-			dprintf(2 ,"pright dup2 error = %s\n", strerror(errno));
+			dprintf(2, "pright dup2 error = %s\n", strerror(errno));
 		exec_simple_command(ast, head);
 		exit(0);
 	}
@@ -56,28 +56,28 @@ int			p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
 	child = fork();
 	if (child == -1)
 	{
-		dprintf(2 ,"fork error = %s\n", strerror(errno));
+		dprintf(2, "fork error = %s\n", strerror(errno));
 		return (0);
 	}
 	if (child == 0)
 	{
 		if (dup2(pl->p[READ_END], STDIN_FILENO) == -1)
-			dprintf(2 ,"dup2 error  error = %s\n", strerror(errno));
+			dprintf(2, "dup2 error  error = %s\n", strerror(errno));
 		if (close(pl->p[WRITE_END]) == -1)
-			dprintf(2 ,"p_both close write-end  error = %s\n", strerror(errno));
+			dprintf(2, "p_both close write-end  error = %s\n", strerror(errno));
 		if (close(pr->p[READ_END]) == -1)
-			dprintf(2 ,"p_both close read-end  error = %s\n", strerror(errno));
+			dprintf(2, "p_both close read-end  error = %s\n", strerror(errno));
 		if (dup2(pr->p[WRITE_END], STDOUT_FILENO) == -1)
-			dprintf(2 ,"p_bothdup2 error  error = %s\n", strerror(errno));
+			dprintf(2, "p_bothdup2 error  error = %s\n", strerror(errno));
 		exec_simple_command(ast, head);
 		exit(0);
 	}
 	else
 	{
 		if (close(pl->p[WRITE_END]) == -1)
-			dprintf(2 ,"p_both close write-end  error = %s\n", strerror(errno));
+			dprintf(2, "p_both close write-end  error = %s\n", strerror(errno));
 		if (close(pl->p[READ_END]) == -1)
-			dprintf(2 ,"p_both close read-end  error = %s\n", strerror(errno));
+			dprintf(2, "p_both close read-end  error = %s\n", strerror(errno));
 		pr->pid = child;
 	}
 	return (1);
@@ -108,20 +108,20 @@ int			p_left(t_pipe *pl, t_ast *ast, t_lst_head *head)
 	int		save;
 
 	if ((save = dup(STDIN_FILENO)) == -1)
-		dprintf(2 ,"dup error  error = %s\n", strerror(errno));
+		dprintf(2, "dup error  error = %s\n", strerror(errno));
 	if (dup2(pl->p[READ_END], STDIN_FILENO) == -1)
-		dprintf(2 ,"dup2 error  error = %s\n", strerror(errno));
+		dprintf(2, "dup2 error  error = %s\n", strerror(errno));
 	if (close(pl->p[WRITE_END]) == -1)
-		dprintf(2 ,"p_left close write-end  error = %s\n", strerror(errno));
+		dprintf(2, "p_left close write-end  error = %s\n", strerror(errno));
 
 	exec_simple_command(ast, head);
 
 	if (close(pl->p[READ_END]) == -1)
-		dprintf(2 ,"p_left close read-end  error = %s\n", strerror(errno));
+		dprintf(2, "p_left close read-end  error = %s\n", strerror(errno));
 	if (dup2(save, STDIN_FILENO) == -1)
-		dprintf(2 ,"dup2 error  error = %s\n", strerror(errno));
+		dprintf(2, "dup2 error  error = %s\n", strerror(errno));
 	if (close(save) == -1)
-		dprintf(2 ,"close save  error = %s\n", strerror(errno));
+		dprintf(2, "close save  error = %s\n", strerror(errno));
 	wait_zombies(head);
 	return (1);
 }

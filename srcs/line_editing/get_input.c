@@ -65,7 +65,7 @@ char	*edit_get_input(void)
 		read(0, &keycode, 1);
 		if (keycode == KEY_CTRL_D && l->heredoc && l->len == 0)
 			return (control_d_heredoc(l));
-		if (keycode == 27 || keycode == 194)
+		if (keycode == 27 || keycode > 127)
 			read(0, (char *)&keycode + 1, 7);
 		if (btsearch_get_input(l, keycode))
 			continue ;

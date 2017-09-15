@@ -54,6 +54,7 @@ void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 
 void				ft_putnstr(char *str, size_t len);
+void				ft_putnstr_fd(int fd, char *str, size_t len);
 /*
 ** In file ft_putchar.c
 */

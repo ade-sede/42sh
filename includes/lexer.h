@@ -217,4 +217,5 @@ int					match_expand(t_lexer *lex, size_t token_start);
 void				free_token_list(t_list *token_list);
 t_ast				*free_ast_node(t_ast *node);
 void				free_token(void *value);
+int					check_alias(t_lexer *lex, t_token *token);
 #endif
