@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:46:48 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 00:01:16 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ int			exec_tree(t_ast *ast, t_lst_head *head)
 			else if (ft_strequ(token->value, "||"))
 				return (logical_or(ast, head));
 		}
-		if (ast)
-			return (0);
 	}
-	return (1);
+	return (ast ? 0 : 1);
 }

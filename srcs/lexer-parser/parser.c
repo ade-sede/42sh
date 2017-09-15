@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/15 23:50:05 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,89 +49,6 @@
 **			command we just created to a complexe one.
 */
 
-static t_list	*reopen_command(void)
-{
-	char	*new_command;
-	t_list	*token_list;
-	t_lexer	lex;
-
-	load_prompt(singleton_env(), singleton_line(), "reopen_command", \
-			"command> ");
-	new_command = ft_strdup(line_editing_get_input(singleton_line(), \
-			singleton_hist()));
-	new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n"));
-	lex = init_lexer(new_command);
-	token_list = start_lex(&lex);
-	new_command = ft_strchange(new_command, ft_strjoin(" ", new_command));
-	append_history(new_command);
-	free(new_command);
-	return (token_list);
-}
-
-/*
-**	Sometimes the token might represent a complexe command, but there was no
-**	initial simple command or nothing to build a new one. In this case, the
-**	corresponding child has a NULL ast.
-*/
-
-t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
-{
-	t_token		*token;
-	t_ast		*right_branch;
-	t_ast		*command_child;
-
-	right_branch = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
-	right_branch = fill_simple_command(right_branch, \
-			token_list);
-	if (right_branch && right_branch->child)
-	{
-		command_child = right_branch->child->data;
-		token = command_child->token;
-	}
-	else
-	{
-		dprintf(2, "Parse error near '%s'\n", command_token->value);
-		return (flush_tree(right_branch));
-	}
-	if (!command_child || (token && token->id == TK_NEWLINE))
-	{
-		right_branch = flush_tree(right_branch);
-		*token_list = reopen_command();
-		right_branch = create_right_branch(command_token, token_list);
-	}
-	return (right_branch);
-}
-
-t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, \
-		int *command_name)
-{
-	t_ast	*left_branch;
-	t_ast	*right_branch;
-	t_ast	*complexe_command;
-	t_token	*token;
-	t_list	*child;
-
-	token = (*token_list)->data;
-	if ((left_branch = ast) == NULL)
-	{
-		dprintf(2, "Parse error near '%s'\n", token->value);
-		return (NULL);
-	}
-	complexe_command = ast_create_node((t_token*)(*token_list)->data, NULL, COMPLEXE_COMMAND);
-	ft_simple_lst_del_one(token_list, *token_list, NULL);
-	if (!(right_branch = create_right_branch(complexe_command->token, token_list)))
-	{
-		complexe_command = flush_tree(complexe_command);
-		left_branch = flush_tree(left_branch);
-		return (NULL);
-	}
-	child = ft_simple_lst_create(left_branch);
-	ft_simple_lst_pushback(&child, ft_simple_lst_create(right_branch));
-	(complexe_command)->child = child;
-	*command_name = 0;
-	return (complexe_command);
-}
-
 t_pipe	*create_pipe(int *p)
 {
 	t_pipe	*new;
@@ -147,95 +64,63 @@ t_pipe	*create_pipe(int *p)
 **	This function starts the creation of the tree's branch.
 */
 
-t_ast			*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
+void	add_last_pipe(t_lst_head **head)
+{
+	t_pipe	*spipe;
+
+	spipe = NULL;
+	if (*head == NULL)
+		*head = ft_create_head(ft_double_lst_create(spipe));
+	else
+	{
+		ft_double_lst_pushback(head, ft_double_lst_create(NULL));
+		(*head)->middle = (*head)->first;
+	}
+}
+
+void	add_pipe(t_token *token, t_lst_head **head)
+{
+	t_pipe	*spipe;
+	int		*p;
+
+	spipe = NULL;
+	p = NULL;
+	if (ft_strequ(token->value, "|"))
+	{
+		p = palloc(sizeof(*p) * 2);
+		pipe(p);
+	}
+	spipe = create_pipe(p);
+	if (*head == NULL)
+		*head = ft_create_head(ft_double_lst_create(spipe));
+	else
+		ft_double_lst_pushback(head, ft_double_lst_create(spipe));
+}
+
+t_ast	*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 {
 	int		command_name;
 	t_token *token;
-	int		*p;
-	t_pipe	*spipe;
 	t_ast	*ast;
 
 	ast = root;
-	spipe = NULL;
-	p = NULL;
 	command_name = 0;
 	if (token_list && *token_list)
 	{
 		token = (*token_list)->data;
 		if (TK_IS_SEP(token->id))
 		{
-			if ((ast = start_complexe_command(ast, token_list, &command_name)) == NULL)
+			if ((ast = start_complexe_command(ast, token_list, \
+							&command_name)) == NULL)
 				return (NULL);
-			if (ft_strequ(token->value, "|"))
-			{
-				p = palloc(sizeof(*p) * 2);
-				pipe(p);
-			}
-			spipe = create_pipe(p);
-			if (*head == NULL)
-				*head = ft_create_head(ft_double_lst_create(spipe));
-			else
-				ft_double_lst_pushback(head, ft_double_lst_create(spipe));
+			add_pipe(token, head);
 		}
-		else
-		{
-			if ((ast = create_simple_command(token_list)) == NULL)
-				return (NULL);
-		}
-		if (token_list && *token_list)
-		{
-			if ((ast = ast_parse(ast, token_list, head)) == NULL)
-				return (NULL);
-		}
-		else
-		{
-			spipe = NULL;
-			if (*head == NULL)
-				*head = ft_create_head(ft_double_lst_create(spipe));
-			else
-			{
-				ft_double_lst_pushback(head, ft_double_lst_create(NULL));
-				(*head)->middle = (*head)->first;
-			}
-		}
+		else if ((ast = create_simple_command(token_list)) == NULL)
+			return (NULL);
+		if ((ast = ast_parse(ast, token_list, head)) == NULL)
+			return (NULL);
 	}
+	else
+		add_last_pipe(head);
 	return (ast);
-}
-
-t_ast			*create_simple_command(t_list **token_list)
-{
-	t_ast	*ast;
-
-	ast = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
-	ast = fill_simple_command(ast, token_list);
-	return (ast);
-}
-
-t_ast			*fill_simple_command(t_ast *simple_command, t_list **token_list)
-{
-	t_ast	*new_node;
-	t_token	*token;
-
-	if (token_list && *token_list)
-	{
-		token = (*token_list)->data;
-		if (TK_IS_SEP(token->id))
-			return (simple_command);
-		else
-		{
-			if (TK_IS_REDIR(token->id))
-			{
-				if (!(simple_command = append_redir(simple_command, token_list)))
-					return (NULL);
-			}
-			else
-			{
-				new_node = ast_create_node_from_word(token_list);
-				ft_simple_lst_pushback(&((simple_command)->child), \
-						ft_simple_lst_create(new_node));
-			}
-			simple_command = fill_simple_command(simple_command, token_list);
-		}
-	}
-	return (simple_command);
 }

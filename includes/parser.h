@@ -147,4 +147,6 @@ t_ast				*append_redir(t_ast *root, t_list **token_list);
 t_ast				*ast_create_node(struct s_token *token, t_list *child, \
 		t_symbol symbol);
 void				append_history(char *command);
+t_ast				*start_complexe_command(t_ast *ast, t_list **token_list, \
+		int *command_name);
 #endif

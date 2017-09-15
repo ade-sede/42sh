@@ -37,6 +37,7 @@ SRC_FILE =	\
 	builtin/exec_builtin.c \
 	builtin/echo.c \
 	builtin/alias.c \
+	builtin/unalias.c \
 \
 	exec/exec_signals.c \
 	exec/exec_pipe.c \
@@ -50,6 +51,7 @@ SRC_FILE =	\
 	exec/exec_tree.c \
 	exec/exec_simple_commands.c \
 	exec/redir.c \
+	exec/heredoc.c \
 \
 	lexer-parser/check_match.c \
 	lexer-parser/alias.c \
@@ -61,10 +63,12 @@ SRC_FILE =	\
 	lexer-parser/get_token_id.c \
 	lexer-parser/lexer.c \
 	lexer-parser/match_operator.c \
-	lexer-parser/parser.c \
 	lexer-parser/casual_node.c \
 	lexer-parser/update_state.c \
 	lexer-parser/free.c \
+	lexer-parser/parser.c \
+	lexer-parser/create_simple_command.c \
+	lexer-parser/create_complex_command.c \
 \
 	line_editing/conf_term.c \
 	line_editing/edit_refresh_visu.c \

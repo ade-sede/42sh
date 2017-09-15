@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/15 23:11:22 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "builtin.h"
 #include <stdio.h>
 
-int	lexer_insert_str_dest(char *dest, char *str, size_t dest_len)
+int		lexer_insert_str_dest(char *dest, char *str, size_t dest_len)
 {
 	size_t	len;
 
@@ -27,7 +27,7 @@ int	lexer_insert_str_dest(char *dest, char *str, size_t dest_len)
 	return (1);
 }
 
-int	lexer_insert_str(t_lexer *lex, char *dest, char *str)
+int		lexer_insert_str(t_lexer *lex, char *dest, char *str)
 {
 	size_t	len;
 	size_t	dest_pos;

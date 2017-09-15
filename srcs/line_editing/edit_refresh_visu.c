@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/15 23:11:49 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	edit_refresh_visu(t_line *line)
 	{
 		ft_putnstr_fd(2, line->buff, line->pos);
 		ft_putstr("\e[39;42m");
-		ft_putnstr_fd(2,  line->buff + line->pos, \
+		ft_putnstr_fd(2, line->buff + line->pos, \
 				line->visu_start - line->pos);
 		ft_putstr("\e[0m");
 		ft_putnstr_fd(2, line->buff + line->visu_start, \

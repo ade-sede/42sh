@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:05 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 00:36:40 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 **		si prev
 */
 
-char	**comple_matching_no_cursorword(t_line *line, t_comple *c)
+char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
 {
 	t_lexer		lex;
 	t_list		*last;
@@ -54,19 +54,28 @@ char	**comple_matching_no_cursorword(t_line *line, t_comple *c)
 	return (res);
 }
 
-char	**comple_matching_cursorword(t_line *line, t_comple *c)
+static t_lex	get_lex_line_cursor(t_line *line)
+{
+	char		line_pos_char;
+	t_lexer		lex;
+
+	line_pos_char = line->buff[line->pos];
+	line->buff[line->pos] = '\0';
+	lex.reopen = 0;
+	lex = init_lexer(line->buff);
+	line->buff[line->pos] = line_pos_char;
+	return (lex);
+}
+
+char			**comple_matching_cursorword(t_line *line, t_comple *c)
 {
 	t_lexer		lex;
 	t_list		*token_list;
 	t_list		*last;
 	t_list		*prev_last;
 	char		**res;
-	char		line_pos_char;
 
-	line_pos_char = line->buff[line->pos];
-	line->buff[line->pos] = '\0';
-	lex = init_lexer(line->buff);
-	lex.reopen = 0;
+	lex = get_lex_line(line);
 	token_list = start_lex(&lex);
 	last = ft_last_simple_lst(token_list);
 	if (ft_strchr(c->current_word, '/'))
@@ -82,11 +91,10 @@ char	**comple_matching_cursorword(t_line *line, t_comple *c)
 			res = comple_bin_matches(line, c);
 	}
 	free_token_list(token_list);
-	line->buff[line->pos] = line_pos_char;
 	return (res);
 }
 
-char	**comple_matching(t_line *line, t_comple *c)
+char			**comple_matching(t_line *line, t_comple *c)
 {
 	c->current_word = get_current_word_cursor(line);
 	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:06 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 00:29:33 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,85 +16,61 @@
 #include "printf.h"
 #include <stdio.h>
 
-static void		print_alias(t_list *alias)
+static void	print_alias(t_list *alias)
 {
 	ft_putendl(alias->data);
 }
 
-t_list	*find_alias(t_list *alias, const char *argv, size_t len)
+t_list		*find_alias(t_list *alias, const char *argv, size_t len)
 {
 	while (alias && ft_strnequ(alias->data, argv, len) == 0)
 		alias = alias->next;
 	return (alias);
 }
 
-int				builtin_alias(t_env *env, const char **argv)
+static void	create_alias(t_env *env, const char *argv, int eq_index, int *ret)
+{
+	t_list	*node;
+
+	node = find_alias(env->alias, argv, eq_index + 1);
+	if (node)
+		node->data = ft_strchange(node->data, ft_strdup(argv));
+	else
+		ft_simple_lst_pushback(&env->alias, \
+				ft_simple_lst_create(ft_strdup(argv)));
+	*ret = EXIT_SUCCESS;
+}
+
+static void	show_alias(t_env *env, const char *argv, int *ret)
+{
+	t_list	*node;
+
+	node = find_alias(env->alias, argv, ft_strlen(argv));
+	if (node)
+		print_alias(node);
+	else
+		*ret = EXIT_FAILURE;
+}
+
+int			builtin_alias(t_env *env, const char **argv)
 {
 	int		eq_index;
 	int		argc;
 	int		i;
-	t_list	*node;
 	int		ret;
 
-	i = 1;
+	i = 0;
 	ret = EXIT_SUCCESS;
 	argc = ft_arraylen(argv);
 	if (argc == 1)
 		ft_simple_lst_foreach(env->alias, NULL, print_alias);
-	while (i < argc)
+	while (++i < argc)
 	{
 		eq_index = ft_strichr(argv[i], '=');
 		if (eq_index == -1)
-		{
-			node = find_alias(env->alias, argv[i], ft_strlen(argv[i]));
-			if (node)
-			{
-				ft_putstr(node->data);
-			}
-			else
-				ret = EXIT_FAILURE;
-		}
+			show_alias(env, argv[i], &ret);
 		else
-		{
-			node = find_alias(env->alias, argv[i], eq_index + 1);
-			if (node)
-				node->data = ft_strchange(node->data, ft_strdup(argv[i]));
-			else
-				ft_simple_lst_pushback(&env->alias, \
-						ft_simple_lst_create(ft_strdup(argv[i])));
-			ret = EXIT_SUCCESS;
-		}
-		i++;
-	}
-	return (ret);
-}
-
-int			builtin_unalias(t_env *env, const char **argv)
-{
-	int		argc;
-	int		i;
-	t_list	*node;
-	int		ret;
-
-	i = 1;
-	ret = EXIT_SUCCESS;
-	argc = ft_arraylen(argv);
-	if (argc == 1)
-		return (return_failure(NULL, "unalias : Argument required"));
-	while (i < argc)
-	{
-		node = find_alias(env->alias, argv[i], ft_strlen(argv[i]));
-		if (node)
-		{
-			ft_simple_lst_del_one(&env->alias, node, ft_free);
-			ret = EXIT_SUCCESS;
-		}
-		else
-		{
-			return_failure("alias not found : ", argv[i]);
-			ret = EXIT_FAILURE;
-		}
-		i++;
+			create_alias(env, argv[i], eq_index, &ret);
 	}
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:58:26 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 00:07:39 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,41 +48,6 @@ void	*get_exec_redir_func(t_ast *child_node)
 **	This function is used to open the file with the right options depending on
 **	the operator's id. FD of the opened file will be returned.
 */
-
-void	heredoc(int io_number, char *target, t_list **redir_stack, \
-		t_token_id id)
-{
-	int		*fd;
-	char	*buff;
-
-	buff = NULL;
-	fd = ft_memalloc(sizeof(*fd) * 2);
-	(void)id;
-	if (io_number == -1)
-		io_number = 0;
-	errno = 0;
-	if (pipe(fd) == 0)
-	{
-		while (1)
-		{
-			conf_term_canonical();
-			singleton_line()->heredoc = 1;
-			load_prompt(singleton_env(), singleton_line(), \
-					"heredoc", "heredoc> ");
-			buff = line_editing_get_input(singleton_line(), singleton_hist());
-			conf_term_normal();
-			singleton_line()->heredoc = 0;
-			if (ft_strequ(buff, target) || ft_strchr(buff, 4))
-				break ;
-			write(fd[WRITE_END], buff, ft_strlen(buff));
-			write(fd[WRITE_END], "\n", 1);
-		}
-		close(fd[WRITE_END]);
-		errno = 0;
-		push_dup(io_number, fd[READ_END], FALSE, redir_stack);
-	}
-	free(fd);
-}
 
 /*
 **	Fd merging with op >& and <&
