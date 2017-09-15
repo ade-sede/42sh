@@ -125,12 +125,6 @@ t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
 	right_branch = fill_simple_command(right_branch, \
 			token_list);
 
-#ifdef PARSER_DEBUG
-# ifdef IN
-	dprintf(2, "\n\n"RED"--------------Right Branch ---------\n"RESET);
-	read_tree(right_branch);
-# endif
-#endif
 	if (right_branch && right_branch->child)
 	{
 		command_child = right_branch->child->data;
@@ -145,8 +139,13 @@ t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
 	{
 		right_branch = flush_tree(right_branch);
 		*token_list = reopen_command();
-		right_branch = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
-		right_branch = fill_simple_command(right_branch, token_list);
+		right_branch = create_right_branch(command_token, token_list);
+#ifdef PARSER_DEBUG
+# ifdef IN
+	dprintf(2, "\n\n"RED"--------------Right Branch ---------\n"RESET);
+	read_tree(right_branch);
+# endif
+#endif
 	}
 	return (right_branch);
 }
