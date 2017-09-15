@@ -9,6 +9,7 @@
 #define LOCAL_BUFF_SIZE 4096
 
 #ifdef PARSER_DEBUG
+# ifdef OUT
 static void	read_tree(t_ast *ast_start)
 {
 	size_t	index;
@@ -43,6 +44,7 @@ static void	read_tree(t_ast *ast_start)
 		index++;
 	}
 }
+# endif
 #endif
 
 /*
@@ -68,7 +70,6 @@ void	exec(t_env *env, const char **argv, t_lst_head *head)
 	}
 	free(argv);
 }
-
 #ifndef NO_TERMCAPS
 void	init_main_loop(t_line *line, t_hist *hist)
 {
@@ -96,24 +97,7 @@ char	*line_editing_get_input(t_env *env, t_line *line, t_hist *hist)
 }
 #endif
 
-/*
-**	void	lexer_debug(t_list *token_list)
-**	{
-**		t_list	*token_debug = token_list;
-**		t_token *token;
-**
-**		token = NULL;
-**		while (token_debug)
-**		{
-**			token = token_debug->data;
-**			dprintf(2, MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET,
-**			token->value, token->id);//			REMOVE
-**			token_debug = token_debug->next;
-**		}
-**	}
-*/
-
-void	history_write_last_command();
+void	history_write_last_command();	// PROTO
 
 void	main_loop(t_env *env)
 {
@@ -147,18 +131,17 @@ void	main_loop(t_env *env)
 #ifndef NO_TERMCAPS
 			buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
 #endif
-//			dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, buff);//			REMOVE		
 			lex = init_lexer(buff);
 			token_list = start_lex(&lex);
 			ast = ast_parse(NULL, &token_list, &head);
 #ifndef NO_TERMCAPS
 			history_write_last_command();
 #endif
-
 #ifdef PARSER_DEBUG
+# ifdef OUT
 			read_tree(ast);
+# endif
 #endif
-
 #ifndef NO_TERMCAPS
 			conf_term_normal();
 #endif

@@ -14,27 +14,14 @@
 
 /*
 ** 	List of pipes should be generated during parsing and creation of the tree.
-** 	Fork and execute the 1st branch in the child, meanwhile everything keeps going in the parent.
-** 	Redirection should occure here, (in the child ?) not at the binary / builtin call time.
 */
 
 static int	exec_pipe(t_ast *ast, t_lst_head *head)
 {
 	if (exec_tree(ast->child->data, head) == 0)
 		exec_tree(ast->child->next->data, head);
-	else
-	{
-		ast->child->data = flush_tree(ast->child->next->data);
-		head->middle = head->middle->next;
-	}
 	return (0);
 }
-
-/*
-**	The first time exec_tree is called, we give it our root node as an
-**	argument. Depending on the node symbol, it will start the execution of the
-**	various commands.
-*/
 
 int			p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 {
@@ -130,7 +117,6 @@ int			p_left(t_pipe *pl, t_ast *ast, t_lst_head *head)
 
 	exec_simple_command(ast, head);
 
-	(void)ast, (void)head;
 	if (close(pl->p[READ_END]) == -1)
 		dprintf(2 ,"p_left close read-end  error = %s\n", strerror(errno));
 	if (dup2(save, STDIN_FILENO) == -1)
@@ -160,6 +146,12 @@ int			check_pipes(t_ast *ast, t_lst_head *head)
 		exec_simple_command(ast, head);
 	return (1);
 }
+
+/*
+**	The first time exec_tree is called, we give it our root node as an
+**	argument. Depending on the node symbol, it will start the execution of the
+**	various commands.
+*/
 
 int			exec_tree(t_ast *ast, t_lst_head *head)
 {

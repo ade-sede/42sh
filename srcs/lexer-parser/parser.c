@@ -38,6 +38,7 @@
 */
 
 #ifdef PARSER_DEBUG
+# ifdef IN
 static void	read_tree(t_ast *ast_start)
 {
 	size_t	index;
@@ -72,6 +73,7 @@ static void	read_tree(t_ast *ast_start)
 		index++;
 	}
 }
+# endif
 #endif
 
 void	append_history(char *command); // In file srcs/lexer-parser/check_match.c
@@ -124,9 +126,10 @@ t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
 			token_list);
 
 #ifdef PARSER_DEBUG
-	dprintf(2, "\n\n-----------------------------------------------------------------------------\n");
+# ifdef IN
+	dprintf(2, "\n\n"RED"--------------Right Branch ---------\n"RESET);
 	read_tree(right_branch);
-	dprintf(2, "\n\n-----------------------------------------------------------------------------\n");
+# endif
 #endif
 	if (right_branch && right_branch->child)
 	{
