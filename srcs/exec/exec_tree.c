@@ -22,19 +22,8 @@ static int	exec_pipe(t_ast *ast, t_lst_head *head)
 {
 	if (exec_tree(ast->child->data, head) == 0)
 		exec_tree(ast->child->next->data, head);
-	else
-	{
-		ast->child->data = flush_tree(ast->child->next->data);
-		head->middle = head->middle->next;
-	}
 	return (0);
 }
-
-/*
-**	The first time exec_tree is called, we give it our root node as an
-**	argument. Depending on the node symbol, it will start the execution of the
-**	various commands.
-*/
 
 int			p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 {
@@ -157,6 +146,12 @@ int			check_pipes(t_ast *ast, t_lst_head *head)
 		exec_simple_command(ast, head);
 	return (1);
 }
+
+/*
+**	The first time exec_tree is called, we give it our root node as an
+**	argument. Depending on the node symbol, it will start the execution of the
+**	various commands.
+*/
 
 int			exec_tree(t_ast *ast, t_lst_head *head)
 {

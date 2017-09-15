@@ -6,6 +6,7 @@ int		edit_up(t_line *line)
 		return (0);
 	put_termcap("up");
 	line->pos -= line->ws_col;
+	line->old_pos = line->pos;
 	return (1);
 }
 
@@ -20,6 +21,7 @@ int		edit_down(t_line *line)
 	i = 0;
 	while (i++ < line->ws_col)
 		edit_right(line);
+	line->old_pos = line->pos;
 	return (1);
 }
 
@@ -29,6 +31,7 @@ int		edit_left(t_line *line)
 		return (0);
 	put_termcap("le");
 	line->pos--;
+	line->old_pos = line->pos;
 	return (1);
 }
 
@@ -41,5 +44,6 @@ int		edit_right(t_line *line)
 	else
 		put_termcap("nd");
 	line->pos++;
+	line->old_pos = line->pos;
 	return (1);
 }

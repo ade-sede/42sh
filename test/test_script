@@ -1,21 +1,3 @@
-ls | cat -e
-exit
-ls
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls | cat -e
-exit
-ls &&
-make re
-exit
-exit
-ls
 exit
 echo "
 exit
@@ -601,12 +583,12 @@ git diff | uniq | xargs vim
 git diff | vim
 git merge --abort
 vi srcs/line_editing/put_termcap.c
-echo #$@#££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£
-echo #$@#££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£"
-echo "#$@#££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£"
-echo $@#££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£
-echo #££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£
-echo ££¢£¢⃤�¢⃨��¢⃨��¢¢⃨��¢£
+echo #$@#Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£
+echo #$@#Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£"
+echo "#$@#Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£"
+echo $@#Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£
+echo #Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£
+echo Â£Â£Â¢Â£Â¢â¤¢Â¢â¨¾Â¢â¨¾Â¢Â¢â¨¾Â¢Â£
 echo "fsfesfesfsefcdescfes"
 echo \\\n
 rm -rf 42shgithub
@@ -2243,8 +2225,8 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 $> $> e$> ex$> exi$> exit
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-⃾��  42sh git:(buff_size) ⃼�� $> $> e$> ex$> exi$> exit
-⃾��  42sh git:(buff_size) >....
+â¾¼  42sh git:(buff_size) â¼· $> $> e$> ex$> exi$> exit
+â¾¼  42sh git:(buff_size) >....
 git merge buff_size
 v includes/line_editing.h 
 rm $ e$ ex$ exi$ exit
@@ -4418,7 +4400,7 @@ ls
 cd 
 cd Downloads
 ls
-mv Numérisation_20170829.png attestation_Combey_Henri
+mv NumÃ©risation_20170829.png attestation_Combey_Henri
 mv attestation_Combey_Henri attestation_Combey_Henri.pdf
 open attestation_Combey_Henri.pdf
 npm run dev
@@ -4624,8 +4606,8 @@ pkill -SIGSEGV ft_select
 ./ft_select /*
 ./ft_select 1 2 3 1 4 54 1
 ./ft_select 1 2 3 1 4 54 1 1 2 12 1 1 2
-./ft_select  七�快中僯�僯�僼� 怃�絃�活治起孃�僼��＃�水人倃� 
-./ft_select  七�快中僯�僯�僼� 怃�絃�活治起孃�僼��＃�水人倃� 亂惵�偃�惶��烴�烴��價�
+./ft_select  ä¸ªå¿«ä¸­å¯«å¯¤å¼¨ æ½çµ°æ´»æ²»èµ·å­°å¼«ï¼ºæ°´äººå± 
+./ft_select  ä¸ªå¿«ä¸­å¯«å¯¤å¼¨ æ½çµ°æ´»æ²»èµ·å­°å¼«ï¼ºæ°´äººå± äºæµ¸å§æ¶§ç´¢ç´¿å¹¨
 ls -l
 ls -l srcs
 ls -l includes
@@ -7072,7 +7054,7 @@ make
 leaks rtv1
 make
 ./rtv1 demo.1
- �
+â¸
 ./rtv1 demo.1
 leaks rtv1
 make
@@ -8553,7 +8535,7 @@ make APPEND="-D PID"
 cd. ../42sh
 cd ../42sh
 clear
-¬./21
+Â¬./21
 ./21sh
 v libft/srcs/ft_memcpy.c
 v libft/srcs/ft_strtrim.c
@@ -10436,13 +10418,6 @@ gs
 ./21sh
 cexit
 exit
-<<<<<<< HEAD
-|
-||
-&&\
-ls
-<<
-=======
 ls && ||
 ls
 ls
@@ -10650,86 +10625,10 @@ ls | cat -e
 ls | cat -e
 ls
 ls
->>>>>>> master
 ls
 ls
 exit
 ls
-<<<<<<< HEAD
-norminette srcs/globing/ | grep "Error" -B 1
-norminette srcs/globing/ | grep "Error" -B 1
-norminette srcs/globing/match_open_dir.c | grep "Error" -B 1
-norminette srcs/globing/match_open_dir.c | grep "Error" -B 1
-norminette srcs/globing/match_open_dir.c | grep "Error" -B 1
-norminette srcs/globing/match_open_dir.c | grep "Error" -B 1
-norminette srcs/globing/match_open_dir.c | grep "Error" -B 1
-norminette srcs/globing/match_open_dir.c | grep "Error" -B 1
-norminette srcs/globing/match_open_dir.c | grep "Error" -B 1
-norminette srcs/globing/match_open_dir.c | grep "Error" -B 1
-norminette srcs/globing/match_open_dir.c | grep "Error" -B 1
-norminette srcs/globing/ | grep "Error" -B 1
-norminette srcs/globing/ | grep "Error" -B 1
-norminette srcs/globing/ | grep "Error" -B 1
-norminette srcs/globing/ | grep "Error" -B 1
-norminette srcs/globing/ | grep "Error" -B 1
-norminette srcs/globing/curly_brackets_range.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets_range.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets_range.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets_range.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets_range.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing/curly_brackets.c | grep "Error" -B 1
-norminette srcs/globing | grep "Error" -B 1
-norminette srcs/globing | grep "Error" -B 1
-norminette srcs/globing/glob.c | grep "Error" -B 1
-norminette srcs/globing/glob.c | grep "Error" -B 1
-norminette srcs/globing/glob.c | grep "Error" -B 1
-norminette srcs/globing/glob.c | grep "Error" -B 1
-norminette srcs/globing/glob.c | grep "Error" -B 1
-make
-make
-make
-make
-make
-exit
-ls */*
-ls */*[a-c
-ls */*[a-c]
-ls {a..n}
-norminette srcs/globing/glob.c | grep "Error" -B 1
-norminette srcs/globing/glob.c | grep "Error" -B 1
-norminette srcs/globing/glob.c | grep "Error" -B 1
-norminette srcs/globing/glob.c | grep "Error" -B 1
-norminette srcs/globing/glob.c | grep "Error" -B 1
-norminette srcs/globing/ | grep "Error" -B 1
-norminette srcs/globing/square_bracket.c | grep "Error" -B 1
-norminette srcs/globing/square_bracket.c | grep "Error" -B 1
-norminette srcs/globing/square_bracket.c | grep "Error" -B 1
-norminette srcs/globing/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs/exec/ | grep "Error" -B 1
-exit
-ls &&
-ls
-=======
 ls
 ls
 ls
@@ -11002,358 +10901,13 @@ ls {a,{b,c}{1..10}}{a..b}
 v .21sh_history
 vim .21sh_history
 exit
-exit
-exit
-exit
-exit
-clear
-ls 
-ls kdfjhgkug
-efjlksdf
-ls
-clear
-ls
-ls -G
-cd Makefile
-ls
-clear
-cd MakefileLKDFJGLKDFG
-CD
-cd
-cd- 
-cd
-git status
-ls
-ls | cd | git
-cat *.c
-cat *c -> blabla.c
-cat *c -> blabla.c | mv blabla.c ../
-cd -
-cd 42/42sh
-ls
-v srcs/line_editing/*
-exit
-exit
-exit
-exit
-eixt
-exit
-exit
-makexit
-makeexit
-exit
-sddsdssdsddsdssdsddsdssdsddsdssd
-exit
-exit
-mxit
-make
-exit
-exit
-exit
-exit
-exit
-clear
-ls
-gs
-exit
-ls > foo
-exit
-cat << FOO
-ls > foo
-cat foo
-rm foo
-clear
-ls | cat -e
-exit
-ls
-ls
-clear
-exit
-ls
-2>&1 ls
-exit
-ls
-exit
-ls
-exit
-ls
-2>&1 ls
-exit
-cat > foo
-exit
-cat > foo
-exit
-ls > foo
-cat foo
-rm foo
-clear
-exit
-2>&1 ls | 2>&1 cat -e ls
-clear
-exit
-ls | cat -e
-2>&1 ls | cat -e
-2>&1 ls | 2>&1 cat -e exit
-2>&1 ls | 2>&1 cat -e exit
-2>&1 ls | 2>&1 wc -l echo "lol"
-exit
-ls | cat -e
-2>&1 ls | 2>&1 cat -e exit
-2>&1 ls | 2>&1 cat exit
-2>&1 ls && 2>&1 exit exit
-ls && cat
-clear
-2>&1 ls | 2>&1 cat -e exit
-ls | cat -e
-2>&1 ls | cat -e
-2>&1 ls 123123 libft | 2>&1 cat -e
-exit
-2>&1 ls 123123 libft | 2>&1 cat -e
-exit
-ls
-ls | cat -e
-clear
-cat << EOF
-cat <<
-cat >
-exit
-ls && 
-ls && 
-exit
-ls && 
-exit
-exit
-exi
-exit
-exit
-exit
-exit
-ls exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-clear
-exit
-exit
-exit
-alias
-alias lolo="ls -l"
-alias
-lolo
-alias lolo="ls -l"
-lolo
-alias lolo="ls -l"
-alias lolo="ls -l"
-lolo
-lolo
-alias lolo="ls -l"
-exit
-alias lolo="ls -l"
-alias lolo="ls -l"
-lolo
-exit
-alias lolo="ls -l"
-lolo
-alias lolo="lssddfsdsffds"
-lolo
-exit
-alias lolo="lssddfsdsffds"
-lolo
-eixt
-exit
-alias lolo="ls -l"
-lolo
-lolo
-alias lolo=""
-lolo
-alias lolo="ls | cat -e"
-lolo
-exit
-ks
-ls
-exit
-ft_select **/*
-**/*
-ls **/*
-ls *[a]
-ls [a]*
-ls [a]*[r]
-ls [a]**[r]
-ls [a]**[r]/
-ls 
-ls t*
-ls t*/*
-ls t*/*[t]
-ls t*/**[t]
-ft_select **/*
-./ft_select **/*
-ls {{1..
-ls {{1..
-ls {1..}}
-ls {1..}}
-ls {1..10}
-ls {{1..}}
-ls {{1..}}}}
-ls }}
-ls {{
-ls {{fsdfds}
-ls {{fsdfds},}
-ls
-exit
-echo "\n"
-echo -e "\n"
-clear
-exit
-exit
-<< EOF cat -e >> /tmp/test.txt SegV 1
-cat /tmp/test.txt
-clear
-exit
-<< EOF cat -e >> /tmp/test.txt
-cat /tmp/test.txt
-rm /tmp/test.txt
-clear
-exit
-qweqwewqeqeqweqweqweqqweqwewqeqeqweqweqweqqweqwewqeqeqweqweqweqqweqwewqeqeqweqweqweqqw
-clear
-exit
-exit
-exit
-clear
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-for
-for i in lol
-exit
-for i in lol
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-exit
-while [ 1 ] ; do echo "\n-----------------------------\n" && ps -j | grep -E "53600" ; done
-exit
-echo "libft"
-exit
-echo "exit"
-exit
-echo "libft"
-exit
-exit
-exit
-ls | cat -e
-ls | cat 
-exit
-echo ""
-exit
-ls && 
-ls **/*
-ls **/**/**
-ls **/**/**
-ls **/**/**
-ls **/**/**
-ls **/**/**
-ls */*
-ls **/*
-exit
-./ft_select ~/**/*
-./ft_select ~/**/*
-./ft_select */*
-ls */*
-ls */**
-exit
-ls */**
-ls **/**
-./ft_select */*
-./ft_select ~/**/*
-./ft_select */**/*
-./ft_select */*/*
-ls */*/*
-ls **/*[.o]
-ls **/*[.o]
-ls **/*[.o]
-ls **/*[.o]
-ls **/*[.o]
-ls **/*[.o]
-ls **/*[.o]
-exit
-ls **/*[.o]
-ls **/*[.o]
-exit
-ls && 
-exit
-ls &&       ls
-exit
-ls &&           ls || lol
-ls && echo "lol"
->>>>>>> master
-exit
-ls && lsls
-ls &&         ls
-norminette srcs/exec/ | grep "Error" -B 1
-norminette srcs | grep "Error" -B 1
-norminette srcs/line_editing | grep "Error" -B 1
-norminette srcs/line_editing | grep "Error" -B 1
-norminette srcs | grep "Error" -B 1
-norminette srcs/main_loop.c | grep "Error" -B 1
-norminette srcs/exec/main_loop.c | grep "Error" -B 1
-norminette srcs/exec/main_loop.c | grep "Error" -B 1
-norminette srcs/exec/main_loop.c | grep "Error" -B 1
-norminette srcs/exec/main_loop.c | grep "Error" -B 1
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-exit
-ls
-ls
-ls
-exit
+||
+&&
+2>1
+2>&1
+ls || ls -l
+echo "it works " | cat -e
+ls && ;
+kls ; 123 ; ls ; ls <
+base64 /dev/urandom | head -c 1000 | grep 42 | sed -e 's/Yes/g' -e 's/No/g'
+find ./srcs -type f -name "*" -exec cat {} \; | sed '/^\s*$/d' | sed -e '/^\//d' | sed -e '/^\*\*/d' | sed -e '/^\*/d' | wc -l

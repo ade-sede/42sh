@@ -31,10 +31,12 @@ t_list	*pathname_expansion(t_token *token)
 	first = NULL;
 	if (token->type != QUOTED && token->type != DQUOTED)
 	{
-		if (ft_strchr(token->value, '*'))
+		if (ft_strchr(token->value, '*') || ft_strchr(token->value, '['))
 			first = propRe(glob(token->value));
 		else if (ft_strchr(token->value, '{'))
 			first = propRe(expand_curly_brackets(token->value));
+	if (first != NULL)
+		free_token(token);
 	}
 	return (first);
 }

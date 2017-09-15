@@ -5,6 +5,8 @@ void	btsearch_change_line(t_line *line, t_hist *h, t_list_d *node)
 {
 	h->btsearch_cur = node;
 	ft_strclr(line->buff);
+	line->len = 0;
+	line->pos = 0;
 	if (h->btsearch_cur)
 	{
 		edit_insert_str(line, line->buff, h->btsearch_cur->data);

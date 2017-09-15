@@ -82,7 +82,7 @@ int			lex_id_reserved_words(t_token *token, t_token_id *id)
 		i++;
 	if (!g_reserved_word_list[i])
 		return (0);
-	*id = i + 20;
+	*id = i + 21;
 	return (1);
 }
 
@@ -90,7 +90,7 @@ int			lex_id_reserved_words(t_token *token, t_token_id *id)
 **	The flag `cmd' is FALSE (0) until we find our command name.
 */
 
-int			lex_id_word(t_token *token, t_token_id *id)
+int			lex_id_word(t_lexer *lex, t_token *token, t_token_id *id)
 {
 	ssize_t		eq_sign;
 
@@ -98,7 +98,19 @@ int			lex_id_word(t_token *token, t_token_id *id)
 	if (eq_sign == -1 || eq_sign == 0)
 	{
 		if (lex_id_reserved_words(token, id) == 0)
-			*id = TK_WORD;
+		{
+			if (TK_IS_REDIR(lex->last_id) && lex->last_id != TK_HERE)
+				*id = TK_NAME;
+			else
+			{
+				if (lex->cmd_name_open && lex->last_id != TK_HERE)
+				{
+					lex->cmd_name_open = 0;
+					token->cmd_name = 1;
+				}
+				*id = TK_WORD;
+			}
+		}
 	}
 	else
 		*id = TK_ASSIGNMENT_WORD;

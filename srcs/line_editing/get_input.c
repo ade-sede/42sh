@@ -76,6 +76,8 @@ char	*edit_get_input(void)
 		if (history_get_input(l, keycode))
 			continue ;
 		edit_loop(keycode, l);
+		if (l->visu_mode)
+			edit_refresh(l);
 	}
 	return (NULL);
 }

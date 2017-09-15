@@ -7,7 +7,7 @@
 **	the token and build the tree.
 */
 
-t_token_id		lex_get_token_id(t_token *token)
+t_token_id		lex_get_token_id(t_lexer *lex ,t_token *token)
 {
 	t_token_id	id;
 	int			done;
@@ -18,10 +18,15 @@ t_token_id		lex_get_token_id(t_token *token)
 		id = lex_id_operator(token->value);
 	else if (token->type == WORD)
 	{
+		if (ft_strequ(token->value, "\n"))
+		{
+			done = TRUE;
+			id = TK_NEWLINE;
+		}
 		if (!done)
 			done = lex_id_io_number(token, token->delimiter, &id);
 		if (!done)
-			done = lex_id_word(token, &id);
+			done = lex_id_word(lex, token, &id);
 	}
 	else if (token->type == DQUOTED || token->type == QUOTED)
 		id = TK_WORD;

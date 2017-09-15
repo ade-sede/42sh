@@ -8,6 +8,16 @@ void	history_refresh_command(t_hist *h, char *command)
 	write(h->fd, "\n", 1);
 }
 
+void	history_write_last_command()
+{
+	t_hist	*h;
+	t_list_d	*list;
+
+	h = singleton_hist();
+	list = h->list->first;
+	history_refresh_command(h, list->data);
+}
+
 void	history_refresh(char *command)
 {
 	t_hist		*h;
@@ -21,5 +31,4 @@ void	history_refresh(char *command)
 		h->list = ft_create_head(list);
 	else
 		ft_double_lst_add(&h->list, list);
-	history_refresh_command(h, command);
 }

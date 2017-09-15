@@ -180,7 +180,6 @@ int				redir_open_file(char *target, t_token_id id);
 ** In redir.c
 */
 
-void			append_redir(t_ast **root, t_list **token_list);
 void			heredoc(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id);
 void			exec_redir(t_list *child_list, t_list **redir_stack);

@@ -41,27 +41,24 @@ size_t	edit_refresh_nchar(t_line *line, size_t padding, char *str, size_t n)
 
 void	edit_refresh_visu(t_line *line)
 {
-	size_t start;
-
-	start = line->prompt_len;
 	if (line->pos < line->visu_start)
 	{
-		start = edit_refresh_nchar(line, start, line->buff, line->pos);
+		ft_putnstr(line->buff, line->pos);
 		ft_putstr("\e[39;42m");
-		start = edit_refresh_nchar(line, start, line->buff + line->pos, \
+		ft_putnstr( line->buff + line->pos, \
 				line->visu_start - line->pos);
 		ft_putstr("\e[0m");
-		start = edit_refresh_nchar(line, start, line->buff + line->visu_start, \
+		ft_putnstr(line->buff + line->visu_start, \
 				line->len - line->visu_start);
 	}
 	else
 	{
-		start = edit_refresh_nchar(line, start, line->buff, line->visu_start);
+		ft_putnstr(line->buff, line->visu_start);
 		ft_putstr("\e[39;42m");
-		start = edit_refresh_nchar(line, start, line->buff + line->visu_start, \
+		ft_putnstr(line->buff + line->visu_start, \
 				line->pos - line->visu_start);
 		ft_putstr("\e[0m");
-		start = edit_refresh_nchar(line, start, line->buff + line->pos, \
+		ft_putnstr(line->buff + line->pos, \
 				line->len - line->pos);
 	}
 }

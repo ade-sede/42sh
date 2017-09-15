@@ -70,12 +70,12 @@ int		match(t_matches *m, int to_match_i, int regex_i)
 			&& m->regex[regex_i] != '*' && m->regex[regex_i] != '/')
 		return (0);
 	if (m->regex[regex_i] == '/' && m->to_match[to_match_i] == '\0')
-		return (match_open_dir(m, to_match_i, regex_i + 1, \
-					ft_strdup(m->to_match)));
-	if (m->regex[regex_i] == '*' && !char_is_escaped(m->regex, regex_i))
+		return (match_open_dir(m, to_match_i, regex_i + 1, ft_strdup(m->to_match)));
+	if (m->regex[regex_i] == '*' && !char_is_escaped(m->regex, regex_i) && !(m->regex[regex_i + 1] == '*'))
 		return (func_star(m, to_match_i, regex_i));
-	else if (m->regex[regex_i] == '[' && \
-			valid_square_bracket(m->regex, regex_i))
+	else if (m->regex[regex_i] == '*' && !char_is_escaped(m->regex, regex_i) && (m->regex[regex_i + 1] == '*'))
+		return (match(m, to_match_i, regex_i + 1));
+	else if (m->regex[regex_i] == '[' && valid_square_bracket(m->regex, regex_i))
 		return (func_square_bracket(m, to_match_i, regex_i));
 	else if (m->regex[regex_i] == '?' && !char_is_escaped(m->regex, regex_i))
 		return (match(m, to_match_i + 1, regex_i + 1));
@@ -97,6 +97,6 @@ t_list	*glob(char *regex)
 	to_match_i = regex_i - 1;
 	m = (t_matches){NULL, NULL, regex, dir_name};
 	if (!match_open_dir(&m, to_match_i, regex_i, dir_name))
-		return (ft_simple_lst_create(m.regex));
+		return (ft_simple_lst_create(strdup(m.regex)));
 	return (m.list);
 }
