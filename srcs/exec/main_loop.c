@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 23:01:48 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 01:35:04 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,35 @@ char	*line_editing_get_input(t_line *line, t_hist *hist)
 	return (edit_get_input());
 }
 
-void	main_loop(t_env *env)
+void	lex_and_parse(char *buff)
 {
-	t_ast		*ast;
-	char		*buff;
 	t_lexer		lex;
 	t_lst_head	*head;
 	t_list		*token_list;
+	t_ast		*ast;
 
 	head = NULL;
+	history_refresh(buff);
+	buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
+	lex = init_lexer(buff);
+	token_list = start_lex(&lex);
+	ast = ast_parse(NULL, &token_list, &head);
+	history_write_last_command();
+	conf_term_normal();
+	exec_tree(ast, head);
+	if (token_list)
+		ft_simple_lst_remove(&token_list, free_token);
+	conf_term_canonical();
+	ast = flush_tree(ast);
+	if (head != NULL)
+		ft_remove_head(&head, free_pipe);
+	free(buff);
+}
+
+void	main_loop(t_env *env)
+{
+	char		*buff;
+
 	init_main_loop(singleton_line(), singleton_hist());
 	while (42)
 	{
@@ -86,23 +106,7 @@ void	main_loop(t_env *env)
 		buff = ft_strdup(line_editing_get_input(singleton_line(), \
 					singleton_hist()));
 		if (*buff != 0)
-		{
-			history_refresh(buff);
-			buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
-			lex = init_lexer(buff);
-			token_list = start_lex(&lex);
-			ast = ast_parse(NULL, &token_list, &head);
-			history_write_last_command();
-			conf_term_normal();
-			exec_tree(ast, head);
-			if (token_list)
-				ft_simple_lst_remove(&token_list, free_token);
-			conf_term_canonical();
-			ast = flush_tree(ast);
-			if (head != NULL)
-				ft_remove_head(&head, free_pipe);
-			free(buff);
-		}
+			lex_and_parse(buff);
 		else
 			free(buff);
 	}

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 01:29:30 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static unsigned int	ft_count_words(char const *s, char c)
 	return (nb_words);
 }
 
-static char			**ft_malloc_t(char const *s, char **t, char c)
+static void			ft_malloc_t(char const *s, char **t, char c)
 {
 	unsigned int	i;
 	unsigned int	no_words;
@@ -61,20 +61,14 @@ static char			**ft_malloc_t(char const *s, char **t, char c)
 		nb_letters = 0;
 		while (s[i] && (!(s[i] == c && depth == 0)))
 		{
-			if (s[i] == '{')
-				depth++;
-			if (s[i] == '}')
-				depth--;
+			if (s[i] == '{' || s[i] == '}')
+				(s[i] == '{') ? depth++ : depth--;
 			i++;
 			nb_letters++;
 		}
 		if (nb_letters != 0 && depth == 0)
-		{
-			if (!(t[no_words] = ft_strnew(nb_letters)))
-				return (NULL);
-		}
+			t[no_words] = ft_strnew(nb_letters);
 	}
-	return (t);
 }
 
 static void			ft_fill_t(char const *s, char **t, char c)
@@ -96,10 +90,8 @@ static void			ft_fill_t(char const *s, char **t, char c)
 		no_letters = 0;
 		while (s[i] && (!(s[i] == c && depth == 0)))
 		{
-			if (s[i] == '{')
-				depth++;
-			if (s[i] == '}')
-				depth--;
+			if (s[i] == '{' || s[i] == '}')
+				(s[i] == '{') ? depth++ : depth--;
 			t[no_words][no_letters] = s[i];
 			i++;
 			no_letters++;
@@ -123,8 +115,7 @@ char				**ft_strsplit_coma_bracket(char *s)
 	if (!(t = (char **)malloc(sizeof(char *) * (nb_words + 1))))
 		return (NULL);
 	t[nb_words] = NULL;
-	if (ft_malloc_t(s, t, c) == NULL)
-		return (NULL);
+	ft_malloc_t(s, t, c);
 	ft_fill_t(s, t, c);
 	return (t);
 }

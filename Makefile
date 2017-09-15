@@ -127,6 +127,7 @@ SRC_FILE =	\
 	globing/match_open_dir.c	\
 	globing/square_bracket.c	\
 	globing/star.c	\
+	globing/match.c	\
 
 INCLUDES_FILES = \
 	builtin.h      \
