@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redir.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
+/*   Updated: 2017/09/15 22:58:26 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -55,12 +67,13 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		{
 			conf_term_canonical();
 			singleton_line()->heredoc = 1;
-			load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
+			load_prompt(singleton_env(), singleton_line(), \
+					"heredoc", "heredoc> ");
 			buff = line_editing_get_input(singleton_line(), singleton_hist());
 			conf_term_normal();
 			singleton_line()->heredoc = 0;
 			if (ft_strequ(buff, target) || ft_strchr(buff, 4))
-				break;
+				break ;
 			write(fd[WRITE_END], buff, ft_strlen(buff));
 			write(fd[WRITE_END], "\n", 1);
 		}

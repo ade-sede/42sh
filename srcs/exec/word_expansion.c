@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   word_expansion.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
+/*   Updated: 2017/09/15 22:56:36 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "lexer.h"
 #include "parser.h"
@@ -10,10 +22,9 @@
 **	we're doing quote removal first, cus its easier, but that should come last
 */
 
-
-t_list	*propRe(t_list *list)
+t_list	*propre(t_list *list)
 {
-	t_list	*first = NULL;
+	t_list	*first;
 
 	first = list;
 	while (list)
@@ -32,11 +43,11 @@ t_list	*pathname_expansion(t_token *token)
 	if (token->type != QUOTED && token->type != DQUOTED)
 	{
 		if (ft_strchr(token->value, '*') || ft_strchr(token->value, '['))
-			first = propRe(glob(token->value));
+			first = propre(glob(token->value));
 		else if (ft_strchr(token->value, '{'))
-			first = propRe(expand_curly_brackets(token->value));
-	if (first != NULL)
-		free_token(token);
+			first = propre(expand_curly_brackets(token->value));
+		if (first != NULL)
+			free_token(token);
 	}
 	return (first);
 }

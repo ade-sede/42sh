@@ -39,6 +39,7 @@ SRC_FILE =	\
 	builtin/alias.c \
 \
 	exec/exec_signals.c \
+	exec/exec_pipe.c \
 	exec/redir_utils.c \
 	exec/exec_bin.c \
 	exec/exec_operator.c \

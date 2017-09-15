@@ -196,4 +196,5 @@ typedef struct	s_redir
 
 void			no_handle_signals(void);
 void			free_pipe(void *pipe);
+int				check_pipes(t_ast *ast, t_lst_head *head);
 #endif

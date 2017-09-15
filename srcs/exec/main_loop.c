@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_loop.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
+/*   Updated: 2017/09/15 23:01:48 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <unistd.h>
 #include "env.h"
 #include "exec.h"
 #include "builtin.h"
+#include "history.h"
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
@@ -31,6 +44,7 @@ void	exec(t_env *env, const char **argv, t_lst_head *head)
 	}
 	free(argv);
 }
+
 void	init_main_loop(t_line *line, t_hist *hist)
 {
 	(void)hist;
@@ -56,21 +70,21 @@ char	*line_editing_get_input(t_line *line, t_hist *hist)
 	return (edit_get_input());
 }
 
-void	history_write_last_command();
-
 void	main_loop(t_env *env)
 {
 	t_ast		*ast;
 	char		*buff;
 	t_lexer		lex;
-	t_lst_head	*head = NULL;
+	t_lst_head	*head;
 	t_list		*token_list;
 
+	head = NULL;
 	init_main_loop(singleton_line(), singleton_hist());
 	while (42)
 	{
 		load_prompt(env, singleton_line(), "PS1", "$> ");
-		buff = ft_strdup(line_editing_get_input(singleton_line(), singleton_hist()));
+		buff = ft_strdup(line_editing_get_input(singleton_line(), \
+					singleton_hist()));
 		if (*buff != 0)
 		{
 			history_refresh(buff);

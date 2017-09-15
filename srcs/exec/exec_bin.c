@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_bin.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
+/*   Updated: 2017/09/15 22:54:25 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include "sys/wait.h"
@@ -51,13 +63,12 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	t_list_d	*cur;
 	t_pipe		*pr;
 	t_pipe		*pl;
+	pid_t		child;
 	int			ret;
 
 	cur = (head) ? head->middle : NULL;
 	pr = (cur != NULL) ? cur->data : NULL;
 	pl = (cur && cur->prev) ? cur->prev->data : NULL;
-
-	pid_t		child;
 	no_handle_signals();
 	if ((pl && !pr) || (!pl && !pr))
 	{
@@ -69,7 +80,7 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 		if (child > 0)
 		{
 			env->child_pid = child;
-			waitpid(child, &ret, WUNTRACED);//wait(&child);
+			waitpid(child, &ret, WUNTRACED);
 			return (env->previous_exit = WEXITSTATUS(ret));
 		}
 	}
