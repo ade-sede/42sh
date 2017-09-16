@@ -40,10 +40,12 @@ int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
 	DIR				*dir;
 	char			*m_dir_cpy;
 	char			*cpy_to_match;
+	char			*cpy_cpy_to_match;
 	struct dirent	*dirent;
 
 	dirent = NULL;
 	bool_match = 0;
+	cpy_cpy_to_match = m->to_match;
 	if ((dir = opendir(dir_name)) == NULL)
 		return (bad_dir(dir_name));
 	m_dir_cpy = m->dir;
@@ -60,5 +62,6 @@ int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
 	closedir(dir);
 	free(m->dir);
 	m->dir = m_dir_cpy;
+	m->to_match = cpy_cpy_to_match;
 	return (bool_match);
 }

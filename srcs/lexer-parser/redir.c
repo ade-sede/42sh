@@ -47,7 +47,7 @@ static int	pushback_redir(t_list *child_list, t_list **token_list, \
 		{
 			if (token->id != TK_NAME && token->id != TK_WORD)
 			{
-				dprintf(2, "Parse error near %s\n", token->value);
+				return_failure("Parse error near ", token->value);
 				return (0);
 			}
 			ft_simple_lst_pushback(&child_list, \
