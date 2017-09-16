@@ -103,7 +103,7 @@ t_list	*glob(char *regex)
 	to_match_i = regex_i - 1;
 	//m.dir = dir_name;
 	m = (t_matches){NULL, NULL, regex, dir_name};
-	//printf("dir_name: %s\n", dir_name);
+	////printf("dir_name: %s\n", dir_name);
 	//if (ft_strequ(dir_name, "."))
 	if (!match_open_dir(&m, to_match_i, regex_i, dir_name))
 		return (ft_simple_lst_create(strdup(m.regex)));

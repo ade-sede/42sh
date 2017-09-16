@@ -44,7 +44,7 @@ int	func_square_bracket(t_matches *m, int to_match_i, int regex_i)
 	int	exclamation;
 	int	end_square_bracket;
 
-	//printf("func square bracket to_match: %s, regex: %s\n", m->to_match + to_match_i, m->regex + regex_i);
+//printf("func square bracket to_match: %s, regex: %s\n", m->to_match + to_match_i, m->regex + regex_i);
 	end_square_bracket = regex_i + ft_strichr(m->regex + regex_i, ']');
 	i = regex_i + 1;
 	exclamation = 0;

@@ -13,12 +13,9 @@ int	match_open_file(t_matches *m, int to_match_i, int regex_i, char *file_name)
 		m->to_match = ft_strjoin(m->dir, file_name);
 	else
 		m->to_match = ft_strjoin3_free(m->dir, "/", file_name, 0);
-	(void)to_match_i;
 	(void)regex_i;
-	//to_match_i += 1;// +1 pour skip le / car la to_match_i se trouve sur le \0
+	to_match_i += 1;
 	//printf("to_match->name: %s\n", m->to_match);
-//	if (file_name[0] != '.' || (file_name[0] == '.' && m->regex[regex_i] == '.')) 
-//		 return (match(m, to_match_i, regex_i)); 
 	return (0);
 }
 
@@ -40,7 +37,7 @@ int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
 	m->dir = dir_name;
 	while ((dirent = readdir(dir)) != NULL)
 	{
-		//getchar();
+		getchar();
 		match_open_file(m, to_match_i, regex_i, dirent->d_name);
 		cpy_to_match = m->to_match;
 		if (dirent->d_name[0] != '.' || (dirent->d_name[0] == '.' && m->regex[regex_i] == '.')) 
