@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 23:11:22 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "parser.h"
 #include "exec.h"
 #include "builtin.h"
-#include <stdio.h>
 
 int		lexer_insert_str_dest(char *dest, char *str, size_t dest_len)
 {

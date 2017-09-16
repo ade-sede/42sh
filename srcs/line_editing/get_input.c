@@ -6,14 +6,13 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 00:40:00 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_editing.h"
 #include "completion.h"
 #include "history.h"
-#include <stdio.h>
 
 static t_edit_func	g_edit_func[] =
 {
@@ -52,6 +51,8 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	}
 	if (ft_isprint((char)keycode))
 		edit_add(keycode, line);
+	if (line->visu_mode)
+		edit_refresh(line);
 	return (1);
 }
 
@@ -88,8 +89,6 @@ char	*edit_get_input(void)
 		if (history_get_input(l, keycode))
 			continue ;
 		edit_loop(keycode, l);
-		if (l->visu_mode)
-			edit_refresh(l);
 	}
 	return (NULL);
 }

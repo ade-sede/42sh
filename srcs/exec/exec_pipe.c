@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:49:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:52:48 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
-#include <stdio.h>
-#include <errno.h>
 #include <signal.h>
 
 int		p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)

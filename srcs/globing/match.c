@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 01:20:42 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 01:20:43 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <sys/dir.h>
 #include <sys/types.h>
 #include <dirent.h>
-#include <stdio.h>
 
 int		char_is_escaped(char *regex, int regex_i)
 {

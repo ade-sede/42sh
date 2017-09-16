@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 01:36:41 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "env.h"
 #include "sys/wait.h"
 #include "exec.h"
-#include <errno.h>
 #include "hash_table.h"
 
 /*
@@ -58,6 +57,13 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 	exit(return_failure((const char *)*argv, " :commmand not found"));
 }
 
+int			exec_bin_no_fork(t_env *env, const char **argv)
+{
+	ft_strchr(argv[0], '/') ? ft_exec_bin_absolute(env, argv) : \
+			ft_exec_bin_path(env, argv);
+	return (1);
+}
+
 int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 {
 	t_list_d	*cur;
@@ -84,10 +90,5 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 			return (env->previous_exit = WEXITSTATUS(ret));
 		}
 	}
-	else
-	{
-		ft_strchr(argv[0], '/') ? ft_exec_bin_absolute(env, argv) : \
-			ft_exec_bin_path(env, argv);
-	}
-	return (1);
+	return (exec_bin_no_fork(env, argv));
 }

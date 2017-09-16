@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:36 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:39 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:28:56 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "color.h"
 #include <stdio.h>
 
-#ifndef CRASH_COURSE
+#ifdef CRASH_COURSE
 int	file_script(char **av, t_env *env)
 {
 	char	*buff;
@@ -35,12 +35,13 @@ int	file_script(char **av, t_env *env)
 	env_load_base_env(env, environ);
 	history_load(singleton_hist(), env);
 	fd = open(av[1], O_RDONLY);
+	conf_term_in();
 	while (get_next_line(fd, &buff))
 	{
 		dprintf(2, "Line = "MAG"#"CYN"%s"MAG"#\n"RESET, buff);
 		buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
 		lex = init_lexer(buff);
-		lex.reopen = 0;
+		lex.reopen = 1;
 		token_list = start_lex(&lex);
 		ast = NULL;
 		ast = ast_parse(ast, &token_list, &head);

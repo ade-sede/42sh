@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 00:27:15 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 00:27:19 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "builtin.h"
 #include "libft.h"
 #include "printf.h"
-#include <stdio.h>
 
 int			builtin_unalias(t_env *env, const char **argv)
 {

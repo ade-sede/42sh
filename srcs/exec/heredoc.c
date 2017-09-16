@@ -6,11 +6,10 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 00:07:00 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 00:07:54 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:27:35 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -20,7 +19,6 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
-#include <errno.h>
 
 char	*heredoc_get_input(void)
 {
@@ -47,7 +45,6 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 	(void)id;
 	if (io_number == -1)
 		io_number = 0;
-	errno = 0;
 	if (pipe(fd) == 0)
 	{
 		while (1)
@@ -59,7 +56,6 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 			write(fd[WRITE_END], "\n", 1);
 		}
 		close(fd[WRITE_END]);
-		errno = 0;
 		push_dup(io_number, fd[READ_END], FALSE, redir_stack);
 	}
 	free(fd);

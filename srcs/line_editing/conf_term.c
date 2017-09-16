@@ -6,30 +6,22 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:28:03 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_editing.h"
-#include <stdio.h>
-#include <errno.h>
 
 void	conf_term_canonical(void)
 {
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->canonical_mode) < 0)
-	{
-		dprintf(2, "aaaerror = %s\n", strerror(errno));
 		fatal("tcsetattr error");
-	}
 }
 
 void	conf_term_normal(void)
 {
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->normal_mode) < 0)
-	{
-		dprintf(2, "bbberror = %s\n", strerror(errno));
 		fatal("tcsetattr error");
-	}
 }
 
 void	conf_term_in(void)
