@@ -60,7 +60,7 @@ int	char_is_escaped(char *regex, int regex_i)
 int	match(t_matches *m, int to_match_i, int regex_i)
 {
 //condition d'arret
-	//printf("to_match: %s, regex: %s\n", m->to_match + to_match_i, m->regex + regex_i);
+	printf("to_match: %s, regex: %s\n", m->to_match + to_match_i, m->regex + regex_i);
 	if (m->to_match[to_match_i] == '\0' && m->regex[regex_i] == '\0')		// sa a match
 	{
 		ft_simple_lst_add(&m->list, ft_simple_lst_create(ft_strdup(m->to_match)));
@@ -103,7 +103,7 @@ t_list	*glob(char *regex)
 	to_match_i = regex_i - 1;
 	//m.dir = dir_name;
 	m = (t_matches){NULL, NULL, regex, dir_name};
-	////printf("dir_name: %s\n", dir_name);
+	//printf("dir_name: %s\n", dir_name);
 	//if (ft_strequ(dir_name, "."))
 	if (!match_open_dir(&m, to_match_i, regex_i, dir_name))
 		return (ft_simple_lst_create(strdup(m.regex)));

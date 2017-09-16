@@ -6,7 +6,7 @@
 
 int	match_open_file(t_matches *m, int to_match_i, int regex_i, char *file_name)
 {
-	//printf("dirent->name: %s\n", file_name);
+	printf("dirent->name: %s\n", file_name);
 	if (ft_strequ(m->dir, "."))
 		m->to_match = ft_strdup(file_name);
 	else if (ft_strequ(m->dir, "/"))
@@ -15,7 +15,7 @@ int	match_open_file(t_matches *m, int to_match_i, int regex_i, char *file_name)
 		m->to_match = ft_strjoin3_free(m->dir, "/", file_name, 0);
 	(void)regex_i;
 	to_match_i += 1;
-	//printf("to_match->name: %s\n", m->to_match);
+	printf("to_match->name: %s\n", m->to_match);
 	return (0);
 }
 
@@ -26,6 +26,7 @@ int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
 	DIR	*dir;
 	char	*m_dir_cpy;
 	char	*cpy_to_match;
+	char	*cpy_first_to_match;
 	struct	dirent	*dirent = NULL;
 
 	if ((dir = opendir(dir_name)) == NULL)
@@ -35,6 +36,7 @@ int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
 	}
 	m_dir_cpy = m->dir;
 	m->dir = dir_name;
+	cpy_first_to_match = m->to_match;
 	while ((dirent = readdir(dir)) != NULL)
 	{
 		getchar();
@@ -47,5 +49,6 @@ int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
 	closedir(dir);
 	free(m->dir);
 	m->dir = m_dir_cpy;
+	m->to_match = cpy_first_to_match;
 	return (bool_match);
 }
