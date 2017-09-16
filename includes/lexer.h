@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 01:37:06 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 01:37:10 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 03:07:26 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LEXER_H
 # include "libft.h"
 # include "parser.h"
-# include <stdio.h>
 
 /*
 **	We define macros to easily check wich type the character belongs to.

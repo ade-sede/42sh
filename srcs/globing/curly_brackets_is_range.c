@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 00:57:38 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/16 02:47:33 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int	curly_brackets_is_range(char *str)
 	if (str[i] != '.' || str[i + 1] != '.')
 		return (0);
 	i += 2;
-	if (!(ft_atoi_safe(str + i, &end_range)) && (str[i + 1] || \
-				((start_range >= 10 || start_range <= 10) && !str[i + 1])))
+	if (!str[i] || !(ft_atoi_safe(str + i, &end_range)))
 		return (0);
 	return (1);
 }
