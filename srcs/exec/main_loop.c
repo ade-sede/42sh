@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:30:31 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 16:11:29 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 #define LOCAL_BUFF_SIZE 4096
 
 /*
-**	Receives an array containing the command name and its arguments.
+**	Receives an array containing the command name and its arguments, forwards
+**	this array to the appropriate function then frees it.
 */
 
 void	exec(t_env *env, const char **argv, t_lst_head *head)

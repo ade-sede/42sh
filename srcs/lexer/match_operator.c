@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 14:34:27 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ t_token_id			lex_id_operator(const char *value)
 	while (g_operator_list[i] != NULL && !ft_strequ(g_operator_list[i], value))
 		i++;
 	if (g_operator_list[i])
-		return (i + 6);
+		return (i + 5);
 	return (-1);
 }

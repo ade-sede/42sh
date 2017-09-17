@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:08 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 15:54:52 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@
 **	redirection should be according to the one we just read.
 **	1 = NAME
 **	2 = REDIR
-*/
-
-/*
-**	static int		valid_filename(const char *str) { if (ft_isdigit(*str))
-**	return (FALSE); while (*str) { if (!ft_isalnum(*str) && *str != '_') return
-**	(FALSE); ++str; } return (TRUE); }
 */
 
 static int	pushback_redir(t_list *child_list, t_list **token_list, \

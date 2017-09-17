@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   t_ast.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
+/*   Created: 2017/09/17 15:00:04 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/17 17:10:13 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ast.h"
+#include "token.h"
 #include "libft.h"
-#include "lexer.h"
-#include "parser.h"
-#include "exec.h"
 
-void	free_token_list(t_list *token_list)
+/*
+**	Creates a node of the AST, giving the address of the first child of its
+**	list of childs.
+*/
+
+t_ast	*ast_create_node(t_token *token, t_list *child, t_symbol symbol)
 {
-	t_list	*tmp;
+	t_ast	*node;
 
-	while (token_list)
-	{
-		tmp = token_list->next;
-		free_token(token_list->data);
-		free(token_list);
-		token_list = tmp;
-	}
+	node = palloc(sizeof(*node));
+	node->child = child;
+	node->token = token;
+	node->symbol = symbol;
+	return (node);
 }
 
-void	free_token(void *value)
-{
-	t_token *token;
-
-	token = (t_token*)value;
-	if (token->value)
-		free(token->value);
-	free(token);
-}
+/*
+**	Frees one node of the ast : The list of childs, and the token it contains
+**	and the structure itself.
+*/
 
 t_ast	*free_ast_node(t_ast *node)
 {
@@ -72,16 +69,4 @@ t_ast	*flush_tree(t_ast *ast)
 		free_ast_node(ast);
 	}
 	return (NULL);
-}
-
-void	free_pipe(void *pipe)
-{
-	t_pipe *a;
-
-	a = (t_pipe*)pipe;
-	if (a)
-	{
-		free(a->p);
-		free(a);
-	}
 }

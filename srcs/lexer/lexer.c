@@ -6,15 +6,12 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 17:11:46 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "token.h"
 #include "lexer.h"
-#include "libft.h"
-#include "parser.h"
-#include "exec.h"
-#include "builtin.h"
 
 /*
 **	We are reading our input line 1 char a time, looking for the delimiter of
@@ -55,7 +52,7 @@
 ** of the lexer.
 */
 
-t_list	*start_lex(t_lexer *lex)
+t_list			*start_lex(t_lexer *lex)
 {
 	size_t	token_start;
 	ssize_t	ret;
@@ -79,12 +76,52 @@ t_list	*start_lex(t_lexer *lex)
 }
 
 /*
+**	Returns the state according to char lex->line[lex->index]
+**	Everything that is not Quoted (simple or double) Blackslashed, or a
+**	candidate to expansion is considered to be at the default state 'word'.
+*/
+
+int				update_state(t_lexer *lex)
+{
+	if (charcmp(lex->line, lex->index, '\\'))
+		return (lex->line[lex->index]);
+	if (IS_QUOTED(lex->line[lex->index]))
+		return (lex->line[lex->index]);
+	else if (IS_OPERATOR(lex->line[lex->index]))
+		return (OPERATOR);
+	else if (IS_EXPAND(lex->line[lex->index]))
+		return (EXPAND);
+	if (!lex->line[lex->index])
+		return (INPUT_END);
+	return (WORD);
+}
+
+/*
+**	Initialize the token_start index and returns the state according to the
+**	first char of the token.
+*/
+
+int				start_token(t_lexer *lex, size_t *token_start)
+{
+	int		ret;
+
+	ret = 0;
+	while (lex->line[lex->index] && (IS_WHITESPACE(lex->line[lex->index]) \
+				&& lex->line[lex->index] != '\n'))
+		lex->index++;
+	*token_start = lex->index;
+	ret = update_state(lex);
+	lex->index++;
+	return (ret);
+}
+
+/*
 **	Rajouter le token qu'on vient de creer a lex->stack
 **	exec_expand prend la t_list lex->stack en argument.
 **	Se base sur le dernier token.
 */
 
-int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
+int				tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 {
 	char	*value;
 	t_token	*token;
@@ -104,4 +141,36 @@ int		tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	else
 		ft_simple_lst_pushback(&(lex->stack), node);
 	return (1);
+}
+
+/*
+**	Trying to determine the ID of the token using its context (delimiter, lexer
+**	state). This id will be used by the parser to help assign grammar symbol to
+**	the token and build the tree.
+*/
+
+t_token_id		lex_get_token_id(t_lexer *lex, t_token *token)
+{
+	t_token_id	id;
+	int			done;
+
+	done = FALSE;
+	id = -1;
+	if (token->type == OPERATOR)
+		id = lex_id_operator(token->value);
+	else if (token->type == WORD)
+	{
+		if (ft_strequ(token->value, "\n"))
+		{
+			done = TRUE;
+			id = TK_NEWLINE;
+		}
+		if (!done)
+			done = lex_id_io_number(token, token->delimiter, &id);
+		if (!done)
+			done = lex_id_word(lex, token, &id);
+	}
+	else if (token->type == DQUOTED || token->type == QUOTED)
+		id = TK_WORD;
+	return (id);
 }

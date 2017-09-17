@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:56:36 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 17:10:56 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 **	we're doing quote removal first, cus its easier, but that should come last
 */
 
-t_list	*propre(t_list *list)
+static t_list	*get_globbed_tokens(t_list *list)
 {
 	t_list	*first;
 
@@ -35,7 +35,7 @@ t_list	*propre(t_list *list)
 	return (first);
 }
 
-t_list	*pathname_expansion(t_token *token)
+static t_list	*pathname_expansion(t_token *token)
 {
 	t_list	*first;
 
@@ -43,16 +43,16 @@ t_list	*pathname_expansion(t_token *token)
 	if (token->type != QUOTED && token->type != DQUOTED)
 	{
 		if (ft_strchr(token->value, '*') || ft_strchr(token->value, '['))
-			first = propre(glob(token->value));
+			first = get_globbed_tokens(glob(token->value));
 		else if (ft_strchr(token->value, '{'))
-			first = propre(expand_curly_brackets(token->value));
+			first = get_globbed_tokens(expand_curly_brackets(token->value));
 		if (first != NULL)
 			free_token(token);
 	}
 	return (first);
 }
 
-t_list	*exec_expand(t_token *token)
+t_list			*exec_expand(t_token *token)
 {
 	t_env	*env;
 	t_list	*node;

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 23:15:33 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 23:57:36 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 17:04:58 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,6 @@ static t_list	*reopen_command(void)
 	free(new_command);
 	return (token_list);
 }
-
-/*
-**	Sometimes the token might represent a complexe command, but there was no
-**	initial simple command or nothing to build a new one. In this case, the
-**	corresponding child has a NULL ast.
-*/
 
 t_ast			*create_right_branch(t_token *command_token, \
 		t_list **token_list)
@@ -71,8 +65,7 @@ t_ast			*create_right_branch(t_token *command_token, \
 	return (right_branch);
 }
 
-t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, \
-		int *command_name)
+t_ast			*start_complexe_command(t_ast *ast, t_list **token_list)
 {
 	t_ast	*left_branch;
 	t_ast	*right_branch;
@@ -97,6 +90,5 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, \
 	child = ft_simple_lst_create(left_branch);
 	ft_simple_lst_pushback(&child, ft_simple_lst_create(right_branch));
 	(cc)->child = child;
-	*command_name = 0;
 	return (cc);
 }

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 16:09:55 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,6 @@
 #include "lexer.h"
 #include "parser.h"
 #include <signal.h>
-
-/*
-** 	List of pipes should be generated during parsing and creation of the tree.
-*/
-
-static int	exec_pipe(t_ast *ast, t_lst_head *head)
-{
-	if (exec_tree(ast->child->data, head) == 0)
-		exec_tree(ast->child->next->data, head);
-	return (0);
-}
 
 /*
 **	The first time exec_tree is called, we give it our root node as an

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:49:54 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 16:10:25 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "parser.h"
 #include <signal.h>
 
-int		p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
+int	p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 {
 	pid_t		child;
 
@@ -45,7 +45,7 @@ int		p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 	return (1);
 }
 
-int		p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
+int	p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
 {
 	pid_t		child;
 
@@ -72,7 +72,7 @@ int		p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
 	return (1);
 }
 
-int		wait_zombies(t_lst_head *head)
+int	wait_zombies(t_lst_head *head)
 {
 	t_list_d	*cur;
 	t_pipe		*pipe;
@@ -92,7 +92,7 @@ int		wait_zombies(t_lst_head *head)
 	return (1);
 }
 
-int		p_left(t_pipe *pl, t_ast *ast, t_lst_head *head)
+int	p_left(t_pipe *pl, t_ast *ast, t_lst_head *head)
 {
 	int		save;
 
@@ -107,7 +107,7 @@ int		p_left(t_pipe *pl, t_ast *ast, t_lst_head *head)
 	return (1);
 }
 
-int		check_pipes(t_ast *ast, t_lst_head *head)
+int	check_pipes(t_ast *ast, t_lst_head *head)
 {
 	t_list_d	*cur;
 	t_pipe		*pr;

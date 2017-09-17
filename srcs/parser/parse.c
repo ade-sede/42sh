@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 23:50:05 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 17:05:27 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,69 +49,18 @@
 **			command we just created to a complexe one.
 */
 
-t_pipe	*create_pipe(int *p)
-{
-	t_pipe	*new;
-
-	if (!p)
-		return (NULL);
-	new = ft_memalloc(sizeof(*new));
-	new->p = p;
-	return (new);
-}
-
-/*
-**	This function starts the creation of the tree's branch.
-*/
-
-void	add_last_pipe(t_lst_head **head)
-{
-	t_pipe	*spipe;
-
-	spipe = NULL;
-	if (*head == NULL)
-		*head = ft_create_head(ft_double_lst_create(spipe));
-	else
-	{
-		ft_double_lst_pushback(head, ft_double_lst_create(NULL));
-		(*head)->middle = (*head)->first;
-	}
-}
-
-void	add_pipe(t_token *token, t_lst_head **head)
-{
-	t_pipe	*spipe;
-	int		*p;
-
-	spipe = NULL;
-	p = NULL;
-	if (ft_strequ(token->value, "|"))
-	{
-		p = palloc(sizeof(*p) * 2);
-		pipe(p);
-	}
-	spipe = create_pipe(p);
-	if (*head == NULL)
-		*head = ft_create_head(ft_double_lst_create(spipe));
-	else
-		ft_double_lst_pushback(head, ft_double_lst_create(spipe));
-}
-
 t_ast	*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 {
-	int		command_name;
 	t_token *token;
 	t_ast	*ast;
 
 	ast = root;
-	command_name = 0;
 	if (token_list && *token_list)
 	{
 		token = (*token_list)->data;
 		if (TK_IS_SEP(token->id))
 		{
-			if ((ast = start_complexe_command(ast, token_list, \
-							&command_name)) == NULL)
+			if ((ast = start_complexe_command(ast, token_list)) == NULL)
 				return (NULL);
 			add_pipe(token, head);
 		}

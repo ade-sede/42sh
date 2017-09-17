@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:04 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/15 22:41:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 15:50:09 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*get_git_status(size_t *len)
 		close(fildes[0]);
 		execve("/usr/bin/git", exec, singleton_env()->environ);
 	}
-	return ("NE VA JAMAIS ICI");
+	return ("Will never reach this return");
 }
 
 char	*get_current_directory(void)

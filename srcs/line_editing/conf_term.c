@@ -6,11 +6,12 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:02 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:28:03 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 17:18:45 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_editing.h"
+#include "env.h"
 
 void	conf_term_canonical(void)
 {
@@ -31,7 +32,8 @@ void	conf_term_in(void)
 	t_line			*line;
 
 	line = singleton_line();
-	if ((termtype = getenv("TERM")) == NULL)
+	if ((termtype = env_getenv((const char**)singleton_env()->environ, \
+					"TERM", NULL)) == NULL)
 		termtype = "xterm";
 	if (tgetent(NULL, termtype) <= 0)
 		fatal("cant access data base");
