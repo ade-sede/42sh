@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:05 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 00:54:31 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/17 19:15:53 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
 {
 	t_lexer		lex;
-	t_list		*last;
 	t_list		*token_list;
 	char		**res;
 	char		line_pos_char;
@@ -44,11 +43,10 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
 	lex = init_lexer(line->buff);
 	lex.reopen = 0;
 	token_list = start_lex(&lex);
-	last = ft_last_simple_lst(token_list);
-	if (!last || (last && ((t_token *)last->data)->id == 0))
-		res = comple_file_matches(line, c);
-	else
+	if (!token_list || (lex.cmd_name_open && !TK_IS_REDIR(lex.last_id)))
 		res = comple_bin_matches(line, c);
+	else
+		res = comple_file_matches(line, c);
 	free_token_list(token_list);
 	line->buff[line->pos] = line_pos_char;
 	return (res);
@@ -72,7 +70,7 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c)
 	t_lexer		lex;
 	t_list		*token_list;
 	t_list		*last;
-	t_list		*prev_last;
+	t_token		*token;
 	char		**res;
 
 	lex = get_lex_line_cursor(line);
@@ -84,11 +82,11 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c)
 		res = comple_bin_matches(line, c);
 	else
 	{
-		prev_last = ft_previous_last_simple_lst(token_list);
-		if (((t_token *)prev_last->data)->id == 0)
-			res = comple_file_matches(line, c);
-		else
+		token = last->data;
+		if (token->cmd_name)
 			res = comple_bin_matches(line, c);
+		else
+			res = comple_file_matches(line, c);
 	}
 	free_token_list(token_list);
 	return (res);
