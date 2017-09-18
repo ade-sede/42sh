@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/18 13:16:24 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,26 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
+#include <errno.h>
+#include <stdio.h>
 
-int		redir_open_file(char *target, t_token_id id)
+static int	safe_open(char *target, int mode)
+{
+	int		target_fd;
+
+	target_fd = -1;
+	if (mode & O_CREAT)
+		target_fd = open(target, mode, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	else
+		target_fd = open(target, mode);
+	if (target_fd == -1)
+	{
+		perror("open: ");
+	}
+	return (target_fd);
+}
+
+int			redir_open_file(char *target, t_token_id id)
 {
 	int	target_fd;
 	int	mode;
@@ -38,10 +56,7 @@ int		redir_open_file(char *target, t_token_id id)
 		else if (id != TK_LESSGREAT && id != TK_DGREAT)
 			mode |= O_TRUNC;
 	}
-	if (mode & O_CREAT)
-		target_fd = open(target, mode, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	else
-		target_fd = open(target, mode);
+	target_fd = safe_open(target, mode);
 	return (target_fd);
 }
 
@@ -58,7 +73,7 @@ int		redir_open_file(char *target, t_token_id id)
 **	Function used to restore all FDs after work is done.
 */
 
-void	close_dup(t_list *redir_stack)
+void		close_dup(t_list *redir_stack)
 {
 	t_list	*first;
 	int		*save;
@@ -82,7 +97,7 @@ void	close_dup(t_list *redir_stack)
 **	the operation onto our stack.
 */
 
-void	push_dup(int io_number, int target_fd, int natural_fd, \
+void		push_dup(int io_number, int target_fd, int natural_fd, \
 		t_list **redir_stack)
 {
 	int	*save;
@@ -95,7 +110,7 @@ void	push_dup(int io_number, int target_fd, int natural_fd, \
 	ft_simple_lst_pushback(redir_stack, ft_simple_lst_create(save));
 }
 
-int		exec_dup(t_list *redir_stack)
+int			exec_dup(t_list *redir_stack)
 {
 	int		*save;
 

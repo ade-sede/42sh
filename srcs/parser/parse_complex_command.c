@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 23:15:33 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/17 17:04:58 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/09/18 13:50:09 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_ast			*create_right_branch(t_token *command_token, \
 	}
 	else
 	{
-		return_failure("Parse error near", command_token->value);
+		return_failure("Parse error near ", command_token->value);
 		return (flush_tree(right_branch));
 	}
 	if (!command_child || (token && token->id == TK_NEWLINE))

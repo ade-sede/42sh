@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/18 13:26:14 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,35 @@
 **	by one until no childs are left.
 */
 
-static void	treat_node(t_ast *child_node, t_list **redir_stack, \
+static void	abort_simple_command(char **argv)
+{
+	size_t		index;
+
+	index = 0;
+	while (argv[index] != NULL)
+	{
+		free((void*)(argv[index]));
+		index++;
+	}
+	free(argv);
+	singleton_env()->previous_exit = EXIT_FAILURE;
+}
+
+static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 		char **argv, size_t *i)
 {
 	if (child_node->symbol == IO_REDIRECT)
-		exec_redir(child_node->child, redir_stack);
+	{
+		if ((exec_redir(child_node->child, redir_stack)) == 0)
+			return (0);
+	}
 	if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
 		if (child_node->token->id != TK_NEWLINE)
 		{
 			argv[*i] = ft_strdup(child_node->token->value);
 			(*i)++;
 		}
+	return (1);
 }
 
 void		exec_simple_command(t_ast *ast, t_lst_head *head)
@@ -49,6 +67,7 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 	size_t		i;
 	const char	**argv;
 	t_list		*redir_stack;
+	int			ret;
 
 	i = 0;
 	redir_stack = NULL;
@@ -56,10 +75,17 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 	argv = ft_memalloc(sizeof(*argv) * (ft_lst_len(child_list) + 1));
 	while (child_list)
 	{
-		treat_node(child_list->data, &redir_stack, (char**)argv, &i);
+		if ((ret = treat_node(child_list->data, \
+						&redir_stack, (char**)argv, &i)) == 0)
+			break ;
 		child_list = child_list->next;
 	}
-	exec_dup(redir_stack);
-	exec(singleton_env(), argv, head);
-	close_dup(redir_stack);
+	if (ret)
+	{
+		exec_dup(redir_stack);
+		exec(singleton_env(), argv, head);
+		close_dup(redir_stack);
+	}
+	else
+		abort_simple_command((char**)argv);
 }

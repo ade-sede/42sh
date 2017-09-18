@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:05 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/17 19:15:53 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/09/18 12:53:06 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c)
 char			**comple_matching(t_line *line, t_comple *c)
 {
 	c->current_word = get_current_word_cursor(line);
-	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
+	if (line->buff[line->pos] == '*' || \
+			(line->pos != 0 && line->buff[line->pos - 1] == '*'))
+		return (comple_globing_matches(line, c));
+	else if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
 			|| line->buff[line->pos] == '\0')
 						&& line->buff[line->pos - 1] == ' '))
 		return (comple_matching_no_cursorword(line, c));

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 00:07:00 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:35 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/18 13:21:26 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*heredoc_get_input(void)
 	return (buff);
 }
 
-void	heredoc(int io_number, char *target, t_list **redir_stack, \
+int		heredoc(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id)
 {
 	int		*fd;
@@ -59,4 +59,5 @@ void	heredoc(int io_number, char *target, t_list **redir_stack, \
 		push_dup(io_number, fd[READ_END], FALSE, redir_stack);
 	}
 	free(fd);
+	return (1);
 }

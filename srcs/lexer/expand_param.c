@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/18 13:52:40 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		parameter_expansion(t_env *env, t_token *token)
 	if ((offset = valid_param_expansion(token->value)) != -1)
 	{
 		result = ft_strnew(0);
-		split = ft_strsplit_keep(token->value, WHITESPACES);
+		split = ft_strsplit_keep(token->value, WHITESPACES"/");
 		while (split[i])
 		{
 			if ((offset = valid_param_expansion(split[i])) != -1)

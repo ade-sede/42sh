@@ -30,6 +30,7 @@ SRC_FILE = \
 	completion/comple_bin_matches.c \
 	completion/comple_exit_matched.c \
 	completion/comple_file_matches.c \
+	completion/comple_glob_matches.c \
 	completion/comple_get_input.c \
 	completion/comple_get_word_cursor.c \
 	completion/comple_init.c \

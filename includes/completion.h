@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 01:37:06 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 01:37:10 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/18 12:28:24 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int				comple_get_input(t_line *line, int keycode);
 char			**comple_file_matches(t_line *line, t_comple *c);
 char			*extract_color(char *str);
 char			**comple_bin_matches(t_line *line, t_comple *c);
+char			**comple_globing_matches(t_line *line, t_comple *c);
 
 int				comple_right(t_comple *c);
 int				comple_left(t_comple *c);

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 22:41:03 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/16 02:27:01 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/09/18 13:19:38 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	*get_exec_redir_func(t_ast *child_node)
 **	Fd merging with op >& and <&
 */
 
-void	merge_fd(int io_number, char *target, t_list **redir_stack, \
+int		merge_fd(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id)
 {
 	int	target_fd;
@@ -70,9 +70,10 @@ void	merge_fd(int io_number, char *target, t_list **redir_stack, \
 	if (target_fd >= STDIN_FILENO && (fcntl(target_fd, F_GETFD) \
 				!= -1))
 		push_dup(io_number, target_fd, natural_fd, redir_stack);
+	return (1);
 }
 
-void	file_redir(int io_number, char *target, t_list **redir_stack, \
+int		file_redir(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id)
 {
 	int	target_fd;
@@ -80,16 +81,18 @@ void	file_redir(int io_number, char *target, t_list **redir_stack, \
 	if (io_number == -1)
 		io_number = (id == TK_LESS || id == TK_LESSGREAT) ? \
 					STDIN_FILENO : STDOUT_FILENO;
-	target_fd = redir_open_file(target, id);
+	if ((target_fd = redir_open_file(target, id)) == -1)
+		return (0);
 	if (target_fd >= STDIN_FILENO)
 		push_dup(io_number, target_fd, FALSE, redir_stack);
+	return (1);
 }
 
-void	exec_redir(t_list *child_list, t_list **redir_stack)
+int		exec_redir(t_list *child_list, t_list **redir_stack)
 {
 	t_ast		*child_node;
 	int			io_number;
-	void		(*f)(int, char*, t_list**, t_token_id);
+	int			(*f)(int, char*, t_list**, t_token_id);
 	char		*target;
 	t_token_id	id;
 
@@ -109,5 +112,6 @@ void	exec_redir(t_list *child_list, t_list **redir_stack)
 		child_list = child_list->next;
 	}
 	if (f)
-		f(io_number, target, redir_stack, id);
+		return (f(io_number, target, redir_stack, id));
+	return (0);
 }
