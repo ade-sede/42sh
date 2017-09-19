@@ -2,6 +2,7 @@
 #include "exec.h"
 #include "libft.h"
 #include "hash_table.h"
+#include "failure.h"
 
 static const char	**handle_i(t_env *env, const char **argv)
 {
@@ -20,7 +21,7 @@ static const char	**apply_opt(t_env *env, const char **argv, int *error)
 		{
 			if (!(*(argv + 1)))
 			{
-				return_failure("env: option requires an argument -- u", NULL);
+				investigate_error(NULL, "env: option requires an argument -- u", 0);
 				*error = 1;
 				return (argv);
 			}
@@ -50,7 +51,7 @@ static const char	**build_new_env(t_env *env, const char **argv, int *error)
 		if (eq_index == 0)
 		{
 			*error = 1;
-			return_failure("env: invalid argument", *argv);
+			investigate_error(NULL, "env: invalid argument", 0);
 			return (argv);
 		}
 		else if (eq_index > 0)

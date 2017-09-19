@@ -1,0 +1,28 @@
+#ifndef FAILURE_H
+# define FAILURE_H
+# define E_BUFSIZE 4096
+# include <errno.h>
+
+char			*get_errno_1(void);
+char			*get_errno_2(void);
+char			*get_errno_3(void);
+char			*get_errno_4(void);
+char			*get_errno_5(void);
+char			*get_errno_6(void);
+char			*get_errno_7(void);
+char			*get_errno_8(void);
+char			*get_errno_9(void);
+char			*get_errno_10(void);
+char			*get_errno_11(void);
+
+char			*get_errno(void);
+
+
+int				investigate_error(const char *prefix, \
+		const char *custom_error, int return_value);
+/*
+**	In file return_failure.c
+*/
+
+int				return_failure(const char *str, const char *error_msg);
+#endif

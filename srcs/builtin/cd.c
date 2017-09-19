@@ -1,5 +1,6 @@
 #include "libft.h"
 #include "env.h"
+#include "failure.h"
 
 static int	update_pwd_old_pwd(char *cwd_before_chdir)
 {
@@ -22,12 +23,12 @@ int			builtin_cd(t_env *env, const char **argv)
 	if (ft_arraylen(argv) == 1)
 	{
 		if (!(new_pwd = env_getenv((const char**)env->environ, "HOME", NULL)))
-			return (return_failure(NULL, "cd: HOME not set"));
+			return (investigate_error(NULL, "cd: HOME not set", EXIT_FAILURE));
 	}
 	else if (ft_strequ(argv[1], "-"))
 	{
 		if (!(new_pwd = env_getenv((const char**)env->environ, "OLDPWD", NULL)))
-			return (return_failure(NULL, "cd: OLDPWD not set"));
+			return (investigate_error(NULL, "cd: OLDPWD not set", EXIT_FAILURE));
 	}
 	else
 		new_pwd = (char*)argv[1];
@@ -37,7 +38,7 @@ int			builtin_cd(t_env *env, const char **argv)
 	if (chdir(new_pwd) == -1)
 	{
 		free(cwd_before_chdir);
-		return (return_failure("cd: no such file or directory: ", new_pwd));
+		return (investigate_error("cd", NULL, -1));
 	}
 	return (update_pwd_old_pwd(cwd_before_chdir));
 }

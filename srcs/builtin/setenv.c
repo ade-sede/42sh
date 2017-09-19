@@ -1,6 +1,7 @@
 #include "env.h"
 #include "libft.h"
 #include <unistd.h>
+#include "failure.h"
 
 int		builtin_setenv(t_env *env, const char **argv)
 {
@@ -23,8 +24,8 @@ int		builtin_setenv(t_env *env, const char **argv)
 		}
 		else
 		{
-			return (return_failure("usage: setenv key1=value1 key2=value2 ..",\
-						NULL));
+			return (investigate_error(NULL, "usage: setenv key1=value1 \
+key2=value2 ..", EXIT_FAILURE));
 		}
 		i++;
 	}

@@ -73,12 +73,6 @@ void			env_load_shlvl_pwd(t_env *env);
 void			env_load_base_env(t_env *env, const char **environ);
 
 /*
-**	In file return_failure.c
-*/
-
-int				return_failure(const char *str, const char *error_msg);
-
-/*
 **	In file add_var.c
 */
 

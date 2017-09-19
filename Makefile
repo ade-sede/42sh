@@ -127,7 +127,11 @@ SRC_FILE = \
 	parser/t_ast.c \
 	parser/t_pipe.c \
 	\
-	return_failure.c \
+	failure/get_errno_1.c \
+	failure/get_errno_2.c \
+	failure/get_errno_3.c \
+	failure/return_failure.c \
+	\
 	main.c
 
 INCLUDES_FILES = \
@@ -206,7 +210,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/line_editing
 	@/bin/mkdir -p $(OBJ_DIR)/main.c
 	@/bin/mkdir -p $(OBJ_DIR)/parser
-	@/bin/mkdir -p $(OBJ_DIR)/return_failure.c
+	@/bin/mkdir -p $(OBJ_DIR)/failure
 
 clean:
 	@make -C $(LIB_DIR) clean
