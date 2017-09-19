@@ -1,0 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_ast.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:50 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:30 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ast.h"
+#include "token.h"
+#include "libft.h"
+
+/*
+**	Creates a node of the AST, giving the address of the first child of its
+**	list of childs.
+*/
+
+t_ast	*ast_create_node(t_token *token, t_list *child, t_symbol symbol)
+{
+	t_ast	*node;
+
+	node = palloc(sizeof(*node));
+	node->child = child;
+	node->token = token;
+	node->symbol = symbol;
+	return (node);
+}
+
+/*
+**	Frees one node of the ast : The list of childs, and the token it contains
+**	and the structure itself.
+*/
+
+t_ast	*free_ast_node(t_ast *node)
+{
+	if (node)
+	{
+		ft_simple_lst_remove(&node->child, NULL);
+		if (node->token)
+			free_token(node->token);
+		free(node);
+	}
+	return (NULL);
+}
+
+/*
+**	Deletes the entire tree, from the given node to the last leaf
+*/
+
+t_ast	*flush_tree(t_ast *ast)
+{
+	t_list	*child_list;
+	t_ast	*child_node;
+
+	if (ast)
+	{
+		child_list = ast->child;
+		while (child_list)
+		{
+			child_node = child_list->data;
+			if (child_node)
+				flush_tree(child_node);
+			child_list = child_list->next;
+		}
+		free_ast_node(ast);
+	}
+	return (NULL);
+}

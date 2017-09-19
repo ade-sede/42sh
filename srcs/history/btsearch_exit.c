@@ -1,7 +1,17 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   btsearch_exit.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:48 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:16 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 #include "history.h"
-#include <stdio.h>
 
 int		btsearch_exit(t_line *line, t_hist *h)
 {
@@ -16,4 +26,3 @@ int		btsearch_exit(t_line *line, t_hist *h)
 	(void)line;
 	return (1);
 }
-#endif

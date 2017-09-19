@@ -1,8 +1,18 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   comple_signals.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:47 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:08 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "completion.h"
 #include "line_editing.h"
 #include <signal.h>
-#include <stdio.h>
 
 void	comple_handle_sigwinch(int signum)
 {
@@ -49,4 +59,3 @@ void	comple_set_signals(void)
 	sigaction(SIGWINCH, &sa, NULL);
 	signal(SIGINT, comple_handle_sigint);
 }
-#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/27 12:42:28 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/12 14:48:26 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/09/18 14:05:51 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:32 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ size_t				ft_lst_len(t_list *lst);
 /*
 **	in file ft_lst_iteri.c
 */
-void			   ft_simple_lst_rev(t_list **lst);
-
+void				ft_simple_lst_rev(t_list **lst);
 
 #endif

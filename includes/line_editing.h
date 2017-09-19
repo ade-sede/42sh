@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   line_editing.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:46 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:01 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LINE_EDITING_H
 # define LINE_EDITING_H
 
@@ -33,8 +45,9 @@
 size_t	get_ws_col(void);
 size_t	get_ws_row(void);
 
+char	*control_d_heredoc(t_line *line);
 void	edit_line_init(t_line *line);
-char	*edit_get_input(t_env *env);
+char	*edit_get_input(void);
 void	edit_set_signals(void);
 void	edit_handle_sigwinch(int signum);
 void	conf_term_in(void);

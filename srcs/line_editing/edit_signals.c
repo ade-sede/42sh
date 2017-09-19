@@ -1,4 +1,15 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_signals.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:50 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:27 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "completion.h"
 #include "history.h"
 #include "line_editing.h"
@@ -25,4 +36,3 @@ void	edit_set_signals(void)
 	signal(SIGINT, edit_handle_sigint);
 	signal(SIGWINCH, edit_handle_sigwinch);
 }
-#endif

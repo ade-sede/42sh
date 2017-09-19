@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_del_one.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:52 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:41 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "list.h"
 
@@ -92,9 +104,9 @@ void		ft_double_lst_del_one(t_lst_head **head, t_list_d *node, \
 			pos = 3;
 		prev = node->prev;
 		next = node->next;
-		if (pos != 0)
-			relink_head(head, pos);
-		else {
+		relink_head(head, pos);
+		if (pos == 0)
+		{
 			if (prev != NULL)
 				prev->next = next;
 			if (next != NULL)

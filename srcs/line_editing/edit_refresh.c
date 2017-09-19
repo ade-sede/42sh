@@ -1,4 +1,15 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_refresh.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:50 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:27 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 #include "env.h"
 
@@ -48,4 +59,3 @@ void	edit_refresh(t_line *line)
 	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }
-#endif

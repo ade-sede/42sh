@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_rev.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com        +#+  +:+       +#+        */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/12 14:42:56 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/09/12 14:49:48 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/09/18 14:05:52 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:46 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void   ft_simple_lst_rev(t_list **lst)
+void	ft_simple_lst_rev(t_list **lst)
 {
 	t_list *a;
 	t_list *b;

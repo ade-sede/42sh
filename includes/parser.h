@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:46 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:01 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSER_H
 # define PARSER_H
+# include "ast.h"
 # include "lexer.h"
 
 /*
@@ -80,70 +93,37 @@
 */
 
 /*
-**	The following enumeration corresponds to different grammar symbols we'll be
-**	using in our tree. It is a simplified version of the one found on the POSIX
-**	STANDARD Each node of our AST will correspond to one of those.
-**	symbols.
+**	In file srcs/parser/parse.c
 */
+
+t_ast	*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head);
 
 /*
-**	CMD_WORD applies to any word belonging to a command.
+**	In file srcs/parser/parse_complexe_command.c
 */
 
-typedef	enum {
-	SIMPLE_COMMAND,
-	IO_REDIRECT,
-	COMPLEXE_COMMAND = 666,
-	CMD_WORD = 999,
-	CMD_NAME,
-	CMD_PREFIX,
-	CMD_SUFFIX
-}	t_symbol;
+t_ast	*create_right_branch(t_token *command_token, t_list **token_list);
+t_ast	*start_complexe_command(t_ast *ast, t_list **token_list);
 
 /*
-**	The following structure represents a node of the AST.
-**	The node should contain the token it has been created from, and a list of
-**	its child such that child->data is a t_ast structure.
-**	As an example consider the command "ls foo bar":
-**
-**		The root node is considered to be a command. Its childs are the
-**		CMD_NAME `ls', and the CMD_PREFIX `foo bar' ,itself composed of
-**		CMD_PREFIX `foo' and CMD_PREFIX `bar' (see IMPLICIT SYMBOLS).
+**	In file srcs/parser/parse_pipe.c
 */
 
-typedef	struct		s_ast
-{
-	t_list			*child;
-	struct s_token	*token;
-	t_symbol		symbol;
-}					t_ast;
+void	add_last_pipe(t_lst_head **head);
+void	add_pipe(t_token *token, t_lst_head **head);
 
 /*
-**	In file parser.c
+**	In file srcs/parser/parse_redir.c
 */
 
-t_ast				*ast_parse(t_ast *simple_command, t_list **token_list, t_lst_head **head);
-t_ast				*fill_simple_command(t_ast *simple_command, \
-		t_list **token_list);
-t_ast			 	*create_simple_command(t_list **token_list);
+t_ast	*ast_create_node_from_redir(t_list **token_list);
+t_ast	*append_redir(t_ast *root, t_list **token_list);
 
 /*
-**	In file casual_node.c
+**	In file srcs/parser/parse_simple_command.c
 */
 
-t_ast				*ast_create_node_from_word(t_list **token_list);
-
-/*
-**	In file redir.c
-*/
-
-t_ast				*ast_create_node_from_redir(t_list **token_list);
-t_ast				*append_redir(t_ast *root, t_list **token_list);
-
-/*
-**	In file init.c
-*/
-
-t_ast				*ast_create_node(struct s_token *token, t_list *child, \
-		t_symbol symbol);
+t_ast	*ast_create_node_from_word(t_list **token_list);
+t_ast	*create_simple_command(t_list **token_list);
+t_ast	*fill_simple_command(t_ast *simple_cmd, t_list **token_list);
 #endif

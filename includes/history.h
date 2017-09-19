@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   history.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:46 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:00 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HISTORY_H
 # define HISTORY_H
 # include "libft.h"
@@ -22,8 +34,7 @@ t_hist			*singleton_hist(void);
 int				history_load(t_hist *h, t_env *env);
 void			history_refresh(char *command);
 
-int				history_get_input(t_line *line, unsigned long keycode,
-		int *history);
+int				history_get_input(t_line *line, unsigned long keycode);
 void			history_init(t_hist *h);
 int				history_move_exit(t_line *line, t_hist *hist);
 int				history_move_init(t_line *line, t_hist *hist);
@@ -35,7 +46,7 @@ int				history_prev(t_line *line, t_hist *h);
 ** fonction du backtracking search avec <C-R>
 */
 
-int		btsearch_get_input(t_line *line, unsigned long keycode);
+int				btsearch_get_input(t_line *line, unsigned long keycode);
 int				btsearch_init(t_line *line, t_hist *h);
 int				btsearch_exit(t_line *line, t_hist *hist);
 int				btsearch_init(t_line *line, t_hist *hist);
@@ -46,9 +57,11 @@ void			btsearch_refresh(t_line *line, t_hist *h);
 void			btsearch_change_line(t_line *line, t_hist *h, t_list_d *node);
 int				btsearch_handle_sigwinch(t_line *line, t_hist *h);
 void			btsearch_handle_sigint(int keycode);
-void	btsearch_handle_signals(void);
+void			btsearch_handle_signals(void);
 void			btsearch_del(t_line *line, t_hist *h);
 void			btsearch_first_search(t_hist *h);
 void			create_strstr_btsearch_buff(t_list_d *item);
 
+void			history_line_refresh(t_line *line, char *new_line);
+void			history_write_last_command();
 #endif

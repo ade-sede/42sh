@@ -1,24 +1,28 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conf_term.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:50 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:23 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
-#include <stdio.h>
-#include <errno.h>
+#include "env.h"
 
 void	conf_term_canonical(void)
 {
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->canonical_mode) < 0)
-	{
-		dprintf(2 ,"aaaerror = %s\n", strerror(errno));
 		fatal("tcsetattr error");
-	}
 }
 
 void	conf_term_normal(void)
 {
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->normal_mode) < 0)
-	{
-		dprintf(2 ,"bbberror = %s\n", strerror(errno));
 		fatal("tcsetattr error");
-	}
 }
 
 void	conf_term_in(void)
@@ -28,7 +32,8 @@ void	conf_term_in(void)
 	t_line			*line;
 
 	line = singleton_line();
-	if ((termtype = getenv("TERM")) == NULL)
+	if ((termtype = env_getenv((const char**)singleton_env()->environ, \
+					"TERM", NULL)) == NULL)
 		termtype = "xterm";
 	if (tgetent(NULL, termtype) <= 0)
 		fatal("cant access data base");
@@ -44,4 +49,3 @@ void	conf_term_in(void)
 	if (tcsetattr(0, TCSANOW, &line->canonical_mode) < 0)
 		fatal("tcsetattr error");
 }
-#endif

@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   control_d.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:50 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:24 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 
-#include <stdio.h>
 int		control_d(t_line *line)
 {
 	if (line->len != 0)
@@ -10,4 +21,10 @@ int		control_d(t_line *line)
 	(void)line;
 	ft_putchar('\n');
 	exit(0);
+}
+
+char	*control_d_heredoc(t_line *line)
+{
+	edit_add(4, line);
+	return (edit_exit(line));
 }

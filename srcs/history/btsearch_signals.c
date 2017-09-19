@@ -1,8 +1,18 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   btsearch_signals.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:48 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:18 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "history.h"
 #include "line_editing.h"
 #include <signal.h>
-#include <stdio.h>
 
 int		btsearch_handle_sigwinch(t_line *line, t_hist *h)
 {
@@ -21,7 +31,6 @@ void	btsearch_handle_sigint(int keycode)
 	h = singleton_hist();
 	btsearch_exit(line, h);
 	line->btsearch = 0;
-//	btsearch_refresh(line, h);
 	h->signum = 0;
 	ft_strclr(line->buff);
 	line->len = 0;
@@ -39,4 +48,3 @@ void	btsearch_handle_signals(void)
 {
 	signal(SIGINT, &btsearch_handle_sigint);
 }
-#endif

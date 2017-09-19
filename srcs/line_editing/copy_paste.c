@@ -1,10 +1,19 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   copy_paste.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:50 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:24 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
-#include <stdio.h>
 
 int	enter_visual_mode(t_line *line)
 {
-//	printf("\nvisu mode\n");
 	line->visu_mode = 1;
 	line->visu_start = line->pos;
 	return (1);
@@ -12,7 +21,6 @@ int	enter_visual_mode(t_line *line)
 
 int	copy(t_line *line)
 {
-//	printf("\ncopy\n");
 	if (line->visu_mode)
 	{
 		if (line->visu_start < line->pos)
@@ -29,7 +37,6 @@ int	copy(t_line *line)
 
 int	paste(t_line *line)
 {
-//	printf("\nastere\n");
 	if (line->copied_text)
 	{
 		edit_insert_str(line, line->buff + line->pos, line->copied_text);
@@ -37,4 +44,3 @@ int	paste(t_line *line)
 	}
 	return (1);
 }
-#endif

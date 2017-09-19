@@ -1,7 +1,16 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   history_refresh.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:49 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:19 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "history.h"
-#include <stdio.h>
-#include <errno.h>
 
 void	history_refresh_command(t_hist *h, char *command)
 {
@@ -9,9 +18,9 @@ void	history_refresh_command(t_hist *h, char *command)
 	write(h->fd, "\n", 1);
 }
 
-void	history_write_last_command()
+void	history_write_last_command(void)
 {
-	t_hist	*h;
+	t_hist		*h;
 	t_list_d	*list;
 
 	h = singleton_hist();
@@ -33,4 +42,3 @@ void	history_refresh(char *command)
 	else
 		ft_double_lst_add(&h->list, list);
 }
-#endif

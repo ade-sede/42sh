@@ -1,4 +1,15 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   comple_init.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:47 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:07 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "completion.h"
 #include "line_editing.h"
 
@@ -47,4 +58,3 @@ int			comple_init(t_line *line, t_comple *c)
 	}
 	return (1);
 }
-#endif

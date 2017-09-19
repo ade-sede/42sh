@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   curly_bracket_split.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:47 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:13 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "glob.h"
 #include "list.h"
 #include "libft.h"
-#include <stdio.h>
 
 static unsigned int	ft_count_words(char const *s, char c)
 {
 	unsigned int	i;
 	unsigned int	nb_words;
-	int	depth;
+	int				depth;
 
 	depth = 0;
 	i = 0;
@@ -30,12 +41,12 @@ static unsigned int	ft_count_words(char const *s, char c)
 	return (nb_words);
 }
 
-static char			**ft_malloc_t(char const *s, char **t, char c)
+static void			ft_malloc_t(char const *s, char **t, char c)
 {
 	unsigned int	i;
 	unsigned int	no_words;
 	unsigned int	nb_letters;
-	int	depth;
+	int				depth;
 
 	depth = 0;
 	i = 0;
@@ -49,20 +60,14 @@ static char			**ft_malloc_t(char const *s, char **t, char c)
 		nb_letters = 0;
 		while (s[i] && (!(s[i] == c && depth == 0)))
 		{
-			if (s[i] == '{')
-				depth++;
-			if (s[i] == '}')
-				depth--;
+			if (s[i] == '{' || s[i] == '}')
+				(s[i] == '{') ? depth++ : depth--;
 			i++;
 			nb_letters++;
 		}
 		if (nb_letters != 0 && depth == 0)
-		{
-			if (!(t[no_words] = ft_strnew(nb_letters)))
-				return (NULL);
-		}
+			t[no_words] = ft_strnew(nb_letters);
 	}
-	return (t);
 }
 
 static void			ft_fill_t(char const *s, char **t, char c)
@@ -70,7 +75,7 @@ static void			ft_fill_t(char const *s, char **t, char c)
 	unsigned int	i;
 	unsigned int	no_words;
 	unsigned int	no_letters;
-	int	depth;
+	int				depth;
 
 	depth = 0;
 	i = 0;
@@ -84,10 +89,8 @@ static void			ft_fill_t(char const *s, char **t, char c)
 		no_letters = 0;
 		while (s[i] && (!(s[i] == c && depth == 0)))
 		{
-			if (s[i] == '{')
-				depth++;
-			if (s[i] == '}')
-				depth--;
+			if (s[i] == '{' || s[i] == '}')
+				(s[i] == '{') ? depth++ : depth--;
 			t[no_words][no_letters] = s[i];
 			i++;
 			no_letters++;
@@ -100,7 +103,7 @@ char				**ft_strsplit_coma_bracket(char *s)
 	unsigned int	nb_words;
 	unsigned int	i;
 	char			**t;
-	char		c;
+	char			c;
 
 	c = ',';
 	if (!s)
@@ -111,8 +114,7 @@ char				**ft_strsplit_coma_bracket(char *s)
 	if (!(t = (char **)malloc(sizeof(char *) * (nb_words + 1))))
 		return (NULL);
 	t[nb_words] = NULL;
-	if (ft_malloc_t(s, t, c) == NULL)
-		return (NULL);
+	ft_malloc_t(s, t, c);
 	ft_fill_t(s, t, c);
 	return (t);
 }

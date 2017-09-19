@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/27 12:42:28 by vcombey           #+#    #+#             */
-/*   Updated: 2017/09/12 23:53:53 by vcombey          ###   ########.fr       */
+/*   Created: 2017/09/18 14:05:51 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:34 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 
 void				ft_putnstr(char *str, size_t len);
+void				ft_putnstr_fd(int fd, char *str, size_t len);
 /*
 ** In file ft_putchar.c
 */

@@ -1,7 +1,17 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   btsearch_add.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:47 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:15 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 #include "history.h"
-#include <stdio.h>
 
 void	create_strstr_btsearch_buff(t_list_d *item)
 {
@@ -56,4 +66,3 @@ void	btsearch_add(char keycode, t_line *line, t_hist *h)
 	else
 		btsearch_change_line(line, h, NULL);
 }
-#endif

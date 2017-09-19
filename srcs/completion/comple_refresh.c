@@ -1,7 +1,17 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   comple_refresh.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:47 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:07 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "completion.h"
 #include "line_editing.h"
-#include <stdio.h>
 
 void	ft_putstr_padding_space(char *str, unsigned int size)
 {
@@ -77,4 +87,3 @@ int		comple_refresh(t_line *line, t_comple c)
 	comple_refresh_line(line, c);
 	return (1);
 }
-#endif

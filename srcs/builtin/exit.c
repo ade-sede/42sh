@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:46 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:03 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include "builtin.h"
@@ -16,9 +28,7 @@ int	builtin_exit(t_env *env, const char **argv)
 		return (return_failure("exit: numeric argument required", NULL));
 	else
 	{
-#ifndef NO_TERMCAPS
 		conf_term_normal();
-#endif
 		exit(exit_status);
 	}
 	return (EXIT_SUCCESS);

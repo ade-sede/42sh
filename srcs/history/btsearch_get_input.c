@@ -1,7 +1,33 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   btsearch_get_input.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:48 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:16 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 #include "history.h"
-#include <stdio.h>
+
+int		btsearch_special_keys(t_line *line, t_hist *h, unsigned long keycode)
+{
+	if (keycode == KEY_ALT_R && !(line->btsearch))
+	{
+		line->btsearch = 1;
+		btsearch_handle_signals();
+		btsearch_init(line, h);
+	}
+	if (keycode == KEY_ALT_R)
+		btsearch_next(line, h);
+	else if (keycode == KEY_BACKSPACE)
+		btsearch_del(line, h);
+	btsearch_refresh(line, h);
+	return (1);
+}
 
 int		btsearch_get_input(t_line *line, unsigned long keycode)
 {
@@ -11,20 +37,7 @@ int		btsearch_get_input(t_line *line, unsigned long keycode)
 	if (!(line->btsearch) && (keycode == KEY_BACKSPACE))
 		return (0);
 	if ((keycode == KEY_ALT_R) || (keycode == KEY_BACKSPACE))
-	{
-		if (keycode == KEY_ALT_R && !(line->btsearch))
-		{
-			line->btsearch = 1;
-			btsearch_handle_signals();
-			btsearch_init(line, h);
-		}
-		if (keycode == KEY_ALT_R)
-			btsearch_next(line, h);
-		else if (keycode == KEY_BACKSPACE)
-			btsearch_del(line, h);
-		btsearch_refresh(line, h);
-		return (1);
-	}
+		return (btsearch_special_keys(line, h, keycode));
 	else if (line->btsearch && ft_isprint(keycode))
 	{
 		btsearch_add(keycode, line, h);
@@ -40,4 +53,3 @@ int		btsearch_get_input(t_line *line, unsigned long keycode)
 	}
 	return (0);
 }
-#endif

@@ -1,4 +1,15 @@
-#ifndef NO_TERMCAPS
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_history.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:49 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:19 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "history.h"
 #include "get_next_line.h"
 #include <sys/types.h>
@@ -39,4 +50,3 @@ int			history_load(t_hist *h, t_env *env)
 	}
 	return (1);
 }
-#endif

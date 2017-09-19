@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prompt_zsh.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:47 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:10 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "unistd.h"
 #include "env.h"
@@ -75,7 +87,7 @@ char	*get_git_status(size_t *len)
 		close(fildes[0]);
 		execve("/usr/bin/git", exec, singleton_env()->environ);
 	}
-	return ("NE VA JAMAIS ICI");
+	return ("Will never reach this return");
 }
 
 char	*get_current_directory(void)

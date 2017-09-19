@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_bin.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:47 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:11 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include "sys/wait.h"
 #include "exec.h"
-#include <errno.h>
 #include "hash_table.h"
 
 /*
@@ -46,18 +57,24 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 	exit(return_failure((const char *)*argv, " :commmand not found"));
 }
 
+int			exec_bin_no_fork(t_env *env, const char **argv)
+{
+	ft_strchr(argv[0], '/') ? ft_exec_bin_absolute(env, argv) : \
+			ft_exec_bin_path(env, argv);
+	return (1);
+}
+
 int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 {
 	t_list_d	*cur;
 	t_pipe		*pr;
 	t_pipe		*pl;
+	pid_t		child;
 	int			ret;
 
 	cur = (head) ? head->middle : NULL;
 	pr = (cur != NULL) ? cur->data : NULL;
 	pl = (cur && cur->prev) ? cur->prev->data : NULL;
-
-	pid_t		child;
 	no_handle_signals();
 	if ((pl && !pr) || (!pl && !pr))
 	{
@@ -69,14 +86,9 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 		if (child > 0)
 		{
 			env->child_pid = child;
-			waitpid(child, &ret, WUNTRACED);//wait(&child);
+			waitpid(child, &ret, WUNTRACED);
 			return (env->previous_exit = WEXITSTATUS(ret));
 		}
 	}
-	else
-	{
-		ft_strchr(argv[0], '/') ? ft_exec_bin_absolute(env, argv) : \
-			ft_exec_bin_path(env, argv);
-	}
-	return (1);
+	return (exec_bin_no_fork(env, argv));
 }

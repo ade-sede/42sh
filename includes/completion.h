@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   completion.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/18 14:05:46 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/09/18 14:06:00 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef COMPLETION_H
 # define COMPLETION_H
 # include "line_editing.h"
@@ -39,6 +51,7 @@ int				comple_get_input(t_line *line, int keycode);
 char			**comple_file_matches(t_line *line, t_comple *c);
 char			*extract_color(char *str);
 char			**comple_bin_matches(t_line *line, t_comple *c);
+char			**comple_globing_matches(t_line *line, t_comple *c);
 
 int				comple_right(t_comple *c);
 int				comple_left(t_comple *c);
