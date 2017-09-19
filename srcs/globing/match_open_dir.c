@@ -11,6 +11,7 @@ int	match_open_file(t_matches *m, int to_match_i, int regex_i, char *file_name)
 		m->to_match = ft_strjoin(m->dir, file_name);
 	else
 		m->to_match = ft_strjoin3_free(m->dir, "/", file_name, 0);
+	(void)to_match_i;
 	(void)regex_i;
 	return (0);
 }
@@ -45,7 +46,6 @@ int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
 		return (bad_dir(dir_name));
 	m_dir_cpy = m->dir;
 	m->dir = dir_name;
-	cpy_first_to_match = m->to_match;
 	while ((dirent = readdir(dir)) != NULL)
 	{
 		match_open_file(m, to_match_i, regex_i, dirent->d_name);
