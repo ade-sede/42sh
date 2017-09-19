@@ -50,7 +50,8 @@ t_ast	*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
 		{
 			if ((ast = start_complexe_command(ast, token_list)) == NULL)
 				return (NULL);
-			add_pipe(token, head);
+			if (add_pipe(token, head) == 0)
+				return (flush_tree(ast));
 		}
 		else if ((ast = create_simple_command(token_list)) == NULL)
 			return (NULL);

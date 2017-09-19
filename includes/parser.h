@@ -98,7 +98,7 @@ t_ast	*start_complexe_command(t_ast *ast, t_list **token_list);
 */
 
 void	add_last_pipe(t_lst_head **head);
-void	add_pipe(t_token *token, t_lst_head **head);
+int		add_pipe(t_token *token, t_lst_head **head);
 
 /*
 **	In file srcs/parser/parse_redir.c

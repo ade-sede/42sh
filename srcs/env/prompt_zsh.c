@@ -4,6 +4,7 @@
 #include "sys/wait.h"
 #include "get_next_line.h"
 #include "line_editing.h"
+#include "failure.h" 
 
 char	*read_git_status(int fd, size_t *len, char *git_status)
 {
@@ -56,7 +57,8 @@ char	*get_git_status(size_t *len)
 	pid_t		son;
 	int			ret;
 
-	pipe(fildes);
+	if (pipe(fildes) != 0) 
+		investigate_error("prompt", NULL, 0);
 	if ((son = fork()))
 	{
 		waitpid(son, &ret, WUNTRACED);
@@ -75,7 +77,7 @@ char	*get_git_status(size_t *len)
 		close(fildes[0]);
 		execve("/usr/bin/git", exec, singleton_env()->environ);
 	}
-	return ("Will never reach this return");
+	return ("An error occured");
 }
 
 char	*get_current_directory(void)
@@ -84,7 +86,8 @@ char	*get_current_directory(void)
 	char	*buff;
 
 	buff = NULL;
-	buff = getcwd(buff, 0);
+	if ((buff = getcwd(buff, 0)) == NULL)
+		return ((void*)(long)investigate_error("prompt", NULL , 0));
 	if (ft_strequ(buff, "/"))
 		return (buff);
 	if ((dir = ft_strrchr(buff, '/')))
@@ -107,7 +110,8 @@ char	*get_ps1(t_env *env, size_t *len)
 		ft_strjoin3_free(GRN, "➜  ", RESET, 0) : \
 			ft_strjoin3_free(RED, "➜  ", RESET, 0);
 	*len += 3;
-	current_dir = get_current_directory();
+	if ((current_dir = get_current_directory()) == NULL) 
+		current_dir = ft_strdup("Cannot getcwd directory");
 	*len += ft_strlen(current_dir);
 	current_dir = ft_strjoin3_free(CYN, current_dir, RESET, 2);
 	git_status = get_git_status(len);

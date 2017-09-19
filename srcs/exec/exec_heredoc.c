@@ -7,6 +7,7 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
+#include "failure.h"
 
 char	*heredoc_get_input(void)
 {
@@ -33,7 +34,9 @@ int		heredoc(int io_number, char *target, t_list **redir_stack, \
 	(void)id;
 	if (io_number == -1)
 		io_number = 0;
-	if (pipe(fd) == 0)
+	if (pipe(fd) == -1)
+		return (investigate_error("heredoc", NULL, 0));
+	else
 	{
 		while (1)
 		{
