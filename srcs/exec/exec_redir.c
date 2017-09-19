@@ -8,6 +8,8 @@
 #include "lexer.h"
 #include "parser.h"
 
+#include <stdio.h>
+
 static t_redir	g_redir[] =
 {
 	{TK_GREAT, &file_redir},
@@ -39,6 +41,11 @@ void	*get_exec_redir_func(t_ast *child_node)
 **	Fd merging with op >& and <&
 */
 
+/*
+**	If target is '-' file descriptor "io_number" should be closed, and restored
+**	after command is up.
+*/
+
 int		merge_fd(int io_number, char *target, t_list **redir_stack, \
 		t_token_id id)
 {
@@ -49,14 +56,11 @@ int		merge_fd(int io_number, char *target, t_list **redir_stack, \
 	if (io_number == -1)
 		io_number = (id == TK_LESSAND) ? STDIN_FILENO : STDOUT_FILENO;
 	if (ft_strequ(target, "-"))
-	{
-		natural_fd = FALSE;
-		target_fd = open("/dev/null", O_WRONLY);
-	}
+		target_fd = -2;
 	else
 		target_fd = ft_atoi(target);
-	if (target_fd >= STDIN_FILENO && (fcntl(target_fd, F_GETFD) \
-				!= -1))
+	if (target_fd == -2 || (target_fd >= STDIN_FILENO && (fcntl(target_fd, F_GETFD) \
+				!= -1)))
 		push_dup(io_number, target_fd, natural_fd, redir_stack);
 	return (1);
 }

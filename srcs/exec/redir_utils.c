@@ -49,9 +49,9 @@ int			redir_open_file(char *target, t_token_id id)
 }
 
 /*
-**	save[0] is the original fd (source)
-**	save[1] The duplicate of the source fd save[0]
-**	save[2] is the fd of the opened file. -1 if no file was opened. (target)
+**	save[0] is the original fd (source) (fildes1)
+**	save[1] The duplicate of the source fd save[0] (dup(io_number))
+**	save[2] is the fd of the opened file. -1 if no file was opened. (fildes2)
 **	save[3] is a flag that indicates if save[1](target) is a fd that should or
 **	not be closed. If the fd shouldnt be closed its value is 1.
 **	Must be careful about never closing stdin stdout or stderr.
@@ -95,6 +95,8 @@ void		push_dup(int io_number, int target_fd, int natural_fd, \
 	save[1] = dup(io_number);
 	save[2] = target_fd;
 	save[3] = natural_fd;
+	if (target_fd == -2)
+		close(io_number);
 	ft_simple_lst_pushback(redir_stack, ft_simple_lst_create(save));
 }
 
