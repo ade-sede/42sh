@@ -11,6 +11,8 @@ int	copy(t_line *line)
 {
 	if (line->visu_mode)
 	{
+		if (line->copied_text)
+			free(line->copied_text);
 		if (line->visu_start < line->pos)
 			line->copied_text = ft_strndup(line->buff + line->visu_start, \
 					line->pos - line->visu_start);
