@@ -8,6 +8,11 @@
 #include "get_next_line.h"
 #include "color.h"
 
+
+#include "failure.h"
+#include <stdio.h>
+#include <errno.h>
+
 int	main(void)
 {
 	extern const char	**environ;

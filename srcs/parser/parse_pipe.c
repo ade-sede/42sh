@@ -1,6 +1,7 @@
 #include "libft.h"
 #include "pipe.h"
 #include "token.h"
+#include "failure.h"
 
 /*
 **	Those functions are called by the parser in file parser.c to edit the list
@@ -14,11 +15,8 @@
 
 void	add_last_pipe(t_lst_head **head)
 {
-	t_pipe	*spipe;
-
-	spipe = NULL;
 	if (*head == NULL)
-		*head = ft_create_head(ft_double_lst_create(spipe));
+		*head = ft_create_head(ft_double_lst_create(NULL));
 	else
 	{
 		ft_double_lst_pushback(head, ft_double_lst_create(NULL));
@@ -31,7 +29,7 @@ void	add_last_pipe(t_lst_head **head)
 **		creates the list if needed.
 */
 
-void	add_pipe(t_token *token, t_lst_head **head)
+int		add_pipe(t_token *token, t_lst_head **head)
 {
 	t_pipe	*spipe;
 	int		*p;
@@ -41,11 +39,13 @@ void	add_pipe(t_token *token, t_lst_head **head)
 	if (ft_strequ(token->value, "|"))
 	{
 		p = palloc(sizeof(*p) * 2);
-		pipe(p);
+		if (pipe(p) != 0)
+			return (investigate_error("pipe", NULL, 0));
 	}
 	spipe = create_pipe(p);
 	if (*head == NULL)
 		*head = ft_create_head(ft_double_lst_create(spipe));
 	else
 		ft_double_lst_pushback(head, ft_double_lst_create(spipe));
+	return (1);
 }

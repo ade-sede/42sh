@@ -50,6 +50,6 @@ t_list	*glob(char *regex)
 	to_match_i = regex_i - 1;
 	m = (t_matches){NULL, NULL, regex, dir_name};
 	if (!match_open_dir(&m, to_match_i, regex_i, dir_name))
-		return (ft_simple_lst_create(strdup(m.regex)));
+		return (ft_simple_lst_create(ft_strdup(m.regex)));
 	return (m.list);
 }

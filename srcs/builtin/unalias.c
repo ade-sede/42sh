@@ -2,6 +2,7 @@
 #include "builtin.h"
 #include "libft.h"
 #include "printf.h"
+#include "failure.h"
 
 int			builtin_unalias(t_env *env, const char **argv)
 {
@@ -14,7 +15,7 @@ int			builtin_unalias(t_env *env, const char **argv)
 	ret = EXIT_SUCCESS;
 	argc = ft_arraylen(argv);
 	if (argc == 1)
-		return (return_failure(NULL, "unalias : Argument required"));
+		return (investigate_error(NULL, "unalias : Argument required", EXIT_FAILURE));
 	while (++i < argc)
 	{
 		node = find_alias(env->alias, argv[i], ft_strlen(argv[i]));
@@ -24,10 +25,7 @@ int			builtin_unalias(t_env *env, const char **argv)
 			ret = EXIT_SUCCESS;
 		}
 		else
-		{
-			return_failure("alias not found : ", argv[i]);
-			ret = EXIT_FAILURE;
-		}
+			ret = investigate_error(NULL, "alias not found : ", EXIT_FAILURE);
 	}
 	return (ret);
 }

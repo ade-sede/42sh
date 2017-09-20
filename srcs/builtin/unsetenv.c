@@ -1,5 +1,6 @@
 #include "env.h"
 #include "libft.h"
+#include "failure.h"
 
 int	builtin_unsetenv(t_env *env, char **argv)
 {
@@ -8,7 +9,7 @@ int	builtin_unsetenv(t_env *env, char **argv)
 
 	argc = ft_arraylen((const char**)argv);
 	if (argc == 1)
-		return (return_failure("unsetenv: Too few arguments\n", NULL));
+		return (investigate_error(NULL, "unsetenv: Too few arguments\n", EXIT_FAILURE));
 	i = 1;
 	while (i < argc)
 	{

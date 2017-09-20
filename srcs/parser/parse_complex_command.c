@@ -4,6 +4,7 @@
 #include "color.h"
 #include "libft.h"
 #include "exec.h"
+#include "failure.h"
 
 static t_list	*reopen_command(void)
 {
@@ -31,9 +32,7 @@ t_ast			*create_right_branch(t_token *command_token, \
 	t_ast		*right_branch;
 	t_ast		*command_child;
 
-	right_branch = ast_create_node(NULL, NULL, SIMPLE_COMMAND);
-	right_branch = fill_simple_command(right_branch, \
-			token_list);
+	right_branch = create_simple_command(token_list);
 	if (right_branch && right_branch->child)
 	{
 		command_child = right_branch->child->data;
@@ -41,7 +40,7 @@ t_ast			*create_right_branch(t_token *command_token, \
 	}
 	else
 	{
-		return_failure("Parse error near ", command_token->value);
+		investigate_error("Parse error near ", command_token->value, 0);
 		return (flush_tree(right_branch));
 	}
 	if (!command_child || (token && token->id == TK_NEWLINE))
@@ -63,10 +62,8 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list)
 
 	token = (*token_list)->data;
 	if ((left_branch = ast) == NULL)
-	{
-		return_failure("Parse error near", token->value);
-		return (NULL);
-	}
+		return ((void*)(long)investigate_error("Parse error near", \
+					token->value, 0));
 	cc = ast_create_node((t_token*)(*token_list)->data, NULL, COMPLEXE_COMMAND);
 	ft_simple_lst_del_one(token_list, *token_list, NULL);
 	if (!(right_branch = create_right_branch(cc->token, token_list)))

@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "failure.h"
 #include "lexer.h"
 #include "parser.h"
 #include "exec.h"
@@ -28,10 +29,7 @@ static int	pushback_redir(t_list *child_list, t_list **token_list, \
 		if (expected == 1)
 		{
 			if (token->id != TK_NAME && token->id != TK_WORD)
-			{
-				return_failure("Parse error near ", token->value);
-				return (0);
-			}
+				return (investigate_error("Parse error near ",  token->value, 0));
 			ft_simple_lst_pushback(&child_list, \
 				ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 		}

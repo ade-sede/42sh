@@ -6,6 +6,7 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
+#include "failure.h"
 
 int	logical_or(t_ast *ast, t_lst_head *head)
 {
@@ -24,8 +25,6 @@ int	logical_or(t_ast *ast, t_lst_head *head)
 
 int	semi_colon(t_ast *ast, t_lst_head *head)
 {
-	if (!ast->child->data)
-		return_failure("Parse error near ", ast->token->value);
 	exec_tree(ast->child->data, head);
 	exec_tree(ast->child->next->data, head);
 	return (0);
