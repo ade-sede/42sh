@@ -46,7 +46,8 @@ int		heredoc(int io_number, char *target, t_list **redir_stack, \
 			write(fd[WRITE_END], buff, ft_strlen(buff));
 			write(fd[WRITE_END], "\n", 1);
 		}
-		close(fd[WRITE_END]);
+		if (close(fd[WRITE_END]) < 0)
+			return (investigate_error("close", NULL, 0));
 		push_dup(io_number, fd[READ_END], FALSE, redir_stack);
 	}
 	free(fd);
