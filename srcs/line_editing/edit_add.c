@@ -27,7 +27,7 @@ void	edit_add(int keycode, t_line *line)
 		line->buff[line->pos] = (char)keycode;
 	}
 	ft_putstr_fd(line->buff + line->pos, 2);
-	put_ntermcap("le", ft_strlen(line->buff + line->pos) - 1);
+	put_ntermcap("le", ft_strlen(line->buff + line->pos) - 3);
 	line->pos++;
 	line->len++;
 	if (((((line->prompt_len + ft_strlen(line->buff))) % line->ws_col) \

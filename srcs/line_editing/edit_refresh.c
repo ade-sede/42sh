@@ -9,16 +9,19 @@ void	edit_refresh_cursor(t_line *line)
 	size_t	dest_col;
 	size_t	ws_col;
 
-	ws_col = line->ws_col;
-	src_col = (line->len + line->prompt_len) % (ws_col);
-	dest_col = (line->pos + line->prompt_len) % (ws_col);
-	src_line = (line->len + line->prompt_len) / (ws_col);
-	dest_line = (line->pos + line->prompt_len) / (ws_col);
-	put_ntermcap("up", src_line - dest_line);
-	if (dest_col > src_col)
-		put_ntermcap("nd", dest_col - src_col);
-	else
-		put_ntermcap("le", src_col - dest_col);
+	if (!ft_strchr(line->buff, '\n'))
+	{
+		ws_col = line->ws_col;
+		src_col = (line->len + line->prompt_len) % (ws_col);
+		dest_col = (line->pos + line->prompt_len) % (ws_col);
+		src_line = (line->len + line->prompt_len) / (ws_col);
+		dest_line = (line->pos + line->prompt_len) / (ws_col);
+		put_ntermcap("up", src_line - dest_line);
+		if (dest_col > src_col)
+			put_ntermcap("nd", dest_col - src_col);
+		else
+			put_ntermcap("le", src_col - dest_col);
+	}
 }
 
 /*

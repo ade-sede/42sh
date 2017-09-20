@@ -23,8 +23,9 @@ int		edit_word_right(t_line *line)
 
 int		edit_home(t_line *line)
 {
-	put_ntermcap("le", line->pos);
-	line->pos = 0;
+	while (1)
+		if (!edit_left(line))
+			break ;
 	return (1);
 }
 
