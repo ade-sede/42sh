@@ -1,7 +1,7 @@
 #ifndef LINE_EDITING_H
 # define LINE_EDITING_H
 
-# include "line_editing_struct.h"
+# include "t_line.h"
 # include "env.h"
 # include "termios.h"
 # include "term.h"

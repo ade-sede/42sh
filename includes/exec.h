@@ -3,7 +3,7 @@
 # include "token.h"
 # include "pipe.h"
 # include "ast.h"
-# include "line_editing_struct.h"
+# include "t_line.h"
 # include "history.h"
 
 typedef struct	s_redir

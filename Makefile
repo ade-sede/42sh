@@ -116,7 +116,7 @@ SRC_FILE = \
 	line_editing/edit_refresh.c \
 	line_editing/edit_refresh_visu.c \
 	line_editing/edit_signals.c \
-	line_editing/get_input.c \
+	line_editing/edit_get_input.c \
 	line_editing/put_termcap.c \
 	\
 	parser/parse.c \
@@ -146,7 +146,7 @@ INCLUDES_FILES = \
 	history.h \
 	lexer.h \
 	line_editing.h \
-	line_editing_struct.h \
+	t_line.h \
 	parser.h \
 	pipe.h \
 	t_lexer.h \

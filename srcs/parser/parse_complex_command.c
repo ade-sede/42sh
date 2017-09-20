@@ -16,7 +16,7 @@ static t_list	*reopen_command(void)
 			"command> ");
 	new_command = ft_strdup(line_editing_get_input(singleton_line(), \
 			singleton_hist()));
-	new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n"));
+	/* new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n")); */
 	lex = init_lexer(new_command);
 	token_list = start_lex(&lex);
 	new_command = ft_strchange(new_command, ft_strjoin(" ", new_command));

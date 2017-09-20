@@ -68,7 +68,7 @@ void	lex_and_parse(char *buff)
 
 	head = NULL;
 	history_refresh(buff);
-	buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
+	/* buff = ft_strchange(buff, ft_strjoin(buff, "\n")); */
 	lex = init_lexer(buff);
 	token_list = start_lex(&lex);
 	ast = ast_parse(NULL, &token_list, &head);

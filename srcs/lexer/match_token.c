@@ -35,7 +35,7 @@ void		reopen_line_editing(t_lexer *lex)
 		load_prompt(singleton_env(), singleton_line(), "PS3", "dquote> ");
 	new_command = ft_strdup(line_editing_get_input(singleton_line(), \
 			singleton_hist()));
-	new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n"));
+	/* new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n")); */
 	lex->line = ft_strchange((char*)lex->line, \
 			ft_strjoin((char*)lex->line, new_command));
 	append_history(new_command);
