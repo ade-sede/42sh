@@ -23,11 +23,11 @@
 typedef unsigned long int	t_ulong;
 # endif
 
-typedef struct		s_coordinates
+typedef struct		s_coor
 {
 	int		x;
 	int		y;
-}					t_coordinates;
+}					t_coor;
 
 typedef struct		s_btree
 {

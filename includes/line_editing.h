@@ -30,6 +30,8 @@
 # define KEY_ALT_R 44738
 # define BUFF_LINE_SIZE 10
 
+t_coor	get_char_visual_coor(t_line *line, char *c);
+
 size_t	get_ws_col(void);
 size_t	get_ws_row(void);
 

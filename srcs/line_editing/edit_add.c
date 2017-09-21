@@ -1,4 +1,6 @@
 #include "line_editing.h"
+#include "failure.h"
+#include "color.h"
 
 void	realoc_line_buff(char **buff, unsigned int *size, \
 		unsigned int size_needed)
@@ -16,6 +18,14 @@ void	realoc_line_buff(char **buff, unsigned int *size, \
 
 void	edit_add(int keycode, t_line *line)
 {
+
+
+
+	/* t_coor	pos_after_write; */
+	/* t_coor	pos_before_write; */
+	/* int		diff_number; */
+
+	/* diff_number = 0; */
 	if (line->len >= line->size)
 		realoc_line_buff(&line->buff, &line->size, line->len + 1);
 	if (line->pos == line->len)
@@ -26,17 +36,10 @@ void	edit_add(int keycode, t_line *line)
 				(void*)(line->buff + line->pos), line->len - line->pos);
 		line->buff[line->pos] = (char)keycode;
 	}
-	ft_putstr_fd(line->buff + line->pos, 2);
-	put_ntermcap("le", ft_strlen(line->buff + line->pos) - 3);
+	/* Write line from where it changed */
+//	ft_putstr_fd(line->buff + line->pos, 2);
+	/* Update memory infos */
 	line->pos++;
 	line->len++;
-	if (((((line->prompt_len + ft_strlen(line->buff))) % line->ws_col) \
-				== 0) && (line->buff[line->pos] != '\0'))
-		put_termcap("nd");
-	else if (((((line->prompt_len + ft_strlen(line->buff))) % line->ws_col) \
-				== 0) && (line->buff[line->pos] == '\0'))
-	{
-		ft_putchar_fd(' ', 2);
-		put_termcap("le");
-	}
+	edit_refresh(line);
 }

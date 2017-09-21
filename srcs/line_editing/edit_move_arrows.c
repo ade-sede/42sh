@@ -1,26 +1,6 @@
 #include "line_editing.h"
 #include <stdio.h>
 
-static size_t	get_char_visual_position(t_line *line, char *c)
-{
-	size_t	index;
-	size_t	col_nb;
-
-	col_nb = line->prompt_len;
-	index = 0;
-	while ((line->buff + index) != c)
-	{
-		if (col_nb == line->ws_col)
-			col_nb = 0;
-		else if (*(line->buff + index) == '\n')
-			col_nb = 0;
-		else
-			++col_nb;
-		++index;
-	}
-	return (col_nb);
-}
-
 static char	*newline_on_the_left(t_line *line)
 {
 	char	old_char;
@@ -36,24 +16,24 @@ static char	*newline_on_the_left(t_line *line)
 int		edit_up(t_line *line)
 {
 	char	*newl;
-	size_t	my_pos;
-	size_t	newl_pos;
+	size_t	pos_x;
+	size_t	newl_x;
 
-	newl_pos = 0;
-	my_pos = 0;
+	newl_x = 0;
+	pos_x = 0;
 	newl = NULL;
 	if (line->pos < line->ws_col && (newl = newline_on_the_left(line)) == NULL)
 		return (0);
 	if (newl)
 	{
-		my_pos = get_char_visual_position(line, line->buff + line->pos);
-		newl_pos = get_char_visual_position(line, newl);
+		pos_x = (size_t)get_char_visual_coor(line, line->buff + line->pos).x;
+		newl_x = (size_t)get_char_visual_coor(line, newl).x;
 	}
-	if (my_pos > newl_pos)
+	if (pos_x > newl_x)
 	{
 		put_termcap("up");
 		put_termcap("cr");
-		put_ntermcap("nd", newl_pos);
+		put_ntermcap("nd", newl_x);
 		line->pos = (line->buff + line->pos) - newl;
 	}
 	else
@@ -85,7 +65,7 @@ int		edit_down(t_line *line)
 
 int		edit_left(t_line *line)
 {
-	size_t	pos;
+	size_t	pos_x;
 
 	if (line->pos == 0)
 		return (0);
@@ -94,9 +74,9 @@ int		edit_left(t_line *line)
 	line->old_pos = line->pos;
 	if (line->buff[line->pos] == '\n')
 	{
-		pos = get_char_visual_position(line, line->buff + line->pos);
+		pos_x = (size_t)get_char_visual_coor(line, line->buff + line->pos).x;
 		put_termcap("up");
-		put_ntermcap("nd", pos);
+		put_ntermcap("nd", pos_x);
 	}
 	return (1);
 }

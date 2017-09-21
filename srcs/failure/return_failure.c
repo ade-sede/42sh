@@ -1,5 +1,8 @@
 #include "libft.h"
 #include "failure.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include "color.h"
 
 char	*singleton_error(void)
 {
@@ -16,6 +19,36 @@ int		return_failure(const char *str, const char *error_msg)
 		ft_putstr_fd(error_msg, 2);
 	ft_putchar_fd('\n', 2);
 	return (EXIT_FAILURE);
+}
+
+FILE	*get_logfd(const char *file)
+{
+	static const char	*f = NULL;
+	static FILE	*fp = NULL;
+
+	if (!f || (f && !ft_strequ(f, file)))
+	{
+		f = file;
+		if ((fp = fopen(file, "a+")) == NULL)
+		{
+			perror("fopen");
+			return (NULL);
+		}
+	}
+	return (fp);
+}
+
+int		logwrite(const char *func_name, const char *format, ...)
+{
+	va_list	ap;
+
+	va_start(ap, format);
+	fprintf(LOG_STREAM, "From "GRN"%s "BLU"##\n"RESET, func_name);
+	vfprintf(LOG_STREAM, format, ap);
+	fprintf(LOG_STREAM, BLU"##\n"RESET);
+	fflush(LOG_STREAM);
+	va_end(ap);
+	return (1);
 }
 
 int			investigate_error(const char *prefix, const char *custom_error, int return_value)

@@ -118,6 +118,7 @@ SRC_FILE = \
 	line_editing/edit_signals.c \
 	line_editing/edit_get_input.c \
 	line_editing/put_termcap.c \
+	line_editing/edit_get_coor.c \
 	\
 	parser/parse.c \
 	parser/parse_complex_command.c \
