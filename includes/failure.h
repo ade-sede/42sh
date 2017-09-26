@@ -2,10 +2,15 @@
 # define FAILURE_H
 # define E_BUFSIZE 4096
 # include <errno.h>
-
-
 # include <stdio.h>
-# define LOG_STREAM	get_logfd("log/termcaps")
+# ifdef LOG_FILE
+#   define STRINGIZE(x) #x
+#   define STRINGIZE_VALUE_OF(x) STRINGIZE(x)
+#   define LOG_STREAM	get_logfd(STRINGIZE_VALUE_OF(LOG_FILE))
+# else
+#   define LOG_STREAM	get_logfd("log/def")
+# endif
+
 FILE			*get_logfd(const char *file);
 int				logwrite(const char *func_name, const char *format, ...);
 
