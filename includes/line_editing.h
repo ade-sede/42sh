@@ -30,6 +30,8 @@
 # define KEY_ALT_R 44738
 # define BUFF_LINE_SIZE 10
 
+ssize_t	cursor_goto_visual_relative(t_line *line, int x_move, int y_move);
+ssize_t	cursor_goto_visual_coor(t_line *line, size_t x, size_t y);
 ssize_t	cursor_goto_buff(t_line *line, ssize_t dest_i, ssize_t start_i);
 t_coor	get_char_visual_coor(t_line *line, ssize_t pos);
 

@@ -22,6 +22,7 @@ static ssize_t	newline_on_the_left(t_line *line) {
 
 int		edit_up(t_line *line)
 {
+#if 0
 	size_t	x;
 	size_t	count;
 	ssize_t	newl;
@@ -60,10 +61,15 @@ int		edit_up(t_line *line)
 	line->pos = cursor_goto_buff(line, line->pos - count, -1);
 	line->old_pos = line->pos;
 	return (1);
+#endif
+	line->pos = cursor_goto_visual_relative(line, 0, -1);
+	line->old_pos = line->pos;
+	return (0);
 }
 
 int		edit_down(t_line *line)
 {
+#if 0
 	size_t	x;
 	size_t	count;
 	int		done;
@@ -93,11 +99,16 @@ int		edit_down(t_line *line)
 	line->pos = cursor_goto_buff(line, line->pos + count + 1, -1);
 	line->old_pos = line->pos;
 	return (1);
+#endif
+	line->pos = cursor_goto_visual_relative(line, 0, 1);
+	line->old_pos = line->pos;
+	return (0);
 }
 
 
 int		edit_left(t_line *line)
 {
+#if 0
 	size_t	pos_x;
 
 	if (line->pos == 0)
@@ -111,6 +122,11 @@ int		edit_left(t_line *line)
 		put_termcap("up");
 		put_ntermcap("nd", pos_x);
 	}
+#endif
+	if (line->pos == 0)
+		return (0);
+	line->pos = cursor_goto_buff(line, line->pos - 1, -1);
+	line->old_pos = line->pos;
 	return (1);
 }
 
@@ -118,6 +134,7 @@ int		edit_right(t_line *line)
 {
 	if (line->pos >= line->len)
 		return (0);
+#if 0
 	if (line->buff[line->pos] == '\n')
 		put_termcap("do");
 	else if ((((line->prompt_len + line->pos)) % line->ws_col) == line->ws_col - 1)
@@ -125,6 +142,8 @@ int		edit_right(t_line *line)
 	else
 		put_termcap("nd");
 	line->pos++;
+#endif
+	line->pos = cursor_goto_buff(line, line->pos + 1, -1);
 	line->old_pos = line->pos;
 	return (1);
 }
