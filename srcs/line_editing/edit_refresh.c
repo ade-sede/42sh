@@ -5,7 +5,7 @@
 
 void	edit_refresh_cursor(t_line *line)
 {
-	cursor_goto(line, line->pos, line->len);
+	cursor_goto_buff(line, line->pos, line->len);
 }
 
 /*

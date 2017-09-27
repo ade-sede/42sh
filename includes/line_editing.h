@@ -30,7 +30,7 @@
 # define KEY_ALT_R 44738
 # define BUFF_LINE_SIZE 10
 
-size_t	cursor_goto(t_line *line, ssize_t dest_i, ssize_t start_i);
+ssize_t	cursor_goto_buff(t_line *line, ssize_t dest_i, ssize_t start_i);
 t_coor	get_char_visual_coor(t_line *line, ssize_t pos);
 
 size_t	get_ws_col(void);
