@@ -39,6 +39,7 @@ void	edit_add(int keycode, t_line *line)
 	/* Write line from where it changed */
 //	ft_putstr_fd(line->buff + line->pos, 2);
 	/* Update memory infos */
+	/* line->old_pos = line->pos; */
 	line->pos++;
 	line->len++;
 	edit_refresh(line);

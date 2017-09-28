@@ -1,6 +1,7 @@
 #include "line_editing.h"
 #include "completion.h"
 #include "history.h"
+#include "failure.h"
 
 static t_edit_func	g_edit_func[] =
 {
@@ -28,13 +29,16 @@ static t_edit_func	g_edit_func[] =
 
 int		edit_loop(unsigned long long keycode, t_line *line)
 {
+	logwrite(__func__, "in\n");
 	int	i;
 
 	i = 0;
 	while (g_edit_func[i].keycode)
 	{
 		if (g_edit_func[i].keycode == keycode)
+		{
 			keycode = g_edit_func[i].f(line);
+		}
 		i++;
 	}
 	if (ft_isprint((char)keycode))

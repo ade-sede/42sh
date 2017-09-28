@@ -2,6 +2,7 @@
 #include "env.h"
 #include <stdio.h>
 #include "failure.h"
+#include "color.h"
 
 void	edit_refresh_cursor(t_line *line)
 {
@@ -21,17 +22,11 @@ void	edit_refresh_line(t_line *line)
 	pos = get_char_visual_coor(line, line->len);
 	if (pos.x == 0)
 		put_termcap("do");
-	/* if ((((line->prompt_len + line->pos)) % line->ws_col) == line->ws_col - 1) */
-	/* 	put_termcap("do"); */
 }
 
 void	edit_refresh_clear(t_line *line)
 {
-	t_coor	old_pos;
-
-	//	put_ntermcap("up", (line->old_pos + line->prompt_len) / line->ws_col);
-	old_pos = get_char_visual_coor(line, line->old_pos);
-	put_ntermcap("up", (size_t)old_pos.y);
+	cursor_goto_buff(line, 0, line->pos);
 	put_termcap("cr");
 	put_termcap("cd");
 }
