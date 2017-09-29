@@ -19,3 +19,4 @@ void	history_line_refresh(t_line *line, char *new_line)
 	line->pos = line->len;
 	edit_refresh(line);
 }
+
