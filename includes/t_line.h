@@ -22,6 +22,7 @@ typedef struct	s_line
 	char				*prompt;
 	unsigned int		old_pos;
 	int					heredoc;
+	ssize_t				col_target;
 }				t_line;
 
 typedef struct	s_edit_func

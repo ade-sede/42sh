@@ -19,12 +19,14 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 	while ((ssize_t)index != pos)
 	{
 		++x;
-		if (x == (int)line->ws_col || (index < line->len && line->buff[index] == '\n'))
+		if (x == (int)line->ws_col || line->buff[index] == '\n')
 		{
 			x = 0;
 			++y;
 		}
 		++index;
+		if (line->buff[index] == 0)
+			break ;
 	}
 	return ((t_coor){x, y});
 }

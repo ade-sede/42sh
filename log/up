@@ -1,6559 +1,2197 @@
-From [32medit_get_input [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
+From [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {25 ; 0}
-Old_pos = {25 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {26 ; 0}
-Old_pos = {26 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {27 ; 0}
-Old_pos = {27 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {28 ; 0}
-Old_pos = {28 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {0 ; 1}
-Old_pos = {0 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {25 ; 0}
-Old_pos = {25 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 10
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {25 ; 0}
-Old_pos = {25 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {26 ; 0}
-Old_pos = {26 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {27 ; 0}
-Old_pos = {27 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {28 ; 0}
-Old_pos = {28 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {0 ; 1}
-Old_pos = {0 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 10
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 116
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 102
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {25 ; 0}
-Old_pos = {25 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {26 ; 0}
-Old_pos = {26 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 98
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {27 ; 0}
-Old_pos = {27 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 105
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {28 ; 0}
-Old_pos = {28 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {30 ; 0}
-Old_pos = {30 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {31 ; 0}
-Old_pos = {31 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {32 ; 0}
-Old_pos = {32 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 32
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {33 ; 0}
-Old_pos = {33 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 115
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {34 ; 0}
-Old_pos = {34 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mChar line->pos is now 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {35 ; 0}
-Old_pos = {35 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {36 ; 0}
-Old_pos = {36 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {37 ; 0}
-Old_pos = {37 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {38 ; 0}
-Old_pos = {38 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {39 ; 0}
-Old_pos = {39 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {40 ; 0}
-Old_pos = {40 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {41 ; 0}
-Old_pos = {41 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 10
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {42 ; 0}
-Old_pos = {42 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 116
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {43 ; 0}
-Old_pos = {43 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 102
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {44 ; 0}
-Old_pos = {44 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0m108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {45 ; 0}
-Old_pos = {45 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0m108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0m108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {46 ; 0}
-Old_pos = {46 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0m0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {47 ; 0}
-Old_pos = {47 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0m0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0m0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {48 ; 0}
-Old_pos = {48 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0m115
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0m115
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {49 ; 0}
-Old_pos = {49 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0m108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {50 ; 0}
-Old_pos = {50 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0m0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0m0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {51 ; 0}
-Old_pos = {51 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0m0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0m0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {52 ; 0}
-Old_pos = {52 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0m0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {53 ; 0}
-Old_pos = {53 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {54 ; 0}
-Old_pos = {54 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {55 ; 0}
-Old_pos = {55 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {56 ; 0}
-Old_pos = {56 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 115
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 115
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {57 ; 0}
-Old_pos = {57 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {58 ; 0}
-Old_pos = {58 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {59 ; 0}
-Old_pos = {59 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 32
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {60 ; 0}
-Old_pos = {60 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 32
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {61 ; 0}
-Old_pos = {61 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {62 ; 0}
-Old_pos = {62 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {63 ; 0}
-Old_pos = {63 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 115
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 115
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {64 ; 0}
-Old_pos = {64 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {65 ; 0}
-Old_pos = {65 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {66 ; 0}
-Old_pos = {66 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 115
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {67 ; 0}
-Old_pos = {67 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {68 ; 0}
-Old_pos = {68 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {69 ; 0}
-Old_pos = {69 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {70 ; 0}
-Old_pos = {70 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {71 ; 0}
-Old_pos = {71 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {72 ; 0}
-Old_pos = {72 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {73 ; 0}
-Old_pos = {73 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {74 ; 0}
-Old_pos = {74 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {75 ; 0}
-Old_pos = {75 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {76 ; 0}
-Old_pos = {76 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {77 ; 0}
-Old_pos = {77 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 105
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {78 ; 0}
-Old_pos = {78 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 105
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {79 ; 0}
-Old_pos = {79 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {80 ; 0}
-Old_pos = {80 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {81 ; 0}
-Old_pos = {81 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 98
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 98
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {82 ; 0}
-Old_pos = {82 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {83 ; 0}
-Old_pos = {83 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {84 ; 0}
-Old_pos = {84 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 102
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {85 ; 0}
-Old_pos = {85 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 102
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {86 ; 0}
-Old_pos = {86 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {87 ; 0}
-Old_pos = {87 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {88 ; 0}
-Old_pos = {88 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 116
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 116
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {89 ; 0}
-Old_pos = {89 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {90 ; 0}
-Old_pos = {90 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {91 ; 0}
-Old_pos = {91 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {92 ; 0}
-Old_pos = {92 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {93 ; 0}
-Old_pos = {93 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {94 ; 0}
-Old_pos = {94 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {0 ; 1}
-Old_pos = {0 ; 1}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {25 ; 0}
-Old_pos = {25 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {26 ; 0}
-Old_pos = {26 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {27 ; 0}
-Old_pos = {27 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {28 ; 0}
-Old_pos = {28 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {30 ; 0}
-Old_pos = {30 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {31 ; 0}
-Old_pos = {31 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {32 ; 0}
-Old_pos = {32 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 10
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {33 ; 0}
-Old_pos = {33 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {34 ; 0}
-Old_pos = {34 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {35 ; 0}
-Old_pos = {35 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {36 ; 0}
-Old_pos = {36 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 116
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {37 ; 0}
-Old_pos = {37 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {38 ; 0}
-Old_pos = {38 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {39 ; 0}
-Old_pos = {39 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {40 ; 0}
-Old_pos = {40 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {41 ; 0}
-Old_pos = {41 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {42 ; 0}
-Old_pos = {42 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {43 ; 0}
-Old_pos = {43 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {44 ; 0}
-Old_pos = {44 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 115
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {45 ; 0}
-Old_pos = {45 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 115
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {46 ; 0}
-Old_pos = {46 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {47 ; 0}
-Old_pos = {47 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {48 ; 0}
-Old_pos = {48 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 32
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 32
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {49 ; 0}
-Old_pos = {49 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {50 ; 0}
-Old_pos = {50 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {51 ; 0}
-Old_pos = {51 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {52 ; 0}
-Old_pos = {52 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {53 ; 0}
-Old_pos = {53 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {54 ; 0}
-Old_pos = {54 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {55 ; 0}
-Old_pos = {55 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {56 ; 0}
-Old_pos = {56 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {57 ; 0}
-Old_pos = {57 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {58 ; 0}
-Old_pos = {58 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 105
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {59 ; 0}
-Old_pos = {59 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 105
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {60 ; 0}
-Old_pos = {60 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {61 ; 0}
-Old_pos = {61 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {62 ; 0}
-Old_pos = {62 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 98
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 98
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {63 ; 0}
-Old_pos = {63 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {64 ; 0}
-Old_pos = {64 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {65 ; 0}
-Old_pos = {65 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 102
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {66 ; 0}
-Old_pos = {66 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 102
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {67 ; 0}
-Old_pos = {67 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {68 ; 0}
-Old_pos = {68 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {69 ; 0}
-Old_pos = {69 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 116
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 116
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {70 ; 0}
-Old_pos = {70 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {71 ; 0}
-Old_pos = {71 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {72 ; 0}
-Old_pos = {72 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {73 ; 0}
-Old_pos = {73 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {74 ; 0}
-Old_pos = {74 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {75 ; 0}
-Old_pos = {75 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {76 ; 0}
-Old_pos = {76 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {77 ; 0}
-Old_pos = {77 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {78 ; 0}
-Old_pos = {78 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {79 ; 0}
-Old_pos = {79 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {80 ; 0}
-Old_pos = {80 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {81 ; 0}
-Old_pos = {81 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {82 ; 0}
-Old_pos = {82 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {83 ; 0}
-Old_pos = {83 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {84 ; 0}
-Old_pos = {84 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {85 ; 0}
-Old_pos = {85 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {86 ; 0}
-Old_pos = {86 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {87 ; 0}
-Old_pos = {87 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 10
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {88 ; 0}
-Old_pos = {88 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {89 ; 0}
-Old_pos = {89 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {90 ; 0}
-Old_pos = {90 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {91 ; 0}
-Old_pos = {91 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {92 ; 0}
-Old_pos = {92 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {93 ; 0}
-Old_pos = {93 ; 0}
+[0mFrom [32mget_char_visual_coor [34m##
+[0mWhen coor is over 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {94 ; 0}
-Old_pos = {94 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {96 ; 0}
-Old_pos = {96 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {97 ; 0}
-Old_pos = {97 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {98 ; 0}
-Old_pos = {98 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {99 ; 0}
-Old_pos = {99 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {100 ; 0}
-Old_pos = {100 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 10
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {25 ; 0}
-Old_pos = {25 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 116
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {26 ; 0}
-Old_pos = {26 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 102
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {27 ; 0}
-Old_pos = {27 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 98
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {28 ; 0}
-Old_pos = {28 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 105
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {30 ; 0}
-Old_pos = {30 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {31 ; 0}
-Old_pos = {31 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 32
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {32 ; 0}
-Old_pos = {32 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 115
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {33 ; 0}
-Old_pos = {33 ; 0}
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 108
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {34 ; 0}
-Old_pos = {34 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {35 ; 0}
-Old_pos = {35 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {36 ; 0}
-Old_pos = {36 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {37 ; 0}
-Old_pos = {37 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 10
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {38 ; 0}
-Old_pos = {38 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 116
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {39 ; 0}
-Old_pos = {39 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 102
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {40 ; 0}
-Old_pos = {40 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 98
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {41 ; 0}
-Old_pos = {41 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 105
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {42 ; 0}
-Old_pos = {42 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {43 ; 0}
-Old_pos = {43 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 34
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {44 ; 0}
-Old_pos = {44 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 32
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {45 ; 0}
-Old_pos = {45 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 115
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {46 ; 0}
-Old_pos = {46 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_backspace [34m##
+[0mRemoving char 108
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {47 ; 0}
-Old_pos = {47 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {48 ; 0}
-Old_pos = {48 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {49 ; 0}
-Old_pos = {49 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {50 ; 0}
-Old_pos = {50 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {51 ; 0}
-Old_pos = {51 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {52 ; 0}
-Old_pos = {52 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {53 ; 0}
-Old_pos = {53 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {54 ; 0}
-Old_pos = {54 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {55 ; 0}
-Old_pos = {55 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {56 ; 0}
-Old_pos = {56 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {57 ; 0}
-Old_pos = {57 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {58 ; 0}
-Old_pos = {58 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {59 ; 0}
-Old_pos = {59 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {60 ; 0}
-Old_pos = {60 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {61 ; 0}
-Old_pos = {61 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {62 ; 0}
-Old_pos = {62 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {63 ; 0}
-Old_pos = {63 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 1
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {64 ; 0}
-Old_pos = {64 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {65 ; 0}
-Old_pos = {65 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {66 ; 0}
-Old_pos = {66 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {67 ; 0}
-Old_pos = {67 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {68 ; 0}
-Old_pos = {68 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {69 ; 0}
-Old_pos = {69 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {70 ; 0}
-Old_pos = {70 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {71 ; 0}
-Old_pos = {71 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {72 ; 0}
-Old_pos = {72 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {73 ; 0}
-Old_pos = {73 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {74 ; 0}
-Old_pos = {74 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {75 ; 0}
-Old_pos = {75 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {76 ; 0}
-Old_pos = {76 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {77 ; 0}
-Old_pos = {77 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {78 ; 0}
-Old_pos = {78 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {79 ; 0}
-Old_pos = {79 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {80 ; 0}
-Old_pos = {80 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {81 ; 0}
-Old_pos = {81 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {82 ; 0}
-Old_pos = {82 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {83 ; 0}
-Old_pos = {83 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {84 ; 0}
-Old_pos = {84 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {85 ; 0}
-Old_pos = {85 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {86 ; 0}
-Old_pos = {86 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {87 ; 0}
-Old_pos = {87 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {88 ; 0}
-Old_pos = {88 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {89 ; 0}
-Old_pos = {89 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {90 ; 0}
-Old_pos = {90 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {91 ; 0}
-Old_pos = {91 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {92 ; 0}
-Old_pos = {92 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {93 ; 0}
-Old_pos = {93 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {94 ; 0}
-Old_pos = {94 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {0 ; 1}
-Old_pos = {0 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {1 ; 1}
-Old_pos = {1 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {2 ; 1}
-Old_pos = {2 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {3 ; 1}
-Old_pos = {3 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {4 ; 1}
-Old_pos = {4 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {5 ; 1}
-Old_pos = {5 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {6 ; 1}
-Old_pos = {6 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {7 ; 1}
-Old_pos = {7 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {8 ; 1}
-Old_pos = {8 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {9 ; 1}
-Old_pos = {9 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {10 ; 1}
-Old_pos = {10 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {11 ; 1}
-Old_pos = {11 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {12 ; 1}
-Old_pos = {12 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {13 ; 1}
-Old_pos = {13 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {14 ; 1}
-Old_pos = {14 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {15 ; 1}
-Old_pos = {15 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {16 ; 1}
-Old_pos = {16 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {17 ; 1}
-Old_pos = {17 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {18 ; 1}
-Old_pos = {18 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {19 ; 1}
-Old_pos = {19 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {20 ; 1}
-Old_pos = {20 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {21 ; 1}
-Old_pos = {21 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {22 ; 1}
-Old_pos = {22 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {23 ; 1}
-Old_pos = {23 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 1}
-Old_pos = {24 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {25 ; 1}
-Old_pos = {25 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {26 ; 1}
-Old_pos = {26 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {27 ; 1}
-Old_pos = {27 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {28 ; 1}
-Old_pos = {28 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 1}
-Old_pos = {29 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {30 ; 1}
-Old_pos = {30 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {31 ; 1}
-Old_pos = {31 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {32 ; 1}
-Old_pos = {32 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {33 ; 1}
-Old_pos = {33 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {34 ; 1}
-Old_pos = {34 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {35 ; 1}
-Old_pos = {35 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {36 ; 1}
-Old_pos = {36 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {37 ; 1}
-Old_pos = {37 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {38 ; 1}
-Old_pos = {38 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {39 ; 1}
-Old_pos = {39 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {40 ; 1}
-Old_pos = {40 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {41 ; 1}
-Old_pos = {41 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {42 ; 1}
-Old_pos = {42 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {43 ; 1}
-Old_pos = {43 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {44 ; 1}
-Old_pos = {44 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {45 ; 1}
-Old_pos = {45 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {46 ; 1}
-Old_pos = {46 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {47 ; 1}
-Old_pos = {47 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {48 ; 1}
-Old_pos = {48 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {49 ; 1}
-Old_pos = {49 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {50 ; 1}
-Old_pos = {50 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {51 ; 1}
-Old_pos = {51 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {50 ; 1}
-Old_pos = {50 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {50 ; 1}
-Old_pos = {50 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {49 ; 1}
-Old_pos = {49 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {49 ; 1}
-Old_pos = {49 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {48 ; 1}
-Old_pos = {48 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {48 ; 1}
-Old_pos = {48 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {47 ; 1}
-Old_pos = {47 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {47 ; 1}
-Old_pos = {47 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {46 ; 1}
-Old_pos = {46 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {46 ; 1}
-Old_pos = {46 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {45 ; 1}
-Old_pos = {45 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {45 ; 1}
-Old_pos = {45 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {44 ; 1}
-Old_pos = {44 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {44 ; 1}
-Old_pos = {44 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {43 ; 1}
-Old_pos = {43 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {43 ; 1}
-Old_pos = {43 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {42 ; 1}
-Old_pos = {42 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {42 ; 1}
-Old_pos = {42 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {41 ; 1}
-Old_pos = {41 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {41 ; 1}
-Old_pos = {41 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {40 ; 1}
-Old_pos = {40 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {40 ; 1}
-Old_pos = {40 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {39 ; 1}
-Old_pos = {39 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {39 ; 1}
-Old_pos = {39 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {38 ; 1}
-Old_pos = {38 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {38 ; 1}
-Old_pos = {38 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {37 ; 1}
-Old_pos = {37 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {37 ; 1}
-Old_pos = {37 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {36 ; 1}
-Old_pos = {36 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {36 ; 1}
-Old_pos = {36 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {35 ; 1}
-Old_pos = {35 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {35 ; 1}
-Old_pos = {35 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {34 ; 1}
-Old_pos = {34 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {34 ; 1}
-Old_pos = {34 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {33 ; 1}
-Old_pos = {33 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {33 ; 1}
-Old_pos = {33 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {32 ; 1}
-Old_pos = {32 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {32 ; 1}
-Old_pos = {32 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {31 ; 1}
-Old_pos = {31 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {31 ; 1}
-Old_pos = {31 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {30 ; 1}
-Old_pos = {30 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {30 ; 1}
-Old_pos = {30 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {29 ; 1}
-Old_pos = {29 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 1}
-Old_pos = {29 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {28 ; 1}
-Old_pos = {28 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {28 ; 1}
-Old_pos = {28 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {27 ; 1}
-Old_pos = {27 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {27 ; 1}
-Old_pos = {27 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {26 ; 1}
-Old_pos = {26 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {26 ; 1}
-Old_pos = {26 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {25 ; 1}
-Old_pos = {25 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {25 ; 1}
-Old_pos = {25 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {24 ; 1}
-Old_pos = {24 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 1}
-Old_pos = {24 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {23 ; 1}
-Old_pos = {23 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {23 ; 1}
-Old_pos = {23 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {22 ; 1}
-Old_pos = {22 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {22 ; 1}
-Old_pos = {22 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {21 ; 1}
-Old_pos = {21 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {21 ; 1}
-Old_pos = {21 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {20 ; 1}
-Old_pos = {20 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {20 ; 1}
-Old_pos = {20 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {19 ; 1}
-Old_pos = {19 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {19 ; 1}
-Old_pos = {19 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {18 ; 1}
-Old_pos = {18 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {18 ; 1}
-Old_pos = {18 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {17 ; 1}
-Old_pos = {17 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {17 ; 1}
-Old_pos = {17 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {16 ; 1}
-Old_pos = {16 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {16 ; 1}
-Old_pos = {16 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {15 ; 1}
-Old_pos = {15 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {15 ; 1}
-Old_pos = {15 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {14 ; 1}
-Old_pos = {14 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {14 ; 1}
-Old_pos = {14 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {13 ; 1}
-Old_pos = {13 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {13 ; 1}
-Old_pos = {13 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {12 ; 1}
-Old_pos = {12 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {12 ; 1}
-Old_pos = {12 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {11 ; 1}
-Old_pos = {11 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {11 ; 1}
-Old_pos = {11 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {10 ; 1}
-Old_pos = {10 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {10 ; 1}
-Old_pos = {10 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {9 ; 1}
-Old_pos = {9 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {9 ; 1}
-Old_pos = {9 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {8 ; 1}
-Old_pos = {8 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {8 ; 1}
-Old_pos = {8 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {7 ; 1}
-Old_pos = {7 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {7 ; 1}
-Old_pos = {7 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {6 ; 1}
-Old_pos = {6 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {6 ; 1}
-Old_pos = {6 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {5 ; 1}
-Old_pos = {5 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {5 ; 1}
-Old_pos = {5 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {4 ; 1}
-Old_pos = {4 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {4 ; 1}
-Old_pos = {4 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {3 ; 1}
-Old_pos = {3 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {3 ; 1}
-Old_pos = {3 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {2 ; 1}
-Old_pos = {2 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {2 ; 1}
-Old_pos = {2 ; 1}
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {1 ; 1}
-Old_pos = {1 ; 1}
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {1 ; 1}
-Old_pos = {1 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {0 ; 1}
-Old_pos = {0 ; 1}
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {0 ; 1}
-Old_pos = {0 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {24 ; 0}
-Old_pos = {24 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {25 ; 0}
-Old_pos = {25 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {26 ; 0}
-Old_pos = {26 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {27 ; 0}
-Old_pos = {27 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {28 ; 0}
-Old_pos = {28 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {29 ; 0}
-Old_pos = {29 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {30 ; 0}
-Old_pos = {30 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {31 ; 0}
-Old_pos = {31 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {32 ; 0}
-Old_pos = {32 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {33 ; 0}
-Old_pos = {33 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {34 ; 0}
-Old_pos = {34 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {35 ; 0}
-Old_pos = {35 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {36 ; 0}
-Old_pos = {36 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {37 ; 0}
-Old_pos = {37 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {38 ; 0}
-Old_pos = {38 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {39 ; 0}
-Old_pos = {39 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {40 ; 0}
-Old_pos = {40 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {41 ; 0}
-Old_pos = {41 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {42 ; 0}
-Old_pos = {42 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {43 ; 0}
-Old_pos = {43 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {44 ; 0}
-Old_pos = {44 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {45 ; 0}
-Old_pos = {45 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {46 ; 0}
-Old_pos = {46 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {47 ; 0}
-Old_pos = {47 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {48 ; 0}
-Old_pos = {48 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {49 ; 0}
-Old_pos = {49 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {50 ; 0}
-Old_pos = {50 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {51 ; 0}
-Old_pos = {51 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {52 ; 0}
-Old_pos = {52 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {53 ; 0}
-Old_pos = {53 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {54 ; 0}
-Old_pos = {54 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {55 ; 0}
-Old_pos = {55 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {56 ; 0}
-Old_pos = {56 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {57 ; 0}
-Old_pos = {57 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {58 ; 0}
-Old_pos = {58 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {59 ; 0}
-Old_pos = {59 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {60 ; 0}
-Old_pos = {60 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {61 ; 0}
-Old_pos = {61 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {62 ; 0}
-Old_pos = {62 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {63 ; 0}
-Old_pos = {63 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {64 ; 0}
-Old_pos = {64 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {65 ; 0}
-Old_pos = {65 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {66 ; 0}
-Old_pos = {66 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {67 ; 0}
-Old_pos = {67 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {68 ; 0}
-Old_pos = {68 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {69 ; 0}
-Old_pos = {69 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {70 ; 0}
-Old_pos = {70 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {71 ; 0}
-Old_pos = {71 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {72 ; 0}
-Old_pos = {72 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {73 ; 0}
-Old_pos = {73 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {74 ; 0}
-Old_pos = {74 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {75 ; 0}
-Old_pos = {75 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {76 ; 0}
-Old_pos = {76 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {77 ; 0}
-Old_pos = {77 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {78 ; 0}
-Old_pos = {78 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {79 ; 0}
-Old_pos = {79 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {80 ; 0}
-Old_pos = {80 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {81 ; 0}
-Old_pos = {81 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {82 ; 0}
-Old_pos = {82 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {83 ; 0}
-Old_pos = {83 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {84 ; 0}
-Old_pos = {84 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {85 ; 0}
-Old_pos = {85 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {86 ; 0}
-Old_pos = {86 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {87 ; 0}
-Old_pos = {87 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {88 ; 0}
-Old_pos = {88 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {89 ; 0}
-Old_pos = {89 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {90 ; 0}
-Old_pos = {90 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {91 ; 0}
-Old_pos = {91 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {92 ; 0}
-Old_pos = {92 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {93 ; 0}
-Old_pos = {93 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {94 ; 0}
-Old_pos = {94 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {0 ; 1}
-Old_pos = {0 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0mPos = {0 ; 1}
-Old_pos = {0 ; 1}
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {95 ; 0}
-Old_pos = {0 ; 1}
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0mPos = {95 ; 0}
-Old_pos = {95 ; 0}
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {94 ; 0}
-Old_pos = {95 ; 0}
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {94 ; 0}
-Old_pos = {94 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0mPos = {94 ; 0}
-Old_pos = {94 ; 0}
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {93 ; 0}
-Old_pos = {94 ; 0}
-[34m##
-[0mFrom [32medit_get_input [34m##
-[0mPos = {93 ; 0}
-Old_pos = {93 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {28 ; 0}
-Old_pos = {29 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {24 ; 1}
-Old_pos = {25 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {23 ; 1}
-Old_pos = {24 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {22 ; 1}
-Old_pos = {23 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {21 ; 1}
-Old_pos = {22 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {20 ; 1}
-Old_pos = {21 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {19 ; 1}
-Old_pos = {20 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {18 ; 1}
-Old_pos = {19 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {21 ; 3}
-Old_pos = {22 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {20 ; 3}
-Old_pos = {21 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {19 ; 3}
-Old_pos = {20 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {18 ; 3}
-Old_pos = {19 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {17 ; 3}
-Old_pos = {18 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {16 ; 3}
-Old_pos = {17 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {15 ; 3}
-Old_pos = {16 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {14 ; 3}
-Old_pos = {15 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {13 ; 3}
-Old_pos = {14 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {12 ; 3}
-Old_pos = {13 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {11 ; 3}
-Old_pos = {12 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {10 ; 3}
-Old_pos = {11 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {9 ; 3}
-Old_pos = {10 ; 3}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {25 ; 0}
-Old_pos = {26 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {24 ; 0}
-Old_pos = {25 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {27 ; 0}
-Old_pos = {28 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {26 ; 0}
-Old_pos = {27 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {25 ; 0}
-Old_pos = {26 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {24 ; 0}
-Old_pos = {25 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {24 ; 0}
-Old_pos = {25 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {33 ; 0}
-Old_pos = {34 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {1 ; 1}
-Old_pos = {2 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {0 ; 1}
-Old_pos = {1 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {69 ; 0}
-Old_pos = {0 ; 1}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {68 ; 0}
-Old_pos = {69 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {67 ; 0}
-Old_pos = {68 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {66 ; 0}
-Old_pos = {67 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {65 ; 0}
-Old_pos = {66 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {64 ; 0}
-Old_pos = {65 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {63 ; 0}
-Old_pos = {64 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {62 ; 0}
-Old_pos = {63 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {61 ; 0}
-Old_pos = {62 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {60 ; 0}
-Old_pos = {61 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {59 ; 0}
-Old_pos = {60 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {58 ; 0}
-Old_pos = {59 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {57 ; 0}
-Old_pos = {58 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {56 ; 0}
-Old_pos = {57 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {55 ; 0}
-Old_pos = {56 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {54 ; 0}
-Old_pos = {55 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {53 ; 0}
-Old_pos = {54 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
-[34m##
-[0mFrom [32m[95mAFTER BACKSPACE[0m [34m##
-[0mPos = {52 ; 0}
-Old_pos = {53 ; 0}
-[34m##
-[0mFrom [32medit_loop [34m##
-[0min
+[0mFrom [32medit_refresh_clear [34m##
+[0mOld_pos y coor = 0
 [34m##
 [0m

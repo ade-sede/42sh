@@ -2,8 +2,16 @@
 
 int	enter_visual_mode(t_line *line)
 {
-	line->visu_mode = 1;
-	line->visu_start = line->pos;
+	if (line->visu_mode)
+	{
+		line->visu_mode = 0;
+		edit_refresh(line);
+	}
+	else
+	{
+		line->visu_mode = 1;
+		line->visu_start = line->pos;
+	}
 	return (1);
 }
 

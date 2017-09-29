@@ -23,19 +23,36 @@ static ssize_t	newline_on_the_left(t_line *line) {
 int		edit_up(t_line *line)
 {
 	size_t	new_pos;
+	t_coor	pos;
 
-	new_pos = get_char_mem_coor_relative(line, 0, -1);
+	pos = get_char_visual_coor(line, line->pos);
+	if (line->col_target == -1)
+		line->col_target = pos.x;
+	new_pos = get_char_mem_coor_relative(line, line->col_target - pos.x, -1);
 	line->pos = cursor_goto_buff(line, new_pos, line->pos);
+	if (line->visu_mode)
+	{
+		line->old_pos = line->pos;
+		edit_refresh(line);
+	}
 	return (0);
 }
 
 int		edit_down(t_line *line)
 {
-
 	size_t	new_pos;
+	t_coor	pos;
 
-	new_pos = get_char_mem_coor_relative(line, 0, 1);
+	pos = get_char_visual_coor(line, line->pos);
+	if (line->col_target == -1)
+		line->col_target = pos.x;
+	new_pos = get_char_mem_coor_relative(line, line->col_target - pos.x, 1);
 	line->pos = cursor_goto_buff(line, new_pos, line->pos);
+	if (line->visu_mode)
+	{
+		line->old_pos = line->pos;
+		edit_refresh(line);
+	}
 	return (0);
 }
 
@@ -45,6 +62,11 @@ int		edit_left(t_line *line)
 	if (line->pos == 0)
 		return (0);
 	line->pos = cursor_goto_buff(line, line->pos - 1, line->pos);
+	if (line->visu_mode)
+	{
+		line->old_pos = line->pos;
+		edit_refresh(line);
+	}
 	return (1);
 }
 
@@ -53,5 +75,10 @@ int		edit_right(t_line *line)
 	if (line->pos >= line->len)
 		return (0);
 	line->pos = cursor_goto_buff(line, line->pos + 1, line->pos);
+	if (line->visu_mode)
+	{
+		line->old_pos = line->pos;
+		edit_refresh(line);
+	}
 	return (1);
 }

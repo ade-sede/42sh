@@ -20,13 +20,18 @@ void	edit_refresh_line(t_line *line)
 
 	ft_putstr_fd(line->buff, 2);
 	pos = get_char_visual_coor(line, line->len);
-	if (pos.x == 0)
-		put_termcap("do");
+	/* if (pos.x == 0) */
+	/* 	put_termcap("do"); */
 }
 
 void	edit_refresh_clear(t_line *line)
 {
-	cursor_goto_buff(line, 0, line->pos);
+
+	t_coor	old;
+
+	old = get_char_visual_coor(line, line->old_pos);
+	cursor_goto_buff(line, 0, line->old_pos);
+	logwrite(__func__, "Old_pos y coor = %d\n", old.y);
 	put_termcap("cr");
 	put_termcap("cd");
 }

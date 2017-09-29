@@ -49,6 +49,7 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->size = BUFF_LINE_SIZE;
 	load_prompt(singleton_env(), line, "PS1", "$> ");
 	line->heredoc = 0;
+	line->col_target = -1;
 }
 
 char	*line_editing_get_input(t_line *line, t_hist *hist)

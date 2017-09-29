@@ -29,7 +29,6 @@ static t_edit_func	g_edit_func[] =
 
 int		edit_loop(unsigned long long keycode, t_line *line)
 {
-	logwrite(__func__, "in\n");
 	int	i;
 
 	i = 0;
@@ -43,8 +42,6 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 	}
 	if (ft_isprint((char)keycode))
 		edit_add(keycode, line);
-	if (line->visu_mode)
-		edit_refresh(line);
 	return (1);
 }
 
@@ -72,6 +69,8 @@ char	*edit_get_input(void)
 			return (control_d_heredoc(l));
 		if (keycode == 27 || keycode > 127)
 			read(0, (char *)&keycode + 1, 7);
+		if (keycode != KEY_ALT_UP && keycode != KEY_ALT_DOWN)
+			l->col_target = -1;
 		if (btsearch_get_input(l, keycode))
 			continue ;
 		if (comple_get_input(l, keycode))
