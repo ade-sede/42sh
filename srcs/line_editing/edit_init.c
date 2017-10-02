@@ -21,5 +21,6 @@ void		edit_line_init(t_line *line)
 	line->history = 0;
 	line->visu_mode = 0;
 	line->pos = 0;
+	line->old_pos = 0;
 	line->len = 0;
 }
