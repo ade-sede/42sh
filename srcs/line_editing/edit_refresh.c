@@ -18,7 +18,25 @@ void	write_to_term(t_line *line)
 			write(2, "\n", 1);
 			x = 0;
 		}
+		if (line->visu_mode)
+		{
+			if (line->pos < line->visu_start)
+				if (i >= line->pos && i < line->visu_start)
+					ft_putstr("\e[39;42m");
+			if (line->pos >= line->visu_start)
+				if (i >= line->visu_start && i < line->pos)
+					ft_putstr("\e[39;42m");
+		}
 		write(2, line->buff + i, 1);
+		if (line->visu_mode)
+		{
+			if (line->pos < line->visu_start)
+				if (i >= line->pos && i < line->visu_start)
+					ft_putstr("\e[0m");
+			if (line->pos >= line->visu_start)
+				if (i >= line->visu_start && i < line->pos)
+					ft_putstr("\e[0m");
+		}
 		++i;
 		++x;
 	}
@@ -61,6 +79,7 @@ void	edit_refresh(t_line *line)
 {
 	edit_refresh_clear(line);
 	put_prompt(line);
-	line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line);
+	/* line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line); */
+	edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }

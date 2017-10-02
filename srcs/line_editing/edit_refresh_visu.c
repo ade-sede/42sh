@@ -3,6 +3,7 @@
 #include "failure.h"
 #include <stdio.h>
 
+#if 0
 void	edit_refresh_visu(t_line *line)
 {
 	if (line->pos < line->visu_start)
@@ -24,3 +25,4 @@ void	edit_refresh_visu(t_line *line)
 		ft_putstr_fd(line->buff + line->pos, 2);
 	}
 }
+#endif
