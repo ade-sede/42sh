@@ -24,6 +24,11 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 			x = 0;
 			++y;
 		}
+		/* if (line->buff[index] == '\n') */
+		/* { */
+		/* 	x = 0; */
+		/* 	++y; */
+		/* } */
 		++index;
 		if (line->buff[index] == 0)
 			break ;
@@ -82,8 +87,6 @@ size_t	get_char_mem_coor_relative(t_line *line, int x_move, int y_move)
 	{
 		ret = get_char_mem_coor(line, x, y);
 		check_ret = get_char_visual_coor(line, ret);
-		if (x_move != 0 && check_ret.x == pos.x)
-			return (line->pos);
 		if (y_move != 0 && check_ret.y == pos.y)
 			return (line->pos);
 	}
