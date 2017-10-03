@@ -115,7 +115,6 @@ SRC_FILE = \
 	line_editing/edit_move_arrows.c \
 	line_editing/edit_move_cursor.c \
 	line_editing/edit_refresh.c \
-	line_editing/edit_refresh_visu.c \
 	line_editing/edit_signals.c \
 	line_editing/edit_get_input.c \
 	line_editing/put_termcap.c \

@@ -4,7 +4,7 @@
 /*
 **	Takes the position of a char situated ON line->buff, and returns its
 **	coordinates from the first line of the command (column 0 of line where we
-**	display the prompt (line0)).
+**	display the prompt (line0)). Skipping prompt on first line.
 */
 
 t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
@@ -24,11 +24,6 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 			x = 0;
 			++y;
 		}
-		/* if (line->buff[index] == '\n') */
-		/* { */
-		/* 	x = 0; */
-		/* 	++y; */
-		/* } */
 		++index;
 		if (line->buff[index] == 0)
 			break ;
@@ -38,6 +33,7 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 
 /*
 **	Returns the index of the char that fits the most the coordinates {x ; y}
+**	(Index from the start of the prompt).
 */
 
 size_t	get_char_mem_coor(t_line *line, size_t x_target, size_t y_target)
@@ -71,6 +67,13 @@ size_t	get_char_mem_coor(t_line *line, size_t x_target, size_t y_target)
 	return (ret);
 }
 
+/*
+**	Computes the absolute coordinates of the destination according the the
+**	moves requested, sends it to get_char_mem_coor. If the result is
+**	inconsistant with the input, returns the current line->pos (equivalent to
+**	not doing anything).
+*/
+
 size_t	get_char_mem_coor_relative(t_line *line, int x_move, int y_move)
 {
 	t_coor	pos;
@@ -91,7 +94,6 @@ size_t	get_char_mem_coor_relative(t_line *line, int x_move, int y_move)
 			return (line->pos);
 		if (y_move < 0 && check_ret.y > pos.y)
 			return (line->pos);
-
 	}
 	return (ret);
 }

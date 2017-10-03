@@ -1,6 +1,14 @@
 #include "line_editing.h"
 #include "env.h"
 
+/*
+**	Functions used to temper with the terminal's configuration.
+*/
+
+/*
+**	The two following routines toggle the canonical mode ON and OFF.
+*/
+
 void	conf_term_canonical(void)
 {
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->canonical_mode) < 0)
@@ -12,6 +20,11 @@ void	conf_term_normal(void)
 	if (tcsetattr(0, TCSADRAIN, &singleton_line()->normal_mode) < 0)
 		fatal("tcsetattr error");
 }
+
+/*
+**	Retrieves the terminal's current configuration, saves it in order to be
+**	able to restore it, and toggles canonical mode.
+*/
 
 void	conf_term_in(void)
 {

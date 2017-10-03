@@ -1,6 +1,14 @@
 #include "line_editing.h"
 #include "failure.h"
 
+/*
+**	Function used to delete a character in buff, when backspace is pressed by
+**	the user.
+**	All the buffer from line->pos to line->len is shifted one time to the left.
+**	
+**	Side note : Calling the refresh routines manually because if the character
+**	removed is a newline, the line cannot be cleared correctly anymore.
+*/
 int	edit_backspace(t_line *line)
 {
 	if (line->pos == 0)
@@ -12,7 +20,6 @@ int	edit_backspace(t_line *line)
 	line->pos--;
 	line->len--;
 	put_prompt(line);
-	/* line->visu_mode ? edit_refresh_visu(line) : edit_refresh_line(line); */
 	edit_refresh_line(line);
 	edit_refresh_cursor(line);
 	return (1);

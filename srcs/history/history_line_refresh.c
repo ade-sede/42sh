@@ -10,13 +10,17 @@ void	history_line_refresh(t_line *line, char *new_line)
 {
 	size_t	i;
 
+	edit_refresh_clear(line);
 	ft_strclr(line->buff);
 	i = ft_strlen(new_line);
 	if (i >= 1 && new_line[i - 1] == '\n')
 		new_line[i - 1] = 0;
 	edit_insert_str(line, line->buff, new_line);
-	line->len = ft_strlen((const char *)new_line);
-	line->pos = line->len;
-	edit_refresh(line);
+	/* line->len = ft_strlen((const char *)new_line); */
+	/* line->pos = line->len; */
+	put_prompt(line);
+	edit_refresh_line(line);
+	edit_refresh_cursor(line);
+	/* edit_refresh(line); */
 }
 

@@ -13,7 +13,6 @@
 **	Receives an array containing the command name and its arguments, forwards
 **	this array to the appropriate function then frees it.
 */
-
 void	exec(t_env *env, const char **argv, t_lst_head *head)
 {
 	size_t		index;

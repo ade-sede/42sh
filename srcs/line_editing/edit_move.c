@@ -1,5 +1,9 @@
 #include "line_editing.h"
 
+/*
+**	Moves to the closest space to the left
+*/
+
 int		edit_word_left(t_line *line)
 {
 	if (line->pos > 0 && line->buff[line->pos] == '\0')
@@ -11,6 +15,11 @@ int		edit_word_left(t_line *line)
 	return (1);
 }
 
+
+/*
+**	Moves to the closest space to the right
+*/
+
 int		edit_word_right(t_line *line)
 {
 	while (line->pos < line->len && line->buff[line->pos] == ' ')
@@ -21,6 +30,10 @@ int		edit_word_right(t_line *line)
 	return (1);
 }
 
+/*
+**	Moves to the start of the first line of input.
+*/
+
 int		edit_home(t_line *line)
 {
 	while (1)
@@ -28,6 +41,10 @@ int		edit_home(t_line *line)
 			break ;
 	return (1);
 }
+
+/*
+**	Moves to the start of the last line of input.
+*/
 
 int		edit_end(t_line *line)
 {

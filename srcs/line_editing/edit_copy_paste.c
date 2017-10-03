@@ -1,5 +1,14 @@
 #include "line_editing.h"
 
+/*
+**	Every function related to the copy-paste mechanics.
+*/
+
+/*
+**	Toggles the visual_mode flag, line->visu_start records the index when the
+**	option is toggled.
+*/
+
 int	enter_visual_mode(t_line *line)
 {
 	if (line->visu_mode)
@@ -14,6 +23,12 @@ int	enter_visual_mode(t_line *line)
 	}
 	return (1);
 }
+
+/*
+**	Copies the highlighted text into an internal buffer.  This text runs from
+**	line->visu_start to line->pos, or line->pos to line->visu start if we move
+**	backwards after entering visual_mode
+*/
 
 int	copy(t_line *line)
 {
@@ -32,6 +47,10 @@ int	copy(t_line *line)
 	}
 	return (1);
 }
+
+/*
+**	Insert the copied text into the buffer.
+*/
 
 int	paste(t_line *line)
 {

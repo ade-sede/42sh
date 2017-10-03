@@ -1,11 +1,19 @@
 #include "line_editing.h"
 
+/*
+**	Setting up singleton to be accessible from any scope.
+*/
+
 t_line		*singleton_line(void)
 {
 	static t_line	s;
 
 	return (&s);
 }
+
+/*
+**	Safe init of all variables in the t_line.
+*/
 
 void		edit_line_init(t_line *line)
 {
