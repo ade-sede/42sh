@@ -1,6 +1,16 @@
-#include "env.h"
-#include "completion.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   completion_get_completed_list.c                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmickael <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/10 05:14:11 by bmickael          #+#    #+#             */
+/*   Updated: 2017/09/10 05:14:13 by bmickael         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "private_completion.h"
 
 static char		**ft_up_realloc(char **origin, size_t o_size, size_t n_size)
 {
@@ -96,4 +106,3 @@ void			comple_bin_match_trip_layer(t_ternary_tree *node,
 	s.i = 0;
 	comple_bin_match_trip_tree(node, matches, &s, size);
 }
-

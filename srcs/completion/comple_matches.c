@@ -26,15 +26,16 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
 	char		**res;
 	char		line_pos_char;
 
+	res = NULL;
 	line_pos_char = line->buff[line->pos];
 	line->buff[line->pos] = '\0';
 	lex = init_lexer(line->buff);
 	lex.reopen = 0;
 	token_list = start_lex(&lex);
 	if (!token_list || (lex.cmd_name_open && !TK_IS_REDIR(lex.last_id)))
-		res = comple_bin_matches(line, c);
+		comple_bin_match_trip_layer(singleton_env()->tree, &res, &(c->current_word), 0);
 	else
-		res = comple_file_matches(line, c);
+		comple_file_matches(line, c);
 	free_token_list(token_list);
 	line->buff[line->pos] = line_pos_char;
 	return (res);
@@ -61,18 +62,19 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c)
 	t_token		*token;
 	char		**res;
 
+	res = NULL;
 	lex = get_lex_line_cursor(line);
 	token_list = start_lex(&lex);
 	last = ft_last_simple_lst(token_list);
 	if (ft_strchr(c->current_word, '/'))
 		res = comple_file_matches(line, c);
 	else if (!token_list->next)
-		res = comple_bin_matches(line, c);
+		comple_bin_match_trip_layer(singleton_env()->tree, &res, &(c->current_word), 0);
 	else
 	{
 		token = last->data;
 		if (token->cmd_name)
-			res = comple_bin_matches(line, c);
+			comple_bin_match_trip_layer(singleton_env()->tree, &res, &(c->current_word), 0);
 		else
 			res = comple_file_matches(line, c);
 	}
