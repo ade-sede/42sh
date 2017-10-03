@@ -89,6 +89,9 @@ size_t	get_char_mem_coor_relative(t_line *line, int x_move, int y_move)
 		check_ret = get_char_visual_coor(line, ret);
 		if (y_move != 0 && check_ret.y == pos.y)
 			return (line->pos);
+		if (y_move < 0 && check_ret.y > pos.y)
+			return (line->pos);
+
 	}
 	return (ret);
 }

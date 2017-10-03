@@ -65,11 +65,6 @@ void	edit_refresh_line(t_line *line)
 
 void	edit_refresh_clear(t_line *line)
 {
-
-	t_coor	old;
-	old = get_char_visual_coor(line, line->old_pos);
-	logwrite(__func__, "Old_pos y coor = %d\n", old.y);
-
 	cursor_goto_buff(line, 0, line->old_pos);
 	put_termcap("cr");
 	put_termcap("cd");

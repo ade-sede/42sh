@@ -28,6 +28,7 @@ SRC_FILE = \
 	builtin/unsetenv.c \
 	\
 	completion/comple_bin_matches.c \
+	completion/comple_escape.c \
 	completion/comple_exit_matched.c \
 	completion/comple_file_matches.c \
 	completion/comple_glob_matches.c \

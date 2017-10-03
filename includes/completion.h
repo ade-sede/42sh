@@ -25,6 +25,10 @@ typedef struct	s_comple_func
 	unsigned long long	keycode;
 	int					(*f)(t_comple *);
 }				t_comple_func;
+
+
+
+char			*comple_escape(char *input);
 /*
 ** signaux
 */

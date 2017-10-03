@@ -5,11 +5,12 @@
 char	*get_file_color(char *dir, char *file, struct dirent *dirent)
 {
 	if (dirent->d_type == DT_DIR)
-		return (ft_strjoin3_free("\e[1;31m", dirent->d_name, "/", 0));
+		return (ft_strjoin3_free("\e[1;31m", comple_escape(dirent->d_name), "/", 0b10));
 	else if (ft_is_executable(dir, file))
-		return (ft_strjoin_free("\e[1;32m", dirent->d_name, 0));
+		return (ft_strjoin_free("\e[1;32m", comple_escape(dirent->d_name), 0b1));
 	else
-		return (ft_strdup(dirent->d_name));
+		return (comple_escape(dirent->d_name));
+		/* return (ft_strdup(dirent->d_name)); */
 }
 
 char	**array_matches(char *dir_match, char *to_match)
