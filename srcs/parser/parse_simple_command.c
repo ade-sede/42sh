@@ -71,13 +71,11 @@ t_ast		*create_simple_command(t_lexer *lex)
 	return (ast);
 }
 
-#include <stdio.h>
 t_ast		*fill_simple_command(t_ast *simple_cmd, t_lexer *lex)
 {
 	t_ast	*new_node;
 	t_token	*token;
 
-	dprintf(2, "%p\n", lex->stack);
 	if ((token = start_lex(lex)))
 	{
 		if (TK_IS_SEP(token->id))

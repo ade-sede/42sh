@@ -13,17 +13,45 @@
 **	2 = REDIR
 */
 
-static int	pushback_redir(t_list *child_list, \
-		int expected, t_lexer *lex)
+/*
+**	Getting input for heredoc tokens
+*/
+
+static char	*get_heredoc_input(char *value)
+{
+	char	*buff;
+	char	*cat;
+	char	*target;
+
+	target = ft_strjoin(value, "\n");
+	singleton_line()->heredoc = 1;
+	load_prompt(singleton_env(), singleton_line(), \
+			"heredoc", "heredoc> ");
+	cat = ft_strnew(0);
+	while (1)
+	{
+		buff = line_editing_get_input(singleton_line(), singleton_hist(), &edit_set_signals_reopen);
+		if (ft_strequ(buff, target) || ft_strchr(buff, 4))
+			break ;
+		cat = ft_strchange(cat, ft_strjoin(cat, buff));
+	}
+	singleton_line()->heredoc = 0;
+	dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, cat);//			REMOVE		
+	return (cat);
+}
+
+static int	pushback_redir(t_list *child_list, int expected, t_lexer *lex, int heredoc)
 {
 	t_token	*token;
+	t_ast	*heredoc_node;
 
 	while ((token = start_lex(lex)) && expected != 0)
 	{
 		if (expected == 2)
 		{
-			ft_simple_lst_pushback(&child_list, \
-					ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+			ft_simple_lst_pushback(&child_list, ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+			if (token->id == TK_HERE)
+				heredoc = TRUE;
 		}
 		if (expected == 1)
 		{
@@ -31,6 +59,11 @@ static int	pushback_redir(t_list *child_list, \
 				return (investigate_error("Parse error near ",  token->value, 0));
 			ft_simple_lst_pushback(&child_list, \
 					ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+			if (heredoc)
+			{
+				heredoc_node = (ft_last_simple_lst(child_list))->data;
+				heredoc_node->heredoc_content = get_heredoc_input(token->value);
+			}
 		}
 		ft_simple_lst_del_one(&lex->stack, lex->stack, NULL);
 		--expected;
@@ -45,17 +78,23 @@ static t_ast		*ast_create_node_from_redir(t_token *token, t_lexer *lex)
 	t_list	*child_list;
 	t_ast	*node;
 	int		expected;
+	int		heredoc;
 
+	heredoc = FALSE;
 	child_list = NULL;
 	if (token->id == TK_IO_NUMBER)
 		expected = 2;
 	else
+	{
+		if (token->id == TK_HERE)
+			heredoc = TRUE;
 		expected = 1;
+	}
 	ft_simple_lst_pushback(&child_list, \
 			ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 	node = ast_create_node(NULL, child_list, IO_REDIRECT);
 	ft_simple_lst_del_one(&lex->stack, lex->stack, NULL);
-	if ((pushback_redir(child_list, expected, lex)) == 0)
+	if ((pushback_redir(child_list, expected, lex, heredoc)) == 0)
 		node = flush_tree(node);
 	return (node);
 }

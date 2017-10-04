@@ -39,6 +39,7 @@ typedef	struct		s_ast
 	t_list			*child;
 	struct s_token	*token;
 	t_symbol		symbol;
+	char			*heredoc_content;
 }					t_ast;
 
 /*

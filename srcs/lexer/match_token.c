@@ -12,36 +12,6 @@
 **	and putting lex->index on the first char of the next potential token.
 */
 
-void		append_history(char *command)
-{
-	t_hist		*h;
-	t_list_d	*list;
-	char		*full_command;
-
-	h = singleton_hist();
-	list = h->list->first;
-	command[ft_strlen(command) - 1] = 0;
-	full_command = ft_strjoin(list->data, command);
-	list->data = ft_strchange(list->data, full_command);
-}
-
-void		reopen_line_editing(t_lexer *lex)
-{
-	char	*new_command;
-
-	if (lex->state == '"')
-		load_prompt(singleton_env(), singleton_line(), "PS2", "dquote> ");
-	if (lex->state == '\'')
-		load_prompt(singleton_env(), singleton_line(), "PS3", "dquote> ");
-	new_command = ft_strdup(line_editing_get_input(singleton_line(), \
-			singleton_hist()));
-	/* new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n")); */
-	lex->line = ft_strchange((char*)lex->line, \
-			ft_strjoin((char*)lex->line, new_command));
-	append_history(new_command);
-	free(new_command);
-}
-
 static int	match_part_1(t_lexer *lex, size_t token_start)
 {
 	int		ret;
@@ -63,7 +33,7 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 	{
 		if (lex->line[lex->index] == '\0')
 			if (lex->reopen)
-				reopen_line_editing(lex);
+				reopen_line_editing(lex, 0);
 		if (charcmp(lex->line, lex->index, lex->state))
 			ret = lex->index++;
 	}

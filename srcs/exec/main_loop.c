@@ -88,11 +88,11 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->col_target = -1;
 }
 
-char	*line_editing_get_input(t_line *line, t_hist *hist)
+char	*line_editing_get_input(t_line *line, t_hist *hist, void (*sig_handler)(void))
 {
 	put_prompt(line);
 	history_init(hist);
-	edit_line_init(line);
+	edit_line_init(line, sig_handler);
 	return (edit_get_input());
 }
 
@@ -116,8 +116,8 @@ void	lex_and_parse(char *buff)
 	history_write_last_command();
 	conf_term_normal();
 	exec_tree(ast, head);
-	/* if (token_list) */
-	/* 	ft_simple_lst_remove(&token_list, free_token); */
+	if (lex.stack)
+		ft_simple_lst_remove(&lex.stack, free_token);
 	ft_strdel((char **)&lex.line);
 	conf_term_canonical();
 	ast = flush_tree(ast);
@@ -135,7 +135,7 @@ void	main_loop(t_env *env)
 	{
 		load_prompt(env, singleton_line(), "PS1", "$> ");
 		buff = ft_strdup(line_editing_get_input(singleton_line(), \
-					singleton_hist()));
+					singleton_hist(), &edit_set_signals_open));
 		if (*buff != 0)
 			lex_and_parse(buff);
 		else

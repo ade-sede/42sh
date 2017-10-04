@@ -44,12 +44,9 @@ t_ast			*create_right_branch(t_token *command_token, t_lexer *lex)
 	}
 	if (!command_child || (token && token->id == TK_NEWLINE))
 	{
-		/*
-		**	REOPEN SEQUENCE
-		*/
-
-		/* right_branch = flush_tree(right_branch); */
-		/* right_branch = create_right_branch(command_token, lex); */
+		right_branch = flush_tree(right_branch);
+		reopen_line_editing(lex, 0);
+		right_branch = create_right_branch(command_token, lex);
 	}
 	return (right_branch);
 }

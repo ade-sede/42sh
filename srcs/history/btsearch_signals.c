@@ -23,7 +23,7 @@ void	btsearch_handle_sigint(int keycode)
 	ft_strclr(line->buff);
 	line->len = 0;
 	line->pos = 0;
-	edit_set_signals();
+	edit_set_signals_open();
 	edit_refresh(singleton_line());
 }
 

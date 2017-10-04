@@ -49,7 +49,7 @@ int		comple_exit_matched(t_line *line, t_comple c,
 		edit_insert_str(line, c.to_replace, matched);
 		free(matched);
 	}
-	edit_set_signals();
+	edit_set_signals_open();
 	edit_refresh(line);
 	comple_free(c);
 	return (keycode);

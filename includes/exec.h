@@ -2,7 +2,7 @@
 # define EXEC_H
 # include "token.h"
 # include "pipe.h"
-# include "ast.h"
+# include "t_ast.h"
 # include "t_line.h"
 # include "history.h"
 
@@ -26,8 +26,7 @@ int				fork_exec_bin(t_env *env, const char **argv, t_lst_head *head);
 */
 
 char			*heredoc_get_input(void);
-int				heredoc(int io_number, char *target, t_list **redir_stack, \
-				t_token_id id);
+int				heredoc(int io_number, char *poem, t_list **redir_stack);
 
 /*
 **	In file srcs/exec/exec_pipe.c
@@ -83,7 +82,7 @@ int				exec_tree(t_ast *ast, t_lst_head *head);
 */
 
 void			lex_and_parse(char *buff);
-char			*line_editing_get_input(t_line *line, t_hist *hist);
+char			*line_editing_get_input(t_line *line, t_hist *hist, void (*sig_handler)(void));
 void			init_main_loop(t_line *line, t_hist *hist);
 void			exec(t_env *env, const char **argv, t_lst_head *head);
 void			main_loop(t_env *env);

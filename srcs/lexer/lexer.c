@@ -135,10 +135,10 @@ int				tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	lex->last_id = token->id;
 	if (TK_IS_SEP(token->id))
 		lex->cmd_name_open = 1;
-	/* if (check_alias(lex, token)) */
-	/* 	return (1); */
-	/* node = exec_expand(token); */
-	node = ft_simple_lst_create(token);
+	if (check_alias(lex, token))
+		return (1);
+	node = exec_expand(token);
+	/* node = ft_simple_lst_create(token); */
 	if (lex->stack == NULL)
 		lex->stack = node;
 	else

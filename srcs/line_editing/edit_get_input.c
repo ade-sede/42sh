@@ -59,7 +59,7 @@ char	*edit_get_input(void)
 	t_line			*l;
 
 	l = singleton_line();
-	edit_set_signals();
+	l->sig_handler();
 	while (42)
 	{
 		l->old_pos = l->pos;

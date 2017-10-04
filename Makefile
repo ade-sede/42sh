@@ -104,6 +104,7 @@ SRC_FILE = \
 	lexer/t_token.c \
 	\
 	line_editing/conf_term.c \
+	line_editing/edit_reopen.c \
 	line_editing/control_d.c \
 	line_editing/edit_copy_paste.c \
 	line_editing/edit_add.c \
@@ -137,7 +138,7 @@ SRC_FILE = \
 	main.c
 
 INCLUDES_FILES = \
-	ast.h \
+	t_ast.h \
 	builtin.h \
 	completion.h \
 	env.h \

@@ -1,4 +1,4 @@
-#include "ast.h"
+#include "t_ast.h"
 #include "token.h"
 #include "libft.h"
 
@@ -15,6 +15,7 @@ t_ast	*ast_create_node(t_token *token, t_list *child, t_symbol symbol)
 	node->child = child;
 	node->token = token;
 	node->symbol = symbol;
+	node->heredoc_content = NULL;
 	return (node);
 }
 
@@ -46,6 +47,8 @@ t_ast	*flush_tree(t_ast *ast)
 
 	if (ast)
 	{
+		if (ast->heredoc_content)
+			free(ast->heredoc_content);
 		child_list = ast->child;
 		while (child_list)
 		{

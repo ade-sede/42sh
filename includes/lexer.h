@@ -84,7 +84,6 @@ t_token_id		lex_id_operator(const char *value);
 */
 
 void			append_history(char *command);
-void			reopen_line_editing(t_lexer *lex);
 int				token_match(t_lexer *lex, size_t token_start);
 
 /*

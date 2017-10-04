@@ -5,6 +5,7 @@
 # include "env.h"
 # include "termios.h"
 # include "term.h"
+# include "t_lexer.h"
 # define KEY_ESCAPE 0x1B
 # define KEY_SPACE 0x20
 # define KEY_CTRL_D 4
@@ -58,6 +59,12 @@
 **	buffer, and display it (refresh_line).
 */
 
+extern int	abort_opening;
+
+void	reopen_line_editing(t_lexer *lex, int caller);
+void	edit_handle_sigint_reopen(int signum);
+void	edit_set_signals_reopen(void);
+
 size_t	get_char_mem_coor_relative(t_line *line, int x_move, int y_move);
 size_t	get_char_mem_coor(t_line *line, size_t x, size_t y);
 size_t	cursor_goto_buff(t_line *line, size_t dest_i, size_t start_i);
@@ -67,9 +74,9 @@ size_t	get_ws_col(void);
 size_t	get_ws_row(void);
 
 char	*control_d_heredoc(t_line *line);
-void	edit_line_init(t_line *line);
+void	edit_line_init(t_line *line, void (*sig_handler)(void));
 char	*edit_get_input(void);
-void	edit_set_signals(void);
+void	edit_set_signals_open(void);
 void	edit_handle_sigwinch(int signum);
 void	conf_term_in(void);
 void	conf_term_canonical(void);
