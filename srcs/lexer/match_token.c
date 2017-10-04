@@ -32,8 +32,14 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 	else if (IS_QUOTED(lex->state))
 	{
 		if (lex->line[lex->index] == '\0')
+		{
 			if (lex->reopen)
 				reopen_line_editing(lex, 0);
+			/*
+**				if (abort_opening)
+**					return (NULL);
+*/
+		}
 		if (charcmp(lex->line, lex->index, lex->state))
 			ret = lex->index++;
 	}
@@ -52,7 +58,7 @@ int			token_match(t_lexer *lex, size_t token_start)
 	{
 		if (IS_OPERATOR(lex->line[lex->index]) || \
 				(charcmp(lex->line, lex->index, '-') && \
-				charcmp(lex->line, lex->index - 1, '<')))
+				 charcmp(lex->line, lex->index - 1, '<')))
 		{
 			if (!match_operator(lex->line, token_start, lex->index))
 				ret = lex->index - 1;

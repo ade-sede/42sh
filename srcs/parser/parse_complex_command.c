@@ -25,6 +25,7 @@
 /* 	return (token_list); */
 /* } */
 
+int		abort_opening;
 t_ast			*create_right_branch(t_token *command_token, t_lexer *lex)
 {
 	t_token		*token;
@@ -46,6 +47,8 @@ t_ast			*create_right_branch(t_token *command_token, t_lexer *lex)
 	{
 		right_branch = flush_tree(right_branch);
 		reopen_line_editing(lex, 0);
+		if (abort_opening)
+			return (NULL);
 		right_branch = create_right_branch(command_token, lex);
 	}
 	return (right_branch);

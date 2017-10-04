@@ -1,6 +1,7 @@
 #include "completion.h"
 #include "history.h"
 #include "line_editing.h"
+#include <signal.h>
 
 int	abort_opening;
 
@@ -29,14 +30,20 @@ void	edit_set_signals_open(void)
 
 void	edit_set_signals_reopen(void)
 {
-	signal(SIGINT, edit_handle_sigint_reopen);
+	struct sigaction new_action;
+
+	new_action.sa_handler = edit_handle_sigint_reopen;
+	sigemptyset(&new_action.sa_mask);
+	new_action.sa_flags = 0;
+//	new_action.sa_flags |= SA_RESTART;
+	sigaction (SIGINT, &new_action, NULL);
 	signal(SIGWINCH, edit_handle_sigwinch);
 }
 
 void	edit_handle_sigint_reopen(int signum)
 {
 	move_cursor_lastline(singleton_line());
-	ft_putchar_fd('\n', 2);
+//	ft_putstr_fd("reopen\n ", 2);
 	abort_opening = 1;
 	(void)signum;
 }
