@@ -59,7 +59,7 @@ t_list			*exec_expand(t_token *token);
 **	In file srcs/lexer/lexer.c
 */
 
-t_list			*start_lex(t_lexer *lex);
+t_token			*start_lex(t_lexer *lex);
 int				update_state(t_lexer *lex);
 int				start_token(t_lexer *lex, size_t *token_start);
 int				tokenize(t_lexer *lex, size_t token_start, size_t token_end);

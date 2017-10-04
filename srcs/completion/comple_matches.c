@@ -22,7 +22,7 @@
 char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
 {
 	t_lexer		lex;
-	t_list		*token_list;
+	/* t_list		*token_list; */
 	char		**res;
 	char		line_pos_char;
 
@@ -30,53 +30,55 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
 	line->buff[line->pos] = '\0';
 	lex = init_lexer(line->buff);
 	lex.reopen = 0;
-	token_list = start_lex(&lex);
-	if (!token_list || (lex.cmd_name_open && !TK_IS_REDIR(lex.last_id)))
+	while (lex.line[lex.index])
+		start_lex(&lex);
+	/* token_list = start_lex(&lex); */
+	if (!lex.stack || (lex.cmd_name_open && !TK_IS_REDIR(lex.last_id)))
 		res = comple_bin_matches(line, c);
 	else
 		res = comple_file_matches(line, c);
-	free_token_list(token_list);
+	/* free_token_list(token_list); */
 	line->buff[line->pos] = line_pos_char;
 	return (res);
 }
 
-static t_lexer	get_lex_line_cursor(t_line *line)
-{
-	char		line_pos_char;
-	t_lexer		lex;
+/* static t_lexer	get_lex_line_cursor(t_line *line) */
+/* { */
+/* 	char		line_pos_char; */
+/* 	t_lexer		lex; */
 
-	line_pos_char = line->buff[line->pos];
-	line->buff[line->pos] = '\0';
-	lex.reopen = 0;
-	lex = init_lexer(line->buff);
-	line->buff[line->pos] = line_pos_char;
-	return (lex);
-}
+/* 	line_pos_char = line->buff[line->pos]; */
+/* 	line->buff[line->pos] = '\0'; */
+/* 	lex.reopen = 0; */
+/* 	lex = init_lexer(line->buff); */
+/* 	line->buff[line->pos] = line_pos_char; */
+/* 	return (lex); */
+/* } */
 
 char			**comple_matching_cursorword(t_line *line, t_comple *c)
 {
-	t_lexer		lex;
-	t_list		*token_list;
-	t_list		*last;
-	t_token		*token;
+	/* t_lexer		lex; */
+	/* t_list		*token_list; */
+	/* t_list		*last; */
+	/* t_token		*token; */
 	char		**res;
 
-	lex = get_lex_line_cursor(line);
-	token_list = start_lex(&lex);
-	last = ft_last_simple_lst(token_list);
-	if (ft_strchr(c->current_word, '/'))
+	/* lex = get_lex_line_cursor(line); */
+	/* token_list = start_lex(&lex); */
+	/* last = ft_last_simple_lst(token_list); */
+	/* if (ft_strchr(c->current_word, '/')) */
 		res = comple_file_matches(line, c);
-	else if (!token_list->next)
-		res = comple_bin_matches(line, c);
-	else
-	{
-		token = last->data;
-		if (token->cmd_name)
-			res = comple_bin_matches(line, c);
-		else
-			res = comple_file_matches(line, c);
-	}
-	free_token_list(token_list);
+	/* else if (!token_list->next) */
+	/* 	res = comple_bin_matches(line, c); */
+	/* else */
+	/* { */
+	/* 	token = last->data; */
+	/* 	if (token->cmd_name) */
+	/* 		res = comple_bin_matches(line, c); */
+	/* 	else */
+	/* 		res = comple_file_matches(line, c); */
+	/* } */
+	/* free_token_list(token_list); */
 	return (res);
 }
 

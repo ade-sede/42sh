@@ -40,27 +40,41 @@
 ** of the lexer.
 */
 
-t_list			*start_lex(t_lexer *lex)
+#include <stdio.h>
+t_token			*start_lex(t_lexer *lex)
 {
 	size_t	token_start;
 	ssize_t	ret;
 	size_t	token_end;
+	t_token	*token;
 
 	token_start = 0;
 	token_end = 0;
-	while (lex->line && lex->line[lex->index])
+	lex->state = WORD;
+	if (lex->line[lex->index] == 0)
+		return (NULL);
+	if (lex->stack)
 	{
-		lex->state = start_token(lex, &token_start);
-		if (lex->state == INPUT_END)
-			break ;
-		while ((ret = token_match(lex, token_start)) == -1)
-			lex->index++;
-		token_end = (size_t)ret;
-		tokenize(lex, token_start, token_end);
-		lex->state = WORD;
+		token = lex->stack->data;
+		/* ft_simple_lst_del_one(&lex->stack, lex->stack, NULL); */
+#ifdef LEXER_DEBUG
+		dprintf(2, "Stack was full: "MAG"#"CYN"%s"MAG"#\n"RESET, token->value);//			REMOVE		
+#endif
+		return (token);
 	}
-	ft_strdel((char **)&lex->line);
-	return (lex->stack);
+	lex->state = start_token(lex, &token_start);
+	if (lex->state == INPUT_END)
+		return (NULL);
+	while ((ret = token_match(lex, token_start)) == -1)
+		lex->index++;
+	token_end = (size_t)ret;
+	tokenize(lex, token_start, token_end);
+	token = lex->stack->data;
+	/* ft_simple_lst_del_one(&lex->stack, lex->stack, NULL); */
+#ifdef LEXER_DEBUG
+		dprintf(2, "Created a new token"MAG"#"CYN"%s"MAG"#\n"RESET, token->value);//			REMOVE		
+#endif
+	return (lex->stack->data);
 }
 
 /*
@@ -121,9 +135,10 @@ int				tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	lex->last_id = token->id;
 	if (TK_IS_SEP(token->id))
 		lex->cmd_name_open = 1;
-	if (check_alias(lex, token))
-		return (1);
-	node = exec_expand(token);
+	/* if (check_alias(lex, token)) */
+	/* 	return (1); */
+	/* node = exec_expand(token); */
+	node = ft_simple_lst_create(token);
 	if (lex->stack == NULL)
 		lex->stack = node;
 	else
