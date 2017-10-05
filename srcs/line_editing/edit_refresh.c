@@ -18,6 +18,7 @@
 /* 			write(2, "\n", 1); */
 /* 			x = 0; */
 /* 		} */
+/* #if 0 */
 /* 		if (line->visu_mode) */
 /* 		{ */
 /* 			if (line->pos < line->visu_start) */
@@ -27,7 +28,9 @@
 /* 				if (i >= line->visu_start && i < line->pos) */
 /* 					ft_putstr("\e[39;42m"); */
 /* 		} */
+/* #endif */
 /* 		write(2, line->buff + i, 1); */
+/* #if 0 */
 /* 		if (line->visu_mode) */
 /* 		{ */
 /* 			if (line->pos < line->visu_start) */
@@ -37,6 +40,7 @@
 /* 				if (i >= line->visu_start && i < line->pos) */
 /* 					ft_putstr("\e[0m"); */
 /* 		} */
+/* #endif */
 /* 		++i; */
 /* 		++x; */
 /* 	} */
@@ -57,6 +61,7 @@ void	edit_refresh_line(t_line *line)
 	t_coor pos;
 
 	ft_putstr_fd(line->buff, 2);
+	logwrite(__func__, "%s\n", line->buff);
 	/* write_to_term(line); */
 	pos = get_char_visual_coor(line, line->len);
 	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n') )
