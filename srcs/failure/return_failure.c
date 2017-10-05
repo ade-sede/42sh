@@ -31,7 +31,7 @@ FILE	*get_logfd(const char *file)
 		f = file;
 		if ((fp = fopen(file, "a+")) == NULL)
 		{
-			perror("fopen");
+			/* perror("fopen"); */
 			return (NULL);
 		}
 	}
@@ -42,13 +42,18 @@ int		logwrite(const char *filename, const char *func_name, const char *format, .
 {
 	va_list	ap;
 	FILE	*fp;
+	time_t	rawtime;
+	struct tm	*info;
+	char	time_str[26];
 
+	time (&rawtime);
+	info = localtime(&rawtime);
 	fp = get_logfd(filename);
-
+	strftime(time_str, 26, "%Y-%m-%d %H:%M:%S", info);
 	if (fp)
 	{
 		va_start(ap, format);
-		fprintf(fp, "From "GRN"%s "BLU"##\n"RESET, func_name);
+		fprintf(fp, "From "GRN"%s "RESET" @ %s"BLU"##\n"RESET, func_name, time_str);
 		vfprintf(fp, format, ap);
 		fprintf(fp, BLU"##\n"RESET);
 		fflush(fp);
@@ -58,7 +63,7 @@ int		logwrite(const char *filename, const char *func_name, const char *format, .
 	return (1);
 }
 
-int			investigate_error(const char *prefix, const char *custom_error, int return_value)
+int			investigate_error(char *logfile, const char *prefix, const char *custom_error, int return_value)
 {
 	size_t	i;
 	char	*buff;
@@ -82,6 +87,9 @@ int			investigate_error(const char *prefix, const char *custom_error, int return
 	}
 	else if (custom_error != NULL && prefix == NULL)
 		ft_strcpy(buff, custom_error);
-	ft_putendl_fd(buff, 2);
+	if (logfile)
+		logwrite(logfile, __func__, "%s\n", buff);
+	else
+		ft_putendl_fd(buff, 2);
 	return (return_value == -1 ? errno : return_value);
 }

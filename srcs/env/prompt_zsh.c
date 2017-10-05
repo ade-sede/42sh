@@ -58,14 +58,13 @@ char	*get_git_status(size_t *len)
 	int			ret;
 
 	if (pipe(fildes) != 0) 
-		investigate_error("prompt", NULL, 0);
+		investigate_error(NULL, "prompt", NULL, 0);
 	if ((son = fork()))
 	{
 		waitpid(son, &ret, WUNTRACED);
 		if (WEXITSTATUS(ret))
 		{
-			*len = *len + 1;
-			return (ft_strdup(" "));
+			*len = *len + 1; return (ft_strdup(" "));
 		}
 		close(fildes[1]);
 		return (read_git_branch(fildes[0], len));
@@ -87,7 +86,7 @@ char	*get_current_directory(void)
 
 	buff = NULL;
 	if ((buff = getcwd(buff, 0)) == NULL)
-		return ((void*)(long)investigate_error("prompt", NULL , 0));
+		return ((void*)(long)investigate_error("log/def", "prompt", NULL , 0));
 	if (ft_strequ(buff, "/"))
 		return (buff);
 	if ((dir = ft_strrchr(buff, '/')))

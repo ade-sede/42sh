@@ -30,7 +30,7 @@ char			*get_errno_11(void);
 char			*get_errno(void);
 
 
-int				investigate_error(const char *prefix, \
+int				investigate_error(char *logfile, const char *prefix, \
 		const char *custom_error, int return_value);
 /*
 **	In file return_failure.c
