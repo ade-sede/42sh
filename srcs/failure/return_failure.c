@@ -23,8 +23,8 @@ int		return_failure(const char *str, const char *error_msg)
 
 FILE	*get_logfd(const char *file)
 {
-	static const char	*f = NULL;
-	static FILE	*fp = NULL;
+	const char	*f = NULL;
+	FILE	*fp = NULL;
 
 	if (!f || (f && !ft_strequ(f, file)))
 	{
@@ -38,16 +38,23 @@ FILE	*get_logfd(const char *file)
 	return (fp);
 }
 
-int		logwrite(const char *func_name, const char *format, ...)
+int		logwrite(const char *filename, const char *func_name, const char *format, ...)
 {
 	va_list	ap;
+	FILE	*fp;
 
-	va_start(ap, format);
-	fprintf(LOG_STREAM, "From "GRN"%s "BLU"##\n"RESET, func_name);
-	vfprintf(LOG_STREAM, format, ap);
-	fprintf(LOG_STREAM, BLU"##\n"RESET);
-	fflush(LOG_STREAM);
-	va_end(ap);
+	fp = get_logfd(filename);
+
+	if (fp)
+	{
+		va_start(ap, format);
+		fprintf(fp, "From "GRN"%s "BLU"##\n"RESET, func_name);
+		vfprintf(fp, format, ap);
+		fprintf(fp, BLU"##\n"RESET);
+		fflush(fp);
+		va_end(ap);
+		fclose(fp);
+	}
 	return (1);
 }
 
