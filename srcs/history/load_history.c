@@ -27,7 +27,7 @@ int			history_load(t_hist *h, t_env *env)
 	init_hist_struct(h, env);
 	if ((fd = open(h->file, O_RDWR | O_CREAT, 0644)) == -1)
 		return (0);
-	h->fd = fd;
+	/* h->fd = fd; */
 	while (get_next_line(fd, &line))
 	{
 		list = ft_double_lst_create(line);
@@ -36,5 +36,6 @@ int			history_load(t_hist *h, t_env *env)
 		else
 			ft_double_lst_add(&h->list, list);
 	}
+	close(fd);
 	return (1);
 }

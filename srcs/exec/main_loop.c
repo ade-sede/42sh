@@ -104,16 +104,15 @@ void	lex_and_parse(char *buff)
 	t_ast		*ast;
 
 	head = NULL;
-	history_refresh(buff);
 	/* buff = ft_strchange(buff, ft_strjoin(buff, "\n")); */
 	lex = init_lexer(buff);
 	/* token_list = start_lex(&lex); */
 	ast = ast_parse(NULL, &head, &lex);
+	history_append_command_to_list((char*)lex.line);
 #ifdef PARSER_DEBUG
 	if (ast)
 		read_tree(ast);
 #endif
-	history_write_last_command();
 	conf_term_normal();
 	exec_tree(ast, head);
 	if (lex.stack)
