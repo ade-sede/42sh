@@ -111,7 +111,7 @@ char	*get_ps1(t_env *env, size_t *len)
 			ft_strjoin3_free(RED, "➜  ", RESET, 0);
 	*len += 3;
 	if ((current_dir = get_current_directory()) == NULL) 
-		current_dir = ft_strdup("Cannot getcwd directory");
+		current_dir = ft_strnew(0);
 	*len += ft_strlen(current_dir);
 	current_dir = ft_strjoin3_free(CYN, current_dir, RESET, 2);
 	git_status = get_git_status(len);

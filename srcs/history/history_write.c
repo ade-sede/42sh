@@ -19,6 +19,21 @@
 /* } */
 #endif
 
+static int write_to_hist(char *value, int fd)
+{
+	size_t	i;
+
+	i = 0;
+	while (value[i])
+	{
+		if (value[i] == '\n')
+			write(fd, "\\", 1);
+		write(fd, value + i, 1);
+		++i;
+	}
+	return (1);
+}
+
 void	history_write_to_histfile(void)
 {
 	t_hist		*h;
@@ -35,7 +50,8 @@ void	history_write_to_histfile(void)
 	while (last)
 	{
 		dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, last->data);//			REMOVE		
-		write(fd, last->data, ft_strlen(last->data));
+		/* write(fd, last->data, ft_strlen(last->data)); */
+		write_to_hist(last->data, fd);
 		write(fd, "\n", 1);
 		last = last->prev;
 	}

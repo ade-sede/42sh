@@ -1,6 +1,6 @@
 #ifndef AST_H
 # define AST_H
-# include "token.h"
+# include "t_token.h"
 
 /*
 **	The following enumeration corresponds to different grammar symbols we'll be

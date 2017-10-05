@@ -36,7 +36,6 @@ static char	*get_heredoc_input(char *value)
 		cat = ft_strchange(cat, ft_strjoin(cat, buff));
 	}
 	singleton_line()->heredoc = 0;
-	dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, cat);//			REMOVE		
 	return (cat);
 }
 

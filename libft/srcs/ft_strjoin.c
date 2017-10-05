@@ -40,7 +40,7 @@ static void		ft_strdelete(char *s1, char *s2, int delete)
 {
 	if (delete & 2)
 		free(s1);
-	else if (delete & 1)
+	if (delete & 1)
 		free(s2);
 }
 

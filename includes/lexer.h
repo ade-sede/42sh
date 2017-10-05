@@ -1,7 +1,7 @@
 #ifndef LEXER_H
 # define LEXER_H
 # include "t_lexer.h"
-# include "token.h"
+# include "t_token.h"
 # include "env.h"
 
 /*

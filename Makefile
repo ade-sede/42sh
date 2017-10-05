@@ -88,7 +88,7 @@ SRC_FILE = \
 	history/history_init.c \
 	history/history_line_refresh.c \
 	history/history_move.c \
-	history/history_refresh.c \
+	history/history_write.c \
 	history/load_history.c \
 	\
 	lexer/expand_alias.c \
@@ -153,7 +153,7 @@ INCLUDES_FILES = \
 	parser.h \
 	pipe.h \
 	t_lexer.h \
-	token.h
+	t_token.h
 
 NAME ?= 21sh
 

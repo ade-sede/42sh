@@ -1,4 +1,4 @@
-#include "token.h"
+#include "t_token.h"
 #include "lexer.h"
 
 /*
@@ -119,8 +119,7 @@ int				start_token(t_lexer *lex, size_t *token_start)
 
 /*
 **	Rajouter le token qu'on vient de creer a lex->stack
-**	exec_expand prend la t_list lex->stack en argument.
-**	Se base sur le dernier token.
+**	exec_expand creer un t_list a partir de la valeur etendu de du token.
 */
 
 int				tokenize(t_lexer *lex, size_t token_start, size_t token_end)
