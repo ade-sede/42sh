@@ -28,7 +28,7 @@ static void	complete_assignement_word(t_token *token, t_lexer *lex)
 	eq_sign = ft_strchr(token->value, '=');
 	if (*(eq_sign + 1) == 0)
 		ft_simple_lst_del_one(&lex->stack, lex->stack, NULL);
-	if ((next_token = start_lex(lex)))
+	if ((next_token = handle_lexer(lex)))
 	{
 		if (next_token->type == DQUOTED || next_token->type == QUOTED)
 		{
@@ -70,13 +70,13 @@ t_ast		*create_simple_command(t_lexer *lex)
 	ast = fill_simple_command(ast, lex);
 	return (ast);
 }
-
+#include <stdio.h>
 t_ast		*fill_simple_command(t_ast *simple_cmd, t_lexer *lex)
 {
 	t_ast	*new_node;
 	t_token	*token;
 
-	if ((token = start_lex(lex)))
+	if ((token = handle_lexer(lex)))
 	{
 		if (TK_IS_SEP(token->id))
 			return (simple_cmd);

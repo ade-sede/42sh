@@ -18,7 +18,7 @@
 /* 			singleton_hist())); */
 /* 	/1* new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n")); *1/ */
 /* 	lex = init_lexer(new_command); */
-/* 	token_list = start_lex(&lex); */
+/* 	token_list = handle_lexer(&lex); */
 /* 	new_command = ft_strchange(new_command, ft_strjoin(" ", new_command)); */
 /* 	append_history(new_command); */
 /* 	free(new_command); */
@@ -62,7 +62,7 @@ t_ast			*start_complexe_command(t_ast *ast, t_lexer *lex)
 	t_token	*token;
 	t_list	*child;
 
-	token = start_lex(lex);
+	token = handle_lexer(lex);
 	ft_simple_lst_del_one(&lex->stack, lex->stack, NULL);
 	if ((left_branch = ast) == NULL)
 		return ((void*)(long)investigate_error("Parse error near", \

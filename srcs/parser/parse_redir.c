@@ -44,7 +44,7 @@ static int	pushback_redir(t_list *child_list, int expected, t_lexer *lex, int he
 	t_token	*token;
 	t_ast	*heredoc_node;
 
-	while ((token = start_lex(lex)) && expected != 0)
+	while ((token = handle_lexer(lex)) && expected != 0)
 	{
 		if (expected == 2)
 		{

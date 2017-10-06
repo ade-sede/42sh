@@ -40,7 +40,7 @@ typedef enum
 	TK_LESSGREAT,
 	TK_DLESSDASH,
 	TK_CLOBBER,
-	If = 20,
+	If = 21, //21 !!
 	Then,
 	Else,
 	Elif,

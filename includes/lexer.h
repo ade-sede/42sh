@@ -59,10 +59,11 @@ t_list			*exec_expand(t_token *token);
 **	In file srcs/lexer/lexer.c
 */
 
+t_token			*handle_lexer(t_lexer *lex);
 t_token			*start_lex(t_lexer *lex);
 int				update_state(t_lexer *lex);
 int				start_token(t_lexer *lex, size_t *token_start);
-int				tokenize(t_lexer *lex, size_t token_start, size_t token_end);
+t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end);
 t_token_id		lex_get_token_id(t_lexer *lex, t_token *token);
 
 /*

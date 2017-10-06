@@ -2,5 +2,13 @@
 
 size_t	ft_lst_len(t_list *lst)
 {
-	return (!lst ? 0 : 1 + ft_lst_len(lst->next));
+	int		i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

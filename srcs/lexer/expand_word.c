@@ -43,7 +43,6 @@ static t_list	*pathname_expansion(t_token *token)
 t_list			*exec_expand(t_token *token)
 {
 	t_env	*env;
-	t_list	*node;
 
 	env = singleton_env();
 	if (token->type == DQUOTED || token->type == QUOTED)
@@ -63,7 +62,5 @@ t_list			*exec_expand(t_token *token)
 		}
 		parameter_expansion(env, token);
 	}
-	if ((node = pathname_expansion(token)) == NULL)
-		node = ft_simple_lst_create(token);
-	return (node);
+	return (pathname_expansion(token));
 }

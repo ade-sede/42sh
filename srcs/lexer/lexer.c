@@ -40,41 +40,65 @@
 ** of the lexer.
 */
 
+void	alias(t_lexer *lex, t_list *forbiden_alias)
+{
+	t_list	*list;
+
+	lex_all(lex);
+	list = lex->stack;
+	while (lex->stack)
+	{
+		check_alias(lex, list);
+		list = list->next;
+	}
+	ft_simple_lst_pushback(&forbiden_alias, ft_simple_lst_create());
+	return (alias(lex, forbiden_alias));
+}
+
 #include <stdio.h>
+
+t_token			*handle_lexer(t_lexer *lex)
+{
+	t_token	*token;
+	t_list	*node;
+
+	if (lex->stack)
+		return (lex->stack->data);
+	if ((token = start_lex(lex)) == NULL)
+		return (NULL);
+	if (check_alias(lex, NULL))
+		return (alias(lex, token));
+	if ((node = exec_expand(token)))
+		lex->stack = node;
+	else
+		lex->stack = ft_simple_lst_create(token);
+	(void)node;
+	token = lex->stack->data;
+	return (token);
+}
+
+/*
+**	in all case start_lex will create one token or return NULL
+*/
+
 t_token			*start_lex(t_lexer *lex)
 {
 	size_t	token_start;
 	ssize_t	ret;
 	size_t	token_end;
-	t_token	*token;
 
 	token_start = 0;
 	token_end = 0;
 	lex->state = WORD;
 	if (lex->line[lex->index] == 0)
 		return (NULL);
-	if (lex->stack)
-	{
-		token = lex->stack->data;
-		/* ft_simple_lst_del_one(&lex->stack, lex->stack, NULL); */
-#ifdef LEXER_DEBUG
-		dprintf(2, "Stack was full: "MAG"#"CYN"%s"MAG"#\n"RESET, token->value);//			REMOVE		
-#endif
-		return (token);
-	}
 	lex->state = start_token(lex, &token_start);
 	if (lex->state == INPUT_END)
 		return (NULL);
 	while ((ret = token_match(lex, token_start)) == -1)
 		lex->index++;
 	token_end = (size_t)ret;
-	tokenize(lex, token_start, token_end);
-	token = lex->stack->data;
-	/* ft_simple_lst_del_one(&lex->stack, lex->stack, NULL); */
-#ifdef LEXER_DEBUG
-		dprintf(2, "Created a new token"MAG"#"CYN"%s"MAG"#\n"RESET, token->value);//			REMOVE		
-#endif
-	return (lex->stack->data);
+	return (tokenize(lex, token_start, token_end));
 }
 
 /*
@@ -122,11 +146,10 @@ int				start_token(t_lexer *lex, size_t *token_start)
 **	exec_expand creer un t_list a partir de la valeur etendu de du token.
 */
 
-int				tokenize(t_lexer *lex, size_t token_start, size_t token_end)
+t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 {
 	char	*value;
 	t_token	*token;
-	t_list	*node;
 
 	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
 	token = create_token(value, lex->state, lex->line[lex->index]);
@@ -134,15 +157,7 @@ int				tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	lex->last_id = token->id;
 	if (TK_IS_SEP(token->id))
 		lex->cmd_name_open = 1;
-	if (check_alias(lex, token))
-		return (1);
-	node = exec_expand(token);
-	/* node = ft_simple_lst_create(token); */
-	if (lex->stack == NULL)
-		lex->stack = node;
-	else
-		ft_simple_lst_pushback(&(lex->stack), node);
-	return (1);
+	return (token);
 }
 
 /*

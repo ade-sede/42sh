@@ -43,7 +43,7 @@ t_ast	*ast_parse(t_ast *root, t_lst_head **head, t_lexer *lex)
 	t_ast	*ast;
 
 	ast = root;
-	if ((token = start_lex(lex)))
+	if ((token = handle_lexer(lex)))
 	{
 		if (TK_IS_SEP(token->id))
 		{
