@@ -6,7 +6,7 @@ static t_list	*find_key(t_list *local, char *new_data)
 	char	*key;
 
 	new_key = key_of_local(new_data, '=');
-	while (local->next != NULL)
+	while (local)
 	{
 		key = key_of_local(local->data, '=');
 		if (ft_strcmp(new_key, key) == 0)
@@ -22,13 +22,24 @@ static t_list	*find_key(t_list *local, char *new_data)
 	return (NULL);
 }
 
-int				add_to_local(t_list *local, char *data)
-{
-	t_list	*match_key;
+#include <stdio.h>
 
-	if ((match_key = find_key(local, data)) == NULL)
-		ft_simple_lst_pushback(&local, ft_simple_lst_create(data));
+int				add_to_local(t_list **local, char *data)
+{
+	dprintf(2, "%p\n", *local);
+	t_list	*match_key;
+	t_list	*first;
+
+	if ((match_key = find_key(*local, data)) == NULL)
+		ft_simple_lst_pushback(local, ft_simple_lst_create(data));
 	else
 		match_key->data = ft_strchange(match_key->data, data);
+	first = *local;
+	while (*local)
+	{
+		dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, (*local)->data);//			REMOVE		
+		(*local) = (*local)->next;
+	}
+	*local = first;
 	return (0);
 }

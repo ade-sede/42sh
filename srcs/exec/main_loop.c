@@ -124,14 +124,23 @@ void	lex_and_parse(char *buff)
 		ft_remove_head(&head, free_pipe);
 	free(buff);
 }
+#include <stdio.h>
 
 void	main_loop(t_env *env)
 {
 	char		*buff;
+	t_list	*test;
 
 	init_main_loop(singleton_line(), singleton_hist());
 	while (42)
 	{
+		test = env->local;
+		while (test)
+		{
+			dprintf(2, "%s\n", test->data);
+			test = test->next;
+		}
+		dprintf(2, "Finished\n");
 		load_prompt(env, singleton_line(), "PS1", "$> ");
 		buff = ft_strdup(line_editing_get_input(singleton_line(), \
 					singleton_hist(), &edit_set_signals_open));

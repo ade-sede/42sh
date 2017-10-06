@@ -8,6 +8,7 @@ void		env_load_base_env(t_env *env, const char **environ)
 	env->environ = NULL;
 	env->previous_exit = 0;
 	env->alias = NULL;
+	env->local = NULL;
 	env->environ = env_create_environ(environ, &(env->environ_size));
 	env_load_shlvl_pwd(env);
 	create_hash_table(env);
