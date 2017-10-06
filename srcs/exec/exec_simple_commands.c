@@ -42,11 +42,7 @@ static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 
 	env = singleton_env();
 	if (child_node->token->id == TK_ASSIGNMENT_WORD)
-	{
-		dprintf(2, "%p\n", env->local);
 		add_to_local(&env->local, ft_strdup(child_node->token->value));
-		dprintf(2, "%p\n", env->local);
-	}
 	else if (child_node->symbol == IO_REDIRECT)
 	{
 		if ((exec_redir(child_node->child, redir_stack)) == 0)

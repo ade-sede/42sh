@@ -10,6 +10,9 @@ void		env_load_base_env(t_env *env, const char **environ)
 	env->alias = NULL;
 	env->local = NULL;
 	env->environ = env_create_environ(environ, &(env->environ_size));
+	/*
+	**	Copier tout le contenu de env->environ dans local.
+	*/
 	env_load_shlvl_pwd(env);
 	create_hash_table(env);
 }

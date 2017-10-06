@@ -18,11 +18,14 @@ static t_list	*find_key(t_list *local, char *new_key)
 	return (NULL);
 }
 
-int				remove_var_from_local(t_list *local, char *key)
+int				remove_var_from_local(t_list **local, char *key)
 {
 	t_list	*match_key;
 
-	if ((match_key = find_key(local, key)) != NULL)
-		ft_simple_lst_del_one(&local, match_key, ft_free);
+	if ((match_key = find_key(*local, key)) != NULL)
+	{
+		ft_simple_lst_del_one(local, match_key, ft_free);
+		return (1);
+	}
 	return (0);
 }

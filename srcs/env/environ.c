@@ -16,9 +16,11 @@ char		**env_create_environ(const char **original, size_t *new_size)
 {
 	char		**new_environ;
 	size_t		original_size;
+	t_env		*env;
 
+	env = singleton_env();
 	original_size = (original == NULL) ? 0 : ft_arraylen(original);
-	new_environ = ft_arraydup(original);
+	new_environ = ft_arraydup_env_local(original, &env->local);
 	if (new_size != NULL)
 		*new_size = original_size;
 	return (new_environ);
