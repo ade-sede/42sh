@@ -31,17 +31,13 @@ int			exec_tree(t_ast *ast, t_lst_head *head)
 		else if (ast->symbol == COMPLEXE_COMMAND)
 		{
 			token = ast->token;
-			/* if (ft_strequ(token->value, "|")) */
 			if (token->id == TK_PIPE)
 				return (exec_pipe(ast, head));
 			else if (token->id == TK_SEMI)
-			/* else if (ft_strequ(token->value, ";")) */
 				return (semi_colon(ast, head));
 			else if (token->id == TK_AND_IF)
-			/* else if (ft_strequ(token->value, "&&")) */
 				return (logical_and(ast, head));
 			else if (token->id == TK_OR_IF)
-			/* else if (ft_strequ(token->value, "||")) */
 				return (logical_or(ast, head));
 		}
 	}
