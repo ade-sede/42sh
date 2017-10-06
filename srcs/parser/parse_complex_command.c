@@ -40,7 +40,7 @@ t_ast			*create_right_branch(t_token *command_token, t_lexer *lex)
 	}
 	else
 	{
-		investigate_error("Parse error near ", command_token->value, 0);
+		investigate_error(NULL, "Parse error near ", command_token->value, 0);
 		return (flush_tree(right_branch));
 	}
 	if (!command_child || (token && token->id == TK_NEWLINE))
@@ -65,7 +65,7 @@ t_ast			*start_complexe_command(t_ast *ast, t_lexer *lex)
 	token = start_lex(lex);
 	ft_simple_lst_del_one(&lex->stack, lex->stack, NULL);
 	if ((left_branch = ast) == NULL)
-		return ((void*)(long)investigate_error("Parse error near", \
+		return ((void*)(long)investigate_error(NULL, "Parse error near", \
 					token->value, 0));
 	cc = ast_create_node(token, NULL, COMPLEXE_COMMAND);
 	if (!(right_branch = create_right_branch(cc->token, lex)))

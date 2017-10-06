@@ -43,7 +43,7 @@ void	history_write_to_histfile(void)
 	h = singleton_hist();
 	if ((fd = open(h->file, O_RDWR | O_TRUNC)) == -1)
 	{
-		investigate_error("open", NULL, -1);
+		investigate_error(NULL, "open", NULL, -1);
 		return ;
 	}
 	last = (!h->list) ? NULL : h->list->last;
