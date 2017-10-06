@@ -4,6 +4,8 @@
 # include <errno.h>
 # include <stdio.h>
 # include <time.h>
+# include <fcntl.h>
+# include <stdlib.h>
 # ifdef LOG_FILE
 #   define STRINGIZE(x) #x
 #   define STRINGIZE_VALUE_OF(x) STRINGIZE(x)
@@ -12,7 +14,7 @@
 #   define LOG_STREAM	get_logfd("log/def")
 # endif
 
-FILE			*get_logfd(const char *file);
+int				get_logfd(const char *file);
 int				logwrite(const char *filename, const char *func_name, const char *format, ...);
 
 char			*get_errno_1(void);

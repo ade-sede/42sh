@@ -21,46 +21,42 @@ int		return_failure(const char *str, const char *error_msg)
 	return (EXIT_FAILURE);
 }
 
-FILE	*get_logfd(const char *file)
+int		get_logfd(const char *file)
 {
-	const char	*f = NULL;
-	FILE	*fp = NULL;
+	int		fd;
 
-	if (!f || (f && !ft_strequ(f, file)))
+	fd = open(file, O_WRONLY | O_APPEND | O_CREAT, 0644);
+	if (fd < 0)
 	{
-		f = file;
-		if ((fp = fopen(file, "a+")) == NULL)
-		{
-			/* perror("fopen"); */
-			return (NULL);
-		}
+		/* perror(NULL); */
+		return (-1);
 	}
-	return (fp);
+	return (fd);
 }
 
 int		logwrite(const char *filename, const char *func_name, const char *format, ...)
 {
 	va_list	ap;
-	FILE	*fp;
+	int		fd;
 	time_t	rawtime;
 	struct tm	*info;
 	char	time_str[26];
 
 	time (&rawtime);
 	info = localtime(&rawtime);
-	fp = get_logfd(filename);
+	fd = get_logfd(filename);
 	strftime(time_str, 26, "%Y-%m-%d %H:%M:%S", info);
-	if (fp)
+	if (fd >= 0)
 	{
 		va_start(ap, format);
-		fprintf(fp, "From "GRN"%s "RESET" @ %s"BLU"##\n"RESET, func_name, time_str);
-		vfprintf(fp, format, ap);
-		fprintf(fp, BLU"##\n"RESET);
-		fflush(fp);
+		dprintf(fd, "From "GRN"%s "RESET" @ %s"BLU"##\n"RESET, func_name, time_str);
+		vdprintf(fd, format, ap);
+		dprintf(fd, BLU"##\n"RESET);
 		va_end(ap);
-		fclose(fp);
+		close(fd);
+		return (1);
 	}
-	return (1);
+	return (-1);
 }
 
 int			investigate_error(char *logfile, const char *prefix, const char *custom_error, int return_value)

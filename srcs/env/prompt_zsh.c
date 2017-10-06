@@ -86,7 +86,7 @@ char	*get_current_directory(void)
 
 	buff = NULL;
 	if ((buff = getcwd(buff, 0)) == NULL)
-		return ((void*)(long)investigate_error("log/def", "prompt", NULL , 0));
+		return ((void*)(long)investigate_error("/dev/null", "prompt", NULL , 0));
 	if (ft_strequ(buff, "/"))
 		return (buff);
 	if ((dir = ft_strrchr(buff, '/')))
