@@ -26,13 +26,13 @@
 /* } */
 
 int		abort_opening;
-t_ast			*create_right_branch(t_token *command_token, t_lexer *lex)
+t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
 {
 	t_token		*token;
 	t_ast		*right_branch;
 	t_ast		*command_child;
 
-	right_branch = create_simple_command(lex);
+	right_branch = create_simple_command(token_list);
 	if (right_branch && right_branch->child)
 	{
 		command_child = right_branch->child->data;
@@ -46,15 +46,15 @@ t_ast			*create_right_branch(t_token *command_token, t_lexer *lex)
 	if (!command_child || (token && token->id == TK_NEWLINE))
 	{
 		right_branch = flush_tree(right_branch);
-		reopen_line_editing(lex, 0);
+		//reopen_line_editing(token_list, 0);
 		if (abort_opening)
 			return (NULL);
-		right_branch = create_right_branch(command_token, lex);
+		right_branch = create_right_branch(command_token, token_list);
 	}
 	return (right_branch);
 }
 
-t_ast			*start_complexe_command(t_ast *ast, t_lexer *lex)
+t_ast			*start_complexe_command(t_ast *ast, t_list **token_list)
 {
 	t_ast	*left_branch;
 	t_ast	*right_branch;
@@ -62,13 +62,13 @@ t_ast			*start_complexe_command(t_ast *ast, t_lexer *lex)
 	t_token	*token;
 	t_list	*child;
 
-	token = handle_lexer(lex);
-	ft_simple_lst_del_one(&lex->stack, lex->stack, NULL);
+	token = *token_list ? (*token_list)->data : NULL;
+	*token_list = *token_list ? (*token_list)->next : 0;
 	if ((left_branch = ast) == NULL)
 		return ((void*)(long)investigate_error("Parse error near", \
 					token->value, 0));
 	cc = ast_create_node(token, NULL, COMPLEXE_COMMAND);
-	if (!(right_branch = create_right_branch(cc->token, lex)))
+	if (!(right_branch = create_right_branch(cc->token, token_list)))
 	{
 		cc = flush_tree(cc);
 		left_branch = flush_tree(left_branch);

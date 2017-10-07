@@ -40,23 +40,23 @@
 #define PARSE_ERROR 1
 #define PARSE_SUCCESS 1
 
-int		ast_parse(t_ast **ast, t_lst_head **head, t_lexer *lex)
+int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 {
 	t_token *token;
 
-	while ((token = handle_lexer(lex)))
+	while ((token = *token_list ? (*token_list)->data : NULL))
 	{
 		if (TK_IS_SEP(token->id))
 		{
-			if ((*ast = start_complexe_command(*ast, lex)) == NULL)
+			if ((*ast = start_complexe_command(*ast, token_list)) == NULL)
 				return (PARSE_ERROR);
 			if (add_pipe(token, head) == 0)
 			{
+				//flush_tree(*ast);
 				return (PARSE_ERROR);
-				flush_tree(*ast);
 			}
 		}
-		else if ((*ast = create_simple_command(lex)) == NULL)
+		else if ((*ast = create_simple_command(token_list)) == NULL)
 			return (PARSE_ERROR);
 	}
 	add_last_pipe(head);

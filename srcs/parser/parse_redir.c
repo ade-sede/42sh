@@ -39,12 +39,12 @@ static char	*get_heredoc_input(char *value)
 	return (cat);
 }
 
-static int	pushback_redir(t_list *child_list, int expected, t_lexer *lex, int heredoc)
+static int	pushback_redir(t_list *child_list, int expected, t_list **token_list, int heredoc)
 {
 	t_token	*token;
 	t_ast	*heredoc_node;
 
-	while ((token = handle_lexer(lex)) && expected != 0)
+	while ((token = (*token_list)->data) && expected != 0)
 	{
 		if (expected == 2)
 		{
@@ -64,7 +64,7 @@ static int	pushback_redir(t_list *child_list, int expected, t_lexer *lex, int he
 				heredoc_node->heredoc_content = get_heredoc_input(token->value);
 			}
 		}
-		ft_simple_lst_del_one(&lex->stack, lex->stack, NULL);
+		*token_list = *token_list ? (*token_list)->next : 0;
 		--expected;
 	}
 	if (expected != 0)
@@ -72,7 +72,7 @@ static int	pushback_redir(t_list *child_list, int expected, t_lexer *lex, int he
 	return (1);
 }
 
-static t_ast		*ast_create_node_from_redir(t_token *token, t_lexer *lex)
+static t_ast		*ast_create_node_from_redir(t_token *token, t_list **token_list)
 {
 	t_list	*child_list;
 	t_ast	*node;
@@ -92,17 +92,17 @@ static t_ast		*ast_create_node_from_redir(t_token *token, t_lexer *lex)
 	ft_simple_lst_pushback(&child_list, \
 			ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 	node = ast_create_node(NULL, child_list, IO_REDIRECT);
-	ft_simple_lst_del_one(&lex->stack, lex->stack, NULL);
-	if ((pushback_redir(child_list, expected, lex, heredoc)) == 0)
+	*token_list = *token_list ? (*token_list)->next : 0;
+	if ((pushback_redir(child_list, expected, token_list, heredoc)) == 0)
 		node = flush_tree(node);
 	return (node);
 }
 
-t_ast		*append_redir(t_ast *root, t_token *token, t_lexer *lex)
+t_ast		*append_redir(t_ast *root, t_token *token, t_list **token_list)
 {
 	t_ast	*new_node;
 
-	new_node = ast_create_node_from_redir(token, lex);
+	new_node = ast_create_node_from_redir(token, token_list);
 	ft_simple_lst_pushback(&(root->child), ft_simple_lst_create(new_node));
 	if (!new_node)
 		root = flush_tree(root);

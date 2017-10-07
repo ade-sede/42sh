@@ -103,7 +103,7 @@ void	lex_and_parse(char *buff)
 	t_list		*token_list;
 	t_ast		*ast;
 	int			res_lexer;
-//	int			res_parser;
+	int			res_parser;
 	int			done;
 
 	ast = NULL;
@@ -113,8 +113,8 @@ void	lex_and_parse(char *buff)
 	while (!done)
 	{
 		res_lexer = lex_all(&lex, &token_list);
+		res_parser = ast_parse(&ast, &head, &token_list);
 /*
-**			res_parser = ast_parse(&ast, &head, &token_list);
 **			if (res_parser == PARSE_ERROR)
 **				return ;
 */
@@ -138,8 +138,10 @@ void	lex_and_parse(char *buff)
 #endif
 	conf_term_normal();
 	exec_tree(ast, head);
-	if (lex.stack)
-		ft_simple_lst_remove(&lex.stack, free_token);
+	/*
+**		if (lex.stack)
+**			ft_simple_lst_remove(&lex.stack, free_token);
+*/
 	ft_strdel((char **)&lex.line);
 	conf_term_canonical();
 	ast = flush_tree(ast);
