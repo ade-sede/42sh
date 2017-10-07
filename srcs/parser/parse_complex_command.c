@@ -56,7 +56,7 @@ static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, i
 	{
 		right_branch = flush_tree(right_branch);
 //		reopen_line_editing(token_list, 0);
-		*reopen = 1;
+		*reopen = command_token->id;
 		return (NULL);
 	}
 	return (right_branch);
@@ -80,9 +80,8 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
 	{
 		if (*reopen)
 		{
-			*reopen = token->id;
 			dprintf(2, "start complex command\n");
-			//dprintf(2, "reopen = token"MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
+			dprintf(2, "reopen = token"MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
 		}
 		//cc = flush_tree(cc);
 		//left_branch = flush_tree(left_branch);

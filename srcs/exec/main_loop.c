@@ -134,10 +134,8 @@ void	lex_and_parse(char *buff)
 	}
 	history_append_command_to_list((char*)lex.line);
 #ifdef PARSER_DEBUG
-
 		if (ast)
 			read_tree(ast);
-
 #endif
 	conf_term_normal();
 	exec_tree(ast, head);

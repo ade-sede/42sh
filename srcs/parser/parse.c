@@ -43,27 +43,23 @@ int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 	int		reopen;
 
 	reopen = 0;
-	if (*ast)
-		read_tree(*ast);
+	//if (*ast)
+		//read_tree(*ast);
+	if (*ast && (*ast)->token && TK_IS_SEP((*ast)->token->id))
+	{
+		printf("tk is sep complete complexe command\n");
+		*ast = complete_complexe_command(*ast, token_list, &reopen);
+	}
 	while ((token = *token_list ? (*token_list)->data : NULL))
 	{
-		if (*ast && (*ast)->token && TK_IS_SEP((*ast)->token->id))
-		{
-			printf("tk is sep complete complexe command\n");
-			*ast = complete_complexe_command(*ast, token_list, &reopen);
-		}
-		else if (TK_IS_SEP(token->id))
+		if (TK_IS_SEP(token->id))
 		{
 			*ast = start_complexe_command(*ast, token_list, &reopen);
-			{
-				if (reopen)
-					return (reopen);
-			}
 			if (reopen)
 				return (reopen);
 			if (add_pipe(token, head) == 0)
 			{
-				//flush_tree(*ast);
+				flush_tree(*ast);
 				return (PARSER_ERROR);
 			}
 		}
