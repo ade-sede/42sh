@@ -107,6 +107,7 @@ void	lex_and_parse(char *buff)
 	/* buff = ft_strchange(buff, ft_strjoin(buff, "\n")); */
 	lex = init_lexer(buff);
 	/* token_list = start_lex(&lex); */
+	lex_all(&lex);
 	ast = ast_parse(NULL, &head, &lex);
 	history_append_command_to_list((char*)lex.line);
 #ifdef PARSER_DEBUG

@@ -40,20 +40,20 @@
 ** of the lexer.
 */
 
-void	alias(t_lexer *lex, t_list *forbiden_alias)
-{
-	t_list	*list;
+//void	alias(t_lexer *lex, t_token *token, t_list *forbiden_alias)
+//{
+	//t_list	*list;
 
-	lex_all(lex);
-	list = lex->stack;
-	while (lex->stack)
-	{
-		check_alias(lex, list);
-		list = list->next;
-	}
-	ft_simple_lst_pushback(&forbiden_alias, ft_simple_lst_create());
-	return (alias(lex, forbiden_alias));
-}
+	//lex_all(lex);
+	//list = lex->stack;
+	//while (lex->stack)
+	//{
+		//check_alias(lex, list);
+		//list = list->next;
+	//}
+	//ft_simple_lst_pushback(&forbiden_alias, ft_simple_lst_create());
+	//return (alias(lex, forbiden_alias));
+//}
 
 #include <stdio.h>
 
@@ -66,8 +66,8 @@ t_token			*handle_lexer(t_lexer *lex)
 		return (lex->stack->data);
 	if ((token = start_lex(lex)) == NULL)
 		return (NULL);
-	if (check_alias(lex, NULL))
-		return (alias(lex, token));
+//	if (check_alias(lex, NULL))
+//		return (alias(lex, token, NULL));
 	if ((node = exec_expand(token)))
 		lex->stack = node;
 	else
@@ -77,6 +77,21 @@ t_token			*handle_lexer(t_lexer *lex)
 	return (token);
 }
 
+t_list			*lex_all(t_lexer *lex)
+{
+	t_token	*token;
+	t_list	*node;
+
+	while ((token = start_lex(lex)) != NULL)
+	{
+		if ((node = exec_expand(token)))
+			lex->stack = node;
+		else
+			node = ft_simple_lst_create(token);
+		ft_simple_lst_pushback(&lex->stack, node);
+	}
+	return (lex->stack);
+}
 /*
 **	in all case start_lex will create one token or return NULL
 */
@@ -97,6 +112,11 @@ t_token			*start_lex(t_lexer *lex)
 		return (NULL);
 	while ((ret = token_match(lex, token_start)) == -1)
 		lex->index++;
+	if (lex->line[lex->index] == 0 && (lex->state == DQUOTED || lex->state == QUOTED))
+	{
+		printf("\nreopen line editing\n");
+		return (NULL);
+	}
 	token_end = (size_t)ret;
 	return (tokenize(lex, token_start, token_end));
 }

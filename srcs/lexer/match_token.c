@@ -33,8 +33,9 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 	{
 		if (lex->line[lex->index] == '\0')
 		{
-			if (lex->reopen)
-				reopen_line_editing(lex, 0);
+			return (1);
+			//if (lex->reopen)
+			//	reopen_line_editing(lex, 0);
 			/*
 **				if (abort_opening)
 **					return (NULL);

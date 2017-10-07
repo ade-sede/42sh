@@ -76,7 +76,7 @@ t_ast		*fill_simple_command(t_ast *simple_cmd, t_lexer *lex)
 	t_ast	*new_node;
 	t_token	*token;
 
-	if ((token = handle_lexer(lex)))
+	while ((token = handle_lexer(lex)))
 	{
 		if (TK_IS_SEP(token->id))
 			return (simple_cmd);
@@ -94,7 +94,6 @@ t_ast		*fill_simple_command(t_ast *simple_cmd, t_lexer *lex)
 				ft_simple_lst_pushback(&((simple_cmd)->child), \
 						ft_simple_lst_create(new_node));
 			}
-			simple_cmd = fill_simple_command(simple_cmd, lex);
 		}
 	}
 	return (simple_cmd);
