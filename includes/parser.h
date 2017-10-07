@@ -3,6 +3,12 @@
 # include "t_ast.h"
 # include "lexer.h"
 
+#define PARSER_ERROR 0
+#define PARSER_SUCCESS 1
+
+# ifndef PARSER_REOPEN
+#  define PARSER_REOPEN(state)	(state == 39 || state == 34)
+# endif
 /*
 **	After a token is delimited, it is sent to the parser, wich will build an
 **	AST (abstract syntax tree) from the stream of token it receives.
@@ -90,8 +96,7 @@ int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list);
 **	In file srcs/parser/parse_complexe_command.c
 */
 
-t_ast		*create_right_branch(t_token *command_token, t_list **token_list);
-t_ast		*start_complexe_command(t_ast *ast, t_list **token_list);
+t_ast		*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen);
 
 /*
 **	In file srcs/parser/parse_pipe.c

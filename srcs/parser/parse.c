@@ -37,28 +37,29 @@
 **			command we just created to a complexe one.
 */
 
-#define PARSE_ERROR 1
-#define PARSE_SUCCESS 1
-
 int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 {
 	t_token *token;
+	int		reopen;
 
+	reopen = 0;
 	while ((token = *token_list ? (*token_list)->data : NULL))
 	{
 		if (TK_IS_SEP(token->id))
 		{
-			if ((*ast = start_complexe_command(*ast, token_list)) == NULL)
-				return (PARSE_ERROR);
+			if ((*ast = start_complexe_command(*ast, token_list, &reopen)) == NULL)
+				return (PARSER_ERROR);
+			if (reopen)
+				return (reopen);
 			if (add_pipe(token, head) == 0)
 			{
 				//flush_tree(*ast);
-				return (PARSE_ERROR);
+				return (PARSER_ERROR);
 			}
 		}
 		else if ((*ast = create_simple_command(token_list)) == NULL)
-			return (PARSE_ERROR);
+			return (PARSER_ERROR);
 	}
 	add_last_pipe(head);
-	return (PARSE_SUCCESS);
+	return (PARSER_SUCCESS);
 }

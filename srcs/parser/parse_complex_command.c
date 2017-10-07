@@ -26,7 +26,7 @@
 /* } */
 
 int		abort_opening;
-t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
+static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, int *reopen)
 {
 	t_token		*token;
 	t_ast		*right_branch;
@@ -46,15 +46,14 @@ t_ast			*create_right_branch(t_token *command_token, t_list **token_list)
 	if (!command_child || (token && token->id == TK_NEWLINE))
 	{
 		right_branch = flush_tree(right_branch);
-		//reopen_line_editing(token_list, 0);
-		if (abort_opening)
-			return (NULL);
-		right_branch = create_right_branch(command_token, token_list);
+//		reopen_line_editing(token_list, 0);
+		*reopen = 1;
+		return (NULL);
 	}
 	return (right_branch);
 }
 
-t_ast			*start_complexe_command(t_ast *ast, t_list **token_list)
+t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
 {
 	t_ast	*left_branch;
 	t_ast	*right_branch;
@@ -68,8 +67,13 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list)
 		return ((void*)(long)investigate_error("Parse error near", \
 					token->value, 0));
 	cc = ast_create_node(token, NULL, COMPLEXE_COMMAND);
-	if (!(right_branch = create_right_branch(cc->token, token_list)))
+	if (!(right_branch = create_right_branch(cc->token, token_list, reopen)))
 	{
+		if (*reopen)
+		{
+			*reopen = token->id;
+			dprintf(2, "reopen = token"MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
+		}
 		cc = flush_tree(cc);
 		left_branch = flush_tree(left_branch);
 		return (NULL);

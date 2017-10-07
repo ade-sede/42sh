@@ -114,22 +114,21 @@ void	lex_and_parse(char *buff)
 	{
 		res_lexer = lex_all(&lex, &token_list);
 		res_parser = ast_parse(&ast, &head, &token_list);
-/*
-**			if (res_parser == PARSE_ERROR)
-**				return ;
-*/
-			if (res_lexer == LEXER_REOPEN)
-				//|| res_parser == REOPEN)
-			{
-				reopen_line_editing(&lex, 0);
-				if (abort_opening)
-					return ;
-			}
-			if (res_lexer == LEXER_SUCCESS)
-			{
-				printf("lex_and_parse done\n");
-				done = 1;
-			}
+
+		if (res_parser == PARSER_ERROR)
+			return ;
+
+		if (res_lexer == LEXER_REOPEN || TK_IS_SEP(res_parser))
+		{
+			reopen_line_editing(&lex, 0);
+			if (abort_opening)
+				return ;
+		}
+		if (res_lexer == LEXER_SUCCESS)
+		{
+			printf("lex_and_parse done\n");
+			done = 1;
+		}
 	}
 	history_append_command_to_list((char*)lex.line);
 #ifdef PARSER_DEBUG
