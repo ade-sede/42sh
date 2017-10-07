@@ -95,20 +95,42 @@ char	*line_editing_get_input(t_line *line, t_hist *hist, void (*sig_handler)(voi
 	edit_line_init(line, sig_handler);
 	return (edit_get_input());
 }
-
+#include <stdio.h>
 void	lex_and_parse(char *buff)
 {
 	t_lexer		lex;
 	t_lst_head	*head;
-	/* t_list		*token_list; */
+	t_list		*token_list;
 	t_ast		*ast;
+	int			res_lexer;
+//	int			res_parser;
+	int			done;
 
+	ast = NULL;
 	head = NULL;
-	/* buff = ft_strchange(buff, ft_strjoin(buff, "\n")); */
 	lex = init_lexer(buff);
-	/* token_list = start_lex(&lex); */
-	lex_all(&lex);
-	ast = ast_parse(NULL, &head, &lex);
+	done = 0;
+	while (!done)
+	{
+		res_lexer = lex_all(&lex, &token_list);
+/*
+**			res_parser = ast_parse(&ast, &head, &token_list);
+**			if (res_parser == PARSE_ERROR)
+**				return ;
+*/
+			if (res_lexer == LEXER_REOPEN)
+				//|| res_parser == REOPEN)
+			{
+				reopen_line_editing(&lex, 0);
+				if (abort_opening)
+					return ;
+			}
+			if (res_lexer == LEXER_SUCCESS)
+			{
+				printf("lex_and_parse done\n");
+				done = 1;
+			}
+	}
 	history_append_command_to_list((char*)lex.line);
 #ifdef PARSER_DEBUG
 	if (ast)

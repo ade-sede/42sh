@@ -84,7 +84,7 @@
 **	In file srcs/parser/parse.c
 */
 
-t_ast	*ast_parse(t_ast *root, t_lst_head **head, t_lexer *lex);
+int		ast_parse(t_ast **ast, t_lst_head **head, t_lexer *lex);
 
 /*
 **	In file srcs/parser/parse_complexe_command.c

@@ -22,6 +22,8 @@
 # ifndef IS_INPUT_END
 #  define IS_INPUT_END(c) (c == 0)
 # endif
+#define LEXER_SUCCESS 1
+#define LEXER_REOPEN 2
 
 /*
 **	Token delimitation is done according to the POSIX STANDARD found here:
@@ -59,9 +61,9 @@ t_list			*exec_expand(t_token *token);
 **	In file srcs/lexer/lexer.c
 */
 
-t_list			*lex_all(t_lexer *lex);
+int				lex_all(t_lexer *lex, t_list **token_list);
+t_token			*start_lex(t_lexer *lex, int *reopen);
 t_token			*handle_lexer(t_lexer *lex);
-t_token			*start_lex(t_lexer *lex);
 int				update_state(t_lexer *lex);
 int				start_token(t_lexer *lex, size_t *token_start);
 t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end);

@@ -61,10 +61,11 @@ t_token			*handle_lexer(t_lexer *lex)
 {
 	t_token	*token;
 	t_list	*node;
+	int		reopen;
 
 	if (lex->stack)
 		return (lex->stack->data);
-	if ((token = start_lex(lex)) == NULL)
+	if ((token = start_lex(lex, &reopen)) == NULL)
 		return (NULL);
 //	if (check_alias(lex, NULL))
 //		return (alias(lex, token, NULL));
@@ -77,26 +78,36 @@ t_token			*handle_lexer(t_lexer *lex)
 	return (token);
 }
 
-t_list			*lex_all(t_lexer *lex)
+
+int			lex_all(t_lexer *lex, t_list **token_list)
 {
 	t_token	*token;
 	t_list	*node;
+	int		reopen;
 
-	while ((token = start_lex(lex)) != NULL)
+	reopen = 0;
+	while ((token = start_lex(lex, &reopen)) != NULL)
 	{
+#ifdef LEXER_DEBUG
+		dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
+#endif
 		if ((node = exec_expand(token)))
 			lex->stack = node;
 		else
 			node = ft_simple_lst_create(token);
 		ft_simple_lst_pushback(&lex->stack, node);
 	}
-	return (lex->stack);
+	*token_list = lex->stack;
+	printf("lexer done\n");
+	if (reopen)
+		return (LEXER_REOPEN);
+	return (LEXER_SUCCESS);
 }
 /*
 **	in all case start_lex will create one token or return NULL
 */
 
-t_token			*start_lex(t_lexer *lex)
+t_token			*start_lex(t_lexer *lex, int *reopen)
 {
 	size_t	token_start;
 	ssize_t	ret;
@@ -104,21 +115,41 @@ t_token			*start_lex(t_lexer *lex)
 
 	token_start = 0;
 	token_end = 0;
-	lex->state = WORD;
-	if (lex->line[lex->index] == 0)
+	if (lex->line[lex->index] == '\0')
 		return (NULL);
-	lex->state = start_token(lex, &token_start);
+	if (lex->state != DQUOTED)
+		lex->state = start_token(lex, &token_start);
 	if (lex->state == INPUT_END)
 		return (NULL);
 	while ((ret = token_match(lex, token_start)) == -1)
 		lex->index++;
-	if (lex->line[lex->index] == 0 && (lex->state == DQUOTED || lex->state == QUOTED))
+	if (lex->line[lex->index] == '\0' && (lex->state == DQUOTED || lex->state == QUOTED))
 	{
 		printf("\nreopen line editing\n");
+		*reopen = 1;
 		return (NULL);
 	}
 	token_end = (size_t)ret;
 	return (tokenize(lex, token_start, token_end));
+}
+
+/*
+**	Initialize the token_start index and returns the state according to the
+**	first char of the token.
+*/
+
+int				start_token(t_lexer *lex, size_t *token_start)
+{
+	int		ret;
+
+	ret = 0;
+	while (lex->line[lex->index] && (IS_WHITESPACE(lex->line[lex->index]) \
+				&& lex->line[lex->index] != '\n'))
+		lex->index++;
+	*token_start = lex->index;
+	ret = update_state(lex);
+	lex->index++;
+	return (ret);
 }
 
 /*
@@ -140,25 +171,6 @@ int				update_state(t_lexer *lex)
 	if (!lex->line[lex->index])
 		return (INPUT_END);
 	return (WORD);
-}
-
-/*
-**	Initialize the token_start index and returns the state according to the
-**	first char of the token.
-*/
-
-int				start_token(t_lexer *lex, size_t *token_start)
-{
-	int		ret;
-
-	ret = 0;
-	while (lex->line[lex->index] && (IS_WHITESPACE(lex->line[lex->index]) \
-				&& lex->line[lex->index] != '\n'))
-		lex->index++;
-	*token_start = lex->index;
-	ret = update_state(lex);
-	lex->index++;
-	return (ret);
 }
 
 /*

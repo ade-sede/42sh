@@ -37,27 +37,28 @@
 **			command we just created to a complexe one.
 */
 
-t_ast	*ast_parse(t_ast *root, t_lst_head **head, t_lexer *lex)
+#define PARSE_ERROR 1
+#define PARSE_SUCCESS 1
+
+int		ast_parse(t_ast **ast, t_lst_head **head, t_lexer *lex)
 {
 	t_token *token;
-	t_ast	*ast;
 
-	ast = root;
-	if ((token = handle_lexer(lex)))
+	while ((token = handle_lexer(lex)))
 	{
 		if (TK_IS_SEP(token->id))
 		{
-			if ((ast = start_complexe_command(ast, lex)) == NULL)
-				return (NULL);
+			if ((*ast = start_complexe_command(*ast, lex)) == NULL)
+				return (PARSE_ERROR);
 			if (add_pipe(token, head) == 0)
-				return (flush_tree(ast));
+			{
+				return (PARSE_ERROR);
+				flush_tree(*ast);
+			}
 		}
-		else if ((ast = create_simple_command(lex)) == NULL)
-			return (NULL);
-		if ((ast = ast_parse(ast, head, lex)) == NULL)
-			return (NULL);
+		else if ((*ast = create_simple_command(lex)) == NULL)
+			return (PARSE_ERROR);
 	}
-	else
-		add_last_pipe(head);
-	return (ast);
+	add_last_pipe(head);
+	return (PARSE_SUCCESS);
 }

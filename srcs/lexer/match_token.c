@@ -42,7 +42,10 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 */
 		}
 		if (charcmp(lex->line, lex->index, lex->state))
+		{
+			lex->state = WORD;
 			ret = lex->index++;
+		}
 	}
 	return (ret);
 }
