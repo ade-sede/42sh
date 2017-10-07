@@ -100,7 +100,7 @@ int			lex_all(t_lexer *lex, t_list **token_list)
 	*token_list = lex->stack;
 	printf("lexer done\n");
 	if (reopen)
-		return (LEXER_REOPEN);
+		return (reopen);
 	return (LEXER_SUCCESS);
 }
 /*
@@ -126,7 +126,7 @@ t_token			*start_lex(t_lexer *lex, int *reopen)
 	if (lex->line[lex->index] == '\0' && (lex->state == DQUOTED || lex->state == QUOTED))
 	{
 		printf("\nreopen line editing\n");
-		*reopen = 1;
+		*reopen = lex->state;
 		return (NULL);
 	}
 	token_end = (size_t)ret;

@@ -22,8 +22,9 @@
 # ifndef IS_INPUT_END
 #  define IS_INPUT_END(c) (c == 0)
 # endif
-#define LEXER_SUCCESS 1
-#define LEXER_REOPEN 2
+#define LEXER_SUCCESS 0
+#define LEXER_DQUOTE DQUOTED
+#define LEXER_QUOTE QUOTED
 
 /*
 **	Token delimitation is done according to the POSIX STANDARD found here:

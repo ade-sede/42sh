@@ -6,9 +6,6 @@
 #define PARSER_ERROR 0
 #define PARSER_SUCCESS 1
 
-# ifndef PARSER_REOPEN
-#  define PARSER_REOPEN(state)	(state == 39 || state == 34)
-# endif
 /*
 **	After a token is delimited, it is sent to the parser, wich will build an
 **	AST (abstract syntax tree) from the stream of token it receives.
@@ -117,4 +114,7 @@ t_ast		*append_redir(t_ast *root, t_token *token, t_list **token_list);
 
 t_ast		*create_simple_command(t_list **token_list);
 t_ast		*fill_simple_command(t_ast *simple_cmd, t_list **token_list);
+void	read_tree(t_ast *ast_start);
+t_ast			*complete_complexe_command(t_ast *ast, t_list **token_list, int *reopen);
+
 #endif

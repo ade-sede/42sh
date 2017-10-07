@@ -11,7 +11,7 @@
 
 #ifdef PARSER_DEBUG
 #include <stdio.h>
-static void	read_tree(t_ast *ast_start)
+void	read_tree(t_ast *ast_start)
 {
 	size_t	index;
 	t_token	*token_parent;
@@ -114,17 +114,19 @@ void	lex_and_parse(char *buff)
 	{
 		res_lexer = lex_all(&lex, &token_list);
 		res_parser = ast_parse(&ast, &head, &token_list);
-
 		if (res_parser == PARSER_ERROR)
-			return ;
-
-		if (res_lexer == LEXER_REOPEN || TK_IS_SEP(res_parser))
 		{
-			reopen_line_editing(&lex, 0);
+			printf("parse error lex and parse\n");
+			return ;
+		}
+		if (res_lexer > 0 || TK_IS_SEP(res_parser)) //TODO:ajouter is quoted
+		{
+			lex.stack = token_list;
+			reopen_line_editing(&lex, res_lexer, res_parser);
 			if (abort_opening)
 				return ;
 		}
-		if (res_lexer == LEXER_SUCCESS)
+		if (res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS)
 		{
 			printf("lex_and_parse done\n");
 			done = 1;
@@ -132,8 +134,10 @@ void	lex_and_parse(char *buff)
 	}
 	history_append_command_to_list((char*)lex.line);
 #ifdef PARSER_DEBUG
-	if (ast)
-		read_tree(ast);
+
+		if (ast)
+			read_tree(ast);
+
 #endif
 	conf_term_normal();
 	exec_tree(ast, head);

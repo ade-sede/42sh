@@ -36,19 +36,29 @@
 **			bulding a new branch for the new command, and attaching the simple
 **			command we just created to a complexe one.
 */
-
+#include <stdio.h>
 int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 {
 	t_token *token;
 	int		reopen;
 
 	reopen = 0;
+	if (*ast)
+		read_tree(*ast);
 	while ((token = *token_list ? (*token_list)->data : NULL))
 	{
-		if (TK_IS_SEP(token->id))
+		if (*ast && (*ast)->token && TK_IS_SEP((*ast)->token->id))
 		{
-			if ((*ast = start_complexe_command(*ast, token_list, &reopen)) == NULL)
-				return (PARSER_ERROR);
+			printf("tk is sep complete complexe command\n");
+			*ast = complete_complexe_command(*ast, token_list, &reopen);
+		}
+		else if (TK_IS_SEP(token->id))
+		{
+			*ast = start_complexe_command(*ast, token_list, &reopen);
+			{
+				if (reopen)
+					return (reopen);
+			}
 			if (reopen)
 				return (reopen);
 			if (add_pipe(token, head) == 0)

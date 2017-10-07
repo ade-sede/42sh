@@ -32,11 +32,20 @@ static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, i
 	t_ast		*right_branch;
 	t_ast		*command_child;
 
+#ifdef PARSER_DEBUG
+	if (*token_list)
+	{
+		printf("");
+		dprintf(2, "token list first token:"""MAG"#"CYN"%s"MAG"#\n"RESET, ((t_token *)((*token_list)->data))->value);
+	}
+#endif
 	right_branch = create_simple_command(token_list);
 	if (right_branch && right_branch->child)
 	{
 		command_child = right_branch->child->data;
 		token = command_child->token;
+		//read_tree(right_branch);
+		dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
 	}
 	else
 	{
@@ -72,14 +81,39 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
 		if (*reopen)
 		{
 			*reopen = token->id;
-			dprintf(2, "reopen = token"MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
+			dprintf(2, "start complex command\n");
+			//dprintf(2, "reopen = token"MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
 		}
-		cc = flush_tree(cc);
-		left_branch = flush_tree(left_branch);
-		return (NULL);
+		//cc = flush_tree(cc);
+		//left_branch = flush_tree(left_branch);
+		child = ft_simple_lst_create(left_branch);
+		(cc)->child = child;
+		//read_tree(cc);
+		return (cc);
 	}
 	child = ft_simple_lst_create(left_branch);
 	ft_simple_lst_pushback(&child, ft_simple_lst_create(right_branch));
 	(cc)->child = child;
 	return (cc);
+}
+
+t_ast			*complete_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
+{
+	t_ast	*right_branch;
+
+	if (!(right_branch = create_right_branch(ast->token, token_list, reopen)))
+	{
+		if (*reopen)
+		{
+			*reopen = ast->token->id;
+			dprintf(2, "reopen = token"MAG"#"CYN"%s"MAG"#\n"RESET, ast->token->value);
+		}
+			dprintf(2, "complete  complex command\n");
+		//read_tree(cc);
+		//cc = flush_tree(cc);
+		//left_branch = flush_tree(left_branch);
+		return (ast);
+	}
+	ft_simple_lst_pushback(&(ast)->child, ft_simple_lst_create(right_branch));
+	return (ast);
 }

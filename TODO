@@ -1,0 +1,11 @@
+ls |& -> parse error -> si il reste des token
+
+
+ls | -> right branch contient que simple command avec pas de fils
+
+
+ls | 2>1 sans command name
+
+
+ajouter un espace entre les entree dans l historique
+
