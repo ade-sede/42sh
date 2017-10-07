@@ -117,7 +117,7 @@ t_token			*start_lex(t_lexer *lex, int *reopen)
 	token_end = 0;
 	if (lex->line[lex->index] == '\0')
 		return (NULL);
-	if (lex->state != DQUOTED)
+	if (lex->state != DQUOTED && lex->state != QUOTED)
 		lex->state = start_token(lex, &token_start);
 	if (lex->state == INPUT_END)
 		return (NULL);
