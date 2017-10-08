@@ -83,6 +83,7 @@ typedef struct		s_token
 **	Macros to check if the id corresponds to a redirection, or a separator.
 */
 
+# define TK_IS_REOPEN_SEP(id) (id == TK_AND_IF || id == TK_OR_IF || id == TK_PIPE)
 # define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
 # define TK_IS_GREAT_LESS(id) ( id == TK_GREAT || id == TK_LESS )
 # define TK_RP1(id) id == TK_IO_NUMBER || TK_IS_GREAT_LESS(id) || id == TK_HERE

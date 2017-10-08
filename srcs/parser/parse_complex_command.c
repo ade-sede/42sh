@@ -54,7 +54,7 @@ static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, i
 		investigate_error("Parse error near ", command_token->value, 0);
 		return (flush_tree(right_branch));
 	}
-	if (!command_child || (token && token->id == TK_NEWLINE))
+	if (TK_IS_REOPEN_SEP(command_token->id) && (!command_child || (token && token->id == TK_NEWLINE)))
 	{
 		right_branch = flush_tree(right_branch);
 //		reopen_line_editing(token_list, 0);
@@ -111,7 +111,7 @@ t_ast			*complete_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
 		{
 			dprintf(2, "reopen = token"MAG"#"CYN"%s"MAG"#\n"RESET, ast->token->value);
 		}
-		dprintf(2, "complete  complex command\n");
+		dprintf(2, "complete complex command\n");
 #endif
 		//read_tree(cc);
 		//cc = flush_tree(cc);

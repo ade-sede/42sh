@@ -15,4 +15,4 @@ BUGS:
 ls |
 cat -e
 
-ls ;
+ls ; // fait un retour erreur
