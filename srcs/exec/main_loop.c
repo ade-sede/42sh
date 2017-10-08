@@ -121,7 +121,7 @@ void	lex_and_parse(char *buff)
 		}
 		if (res_lexer > 0 || TK_IS_SEP(res_parser)) //TODO:ajouter is quoted
 		{
-			lex.stack = token_list;
+			lex.stack = NULL;
 			reopen_line_editing(&lex, res_lexer, res_parser);
 			if (abort_opening)
 				return ;
@@ -141,10 +141,10 @@ void	lex_and_parse(char *buff)
 #endif
 	conf_term_normal();
 	exec_tree(ast, head);
-	/*
-**		if (lex.stack)
-**			ft_simple_lst_remove(&lex.stack, free_token);
-*/
+
+//	if (lex.stack)
+//		ft_simple_lst_remove(&lex.stack, free_token);
+
 	ft_strdel((char **)&lex.line);
 	conf_term_canonical();
 	ast = flush_tree(ast);

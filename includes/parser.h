@@ -3,8 +3,8 @@
 # include "t_ast.h"
 # include "lexer.h"
 
-#define PARSER_ERROR 0
-#define PARSER_SUCCESS 1
+#define PARSER_ERROR 1
+#define PARSER_SUCCESS 0
 
 /*
 **	After a token is delimited, it is sent to the parser, wich will build an

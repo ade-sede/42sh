@@ -52,6 +52,7 @@ static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, i
 	else
 	{
 		investigate_error("Parse error near ", command_token->value, 0);
+		*reopen = PARSER_ERROR;
 		return (flush_tree(right_branch));
 	}
 	if (TK_IS_REOPEN_SEP(command_token->id) && (!command_child || (token && token->id == TK_NEWLINE)))

@@ -59,6 +59,8 @@ int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 		if (TK_IS_SEP(token->id))
 		{
 			*ast = start_complexe_command(*ast, token_list, &reopen);
+			if (!*ast)
+				return (PARSER_ERROR);
 			if (add_pipe(token, head) == 0)
 			{
 				flush_tree(*ast);
