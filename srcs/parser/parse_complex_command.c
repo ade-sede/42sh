@@ -44,8 +44,10 @@ static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, i
 	{
 		command_child = right_branch->child->data;
 		token = command_child->token;
-		//read_tree(right_branch);
+#ifdef REOPEN_DEBUG
+		read_tree(right_branch);
 		dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
+#endif
 	}
 	else
 	{
@@ -78,11 +80,13 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
 	cc = ast_create_node(token, NULL, COMPLEXE_COMMAND);
 	if (!(right_branch = create_right_branch(cc->token, token_list, reopen)))
 	{
+#ifdef REOPEN_DEBUG
 		if (*reopen)
 		{
 			dprintf(2, "start complex command\n");
 			dprintf(2, "reopen = token"MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
 		}
+#endif
 		//cc = flush_tree(cc);
 		//left_branch = flush_tree(left_branch);
 		child = ft_simple_lst_create(left_branch);
@@ -102,12 +106,13 @@ t_ast			*complete_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
 
 	if (!(right_branch = create_right_branch(ast->token, token_list, reopen)))
 	{
+#ifdef REOPEN_DEBUG
 		if (*reopen)
 		{
-			*reopen = ast->token->id;
 			dprintf(2, "reopen = token"MAG"#"CYN"%s"MAG"#\n"RESET, ast->token->value);
 		}
-			dprintf(2, "complete  complex command\n");
+		dprintf(2, "complete  complex command\n");
+#endif
 		//read_tree(cc);
 		//cc = flush_tree(cc);
 		//left_branch = flush_tree(left_branch);

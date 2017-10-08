@@ -128,7 +128,9 @@ void	lex_and_parse(char *buff)
 		}
 		if (res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS)
 		{
+#ifdef REOPEN_DEBUG
 			printf("lex_and_parse done\n");
+#endif
 			done = 1;
 		}
 	}

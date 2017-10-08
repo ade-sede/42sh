@@ -71,7 +71,6 @@ t_ast		*fill_simple_command(t_ast *simple_cmd, t_list **token_list)
 
 	while ((token = *token_list ? (*token_list)->data : NULL))
 	{
-		dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
 		if (TK_IS_SEP(token->id))
 			return (simple_cmd);
 		else

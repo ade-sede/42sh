@@ -9,8 +9,10 @@ void		reopen_line_editing(t_lexer *lex, int res_lexer, int res_parser)
 {
 	char	*new_command;
 
+#ifdef REOPEN_DEBUG
 	printf("reopen line editing: res_lexer = %d, res_parser = %d\n", res_lexer, res_parser);
 	printf("tk_and %d\n", TK_AND);
+#endif
 	if (res_parser == TK_PIPE)
 		load_prompt(singleton_env(), singleton_line(), NULL, "pipe> ");
 	else if (res_parser == TK_AND_IF)

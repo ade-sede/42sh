@@ -98,7 +98,6 @@ int			lex_all(t_lexer *lex, t_list **token_list)
 		ft_simple_lst_pushback(&lex->stack, node);
 	}
 	*token_list = lex->stack;
-	printf("lexer done\n");
 	if (reopen)
 		return (reopen);
 	return (LEXER_SUCCESS);
@@ -125,7 +124,9 @@ t_token			*start_lex(t_lexer *lex, int *reopen)
 		lex->index++;
 	if (lex->line[lex->index] == '\0' && (lex->state == DQUOTED || lex->state == QUOTED))
 	{
+#ifdef LEXER_DEBUG
 		printf("\nreopen line editing\n");
+#endif
 		*reopen = lex->state;
 		return (NULL);
 	}
