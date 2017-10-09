@@ -61,6 +61,7 @@
 
 extern int	abort_opening;
 
+void	term_putstr(t_line *line);
 void	reopen_line_editing(t_lexer *lex, int caller);
 void	edit_handle_sigint_reopen(int signum);
 void	edit_set_signals_reopen(void);
