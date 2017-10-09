@@ -48,18 +48,25 @@ int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 		if (TK_IS_SEP(token->id))
 		{
 			*ast = start_complexe_command(*ast, token_list, &reopen);
-			if (!*ast)
-				return (PARSER_ERROR);
+			if (reopen)
+			{
+				ft_remove_head(head, free_pipe);
+				*ast = flush_tree(*ast);
+				return (reopen);
+			}
 			if (add_pipe(token, head) == 0)
 			{
-				flush_tree(*ast);
+				*ast = flush_tree(*ast);
+				ft_remove_head(head, free_pipe);
+				ft_double_lst_remove(head, free_pipe);
 				return (PARSER_ERROR);
 			}
-			if (reopen)
-				return (reopen);
 		}
 		else if ((*ast = create_simple_command(token_list)) == NULL)
+		{
+			ft_remove_head(head, free_pipe);
 			return (PARSER_ERROR);
+		}
 	}
 	add_last_pipe(head);
 	return (PARSER_SUCCESS);
