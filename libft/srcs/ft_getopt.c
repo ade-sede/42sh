@@ -41,7 +41,7 @@ static int	manage_error(char *const argv[], struct s_opt_extern *ext)
 	ext->optopt = argv[ext->optind][ext->optchar];
 	next_opt(argv, ext);
 	if (ext->opterr)
-		ft_dprintf("%s: invalid option -- '%c'\n", argv[0], ext->optopt);
+		ft_dprintf(2, "%s: invalid option -- '%c'\n", argv[0], ext->optopt);
 	return ('?');
 }
 
