@@ -4,7 +4,37 @@
 #include "failure.h"
 #include "color.h"
 
-void	write_to_term(t_line *line)
+/*
+**	When using a putstr to write the line to the terminal, the behavior is not
+**	consistent when it reaches the last column and the char is a newline.  This
+**	function makes sure every character is printed where it should (jumps lines
+**	twice when it reaches last col with char newline).
+*/
+
+void	term_write_char(t_line *line, size_t i)
+{
+	if (line->visu_mode)
+	{
+		if (line->pos < line->visu_start)
+			if (i >= line->pos && i < line->visu_start)
+				ft_putstr("\e[39;42m");
+		if (line->pos >= line->visu_start)
+			if (i >= line->visu_start && i < line->pos)
+				ft_putstr("\e[39;42m");
+	}
+	write(2, line->buff + i, 1);
+	if (line->visu_mode)
+	{
+		if (line->pos < line->visu_start)
+			if (i >= line->pos && i < line->visu_start)
+				ft_putstr("\e[0m");
+		if (line->pos >= line->visu_start)
+			if (i >= line->visu_start && i < line->pos)
+				ft_putstr("\e[0m");
+	}
+}
+
+void	term_putstr(t_line *line)
 {
 	size_t	i;
 	size_t	x;
@@ -17,7 +47,7 @@ void	write_to_term(t_line *line)
 	while (line->buff[i])
 	{
 		if (line->buff[i] != '\n')
-			write(2, line->buff + i, 1);
+			term_write_char(line, i);
 		else
 		{
 			pos = get_char_visual_coor(line, i);
@@ -29,7 +59,6 @@ void	write_to_term(t_line *line)
 		}
 		++i;
 	}
-
 }
 
 void	edit_refresh_cursor(t_line *line)
@@ -46,7 +75,7 @@ void	edit_refresh_line(t_line *line)
 {
 	t_coor pos;
 
-	write_to_term(line);
+	term_putstr(line);
 	/* ft_putstr_fd(line->buff, 2); */
 	pos = get_char_visual_coor(line, line->len);
 	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n') )
