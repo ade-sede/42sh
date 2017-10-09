@@ -29,8 +29,8 @@ t_ast	*free_ast_node(t_ast *node)
 	if (node)
 	{
 		ft_simple_lst_remove(&node->child, NULL);
-		if (node->token)
-			free_token(node->token);
+//		if (node->token)
+//			free_token(node->token);
 		free(node);
 	}
 	return (NULL);

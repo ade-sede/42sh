@@ -108,22 +108,19 @@ int			lex_all(t_lexer *lex, t_list **token_list)
 
 t_token			*start_lex(t_lexer *lex, int *reopen)
 {
-	size_t	token_start;
 	ssize_t	ret;
 	size_t	token_end;
 
-	token_start = 0;
 	token_end = 0;
 	if (lex->line[lex->index] == '\0')
 		return (NULL);
 	if (lex->state != DQUOTED && lex->state != QUOTED)
-	{
-		lex->state = WORD;
-		lex->state = start_token(lex, &token_start);
-	}
+		lex->state = start_token(lex, &lex->token_start);
+//	if (lex->state == DQUOTED && lex->state == QUOTED)
+		printf("\nreopening line editing {%s}\n", lex->line + lex->index);
 	if (lex->state == INPUT_END)
 		return (NULL);
-	while ((ret = token_match(lex, token_start)) == -1)
+	while ((ret = token_match(lex, lex->token_start)) == -1)
 		lex->index++;
 	if (lex->line[lex->index] == '\0' && (lex->state == DQUOTED || lex->state == QUOTED))
 	{
@@ -134,7 +131,7 @@ t_token			*start_lex(t_lexer *lex, int *reopen)
 		return (NULL);
 	}
 	token_end = (size_t)ret;
-	return (tokenize(lex, token_start, token_end));
+	return (tokenize(lex, lex->token_start, token_end));
 }
 
 /*
@@ -150,7 +147,7 @@ int				start_token(t_lexer *lex, size_t *token_start)
 	while (lex->line[lex->index] && (IS_WHITESPACE(lex->line[lex->index]) \
 				&& lex->line[lex->index] != '\n'))
 		lex->index++;
-	dprintf(2, "%d\n", lex->line[lex->index]);
+//	dprintf(2, "%d\n", lex->line[lex->index]);
 	*token_start = lex->index;
 	ret = update_state(lex);
 	lex->index++;

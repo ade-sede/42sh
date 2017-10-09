@@ -7,6 +7,7 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
+#include <stdio.h>
 #define LOCAL_BUFF_SIZE 4096
 
 #ifdef PARSER_DEBUG
@@ -95,24 +96,9 @@ char	*line_editing_get_input(t_line *line, t_hist *hist, void (*sig_handler)(voi
 	edit_line_init(line, sig_handler);
 	return (edit_get_input());
 }
-#include <stdio.h>
-void	lex_and_parse(char *buff)
-{
-	t_lexer		lex;
-	t_lst_head	*head;
-	t_list		*token_list;
-	t_ast		*ast;
-	int			res_lexer;
-	int			res_parser;
-	int			done;
 
-	ast = NULL;
-	head = NULL;
-	lex = init_lexer(buff);
-	done = 0;
-	while (!done)
-	{
-		res_lexer = lex_all(&lex, &token_list);
+void	lexer_debug(t_list *token_list)
+{
 		t_list	*test;
 		t_token	*token;
 
@@ -123,28 +109,37 @@ void	lex_and_parse(char *buff)
 			dprintf(2, MAG"#"CYN"%s"MAG"# @ %d\n"RESET, token->value, token->id);//			REMOVE		
 			test = test->next;
 		}
+}
+
+void	lex_and_parse(char *buff)
+{
+	t_lexer		lex;
+	t_lst_head	*head;
+	t_list		*token_list;
+	t_ast		*ast;
+	int			res_lexer;
+	int			res_parser;
+
+	ast = NULL;
+	head = NULL;
+	lex = init_lexer(buff);
+	while (42)
+	{
+		res_lexer = lex_all(&lex, &token_list);
+		lexer_debug(token_list);
 		res_parser = ast_parse(&ast, &head, &token_list);
-//		token_list = ft_last_simple_lst(token_list);
 		if (res_parser == PARSER_ERROR)
-		{
-			printf("parse error lex and parse\n");
 			return ;
-		}
-		if (res_lexer > 0 || TK_IS_REOPEN_SEP(res_parser)) //TODO:ajouter is quoted
+		if (res_lexer > 0 || TK_IS_REOPEN_SEP(res_parser))
 		{
-			/* /1* lex.stack = NULL; *1/ */
-			ft_simple_lst_remove(&lex.stack, NULL);
 			reopen_line_editing(&lex, res_lexer, res_parser);
 			if (abort_opening)
 				return ;
+			ast = flush_tree(ast);
+			head = NULL; // TODO: attention leaks
 		}
 		if (res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS)
-		{
-#ifdef REOPEN_DEBUG
-			printf("lex_and_parse done\n");
-#endif
-			done = 1;
-		}
+			break;
 	}
 	history_append_command_to_list((char*)lex.line);
 #ifdef PARSER_DEBUG
@@ -152,7 +147,7 @@ void	lex_and_parse(char *buff)
 			read_tree(ast);
 #endif
 	conf_term_normal();
-	ft_simple_lst_remove(&lex.stack, NULL);
+	//ft_simple_lst_remove(&lex.stack, NULL);
 	exec_tree(ast, head);
 	ft_strdel((char **)&lex.line);
 	conf_term_canonical();

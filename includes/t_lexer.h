@@ -34,6 +34,7 @@ typedef struct		s_lexer
 {
 	const char		*line;
 	size_t			index;
+	size_t			token_start;
 	t_list			*stack;
 	int				reopen;
 	t_lexer_state	state;
