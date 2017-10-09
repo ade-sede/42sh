@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "local.h"
 #include <unistd.h>
 #include "env.h"
 #include "exec.h"
@@ -6,6 +7,7 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
+#include "failure.h"
 
 /*
 **	The function exec_simple_command will execute a command, step by step.
@@ -32,15 +34,22 @@ static void	abort_simple_command(char **argv)
 	singleton_env()->previous_exit = EXIT_FAILURE;
 }
 
+#include <stdio.h>
+
 static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 		char **argv, size_t *i)
 {
-	if (child_node->symbol == IO_REDIRECT)
+	t_env	*env;
+
+	env = singleton_env();
+	if (child_node->token->id == TK_ASSIGNMENT_WORD && child_node->symbol == CMD_PREFIX)
+		add_to_local(&env->local, ft_strdup(child_node->token->value));
+	else if (child_node->symbol == IO_REDIRECT)
 	{
 		if ((exec_redir(child_node->child, redir_stack)) == 0)
 			return (0);
 	}
-	if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
+	else if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
 		if (child_node->token->id != TK_NEWLINE)
 		{
 			argv[*i] = ft_strdup(child_node->token->value);

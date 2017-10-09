@@ -24,7 +24,6 @@ int			history_load(t_hist *h, t_env *env)
 	char		*line;
 	char		*cat;
 	t_list_d	*list;
-	size_t		len;
 
 	cat = NULL;
 	init_hist_struct(h, env);
@@ -33,7 +32,6 @@ int			history_load(t_hist *h, t_env *env)
 	/* h->fd = fd; */
 	while (get_next_line(fd, &line))
 	{
-		len = ft_strlen(line);
 		if (cat)
 		{
 			cat[ft_strlen(cat) - 1] = '\n';
@@ -41,7 +39,7 @@ int			history_load(t_hist *h, t_env *env)
 		}
 		if (!cat)
 			cat = line;
-		if (charcmp(line, len - 1, '\\'))
+		if (charcmp(cat, ft_strlen(cat) - 1, '\\'))
 			continue ;
 		list = ft_double_lst_create(cat);
 		cat = NULL;

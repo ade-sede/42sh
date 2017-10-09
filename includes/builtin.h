@@ -55,6 +55,18 @@ int				builtin_unalias(t_env *env, const char **argv);
 t_list			*find_alias(t_list *alias, const char *argv, size_t len);
 
 /*
+** In unset.c
+*/
+
+int				builtin_unset(t_env *env, const char **argv);
+
+/*
+** In set.c
+*/
+
+int				builtin_set(t_env *env, const char **argv);
+
+/*
 ** In file history.c
 */
 

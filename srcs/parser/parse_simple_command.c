@@ -42,6 +42,8 @@ static void	complete_assignement_word(t_token *token, t_lexer *lex)
 **	Creates a node from a word token, returns it.
 */
 
+#include <stdio.h>
+
 static t_ast		*ast_create_node_from_word(t_token *token, t_lexer *lex)
 {
 	t_ast	*node;
@@ -54,7 +56,7 @@ static t_ast		*ast_create_node_from_word(t_token *token, t_lexer *lex)
 		node = ast_create_node(token, NULL, CMD_NAME);
 	else
 	{
-		if (token->cmd_name)
+		if (lex->cmd_name_open)
 			node = ast_create_node(token, NULL, CMD_PREFIX);
 		else
 			node = ast_create_node(token, NULL, CMD_SUFFIX);

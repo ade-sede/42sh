@@ -59,7 +59,8 @@ void	exec(t_env *env, const char **argv, t_lst_head *head)
 	if (*argv != NULL)
 	{
 		if (!(exec_builtin(env, argv, head)))
-			fork_exec_bin(env, argv, head); }
+			fork_exec_bin(env, argv, head);
+	}
 	else
 		env->previous_exit = EXIT_FAILURE;
 	while (argv[index] != NULL)

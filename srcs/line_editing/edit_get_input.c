@@ -65,7 +65,6 @@ char	*edit_get_input(void)
 	while (42)
 	{
 		l->old_pos = l->pos;
-		logwrite("log/def", __func__, "%c\n", l->buff[l->pos]);
 		keycode = 0;
 		read(0, &keycode, 1);
 		if (abort_opening)
