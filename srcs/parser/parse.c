@@ -43,17 +43,6 @@ int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 	int		reopen;
 
 	reopen = 0;
-	//if (*ast)
-		//read_tree(*ast);
-	if (*ast && (*ast)->token && TK_IS_SEP((*ast)->token->id))
-	{
-#ifdef REOPEN_DEBUG
-		printf("tk is sep complete complexe command\n");
-#endif
-		*ast = complete_complexe_command(*ast, token_list, &reopen);
-		if (reopen)
-			return (reopen);
-	}
 	while ((token = *token_list ? (*token_list)->data : NULL))
 	{
 		if (TK_IS_SEP(token->id))

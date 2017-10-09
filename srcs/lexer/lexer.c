@@ -116,8 +116,6 @@ t_token			*start_lex(t_lexer *lex, int *reopen)
 		return (NULL);
 	if (lex->state != DQUOTED && lex->state != QUOTED)
 		lex->state = start_token(lex, &lex->token_start);
-//	if (lex->state == DQUOTED && lex->state == QUOTED)
-		printf("\nreopening line editing {%s}\n", lex->line + lex->index);
 	if (lex->state == INPUT_END)
 		return (NULL);
 	while ((ret = token_match(lex, lex->token_start)) == -1)

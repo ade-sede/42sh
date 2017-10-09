@@ -33,6 +33,5 @@ void		reopen_line_editing(t_lexer *lex, int res_lexer, int res_parser)
 	lex->line = ft_strchange((char*)lex->line, \
 			ft_strjoin((char*)lex->line, new_command));
 	
-	printf("|%s|", lex->line);
 	free(new_command);
 }

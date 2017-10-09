@@ -126,7 +126,6 @@ void	lex_and_parse(char *buff)
 	while (42)
 	{
 		res_lexer = lex_all(&lex, &token_list);
-		lexer_debug(token_list);
 		res_parser = ast_parse(&ast, &head, &token_list);
 		if (res_parser == PARSER_ERROR)
 			return ;
@@ -136,7 +135,8 @@ void	lex_and_parse(char *buff)
 			if (abort_opening)
 				return ;
 			ast = flush_tree(ast);
-			head = NULL; // TODO: attention leaks
+			ft_double_lst_remove(&head, free_pipe);
+			head = NULL;
 		}
 		if (res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS)
 			break;
@@ -147,13 +147,13 @@ void	lex_and_parse(char *buff)
 			read_tree(ast);
 #endif
 	conf_term_normal();
-	//ft_simple_lst_remove(&lex.stack, NULL);
 	exec_tree(ast, head);
 	ft_strdel((char **)&lex.line);
 	conf_term_canonical();
 	ast = flush_tree(ast);
 	if (head != NULL)
 		ft_remove_head(&head, free_pipe);
+	ft_simple_lst_remove(&lex.stack, free_token);
 	free(buff);
 }
 

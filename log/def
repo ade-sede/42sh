@@ -31387,4 +31387,2453 @@ libft"
 [0mFrom [32medit_refresh_line [34m##
 [0mexit
 [34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0me
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexit
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m;
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m;s
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m;
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+ca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+c
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | &
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls &
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls &|
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls *
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls **
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls *
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | !
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m}
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m}|
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m}
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m|
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m| 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m| :
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m| 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m| :
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m|
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m| 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m| "
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | "
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0me
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexit
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+ca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+c
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | "
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mf
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfds
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsf
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsfs
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsfsd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsfsdd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsfsddf
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsfsddfs
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsfsddfsd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsfsddfsdf
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsfsddfsdfs
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mfdsfsddfsdfs"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | "
+fdsfsddfsdfs"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mll
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mlls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mll
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m-
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m--
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m-
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mj
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mjl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mjls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mjl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mj
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > a
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m(
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | g
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | gr
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | gre
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep a
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep au
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep aut
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep aute
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteu
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur &
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur &&
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur &&  
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && ec
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && ech
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && echo
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && echo 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && echo
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && ech
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && ec
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur && 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur &&
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur &
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteur
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep auteu
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep aute
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep aut
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep au
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep a
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | grep
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | gre
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | gr
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | g
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mg
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgr
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrp
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgr
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgre
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep a
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep au
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep aut
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep aute
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteu
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur &
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur &&
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur && 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur && l
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur && ls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur && l
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur && 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep auteur &&
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls  
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mg
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgr
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgre
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep T
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep TO
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep TOD
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mgrep TODO
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+grep auteur &&
+ls |
+grep TODO
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+grep auteur &&
+ls |
+grep TODO
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m>
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+grep auteur &&
+ls |
+grep TODO
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mals > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0maals > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0maasls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0maasdls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0maasdfls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0maasdls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0maasls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0maals > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mals > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclh
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhb
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbh
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbheb
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebb
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbih
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbih
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihs
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihsd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihsdj
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihsdjk
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihsdjkf
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihsdjkfl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihsdjkfjl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihsdjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihsjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbihjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbijkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhejkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcljkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mjkfjdl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mjkfjd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mjkfj
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mjkf
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mjk
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mj
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbih
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbih
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebbi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhebb
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbheb
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbhe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhbh
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclhb
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mclh
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcl
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > a
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe '
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe ' 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe '
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe ;
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe ; 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe ;
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qwe
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > qw
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > q
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls > 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls >
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls "
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ms
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0msa
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0msad
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0msada
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0msadas
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0msadasd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0msadasds
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0msadasdsa
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0msadasdsad
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0msadasdsad"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mj
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mt
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mto
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mtou
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mtouc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mtouch
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mtouch 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mtouch "
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mtouch "a
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mtouch "av
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mtouch "avc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mr
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm a
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm a
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm a
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm \"avc$'\n'\"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm \"avc$'\n'\"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm \"avc$'\n'\"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm \"avc$'\n'\"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm \"avc$'\n'\"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mrm \"avc$'\n'\"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls "
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0md
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mda
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdas
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasa
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasad
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasads
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsda
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsdas
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsdas"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsdas
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsdas"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsdas
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsdas 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsdas "
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsdas " 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mdasadsdas " "
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ma
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mad
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mads
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsda
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsdas
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsdasd
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsdasda
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsdasdas
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsdasdasa
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsdasdasad
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsdasdasads
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0madsdasdasads"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls "
+dasadsdas " "
+adsdasdasads"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0me
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexit
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0me
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexit
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat-
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat-e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0me
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexit
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e|
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcaa
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat-
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat-e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0me
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexit
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0me
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexit
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls "
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m"
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | c
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | ca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | c
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | ca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | cat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | cat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | cat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | c
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | ca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0m
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0me
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexit
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mc
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mcat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0ml
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | c
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | ca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e |
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | c
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | ca
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | cat
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | cat 
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | cat -
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mls | cat -e | cat -e
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0me
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexo
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexot
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexo
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mex
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexi
+[34m##
+[0mFrom [32medit_refresh_line [34m##
+[0mexit
+[34m##
 [0m
