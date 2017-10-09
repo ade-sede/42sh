@@ -113,6 +113,16 @@ void	lex_and_parse(char *buff)
 	while (!done)
 	{
 		res_lexer = lex_all(&lex, &token_list);
+		t_list	*test;
+		t_token	*token;
+
+		test = token_list;
+		while (test)
+		{
+			token = test->data;
+			dprintf(2, MAG"#"CYN"%s"MAG"# @ %d\n"RESET, token->value, token->id);//			REMOVE		
+			test = test->next;
+		}
 		res_parser = ast_parse(&ast, &head, &token_list);
 //		token_list = ft_last_simple_lst(token_list);
 		if (res_parser == PARSER_ERROR)

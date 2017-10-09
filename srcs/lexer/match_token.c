@@ -12,6 +12,8 @@
 **	and putting lex->index on the first char of the next potential token.
 */
 
+#include <stdio.h>
+
 static int	match_part_1(t_lexer *lex, size_t token_start)
 {
 	int		ret;
