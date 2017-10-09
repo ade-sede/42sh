@@ -7,6 +7,7 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
+#include "failure.h"
 
 /*
 **	The function exec_simple_command will execute a command, step by step.

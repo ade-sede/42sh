@@ -20,7 +20,7 @@ char		**env_create_environ(const char **original, size_t *new_size)
 
 	env = singleton_env();
 	original_size = (original == NULL) ? 0 : ft_arraylen(original);
-	new_environ = ft_arraydup_env_local(original, &env->local);
+	new_environ = ft_arraydup(original);
 	if (new_size != NULL)
 		*new_size = original_size;
 	return (new_environ);

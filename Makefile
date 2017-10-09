@@ -58,7 +58,6 @@ SRC_FILE = \
 	env/remove_var_from_local.c \
 	env/t_env.c \
 	env/value_of_local.c \
-	env/ft_arraydup_env_local.c \
 	\
 	exec/exec_bin.c \
 	exec/exec_heredoc.c \

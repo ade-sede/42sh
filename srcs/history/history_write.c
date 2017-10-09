@@ -49,8 +49,6 @@ void	history_write_to_histfile(void)
 	last = (!h->list) ? NULL : h->list->last;
 	while (last)
 	{
-		dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, last->data);//			REMOVE		
-		/* write(fd, last->data, ft_strlen(last->data)); */
 		write_to_hist(last->data, fd);
 		write(fd, "\n", 1);
 		last = last->prev;
