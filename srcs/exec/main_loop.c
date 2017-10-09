@@ -138,6 +138,7 @@ void	lex_and_parse(char *buff)
 		{
 			reopen_line_editing(&lex, res_lexer, res_parser);
 			ft_remove_head(&head, free_pipe);
+			ast = flush_tree(ast);
 			if (abort_opening)
 			{
 				ft_strdel((char **)&lex.line);
@@ -161,7 +162,6 @@ void	lex_and_parse(char *buff)
 	if (head != NULL)
 		ft_remove_head(&head, free_pipe);
 	ft_simple_lst_remove(&lex.stack, free_token);
-	free(buff);
 }
 
 void	main_loop(t_env *env)
@@ -176,7 +176,6 @@ void	main_loop(t_env *env)
 					singleton_hist(), &edit_set_signals_open));
 		if (*buff != 0)
 			lex_and_parse(buff);
-		else
-			free(buff);
+		free(buff);
 	}
 }

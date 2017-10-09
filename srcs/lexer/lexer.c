@@ -92,7 +92,7 @@ int			lex_all(t_lexer *lex, t_list **token_list)
 		dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
 #endif
 		if ((node = exec_expand(token)))
-			lex->stack = node;
+			;
 		else
 			node = ft_simple_lst_create(token);
 		ft_simple_lst_pushback(&lex->stack, node);

@@ -28,10 +28,8 @@ void		reopen_line_editing(t_lexer *lex, int res_lexer, int res_parser)
 		load_prompt(env, line, "PS2", "dquote> ");
 	else if (res_lexer == '\'')
 		load_prompt(env, line, "PS3", "quote> ");
-	new_command = ft_strdup(line_editing_get_input(line, \
-			singleton_hist(), &edit_set_signals_reopen));
+	new_command = line_editing_get_input(line, \
+			singleton_hist(), &edit_set_signals_reopen);
 	lex->line = ft_strchange((char*)lex->line, \
 			ft_strjoin((char*)lex->line, new_command));
-	
-	free(new_command);
 }

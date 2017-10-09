@@ -45,8 +45,11 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
 	token = *token_list ? (*token_list)->data : NULL;
 	*token_list = *token_list ? (*token_list)->next : 0;
 	if ((left_branch = ast) == NULL)
+	{
+		*reopen = PARSER_ERROR;
 		return ((void*)(long)investigate_error("Parse error near", \
 					token->value, 0));
+	}
 	if (!(right_branch = create_right_branch(token, token_list, reopen)))
 		return (flush_tree(left_branch)); //TODO: FRee ou pas Free
 	cc = ast_create_node(token, NULL, COMPLEXE_COMMAND);

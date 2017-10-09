@@ -10,3 +10,7 @@ cat -e
 
 ls ; // fait un retour erreur
 ls | "
+
+
+cat /dev/urandom && cat
+ls *

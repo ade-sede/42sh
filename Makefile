@@ -172,7 +172,7 @@ ifeq ($(ASAN),yes)
 	SANITIZER ?= -fsanitize=address -fno-omit-frame-pointer
 endif
 OPTIMIZATION ?= -O0
-CFLAGS ?= -g -Wall -Wextra -Werror
+CFLAGS ?= -g3 -Wall -Wextra -Werror
 CC ?= gcc
 LDFLAGS = -L$(LIB_DIR) -lft -ltermcap
 INCLUDES = $(LOCAL_INC) $(LIB_INC)
