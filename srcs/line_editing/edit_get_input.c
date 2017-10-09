@@ -65,13 +65,14 @@ char	*edit_get_input(void)
 	while (42)
 	{
 		l->old_pos = l->pos;
+
 #ifdef COOR_DEBUG
 		t_line *line = l;
 		t_coor	pos;
 		char	c = line->buff[line->pos];
 
 		pos = get_char_visual_coor(line, line->pos);
-		logwrite(__func__, "Line->buff["YEL"%d"RESET"] = "MAG"#"CYN"%c"MAG"#"RESET" @ {"PNK"%d "RESET";"PNK"%d"RESET"}\n", line->pos, c, pos.x, pos.y);
+		logwrite("log/def", __func__, "Line->buff["YEL"%d"RESET"] = "MAG"#"CYN"%c"MAG"#"RESET" @ {"PNK"%d "RESET";"PNK"%d"RESET"}\n", line->pos, c, pos.x, pos.y);
 #endif
 		keycode = 0;
 		read(0, &keycode, 1);
