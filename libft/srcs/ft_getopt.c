@@ -52,7 +52,8 @@ int			my_getopt(int argc, char *const argv[], const char *optstring,
 	ext->optarg = NULL;
 	if (ext->optind >= argc)
 		return (-1);
-	if (*argv[ext->optind] != '-' || ft_strlen(argv[ext->optind]) == 1)
+	if (*argv[ext->optind] != '-' || *argv[ext->optind] != '+' ||
+			ft_strlen(argv[ext->optind]) == 1)
 		return (-1);
 	if ((ft_strcmp(argv[ext->optind], "--")) == 0)
 	{
