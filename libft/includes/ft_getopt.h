@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   my_getopt.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bmickael <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/11 01:37:54 by bmickael          #+#    #+#             */
-/*   Updated: 2017/04/11 02:19:51 by bmickael         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MY_GETOPT_H
 # define MY_GETOPT_H
 
@@ -21,11 +9,8 @@
 ** extension.
 ** If there are no more option characters, getopt() returns -1. Then optind
 ** is the index in argv of the first argv-element that is not an option.
-** In Minishell and maybe 21sh, we only use getopt, but in 42sh; il would be
-** pretty if we implement getopt_long function.
-** optarg, optind, opterr and optopt are originally extern variables, but the
-** 42 norme prohibit them. So I decide to use a structure, first initialised
-** to 0. We provide a special function init_getopt_extern for initialisation.
+** optarg, optind, opterr and optopt are originally extern variables, bundled
+** in a structure.
 */
 
 /*
