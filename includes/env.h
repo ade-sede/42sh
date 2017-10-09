@@ -41,6 +41,7 @@ typedef struct	s_env
 	char			**environ;
 	t_list			**hash_table;
 	t_list			*alias;
+	t_list			*local;
 	t_ternary_tree	*tree;
 	size_t			environ_size;
 	int				previous_exit;
@@ -103,4 +104,9 @@ int				env_free_env(t_env *env);
 int				env_free_env(t_env *env);
 t_env			*singleton_env();
 int				env_copy_env(t_env *new_env, t_env *old_env);
+/*
+**	In file ft_arraydup_env_local.c
+*/
+
+char	**ft_arraydup_env_local(const char **original, t_list **local);
 #endif

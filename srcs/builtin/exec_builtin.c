@@ -15,6 +15,8 @@ static t_builtin	g_builtin[] =
 	{"echo", &builtin_echo},
 	{"alias", &builtin_alias},
 	{"unalias", &builtin_unalias},
+	{"unset", &builtin_unset},
+	{"set", &builtin_set},
 	{NULL, NULL}
 };
 
