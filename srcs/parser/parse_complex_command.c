@@ -26,6 +26,7 @@
 /* } */
 
 int		abort_opening;
+
 static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, int *reopen)
 {
 	t_token		*token;
@@ -39,6 +40,13 @@ static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, i
 		dprintf(2, "token list first token:"""MAG"#"CYN"%s"MAG"#\n"RESET, ((t_token *)((*token_list)->data))->value);
 	}
 #endif
+	while (*token_list && ((t_token*)(*token_list)->data)->id == TK_NEWLINE)
+		*token_list = (*token_list)->next;
+	if (TK_IS_REOPEN_SEP(command_token->id) && (!*token_list))
+	{
+		*reopen = command_token->id;
+		return (NULL);
+	}
 	right_branch = create_simple_command(token_list);
 	if (right_branch && right_branch->child)
 	{
@@ -54,13 +62,6 @@ static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, i
 		investigate_error("Parse error near ", command_token->value, 0);
 		*reopen = PARSER_ERROR;
 		return (flush_tree(right_branch));
-	}
-	if (TK_IS_REOPEN_SEP(command_token->id) && (!command_child || (token && token->id == TK_NEWLINE)))
-	{
-		right_branch = flush_tree(right_branch);
-//		reopen_line_editing(token_list, 0);
-		*reopen = command_token->id;
-		return (NULL);
 	}
 	return (right_branch);
 }
@@ -92,6 +93,8 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
 		//left_branch = flush_tree(left_branch);
 		child = ft_simple_lst_create(left_branch);
 		(cc)->child = child;
+		if (*reopen == PARSER_ERROR)
+			return (flush_tree(cc));
 		//read_tree(cc);
 		return (cc);
 	}

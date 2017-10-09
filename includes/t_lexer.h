@@ -20,6 +20,7 @@ typedef enum
 	BACKSLASH = 92,
 	OPERATOR,
 	EXPAND,
+	NEWLINE,
 	INPUT_END
 }	t_lexer_state;
 

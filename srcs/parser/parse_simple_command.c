@@ -69,6 +69,8 @@ t_ast		*fill_simple_command(t_ast *simple_cmd, t_list **token_list)
 	t_ast	*new_node;
 	t_token	*token;
 
+	while (*token_list && ((t_token*)(*token_list)->data)->id == TK_NEWLINE)
+		*token_list = (*token_list)->next;
 	while ((token = *token_list ? (*token_list)->data : NULL))
 	{
 		if (TK_IS_SEP(token->id))

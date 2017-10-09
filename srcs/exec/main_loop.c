@@ -114,14 +114,16 @@ void	lex_and_parse(char *buff)
 	{
 		res_lexer = lex_all(&lex, &token_list);
 		res_parser = ast_parse(&ast, &head, &token_list);
+//		token_list = ft_last_simple_lst(token_list);
 		if (res_parser == PARSER_ERROR)
 		{
 			printf("parse error lex and parse\n");
 			return ;
 		}
-		if (res_lexer > 0 || TK_IS_SEP(res_parser)) //TODO:ajouter is quoted
+		if (res_lexer > 0 || TK_IS_REOPEN_SEP(res_parser)) //TODO:ajouter is quoted
 		{
-			lex.stack = NULL;
+			/* /1* lex.stack = NULL; *1/ */
+			ft_simple_lst_remove(&lex.stack, NULL);
 			reopen_line_editing(&lex, res_lexer, res_parser);
 			if (abort_opening)
 				return ;
@@ -140,11 +142,8 @@ void	lex_and_parse(char *buff)
 			read_tree(ast);
 #endif
 	conf_term_normal();
+	ft_simple_lst_remove(&lex.stack, NULL);
 	exec_tree(ast, head);
-
-//	if (lex.stack)
-//		ft_simple_lst_remove(&lex.stack, free_token);
-
 	ft_strdel((char **)&lex.line);
 	conf_term_canonical();
 	ast = flush_tree(ast);

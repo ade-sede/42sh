@@ -19,6 +19,11 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 	ret = -1;
 	if (IS_INPUT_END(lex->line[lex->index]) && !(IS_QUOTED(lex->state)))
 		ret = lex->index - 1;
+	else if (lex->state == NEWLINE)
+	{
+		if (lex->line[lex->index] != '\n')
+			ret = (lex->index - 1);
+	}
 	else if (lex->state == EXPAND)
 	{
 		if (match_expand(lex, token_start))

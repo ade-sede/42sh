@@ -117,7 +117,10 @@ t_token			*start_lex(t_lexer *lex, int *reopen)
 	if (lex->line[lex->index] == '\0')
 		return (NULL);
 	if (lex->state != DQUOTED && lex->state != QUOTED)
+	{
+		lex->state = WORD;
 		lex->state = start_token(lex, &token_start);
+	}
 	if (lex->state == INPUT_END)
 		return (NULL);
 	while ((ret = token_match(lex, token_start)) == -1)
@@ -147,6 +150,7 @@ int				start_token(t_lexer *lex, size_t *token_start)
 	while (lex->line[lex->index] && (IS_WHITESPACE(lex->line[lex->index]) \
 				&& lex->line[lex->index] != '\n'))
 		lex->index++;
+	dprintf(2, "%d\n", lex->line[lex->index]);
 	*token_start = lex->index;
 	ret = update_state(lex);
 	lex->index++;
@@ -163,6 +167,8 @@ int				update_state(t_lexer *lex)
 {
 	if (charcmp(lex->line, lex->index, '\\'))
 		return (lex->line[lex->index]);
+	if (charcmp(lex->line, lex->index, '\n'))
+			return (NEWLINE);
 	if (IS_QUOTED(lex->line[lex->index]))
 		return (lex->line[lex->index]);
 	else if (IS_OPERATOR(lex->line[lex->index]))
