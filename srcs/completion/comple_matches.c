@@ -48,6 +48,16 @@ static t_lexer	get_lex_line_cursor(t_line *line)
 	return (lex);
 }
 
+if (char cursor)
+	if /
+		file	
+	if -> token->cmd_name == 1
+	bin
+	else 
+	file
+if (!char cursor)
+	if -> lex.cmd_name_open
+	b
 char			**comple_matching_cursorword(t_line *line, t_comple *c)
 {
 	t_lexer		lex;
@@ -56,6 +66,9 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c)
 	char		**res;
 
 	lex = get_lex_line_cursor(line);
+	res_lexer = lex_all(&lex, &token_list);
+
+
 	if (ft_strchr(c->current_word, '/'))
 		res = comple_file_matches(line, c);
 	/* else if (!token_list->next) */
