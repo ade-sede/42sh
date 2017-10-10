@@ -58,5 +58,6 @@ t_lexer		init_lexer(const char *line)
 	lex.reopen = 1;
 	lex.state = DEFAULT;
 	lex.last_id = TK_WORD;
+	lex.cmd_name_open = 1;
 	return (lex);
 }
