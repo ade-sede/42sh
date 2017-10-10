@@ -34,15 +34,14 @@ static void	abort_simple_command(char **argv)
 	singleton_env()->previous_exit = EXIT_FAILURE;
 }
 
-#include <stdio.h>
-
 static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 		char **argv, size_t *i)
 {
 	t_env	*env;
 
 	env = singleton_env();
-	if (child_node->token->id == TK_ASSIGNMENT_WORD && child_node->symbol == CMD_PREFIX)
+	if (child_node->token->id == TK_ASSIGNMENT_WORD &&
+			child_node->symbol == CMD_PREFIX)
 		add_to_local(&env->local, ft_strdup(child_node->token->value));
 	else if (child_node->symbol == IO_REDIRECT)
 	{
@@ -72,7 +71,7 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 	argv = ft_memalloc(sizeof(*argv) * (ft_lst_len(child_list) + 1));
 	while (child_list)
 	{
-		if ((ret = treat_node(child_list->data, \
+		if ((ret = treat_node(child_list->data,
 						&redir_stack, (char**)argv, &i)) == 0)
 			break ;
 		child_list = child_list->next;

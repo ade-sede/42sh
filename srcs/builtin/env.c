@@ -3,6 +3,7 @@
 #include "libft.h"
 #include "hash_table.h"
 #include "failure.h"
+#include "builtin.h"
 
 static const char	**handle_i(t_env *env, const char **argv)
 {
@@ -79,7 +80,8 @@ int					builtin_env(t_env *old_env, const char **argv)
 	else
 	{
 		create_hash_table(&new_env);
-		fork_exec_bin(&new_env, argv, NULL);
+		if (!(exec_builtin(&new_env, argv, NULL)))
+			fork_exec_bin(&new_env, argv, NULL);
 	}
 	env_free_env(&new_env);
 	return (EXIT_SUCCESS);

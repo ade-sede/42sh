@@ -42,6 +42,8 @@ typedef struct	s_env
 	t_list			**hash_table;
 	t_list			*alias;
 	t_list			*local;
+	t_list			*pos_par;
+	long			option;
 	t_ternary_tree	*tree;
 	size_t			environ_size;
 	int				previous_exit;

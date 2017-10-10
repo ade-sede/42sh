@@ -72,6 +72,8 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 		{
 			env->child_pid = child;
 			waitpid(child, &ret, WUNTRACED);
+			if (WIFSIGNALED(ret) == 1)
+				write(1, "\n", 1);
 			return (env->previous_exit = WEXITSTATUS(ret));
 		}
 	}
