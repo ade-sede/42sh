@@ -80,7 +80,7 @@ int					builtin_env(t_env *old_env, const char **argv)
 	else
 	{
 		create_hash_table(&new_env);
-		if (!(exec_builtin(&new_env, argv, NULL)))
+		/* if (!(exec_builtin(&new_env, argv, NULL))) */
 			fork_exec_bin(&new_env, argv, NULL);
 	}
 	env_free_env(&new_env);
