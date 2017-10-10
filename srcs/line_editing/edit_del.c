@@ -24,3 +24,14 @@ int	edit_backspace(t_line *line)
 	edit_refresh_cursor(line);
 	return (1);
 }
+
+int edit_del(t_line *line)
+{
+	if (line->pos != line->len)
+	{
+		ft_memmove((void*)(line->buff + line->pos), (void*)(line->buff + line->pos + 1), line->len - line->pos + 1);
+		line->len--;
+		edit_refresh(line);
+	}
+	return (1);
+}	

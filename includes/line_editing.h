@@ -15,7 +15,7 @@
 # define KEY_LEFT 0x445B1B
 # define KEY_ENTER 0xA
 # define KEY_BACKSPACE 0x7F
-# define KEY_DELETE 0x7E335B1B
+# define KEY_DELETE 2117294875
 # define KEY_HOME 4741915
 # define KEY_END 4610843
 # define KEY_TAB 9
@@ -61,6 +61,7 @@
 
 extern int	abort_opening;
 
+int		 edit_del(t_line *line);
 void	reopen_line_editing(t_lexer *lex, int res_lexer, int res_parser);
 void	term_putstr(t_line *line);
 void	edit_handle_sigint_reopen(int signum);

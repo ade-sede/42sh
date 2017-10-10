@@ -45,6 +45,7 @@ int				check_alias(t_lexer *lex, t_token *token);
 */
 
 void			parameter_expansion(t_env *env, t_token *token);
+t_list			*pathname_expansion(t_token *token);
 
 /*
 **	In file srcs/lexer/expand_tild.c

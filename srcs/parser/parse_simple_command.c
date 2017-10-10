@@ -43,7 +43,7 @@ static void	complete_assignement_word(t_token *token, t_list **token_list)
 **	Creates a node from a word token, returns it.
 */
 
-static t_ast		*ast_create_node_from_word(t_token *token, t_list **token_list)
+static t_ast		*ast_create_node_from_word(t_token *token, t_list **token_list, int *cmd_name_open)
 {
 	t_ast	*node;
 
@@ -52,12 +52,15 @@ static t_ast		*ast_create_node_from_word(t_token *token, t_list **token_list)
 		complete_assignement_word(token, token_list);
 	if ((token->id == TK_WORD || token->type == EXPAND) \
 			&& token->cmd_name)
+	{
 		node = ast_create_node(token, NULL, CMD_NAME);
+		*cmd_name_open = FALSE;
+	}
 	else
 	{
-		/* if (lex->cmd_name_open) */
-			/* node = ast_create_node(token, NULL, CMD_PREFIX); */
-		/* else */
+		if (*cmd_name_open)
+			node = ast_create_node(token, NULL, CMD_PREFIX);
+		else
 			node = ast_create_node(token, NULL, CMD_SUFFIX);
 	}
 	return (node);
@@ -66,9 +69,11 @@ static t_ast		*ast_create_node_from_word(t_token *token, t_list **token_list)
 #include <stdio.h>
 t_ast		*fill_simple_command(t_ast *simple_cmd, t_list **token_list)
 {
+	int		cmd_name_open;
 	t_ast	*new_node;
 	t_token	*token;
 
+	cmd_name_open = TRUE;
 	while (*token_list && ((t_token*)(*token_list)->data)->id == TK_NEWLINE)
 		*token_list = (*token_list)->next;
 	while ((token = *token_list ? (*token_list)->data : NULL))
@@ -84,7 +89,7 @@ t_ast		*fill_simple_command(t_ast *simple_cmd, t_list **token_list)
 			}
 			else
 			{
-				new_node = ast_create_node_from_word(token, token_list);
+				new_node = ast_create_node_from_word(token, token_list, &cmd_name_open);
 				*token_list = *token_list ? (*token_list)->next : 0;
 				ft_simple_lst_pushback(&((simple_cmd)->child), \
 						ft_simple_lst_create(new_node));

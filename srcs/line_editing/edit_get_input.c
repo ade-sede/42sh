@@ -18,6 +18,7 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_V, &enter_visual_mode},
 	{KEY_ALT_P, &paste},
 	{KEY_CTRL_D, &control_d},
+	{KEY_DELETE, &edit_del},
 	{0, NULL}
 };
 
@@ -55,6 +56,7 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 
 int	abort_opening;
 
+#include <stdio.h>
 char	*edit_get_input(void)
 {
 	unsigned long	keycode;
