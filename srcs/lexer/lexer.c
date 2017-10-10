@@ -178,7 +178,7 @@ int				update_state(t_lexer *lex)
 **	exec_expand creer un t_list a partir de la valeur etendu de du token.
 */
 
-static size_t	get_ret_size(const char *line, size_t start, size_t end)
+size_t	get_ret_size(const char *line, size_t start, size_t end)
 {
 	size_t	ret_size;
 
@@ -195,7 +195,7 @@ static size_t	get_ret_size(const char *line, size_t start, size_t end)
 	return (ret_size);
 }
 
-static char		*create_value(const char *line, size_t start, size_t end)
+char		*create_value(const char *line, size_t start, size_t end)
 {
 	size_t	ret_size;
 	char	*value;
@@ -219,8 +219,8 @@ t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	char	*value;
 	t_token	*token;
 
-	/* value = ft_strsub(lex->line, token_start, token_end - token_start + 1); */
-	value = create_value(lex->line, token_start, token_end);
+	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
+	/*value = create_value(lex->line, token_start, token_end);*/
 	token = create_token(value, lex->state, lex->line[lex->index]);
 	token->id = lex_get_token_id(lex, token);
 	lex->last_id = token->id;

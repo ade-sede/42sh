@@ -18,7 +18,6 @@ static t_list	*get_globbed_tokens(t_list *list)
 	first = list;
 	while (list)
 	{
-		dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, list->data);//			REMOVE		
 		list->data = create_token(list->data, 0, 0);
 		list = list->next;
 	}
@@ -42,12 +41,15 @@ static t_list	*pathname_expansion(t_token *token)
 	t_token	*token_gen;
 
 	ret = NULL;
+	if (!ft_strchr(token->value, '*') && !ft_strchr(token->value, '[') && !ft_strchr(token->value, '{'))
+		return (NULL);
 	if (token->type != QUOTED && token->type != DQUOTED)
 	{
 		gen = get_globbed_tokens(expand_curly_brackets(token->value));
 		while (gen)
 		{
 			token_gen = gen->data;
+//			dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, token_gen->value);//			REMOVE		
 			glob_ret = get_globbed_tokens(glob(token_gen->value));
 			ft_simple_lst_pushback(&ret, glob_ret);
 			gen = gen->next;
