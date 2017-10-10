@@ -15,13 +15,7 @@ int		control_d(t_line *line)
 		ft_putchar('\n');
 		exit(0);
 	}
-	if (line->pos != line->len)
-	{
-		ft_memmove((void*)(line->buff + line->pos), (void*)(line->buff + line->pos + 1), line->len - line->pos + 1);
-		line->len--;
-		edit_refresh(line);
-	}
-	return (1);
+	return (edit_del(line));
 }
 
 char	*control_d_heredoc(t_line *line)
