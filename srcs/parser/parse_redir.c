@@ -55,7 +55,7 @@ static int	pushback_redir(t_list *child_list, int expected, t_list **token_list,
 		if (expected == 1)
 		{
 			if (token->id != TK_NAME && token->id != TK_WORD)
-				return (investigate_error("Parse error near ",  token->value, 0));
+				return (investigate_error(NULL, "Parse error near ",  token->value, 0));
 			ft_simple_lst_pushback(&child_list, \
 					ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 			if (heredoc)
@@ -68,7 +68,7 @@ static int	pushback_redir(t_list *child_list, int expected, t_list **token_list,
 		--expected;
 	}
 	if (expected != 0)
-		return (investigate_error("Parse error near ",  token->value, 0));
+		return (investigate_error(NULL, "Parse error near ",  token->value, 0));
 	return (1);
 }
 

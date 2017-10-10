@@ -52,6 +52,7 @@ t_lexer		init_lexer(const char *line)
 {
 	t_lexer		lex;
 
+	ft_memset(&lex, 0, sizeof(t_lexer));
 	lex.line = ft_strdup(line);
 	lex.index = 0;
 	lex.stack = NULL;

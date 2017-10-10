@@ -55,7 +55,7 @@ static t_ast		*ast_create_node_from_word(t_token *token, t_list **token_list)
 		node = ast_create_node(token, NULL, CMD_NAME);
 	else
 	{
-		if (token->cmd_name)
+		if (lex->cmd_name_open)
 			node = ast_create_node(token, NULL, CMD_PREFIX);
 		else
 			node = ast_create_node(token, NULL, CMD_SUFFIX);

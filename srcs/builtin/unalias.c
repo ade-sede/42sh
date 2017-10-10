@@ -15,7 +15,7 @@ int			builtin_unalias(t_env *env, const char **argv)
 	ret = EXIT_SUCCESS;
 	argc = ft_arraylen(argv);
 	if (argc == 1)
-		return (investigate_error(NULL, "unalias : Argument required", EXIT_FAILURE));
+		return (investigate_error(NULL, NULL, "unalias : Argument required", EXIT_FAILURE));
 	while (++i < argc)
 	{
 		node = find_alias(env->alias, argv[i], ft_strlen(argv[i]));
@@ -25,7 +25,7 @@ int			builtin_unalias(t_env *env, const char **argv)
 			ret = EXIT_SUCCESS;
 		}
 		else
-			ret = investigate_error(NULL, "alias not found : ", EXIT_FAILURE);
+			ret = investigate_error(NULL, NULL, "alias not found : ", EXIT_FAILURE);
 	}
 	return (ret);
 }

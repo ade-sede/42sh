@@ -26,6 +26,8 @@ SRC_FILE = \
 	builtin/setenv.c \
 	builtin/unalias.c \
 	builtin/unsetenv.c \
+	builtin/unset.c \
+	builtin/set.c \
 	\
 	completion/comple_bin_matches.c \
 	completion/comple_escape.c \
@@ -43,14 +45,19 @@ SRC_FILE = \
 	completion/ternary_search_tree.c \
 	completion/ternary_search_tree_add.c \
 	\
+	env/add_to_local.c \
 	env/add_var.c \
 	env/env_create_completion_tree.c \
 	env/environ.c \
+	env/key_of_local.c \
 	env/load_base_env.c \
+	env/local_get_var.c \
 	env/prompt.c \
 	env/prompt_zsh.c \
 	env/remove_var.c \
+	env/remove_var_from_local.c \
 	env/t_env.c \
+	env/value_of_local.c \
 	\
 	exec/exec_bin.c \
 	exec/exec_heredoc.c \
@@ -105,7 +112,8 @@ SRC_FILE = \
 	\
 	line_editing/conf_term.c \
 	line_editing/edit_reopen.c \
-	line_editing/control_d.c \
+	line_editing/edit_write.c \
+	line_editing/edit_control_d.c \
 	line_editing/edit_copy_paste.c \
 	line_editing/edit_add.c \
 	line_editing/edit_del.c \
@@ -153,7 +161,8 @@ INCLUDES_FILES = \
 	parser.h \
 	pipe.h \
 	t_lexer.h \
-	t_token.h
+	t_token.h \
+	local.h
 
 NAME ?= 21sh
 
