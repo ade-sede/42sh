@@ -34,7 +34,7 @@ static void	term_write_char(t_line *line, size_t i)
 	}
 }
 
-void	term_putstr(t_line *line)
+void		term_putstr(t_line *line)
 {
 	size_t	i;
 	t_coor	pos;
@@ -51,11 +51,11 @@ void	term_putstr(t_line *line)
 			pos = get_char_visual_coor(line, i);
 			l_pos = get_char_visual_coor(line, i - 1);
 			nb_newl = 1;
-			if (pos.x == 0 && line->buff[i - 1] != '\n' && l_pos.x != (int)line->ws_col)
+			if (pos.x == 0 && line->buff[i - 1] != '\n' &&
+					l_pos.x != (int)line->ws_col)
 				nb_newl = 2;
 			write(2, "\n\n", nb_newl);
 		}
 		++i;
 	}
 }
-
