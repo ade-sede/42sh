@@ -9,7 +9,6 @@
 #include "color.h"
 #include "my_signal.h"
 
-
 #include "failure.h"
 #include <stdio.h>
 #include <errno.h>

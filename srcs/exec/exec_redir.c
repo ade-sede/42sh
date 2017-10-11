@@ -58,8 +58,8 @@ int		merge_fd(int io_number, char *target, t_list **redir_stack, \
 		target_fd = -2;
 	else
 		target_fd = ft_atoi(target);
-	if (target_fd == -2 || (target_fd >= STDIN_FILENO && (fcntl(target_fd, F_GETFD) \
-				!= -1)))
+	if (target_fd == -2 || (target_fd >= STDIN_FILENO &&
+				(fcntl(target_fd, F_GETFD) != -1)))
 		push_dup(io_number, target_fd, natural_fd, redir_stack);
 	return (1);
 }
