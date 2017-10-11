@@ -179,7 +179,6 @@ int				update_state(t_lexer *lex)
 **	Rajouter le token qu'on vient de creer a lex->stack
 **	exec_expand creer un t_list a partir de la valeur etendu de du token.
 */
-/
 /* size_t	get_ret_size(const char *line, size_t start, size_t end) */
 /* { */
 /* 	size_t	ret_size; */
