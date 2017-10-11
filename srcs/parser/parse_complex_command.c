@@ -6,7 +6,8 @@
 #include "exec.h"
 #include "failure.h"
 
-static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, int *reopen)
+static t_ast	*create_right_branch(t_token *command_token,
+		t_list **token_list, int *reopen)
 {
 	t_token		*token;
 	t_ast		*right_branch;
@@ -28,13 +29,14 @@ static t_ast	*create_right_branch(t_token *command_token, t_list **token_list, i
 	else if (command_token->id != TK_SEMI && command_token->id != TK_DSEMI)
 	{
 		*reopen = PARSER_ERROR;
-		investigate_error(NULL, "Parse error near ", command_token->value, 0);
+		investigate_error(1, "Parse error near ", command_token->value, 0);
 		return (flush_tree(right_branch));
 	}
 	return (right_branch);
 }
 
-t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
+t_ast			*start_complexe_command(t_ast *ast, t_list **token_list,
+		int *reopen)
 {
 	t_ast	*left_branch;
 	t_ast	*right_branch;
@@ -47,11 +49,11 @@ t_ast			*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen)
 	if ((left_branch = ast) == NULL)
 	{
 		*reopen = PARSER_ERROR;
-		return ((void*)(long)investigate_error(NULL, "Parse error near", \
+		return ((void*)(long)investigate_error(1, "Parse error near", \
 					token->value, 0));
 	}
 	if (!(right_branch = create_right_branch(token, token_list, reopen)))
-		return (flush_tree(left_branch)); //TODO: FRee ou pas Free
+		return (flush_tree(left_branch));
 	cc = ast_create_node(token, NULL, COMPLEXE_COMMAND);
 	child = ft_simple_lst_create(left_branch);
 	ft_simple_lst_pushback(&child, ft_simple_lst_create(right_branch));

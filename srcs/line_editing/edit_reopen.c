@@ -20,9 +20,9 @@ void		reopen_line_editing(t_lexer *lex, int res_lexer, int res_parser)
 	else if (res_parser == TK_OR_IF)
 		load_prompt(env, line, NULL, "cmdor> ");
 	else if (res_lexer == '"')
-		load_prompt(env, line, "PS2", "dquote> ");
+		load_prompt(env, line, NULL, "dquote> ");
 	else if (res_lexer == '\'')
-		load_prompt(env, line, "PS3", "quote> ");
+		load_prompt(env, line, NULL, "quote> ");
 	new_command = line_editing_get_input(line, \
 			singleton_hist(), &edit_set_signals_reopen);
 	lex->line = ft_strchange((char*)lex->line, \

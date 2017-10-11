@@ -23,58 +23,56 @@ int		return_failure(const char *str, const char *error_msg)
 
 int		get_logfd(const char *file)
 {
-	int		fd;
+	int			fd;
 
 	fd = open(file, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd < 0)
-	{
-		/* perror(NULL); */
 		return (-1);
-	}
 	return (fd);
 }
 
-int		logwrite(const char *filename, const char *func_name, const char *format, ...)
-{
-	va_list	ap;
-	int		fd;
-	time_t	rawtime;
-	struct tm	*info;
-	char	time_str[26];
+/*
+**int		logwrite(const char *filename, const char *func_name,
+**									const char *format, ...)
+**{
+**	va_list		ap;
+**	int			fd;
+**	time_t		rawtime;
+**	struct tm	*info;
+**	char		time_str[26];
+**
+**	time(&rawtime);
+**	info = localtime(&rawtime);
+**	fd = get_logfd(filename);
+**	strftime(time_str, 26, "%Y-%m-%d %H:%M:%S", info);
+**	if (fd >= 0)
+**	{
+**		va_start(ap, format);
+**		dprintf(fd, "From "GRN"%s "RESET" @ %s"BLU"##\n"RESET,
+**										func_name, time_str);
+**		vdprintf(fd, format, ap);
+**		dprintf(fd, BLU"##\n"RESET);
+**		va_end(ap);
+**		close(fd);
+**		return (1);
+**	}
+**	return (-1);
+**}
+*/
 
-	time (&rawtime);
-	info = localtime(&rawtime);
-	fd = get_logfd(filename);
-	strftime(time_str, 26, "%Y-%m-%d %H:%M:%S", info);
-	if (fd >= 0)
-	{
-		va_start(ap, format);
-		dprintf(fd, "From "GRN"%s "RESET" @ %s"BLU"##\n"RESET, func_name, time_str);
-		vdprintf(fd, format, ap);
-		dprintf(fd, BLU"##\n"RESET);
-		va_end(ap);
-		close(fd);
-		return (1);
-	}
-	return (-1);
-}
-
-int			investigate_error(char *logfile, const char *prefix, const char *custom_error, int return_value)
+int		investigate_error(int log, const char *prefix,
+							const char *custom_error, int return_value)
 {
-	size_t	i;
-	char	*buff;
-	char	*error_name;
+	size_t		i;
+	char		*buff;
+	char		*error_name;
 
 	buff = singleton_error();
 	ft_bzero(buff, E_BUFSIZE);
-	if (prefix != NULL)
+	if (prefix != NULL && (i = -1))
 	{
-		i = 0;
-		while (prefix[i])
-		{
+		while (prefix[++i])
 			buff[i] = prefix[i];
-			i++;
-		}
 		buff[i++] = ':';
 		buff[i++] = ' ';
 		error_name = custom_error ? (char*)custom_error : get_errno();
@@ -83,9 +81,11 @@ int			investigate_error(char *logfile, const char *prefix, const char *custom_er
 	}
 	else if (custom_error != NULL && prefix == NULL)
 		ft_strcpy(buff, custom_error);
-	if (logfile)
-		logwrite(logfile, __func__, "%s\n", buff);
-	else
+	if (log)
 		ft_putendl_fd(buff, 2);
 	return (return_value == -1 ? errno : return_value);
 }
+/*
+**	if (!log)
+**		logwrite(logfile, __func__, "%s\n", buff);
+*/

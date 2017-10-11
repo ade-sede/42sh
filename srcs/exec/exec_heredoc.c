@@ -33,10 +33,10 @@ static int	heredoc(int io_number, char *poem, t_list **redir_stack)
 	if (io_number == -1)
 		io_number = 0;
 	if (pipe(fd) == -1)
-		return (investigate_error(NULL, "heredoc", NULL, 0));
+		return (investigate_error(1, "heredoc", NULL, 0));
 	write(fd[WRITE_END], poem, ft_strlen(poem));
 	if (close(fd[WRITE_END]) < 0)
-		return (investigate_error(NULL, "close", NULL, 0));
+		return (investigate_error(1, "close", NULL, 0));
 	push_dup(io_number, fd[READ_END], FALSE, redir_stack);
 	free(fd);
 	return (1);

@@ -17,7 +17,7 @@
 **	Getting input for heredoc tokens
 */
 
-static char	*get_heredoc_input(char *value)
+static char		*get_heredoc_input(char *value)
 {
 	char	*buff;
 	char	*cat;
@@ -30,7 +30,8 @@ static char	*get_heredoc_input(char *value)
 	cat = ft_strnew(0);
 	while (1)
 	{
-		buff = line_editing_get_input(singleton_line(), singleton_hist(), &edit_set_signals_reopen);
+		buff = line_editing_get_input(singleton_line(), singleton_hist(),
+												&edit_set_signals_reopen);
 		if (ft_strequ(buff, target) || ft_strchr(buff, 4))
 			break ;
 		cat = ft_strchange(cat, ft_strjoin(cat, buff));
@@ -40,40 +41,46 @@ static char	*get_heredoc_input(char *value)
 	return (cat);
 }
 
-static int	pushback_redir(t_list *child_list, int expected, t_list **token_list, int heredoc)
+static void		expected_one(t_list *child_list, int heredoc, t_token *token)
+{
+	t_ast	*heredoc_node;
+
+	ft_simple_lst_pushback(&child_list, \
+			ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+	if (heredoc)
+	{
+		heredoc_node = (ft_last_simple_lst(child_list))->data;
+		heredoc_node->heredoc_content = get_heredoc_input(token->value);
+	}
+}
+
+static int		pushback_redir(t_list *child_list, int expected,
+										t_list **token_list, int heredoc)
 {
 	t_token	*token;
-	t_ast	*heredoc_node;
 
 	while ((token = (*token_list)->data) && expected != 0)
 	{
 		if (expected == 2)
 		{
-			ft_simple_lst_pushback(&child_list, ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
+			ft_simple_lst_pushback(&child_list,
+				ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
 			if (token->id == TK_HERE)
 				heredoc = TRUE;
 		}
+		if (expected == 1 && token->id != TK_NAME && token->id != TK_WORD)
+			return (investigate_error(1, "Parse error near ", token->value, 0));
 		if (expected == 1)
-		{
-			if (token->id != TK_NAME && token->id != TK_WORD)
-				return (investigate_error(NULL, "Parse error near ",  token->value, 0));
-			ft_simple_lst_pushback(&child_list, \
-					ft_simple_lst_create(ast_create_node(token, NULL, CMD_SUFFIX)));
-			if (heredoc)
-			{
-				heredoc_node = (ft_last_simple_lst(child_list))->data;
-				heredoc_node->heredoc_content = get_heredoc_input(token->value);
-			}
-		}
+			expected_one(child_list, heredoc, token);
 		*token_list = *token_list ? (*token_list)->next : 0;
 		--expected;
 	}
 	if (expected != 0)
-		return (investigate_error(NULL, "Parse error near ",  token->value, 0));
+		return (investigate_error(1, "Parse error near ", token->value, 0));
 	return (1);
 }
 
-static t_ast		*ast_create_node_from_redir(t_token *token, t_list **token_list)
+static t_ast	*ast_create_node_from_redir(t_token *token, t_list **token_list)
 {
 	t_list	*child_list;
 	t_ast	*node;
@@ -99,7 +106,7 @@ static t_ast		*ast_create_node_from_redir(t_token *token, t_list **token_list)
 	return (node);
 }
 
-t_ast		*append_redir(t_ast *root, t_token *token, t_list **token_list)
+t_ast			*append_redir(t_ast *root, t_token *token, t_list **token_list)
 {
 	t_ast	*new_node;
 

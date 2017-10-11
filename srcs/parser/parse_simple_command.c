@@ -19,7 +19,7 @@
 **	character following the first equal sign in token1 is null.
 */
 
-static void	complete_assignement_word(t_token *token, t_list **token_list)
+static void		complete_assignement_word(t_token *token, t_list **token_list)
 {
 	t_token	*next_token;
 	char	*eq_sign;
@@ -28,7 +28,7 @@ static void	complete_assignement_word(t_token *token, t_list **token_list)
 	eq_sign = ft_strchr(token->value, '=');
 	if (*(eq_sign + 1) == 0)
 		*token_list = *token_list ? (*token_list)->next : 0;
-	next_token = (*token_list)->data; //TODO:ATENTION
+	next_token = (*token_list)->data;
 	if ((token = (*token_list)->data))
 	{
 		if (next_token->type == DQUOTED || next_token->type == QUOTED)
@@ -43,7 +43,8 @@ static void	complete_assignement_word(t_token *token, t_list **token_list)
 **	Creates a node from a word token, returns it.
 */
 
-static t_ast		*ast_create_node_from_word(t_token *token, t_list **token_list, int *cmd_name_open)
+static t_ast	*ast_create_node_from_word(t_token *token, t_list **token_list,
+		int *cmd_name_open)
 {
 	t_ast	*node;
 
@@ -66,8 +67,7 @@ static t_ast		*ast_create_node_from_word(t_token *token, t_list **token_list, in
 	return (node);
 }
 
-#include <stdio.h>
-t_ast		*fill_simple_command(t_ast *simple_cmd, t_list **token_list)
+t_ast			*fill_simple_command(t_ast *simple_cmd, t_list **token_list)
 {
 	int		cmd_name_open;
 	t_ast	*new_node;
@@ -77,29 +77,25 @@ t_ast		*fill_simple_command(t_ast *simple_cmd, t_list **token_list)
 	while (*token_list && ((t_token*)(*token_list)->data)->id == TK_NEWLINE)
 		*token_list = (*token_list)->next;
 	while ((token = *token_list ? (*token_list)->data : NULL))
-	{
 		if (TK_IS_SEP(token->id))
 			return (simple_cmd);
+		else if (TK_IS_REDIR(token->id))
+		{
+			if (!(simple_cmd = append_redir(simple_cmd, token, token_list)))
+				return (NULL);
+		}
 		else
 		{
-			if (TK_IS_REDIR(token->id))
-			{
-				if (!(simple_cmd = append_redir(simple_cmd, token, token_list)))
-					return (NULL);
-			}
-			else
-			{
-				new_node = ast_create_node_from_word(token, token_list, &cmd_name_open);
-				*token_list = *token_list ? (*token_list)->next : 0;
-				ft_simple_lst_pushback(&((simple_cmd)->child), \
-						ft_simple_lst_create(new_node));
-			}
+			new_node = ast_create_node_from_word(token, token_list,
+					&cmd_name_open);
+			*token_list = *token_list ? (*token_list)->next : 0;
+			ft_simple_lst_pushback(&((simple_cmd)->child), \
+					ft_simple_lst_create(new_node));
 		}
-	}
 	return (simple_cmd);
 }
 
-t_ast		*create_simple_command(t_list **token_list)
+t_ast			*create_simple_command(t_list **token_list)
 {
 	t_ast	*ast;
 
