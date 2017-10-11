@@ -144,6 +144,9 @@ SRC_FILE = \
 	failure/get_errno_3.c \
 	failure/return_failure.c \
 	\
+	signal/all_signal_dfl.c \
+	signal/all_signal_ign.c \
+	\
 	main.c
 
 INCLUDES_FILES = \
@@ -163,7 +166,8 @@ INCLUDES_FILES = \
 	pipe.h \
 	t_lexer.h \
 	t_token.h \
-	local.h
+	local.h \
+	my_signal.h
 
 NAME ?= 21sh
 
@@ -224,6 +228,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/main.c
 	@/bin/mkdir -p $(OBJ_DIR)/parser
 	@/bin/mkdir -p $(OBJ_DIR)/failure
+	@/bin/mkdir -p $(OBJ_DIR)/signal
 
 clean:
 	@make -C $(LIB_DIR) clean

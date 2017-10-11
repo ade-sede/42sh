@@ -4,6 +4,7 @@
 #include "exec.h"
 #include "hash_table.h"
 #include "failure.h"
+#include "my_signal.h"
 
 /*
 **		We forked, this is called in the child process. Try to use the absolute
@@ -60,16 +61,17 @@ int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
 	cur = (head) ? head->middle : NULL;
 	pr = (cur != NULL) ? cur->data : NULL;
 	pl = (cur && cur->prev) ? cur->prev->data : NULL;
-	no_handle_signals();
 	if ((pl && !pr) || (!pl && !pr))
 	{
 		if ((child = fork()) == 0)
 		{
+			all_signal_dfl();
 			ft_strchr(argv[0], '/') ? ft_exec_bin_absolute(env, argv) : \
 				ft_exec_bin_path(env, argv);
 		}
 		if (child > 0)
 		{
+			no_handle_signals();
 			env->child_pid = child;
 			waitpid(child, &ret, WUNTRACED);
 			if (WIFSIGNALED(ret) == 1)

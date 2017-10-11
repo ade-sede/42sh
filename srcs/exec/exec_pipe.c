@@ -7,7 +7,7 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
-#include <signal.h>
+#include "my_signal.h"
 
 int	p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 {
@@ -20,6 +20,7 @@ int	p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 	}
 	if (child == 0)
 	{
+		all_signal_dfl();
 		close(pr->p[READ_END]);
 		dup2(pr->p[WRITE_END], STDOUT_FILENO);
 		exec_simple_command(ast, head);
@@ -44,6 +45,7 @@ int	p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
 	}
 	if (child == 0)
 	{
+		all_signal_dfl();
 		dup2(pl->p[READ_END], STDIN_FILENO);
 		close(pl->p[WRITE_END]);
 		close(pr->p[READ_END]);
