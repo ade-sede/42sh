@@ -23,6 +23,7 @@
 static int	check_heredoc(t_list *child_list)
 {
 	t_ast	*child_node;
+
 	while (child_list)
 	{
 		child_node = child_list->data;
@@ -32,6 +33,7 @@ static int	check_heredoc(t_list *child_list)
 	}
 	return (0);
 }
+
 static void	abort_simple_command(char **argv)
 {
 	size_t		index;
@@ -62,9 +64,8 @@ static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 			if ((exec_heredoc(child_node->child, redir_stack)) == 0)
 				return (0);
 		}
-		else
-			if ((exec_redir(child_node->child, redir_stack)) == 0)
-				return (0);
+		else if ((exec_redir(child_node->child, redir_stack)) == 0)
+			return (0);
 	}
 	else if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
 		if (child_node->token->id != TK_NEWLINE)

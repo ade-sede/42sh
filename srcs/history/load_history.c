@@ -18,12 +18,22 @@ static void	init_hist_struct(t_hist *h, t_env *env)
 	h->btsearch_buff = ft_strnew(4096);
 }
 
+static void	routine(t_hist *h, char *cat)
+{
+	t_list_d	*list;
+
+	list = ft_double_lst_create(cat);
+	if (h->list == NULL)
+		h->list = ft_create_head(list);
+	else
+		ft_double_lst_add(&h->list, list);
+}
+
 int			history_load(t_hist *h, t_env *env)
 {
 	int			fd;
 	char		*line;
 	char		*cat;
-	t_list_d	*list;
 
 	cat = NULL;
 	init_hist_struct(h, env);
@@ -40,12 +50,8 @@ int			history_load(t_hist *h, t_env *env)
 			cat = line;
 		if (charcmp(cat, ft_strlen(cat) - 1, '\\'))
 			continue ;
-		list = ft_double_lst_create(cat);
+		routine(h, cat);
 		cat = NULL;
-		if (h->list == NULL)
-			h->list = ft_create_head(list);
-		else
-			ft_double_lst_add(&h->list, list);
 	}
 	close(fd);
 	return (1);
