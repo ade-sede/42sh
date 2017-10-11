@@ -80,6 +80,7 @@ char			**comple_matching(t_line *line, t_comple *c)
 	t_lexer		lex;
 	t_token		*token;
 
+	c->to_replace = get_start_word_cursor(line);
 	lex = get_lex_line_cursor(line);
 	token = lex_completion(&lex);
 	res = NULL;

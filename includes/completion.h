@@ -26,6 +26,15 @@ typedef struct	s_comple_func
 	int					(*f)(t_comple *);
 }				t_comple_func;
 
+# define MALLOC_UNIT 4096
+
+typedef struct	s_fourretout
+{
+	char		***matches;
+	char		**cur;
+	int			i;
+}				t_fourretout;
+
 char			*comple_escape(char *input);
 /*
 ** signaux
@@ -60,4 +69,7 @@ char			*get_word_slash(t_line *line);
 char			*get_start_word_cursor(t_line *line);
 void			delete_word(char *to_replace);
 char			*get_current_word_cursor(t_line *line);
+void			comple_bin_match_trip_layer(t_ternary_tree *node,
+				char ***matches, char **cur, size_t size);
+char			**ft_array_string_realloc(char **origin, size_t o_size, size_t n_size);
 #endif

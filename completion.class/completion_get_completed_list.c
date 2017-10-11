@@ -1,8 +1,18 @@
-#include "env.h"
-#include "completion.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   completion_get_completed_list.c                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmickael <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/10 05:14:11 by bmickael          #+#    #+#             */
+/*   Updated: 2017/09/10 05:14:13 by bmickael         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "private_completion.h"
 
-char			**ft_array_string_realloc(char **origin, size_t o_size, size_t n_size)
+static char		**ft_up_realloc(char **origin, size_t o_size, size_t n_size)
 {
 	char **new_str;
 
@@ -22,7 +32,7 @@ static void		comple_bin_matches_extract_tree(t_ternary_tree *node,
 	{
 		if (*i >= *size)
 		{
-			if (!(*matches = ft_array_string_realloc(*matches, *size,
+			if (!(*matches = ft_up_realloc(*matches, *size,
 			(*size + MALLOC_UNIT))))
 				exit(EXIT_FAILURE);
 			*size += MALLOC_UNIT;
@@ -41,9 +51,9 @@ static void		layer(t_ternary_tree *node,
 {
 	if (node->left || node->right)
 	{
-		comple_bin_matches_extract_tree(node, s->matches, i, size);
-		*(s->cur) = ft_realloc(ft_strlen(*s->cur), *s->cur, (s->i + 1) * sizeof(char));
-		(*(s->cur))[s->i] = '\0';
+			comple_bin_matches_extract_tree(node, s->matches, i, size);
+			*(s->cur) = realloc(*(s->cur), (s->i + 1) * sizeof(char));
+			(*(s->cur))[s->i] = '\0';
 	}
 	else if (node->down)
 	{
@@ -86,19 +96,13 @@ static void		comple_bin_match_trip_tree(t_ternary_tree *node,
 		return ;
 }
 
-char			**comple_bin_matches(t_line *line, t_comple *comple)
+void			comple_bin_match_trip_layer(t_ternary_tree *node,
+				char ***matches, char **cur, size_t size)
 {
-	t_fourretout	s;
-	size_t			size;
-	char			*word_cursor;
+	t_fourretout s;
 
-	word_cursor = ft_strdup(comple->current_word);
-	size = 0;
-	s.matches = &comple->matches;
-	s.cur = &comple->current_word;
+	s.matches = matches;
+	s.cur = cur;
 	s.i = 0;
-	comple_bin_match_trip_tree(singleton_env()->tree, &comple->matches, &s, size);
-	(void)line;
-	free(word_cursor);
-	return (*s.matches);
+	comple_bin_match_trip_tree(node, matches, &s, size);
 }
