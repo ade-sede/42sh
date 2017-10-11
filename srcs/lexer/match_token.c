@@ -39,7 +39,7 @@ static int	match_part_1(t_lexer *lex, size_t token_start, int *reopen)
 {
 	int		ret;
 
-	if ((ret = match_part_2(lex, token_start, reopen) )!= -1)
+	if ((ret = match_part_2(lex, token_start, reopen)) != -1)
 		return (ret);
 	if (lex->state == WORD)
 	{
@@ -69,9 +69,9 @@ int			token_match(t_lexer *lex, size_t token_start, int *reopen)
 		return (ret);
 	else if (lex->state == OPERATOR)
 	{
-		if (IS_OPERATOR(lex->line[lex->index]) || \
-				(charcmp(lex->line, lex->index, '-') && \
-				 charcmp(lex->line, lex->index - 1, '<')))
+		if (IS_OPERATOR(lex->line[lex->index]) ||
+				(charcmp(lex->line, lex->index, '-') &&
+				charcmp(lex->line, lex->index - 1, '<')))
 		{
 			if (!match_operator(lex->line, token_start, lex->index))
 				ret = lex->index - 1;

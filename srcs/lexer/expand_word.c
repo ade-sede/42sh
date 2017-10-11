@@ -10,7 +10,6 @@
 **	we're doing quote removal first, cus its easier, but that should come last
 */
 
-#include <stdio.h>
 static t_list	*get_globbed_tokens(t_list *list)
 {
 	t_list	*first;
@@ -33,7 +32,7 @@ static t_list	*get_globbed_tokens(t_list *list)
 **	free_token(token);
 */
 
-t_list	*pathname_expansion(t_token *token, int match_all)
+t_list			*pathname_expansion(t_token *token, int match_all)
 {
 	t_list	*glob_ret;
 	t_list	*gen;
@@ -42,7 +41,8 @@ t_list	*pathname_expansion(t_token *token, int match_all)
 	t_list	*glob_list;
 
 	ret = NULL;
-	if (!ft_strchr(token->value, '*') && !ft_strchr(token->value, '[') && !ft_strchr(token->value, '{'))
+	if (!ft_strchr(token->value, '*') && !ft_strchr(token->value, '[') &&
+			!ft_strchr(token->value, '{'))
 		return (NULL);
 	if (token->type != QUOTED && token->type != DQUOTED)
 	{
@@ -50,7 +50,6 @@ t_list	*pathname_expansion(t_token *token, int match_all)
 		while (gen)
 		{
 			token_gen = gen->data;
-//			dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, token_gen->value);//			REMOVE		
 			if (!(glob_list = glob(token_gen->value)) && match_all)
 				glob_list = ft_simple_lst_create(ft_strdup(token_gen->value));
 			glob_ret = get_globbed_tokens(glob_list);

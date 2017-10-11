@@ -40,52 +40,28 @@
 ** of the lexer.
 */
 
-//void	alias(t_lexer *lex, t_token *token, t_list *forbiden_alias)
-//{
-	//t_list	*list;
-
-	//lex_all(lex);
-	//list = lex->stack;
-	//while (lex->stack)
-	//{
-		//check_alias(lex, list);
-		//list = list->next;
-	//}
-	//ft_simple_lst_pushback(&forbiden_alias, ft_simple_lst_create());
-	//return (alias(lex, forbiden_alias));
-//}
-
-#include <stdio.h>
-
-int			lex_all(t_lexer *lex, t_list **token_list)
-{
-	t_token	*token;
-	t_list	*node;
-	int		reopen;
-
-	reopen = 0;
-	while ((token = start_lex(lex, &reopen)) != NULL)
-	{
-#ifdef LEXER_DEBUG
-		dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, token->value);
-#endif
-		if (!(node = exec_expand(token)))
-			node = ft_simple_lst_create(token);
-		else
-			free_token(token);
-		ft_simple_lst_pushback(&lex->stack, node);
-	}
-	*token_list = lex->stack;
-	if (reopen)
-		return (reopen);
-	return (LEXER_SUCCESS);
-}
+/*
+** void	alias(t_lexer *lex, t_token *token, t_list *forbiden_alias)
+** {
+** t_list	*list;
+**
+** lex_all(lex);
+** list = lex->stack;
+** while (lex->stack)
+** {
+** check_alias(lex, list);
+** list = list->next;
+** }
+** ft_simple_lst_pushback(&forbiden_alias, ft_simple_lst_create());
+** return (alias(lex, forbiden_alias));
+** }
+*/
 
 /*
 **	in all case start_lex will create one token or return NULL
 */
 
-t_token			*start_lex(t_lexer *lex, int *reopen)
+t_token		*start_lex(t_lexer *lex, int *reopen)
 {
 	ssize_t	ret;
 	t_token	*token;
@@ -113,7 +89,7 @@ t_token			*start_lex(t_lexer *lex, int *reopen)
 **	first char of the token.
 */
 
-int				start_token(t_lexer *lex, size_t *token_start)
+int			start_token(t_lexer *lex, size_t *token_start)
 {
 	int		ret;
 
@@ -133,12 +109,12 @@ int				start_token(t_lexer *lex, size_t *token_start)
 **	candidate to expansion is considered to be at the default state 'word'.
 */
 
-int				update_state(t_lexer *lex)
+int			update_state(t_lexer *lex)
 {
 	if (charcmp(lex->line, lex->index, '\\'))
 		return (lex->line[lex->index]);
 	if (charcmp(lex->line, lex->index, '\n'))
-			return (NEWLINE);
+		return (NEWLINE);
 	if (IS_QUOTED(lex->line[lex->index]))
 		return (lex->line[lex->index]);
 	else if (IS_OPERATOR(lex->line[lex->index]))
@@ -155,7 +131,7 @@ int				update_state(t_lexer *lex)
 **	exec_expand creer un t_list a partir de la valeur etendu de du token.
 */
 
-t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end)
+t_token		*tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 {
 	char	*value;
 	t_token	*token;
@@ -175,7 +151,7 @@ t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 **	the token and build the tree.
 */
 
-t_token_id		lex_get_token_id(t_lexer *lex, t_token *token)
+t_token_id	lex_get_token_id(t_lexer *lex, t_token *token)
 {
 	t_token_id	id;
 	int			done;
@@ -185,7 +161,7 @@ t_token_id		lex_get_token_id(t_lexer *lex, t_token *token)
 	if (token->type == OPERATOR)
 		id = lex_id_operator(token->value);
 	else if (token->type == NEWLINE)
-			id = TK_NEWLINE;
+		id = TK_NEWLINE;
 	else if (token->type == WORD)
 	{
 		if (!done)
@@ -194,6 +170,6 @@ t_token_id		lex_get_token_id(t_lexer *lex, t_token *token)
 			done = lex_id_word(lex, token, &id);
 	}
 	else if (token->type == DQUOTED || token->type == QUOTED)
-			lex_id_word(lex, token, &id);
+		lex_id_word(lex, token, &id);
 	return (id);
 }

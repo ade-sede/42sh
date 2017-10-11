@@ -110,6 +110,7 @@ SRC_FILE = \
 	lexer/match_word.c \
 	lexer/t_lexer.c \
 	lexer/t_token.c \
+	lexer/lex_all.c \
 	\
 	line_editing/conf_term.c \
 	line_editing/edit_reopen.c \
