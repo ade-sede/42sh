@@ -1,5 +1,6 @@
-#ifndef AST_H
-# define AST_H
+#ifndef T_AST_H
+# define T_AST_H
+
 # include "t_token.h"
 
 /*

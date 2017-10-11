@@ -10,7 +10,6 @@ int	builtin_exit(t_env *env, const char **argv)
 	int		argc;
 
 	argc = ft_arraylen(argv);
-
 	if (argc == 1)
 	{
 		history_write_to_histfile();
@@ -18,9 +17,11 @@ int	builtin_exit(t_env *env, const char **argv)
 		exit(env->previous_exit);
 	}
 	if (argc > 2)
-		return (investigate_error(NULL, NULL, "exit: to many arguments", EXIT_FAILURE));
+		return (investigate_error(NULL, NULL, "exit: to many arguments",
+					EXIT_FAILURE));
 	else if (!(ft_atoi_safe(argv[1], &exit_status)))
-		return (investigate_error(NULL, NULL, "exit: numeric argument required", EXIT_FAILURE));
+		return (investigate_error(NULL, NULL, "exit: numeric argument required",
+					EXIT_FAILURE));
 	else
 	{
 		history_write_to_histfile();

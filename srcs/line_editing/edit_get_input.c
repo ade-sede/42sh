@@ -55,7 +55,7 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 **	pressed, the displayed line is refreshed.
 */
 
-int	abort_opening;
+int	g_abort_opening;
 
 #include <stdio.h>
 char	*edit_get_input(void)
@@ -70,7 +70,7 @@ char	*edit_get_input(void)
 		l->old_pos = l->pos;
 		keycode = 0;
 		read(0, &keycode, 1);
-		if (abort_opening)
+		if (g_abort_opening)
 			return (edit_exit(l));
 		if (keycode == KEY_CTRL_D && l->heredoc && l->len == 0)
 			return (control_d_heredoc(l));

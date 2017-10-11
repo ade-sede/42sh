@@ -22,7 +22,8 @@ static const char	**apply_opt(t_env *env, const char **argv, int *error)
 		{
 			if (!(*(argv + 1)))
 			{
-				investigate_error(NULL, NULL, "env: option requires an argument -- u", 0);
+				investigate_error(NULL, NULL,
+						"env: option requires an argument -- u", 0);
 				*error = 1;
 				return (argv);
 			}
@@ -80,8 +81,7 @@ int					builtin_env(t_env *old_env, const char **argv)
 	else
 	{
 		create_hash_table(&new_env);
-		/* if (!(exec_builtin(&new_env, argv, NULL))) */
-			fork_exec_bin(&new_env, argv, NULL);
+		fork_exec_bin(&new_env, argv, NULL);
 	}
 	env_free_env(&new_env);
 	return (EXIT_SUCCESS);

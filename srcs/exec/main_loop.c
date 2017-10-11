@@ -12,6 +12,7 @@
 
 #ifdef PARSER_DEBUG
 #include <stdio.h>
+
 void	read_tree(t_ast *ast_start)
 {
 	size_t	index;
@@ -140,7 +141,7 @@ void	lex_and_parse(char *buff)
 			reopen_line_editing(&lex, res_lexer, res_parser);
 			ft_remove_head(&head, free_pipe);
 			ast = flush_tree(ast);
-			if (abort_opening)
+			if (g_abort_opening)
 			{
 				ft_strdel((char **)&lex.line);
 				ft_simple_lst_remove(&lex.stack, free_token);

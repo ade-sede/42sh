@@ -1,6 +1,8 @@
+#include "libft.h"
+
 int		ft_sqrt(int nb)
 {
-	int div;
+	int	div;
 
 	div = 0;
 	if (nb < 0)

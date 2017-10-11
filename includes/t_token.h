@@ -1,5 +1,6 @@
-#ifndef TOKEN_H
-# define TOKEN_H
+#ifndef T_TOKEN_H
+# define T_TOKEN_H
+
 # include "t_lexer.h"
 # include <string.h>
 
@@ -40,7 +41,7 @@ typedef enum
 	TK_LESSGREAT,
 	TK_DLESSDASH,
 	TK_CLOBBER,
-	If = 21, //21 !!
+	If = 21,
 	Then,
 	Else,
 	Elif,
@@ -83,7 +84,7 @@ typedef struct		s_token
 **	Macros to check if the id corresponds to a redirection, or a separator.
 */
 
-# define TK_IS_REOPEN_SEP(id) (id == TK_AND_IF || id == TK_OR_IF || id == TK_PIPE)
+# define TK_IS_REOPEN_SEP(id) (id == TK_AND_IF||id == TK_OR_IF||id == TK_PIPE)
 # define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
 # define TK_IS_GREAT_LESS(id) ( id == TK_GREAT || id == TK_LESS )
 # define TK_RP1(id) id == TK_IO_NUMBER || TK_IS_GREAT_LESS(id) || id == TK_HERE

@@ -65,6 +65,9 @@ int				builtin_unset(t_env *env, const char **argv);
 */
 
 int				builtin_set(t_env *env, const char **argv);
+int				match_name_option(const char *argv);
+void			print_current_option(t_env *env);
+void			print_all_option(t_env *env);
 
 /*
 ** In file history.c

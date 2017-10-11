@@ -44,7 +44,7 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 			//if (lex->reopen)
 			//	reopen_line_editing(lex, 0);
 			/*
-**				if (abort_opening)
+**				if (g_abort_opening)
 **					return (NULL);
 */
 		}

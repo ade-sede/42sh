@@ -15,10 +15,11 @@ t_line		*singleton_line(void)
 **	Safe init of all variables in the t_line.
 */
 
-int			abort_opening;
+int			g_abort_opening;
+
 void		edit_line_init(t_line *line, void (*sig_handler)(void))
 {
-	abort_opening = 0;
+	g_abort_opening = 0;
 
 	ft_bzero(line->buff, line->len);
 	if (line->size > BUFF_LINE_SIZE)

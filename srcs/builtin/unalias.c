@@ -4,6 +4,11 @@
 #include "printf.h"
 #include "failure.h"
 
+static int	retrun_unalias(void)
+{
+	return (investigate_error(0, 0, "unalias : Argument required", 1));
+}
+
 int			builtin_unalias(t_env *env, const char **argv)
 {
 	int		argc;
@@ -15,7 +20,7 @@ int			builtin_unalias(t_env *env, const char **argv)
 	ret = EXIT_SUCCESS;
 	argc = ft_arraylen(argv);
 	if (argc == 1)
-		return (investigate_error(NULL, NULL, "unalias : Argument required", EXIT_FAILURE));
+		retrun_unalias();
 	while (++i < argc)
 	{
 		node = find_alias(env->alias, argv[i], ft_strlen(argv[i]));
@@ -25,7 +30,8 @@ int			builtin_unalias(t_env *env, const char **argv)
 			ret = EXIT_SUCCESS;
 		}
 		else
-			ret = investigate_error(NULL, NULL, "alias not found : ", EXIT_FAILURE);
+			ret = investigate_error(NULL, NULL, "alias not found : ",
+					EXIT_FAILURE);
 	}
 	return (ret);
 }

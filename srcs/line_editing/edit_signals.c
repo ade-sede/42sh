@@ -3,7 +3,7 @@
 #include "line_editing.h"
 #include <signal.h>
 
-int	abort_opening;
+int		g_abort_opening;
 
 void	edit_handle_sigwinch(int signum)
 {
@@ -44,6 +44,6 @@ void	edit_handle_sigint_reopen(int signum)
 {
 	move_cursor_lastline(singleton_line());
 //	ft_putstr_fd("reopen\n ", 2);
-	abort_opening = 1;
+	g_abort_opening = 1;
 	(void)signum;
 }
