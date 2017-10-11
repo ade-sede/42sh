@@ -22,19 +22,32 @@ int			history_load(t_hist *h, t_env *env)
 {
 	int			fd;
 	char		*line;
+	char		*cat;
 	t_list_d	*list;
 
+	cat = NULL;
 	init_hist_struct(h, env);
 	if ((fd = open(h->file, O_RDWR | O_CREAT, 0644)) == -1)
 		return (0);
-	h->fd = fd;
+	/* h->fd = fd; */
 	while (get_next_line(fd, &line))
 	{
-		list = ft_double_lst_create(line);
+		if (cat)
+		{
+			cat[ft_strlen(cat) - 1] = '\n';
+			cat = ft_strjoin_free(cat, line, 0b11);
+		}
+		if (!cat)
+			cat = line;
+		if (charcmp(cat, ft_strlen(cat) - 1, '\\'))
+			continue ;
+		list = ft_double_lst_create(cat);
+		cat = NULL;
 		if (h->list == NULL)
 			h->list = ft_create_head(list);
 		else
 			ft_double_lst_add(&h->list, list);
 	}
+	close(fd);
 	return (1);
 }

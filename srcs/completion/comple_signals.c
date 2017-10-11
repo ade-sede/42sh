@@ -25,7 +25,7 @@ void	comple_handle_sigint(int signum)
 	put_termcap("up");
 	comple_free(*c);
 	singleton_line()->completion = 0;
-	edit_set_signals();
+	edit_set_signals_open();
 	edit_refresh(singleton_line());
 	(void)signum;
 }

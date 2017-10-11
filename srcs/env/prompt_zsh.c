@@ -12,11 +12,11 @@ char	*read_git_status(int fd, size_t *len, char *git_status)
 
 	if (get_next_line(fd, &line))
 	{
-		git_status = ft_strjoin_free(git_status, "\x1b[38;5;11m ✗ \x1B[0m", 2);
+		git_status = ft_strjoin_free(git_status, "\e[38;5;11m ✗ \e[0m", 2);
 		ft_strdel(&line);
 	}
 	else
-		git_status = ft_strjoin_free(git_status, "\x1b[38;5;83m ✓ \x1B[0m", 2);
+		git_status = ft_strjoin_free(git_status, "\e[38;5;83m ✓ \e[0m", 2);
 	*len += 3;
 	while (get_next_line(fd, &line))
 		free(line);
@@ -44,8 +44,8 @@ char	*read_git_branch(int fd, size_t *len)
 		*ft_strchr(branch, ' ') = 0;
 	ft_strdel(&line);
 	*len += ft_strlen(branch);
-	git_status = ft_strjoin3_free(" \x1b[38;5;47mgit:(\x1b[38;5;203m",
-			branch, "\x1b[38;5;47m)", 2);
+	git_status = ft_strjoin3_free(" \e[38;5;47mgit:(\e[38;5;203m",
+			branch, "\e[38;5;47m)", 2);
 	*len += 7;
 	return (read_git_status(fd, len, git_status));
 }
@@ -58,14 +58,13 @@ char	*get_git_status(size_t *len)
 	int			ret;
 
 	if (pipe(fildes) != 0) 
-		investigate_error("prompt", NULL, 0);
+		investigate_error(NULL, "prompt", NULL, 0);
 	if ((son = fork()))
 	{
 		waitpid(son, &ret, WUNTRACED);
 		if (WEXITSTATUS(ret))
 		{
-			*len = *len + 1;
-			return (ft_strdup(" "));
+			*len = *len + 1; return (ft_strdup(" "));
 		}
 		close(fildes[1]);
 		return (read_git_branch(fildes[0], len));
@@ -87,7 +86,7 @@ char	*get_current_directory(void)
 
 	buff = NULL;
 	if ((buff = getcwd(buff, 0)) == NULL)
-		return ((void*)(long)investigate_error("prompt", NULL , 0));
+		return ((void*)(long)investigate_error("/dev/null", "prompt", NULL , 0));
 	if (ft_strequ(buff, "/"))
 		return (buff);
 	if ((dir = ft_strrchr(buff, '/')))
@@ -111,7 +110,7 @@ char	*get_ps1(t_env *env, size_t *len)
 			ft_strjoin3_free(RED, "➜  ", RESET, 0);
 	*len += 3;
 	if ((current_dir = get_current_directory()) == NULL) 
-		current_dir = ft_strdup("Cannot getcwd directory");
+		current_dir = ft_strnew(0);
 	*len += ft_strlen(current_dir);
 	current_dir = ft_strjoin3_free(CYN, current_dir, RESET, 2);
 	git_status = get_git_status(len);

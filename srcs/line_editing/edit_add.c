@@ -18,14 +18,6 @@ void	realoc_line_buff(char **buff, unsigned int *size, \
 
 void	edit_add(int keycode, t_line *line)
 {
-
-
-
-	/* t_coor	pos_after_write; */
-	/* t_coor	pos_before_write; */
-	/* int		diff_number; */
-
-	/* diff_number = 0; */
 	if (line->len >= line->size)
 		realoc_line_buff(&line->buff, &line->size, line->len + 1);
 	if (line->pos == line->len)
@@ -36,10 +28,6 @@ void	edit_add(int keycode, t_line *line)
 				(void*)(line->buff + line->pos), line->len - line->pos);
 		line->buff[line->pos] = (char)keycode;
 	}
-	/* Write line from where it changed */
-//	ft_putstr_fd(line->buff + line->pos, 2);
-	/* Update memory infos */
-	/* line->old_pos = line->pos; */
 	line->pos++;
 	line->len++;
 	edit_refresh(line);

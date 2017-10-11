@@ -1,7 +1,7 @@
 #ifndef LEXER_H
 # define LEXER_H
 # include "t_lexer.h"
-# include "token.h"
+# include "t_token.h"
 # include "env.h"
 
 /*
@@ -22,6 +22,9 @@
 # ifndef IS_INPUT_END
 #  define IS_INPUT_END(c) (c == 0)
 # endif
+#define LEXER_SUCCESS 0
+#define LEXER_DQUOTE DQUOTED
+#define LEXER_QUOTE QUOTED
 
 /*
 **	Token delimitation is done according to the POSIX STANDARD found here:
@@ -42,6 +45,7 @@ int				check_alias(t_lexer *lex, t_token *token);
 */
 
 void			parameter_expansion(t_env *env, t_token *token);
+t_list			*pathname_expansion(t_token *token, int match_all);
 
 /*
 **	In file srcs/lexer/expand_tild.c
@@ -59,10 +63,12 @@ t_list			*exec_expand(t_token *token);
 **	In file srcs/lexer/lexer.c
 */
 
-t_list			*start_lex(t_lexer *lex);
+int				lex_all(t_lexer *lex, t_list **token_list);
+t_token			*start_lex(t_lexer *lex, int *reopen);
+t_token			*handle_lexer(t_lexer *lex);
 int				update_state(t_lexer *lex);
 int				start_token(t_lexer *lex, size_t *token_start);
-int				tokenize(t_lexer *lex, size_t token_start, size_t token_end);
+t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end);
 t_token_id		lex_get_token_id(t_lexer *lex, t_token *token);
 
 /*
@@ -84,7 +90,6 @@ t_token_id		lex_id_operator(const char *value);
 */
 
 void			append_history(char *command);
-void			reopen_line_editing(t_lexer *lex);
 int				token_match(t_lexer *lex, size_t token_start);
 
 /*

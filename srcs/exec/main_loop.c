@@ -7,7 +7,46 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
+#include <stdio.h>
 #define LOCAL_BUFF_SIZE 4096
+
+#ifdef PARSER_DEBUG
+#include <stdio.h>
+void	read_tree(t_ast *ast_start)
+{
+	size_t	index;
+	t_token	*token_parent;
+	char	*parent_name;
+	t_list	*first_child;
+
+	index = 0;
+	token_parent = ast_start->token;
+	printf(GRN"NODE = "RESET);
+	if (token_parent)
+		parent_name = token_parent->value;
+	else
+	{
+		if (ast_start->symbol == SIMPLE_COMMAND)
+			parent_name = "SIMPLE_COMMAND";
+		if (ast_start->symbol == IO_REDIRECT)
+			parent_name = "IO_REDIRECT";
+	}
+	printf(MAG"#"CYN"%s"MAG"#"RESET""YEL"(%d)\n"RESET, parent_name,
+			ast_start->symbol);
+	first_child = ast_start->child;
+	while (first_child)
+	{
+		printf(RED"Starting treatment of child nb "BLU"%zu"RESET" of parent"
+				MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET, index, parent_name, \
+				ast_start->symbol);
+		if (first_child->data)
+			read_tree(first_child->data);
+		printf(PNK"\nBACK TO PARENT -> "RESET"Current node = "CYN"%s"RESET" !!!\n", parent_name);
+		first_child = first_child->next;
+		index++;
+	}
+}
+#endif
 
 /*
 **	Receives an array containing the command name and its arguments, forwards
@@ -51,37 +90,79 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->col_target = -1;
 }
 
-char	*line_editing_get_input(t_line *line, t_hist *hist)
+char	*line_editing_get_input(t_line *line, t_hist *hist, void (*sig_handler)(void))
 {
 	put_prompt(line);
 	history_init(hist);
-	edit_line_init(line);
+	edit_line_init(line, sig_handler);
 	return (edit_get_input());
 }
 
+void	lexer_debug(t_list *token_list)
+{
+		t_list	*test;
+		t_token	*token;
+
+		test = token_list;
+		while (test)
+		{
+			token = test->data;
+			dprintf(2, MAG"#"CYN"%s"MAG"# @ %d\n"RESET, token->value, token->id);//			REMOVE		
+			test = test->next;
+		}
+}
+
+// LEKAS PIPE_LIST AST TOKEN_LIST TOKEN  lex.line
 void	lex_and_parse(char *buff)
 {
 	t_lexer		lex;
 	t_lst_head	*head;
 	t_list		*token_list;
 	t_ast		*ast;
+	int			res_lexer;
+	int			res_parser;
 
+	ast = NULL;
 	head = NULL;
-	history_refresh(buff);
-	/* buff = ft_strchange(buff, ft_strjoin(buff, "\n")); */
 	lex = init_lexer(buff);
-	token_list = start_lex(&lex);
-	ast = ast_parse(NULL, &token_list, &head);
-	history_write_last_command();
+	while (42)
+	{
+		res_lexer = lex_all(&lex, &token_list);
+		res_parser = ast_parse(&ast, &head, &token_list);
+		if (res_parser == PARSER_ERROR)
+		{
+			ft_strdel((char **)&lex.line);
+			ft_simple_lst_remove(&lex.stack, free_token);
+			return ;
+		}
+		if (res_lexer > 0 || TK_IS_REOPEN_SEP(res_parser))
+		{
+			reopen_line_editing(&lex, res_lexer, res_parser);
+			ft_remove_head(&head, free_pipe);
+			ast = flush_tree(ast);
+			if (abort_opening)
+			{
+				ft_strdel((char **)&lex.line);
+				ft_simple_lst_remove(&lex.stack, free_token);
+				return ;
+			}
+		}
+		if (res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS)
+			break ;
+	}
+	history_append_command_to_list((char*)lex.line);
+#ifdef PARSER_DEBUG
+	if (ast)
+		read_tree(ast);
+#endif
 	conf_term_normal();
 	exec_tree(ast, head);
-	if (token_list)
-		ft_simple_lst_remove(&token_list, free_token);
+	ft_strdel((char **)&lex.line);
 	conf_term_canonical();
 	ast = flush_tree(ast);
 	if (head != NULL)
 		ft_remove_head(&head, free_pipe);
-	free(buff);
+	ft_simple_lst_remove(&lex.stack, free_token);
 }
 
 void	main_loop(t_env *env)
@@ -93,10 +174,9 @@ void	main_loop(t_env *env)
 	{
 		load_prompt(env, singleton_line(), "PS1", "$> ");
 		buff = ft_strdup(line_editing_get_input(singleton_line(), \
-					singleton_hist()));
+					singleton_hist(), &edit_set_signals_open));
 		if (*buff != 0)
 			lex_and_parse(buff);
-		else
-			free(buff);
+		free(buff);
 	}
 }

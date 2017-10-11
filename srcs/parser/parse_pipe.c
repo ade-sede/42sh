@@ -1,6 +1,6 @@
 #include "libft.h"
 #include "pipe.h"
-#include "token.h"
+#include "t_token.h"
 #include "failure.h"
 
 /*
@@ -40,7 +40,7 @@ int		add_pipe(t_token *token, t_lst_head **head)
 	{
 		p = palloc(sizeof(*p) * 2);
 		if (pipe(p) != 0)
-			return (investigate_error("pipe", NULL, 0));
+			return (investigate_error(NULL, "pipe", NULL, 0));
 	}
 	spipe = create_pipe(p);
 	if (*head == NULL)

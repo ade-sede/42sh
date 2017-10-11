@@ -1,0 +1,16 @@
+ajouter un espace entre les entree dans l historique
+
+parse error | "
+
+
+BUGS:
+
+ls |
+cat -e
+
+ls ; // fait un retour erreur
+ls | "
+
+
+cat /dev/urandom && cat
+ls *

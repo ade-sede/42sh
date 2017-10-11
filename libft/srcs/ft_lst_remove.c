@@ -21,7 +21,7 @@ void	ft_double_lst_remove(t_lst_head **head, void (*f)(void*))
 	t_list_d	*curr;
 	t_list_d	*next;
 
-	if (!head)
+	if (!head || !*head)
 		return ;
 	curr = ((*head)->first);
 	while (curr)
@@ -39,6 +39,8 @@ void	ft_double_lst_remove(t_lst_head **head, void (*f)(void*))
 
 void	ft_remove_head(t_lst_head **head, void (*f)(void*))
 {
+	if (!*head)
+		return ;
 	ft_double_lst_remove(head, (f));
 	free(*head);
 	*head = NULL;

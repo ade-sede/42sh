@@ -11,7 +11,7 @@ size_t			ft_arraymax_f(char **str, size_t (*f)(char *))
 	size_t	max;
 
 	max = 0;
-	while (*str)
+	while (str && *str)
 	{
 		max = ft_max_size_t(f(*str), max);
 		str++;

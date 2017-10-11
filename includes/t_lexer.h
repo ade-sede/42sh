@@ -20,6 +20,7 @@ typedef enum
 	BACKSLASH = 92,
 	OPERATOR,
 	EXPAND,
+	NEWLINE,
 	INPUT_END
 }	t_lexer_state;
 
@@ -31,8 +32,9 @@ typedef enum
 
 typedef struct		s_lexer
 {
-	const char		*line;
+	char			*line;
 	size_t			index;
+	size_t			token_start;
 	t_list			*stack;
 	int				reopen;
 	t_lexer_state	state;

@@ -36,29 +36,38 @@
 **			bulding a new branch for the new command, and attaching the simple
 **			command we just created to a complexe one.
 */
-
-t_ast	*ast_parse(t_ast *root, t_list **token_list, t_lst_head **head)
+#include <stdio.h>
+int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 {
 	t_token *token;
-	t_ast	*ast;
+	int		reopen;
 
-	ast = root;
-	if (token_list && *token_list)
+	reopen = 0;
+	while ((token = *token_list ? (*token_list)->data : NULL))
 	{
-		token = (*token_list)->data;
 		if (TK_IS_SEP(token->id))
 		{
-			if ((ast = start_complexe_command(ast, token_list)) == NULL)
-				return (NULL);
+			*ast = start_complexe_command(*ast, token_list, &reopen);
+			if (reopen)
+			{
+				ft_remove_head(head, free_pipe);
+				*ast = flush_tree(*ast);
+				return (reopen);
+			}
 			if (add_pipe(token, head) == 0)
-				return (flush_tree(ast));
+			{
+				*ast = flush_tree(*ast);
+				ft_remove_head(head, free_pipe);
+				ft_double_lst_remove(head, free_pipe);
+				return (PARSER_ERROR);
+			}
 		}
-		else if ((ast = create_simple_command(token_list)) == NULL)
-			return (NULL);
-		if ((ast = ast_parse(ast, token_list, head)) == NULL)
-			return (NULL);
+		else if ((*ast = create_simple_command(token_list)) == NULL)
+		{
+			ft_remove_head(head, free_pipe);
+			return (PARSER_ERROR);
+		}
 	}
-	else
-		add_last_pipe(head);
-	return (ast);
+	add_last_pipe(head);
+	return (PARSER_SUCCESS);
 }

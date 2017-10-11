@@ -22,6 +22,7 @@ typedef struct	s_line
 	char				*prompt;
 	unsigned int		old_pos;
 	int					heredoc;
+	void				(*sig_handler)(void);
 	ssize_t				col_target;
 }				t_line;
 
@@ -30,5 +31,6 @@ typedef struct	s_edit_func
 	unsigned long long	keycode;
 	int					(*f)(t_line *);
 }				t_edit_func;
+
 
 #endif

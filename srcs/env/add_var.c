@@ -1,6 +1,7 @@
 #include "env.h"
 #include "hash_table.h"
 #include "libft.h"
+#include "local.h"
 
 void	env_add_var(t_env *env, const char *key, const char *value)
 {
@@ -13,6 +14,7 @@ void	env_add_var(t_env *env, const char *key, const char *value)
 	new_environ_size = env->environ_size + 1;
 	new_environ = palloc(sizeof(char*) * (new_environ_size + 1));
 	new_key_value = ft_strsurround(key, "=", value);
+	add_to_local(&env->local, ft_strdup(new_key_value));
 	ft_memcpy(new_environ, environ, env->environ_size * sizeof(*new_environ));
 	new_environ[new_environ_size - 1] = new_key_value;
 	new_environ[new_environ_size] = NULL;

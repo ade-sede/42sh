@@ -7,6 +7,7 @@
 #include "completion.h"
 #include "get_next_line.h"
 #include "color.h"
+#include "my_signal.h"
 
 
 #include "failure.h"
@@ -18,6 +19,7 @@ int	main(void)
 	extern const char	**environ;
 	t_env				*env;
 
+	all_signal_ign();
 	env = singleton_env();
 	env_load_base_env(env, environ);
 	create_ternary_tree(env);

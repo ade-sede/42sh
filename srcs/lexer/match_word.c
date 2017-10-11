@@ -81,7 +81,7 @@ int			lex_id_reserved_words(t_token *token, t_token_id *id)
 		i++;
 	if (!g_reserved_word_list[i])
 		return (0);
-	*id = i + 20;
+	*id = i + 21;
 	return (1);
 }
 

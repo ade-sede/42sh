@@ -2,14 +2,25 @@
 #include "libft.h"
 #include "printf.h"
 #include "hash_table.h"
+#include "local.h"
 
 void		env_load_base_env(t_env *env, const char **environ)
 {
+	size_t	i;
+
+	i = 0;
 	env->environ = NULL;
 	env->previous_exit = 0;
+	env->option = 0;
 	env->alias = NULL;
+	env->local = NULL;
 	env->environ = env_create_environ(environ, &(env->environ_size));
 	env_load_shlvl_pwd(env);
+	while (i != env->environ_size)
+	{
+		add_to_local(&env->local, ft_strdup(env->environ[i]));
+		++i;
+	}
 	create_hash_table(env);
 }
 

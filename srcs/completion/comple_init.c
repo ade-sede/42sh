@@ -1,5 +1,6 @@
 #include "completion.h"
 #include "line_editing.h"
+#include <stdio.h>
 
 t_comple	*singleton_comple(void)
 {
@@ -27,11 +28,8 @@ int			comple_init(t_line *line, t_comple *c)
 {
 	ft_bzero(c, sizeof(t_comple));
 	c->matches = comple_matching(line, c);
-	free(c->current_word);
 	c->max_len = ft_arraymax_f((char**)c->matches, ft_strlen_color);
 	c->nb_matches = ft_arraylen((const char**)c->matches);
-	if (comple_init_winch(c) == 0)
-		return (0);
 	c->pos = -1;
 	if (c->nb_matches == 1)
 	{
@@ -44,5 +42,7 @@ int			comple_init(t_line *line, t_comple *c)
 		comple_exit_matched(line, *c, 0);
 		return (0);
 	}
+	if (comple_init_winch(c) == 0)
+		return (0);
 	return (1);
 }

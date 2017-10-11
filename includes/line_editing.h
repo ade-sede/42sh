@@ -5,6 +5,7 @@
 # include "env.h"
 # include "termios.h"
 # include "term.h"
+# include "t_lexer.h"
 # define KEY_ESCAPE 0x1B
 # define KEY_SPACE 0x20
 # define KEY_CTRL_D 4
@@ -14,7 +15,7 @@
 # define KEY_LEFT 0x445B1B
 # define KEY_ENTER 0xA
 # define KEY_BACKSPACE 0x7F
-# define KEY_DELETE 0x7E335B1B
+# define KEY_DELETE 2117294875
 # define KEY_HOME 4741915
 # define KEY_END 4610843
 # define KEY_TAB 9
@@ -28,6 +29,7 @@
 # define KEY_ALT_P 32975
 # define KEY_ALT_V 10127586
 # define KEY_ALT_R 44738
+# define KEY_CTRL_L 12
 # define BUFF_LINE_SIZE 10
 
 /*
@@ -58,6 +60,15 @@
 **	buffer, and display it (refresh_line).
 */
 
+extern int	abort_opening;
+
+int		edit_del(t_line *line);
+t_coor	get_prompt_visual_offset(t_line *line);
+void	reopen_line_editing(t_lexer *lex, int res_lexer, int res_parser);
+void	term_putstr(t_line *line);
+void	edit_handle_sigint_reopen(int signum);
+void	edit_set_signals_reopen(void);
+
 size_t	get_char_mem_coor_relative(t_line *line, int x_move, int y_move);
 size_t	get_char_mem_coor(t_line *line, size_t x, size_t y);
 size_t	cursor_goto_buff(t_line *line, size_t dest_i, size_t start_i);
@@ -67,9 +78,9 @@ size_t	get_ws_col(void);
 size_t	get_ws_row(void);
 
 char	*control_d_heredoc(t_line *line);
-void	edit_line_init(t_line *line);
+void	edit_line_init(t_line *line, void (*sig_handler)(void));
 char	*edit_get_input(void);
-void	edit_set_signals(void);
+void	edit_set_signals_open(void);
 void	edit_handle_sigwinch(int signum);
 void	conf_term_in(void);
 void	conf_term_canonical(void);
@@ -77,6 +88,7 @@ void	conf_term_normal(void);
 void	put_termcap(char *capacity);
 t_line	*singleton_line(void);
 
+int		control_l(t_line *line);
 int		control_d(t_line *line);
 int		edit_end(t_line *line);
 int		edit_home(t_line *line);

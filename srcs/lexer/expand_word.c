@@ -10,6 +10,7 @@
 **	we're doing quote removal first, cus its easier, but that should come last
 */
 
+#include <stdio.h>
 static t_list	*get_globbed_tokens(t_list *list)
 {
 	t_list	*first;
@@ -23,27 +24,47 @@ static t_list	*get_globbed_tokens(t_list *list)
 	return (first);
 }
 
-static t_list	*pathname_expansion(t_token *token)
-{
-	t_list	*first;
+/*
+**	if (ft_strchr(token->value, '*') || ft_strchr(token->value, '['))
+**	first = get_globbed_tokens(glob(token->value));
+**	else if (ft_strchr(token->value, '{'))
+**	first = get_globbed_tokens(expand_curly_brackets(token->value));
+**	if (first != NULL)
+**	free_token(token);
+*/
 
-	first = NULL;
+t_list	*pathname_expansion(t_token *token, int match_all)
+{
+	t_list	*glob_ret;
+	t_list	*gen;
+	t_list	*ret;
+	t_token	*token_gen;
+	t_list	*glob_list;
+
+	ret = NULL;
+	if (!ft_strchr(token->value, '*') && !ft_strchr(token->value, '[') && !ft_strchr(token->value, '{'))
+		return (NULL);
 	if (token->type != QUOTED && token->type != DQUOTED)
 	{
-		if (ft_strchr(token->value, '*') || ft_strchr(token->value, '['))
-			first = get_globbed_tokens(glob(token->value));
-		else if (ft_strchr(token->value, '{'))
-			first = get_globbed_tokens(expand_curly_brackets(token->value));
-		if (first != NULL)
-			free_token(token);
+		gen = get_globbed_tokens(expand_curly_brackets(token->value));
+		while (gen)
+		{
+			token_gen = gen->data;
+//			dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, token_gen->value);//			REMOVE		
+			if (!(glob_list = glob(token_gen->value)) && match_all)
+				glob_list = ft_simple_lst_create(ft_strdup(token_gen->value));
+			glob_ret = get_globbed_tokens(glob_list);
+			if (glob_ret)
+				ft_simple_lst_pushback(&ret, glob_ret);
+			ft_simple_lst_del_one(&gen, gen, free_token);
+		}
 	}
-	return (first);
+	return (ret);
 }
 
 t_list			*exec_expand(t_token *token)
 {
 	t_env	*env;
-	t_list	*node;
 
 	env = singleton_env();
 	if (token->type == DQUOTED || token->type == QUOTED)
@@ -63,7 +84,5 @@ t_list			*exec_expand(t_token *token)
 		}
 		parameter_expansion(env, token);
 	}
-	if ((node = pathname_expansion(token)) == NULL)
-		node = ft_simple_lst_create(token);
-	return (node);
+	return (pathname_expansion(token, 1));
 }

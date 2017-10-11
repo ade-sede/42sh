@@ -26,6 +26,8 @@ SRC_FILE = \
 	builtin/setenv.c \
 	builtin/unalias.c \
 	builtin/unsetenv.c \
+	builtin/unset.c \
+	builtin/set.c \
 	\
 	completion/comple_bin_matches.c \
 	completion/comple_escape.c \
@@ -43,14 +45,19 @@ SRC_FILE = \
 	completion/ternary_search_tree.c \
 	completion/ternary_search_tree_add.c \
 	\
+	env/add_to_local.c \
 	env/add_var.c \
 	env/env_create_completion_tree.c \
 	env/environ.c \
+	env/key_of_local.c \
 	env/load_base_env.c \
+	env/local_get_var.c \
 	env/prompt.c \
 	env/prompt_zsh.c \
 	env/remove_var.c \
+	env/remove_var_from_local.c \
 	env/t_env.c \
+	env/value_of_local.c \
 	\
 	exec/exec_bin.c \
 	exec/exec_heredoc.c \
@@ -88,7 +95,7 @@ SRC_FILE = \
 	history/history_init.c \
 	history/history_line_refresh.c \
 	history/history_move.c \
-	history/history_refresh.c \
+	history/history_write.c \
 	history/load_history.c \
 	\
 	lexer/expand_alias.c \
@@ -104,7 +111,10 @@ SRC_FILE = \
 	lexer/t_token.c \
 	\
 	line_editing/conf_term.c \
-	line_editing/control_d.c \
+	line_editing/edit_reopen.c \
+	line_editing/edit_write.c \
+	line_editing/edit_control_d.c \
+	line_editing/edit_control_l.c \
 	line_editing/edit_copy_paste.c \
 	line_editing/edit_add.c \
 	line_editing/edit_del.c \
@@ -134,10 +144,13 @@ SRC_FILE = \
 	failure/get_errno_3.c \
 	failure/return_failure.c \
 	\
+	signal/all_signal_dfl.c \
+	signal/all_signal_ign.c \
+	\
 	main.c
 
 INCLUDES_FILES = \
-	ast.h \
+	t_ast.h \
 	builtin.h \
 	completion.h \
 	env.h \
@@ -152,7 +165,9 @@ INCLUDES_FILES = \
 	parser.h \
 	pipe.h \
 	t_lexer.h \
-	token.h
+	t_token.h \
+	local.h \
+	my_signal.h
 
 NAME ?= 21sh
 
@@ -171,7 +186,7 @@ ifeq ($(ASAN),yes)
 	SANITIZER ?= -fsanitize=address -fno-omit-frame-pointer
 endif
 OPTIMIZATION ?= -O0
-CFLAGS ?= -g -Wall -Wextra -Werror
+CFLAGS ?= -g3 -Wall -Wextra -Werror
 CC ?= gcc
 LDFLAGS = -L$(LIB_DIR) -lft -ltermcap
 INCLUDES = $(LOCAL_INC) $(LIB_INC)
@@ -213,6 +228,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/main.c
 	@/bin/mkdir -p $(OBJ_DIR)/parser
 	@/bin/mkdir -p $(OBJ_DIR)/failure
+	@/bin/mkdir -p $(OBJ_DIR)/signal
 
 clean:
 	@make -C $(LIB_DIR) clean

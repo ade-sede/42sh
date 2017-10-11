@@ -18,6 +18,8 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_V, &enter_visual_mode},
 	{KEY_ALT_P, &paste},
 	{KEY_CTRL_D, &control_d},
+	{KEY_DELETE, &edit_del},
+	{KEY_CTRL_L, &control_l},
 	{0, NULL}
 };
 
@@ -53,26 +55,23 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 **	pressed, the displayed line is refreshed.
 */
 
+int	abort_opening;
+
+#include <stdio.h>
 char	*edit_get_input(void)
 {
 	unsigned long	keycode;
 	t_line			*l;
 
 	l = singleton_line();
-	edit_set_signals();
+	l->sig_handler();
 	while (42)
 	{
 		l->old_pos = l->pos;
-#ifdef COOR_DEBUG
-		t_line *line = l;
-		t_coor	pos;
-		char	c = line->buff[line->pos];
-
-		pos = get_char_visual_coor(line, line->pos);
-		logwrite(__func__, "Line->buff["YEL"%d"RESET"] = "MAG"#"CYN"%c"MAG"#"RESET" @ {"PNK"%d "RESET";"PNK"%d"RESET"}\n", line->pos, c, pos.x, pos.y);
-#endif
 		keycode = 0;
 		read(0, &keycode, 1);
+		if (abort_opening)
+			return (edit_exit(l));
 		if (keycode == KEY_CTRL_D && l->heredoc && l->len == 0)
 			return (control_d_heredoc(l));
 		if (keycode == 27 || keycode > 127)

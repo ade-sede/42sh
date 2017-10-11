@@ -24,7 +24,7 @@ int		builtin_setenv(t_env *env, const char **argv)
 		}
 		else
 		{
-			return (investigate_error(NULL, "usage: setenv key1=value1 \
+			return (investigate_error(NULL, NULL, "usage: setenv key1=value1 \
 key2=value2 ..", EXIT_FAILURE));
 		}
 		i++;

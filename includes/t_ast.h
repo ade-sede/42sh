@@ -1,6 +1,6 @@
 #ifndef AST_H
 # define AST_H
-# include "token.h"
+# include "t_token.h"
 
 /*
 **	The following enumeration corresponds to different grammar symbols we'll be
@@ -39,6 +39,7 @@ typedef	struct		s_ast
 	t_list			*child;
 	struct s_token	*token;
 	t_symbol		symbol;
+	char			*heredoc_content;
 }					t_ast;
 
 /*

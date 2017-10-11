@@ -51,7 +51,7 @@ int				comple_get_input(t_line *line, int keycode);
 char			**comple_file_matches(t_line *line, t_comple *c);
 char			*extract_color(char *str);
 char			**comple_bin_matches(t_line *line, t_comple *c);
-char			**comple_globing_matches(t_line *line, t_comple *c);
+char			**comple_globing_matches(t_line *line, t_comple *c, t_list *glob_list);
 
 int				comple_right(t_comple *c);
 int				comple_left(t_comple *c);
@@ -71,4 +71,5 @@ void			delete_word(char *to_replace);
 char			*get_current_word_cursor(t_line *line);
 void			comple_bin_match_trip_layer(t_ternary_tree *node,
 				char ***matches, char **cur, size_t size);
+char			**ft_array_string_realloc(char **origin, size_t o_size, size_t n_size);
 #endif

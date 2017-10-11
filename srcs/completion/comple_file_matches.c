@@ -18,11 +18,13 @@ char	**array_matches(char *dir_match, char *to_match)
 	struct dirent	*dirent;
 	DIR				*dir;
 	char			**matches;
-	int				i;
+	size_t			i;
+	size_t			size;
 
 	i = 0;
 	dir = NULL;
-	matches = ft_memalloc(sizeof(char *) * 1000);
+	size = 0;
+	matches = NULL;
 	dir = (dir_match) ? opendir(dir_match) : opendir(".");
 	if (!dir)
 		return (matches);
@@ -31,6 +33,11 @@ char	**array_matches(char *dir_match, char *to_match)
 		if ((!to_match[0] && dirent->d_name[0] != '.') || \
 				(to_match[0] && ft_strstr(dirent->d_name, to_match)))
 		{
+			if (i >= size)
+			{
+				matches = ft_array_string_realloc(matches, size,size + MALLOC_UNIT);
+				size += MALLOC_UNIT;
+			}
 			matches[i] = get_file_color(dir_match, dirent->d_name, dirent);
 			i++;
 		}

@@ -12,35 +12,7 @@
 **	and putting lex->index on the first char of the next potential token.
 */
 
-void		append_history(char *command)
-{
-	t_hist		*h;
-	t_list_d	*list;
-	char		*full_command;
-
-	h = singleton_hist();
-	list = h->list->first;
-	command[ft_strlen(command) - 1] = 0;
-	full_command = ft_strjoin(list->data, command);
-	list->data = ft_strchange(list->data, full_command);
-}
-
-void		reopen_line_editing(t_lexer *lex)
-{
-	char	*new_command;
-
-	if (lex->state == '"')
-		load_prompt(singleton_env(), singleton_line(), "PS2", "dquote> ");
-	if (lex->state == '\'')
-		load_prompt(singleton_env(), singleton_line(), "PS3", "dquote> ");
-	new_command = ft_strdup(line_editing_get_input(singleton_line(), \
-			singleton_hist()));
-	/* new_command = ft_strchange(new_command, ft_strjoin(new_command, "\n")); */
-	lex->line = ft_strchange((char*)lex->line, \
-			ft_strjoin((char*)lex->line, new_command));
-	append_history(new_command);
-	free(new_command);
-}
+#include <stdio.h>
 
 static int	match_part_1(t_lexer *lex, size_t token_start)
 {
@@ -49,6 +21,11 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 	ret = -1;
 	if (IS_INPUT_END(lex->line[lex->index]) && !(IS_QUOTED(lex->state)))
 		ret = lex->index - 1;
+	else if (lex->state == NEWLINE)
+	{
+		if (lex->line[lex->index] != '\n')
+			ret = (lex->index - 1);
+	}
 	else if (lex->state == EXPAND)
 	{
 		if (match_expand(lex, token_start))
@@ -62,10 +39,20 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 	else if (IS_QUOTED(lex->state))
 	{
 		if (lex->line[lex->index] == '\0')
-			if (lex->reopen)
-				reopen_line_editing(lex);
+		{
+			return (1);
+			//if (lex->reopen)
+			//	reopen_line_editing(lex, 0);
+			/*
+**				if (abort_opening)
+**					return (NULL);
+*/
+		}
 		if (charcmp(lex->line, lex->index, lex->state))
+		{
+			lex->state = WORD;
 			ret = lex->index++;
+		}
 	}
 	return (ret);
 }
@@ -82,7 +69,7 @@ int			token_match(t_lexer *lex, size_t token_start)
 	{
 		if (IS_OPERATOR(lex->line[lex->index]) || \
 				(charcmp(lex->line, lex->index, '-') && \
-				charcmp(lex->line, lex->index - 1, '<')))
+				 charcmp(lex->line, lex->index - 1, '<')))
 		{
 			if (!match_operator(lex->line, token_start, lex->index))
 				ret = lex->index - 1;
