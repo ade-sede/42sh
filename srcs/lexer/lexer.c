@@ -177,44 +177,41 @@ int				update_state(t_lexer *lex)
 **	Rajouter le token qu'on vient de creer a lex->stack
 **	exec_expand creer un t_list a partir de la valeur etendu de du token.
 */
+/
+/* size_t	get_ret_size(const char *line, size_t start, size_t end) */
+/* { */
+/* 	size_t	ret_size; */
 
-/*
-**	static size_t	get_ret_size(const char *line, size_t start, size_t end)
-**	{
-**		size_t	ret_size;
-**	
-**		ret_size = 0;
-**		while (end >= start)
-**		{
-**			ret_size++;
-**			if (!charcmp(line, end, line[end]))
-**				ret_size--;
-**			if (end == start)
-**				break ;
-**			--end;
-**		}
-**		return (ret_size);
-**	}
-**	
-**	static char		*create_value(const char *line, size_t start, size_t end)
-**	{
-**		size_t	ret_size;
-**		char	*value;
-**	
-**		ret_size = get_ret_size(line, start, end);
-**		value = ft_strnew(ret_size);
-**		value = palloc(sizeof(char*) * ret_size);
-**		while (ret_size)
-**		{
-**			value[ret_size - 1] = line[end];
-**			if (!charcmp(line, end, line[end]))
-**				--end;
-**			--ret_size;
-**			--end;
-**		}
-**		return (value);
-**	}
-*/
+/* 	ret_size = 0; */
+/* 	while (end >= start) */
+/* 	{ */
+/* 		ret_size++; */
+/* 		if (!charcmp(line, end, line[end])) */
+/* 			ret_size--; */
+/* 		if (end == start) */
+/* 			break ; */
+/* 		--end; */
+/* 	} */
+/* 	return (ret_size); */
+/* } */
+
+/* char		*create_value(const char *line, size_t start, size_t end) */
+/* { */
+/* 	size_t	ret_size; */
+/* 	char	*value; */
+
+/* 	ret_size = get_ret_size(line, start, end); */
+/* 	value = ft_strnew(ret_size); */
+/* 	while (ret_size) */
+/* 	{ */
+/* 		value[ret_size - 1] = line[end]; */
+/* 		if (!charcmp(line, end, line[end])) */
+/* 			--end; */
+/* 		--ret_size; */
+/* 		--end; */
+/* 	} */
+/* 	return (value); */
+/* } */
 
 t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 {

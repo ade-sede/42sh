@@ -62,7 +62,8 @@
 
 extern int	abort_opening;
 
-int		 edit_del(t_line *line);
+int		edit_del(t_line *line);
+t_coor	get_prompt_visual_offset(t_line *line);
 void	reopen_line_editing(t_lexer *lex, int res_lexer, int res_parser);
 void	term_putstr(t_line *line);
 void	edit_handle_sigint_reopen(int signum);

@@ -12,11 +12,11 @@ char	*read_git_status(int fd, size_t *len, char *git_status)
 
 	if (get_next_line(fd, &line))
 	{
-		git_status = ft_strjoin_free(git_status, "\x1b[38;5;11m ✗ \x1B[0m", 2);
+		git_status = ft_strjoin_free(git_status, "\e[38;5;11m ✗ \e[0m", 2);
 		ft_strdel(&line);
 	}
 	else
-		git_status = ft_strjoin_free(git_status, "\x1b[38;5;83m ✓ \x1B[0m", 2);
+		git_status = ft_strjoin_free(git_status, "\e[38;5;83m ✓ \e[0m", 2);
 	*len += 3;
 	while (get_next_line(fd, &line))
 		free(line);
@@ -44,8 +44,8 @@ char	*read_git_branch(int fd, size_t *len)
 		*ft_strchr(branch, ' ') = 0;
 	ft_strdel(&line);
 	*len += ft_strlen(branch);
-	git_status = ft_strjoin3_free(" \x1b[38;5;47mgit:(\x1b[38;5;203m",
-			branch, "\x1b[38;5;47m)", 2);
+	git_status = ft_strjoin3_free(" \e[38;5;47mgit:(\e[38;5;203m",
+			branch, "\e[38;5;47m)", 2);
 	*len += 7;
 	return (read_git_status(fd, len, git_status));
 }

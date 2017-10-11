@@ -37,13 +37,11 @@ static void	term_write_char(t_line *line, size_t i)
 void	term_putstr(t_line *line)
 {
 	size_t	i;
-	size_t	x;
 	t_coor	pos;
 	t_coor	l_pos;
 	size_t	nb_newl;
 
 	i = 0;
-	x = line->prompt_len;
 	while (line->buff[i])
 	{
 		if (line->buff[i] != '\n')
