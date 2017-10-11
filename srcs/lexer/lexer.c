@@ -201,8 +201,7 @@ char		*create_value(const char *line, size_t start, size_t end)
 	char	*value;
 
 	ret_size = get_ret_size(line, start, end);
-	/* value = ft_strnew(ret_size); */
-	value = palloc(sizeof(char*) * ret_size);
+	value = ft_strnew(ret_size);
 	while (ret_size)
 	{
 		value[ret_size - 1] = line[end];

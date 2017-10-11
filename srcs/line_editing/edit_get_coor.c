@@ -2,10 +2,26 @@
 #include "failure.h"
 
 /*
+**	Gives the visual offset of the prompt's last char from
+**	the first char of the prompt.
+*/
+
+t_coor	get_prompt_visual_offset(t_line *line)
+{
+	size_t	x;
+	size_t	y;
+
+	x = line->prompt_len % line->ws_col;
+	y = line->prompt_len / line->ws_col;
+	return ((t_coor){(int)x , (int)y});
+}
+
+/*
 **	Takes the position of a char situated ON line->buff, and returns its
 **	coordinates from the first line of the command (column 0 of line where we
 **	display the prompt (line0)). Skipping prompt on first line.
 */
+
 
 t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 {
@@ -14,7 +30,7 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 	int		y;
 
 	index = 0;
-	x = line->prompt_len;
+	x = get_prompt_visual_offset(line).x;
 	y = 0;
 	while ((ssize_t)index != pos)
 	{
