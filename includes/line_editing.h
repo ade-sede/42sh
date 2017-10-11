@@ -73,7 +73,7 @@ void			edit_set_signals_reopen(void);
 
 size_t			get_char_mem_coor_relative(t_line *line, int x_move,
 		int y_move);
-size_t			get_char_mem_coor(t_line *line, size_t x, size_t y);
+size_t			get_char_mem_coor(size_t ret, t_line *line, size_t x, size_t y);
 size_t			cursor_goto_buff(t_line *line, size_t dest_i, size_t start_i);
 t_coor			get_char_visual_coor(t_line *line, ssize_t pos);
 

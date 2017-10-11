@@ -15,7 +15,6 @@ int		edit_word_left(t_line *line)
 	return (1);
 }
 
-
 /*
 **	Moves to the closest space to the right
 */
@@ -36,9 +35,6 @@ int		edit_word_right(t_line *line)
 
 int		edit_home(t_line *line)
 {
-	/* while (1) */
-	/* 	if (!edit_left(line)) */
-	/* 		break ; */
 	line->pos = cursor_goto_buff(line, 0, line->pos);
 	return (1);
 }
@@ -49,8 +45,6 @@ int		edit_home(t_line *line)
 
 int		edit_end(t_line *line)
 {
-	/* while (line->pos < line->len) */
-	/* 	edit_right(line); */
 	line->pos = cursor_goto_buff(line, line->len, line->pos);
 	return (1);
 }

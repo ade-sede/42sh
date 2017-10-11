@@ -20,7 +20,7 @@ void	edit_refresh_line(t_line *line)
 
 	term_putstr(line);
 	pos = get_char_visual_coor(line, line->len);
-	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n') )
+	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n'))
 		put_termcap("do");
 }
 

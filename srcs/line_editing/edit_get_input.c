@@ -29,7 +29,7 @@ static t_edit_func	g_edit_func[] =
 **	printed next time a refresh is called).
 */
 
-int		edit_loop(unsigned long long keycode, t_line *line)
+int					edit_loop(unsigned long long keycode, t_line *line)
 {
 	int	i;
 
@@ -55,10 +55,15 @@ int		edit_loop(unsigned long long keycode, t_line *line)
 **	pressed, the displayed line is refreshed.
 */
 
+static void			init_read(t_line *l, unsigned long *keycode)
+{
+	*keycode = 0;
+	l->old_pos = l->pos;
+}
+
 int	g_abort_opening;
 
-#include <stdio.h>
-char	*edit_get_input(void)
+char				*edit_get_input(void)
 {
 	unsigned long	keycode;
 	t_line			*l;
@@ -67,8 +72,7 @@ char	*edit_get_input(void)
 	l->sig_handler();
 	while (42)
 	{
-		l->old_pos = l->pos;
-		keycode = 0;
+		init_read(l, &keycode);
 		read(0, &keycode, 1);
 		if (g_abort_opening)
 			return (edit_exit(l));
@@ -78,14 +82,11 @@ char	*edit_get_input(void)
 			read(0, (char *)&keycode + 1, 7);
 		if (keycode != KEY_ALT_UP && keycode != KEY_ALT_DOWN)
 			l->col_target = -1;
-		if (btsearch_get_input(l, keycode))
-			continue ;
-		if (comple_get_input(l, keycode))
+		if (btsearch_get_input(l, keycode) || comple_get_input(l, keycode) ||
+				history_get_input(l, keycode))
 			continue ;
 		if (keycode == KEY_ENTER)
 			return (edit_exit(l));
-		if (history_get_input(l, keycode))
-			continue ;
 		edit_loop(keycode, l);
 	}
 	return (NULL);

@@ -13,7 +13,7 @@ t_coor	get_prompt_visual_offset(t_line *line)
 
 	x = line->prompt_len % line->ws_col;
 	y = line->prompt_len / line->ws_col;
-	return ((t_coor){(int)x , (int)y});
+	return ((t_coor){(int)x, (int)y});
 }
 
 /*
@@ -21,7 +21,6 @@ t_coor	get_prompt_visual_offset(t_line *line)
 **	coordinates from the first line of the command (column 0 of line where we
 **	display the prompt (line0)). Skipping prompt on first line.
 */
-
 
 t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 {
@@ -52,17 +51,16 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 **	(Index from the start of the prompt).
 */
 
-size_t	get_char_mem_coor(t_line *line, size_t x_target, size_t y_target)
+size_t	get_char_mem_coor(size_t ret, t_line *line, size_t x_target,
+		size_t y_target)
 {
 	size_t	x;
 	size_t	y;
 	t_coor	pos;
-	size_t	ret;
 
 	pos = get_char_visual_coor(line, 0);
 	x = pos.x;
 	y = pos.y;
-	ret = 0;
 	while (y != y_target && line->buff[ret])
 	{
 		++x;
@@ -76,7 +74,7 @@ size_t	get_char_mem_coor(t_line *line, size_t x_target, size_t y_target)
 	while (x != x_target)
 	{
 		if (x == line->ws_col || line->buff[ret] == '\n' || ret >= line->len)
-			break;
+			break ;
 		++x;
 		++ret;
 	}
@@ -104,7 +102,7 @@ size_t	get_char_mem_coor_relative(t_line *line, int x_move, int y_move)
 	y = (size_t)pos.y + y_move;
 	if (x <= line->ws_col)
 	{
-		ret = get_char_mem_coor(line, x, y);
+		ret = get_char_mem_coor(0, line, x, y);
 		check_ret = get_char_visual_coor(line, ret);
 		if (y_move != 0 && check_ret.y == pos.y)
 			return (line->pos);

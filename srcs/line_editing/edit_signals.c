@@ -35,15 +35,13 @@ void	edit_set_signals_reopen(void)
 	new_action.sa_handler = edit_handle_sigint_reopen;
 	sigemptyset(&new_action.sa_mask);
 	new_action.sa_flags = 0;
-//	new_action.sa_flags |= SA_RESTART;
-	sigaction (SIGINT, &new_action, NULL);
+	sigaction(SIGINT, &new_action, NULL);
 	signal(SIGWINCH, edit_handle_sigwinch);
 }
 
 void	edit_handle_sigint_reopen(int signum)
 {
 	move_cursor_lastline(singleton_line());
-//	ft_putstr_fd("reopen\n ", 2);
 	g_abort_opening = 1;
 	(void)signum;
 }
