@@ -114,6 +114,7 @@ SRC_FILE = \
 	line_editing/edit_reopen.c \
 	line_editing/edit_write.c \
 	line_editing/edit_control_d.c \
+	line_editing/edit_control_l.c \
 	line_editing/edit_copy_paste.c \
 	line_editing/edit_add.c \
 	line_editing/edit_del.c \

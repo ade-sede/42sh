@@ -29,6 +29,7 @@
 # define KEY_ALT_P 32975
 # define KEY_ALT_V 10127586
 # define KEY_ALT_R 44738
+# define KEY_CTRL_L 12
 # define BUFF_LINE_SIZE 10
 
 /*
@@ -86,6 +87,7 @@ void	conf_term_normal(void);
 void	put_termcap(char *capacity);
 t_line	*singleton_line(void);
 
+int		control_l(t_line *line);
 int		control_d(t_line *line);
 int		edit_end(t_line *line);
 int		edit_home(t_line *line);

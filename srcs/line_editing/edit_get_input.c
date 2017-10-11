@@ -19,6 +19,7 @@ static t_edit_func	g_edit_func[] =
 	{KEY_ALT_P, &paste},
 	{KEY_CTRL_D, &control_d},
 	{KEY_DELETE, &edit_del},
+	{KEY_CTRL_L, &control_l},
 	{0, NULL}
 };
 
