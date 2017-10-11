@@ -20,9 +20,7 @@ static int	safe_open(char *target, int mode)
 	else
 		target_fd = open(target, mode);
 	if (target_fd == -1)
-	{
-		perror("open: ");
-	}
+		investigate_error(1, "open", NULL, 0)
 	return (target_fd);
 }
 

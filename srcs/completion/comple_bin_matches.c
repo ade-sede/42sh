@@ -55,7 +55,8 @@ static void		layer(t_ternary_tree *node,
 	}
 	else
 	{
-		*(s->cur) = realloc(*(s->cur), (s->i + 2) * sizeof(char));
+		*(s->cur) = ft_realloc(ft_strlen(*s->cur), *s->cur, (s->i + 2) \
+				* sizeof(char));
 		(*(s->cur))[s->i + 1] = '\0';
 		(*(s->cur))[s->i] = node->c;
 	}
