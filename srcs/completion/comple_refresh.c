@@ -33,11 +33,22 @@ void	comple_refresh_elem(t_comple c, int indice)
 
 void	comple_refresh_line(t_line *line, t_comple c)
 {
+	int		y;
+
 	put_ntermcap("up", c.nb_lines);
-	move_cursor_firstline_from_lastline(line);
+	cursor_goto_buff(line, 0, line->len);
+	y = get_prompt_visual_offset(line).y;
+	put_ntermcap("up", (size_t)y);
+	put_termcap("cr");
 	put_prompt(line);
 	edit_refresh_line(line);
 	edit_refresh_cursor(line);
+
+
+	//move_cursor_firstline_from_lastline(line);
+	//put_prompt(line);
+	//edit_refresh_line(line);
+	//edit_refresh_cursor(line);
 }
 
 size_t	comple_listart_big_completion(t_comple c)

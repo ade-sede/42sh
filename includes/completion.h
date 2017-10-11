@@ -10,6 +10,7 @@ typedef struct	s_comple
 	int			signum;
 	size_t		ws_col;
 	size_t		ws_row;
+	size_t		reserved_lines;
 	size_t		max_len;
 	size_t		nb_lines;
 	size_t		nb_colones;
@@ -72,4 +73,5 @@ char			*get_current_word_cursor(t_line *line);
 void			comple_bin_match_trip_layer(t_ternary_tree *node,
 				char ***matches, char **cur, size_t size);
 char			**ft_array_string_realloc(char **origin, size_t o_size, size_t n_size);
+size_t			get_reserved_line(size_t ws_row, t_line *line);
 #endif
