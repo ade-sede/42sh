@@ -17,8 +17,11 @@
 # endif
 
 int				get_logfd(const char *file);
-int				logwrite(const char *filename, const char *func_name,
-		const char *format, ...);
+
+/*
+**int				logwrite(const char *filename, const char *func_name,
+**		const char *format, ...);
+*/
 
 char			*get_errno_1(void);
 char			*get_errno_2(void);
@@ -34,7 +37,7 @@ char			*get_errno_11(void);
 
 char			*get_errno(void);
 
-int				investigate_error(char *logfile, const char *prefix, \
+int				investigate_error(int logfile, const char *prefix, \
 		const char *custom_error, int return_value);
 
 /*

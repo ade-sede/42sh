@@ -26,6 +26,5 @@ size_t	get_reserved_line(size_t ws_row, t_line *line)
 
 	used_by_prompt = (size_t)get_prompt_visual_offset(line).y;
 	used_by_buff = (size_t)get_char_visual_coor(line, line->len).y;
-	logwrite("log/def", __func__, "%zu\n", ws_row - used_by_prompt - used_by_buff);
 	return (ws_row - used_by_prompt - used_by_buff);
 }

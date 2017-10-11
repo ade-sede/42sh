@@ -59,7 +59,7 @@ char	*get_git_status(size_t *len)
 	int			ret;
 
 	if (pipe(fildes) != 0)
-		investigate_error(NULL, "prompt", NULL, 0);
+		investigate_error(1, "prompt", NULL, 0);
 	if ((son = fork()))
 	{
 		waitpid(son, &ret, WUNTRACED);
@@ -87,7 +87,7 @@ char	*get_current_directory(void)
 
 	buff = NULL;
 	if ((buff = getcwd(buff, 0)) == NULL)
-		return ((void*)(long)investigate_error("/dev/null", "prompt", NULL, 0));
+		return ((void*)(long)investigate_error(0, "prompt", NULL, 0));
 	if (ft_strequ(buff, "/"))
 		return (buff);
 	if ((dir = ft_strrchr(buff, '/')))

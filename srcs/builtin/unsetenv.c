@@ -10,7 +10,7 @@ int	builtin_unsetenv(t_env *env, char **argv)
 	argc = ft_arraylen((const char**)argv);
 	if (argc == 1)
 	{
-		return (investigate_error(NULL, NULL, "unsetenv: Too few arguments\n",
+		return (investigate_error(1, NULL, "unsetenv: Too few arguments\n",
 					EXIT_FAILURE));
 	}
 	i = 1;

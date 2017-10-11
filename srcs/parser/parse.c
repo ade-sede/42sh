@@ -36,8 +36,16 @@
 **			bulding a new branch for the new command, and attaching the simple
 **			command we just created to a complexe one.
 */
-#include <stdio.h>
-int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
+
+static int	return_parse(int retur, t_lst_head **head, t_ast **ast)
+{
+	ft_remove_head(head, free_pipe);
+	if (ast)
+		*ast = flush_tree(*ast);
+	return (retur);
+}
+
+int			ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 {
 	t_token *token;
 	int		reopen;
@@ -49,24 +57,12 @@ int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 		{
 			*ast = start_complexe_command(*ast, token_list, &reopen);
 			if (reopen)
-			{
-				ft_remove_head(head, free_pipe);
-				*ast = flush_tree(*ast);
-				return (reopen);
-			}
+				return (return_parse(reopen, head, ast));
 			if (add_pipe(token, head) == 0)
-			{
-				*ast = flush_tree(*ast);
-				ft_remove_head(head, free_pipe);
-				ft_double_lst_remove(head, free_pipe);
-				return (PARSER_ERROR);
-			}
+				return (return_parse(PARSER_ERROR, head, ast));
 		}
 		else if ((*ast = create_simple_command(token_list)) == NULL)
-		{
-			ft_remove_head(head, free_pipe);
-			return (PARSER_ERROR);
-		}
+			return (return_parse(PARSER_ERROR, head, NULL));
 	}
 	add_last_pipe(head);
 	return (PARSER_SUCCESS);

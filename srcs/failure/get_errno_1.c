@@ -2,8 +2,7 @@
 #include "libft.h"
 #include "failure.h"
 
-
-static char		*(*err_func[11])(void) =
+static char		*(*g_err_func[11])(void) =
 {
 	&get_errno_1,
 	&get_errno_2,
@@ -49,7 +48,7 @@ char	*get_errno(void)
 	size_t	i;
 
 	i = 0;
-	while (i <= 11 && (error = (*err_func[i])()) == NULL)
+	while (i <= 11 && (error = (*g_err_func[i])()) == NULL)
 		i++;
 	return (error);
 }

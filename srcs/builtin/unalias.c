@@ -30,7 +30,7 @@ int			builtin_unalias(t_env *env, const char **argv)
 			ret = EXIT_SUCCESS;
 		}
 		else
-			ret = investigate_error(NULL, NULL, "alias not found : ",
+			ret = investigate_error(1, NULL, "alias not found : ",
 					EXIT_FAILURE);
 	}
 	return (ret);
