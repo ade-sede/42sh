@@ -6,6 +6,7 @@
 #include "exec.h"
 #include "line_editing.h"
 #include "lexer.h"
+#include "failure.h"
 #include "parser.h"
 #include <errno.h>
 #include <stdio.h>
@@ -20,7 +21,7 @@ static int	safe_open(char *target, int mode)
 	else
 		target_fd = open(target, mode);
 	if (target_fd == -1)
-		investigate_error(1, "open", NULL, 0)
+		investigate_error(1, "open", NULL, 0);
 	return (target_fd);
 }
 
