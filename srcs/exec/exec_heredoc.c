@@ -25,7 +25,7 @@
 ** }
 */
 
-int		heredoc(int io_number, char *poem, t_list **redir_stack)
+static int	heredoc(int io_number, char *poem, t_list **redir_stack)
 {
 	int		*fd;
 
@@ -40,4 +40,30 @@ int		heredoc(int io_number, char *poem, t_list **redir_stack)
 	push_dup(io_number, fd[READ_END], FALSE, redir_stack);
 	free(fd);
 	return (1);
+}
+
+int			exec_heredoc(t_list *child_list, t_list **redir_stack)
+{
+	char		*poem;
+	int			io_number;
+	t_ast		*child_node;
+	int			here_flag;
+
+	here_flag = FALSE;
+	io_number = -1;
+	while (child_list)
+	{
+		child_node = child_list->data;
+		if (child_node->token->id == TK_IO_NUMBER)
+			io_number = ft_atoi(child_node->token->value);
+		if (child_node->token->id == TK_HERE)
+		{
+			here_flag = TRUE;
+			poem = child_node->heredoc_content;
+		}
+		child_list = child_list->next;
+	}
+	if (!here_flag)
+		return (-1);
+	return (heredoc(io_number, child_node->heredoc_content, redir_stack));
 }

@@ -20,6 +20,18 @@
 **	by one until no childs are left.
 */
 
+static int	check_heredoc(t_list *child_list)
+{
+	t_ast	*child_node;
+	while (child_list)
+	{
+		child_node = child_list->data;
+		if (child_node->token->id == TK_HERE)
+			return (1);
+		child_list = child_list->next;
+	}
+	return (0);
+}
 static void	abort_simple_command(char **argv)
 {
 	size_t		index;
@@ -45,8 +57,14 @@ static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 		add_to_local(&env->local, ft_strdup(child_node->token->value));
 	else if (child_node->symbol == IO_REDIRECT)
 	{
-		if ((exec_redir(child_node->child, redir_stack)) == 0)
-			return (0);
+		if (check_heredoc(child_node->child))
+		{
+			if ((exec_heredoc(child_node->child, redir_stack)) == 0)
+				return (0);
+		}
+		else
+			if ((exec_redir(child_node->child, redir_stack)) == 0)
+				return (0);
 	}
 	else if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
 		if (child_node->token->id != TK_NEWLINE)

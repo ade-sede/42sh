@@ -86,21 +86,13 @@ int		exec_redir(t_list *child_list, t_list **redir_stack)
 	int			(*f)(int, char*, t_list**, t_token_id);
 	char		*target;
 	t_token_id	id;
-	int			here_flag;
-	char		*poem;
 
-	here_flag = FALSE;
 	io_number = -1;
 	while (child_list)
 	{
 		child_node = child_list->data;
 		if (child_node->token->id == TK_IO_NUMBER)
 			io_number = ft_atoi(child_node->token->value);
-		if (child_node->token->id == TK_HERE)
-		{
-			here_flag = TRUE;
-			poem = child_node->heredoc_content;
-		}
 		else if (TK_IS_REDIR(child_node->token->id))
 		{
 			f = get_exec_redir_func(child_node);
@@ -110,9 +102,5 @@ int		exec_redir(t_list *child_list, t_list **redir_stack)
 			target = child_node->token->value;
 		child_list = child_list->next;
 	}
-	if (here_flag)
-		return (heredoc(io_number, child_node->heredoc_content, redir_stack));
-	else if (f)
-		return (f(io_number, target, redir_stack, id));
-	return (0);
+	return (f(io_number, target, redir_stack, id));
 }

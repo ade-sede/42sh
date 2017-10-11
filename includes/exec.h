@@ -25,8 +25,7 @@ int				fork_exec_bin(t_env *env, const char **argv, t_lst_head *head);
 **	In file srcs/exec/exec_heredoc.c
 */
 
-char			*heredoc_get_input(void);
-int				heredoc(int io_number, char *poem, t_list **redir_stack);
+int				exec_heredoc(t_list *child_list, t_list **redir_stack);
 
 /*
 **	In file srcs/exec/exec_pipe.c
