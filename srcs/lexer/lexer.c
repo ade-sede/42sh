@@ -57,28 +57,6 @@
 
 #include <stdio.h>
 
-t_token			*handle_lexer(t_lexer *lex)
-{
-	t_token	*token;
-	t_list	*node;
-	int		reopen;
-
-	if (lex->stack)
-		return (lex->stack->data);
-	if ((token = start_lex(lex, &reopen)) == NULL)
-		return (NULL);
-//	if (check_alias(lex, NULL))
-//		return (alias(lex, token, NULL));
-	if ((node = exec_expand(token)))
-		lex->stack = node;
-	else
-		lex->stack = ft_simple_lst_create(token);
-	(void)node;
-	token = lex->stack->data;
-	return (token);
-}
-
-
 int			lex_all(t_lexer *lex, t_list **token_list)
 {
 	t_token	*token;
@@ -110,27 +88,24 @@ int			lex_all(t_lexer *lex, t_list **token_list)
 t_token			*start_lex(t_lexer *lex, int *reopen)
 {
 	ssize_t	ret;
-	size_t	token_end;
+	t_token	*token;
 
-	token_end = 0;
 	if (lex->line[lex->index] == '\0')
 		return (NULL);
 	if (lex->state != DQUOTED && lex->state != QUOTED)
 		lex->state = start_token(lex, &lex->token_start);
 	if (lex->state == INPUT_END)
 		return (NULL);
-	while ((ret = token_match(lex, lex->token_start)) == -1)
+	while ((ret = token_match(lex, lex->token_start, reopen)) == -1)
 		lex->index++;
-	if (lex->line[lex->index] == '\0' && (lex->state == DQUOTED || lex->state == QUOTED))
+	if (!*reopen)
 	{
-#ifdef LEXER_DEBUG
-		printf("\nreopen line editing\n");
-#endif
-		*reopen = lex->state;
-		return (NULL);
+		token = tokenize(lex, lex->token_start, (size_t)ret);
+		lex->state = WORD;
+		return (token);
 	}
-	token_end = (size_t)ret;
-	return (tokenize(lex, lex->token_start, token_end));
+	else
+		return (NULL);
 }
 
 /*
@@ -179,40 +154,6 @@ int				update_state(t_lexer *lex)
 **	Rajouter le token qu'on vient de creer a lex->stack
 **	exec_expand creer un t_list a partir de la valeur etendu de du token.
 */
-/* size_t	get_ret_size(const char *line, size_t start, size_t end) */
-/* { */
-/* 	size_t	ret_size; */
-
-/* 	ret_size = 0; */
-/* 	while (end >= start) */
-/* 	{ */
-/* 		ret_size++; */
-/* 		if (!charcmp(line, end, line[end])) */
-/* 			ret_size--; */
-/* 		if (end == start) */
-/* 			break ; */
-/* 		--end; */
-/* 	} */
-/* 	return (ret_size); */
-/* } */
-
-/* char		*create_value(const char *line, size_t start, size_t end) */
-/* { */
-/* 	size_t	ret_size; */
-/* 	char	*value; */
-
-/* 	ret_size = get_ret_size(line, start, end); */
-/* 	value = ft_strnew(ret_size); */
-/* 	while (ret_size) */
-/* 	{ */
-/* 		value[ret_size - 1] = line[end]; */
-/* 		if (!charcmp(line, end, line[end])) */
-/* 			--end; */
-/* 		--ret_size; */
-/* 		--end; */
-/* 	} */
-/* 	return (value); */
-/* } */
 
 t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 {
@@ -220,7 +161,6 @@ t_token			*tokenize(t_lexer *lex, size_t token_start, size_t token_end)
 	t_token	*token;
 
 	value = ft_strsub(lex->line, token_start, token_end - token_start + 1);
-	/*value = create_value(lex->line, token_start, token_end);*/
 	token = create_token(value, lex->state, lex->line[lex->index]);
 	token->id = lex_get_token_id(lex, token);
 	lex->last_id = token->id;
@@ -254,6 +194,6 @@ t_token_id		lex_get_token_id(t_lexer *lex, t_token *token)
 			done = lex_id_word(lex, token, &id);
 	}
 	else if (token->type == DQUOTED || token->type == QUOTED)
-		id = TK_WORD;
+			lex_id_word(lex, token, &id);
 	return (id);
 }

@@ -14,10 +14,11 @@
 
 #include <stdio.h>
 
-static int	match_part_1(t_lexer *lex, size_t token_start)
+static int	match_part_2(t_lexer *lex, size_t token_start, int *reopen)
 {
 	int		ret;
 
+	(void)reopen;
 	ret = -1;
 	if (IS_INPUT_END(lex->line[lex->index]) && !(IS_QUOTED(lex->state)))
 		ret = lex->index - 1;
@@ -31,7 +32,16 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 		if (match_expand(lex, token_start))
 			ret = (lex->index - 1);
 	}
-	else if (lex->state == WORD)
+	return (ret);
+}
+
+static int	match_part_1(t_lexer *lex, size_t token_start, int *reopen)
+{
+	int		ret;
+
+	if ((ret = match_part_2(lex, token_start, reopen) )!= -1)
+		return (ret);
+	if (lex->state == WORD)
 	{
 		if (match_word(lex))
 			ret = (lex->index - 1);
@@ -40,29 +50,21 @@ static int	match_part_1(t_lexer *lex, size_t token_start)
 	{
 		if (lex->line[lex->index] == '\0')
 		{
+			*reopen = lex->state;
 			return (1);
-			//if (lex->reopen)
-			//	reopen_line_editing(lex, 0);
-			/*
-**				if (abort_opening)
-**					return (NULL);
-*/
 		}
 		if (charcmp(lex->line, lex->index, lex->state))
-		{
-			lex->state = WORD;
 			ret = lex->index++;
-		}
 	}
 	return (ret);
 }
 
-int			token_match(t_lexer *lex, size_t token_start)
+int			token_match(t_lexer *lex, size_t token_start, int *reopen)
 {
 	int	ret;
 
 	ret = -1;
-	ret = match_part_1(lex, token_start);
+	ret = match_part_1(lex, token_start, reopen);
 	if (ret != -1)
 		return (ret);
 	else if (lex->state == OPERATOR)
