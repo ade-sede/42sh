@@ -39,13 +39,13 @@ t_token			*lex_completion(t_lexer *lex)
 	t_token	*prev_token;
 	int		reopen;
 
-	prev_token = start_lex(lex, &reopen);
+	prev_token = NULL;
 	while ((token = start_lex(lex, &reopen)) != NULL)
 	{
-		free(prev_token);
+		free_token(prev_token);
 		prev_token = token;
 	}
-	dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, prev_token->value);
+	//dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, prev_token->value);
 	return (prev_token);
 }
 
@@ -58,12 +58,12 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
 
 	lex = get_lex_line_cursor(line);
 	token = lex_completion(&lex);
-	if ((glob_list = pathname_expansion(token)))
+	if (token != NULL && (glob_list = pathname_expansion(token, 0)))
 		res = comple_globing_matches(line, c, glob_list);
 	else if (!lex.cmd_name_open)
 		res = comple_file_matches(line, c);
 	else
-		res = comple_file_matches(line, c);
+		res = comple_bin_matches(line, c);
 	return (res);
 }
 
@@ -76,10 +76,10 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c)
 
 	lex = get_lex_line_cursor(line);
 	token = lex_completion(&lex);
-	if ((glob_list = pathname_expansion(token)))
+	if (token != NULL && (glob_list = pathname_expansion(token, 0)))
 		res = comple_globing_matches(line, c, glob_list);
 	else if (!ft_strchr(c->current_word, '/') || token->cmd_name == 1)
-		res = comple_file_matches(line, c);
+		res = comple_bin_matches(line, c);
 	else
 		res = comple_file_matches(line, c);
 	return (res);

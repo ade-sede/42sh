@@ -33,12 +33,13 @@ static t_list	*get_globbed_tokens(t_list *list)
 **	free_token(token);
 */
 
-t_list	*pathname_expansion(t_token *token)
+t_list	*pathname_expansion(t_token *token, int match_all)
 {
 	t_list	*glob_ret;
 	t_list	*gen;
 	t_list	*ret;
 	t_token	*token_gen;
+	t_list	*glob_list;
 
 	ret = NULL;
 	if (!ft_strchr(token->value, '*') && !ft_strchr(token->value, '[') && !ft_strchr(token->value, '{'))
@@ -50,10 +51,14 @@ t_list	*pathname_expansion(t_token *token)
 		{
 			token_gen = gen->data;
 //			dprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET, token_gen->value);//			REMOVE		
-			glob_ret = get_globbed_tokens(glob(token_gen->value));
-			ft_simple_lst_pushback(&ret, glob_ret);
-			gen = gen->next;
+			if (!(glob_list = glob(token_gen->value)) && match_all)
+				glob_list = ft_simple_lst_create(ft_strdup(token_gen->value));
+			glob_ret = get_globbed_tokens(glob_list);
+			if (glob_ret)
+				ft_simple_lst_pushback(&ret, glob_ret);
+			ft_simple_lst_del_one(&gen, gen, free_token);
 		}
+		free_token(token);
 	}
 	return (ret);
 }
@@ -80,5 +85,5 @@ t_list			*exec_expand(t_token *token)
 		}
 		parameter_expansion(env, token);
 	}
-	return (pathname_expansion(token));
+	return (pathname_expansion(token, 1));
 }

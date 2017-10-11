@@ -23,6 +23,8 @@ void		free_token(void *value)
 {
 	t_token *token;
 
+	if (!value)
+		return ;
 	token = (t_token*)value;
 	if (token->value)
 		free(token->value);

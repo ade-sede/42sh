@@ -13,7 +13,8 @@ void	create_ternary_tree_dir(char *dir_path, t_env *env)
 		return ;
 	while ((dirent = readdir(dir)) != NULL)
 	{
-		name = ft_strdup(dirent->d_name);
+		//name = ft_strdup(dirent->d_name);
+		name = dirent->d_name;
 		if (name[0] != '.' && ft_is_executable(dir_path, name))
 		{
 			if (!env->tree)
@@ -21,8 +22,8 @@ void	create_ternary_tree_dir(char *dir_path, t_env *env)
 			else
 				ternary_tree_add(env->tree, name, name);
 		}
-		else
-			free(name);
+		//else
+			//free(name);
 	}
 	closedir(dir);
 }
