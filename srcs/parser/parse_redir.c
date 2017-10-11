@@ -68,7 +68,7 @@ static int		pushback_redir(t_list *child_list, int expected,
 				heredoc = TRUE;
 		}
 		if (expected == 1 && token->id != TK_NAME && token->id != TK_WORD)
-			return (investigate_error(0, "Parse error near ", token->value, 0));
+			return (investigate_error(1, "Parse error near ", token->value, 0));
 		if (expected == 1)
 			expected_one(child_list, heredoc, token);
 		*token_list = *token_list ? (*token_list)->next : 0;

@@ -90,7 +90,7 @@ t_ast			*fill_simple_command(t_ast *simple_cmd, t_list **token_list)
 					&cmd_name_open);
 			*token_list = *token_list ? (*token_list)->next : 0;
 			ft_simple_lst_pushback(&((simple_cmd)->child), \
-				ft_simple_lst_create(new_node));
+					ft_simple_lst_create(new_node));
 		}
 	return (simple_cmd);
 }
