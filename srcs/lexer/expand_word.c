@@ -58,7 +58,6 @@ t_list	*pathname_expansion(t_token *token, int match_all)
 				ft_simple_lst_pushback(&ret, glob_ret);
 			ft_simple_lst_del_one(&gen, gen, free_token);
 		}
-		free_token(token);
 	}
 	return (ret);
 }

@@ -21,6 +21,6 @@ char	**comple_globing_matches(t_line *line, t_comple *c, t_list *glob_list)
 				ft_strsurround(matches[0], " ", ((t_token *)glob_list->data)->value));
 		glob_list = glob_list->next;
 	}
-	ft_simple_lst_remove(&first, ft_free);
+	ft_simple_lst_remove(&first, free_token);
 	return (matches);
 }

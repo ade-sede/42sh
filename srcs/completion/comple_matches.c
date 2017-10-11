@@ -49,36 +49,25 @@ t_token			*lex_completion(t_lexer *lex)
 	return (prev_token);
 }
 
-char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
+char			**comple_matching_no_cursorword(t_line *line, t_comple *c, t_lexer lex)
 {
-	t_lexer		lex;
-	t_token		*token;
 	char		**res;
-	t_list		*glob_list;
 
-	lex = get_lex_line_cursor(line);
-	token = lex_completion(&lex);
-	if (token != NULL && (glob_list = pathname_expansion(token, 0)))
-		res = comple_globing_matches(line, c, glob_list);
-	else if (!lex.cmd_name_open)
+	if (!lex.cmd_name_open)
 		res = comple_file_matches(line, c);
 	else
 		res = comple_bin_matches(line, c);
 	return (res);
 }
 
-char			**comple_matching_cursorword(t_line *line, t_comple *c)
+char			**comple_matching_cursorword(t_line *line, t_comple *c, t_token *token)
 {
-	t_lexer		lex;
-	t_token		*token;
 	char		**res;
 	t_list		*glob_list;
 
-	lex = get_lex_line_cursor(line);
-	token = lex_completion(&lex);
 	if (token != NULL && (glob_list = pathname_expansion(token, 0)))
 		res = comple_globing_matches(line, c, glob_list);
-	else if (!ft_strchr(c->current_word, '/') || token->cmd_name == 1)
+	else if (!ft_strchr(c->current_word, '/') && token->cmd_name == 1)
 		res = comple_bin_matches(line, c);
 	else
 		res = comple_file_matches(line, c);
@@ -87,12 +76,22 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c)
 
 char			**comple_matching(t_line *line, t_comple *c)
 {
+	char	**res;
+	t_lexer		lex;
+	t_token		*token;
+
+	lex = get_lex_line_cursor(line);
+	token = lex_completion(&lex);
+	res = NULL;
 	c->current_word = get_current_word_cursor(line);
 	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
 			|| line->buff[line->pos] == '\0')
 						&& line->buff[line->pos - 1] == ' '))
-		return (comple_matching_no_cursorword(line, c));
+		res = comple_matching_no_cursorword(line, c, lex);
 	else
-		return (comple_matching_cursorword(line, c));
-	return (NULL);
+		res = comple_matching_cursorword(line, c, token);
+	free(lex.line);
+	free(c->current_word);
+	free_token(token);
+	return (res);
 }
