@@ -82,7 +82,8 @@ int				exec_tree(t_ast *ast, t_lst_head *head);
 */
 
 void			lex_and_parse(char *buff);
-char			*line_editing_get_input(t_line *line, t_hist *hist, void (*sig_handler)(void));
+char			*line_editing_get_input(t_line *line, t_hist *hist,
+		void (*sig_handler)(void));
 void			init_main_loop(t_line *line, t_hist *hist);
 void			exec(t_env *env, const char **argv, t_lst_head *head);
 void			main_loop(t_env *env);

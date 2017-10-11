@@ -3,8 +3,8 @@
 # include "t_ast.h"
 # include "lexer.h"
 
-#define PARSER_ERROR 1
-#define PARSER_SUCCESS 0
+# define PARSER_ERROR 1
+# define PARSER_SUCCESS 0
 
 /*
 **	After a token is delimited, it is sent to the parser, wich will build an
@@ -87,20 +87,21 @@
 **	In file srcs/parser/parse.c
 */
 
-int		ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list);
+int			ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list);
 
 /*
 **	In file srcs/parser/parse_complexe_command.c
 */
 
-t_ast		*start_complexe_command(t_ast *ast, t_list **token_list, int *reopen);
+t_ast		*start_complexe_command(t_ast *ast, t_list **token_list,
+		int *reopen);
 
 /*
 **	In file srcs/parser/parse_pipe.c
 */
 
-void	add_last_pipe(t_lst_head **head);
-int		add_pipe(t_token *token, t_lst_head **head);
+void		add_last_pipe(t_lst_head **head);
+int			add_pipe(t_token *token, t_lst_head **head);
 
 /*
 **	In file srcs/parser/parse_redir.c
@@ -114,7 +115,8 @@ t_ast		*append_redir(t_ast *root, t_token *token, t_list **token_list);
 
 t_ast		*create_simple_command(t_list **token_list);
 t_ast		*fill_simple_command(t_ast *simple_cmd, t_list **token_list);
-void	read_tree(t_ast *ast_start);
-t_ast			*complete_complexe_command(t_ast *ast, t_list **token_list, int *reopen);
+void		read_tree(t_ast *ast_start);
+t_ast		*complete_complexe_command(t_ast *ast, t_list **token_list,
+		int *reopen);
 
 #endif

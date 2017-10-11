@@ -45,27 +45,21 @@ static int	manage_error(char *const argv[], struct s_opt_extern *ext)
 	return ('?');
 }
 
-#include <stdio.h>
-
 int			my_getopt(int argc, char *const argv[], const char *optstring,
 			struct s_opt_extern *ext)
 {
 	ext->first_char = *optstring;
 	ext->optarg = NULL;
-	ft_printf("111\n");
 	if (ext->optind >= argc)
 		return (-1);
-	ft_printf("222 [%c]\n", *argv[ext->optind]);
 	if (*argv[ext->optind] != '-' || *argv[ext->optind] != '+' ||
 			ft_strlen(argv[ext->optind]) == 1)
 		return (-1);
-	ft_printf("333\n");
 	if ((ft_strcmp(argv[ext->optind], "--")) == 0)
 	{
 		ext->optind++;
 		return (-1);
 	}
-	ft_printf("444\n");
 	while (*optstring != '\0')
 	{
 		if (*optstring != ':' && argv[ext->optind][ext->optchar] == *optstring)

@@ -1,5 +1,5 @@
-#ifndef MY_GETOPT_H
-# define MY_GETOPT_H
+#ifndef FT_GETOPT_H
+# define FT_GETOPT_H
 
 /*
 ** http://manpagesfr.free.fr/man/man3/getopt.3.html

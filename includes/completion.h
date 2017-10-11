@@ -26,8 +26,6 @@ typedef struct	s_comple_func
 	int					(*f)(t_comple *);
 }				t_comple_func;
 
-
-
 char			*comple_escape(char *input);
 /*
 ** signaux

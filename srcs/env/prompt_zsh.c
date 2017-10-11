@@ -4,7 +4,7 @@
 #include "sys/wait.h"
 #include "get_next_line.h"
 #include "line_editing.h"
-#include "failure.h" 
+#include "failure.h"
 
 char	*read_git_status(int fd, size_t *len, char *git_status)
 {
@@ -23,12 +23,13 @@ char	*read_git_status(int fd, size_t *len, char *git_status)
 	return (git_status);
 }
 
-char	*read_git_branch(int fd, size_t *len)
+char	*read_git_branch(int fd_close, int fd, size_t *len)
 {
 	char	*line;
 	char	*branch;
 	char	*git_status;
 
+	close(fd_close);
 	line = NULL;
 	get_next_line(fd, &line);
 	if (!(line))
@@ -57,17 +58,17 @@ char	*get_git_status(size_t *len)
 	pid_t		son;
 	int			ret;
 
-	if (pipe(fildes) != 0) 
+	if (pipe(fildes) != 0)
 		investigate_error(NULL, "prompt", NULL, 0);
 	if ((son = fork()))
 	{
 		waitpid(son, &ret, WUNTRACED);
 		if (WEXITSTATUS(ret))
 		{
-			*len = *len + 1; return (ft_strdup(" "));
+			*len = *len + 1;
+			return (ft_strdup(" "));
 		}
-		close(fildes[1]);
-		return (read_git_branch(fildes[0], len));
+		return (read_git_branch(fildes[1], fildes[0], len));
 	}
 	else
 	{
@@ -86,7 +87,7 @@ char	*get_current_directory(void)
 
 	buff = NULL;
 	if ((buff = getcwd(buff, 0)) == NULL)
-		return ((void*)(long)investigate_error("/dev/null", "prompt", NULL , 0));
+		return ((void*)(long)investigate_error("/dev/null", "prompt", NULL, 0));
 	if (ft_strequ(buff, "/"))
 		return (buff);
 	if ((dir = ft_strrchr(buff, '/')))
@@ -109,7 +110,7 @@ char	*get_ps1(t_env *env, size_t *len)
 		ft_strjoin3_free(GRN, "➜  ", RESET, 0) : \
 			ft_strjoin3_free(RED, "➜  ", RESET, 0);
 	*len += 3;
-	if ((current_dir = get_current_directory()) == NULL) 
+	if ((current_dir = get_current_directory()) == NULL)
 		current_dir = ft_strnew(0);
 	*len += ft_strlen(current_dir);
 	current_dir = ft_strjoin3_free(CYN, current_dir, RESET, 2);

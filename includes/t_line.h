@@ -1,5 +1,5 @@
-#ifndef LINE_EDITING_STRUCT_H
-# define LINE_EDITING_STRUCT_H
+#ifndef T_LINE_H
+# define T_LINE_H
 # include "termios.h"
 # include <string.h>
 
@@ -31,6 +31,5 @@ typedef struct	s_edit_func
 	unsigned long long	keycode;
 	int					(*f)(t_line *);
 }				t_edit_func;
-
 
 #endif

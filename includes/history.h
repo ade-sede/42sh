@@ -49,9 +49,12 @@ void			btsearch_del(t_line *line, t_hist *h);
 void			btsearch_first_search(t_hist *h);
 void			create_strstr_btsearch_buff(t_list_d *item);
 
-
 void			history_append_command_to_list(char *command);
 void			history_write_to_histfile(void);
 void			history_line_refresh(t_line *line, char *new_line);
-/* void			history_write_last_command(); */
+
+/*
+** void			history_write_last_command();
+*/
+
 #endif
