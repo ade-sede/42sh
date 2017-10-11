@@ -47,6 +47,8 @@ int		comple_exit_matched(t_line *line, t_comple c,
 	{
 		delete_word(c.to_replace);
 		matched = extract_color(c.matches[c.pos]);
+		if (matched[ft_strlen(matched) - 1] != '/')
+			matched = ft_strjoin_free(matched, " ", 2);
 		edit_insert_str(line, c.to_replace, matched);
 		free(matched);
 	}
@@ -54,7 +56,8 @@ int		comple_exit_matched(t_line *line, t_comple c,
 	{
 		delete_word(c.to_replace);
 		matched = extract_color(c.matches[0]);
-		//matched = ft_strjoin_free(matched, " ", 2);
+		if (matched[ft_strlen(matched) - 1] != '/')
+			matched = ft_strjoin_free(matched, " ", 2);
 		edit_insert_str(line, c.to_replace, matched);
 		free(matched);
 	}
