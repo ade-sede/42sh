@@ -45,11 +45,11 @@ t_token			*lex_completion(t_lexer *lex)
 		free_token(prev_token);
 		prev_token = token;
 	}
-	//dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, prev_token->value);
 	return (prev_token);
 }
 
-char			**comple_matching_no_cursorword(t_line *line, t_comple *c, t_lexer lex)
+char			**comple_matching_no_cursorword(t_line *line, t_comple *c,
+		t_lexer lex)
 {
 	char		**res;
 
@@ -60,7 +60,8 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c, t_lexer lex)
 	return (res);
 }
 
-char			**comple_matching_cursorword(t_line *line, t_comple *c, t_token *token)
+char			**comple_matching_cursorword(t_line *line, t_comple *c,
+		t_token *token)
 {
 	char		**res;
 	t_list		*glob_list;
@@ -76,7 +77,7 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c, t_token *token)
 
 char			**comple_matching(t_line *line, t_comple *c)
 {
-	char	**res;
+	char		**res;
 	t_lexer		lex;
 	t_token		*token;
 

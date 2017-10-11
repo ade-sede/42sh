@@ -81,7 +81,7 @@ int				exec_tree(t_ast *ast, t_lst_head *head);
 **	In file srcs/exec/main_loop.c
 */
 
-void			lex_and_parse(char *buff);
+void			lex_and_parse(t_lst_head *head, t_ast *ast, char *buff);
 char			*line_editing_get_input(t_line *line, t_hist *hist,
 		void (*sig_handler)(void));
 void			init_main_loop(t_line *line, t_hist *hist);

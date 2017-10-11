@@ -70,6 +70,7 @@ SRC_FILE = \
 	exec/exec_tree.c \
 	exec/main_loop.c \
 	exec/redir_utils.c \
+	exec/lex_and_parse.c \
 	\
 	globing/curly_bracket_split.c \
 	globing/curly_brackets.c \

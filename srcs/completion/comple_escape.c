@@ -4,7 +4,6 @@
 #include <string.h>
 #include "libft.h"
 
-
 /*
 **	Returns the fully escaped name of the string it received as input in a way
 **	that will allow the shell to reverse the process and find the origin string
@@ -20,7 +19,8 @@ static size_t	escaped_size(char *input)
 	i = 0;
 	while (input[i])
 	{
-		if (input[i] == '\\' || input[i] == '"' || input[i] == '\'' || input[i] == '$')
+		if (input[i] == '\\' || input[i] == '"' || input[i] == '\'' ||
+				input[i] == '$')
 			++size;
 		if (input[i] == '\n')
 			size += 4;
@@ -30,18 +30,15 @@ static size_t	escaped_size(char *input)
 	return (size);
 }
 
-char	*comple_escape(char *input)
+char			*comple_escape(size_t i, size_t j, char *input)
 {
-	size_t	i;
-	size_t	j;
 	char	*escaped_str;
 
-	i = 0;
-	j = 0;
 	escaped_str = ft_memalloc(sizeof(char*) * (escaped_size(input) + 1));
 	while (input[i] != 0)
 	{
-		if (input[i] == '\\' || input[i] == '"' || input[i] == '\'' || input[i] == '$')
+		if (input[i] == '\\' || input[i] == '"' || input[i] == '\'' ||
+				input[i] == '$')
 			escaped_str[j++] = '\\';
 		if (input[i] == '\n')
 		{
