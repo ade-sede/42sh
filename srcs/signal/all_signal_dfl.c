@@ -7,7 +7,8 @@ void	all_signal_dfl(void)
 	x = 0;
 	while (x < 31)
 	{
-		if (x != SIGINT && x != SIGSTOP && x != SIGCHLD && x != SIGWINCH)
+		if (x != SIGINT && x != SIGSTOP && x != SIGCHLD && x != SIGWINCH &&
+				x != SIGSEGV)
 			signal(x, SIG_DFL);
 		x++;
 	}

@@ -90,7 +90,7 @@ t_token_id		lex_id_operator(const char *value);
 */
 
 void			append_history(char *command);
-int				token_match(t_lexer *lex, size_t token_start,int *reopen);
+int				token_match(t_lexer *lex, size_t token_start, int *reopen);
 
 /*
 **	In file srcs/lexer/match_word.c

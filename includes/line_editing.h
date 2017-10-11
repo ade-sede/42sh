@@ -33,43 +33,46 @@
 # define BUFF_LINE_SIZE 10
 
 /*
-**    Reads input from the user, and allows the user to edit his input before
-**    sending it to the shell.
-**    Life of the routine :
+**	Reads input from the user, and allows the user to edit his input before
+**	sending it to the shell.
+**	Life of the routine :
 **
-**    - Before it is called :
-**        - A prompt is displayed, all the modules
-**        are initialized (history, completion, struct t_line).
+**	- Before it is called :
+**		- A prompt is displayed, all the modules
+**		are initialized (history, completion, struct t_line).
 **
-**    - Run time :
-**        - Setup signal handler.
-**        - Reads input from the user until enter is pressed or a
-**        signal stops the loop.
-**        - The keycode read from the user's input is matched
-**        against the keycodes corresponding to different features of the shell.
-**        - Appropriate feature is launched.
+**		- Run time :
+**			- Setup signal handler.
+**			- Reads input from the user until enter is pressed or a
+**			signal stops the loop.
+**			- The keycode read from the user's input is matched
+**			against the keycodes corresponding to different features of
+**			the shell.
+**			- Appropriate feature is launched.
 **
-**    - Exit
-**        - Returns the address of the line editing's internal buffer in which the
-**        input has been bufferised.
+**		- Exit
+**			- Returns the address of the line editing's internal buffer in
+**			which the input has been bufferised.
 **
-**    A buffer is maintained inside the struct s_line. The line editing's purpose
-**    is to match the user's input to the buffer's content, ie : if the cursor
-**    moves on the screen, we need to change the index we use to append the next
-**    input, and if the user's input is a character, we need to add it to the
-**    buffer, and display it (refresh_line).
+**	A buffer is maintained inside the struct s_line. The line editing's purpose
+**	is to match the user's input to the buffer's content, ie : if the cursor
+**	moves on the screen, we need to change the index we use to append the next
+**	input, and if the user's input is a character, we need to add it to the
+**	buffer, and display it (refresh_line).
 */
 
 extern int		g_abort_opening;
 
 int				edit_del(t_line *line);
 t_coor			get_prompt_visual_offset(t_line *line);
-void			reopen_line_editing(t_lexer *lex, int res_lexer, int res_parser);
+void			reopen_line_editing(t_lexer *lex, int res_lexer,
+		int res_parser);
 void			term_putstr(t_line *line);
 void			edit_handle_sigint_reopen(int signum);
 void			edit_set_signals_reopen(void);
 
-size_t			get_char_mem_coor_relative(t_line *line, int x_move, int y_move);
+size_t			get_char_mem_coor_relative(t_line *line, int x_move,
+		int y_move);
 size_t			get_char_mem_coor(t_line *line, size_t x, size_t y);
 size_t			cursor_goto_buff(t_line *line, size_t dest_i, size_t start_i);
 t_coor			get_char_visual_coor(t_line *line, ssize_t pos);
@@ -90,7 +93,7 @@ t_line			*singleton_line(void);
 
 int				control_l(t_line *line);
 int				control_d(t_line *line);
-int				 edit_end(t_line *line);
+int				edit_end(t_line *line);
 int				edit_home(t_line *line);
 int				edit_right(t_line *line);
 int				edit_left(t_line *line);
