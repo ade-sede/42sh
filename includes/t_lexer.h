@@ -32,7 +32,7 @@ typedef enum
 
 typedef struct		s_lexer
 {
-	const char		*line;
+	char			*line;
 	size_t			index;
 	size_t			token_start;
 	t_list			*stack;

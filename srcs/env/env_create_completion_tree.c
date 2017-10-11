@@ -6,26 +6,24 @@ void	create_ternary_tree_dir(char *dir_path, t_env *env)
 {
 	struct dirent	*dirent;
 	DIR				*dir;
+	char			*name;
 
 	dir = NULL;
 	if (!(dir = opendir(dir_path)))
 		return ;
 	while ((dirent = readdir(dir)) != NULL)
 	{
-		if (dirent->d_name[0] != '.' && ft_is_executable(dir_path, \
-					dirent->d_name))
+		//name = ft_strdup(dirent->d_name);
+		name = dirent->d_name;
+		if (name[0] != '.' && ft_is_executable(dir_path, name))
 		{
 			if (!env->tree)
-			{
-				if ((dirent = readdir(dir)) != NULL)
-					env->tree = ternary_tree_new_down(dirent->d_name, \
-							dirent->d_name);
-			}
+				env->tree = ternary_tree_new_down(name, name);
 			else
-			{
-				ternary_tree_add(env->tree, dirent->d_name, dirent->d_name);
-			}
+				ternary_tree_add(env->tree, name, name);
 		}
+		//else
+			//free(name);
 	}
 	closedir(dir);
 }

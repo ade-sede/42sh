@@ -1,5 +1,6 @@
 #include "lexer.h"
 #include "completion.h"
+#include <stdio.h>
 
 /*
 **	pour determiner completion binaire ou completion fichier :
@@ -19,22 +20,6 @@
 **		si prev
 */
 
-char			**comple_matching_no_cursorword(t_line *line, t_comple *c)
-{
-	t_lexer		lex;
-	char		**res;
-	char		line_pos_char;
-
-	line_pos_char = line->buff[line->pos];
-	line->buff[line->pos] = '\0';
-	lex = init_lexer(line->buff);
-	lex.reopen = 0;
-	/* res = comple_bin_matches(line, c); */
-	res = comple_file_matches(line, c);
-	line->buff[line->pos] = line_pos_char;
-	return (res);
-}
-
 static t_lexer	get_lex_line_cursor(t_line *line)
 {
 	char		line_pos_char;
@@ -48,41 +33,65 @@ static t_lexer	get_lex_line_cursor(t_line *line)
 	return (lex);
 }
 
-char			**comple_matching_cursorword(t_line *line, t_comple *c)
+t_token			*lex_completion(t_lexer *lex)
 {
-	t_lexer		lex;
-	/* t_list		*last; */
-	/* t_token		*token; */
+	t_token	*token;
+	t_token	*prev_token;
+	int		reopen;
+
+	prev_token = NULL;
+	while ((token = start_lex(lex, &reopen)) != NULL)
+	{
+		free_token(prev_token);
+		prev_token = token;
+	}
+	//dprintf(2, ""MAG"#"CYN"%s"MAG"#\n"RESET, prev_token->value);
+	return (prev_token);
+}
+
+char			**comple_matching_no_cursorword(t_line *line, t_comple *c, t_lexer lex)
+{
 	char		**res;
 
-	lex = get_lex_line_cursor(line);
-	if (ft_strchr(c->current_word, '/'))
+	if (!lex.cmd_name_open)
 		res = comple_file_matches(line, c);
-	/* else if (!token_list->next) */
-	/* 	res = comple_bin_matches(line, c); */
 	else
-	{
-		/* token = last->data; */
-		/* if (token->cmd_name) */
-		/* 	res = comple_bin_matches(line, c); */
-		/* else */
-			res = comple_file_matches(line, c);
-	}
-	/* free_token_list(token_list); */
+		res = comple_bin_matches(line, c);
+	return (res);
+}
+
+char			**comple_matching_cursorword(t_line *line, t_comple *c, t_token *token)
+{
+	char		**res;
+	t_list		*glob_list;
+
+	if (token != NULL && (glob_list = pathname_expansion(token, 0)))
+		res = comple_globing_matches(line, c, glob_list);
+	else if (!ft_strchr(c->current_word, '/') && token->cmd_name == 1)
+		res = comple_bin_matches(line, c);
+	else
+		res = comple_file_matches(line, c);
 	return (res);
 }
 
 char			**comple_matching(t_line *line, t_comple *c)
 {
+	char	**res;
+	t_lexer		lex;
+	t_token		*token;
+
+	lex = get_lex_line_cursor(line);
+	token = lex_completion(&lex);
+	res = NULL;
 	c->current_word = get_current_word_cursor(line);
-	if (line->buff[line->pos] == '*' || \
-			(line->pos != 0 && line->buff[line->pos - 1] == '*'))
-		return (comple_globing_matches(line, c));
-	else if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
+	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
 			|| line->buff[line->pos] == '\0')
 						&& line->buff[line->pos - 1] == ' '))
-		return (comple_matching_no_cursorword(line, c));
+		res = comple_matching_no_cursorword(line, c, lex);
 	else
-		return (comple_matching_cursorword(line, c));
-	return (NULL);
+		res = comple_matching_cursorword(line, c, token);
+	free(lex.line);
+	free(c->current_word);
+	free_token(token);
+	return (res);
 }

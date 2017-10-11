@@ -93,6 +93,8 @@ int			lex_all(t_lexer *lex, t_list **token_list)
 #endif
 		if (!(node = exec_expand(token)))
 			node = ft_simple_lst_create(token);
+		else
+			free_token(token);
 		ft_simple_lst_pushback(&lex->stack, node);
 	}
 	*token_list = lex->stack;

@@ -1,4 +1,5 @@
 #include "completion.h"
+#include <stdio.h>
 #include "line_editing.h"
 
 void	comple_clear(t_comple c)
@@ -42,10 +43,18 @@ int		comple_exit_matched(t_line *line, t_comple c,
 {
 	char	*matched;
 
-	if ((keycode == KEY_ENTER && c.pos != -1) || c.nb_matches == 1)
+	if ((keycode == KEY_ENTER && c.pos != -1))
 	{
 		delete_word(c.to_replace);
 		matched = extract_color(c.matches[c.pos]);
+		edit_insert_str(line, c.to_replace, matched);
+		free(matched);
+	}
+	if (c.nb_matches == 1)
+	{
+		delete_word(c.to_replace);
+		matched = extract_color(c.matches[0]);
+		//matched = ft_strjoin_free(matched, " ", 2);
 		edit_insert_str(line, c.to_replace, matched);
 		free(matched);
 	}
