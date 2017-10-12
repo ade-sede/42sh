@@ -29,13 +29,11 @@ static void		complete_assignement_word(t_token *token, t_list **token_list)
 	if (*(eq_sign + 1) == 0)
 		*token_list = *token_list ? (*token_list)->next : 0;
 	next_token = (*token_list)->data;
-	if ((token = (*token_list)->data))
+	if (next_token && (next_token->type == DQUOTED \
+				|| next_token->type == QUOTED))
 	{
-		if (next_token->type == DQUOTED || next_token->type == QUOTED)
-		{
-			token->value = ft_strchange(token->value, \
-					ft_strjoin(token->value, next_token->value));
-		}
+		token->value = ft_strchange(token->value, \
+				ft_strjoin(token->value, next_token->value));
 	}
 }
 

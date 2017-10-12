@@ -48,16 +48,18 @@ static void	abort_simple_command(char **argv)
 	singleton_env()->previous_exit = EXIT_FAILURE;
 }
 
+/*if (child_node->token && child_node->token->id == TK_ASSIGNMENT_WORD &&
+**		child_node->symbol == CMD_PREFIX)
+**	add_to_local(&env->local, ft_strdup(child_node->token->value));
+*/
+
 static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 		char **argv, size_t *i)
 {
 	t_env	*env;
 
 	env = singleton_env();
-	if (child_node->token && child_node->token->id == TK_ASSIGNMENT_WORD &&
-			child_node->symbol == CMD_PREFIX)
-		add_to_local(&env->local, ft_strdup(child_node->token->value));
-	else if (child_node->symbol == IO_REDIRECT)
+	if (child_node->symbol == IO_REDIRECT)
 	{
 		if (check_heredoc(child_node->child))
 		{
@@ -70,6 +72,7 @@ static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 	else if (child_node->symbol == CMD_NAME || child_node->symbol == CMD_SUFFIX)
 		if (child_node->token->id != TK_NEWLINE)
 		{
+	if (child_node->token)
 			argv[*i] = ft_strdup(child_node->token->value);
 			(*i)++;
 		}

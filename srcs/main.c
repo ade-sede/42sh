@@ -18,7 +18,8 @@ int	main(void)
 	extern const char	**environ;
 	t_env				*env;
 
-	all_signal_ign();
+	if (0)
+		all_signal_ign();
 	env = singleton_env();
 	env_load_base_env(env, environ);
 	create_ternary_tree(env);

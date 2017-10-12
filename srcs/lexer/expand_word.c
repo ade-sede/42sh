@@ -74,14 +74,17 @@ t_list			*exec_expand(t_token *token)
 					ft_strsub(token->value, 1, token->size - 2));
 		token->size -= 2;
 	}
-	if (token->type != QUOTED)
+	if (0)
 	{
-		if (token->type != DQUOTED)
+		if (token->type != QUOTED)
 		{
-			if (ft_strchr(token->value, '~'))
-				tild_expand(env, token);
+			if (token->type != DQUOTED)
+			{
+				if (ft_strchr(token->value, '~'))
+					tild_expand(env, token);
+			}
+			parameter_expansion(env, token);
 		}
-		parameter_expansion(env, token);
 	}
 	return (pathname_expansion(token, 1));
 }
