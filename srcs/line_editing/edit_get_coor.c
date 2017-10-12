@@ -13,13 +13,8 @@ t_coor	get_prompt_visual_offset(t_line *line)
 	size_t	x;
 	size_t	y;
 
-	x = (line->prompt_len - 1) % (line->ws_col);
-	y = (line->prompt_len - 1) / (line->ws_col);
-	/* if (x == 0 && y != 0) */
-	/* 	y--; */
-	logwrite("log/def", __func__, "ws_col = %zu\n", line->ws_col);
-	logwrite("log/def", __func__, "prompt_len = %zu\n", line->prompt_len);
-	logwrite("log/def", __func__, "{%d ; %d}\n", x, y);
+	x = line->prompt_len % (line->ws_col);
+	y = line->prompt_len / (line->ws_col);
 	return ((t_coor){(int)x, (int)y});
 }
 
@@ -38,11 +33,6 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 	index = 0;
 	x = get_prompt_visual_offset(line).x;
 	y = 0;
-	/* if (x == (int)line->ws_col) */
-	/* { */
-	/* 	x = 0; */
-	/* 	++y; */
-	/* } */
 	while ((ssize_t)index != pos)
 	{
 		++x;

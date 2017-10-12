@@ -5,7 +5,11 @@
 
 void	put_prompt(t_line *line)
 {
+	t_coor coord;
 	ft_putstr_fd(line->prompt, 2);
+	coord = get_prompt_visual_offset(line);
+	if (coord.x == 0)
+		ft_putchar_fd('\n', 2);
 }
 
 void	load_prompt(t_env *env, t_line *line, char *var, char *defaut)
