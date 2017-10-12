@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   environ.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
+/*   Updated: 2017/10/12 16:22:27 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "libft.h"
 #include "array.h"
@@ -16,9 +28,7 @@ char		**env_create_environ(const char **original, size_t *new_size)
 {
 	char		**new_environ;
 	size_t		original_size;
-	t_env		*env;
 
-	env = singleton_env();
 	original_size = (original == NULL) ? 0 : ft_arraylen(original);
 	new_environ = ft_arraydup(original);
 	if (new_size != NULL)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_getopt.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/11 22:41:24 by vcombey           #+#    #+#             */
+/*   Updated: 2017/10/12 16:08:52 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "ft_getopt.h"
 #include "printf.h"
@@ -52,8 +64,7 @@ int			my_getopt(int argc, char *const argv[], const char *optstring,
 	ext->optarg = NULL;
 	if (ext->optind >= argc)
 		return (-1);
-	if (*argv[ext->optind] != '-' || *argv[ext->optind] != '+' ||
-			ft_strlen(argv[ext->optind]) == 1)
+	if (*argv[ext->optind] != '-' || ft_strlen(argv[ext->optind]) == 1)
 		return (-1);
 	if ((ft_strcmp(argv[ext->optind], "--")) == 0)
 	{

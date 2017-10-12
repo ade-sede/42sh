@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_redir.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
+/*   Updated: 2017/10/12 16:53:31 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "failure.h"
 #include "lexer.h"
@@ -59,7 +71,7 @@ static int		pushback_redir(t_list *child_list, int expected,
 {
 	t_token	*token;
 
-	while ((token = (*token_list)->data) && expected != 0)
+	while (*token_list && (token = (*token_list)->data) && expected != 0)
 	{
 		if (expected == 2)
 		{

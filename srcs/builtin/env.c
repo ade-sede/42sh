@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/11 22:40:51 by vcombey           #+#    #+#             */
+/*   Updated: 2017/10/12 18:14:41 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "exec.h"
 #include "libft.h"
@@ -65,19 +77,19 @@ static const char	**build_new_env(t_env *env, const char **argv, int *error)
 	return (argv);
 }
 
-static int			exec_env(t_env new_env, const char **argv)
+static int			exec_env(t_env *new_env, const char **argv)
 {
 	pid_t	child;
 	int		ret;
 
-	create_hash_table(&new_env);
+	create_hash_table(&new_env->hash_table, new_env->environ);
 	child = fork();
 	if (child == 0)
-		exit(exec_builtin(&new_env, argv, NULL));
+		exit(exec_builtin(new_env, argv, NULL));
 	else
 		wait(&ret);
 	if (!WEXITSTATUS(ret))
-		fork_exec_bin(&new_env, argv, NULL);
+		fork_exec_bin(new_env, argv, NULL);
 	return (1);
 }
 
@@ -98,7 +110,7 @@ int					builtin_env(t_env *old_env, const char **argv)
 	if (!(*argv))
 		env_print_environ((const char**)new_env.environ);
 	else
-		exec_env(new_env, argv);
+		exec_env(&new_env, argv);
 	env_free_env(&new_env);
 	return (EXIT_SUCCESS);
 }
