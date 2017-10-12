@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:50 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 18:37:45 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c,
 
 	if (token != NULL && (glob_list = pathname_expansion(token, 0)))
 		res = comple_globing_matches(line, c, glob_list);
-	else if (!ft_strchr(c->current_word, '/') && token->cmd_name == 1)
+	else if (!ft_strchr(c->current_word, '/') && token != NULL && \
+			token->cmd_name == 1)
 		res = comple_bin_matches(line, c);
 	else
 		res = comple_file_matches(line, c);

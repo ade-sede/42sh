@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:51 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:41:00 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 18:41:51 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ char			**comple_bin_matches(t_line *line, t_comple *comple)
 	size_t			size;
 	char			*word_cursor;
 
+	if (!singleton_env()->tree)
+		return (NULL);
 	word_cursor = ft_strdup(comple->current_word);
 	size = 0;
 	s.matches = &comple->matches;
