@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/12 18:13:45 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 18:49:44 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	main_loop(t_env *env)
 		load_prompt(env, singleton_line(), "PS1", "$> ");
 		buff = ft_strdup(line_editing_get_input(singleton_line(), \
 					singleton_hist(), &edit_set_signals_open));
-		if (!ft_strequ(buff, "\n"))
+		if (!ft_str_is_clr(buff))
 			lex_and_parse(NULL, NULL, buff);
 		free(buff);
 	}

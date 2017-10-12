@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:58 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 18:57:24 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ int		edit_word_right(t_line *line)
 int		edit_home(t_line *line)
 {
 	line->pos = cursor_goto_buff(line, 0, line->pos);
+	if (line->visu_mode)
+	{
+		line->old_pos = line->pos;
+		edit_refresh(line);
+	}
 	return (1);
 }
 
@@ -58,5 +63,10 @@ int		edit_home(t_line *line)
 int		edit_end(t_line *line)
 {
 	line->pos = cursor_goto_buff(line, line->len, line->pos);
+	if (line->visu_mode)
+	{
+		line->old_pos = line->pos;
+		edit_refresh(line);
+	}
 	return (1);
 }
