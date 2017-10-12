@@ -6,11 +6,12 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/11 22:50:51 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "get_next_line.h"
 #include <unistd.h>
 #include "env.h"
 #include "exec.h"
@@ -68,6 +69,28 @@
 **	Receives an array containing the command name and its arguments, forwards
 **	this array to the appropriate function then frees it.
 */
+int	file_script(char **av, t_env *env)
+{
+	char	*buff;
+	int		fd;
+	extern	const char **environ;
+
+	env_load_base_env(env, environ);
+	history_load(singleton_hist(), env);
+	fd = open(av[1], O_RDONLY);
+	conf_term_in();
+	init_main_loop(singleton_line(), singleton_hist());
+	while (get_next_line(fd, &buff))
+	{
+		conf_term_canonical();
+		dprintf(2, "Line = "MAG"#"CYN"%s"MAG"#\n"RESET, buff);
+		buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
+		lex_and_parse(NULL, NULL, buff);
+		free(buff);
+	}
+	sleep(120);
+	return (1);
+}
 
 void	exec(t_env *env, const char **argv, t_lst_head *head)
 {

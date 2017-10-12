@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:51 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:41:00 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 15:06:13 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,16 @@
 #include <stdio.h>
 #include <errno.h>
 
-int	main(void)
+#ifdef CRASH_TEST
+int	file_script(char **av, t_env *env);
+#endif
+
+#ifndef CRASH_TEST
+int main()
+#endif
+#ifdef CRASH_TEST
+int	main(int ac, char **av)
+#endif
 {
 	extern const char	**environ;
 	t_env				*env;
@@ -36,6 +45,9 @@ int	main(void)
 	create_ternary_tree(env);
 	history_load(singleton_hist(), env);
 	conf_term_in();
+#ifdef CRASH_TEST
+	file_script(av, env);
+#endif
 	main_loop(env);
 	env_free_env(env);
 	return (0);
