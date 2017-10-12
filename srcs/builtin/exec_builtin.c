@@ -17,6 +17,11 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 
+/*
+**{"unset", &builtin_unset},
+**{"set", &builtin_set},
+*/
+
 static t_builtin	g_builtin[] =
 {
 	{"cd", &builtin_cd},
@@ -27,8 +32,6 @@ static t_builtin	g_builtin[] =
 	{"echo", &builtin_echo},
 	{"alias", &builtin_alias},
 	{"unalias", &builtin_unalias},
-	{"unset", &builtin_unset},
-	{"set", &builtin_set},
 	{NULL, NULL}
 };
 

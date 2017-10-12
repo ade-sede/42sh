@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:51 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/12 15:06:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 15:44:18 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	main(int ac, char **av)
 	extern const char	**environ;
 	t_env				*env;
 
-	all_signal_ign();
+	if (0)
+		all_signal_ign();
 	env = singleton_env();
 	env_load_base_env(env, environ);
 	create_ternary_tree(env);
@@ -47,6 +48,7 @@ int	main(int ac, char **av)
 	conf_term_in();
 #ifdef CRASH_TEST
 	file_script(av, env);
+	(void)ac;
 #endif
 	main_loop(env);
 	env_free_env(env);

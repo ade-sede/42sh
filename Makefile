@@ -58,6 +58,7 @@ SRC_FILE = \
 	env/remove_var.c \
 	env/remove_var_from_local.c \
 	env/t_env.c \
+	env/get_ps1.c \
 	env/value_of_local.c \
 	\
 	exec/exec_bin.c \

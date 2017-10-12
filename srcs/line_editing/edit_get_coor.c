@@ -18,13 +18,15 @@
 **	the first char of the prompt.
 */
 
+#include <stdio.h>
+
 t_coor	get_prompt_visual_offset(t_line *line)
 {
 	size_t	x;
 	size_t	y;
 
-	x = line->prompt_len % line->ws_col;
-	y = line->prompt_len / line->ws_col;
+	x = line->prompt_len % (line->ws_col);
+	y = line->prompt_len / (line->ws_col);
 	return ((t_coor){(int)x, (int)y});
 }
 

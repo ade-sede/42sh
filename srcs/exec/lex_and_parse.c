@@ -19,7 +19,6 @@
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
-#include <stdio.h>
 
 void	exec_main_loop(t_lexer *lex, t_ast *ast, t_lst_head *head)
 {

@@ -75,11 +75,31 @@ void	curly_brackets(t_list **res, char *expr)
 	return (curly_brackets_coma(res, expr, str, end));
 }
 
+int		is_valid_curly_brackets(char *expr)
+{
+	int		depth;
+	size_t	i;
+
+	depth = 0;
+	i = 0;
+	while (expr[i])
+	{
+		if (expr[i] == '{')
+			depth++;
+		if (expr[i] == '}')
+			depth--;
+		i++;
+	}
+	return (depth == 0 ? 1 : 0);
+}
+
 t_list	*expand_curly_brackets(char *expr)
 {
 	t_list *res;
 
 	res = NULL;
+	if (!is_valid_curly_brackets(expr))
+		return (res);
 	curly_brackets(&res, ft_strdup(expr));
 	return (res);
 }

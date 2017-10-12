@@ -41,6 +41,7 @@ void	env_remove_var(t_env *env, const char *key)
 	if (env_getenv((const char**)env->environ, key, &index))
 	{
 		env_remove_var_index(env, index);
-		remove_var_from_local(&env->local, (char*)key);
+		if (0)
+			remove_var_from_local(&env->local, (char*)key);
 	}
 }

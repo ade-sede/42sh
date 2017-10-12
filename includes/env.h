@@ -63,6 +63,8 @@ typedef struct				s_env
 	pid_t					child_pid;
 }							t_env;
 
+char						*get_git_status(size_t *len);
+char						*get_current_directory(void);
 void						free_ternary_tree(t_ternary_tree *node);
 void						test_ternary_tree();
 void						ternary_tree_add(t_ternary_tree *node,
