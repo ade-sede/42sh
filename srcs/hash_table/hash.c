@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 16:32:50 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	hash(unsigned char *str)
 	hash = 5381;
 	while ((c = *str++))
 		hash = ((hash << 5) + hash) + c;
-	return (hash % 997);
+	return (hash % (HASH_TABLE_SIZE - 1));
 }
 
 char	*hash_get(t_list **hash_table, char *value)
@@ -69,20 +69,20 @@ void	hash_add_dir(t_list **hash_table, char *dir_path)
 	closedir(dir);
 }
 
-int		create_hash_table(t_env *env)
+int		create_hash_table(t_list ***hash_table, char **environ)
 {
 	char	**paths;
 	char	*path;
 	int		i;
 
 	i = 0;
-	if (!(path = env_getenv((const char**)env->environ, "PATH", NULL)))
+	if (!(path = env_getenv((const char**)environ, "PATH", NULL)))
 		return (0);
-	env->hash_table = ft_memalloc(sizeof(t_list *) * HASH_TABLE_SIZE);
+	*hash_table = ft_memalloc(sizeof(t_list *) * HASH_TABLE_SIZE);
 	paths = ft_strsplit(path, ":");
 	while (paths[i])
 	{
-		hash_add_dir(env->hash_table, paths[i]);
+		hash_add_dir(*hash_table, paths[i]);
 		i++;
 	}
 	ft_arraydel(&paths);

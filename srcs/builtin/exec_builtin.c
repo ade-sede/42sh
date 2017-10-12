@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:51 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:41:00 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 16:37:30 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 static t_builtin	g_builtin[] =
 {
 	{"cd", &builtin_cd},
-	{"exit", &builtin_exit},
+//	{"exit", &builtin_exit},
 	{"env", &builtin_env},
 	{"unsetenv", &builtin_unsetenv},
 	{"setenv", &builtin_setenv},

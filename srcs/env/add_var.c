@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 16:35:05 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	env_reload_tree_hash(t_env *env)
 	create_ternary_tree(env);
 	free_hash_table(&env->hash_table);
 	env->hash_table = NULL;
-	create_hash_table(env);
+	create_hash_table(&env->hash_table, env->environ);
 }
 
 void	env_change_value(t_env *env, const char *key, size_t key_index, \

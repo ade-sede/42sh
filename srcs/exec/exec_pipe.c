@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 17:07:49 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	p_right(t_pipe *pr, t_ast *ast, t_lst_head *head)
 	}
 	else
 	{
+		signal(SIGINT, SIG_IGN);
 		pr->pid = child;
 		return (1);
 	}
@@ -67,6 +68,7 @@ int	p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head)
 	}
 	else
 	{
+		signal(SIGINT, SIG_IGN);
 		close(pl->p[WRITE_END]);
 		close(pl->p[READ_END]);
 		pr->pid = child;

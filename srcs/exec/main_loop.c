@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:50:51 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 16:37:59 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,12 @@ int	file_script(char **av, t_env *env)
 {
 	char	*buff;
 	int		fd;
+	(void)env;
 	extern	const char **environ;
+	int	i;
 
-	env_load_base_env(env, environ);
-	history_load(singleton_hist(), env);
+	//history_load(singleton_hist(), env);
+	i = 0;
 	fd = open(av[1], O_RDONLY);
 	conf_term_in();
 	init_main_loop(singleton_line(), singleton_hist());
@@ -87,6 +89,9 @@ int	file_script(char **av, t_env *env)
 		buff = ft_strchange(buff, ft_strjoin(buff, "\n"));
 		lex_and_parse(NULL, NULL, buff);
 		free(buff);
+		i++;
+		//if (!(i % 10))
+		//	getchar();
 	}
 	sleep(120);
 	return (1);

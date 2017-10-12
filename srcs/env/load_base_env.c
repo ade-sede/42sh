@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/12 16:35:24 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		env_load_base_env(t_env *env, const char **environ)
 			add_to_local(&env->local, ft_strdup(env->environ[i]));
 			++i;
 		}
-	create_hash_table(env);
+	create_hash_table(&env->hash_table, env->environ);
 }
 
 void		env_load_shlvl_pwd(t_env *env)
