@@ -44,6 +44,5 @@ int				investigate_error(int logfile, const char *prefix, \
 **	In file return_failure.c
 */
 
-int		logwrite(const char *filename, const char *func_name, const char *format, ...);
 int				return_failure(const char *str, const char *error_msg);
 #endif
