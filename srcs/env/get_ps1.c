@@ -14,7 +14,7 @@ static void	trim_newline(char *str)
 		*str = 32;
 }
 
-char	*get_ps1(t_env *env, size_t *len)
+char		*get_ps1(t_env *env, size_t *len)
 {
 	char *git_status;
 	char *current_dir;

@@ -31,7 +31,6 @@ int		get_logfd(const char *file)
 	return (fd);
 }
 
-
 /*
 **int		logwrite(const char *filename, const char *func_name,
 **const char *format, ...)
@@ -60,7 +59,6 @@ int		get_logfd(const char *file)
 **return (-1);
 **}
 */
-
 
 int		investigate_error(int log, const char *prefix,
 		const char *custom_error, int return_value)

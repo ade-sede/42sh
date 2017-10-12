@@ -6,6 +6,7 @@
 void	put_prompt(t_line *line)
 {
 	t_coor coord;
+
 	ft_putstr_fd(line->prompt, 2);
 	coord = get_prompt_visual_offset(line);
 	if (coord.x == 0)
