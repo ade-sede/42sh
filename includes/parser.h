@@ -87,7 +87,7 @@
 **	In file srcs/parser/parse.c
 */
 
-int			ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list);
+int			ast_parse(t_ast **ast, t_list **token_list);
 
 /*
 **	In file srcs/parser/parse_complexe_command.c
@@ -96,12 +96,6 @@ int			ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list);
 t_ast		*start_complexe_command(t_ast *ast, t_list **token_list,
 		int *reopen);
 
-/*
-**	In file srcs/parser/parse_pipe.c
-*/
-
-void		add_last_pipe(t_lst_head **head);
-int			add_pipe(t_token *token, t_lst_head **head);
 
 /*
 **	In file srcs/parser/parse_redir.c

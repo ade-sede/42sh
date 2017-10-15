@@ -37,15 +37,8 @@
 **			command we just created to a complexe one.
 */
 
-static int	return_parse(int retur, t_lst_head **head, t_ast **ast)
-{
-	ft_remove_head(head, free_pipe);
-	if (ast)
-		*ast = flush_tree(*ast);
-	return (retur);
-}
 
-int			ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
+int			ast_parse(t_ast **ast, t_list **token_list)
 {
 	t_token *token;
 	int		reopen;
@@ -57,13 +50,16 @@ int			ast_parse(t_ast **ast, t_lst_head **head, t_list **token_list)
 		{
 			*ast = start_complexe_command(*ast, token_list, &reopen);
 			if (reopen)
-				return (return_parse(reopen, head, ast));
-			if (add_pipe(token, head) == 0)
-				return (return_parse(PARSER_ERROR, head, ast));
+			{
+				*ast = flush_tree(*ast);
+				return (reopen);
+			}
 		}
 		else if ((*ast = create_simple_command(token_list)) == NULL)
-			return (return_parse(PARSER_ERROR, head, NULL));
+		{
+			*ast = flush_tree(*ast);
+			return (PARSER_ERROR);
+		}
 	}
-	add_last_pipe(head);
 	return (PARSER_SUCCESS);
 }

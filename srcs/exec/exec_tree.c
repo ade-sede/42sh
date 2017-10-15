@@ -15,7 +15,8 @@
 **	various commands.
 */
 
-int			exec_tree(t_ast *ast, t_lst_head *head)
+int			exec_tree(t_ast *ast, t_job_control *jc)
+:sp
 {
 	t_token		*token;
 

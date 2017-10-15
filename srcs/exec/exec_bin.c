@@ -11,7 +11,7 @@
 **		path to the binary.
 */
 
-void		ft_exec_bin_absolute(t_env *env, const char **argv)
+static void		exec_bin_absolute(t_env *env, const char **argv)
 {
 	if (access(argv[0], F_OK) == -1)
 		exit(investigate_error(1, argv[0], "no such file or directory",
@@ -30,7 +30,7 @@ void		ft_exec_bin_absolute(t_env *env, const char **argv)
 **		the path, exit_failure if we cant find id.
 */
 
-void		ft_exec_bin_path(t_env *env, const char **argv)
+static void		exec_bin_path(t_env *env, const char **argv)
 {
 	char	*bin;
 
@@ -50,49 +50,15 @@ void		ft_exec_bin_path(t_env *env, const char **argv)
 				EXIT_FAILURE));
 }
 
-int			exec_bin_no_fork(t_env *env, const char **argv)
+int			exec_bin(t_env *env, const char **argv)
 {
 	ft_strchr(argv[0], '/') ? ft_exec_bin_absolute(env, argv) : \
 			ft_exec_bin_path(env, argv);
 	return (1);
 }
 
-static int	exec_father(t_env *env, pid_t child)
-{
-	int		ret;
-
-	no_handle_signals();
-	env->child_pid = child;
-	waitpid(child, &ret, WUNTRACED);
-	if (WIFSIGNALED(ret) == 1)
-		write(1, "\n", 1);
-	return (ret);
-}
-
-int			fork_exec_bin(t_env *env, const char **argv, t_lst_head *head)
-{
-	t_list_d	*cur;
-	t_pipe		*pr;
-	t_pipe		*pl;
-	pid_t		child;
-	int			ret;
-
-	cur = (head) ? head->middle : NULL;
-	pr = (cur != NULL) ? cur->data : NULL;
-	pl = (cur && cur->prev) ? cur->prev->data : NULL;
-	if ((pl && !pr) || (!pl && !pr))
-	{
-		if ((child = fork()) == 0)
-		{
-			all_signal_dfl();
-			ft_strchr(argv[0], '/') ? ft_exec_bin_absolute(env, argv) :
-				ft_exec_bin_path(env, argv);
-		}
-		if (child > 0)
-		{
-			ret = exec_father(env, child);
-			return (env->previous_exit = WEXITSTATUS(ret));
-		}
-	}
-	return (exec_bin_no_fork(env, argv));
-}
+/*
+**		if (WIFSIGNALED(ret) == 1)
+**				return (env->previous_exit = WEXITSTATUS(ret));
+**		return (exec_bin_no_fork(env, argv));
+*/

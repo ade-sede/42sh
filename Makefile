@@ -151,6 +151,14 @@ SRC_FILE = \
 	signal/all_signal_dfl.c \
 	signal/all_signal_ign.c \
 	\
+	job_control/job_background.c \
+	job_control/job_continue.c \
+	job_control/job_foreground.c \
+	job_control/job_init.c \
+	job_control/job_launch.c \
+	job_control/job_stop.c \
+	job_control/job_utils.c \
+	\
 	main.c
 
 INCLUDES_FILES = \
@@ -171,7 +179,8 @@ INCLUDES_FILES = \
 	t_lexer.h \
 	t_token.h \
 	local.h \
-	my_signal.h
+	my_signal.h \
+	job_control.h \
 
 NAME ?= 21sh
 
@@ -233,6 +242,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/parser
 	@/bin/mkdir -p $(OBJ_DIR)/failure
 	@/bin/mkdir -p $(OBJ_DIR)/signal
+	@/bin/mkdir -p $(OBJ_DIR)/job_control
 
 clean:
 	@make -C $(LIB_DIR) clean

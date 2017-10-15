@@ -1,12 +1,12 @@
 #include "job_control.h"
 
-void	launch_process(process *p, pid_t pgid,
+void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		int infile, int outfile, int errfile,
 		int foreground)
 {
-	pid_tRpid;
+	pid_t	pid;
 
-	if (shell_is_interactive)
+	if (jc->shell_is_interactive)
 	{
 		/* Put the process into the process group and give the process group
 		**          the terminal, if appropriate.
@@ -17,7 +17,7 @@ void	launch_process(process *p, pid_t pgid,
 			pgid = pid;
 		setpgid(pid, pgid);
 		if (foreground)
-			tcsetpgrp(shell_terminal, pgid);
+			tcsetpgrp(jc->shell_terminal, pgid);
 
 		/* Set the handling for job control signals back to the default.  */
 		signal(SIGINT, SIG_DFL);
@@ -44,24 +44,22 @@ void	launch_process(process *p, pid_t pgid,
 		close(errfile);
 	}
 	/* Exec the new process.  Make sure we exit.  */
-	execvp(p->argv[0], p->argv);
-	perror("execvp");
+	exec_bin(singleton_env(), p->argv);
 	exit(1);
 }
 
-void	launch_job(job *j, int foreground)
+void	launch_job(t_job_control *jc, t_job *j, int foreground)
 {
-	process	*p;
+	t_process	*p;
 	pid_t	pid;
 	int		mypipe[2];
 	int		infile;
 	int		outfile;
 
 	infile = j->stdin;
-	j->first_process;
+	p = j->first_process;
 	while (p)
 	{
-		/* Set up pipes, if necessary.  */
 		if (p->next)
 		{
 			if (pipe (mypipe) < 0)
@@ -73,32 +71,25 @@ void	launch_job(job *j, int foreground)
 		}
 		else
 			outfile = j->stdout;
-
-		/* Fork the child processes.  */
 		pid = fork ();
 		if (pid == 0)
-			/* This is the child process.  */
-			launch_process(p, j->pgid, infile,
+			launch_process(jc, p, j->pgid, infile,
 					outfile, j->stderr, foreground);
 		else if (pid < 0)
 		{
-			/* The fork failed.  */
 			perror ("fork");
 			exit (1);
 		}
 		else
 		{
-			/* This is the parent process.  */
 			p->pid = pid;
-			if (shell_is_interactive)
+			if (jc->shell_is_interactive)
 			{
 				if (!j->pgid)
 					j->pgid = pid;
 				setpgid (pid, j->pgid);
 			}
 		}
-
-		/* Clean up after pipes.  */
 		if (infile != j->stdin)
 			close(infile);
 		if (outfile != j->stdout)
@@ -106,13 +97,11 @@ void	launch_job(job *j, int foreground)
 		infile = mypipe[0];
 		p = p->next;
 	}
-
 	format_job_info (j, "launched");
-
-	if (!shell_is_interactive)
-		wait_for_job(j);
+	if (!jc->shell_is_interactive)
+		wait_for_job(jc, j);
 	else if (foreground)
-		put_job_in_foreground(j, 0);
+		put_job_in_foreground(jc, j, 0);
 	else
 		put_job_in_background(j, 0);
 }

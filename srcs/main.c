@@ -8,6 +8,7 @@
 #include "get_next_line.h"
 #include "color.h"
 #include "my_signal.h"
+#include "job_control.h"
 
 #include "failure.h"
 #include <stdio.h>
@@ -17,14 +18,15 @@ int	main(void)
 {
 	extern const char	**environ;
 	t_env				*env;
+	t_job_control		jc;
 
-	if (0)
-		all_signal_ign();
+	jc.first_job = NULL;
 	env = singleton_env();
 	env_load_base_env(env, environ);
+	init_shell(&jc);
+	conf_term_in();
 	create_ternary_tree(env);
 	history_load(singleton_hist(), env);
-	conf_term_in();
 	main_loop(env);
 	env_free_env(env);
 	return (0);

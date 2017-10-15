@@ -2,32 +2,25 @@
 /* Keep track of attributes of the shell.  */
 
 #include "job_control.h"
-#include <sys/types.h>
-#include <termios.h>
-#include <unistd.h>
-#include <signal.h>
-
-pid_t shell_pgid;
-struct termios shell_tmodes;
-int shell_terminal;
-int shell_is_interactive;
+#include "line_editing.h"
 
 
 /* Make sure the shell is running interactively as the foreground job
    before proceeding. */
 
-void	init_shell()
+t_job *first_job;
+void	init_shell(t_job_control *jc)
 {
 
 	/* See if we are running interactively.  */
-	shell_terminal = STDIN_FILENO;
-	shell_is_interactive = isatty(shell_terminal);
+	jc->shell_terminal = STDIN_FILENO;
+	jc->shell_is_interactive = isatty(jc->shell_terminal);
 
-	if (shell_is_interactive)
+	if (jc->shell_is_interactive)
 	{
 		/* Loop until we are in the foreground.  */
-		while (tcgetpgrp(shell_terminal) != (shell_pgid = getpgrp()))
-			kill(-shell_pgid, SIGTTIN);
+		while (tcgetpgrp(jc->shell_terminal) != (jc->shell_pgid = getpgrp()))
+			kill(-jc->shell_pgid, SIGTTIN);
 
 		/* Ignore interactive and job-control signals.  */
 		signal(SIGINT, SIG_IGN);
@@ -38,17 +31,18 @@ void	init_shell()
 		signal(SIGCHLD, SIG_IGN);
 
 		/* Put ourselves in our own process group.  */
-		shell_pgid = getpid();
-		if (setpgid(shell_pgid, shell_pgid) < 0)
+		jc->shell_pgid = getpid();
+		if (setpgid(jc->shell_pgid, jc->shell_pgid) < 0)
 		{
 			perror ("Couldn't put the shell in its own process group");
 			exit(1);
 		}
 
 		/* Grab control of the terminal.  */
-		tcsetpgrp(shell_terminal, shell_pgid);
+		tcsetpgrp(jc->shell_terminal, jc->shell_pgid);
+		//conf_term_in();
 
 		/* Save default terminal attributes for shell.  */
-		tcgetattr(shell_terminal, &shell_tmodes);
+//		tcgetattr(shell_terminal, &shell_tmodes);
 	}
 }

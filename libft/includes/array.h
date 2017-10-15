@@ -9,7 +9,7 @@ size_t		ft_arraylen(const char **str);
 
 char		**ft_arraydup(const char **original);
 
-void		ft_arraydel(char ***tab);
+void		ft_arraydel(char ***tabo);
 const char	**ft_arraychr(const char **array, const char *str);
 size_t		ft_arraymax_f(char **str, size_t (*f)(char *));
 #endif
