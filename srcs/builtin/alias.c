@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:51 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:41:00 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 11:34:33 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	show_alias(t_env *env, const char *argv, int *ret)
 
 int			builtin_alias(t_env *env, const char **argv)
 {
-	int		eq_index;
+	ssize_t	eq_index;
 	int		argc;
 	int		i;
 	int		ret;

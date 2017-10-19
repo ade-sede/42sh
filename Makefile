@@ -173,13 +173,14 @@ INCLUDES_FILES = \
 	local.h \
 	my_signal.h
 
-NAME ?= 21sh
+NAME ?= 42sh
 
 # defining those variables allows auto completion to occure.
 APPEND=
 ASAN=
 TEST_FILE=
 
+INC_DIR = includes
 LIB_DIR = libft
 LIB_INC = -I$(LIB_DIR)/includes
 LOCAL_INC = -Iincludes
@@ -205,6 +206,10 @@ OBJS = $(addprefix $(OBJ_DIR)/,$(SRC_FILE:.c=.o))
 
 all: hello_word lib $(OBJ_DIR) $(NAME) $(INCLUDES_DEP)
 	@printf "$(COLOR_CLEAR)$(COLOR_GREEN)successfully created $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
+
+norminette:
+	@make -C $(LIB_DIR) norminette
+	@norminette $(SRCS) $(INC_DIR)
 
 hello_word:
 	@printf "$(COLOR_VIOLET)$(COLOR_UNDERLINE)compiling$(COLOR_NOCOLOR) $(COLOR_BLUE)$(NAME) ...$(COLOR_NOCOLOR)\n"

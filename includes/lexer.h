@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:42:10 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:42:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 16:26:27 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,13 @@
 **	http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
 */
 
+
+
 /*
 **	In file srcs/lexer/expand_alias.c
 */
 
-int				lexer_insert_str_dest(char *dest, char *str, size_t dest_len);
-int				lexer_insert_str(t_lexer *lex, char *dest, char *str);
-void			lexer_delete_word(char *to_replace);
-int				check_alias(t_lexer *lex, t_token *token);
+t_list			*expand_alias(t_lexer *lex, t_token *token, t_list *alias_list);
 
 /*
 **	In file srcs/lexer/expand_param.c
@@ -69,13 +68,13 @@ void			tild_expand(t_env *env, t_token *token);
 **	In file srcs/lexer/expand_word.c
 */
 
-t_list			*exec_expand(t_token *token);
+t_list			*exec_expand(t_list *node);
 
 /*
 **	In file srcs/lexer/lexer.c
 */
 
-int				lex_all(t_lexer *lex, t_list **token_list);
+int				lex_all(t_lexer *lex, t_list **token_list, t_list *alias_list);
 t_token			*start_lex(t_lexer *lex, int *reopen);
 t_token			*handle_lexer(t_lexer *lex);
 int				update_state(t_lexer *lex);

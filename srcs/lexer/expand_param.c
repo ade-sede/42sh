@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 18:01:12 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	valid_param_expansion(char *str)
 	{
 		if (str[i] == '$' && str[i + 1] != '(' && str[i + 1] != '{')
 		{
-			if (str[i + 1] == 0)
+			if (!charcmp(str, i, '$') || str[i + 1] == 0)
 				return (-1);
 			return (i);
 		}

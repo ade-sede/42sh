@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 18:21:20 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,41 @@ t_list			*pathname_expansion(t_token *token, int match_all)
 	return (ret);
 }
 
-t_list			*exec_expand(t_token *token)
+int		quote_removal(t_token *token)
+{
+	char	*new_str;
+	size_t	i;
+	size_t	j;
+
+	j = 0;
+	i = 0;
+	if (!ft_strchr(token->value, '\\'))
+		return (0);
+	new_str = ft_strnew(ft_strlen(token->value));
+	while (token->value[i])
+	{
+		if (token->value[i] == '\\' && token->value[i + 1] == '\\')
+		{
+			new_str[j++] = '\\';
+			i += 2;
+		}
+		else if (token->value[i] == '\\')
+			i++;
+		else
+			new_str[j++] = token->value[i++];
+	}
+	token->value = ft_strchange(token->value, new_str);
+	return (1);
+}
+
+#include <stdio.h>
+t_list			*exec_expand(t_list *node)
 {
 	t_env	*env;
+	t_token	*token;
 
 	env = singleton_env();
+	token = node->data;
 	if (token->type == DQUOTED || token->type == QUOTED)
 	{
 		*token->value = 0;
@@ -86,17 +116,15 @@ t_list			*exec_expand(t_token *token)
 					ft_strsub(token->value, 1, token->size - 2));
 		token->size -= 2;
 	}
-	if (0)
+	if (token->type != QUOTED)
 	{
-		if (token->type != QUOTED)
-		{
-			if (token->type != DQUOTED)
-			{
-				if (ft_strchr(token->value, '~'))
-					tild_expand(env, token);
-			}
-			parameter_expansion(env, token);
-		}
+		if (token->type != DQUOTED)
+			if (ft_strchr(token->value, '~'))
+				tild_expand(env, token);
+		parameter_expansion(env, token);
+		quote_removal(token);
 	}
-	return (pathname_expansion(token, 1));
+	return (NULL);
+	/* return (pathname_expansion(token, 1)); */
+
 }

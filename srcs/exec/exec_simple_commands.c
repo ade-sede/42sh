@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 13:40:17 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,8 @@ static void	abort_simple_command(char **argv)
 	singleton_env()->previous_exit = EXIT_FAILURE;
 }
 
-/*
-**if (child_node->token && child_node->token->id == TK_ASSIGNMENT_WORD &&
-**		child_node->symbol == CMD_PREFIX)
-**	add_to_local(&env->local, ft_strdup(child_node->token->value));
-*/
+
+
 
 static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 		char **argv, size_t *i)
@@ -72,7 +69,10 @@ static int	treat_node(t_ast *child_node, t_list **redir_stack, \
 	t_env	*env;
 
 	env = singleton_env();
-	if (child_node->symbol == IO_REDIRECT)
+	if (child_node->token && child_node->token->id == TK_ASSIGNMENT_WORD &&
+			child_node->symbol == CMD_PREFIX)
+		add_to_local(&env->local, ft_strdup(child_node->token->value));
+	else if (child_node->symbol == IO_REDIRECT)
 	{
 		if (check_heredoc(child_node->child))
 		{
@@ -114,7 +114,8 @@ void		exec_simple_command(t_ast *ast, t_lst_head *head)
 	if (ret)
 	{
 		exec_dup(redir_stack);
-		exec(singleton_env(), argv, head);
+		if (argv && argv[0])
+			exec(singleton_env(), argv, head);
 		close_dup(redir_stack);
 	}
 	else

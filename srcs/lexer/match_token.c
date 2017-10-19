@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 15:51:04 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int	match_part_2(t_lexer *lex, size_t token_start, int *reopen)
 {
 	int		ret;
 
+	(void)token_start;
 	(void)reopen;
 	ret = -1;
 	if (IS_INPUT_END(lex->line[lex->index]) && !(IS_QUOTED(lex->state)))
@@ -39,11 +40,11 @@ static int	match_part_2(t_lexer *lex, size_t token_start, int *reopen)
 		if (lex->line[lex->index] != '\n')
 			ret = (lex->index - 1);
 	}
-	else if (lex->state == EXPAND)
-	{
-		if (match_expand(lex, token_start))
-			ret = (lex->index - 1);
-	}
+	/* else if (lex->state == EXPAND) */
+	/* { */
+	/* 	if (match_expand(lex, token_start)) */
+	/* 		ret = (lex->index - 1); */
+	/* } */
 	return (ret);
 }
 

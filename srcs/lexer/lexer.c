@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 19:13:44 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,6 @@
 /*
 ** Token id is determined by the immedaite context of the token and the state
 ** of the lexer.
-*/
-
-/*
-** void	alias(t_lexer *lex, t_token *token, t_list *forbiden_alias)
-** {
-** t_list	*list;
-**
-** lex_all(lex);
-** list = lex->stack;
-** while (lex->stack)
-** {
-** check_alias(lex, list);
-** list = list->next;
-** }
-** ft_simple_lst_pushback(&forbiden_alias, ft_simple_lst_create());
-** return (alias(lex, forbiden_alias));
-** }
 */
 
 /*
@@ -125,14 +108,14 @@ int			update_state(t_lexer *lex)
 {
 	if (charcmp(lex->line, lex->index, '\\'))
 		return (lex->line[lex->index]);
-	if (charcmp(lex->line, lex->index, '\n'))
+if (charcmp(lex->line, lex->index, '\n'))
 		return (NEWLINE);
 	if (IS_QUOTED(lex->line[lex->index]))
 		return (lex->line[lex->index]);
 	else if (IS_OPERATOR(lex->line[lex->index]))
 		return (OPERATOR);
-	else if (IS_EXPAND(lex->line[lex->index]))
-		return (EXPAND);
+	/* else if (IS_EXPAND(lex->line[lex->index])) */
+	/* 	return (EXPAND); */
 	if (!lex->line[lex->index])
 		return (INPUT_END);
 	return (WORD);

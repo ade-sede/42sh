@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 18:25:06 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ static void	split_on_space(t_env *env, t_token *token)
 		if (ft_strchr(split_space[index_space], '/'))
 			split_on_slash(env, split_space, index_space);
 		else if (ft_strequ(split_space[index_space], "~"))
+		{
 			split_space[index_space] = ft_strchange(split_space[index_space], \
 			ft_strdup(env_getenv((const char **)env->environ, "HOME", NULL)));
+		}
 		token->value = ft_strchange(token->value, ft_strjoin(token->value, \
 					split_space[index_space]));
 		free(split_space[index_space]);
@@ -69,7 +71,9 @@ static void	split_on_space(t_env *env, t_token *token)
 
 void		tild_expand(t_env *env, t_token *token)
 {
-	if (token->type != QUOTED)
-		if (ft_strchr(token->value, '~'))
-			split_on_space(env, token);
+	ssize_t	index;
+
+	index = ft_strichr(token->value, '~');
+	if (charcmp(token->value, index, '~') && index == 0)
+		split_on_space(env, token);
 }

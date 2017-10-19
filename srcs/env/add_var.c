@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/12 16:35:05 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 13:35:04 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ void	env_add_var(t_env *env, const char *key, const char *value)
 	new_environ_size = env->environ_size + 1;
 	new_environ = palloc(sizeof(char*) * (new_environ_size + 1));
 	new_key_value = ft_strsurround(key, "=", value);
-	if (0)
-		add_to_local(&env->local, ft_strdup(new_key_value));
+	add_to_local(&env->local, ft_strdup(new_key_value));
 	ft_memcpy(new_environ, environ, env->environ_size * sizeof(*new_environ));
 	new_environ[new_environ_size - 1] = new_key_value;
 	new_environ[new_environ_size] = NULL;

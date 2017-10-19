@@ -134,6 +134,8 @@ OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 all: Hello_word $(OBJ_DIR) $(NAME)
 	@printf "$(COLOR_CLEAR)$(COLOR_GREEN)Successfully created $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 
+norminette:
+	@norminette $(SRC_DIR) $(LOCAL_INC)
 Hello_word:
 	@printf "$(COLOR_VIOLET)$(COLOR_UNDERLINE)Compiling$(COLOR_NOCOLOR) $(COLOR_BLUE)$(NAME) ...$(COLOR_NOCOLOR)\n"
 

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:58 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 18:38:34 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ int			match_word(t_lexer *lex)
 		return (1);
 	ret = update_state(lex);
 	if (ret != WORD && ret != BACKSLASH)
+	{
+		if (ret == BACKSLASH)
+			lex->state = BACKSLASH;
 		return (1);
+	}
 	return (0);
 }
 

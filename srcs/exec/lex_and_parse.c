@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/19 12:52:26 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	lex_and_parse(t_lst_head *head, t_ast *ast, char *buff)
 	lex = init_lexer(buff);
 	while (42)
 	{
-		res_lexer = lex_all(&lex, &token_list);
+		res_lexer = lex_all(&lex, &token_list, singleton_env()->alias);
 		res_parser = ast_parse(&ast, &head, &token_list);
 		if (res_parser == PARSER_ERROR)
 			return (remove_lexer(&lex));
