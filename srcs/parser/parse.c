@@ -63,3 +63,27 @@ int			ast_parse(t_ast **ast, t_list **token_list)
 	}
 	return (PARSER_SUCCESS);
 }
+
+
+qweqwe
+{
+	arbre2 = create_tree(2);
+	arbre_sep = create_sep_tree();
+	arbre1 = create_tree(1);
+	arbre_sep->right = arbre2;
+	abre_sep->left = arbre1:
+
+
+		arbre_sep->left = create_tree(1);
+		arbre_sep->right = create_tree(2);
+
+		arbre_ls;
+		arbre_&&;
+		arbre_&&->left = arbre_ls;
+		\\
+		arbre_ls;
+		arbre_&&->right = arbre_ls;
+		\\
+		\\
+		ls && ls | ls ; ls
+}
