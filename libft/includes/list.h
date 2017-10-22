@@ -1,6 +1,8 @@
 #ifndef LIST_H
 # define LIST_H
 
+#include <stdlib.h>
+
 typedef struct		s_list
 {
 	struct s_list	*next;
@@ -23,6 +25,19 @@ typedef struct		s_lst_head
 	int				node_count;
 }					t_lst_head;
 
+typedef struct	s_listint
+{
+	int					data;
+	struct s_listint	*next;
+}				t_listint;
+
+t_list		*ft_lst_pop(t_list **list);
+/*
+**	In file listint.c
+*/
+int					ft_lstint_pop(t_listint **list);
+t_listint			*ft_lstint_new(int data);
+void				ft_lstint_add(t_listint **stack, int state);
 /*
 **	In file ft_lst_add.c
 */

@@ -7,4 +7,3 @@ pwd > file && pwd >> file || ls | cat  ; ls && ls | cat >> file || ls
 												list			separator_op		andor
 
 												andor
-

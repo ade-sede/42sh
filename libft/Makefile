@@ -39,6 +39,8 @@ SRC = \
 	io/ft_putnstr.c \
 	io/ft_putstr.c \
 	lst/ft_lst_add.c \
+	lst/ft_lstint.c \
+	lst/ft_lst_pop.c \
 	lst/ft_lst_create.c \
 	lst/ft_lst_del_one.c \
 	lst/ft_lst_dup.c \
