@@ -61,16 +61,6 @@ SRC_FILE = \
 	env/get_ps1.c \
 	env/value_of_local.c \
 	\
-	exec/exec_bin.c \
-	exec/exec_heredoc.c \
-	exec/exec_pipe.c \
-	exec/exec_redir.c \
-	exec/exec_separator.c \
-	exec/exec_signals.c \
-	exec/exec_simple_commands.c \
-	exec/exec_tree.c \
-	exec/main_loop.c \
-	exec/redir_utils.c \
 	exec/lex_and_parse.c \
 	\
 	globing/curly_bracket_split.c \
@@ -143,6 +133,12 @@ SRC_FILE = \
 	parser/t_ast.c \
 	parser/t_pipe.c \
 	\
+	parser_slr/get_action.c \
+	parser_slr/parser.c \
+	parser_slr/reduce.c \
+	parser_slr/rule_table \
+	parser_slr/utils.c \
+	\
 	failure/get_errno_1.c \
 	failure/get_errno_2.c \
 	failure/get_errno_3.c \
@@ -181,6 +177,7 @@ INCLUDES_FILES = \
 	local.h \
 	my_signal.h \
 	job_control.h \
+	parser_slr.h \
 
 NAME ?= 21sh
 
