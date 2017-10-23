@@ -1,112 +1,112 @@
-PROGRAM -> LINEBREAK COMPLETE_COMMANDS LINEBREAK
-PROGRAM -> LINEBREAK
-COMPLETE_COMMANDS -> COMPLETE_COMMANDS NEWLINE_LIST COMPLETE_COMMAND
-COMPLETE_COMMANDS -> COMPLETE_COMMAND
-COMPLETE_COMMAND -> LIST SEPARATOR_OP
-COMPLETE_COMMAND -> LIST
-LIST -> LIST SEPARATOR_OP AND_OR
-LIST -> AND_OR
-AND_OR -> PIPELINE
-AND_OR -> AND_OR and_if LINEBREAK PIPELINE
-AND_OR -> AND_OR or_if LINEBREAK PIPELINE
-PIPELINE -> PIPE_SEQUENCE
-PIPELINE -> bang PIPE_SEQUENCE
-PIPE_SEQUENCE -> COMMAND
-PIPE_SEQUENCE -> PIPE_SEQUENCE tk_pipe LINEBREAK COMMAND
-COMMAND -> SIMPLE_COMMAND
-COMMAND -> COMPOUND_COMMAND
-COMMAND -> COMPOUND_COMMAND REDIRECT_LIST
-COMMAND -> FUNCTION_DEFINITION
-COMPOUND_COMMAND -> BRACE_GROUP
-COMPOUND_COMMAND -> SUBSHELL
-COMPOUND_COMMAND -> FOR_CLAUSE
-COMPOUND_COMMAND -> CASE_CLAUSE
-COMPOUND_COMMAND -> IF_CLAUSE
-COMPOUND_COMMAND -> WHILE_CLAUSE
-COMPOUND_COMMAND -> UNTIL_CLAUSE
-SUBSHELL -> lparen COMPOUND_LIST rparen
-COMPOUND_LIST -> LINEBREAK TERM
-COMPOUND_LIST -> LINEBREAK TERM SEPARATOR
-TERM -> TERM SEPARATOR AND_OR
-TERM -> AND_OR
-FOR_CLAUSE -> for NAME DO_GROUP
-FOR_CLAUSE -> for NAME SEQUENTIAL_SEP DO_GROUP
-FOR_CLAUSE -> for NAME LINEBREAK IN SEQUENTIAL_SEP DO_GROUP
-FOR_CLAUSE -> for NAME LINEBREAK IN WORDLIST SEQUENTIAL_SEP DO_GROUP
-NAME -> name 
-IN -> in 
-WORDLIST -> WORDLIST word
-WORDLIST -> word
-CASE_CLAUSE -> case word LINEBREAK IN LINEBREAK CASE_LIST esac
-CASE_CLAUSE -> case word LINEBREAK IN LINEBREAK CASE_LIST_NS esac
-CASE_CLAUSE -> case word LINEBREAK IN LINEBREAK esac
-CASE_LIST_NS -> CASE_LIST CASE_ITEM_NS
-CASE_LIST_NS -> CASE_ITEM_NS
-CASE_LIST -> CASE_LIST CASE_ITEM
-CASE_LIST -> CASE_ITEM
-CASE_ITEM_NS -> PATTERN rparen LINEBREAK
-CASE_ITEM_NS -> PATTERN rparen COMPOUND_LIST
-CASE_ITEM_NS -> lparen PATTERN rparen LINEBREAK
-CASE_ITEM_NS -> lparen PATTERN rparen COMPOUND_LIST
-CASE_ITEM -> PATTERN rparen LINEBREAK dsemi LINEBREAK
-CASE_ITEM -> PATTERN rparen COMPOUND_LIST dsemi LINEBREAK
-CASE_ITEM -> lparen PATTERN rparen LINEBREAK dsemi LINEBREAK
-CASE_ITEM -> lparen PATTERN rparen COMPOUND_LIST dsemi LINEBREAK
-PATTERN -> word 
-PATTERN -> PATTERN tk_pipe word 
-IF_CLAUSE -> if COMPOUND_LIST then COMPOUND_LIST ELSE_PART fi
-IF_CLAUSE -> if COMPOUND_LIST then COMPOUND_LIST fi
-ELSE_PART -> elif COMPOUND_LIST then COMPOUND_LIST
-ELSE_PART -> elif COMPOUND_LIST then COMPOUND_LIST ELSE_PART
-ELSE_PART -> else COMPOUND_LIST
-WHILE_CLAUSE -> while COMPOUND_LIST DO_GROUP
-UNTIL_CLAUSE -> until COMPOUND_LIST DO_GROUP
-FUNCTION_DEFINITION -> FNAME lparen rparen LINEBREAK FUNCTION_BODY
-FUNCTION_BODY -> COMPOUND_COMMAND 
-FUNCTION_BODY -> COMPOUND_COMMAND REDIRECT_LIST 
-FNAME -> name 
-BRACE_GROUP -> lbrace COMPOUND_LIST rbrace
-DO_GROUP -> do COMPOUND_LIST done 
-SIMPLE_COMMAND -> CMD_PREFIX CMD_WORD CMD_SUFFIX
-SIMPLE_COMMAND -> CMD_PREFIX CMD_WORD
-SIMPLE_COMMAND -> CMD_PREFIX
-SIMPLE_COMMAND -> CMD_NAME CMD_SUFFIX
-SIMPLE_COMMAND -> CMD_NAME
-CMD_PREFIX -> IO_REDIRECT
-CMD_PREFIX -> CMD_PREFIX IO_REDIRECT
-CMD_PREFIX -> assignment_word
-CMD_PREFIX -> CMD_PREFIX assignment_word
-CMD_SUFFIX -> IO_REDIRECT
-CMD_SUFFIX -> CMD_SUFFIX IO_REDIRECT
-CMD_SUFFIX -> word
-CMD_SUFFIX -> CMD_SUFFIX word
-CMD_NAME -> word 
-CMD_WORD -> word 
-REDIRECT_LIST -> IO_REDIRECT
-REDIRECT_LIST -> REDIRECT_LIST IO_REDIRECT
-IO_REDIRECT -> IO_FILE
-IO_REDIRECT -> io_number IO_FILE
-IO_REDIRECT -> IO_HERE
-IO_REDIRECT -> io_number IO_HERE
-IO_FILE -> tk_less FILENAME
-IO_FILE -> lessand FILENAME
-IO_FILE -> tk_more FILENAME
-IO_FILE -> greatand FILENAME
-IO_FILE -> dgreat FILENAME
-IO_FILE -> lessgreat FILENAME
-IO_FILE -> clobber FILENAME
-FILENAME -> word 
-IO_HERE -> dless HERE_END
-IO_HERE -> dlessdash HERE_END
-HERE_END -> word 
-NEWLINE_LIST -> newline
-NEWLINE_LIST -> NEWLINE_LIST newline
-LINEBREAK -> NEWLINE_LIST
-LINEBREAK -> EMPTY
-SEPARATOR_OP -> tk_and
-SEPARATOR_OP -> tk_semi
-SEPARATOR -> SEPARATOR_OP LINEBREAK
-SEPARATOR -> NEWLINE_LIST
-SEPARATOR -> NEWLINE_LIST
-SEQUENTIAL_SEP -> tk_semi LINEBREAK
-SEQUENTIAL_SEP -> NEWLINE_LIST
+"program -> linebreak complete_commands linebreak",
+"program -> linebreak",
+"complete_commands -> complete_commands newline_list complete_command",
+"complete_commands -> complete_command",
+"complete_command -> list separator_op",
+"complete_command -> list",
+"list -> list separator_op and_or",
+"list -> and_or",
+"and_or -> pipeline",
+"and_or -> and_or AND_IF linebreak pipeline",
+"and_or -> and_or OR_IF linebreak pipeline",
+"pipeline -> pipe_sequence",
+"pipeline -> BANG pipe_sequence",
+"pipe_sequence -> command",
+"pipe_sequence -> pipe_sequence TK_PIPE linebreak command",
+"command -> simple_command",
+"command -> compound_command",
+"command -> compound_command redirect_list",
+"command -> function_definition",
+"compound_command -> brace_group",
+"compound_command -> subshell",
+"compound_command -> for_clause",
+"compound_command -> case_clause",
+"compound_command -> if_clause",
+"compound_command -> while_clause",
+"compound_command -> until_clause",
+"subshell -> LPAREN compound_list RPAREN",
+"compound_list -> linebreak term",
+"compound_list -> linebreak term separator",
+"term -> term separator and_or",
+"term -> and_or",
+"for_clause -> FOR name do_group",
+"for_clause -> FOR name sequential_sep do_group",
+"for_clause -> FOR name linebreak in sequential_sep do_group",
+"for_clause -> FOR name linebreak in wordlist sequential_sep do_group",
+"name -> NAME ",
+"sym_in -> IN ",
+"wordlist -> wordlist WORD",
+"wordlist -> WORD",
+"case_clause -> CASE WORD linebreak in linebreak case_list ESAC",
+"case_clause -> CASE WORD linebreak in linebreak case_list_ns ESAC",
+"case_clause -> CASE WORD linebreak in linebreak ESAC",
+"case_list_ns -> case_list case_item_ns",
+"case_list_ns -> case_item_ns",
+"case_list -> case_list case_item",
+"case_list -> case_item",
+"case_item_ns -> pattern RPAREN linebreak",
+"case_item_ns -> pattern RPAREN compound_list",
+"case_item_ns -> LPAREN pattern RPAREN linebreak",
+"case_item_ns -> LPAREN pattern RPAREN compound_list",
+"case_item -> pattern RPAREN linebreak DSEMI linebreak",
+"case_item -> pattern RPAREN compound_list DSEMI linebreak",
+"case_item -> LPAREN pattern RPAREN linebreak DSEMI linebreak",
+"case_item -> LPAREN pattern RPAREN compound_list DSEMI linebreak",
+"pattern -> WORD ",
+"pattern -> pattern TK_PIPE WORD ",
+"if_clause -> IF compound_list THEN compound_list else_part FI",
+"if_clause -> IF compound_list THEN compound_list FI",
+"else_part -> ELIF compound_list THEN compound_list",
+"else_part -> ELIF compound_list THEN compound_list else_part",
+"else_part -> ELSE compound_list",
+"while_clause -> WHILE compound_list do_group",
+"until_clause -> UNTIL compound_list do_group",
+"function_definition -> fname LPAREN RPAREN linebreak function_body",
+"function_body -> compound_command ",
+"function_body -> compound_command redirect_list ",
+"fname -> NAME ",
+"brace_group -> LBRACE compound_list RBRACE",
+"do_group -> DO compound_list DONE ",
+"simple_command -> cmd_prefix cmd_word cmd_suffix",
+"simple_command -> cmd_prefix cmd_word",
+"simple_command -> cmd_prefix",
+"simple_command -> cmd_name cmd_suffix",
+"simple_command -> cmd_name",
+"cmd_prefix -> io_redirect",
+"cmd_prefix -> cmd_prefix io_redirect",
+"cmd_prefix -> ASSIGNMENT_WORD",
+"cmd_prefix -> cmd_prefix ASSIGNMENT_WORD",
+"cmd_suffix -> io_redirect",
+"cmd_suffix -> cmd_suffix io_redirect",
+"cmd_suffix -> WORD",
+"cmd_suffix -> cmd_suffix WORD",
+"cmd_name -> WORD ",
+"cmd_word -> WORD ",
+"redirect_list -> io_redirect",
+"redirect_list -> redirect_list io_redirect",
+"io_redirect -> io_file",
+"io_redirect -> IO_NUMBER io_file",
+"io_redirect -> io_here",
+"io_redirect -> IO_NUMBER io_here",
+"io_file -> TK_LESS filename",
+"io_file -> LESSAND filename",
+"io_file -> TK_MORE filename",
+"io_file -> GREATAND filename",
+"io_file -> DGREAT filename",
+"io_file -> LESSGREAT filename",
+"io_file -> CLOBBER filename",
+"filename -> WORD ",
+"io_here -> DLESS here_end",
+"io_here -> DLESSDASH here_end",
+"here_end -> WORD ",
+"newline_list -> NEWLINE",
+"newline_list -> newline_list NEWLINE",
+"linebreak -> newline_list",
+"linebreak -> empty",
+"separator_op -> TK_AND",
+"separator_op -> TK_SEMI",
+"separator -> separator_op linebreak",
+"separator -> newline_list",
+"separator -> newline_list",
+"sequential_sep -> TK_SEMI linebreak",
+"sequential_sep -> newline_list"
