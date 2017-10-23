@@ -163,7 +163,7 @@ INCLUDES_FILES = \
 	job_control.h \
 	parser_slr.h \
 
-NAME ?= 21sh
+NAME ?= 42sh
 
 # defining those variables allows auto completion to occure.
 APPEND=
