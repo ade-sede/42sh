@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/23 15:20:02 by seddaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	env_remove_var(t_env *env, const char *key)
 	if (env_getenv((const char**)env->environ, key, &index))
 	{
 		env_remove_var_index(env, index);
-		if (0)
 			remove_var_from_local(&env->local, (char*)key);
 	}
 }

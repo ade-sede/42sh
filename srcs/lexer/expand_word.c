@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:59 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/23 15:11:39 by seddaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 #include "glob.h"
 
 /*
-**	TODO : A function to check if the token is subject to param expansion. Atm
-**	we're doing quote removal first, cus its easier, but that should come last
-*/
+ **	TODO : A function to check if the token is subject to param expansion. Atm
+ **	we're doing quote removal first, cus its easier, but that should come last
+ */
 
 static t_list	*get_globbed_tokens(t_list *list)
 {
@@ -36,13 +36,13 @@ static t_list	*get_globbed_tokens(t_list *list)
 }
 
 /*
-**	if (ft_strchr(token->value, '*') || ft_strchr(token->value, '['))
-**	first = get_globbed_tokens(glob(token->value));
-**	else if (ft_strchr(token->value, '{'))
-**	first = get_globbed_tokens(expand_curly_brackets(token->value));
-**	if (first != NULL)
-**	free_token(token);
-*/
+ **	if (ft_strchr(token->value, '*') || ft_strchr(token->value, '['))
+ **	first = get_globbed_tokens(glob(token->value));
+ **	else if (ft_strchr(token->value, '{'))
+ **	first = get_globbed_tokens(expand_curly_brackets(token->value));
+ **	if (first != NULL)
+ **	free_token(token);
+ */
 
 t_list			*pathname_expansion(t_token *token, int match_all)
 {
@@ -86,17 +86,14 @@ t_list			*exec_expand(t_token *token)
 					ft_strsub(token->value, 1, token->size - 2));
 		token->size -= 2;
 	}
-	if (0)
+	if (token->type != QUOTED)
 	{
-		if (token->type != QUOTED)
+		if (token->type != DQUOTED)
 		{
-			if (token->type != DQUOTED)
-			{
-				if (ft_strchr(token->value, '~'))
-					tild_expand(env, token);
-			}
-			parameter_expansion(env, token);
+			if (ft_strchr(token->value, '~'))
+				tild_expand(env, token);
 		}
+		parameter_expansion(env, token);
 	}
 	return (pathname_expansion(token, 1));
 }

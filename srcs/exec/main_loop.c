@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/12 18:49:44 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/23 15:07:03 by seddaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,32 @@ char	*line_editing_get_input(t_line *line, t_hist *hist,
 	return (edit_get_input());
 }
 
+/*static void	check_cur(void)
+{
+	unsigned int	pos;
+	char			b[4];
+
+	write(1,"\033[6n", 4);
+	read(0, b, 4);
+	if (b[3] != ';')
+		while (read(0, b, 1) == 1 && *b != ';')
+			;
+	pos = 0;
+	while (read(0, b, 1) == 1&& *b != 'R')
+		pos = pos * 10 + (unsigned int)(*b - '0');
+	if (pos != 1)
+	{
+		put_termcap("so");
+		put_termcap("mr");
+		ft_putchar('%');
+		put_termcap("so");
+		ft_putstr("\x1b[0m");
+		ft_putstr("\n");
+	}
+	
+}*/
+
+
 void	main_loop(t_env *env)
 {
 	char		*buff;
@@ -86,5 +112,6 @@ void	main_loop(t_env *env)
 		if (!ft_str_is_clr(buff))
 			lex_and_parse(NULL, NULL, buff);
 		free(buff);
+		//check_cur();// todo
 	}
 }

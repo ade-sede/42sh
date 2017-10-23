@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:58 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/23 11:13:08 by seddaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,16 @@ char				*edit_get_input(void)
 		if (btsearch_get_input(l, keycode) || comple_get_input(l, keycode) ||
 				history_get_input(l, keycode))
 			continue ;
-		if (keycode == KEY_ENTER)
-			return (edit_exit(l));
+		if (keycode == KEY_ENTER || (char)keycode == (l->read).delim)
+		{
+			if (keycode == KEY_ENTER && KEY_ENTER != (l->read).delim)
+				edit_add(keycode, l);
+			else
+				return (edit_exit(l));
+		}
 		edit_loop(keycode, l);
+		if (l->read.nchars && l->read.nchars == (int)l->len) 
+			return (edit_exit(l));
 	}
 	return (NULL);
 }

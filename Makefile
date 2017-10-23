@@ -29,6 +29,8 @@ SRC_FILE = \
 	builtin/unset.c \
 	builtin/set.c \
 	builtin/function_set.c \
+	builtin/read.c \
+	builtin/read_options.c \
 	\
 	completion/comple_bin_matches.c \
 	completion/comple_escape.c \
@@ -173,7 +175,7 @@ INCLUDES_FILES = \
 	local.h \
 	my_signal.h
 
-NAME ?= 21sh
+NAME ?= 42sh
 
 # defining those variables allows auto completion to occure.
 APPEND=
@@ -216,7 +218,6 @@ $(NAME): $(OBJS)
 	@printf "$(COLOR_GREEN)successfully created objects files for binary $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 	@printf "$(COLOR_VIOLET)creating $(NAME) ... $(COLOR_NOCOLOR)\n"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION)
-	@printf "$(COLOR_UP)$(COLOR_CLEAR)"
 	
 $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)
