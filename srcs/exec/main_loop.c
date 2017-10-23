@@ -57,25 +57,25 @@
 **	this array to the appropriate function then frees it.
 */
 
-void	exec(t_env *env, const char **argv, t_lst_head *head)
-{
-	size_t		index;
+/* void	exec(t_env *env, const char **argv, t_lst_head *head) */
+/* { */
+/* 	size_t		index; */
 
-	index = 0;
-	if (*argv != NULL)
-	{
-		if (!(exec_builtin(env, argv, head)))
-			fork_exec_bin(env, argv, head);
-	}
-	else
-		env->previous_exit = EXIT_FAILURE;
-	while (argv[index] != NULL)
-	{
-		free((void*)(argv[index]));
-		index++;
-	}
-	free(argv);
-}
+/* 	index = 0; */
+/* 	if (*argv != NULL) */
+/* 	{ */
+/* 		if (!(exec_builtin(env, argv, head))) */
+/* 			/1* fork_exec_bin(env, argv, head); *1/ */
+/* 	} */
+/* 	else */
+/* 		env->previous_exit = EXIT_FAILURE; */
+/* 	while (argv[index] != NULL) */
+/* 	{ */
+/* 		free((void*)(argv[index])); */
+/* 		index++; */
+/* 	} */
+/* 	free(argv); */
+/* } */
 
 void	init_main_loop(t_line *line, t_hist *hist)
 {

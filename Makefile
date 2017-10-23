@@ -62,6 +62,7 @@ SRC_FILE = \
 	env/value_of_local.c \
 	\
 	exec/lex_and_parse.c \
+	exec/main_loop.c \
 	\
 	globing/curly_bracket_split.c \
 	globing/curly_brackets.c \
@@ -128,7 +129,6 @@ SRC_FILE = \
 	parser_slr/get_action.c \
 	parser_slr/parser.c \
 	parser_slr/reduce.c \
-	parser_slr/rule_table \
 	parser_slr/utils.c \
 	\
 	failure/get_errno_1.c \
@@ -138,14 +138,6 @@ SRC_FILE = \
 	\
 	signal/all_signal_dfl.c \
 	signal/all_signal_ign.c \
-	\
-	job_control/job_background.c \
-	job_control/job_continue.c \
-	job_control/job_foreground.c \
-	job_control/job_init.c \
-	job_control/job_launch.c \
-	job_control/job_stop.c \
-	job_control/job_utils.c \
 	\
 	main.c
 

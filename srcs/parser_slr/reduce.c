@@ -1,4 +1,8 @@
 #include "parser_slr.h"
+
+
+#include <stdio.h>
+
 /*
 **PROGRAM -> SOMME
 **SOMME -> SOMME + PRODUCT
@@ -161,7 +165,7 @@ void	reduce(t_listint **state_stack, t_list **ast_stack, int reduce_rule)
 
 int	symbol_table_len = 47;
 
-static const enum e_symbol	g_symbol_table[47] = {PROGRAM, COMPLETE_COMMANDS, COMPLETE_COMMAND, LIST, AND_OR, PIPELINE, PIPE_SEQUENCE, COMMAND, COMPOUND_COMMAND, SUBSHELL, COMPOUND_LIST, TERM, FOR_CLAUSE, NAME, IN, WORDLIST, CASE_CLAUSE, CASE_LIST_NS, CASE_LIST, CASE_ITEM_NS, CASE_ITEM, PATTERN, IF_CLAUSE, ELSE_PART, WHILE_CLAUSE, UNTIL_CLAUSE, FUNCTION_DEFINITION, FUNCTION_BODY, FNAME, BRACE_GROUP, DO_GROUP, SIMPLE_COMMAND, CMD_PREFIX, CMD_SUFFIX, CMD_NAME, CMD_WORD, REDIRECT_LIST, IO_REDIRECT, IO_FILE, FILENAME, IO_HERE, HERE_END, NEWLINE_LIST, LINEBREAK, SEPARATOR_OP, SEPARATOR, SEQUENTIAL_SEP};
+static const enum e_symbol	g_symbol_table[47] = {PROGRAM, COMPLETE_COMMANDS, COMPLETE_COMMAND, LIST, AND_OR, PIPELINE, PIPE_SEQUENCE, COMMAND, COMPOUND_COMMAND, SUBSHELL, COMPOUND_LIST, TERM, FOR_CLAUSE, NAME, SYM_IN, WORDLIST, CASE_CLAUSE, CASE_LIST_NS, CASE_LIST, CASE_ITEM_NS, CASE_ITEM, PATTERN, IF_CLAUSE, ELSE_PART, WHILE_CLAUSE, UNTIL_CLAUSE, FUNCTION_DEFINITION, FUNCTION_BODY, FNAME, BRACE_GROUP, DO_GROUP, SIMPLE_COMMAND, CMD_PREFIX, CMD_SUFFIX, CMD_NAME, CMD_WORD, REDIRECT_LIST, IO_REDIRECT, IO_FILE, FILENAME, IO_HERE, HERE_END, NEWLINE_LIST, LINEBREAK, SEPARATOR_OP, SEPARATOR, SEQUENTIAL_SEP};
 
 static const int	g_goto_table[][47] = {
 	{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 2, 1, -1, -1, -1},
@@ -357,13 +361,13 @@ int		get_goto(t_listint *state_stack, int reduce_rule)
 	symbol = g_rule_table[reduce_rule].symbol;
 	res_state = -1;
 	col = 0;
-	while (col < symbole_tab_len)
+	while (col < symbol_table_len)
 	{
 		if (g_symbol_table[col] == symbol)
 			break;
 		col++;
 	}
-	if ((col == symbole_tab_len) || (res_state = g_goto_table[state_stack->data][col]) == -1)
+	if ((col == symbol_table_len) || (res_state = g_goto_table[state_stack->data][col]) == -1)
 	{
 		printf("goto error state -1 \n");
 		return (-1);

@@ -47,7 +47,7 @@ void	lex_and_parse(t_job_control *jc, t_ast *ast, char *buff)
 		if (res_lexer > 0 || TK_IS_REOPEN_SEP(res_parser))
 		{
 			reopen_line_editing(&lex, res_lexer, res_parser);
-			ast = flush_tree(ast);
+			/* ast = flush_tree(ast); */
 			if (g_abort_opening)
 				return (remove_lexer(&lex));
 		}

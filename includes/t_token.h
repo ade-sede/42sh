@@ -58,7 +58,8 @@ typedef enum
 	TK_BANG,
 	TK_LPAREN,
 	TK_RPAREN,
-	TK_IN
+	TK_IN,
+	$
 }	t_token_id;
 
 /*

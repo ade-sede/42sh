@@ -76,8 +76,8 @@ static int			exec_env(t_env new_env, const char **argv)
 		exit(exec_builtin(&new_env, argv, NULL));
 	else
 		wait(&ret);
-	if (!WEXITSTATUS(ret))
-		fork_exec_bin(&new_env, argv, NULL);
+	/* if (!WEXITSTATUS(ret)) */
+	/* 	fork_exec_bin(&new_env, argv, NULL); */
 	return (1);
 }
 

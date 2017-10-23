@@ -1,4 +1,10 @@
 #include "parser_slr.h"
+#include "parser.h"
+
+
+
+
+#include <stdio.h>
 
 void	debug_pstate(t_listint *stack)
 {
@@ -55,5 +61,6 @@ int		parse(t_ast **ast, t_list *token_list)
 		ft_lstint_add(&state_stack, state);
 		debug_pstate(state_stack);
 	}
-	return (NULL);
+	return (0);
+	/* return (NULL); */
 }

@@ -18,12 +18,12 @@ int	main(void)
 {
 	extern const char	**environ;
 	t_env				*env;
-	t_job_control		jc;
+	/* t_job_control		jc; */
 
-	jc.first_job = NULL;
+	/* jc.first_job = NULL; */
 	env = singleton_env();
 	env_load_base_env(env, environ);
-	init_shell(&jc);
+	/* init_shell(&jc); */
 	conf_term_in();
 	create_ternary_tree(env);
 	history_load(singleton_hist(), env);

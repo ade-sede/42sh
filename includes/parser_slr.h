@@ -3,6 +3,13 @@
 #include "libft.h"
 #include "t_token.h"
 
+# ifndef PARSER_ERROR
+#  define PARSER_ERROR 1
+# endif
+# ifndef PARSER_SUCCESS
+#  define PARSER_SUCCESS 0
+# endif
+
 //int	acc = 10000;
 /* enum e_token { */
 /* 	TK_PLUS, */
@@ -356,7 +363,7 @@ enum e_symbol {
 	TERM,
 	FOR_CLAUSE,
 	NAME,
-	IN,
+	SYM_IN,
 	WORDLIST,
 	CASE_CLAUSE,
 	CASE_LIST_NS,
