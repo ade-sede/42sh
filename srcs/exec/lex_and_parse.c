@@ -8,6 +8,7 @@
 #include "lexer.h"
 #include "parser_slr.h"
 #include "job_control.h"
+#include "parser.h"
 
 /*
 **	void	exec_main_loop(t_lexer *lex, t_ast *ast, t_job_control *jc)

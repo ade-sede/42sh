@@ -1,6 +1,7 @@
 #include "parser_slr.h"
+#include "t_token.h"
 
-int	token_table[] = {TK_AND_IF, TK_OR_IF, TK_BANG, TK_PIPE, TK_LPAREN, TK_RPAREN, TK_FOR, TK_NAME, TK_IN, TK_WORD, TK_CASE, TK_ESAC, TK_DSEMI, TK_IF, TK_THEN, TK_FI, TK_ELIF, TK_ELSE, TK_WHILE, TK_UNTIL, TK_LBRACE, TK_RBRACE, TK_DO, TK_DONE, TK_ASSIGNMENT_WORD, TK_IO_NUMBER, TK_LESS, TK_LESSAND, TK_MORE, TK_GREATAND, TK_DGREAT, TK_LESSGREAT, TK_CLOBBER, TK_DLESS, TK_DLESSDASH, TK_NEWLINE, TK_AND, TK_SEMI, $};
+int	token_table[] = {TK_AND_IF, TK_OR_IF, TK_BANG, TK_PIPE, TK_LPAREN, TK_RPAREN, TK_FOR, TK_NAME, TK_IN, TK_WORD, TK_CASE, TK_ESAC, TK_DSEMI, TK_IF, TK_THEN, TK_FI, TK_ELIF, TK_ELSE, TK_WHILE, TK_UNTIL, TK_LBRACE, TK_RBRACE, TK_DO, TK_DONE, TK_ASSIGNMENT_WORD, TK_IO_NUMBER, TK_LESS, TK_LESSAND, TK_GREAT, TK_GREATAND, TK_DGREAT, TK_LESSGREAT, TK_CLOBBER, TK_DLESS, TK_DLESSDASH, TK_NEWLINE, TK_AND, TK_SEMI, $};
 
 /*
 **	l etat acceptant est mis a 10000 arbitrairement et l etat r0 a 4242
@@ -192,6 +193,8 @@ int	action_table[][39] = {
 {-1,-1,-1,-1,r53,-1,-1,-1,-1,r53,-1,r53,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
 };
 
+
+#include <stdio.h>
 
 int		get_action(t_token *token, int state)
 {

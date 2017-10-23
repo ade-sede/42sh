@@ -1,10 +1,10 @@
-#include "line_editing.h"
-#include "lexer.h"
-#include "parser.h"
-#include "color.h"
-#include "libft.h"
-#include "exec.h"
-#include "printf.h"
+/* #include "line_editing.h" */
+/* #include "lexer.h" */
+/* #include "parser.h" */
+/* #include "color.h" */
+/* #include "libft.h" */
+/* #include "exec.h" */
+/* #include "printf.h" */
 
 /*
 **	As a token is considered to be a leaf of the tree, the tree is being built
@@ -38,52 +38,28 @@
 */
 
 
-int			ast_parse(t_ast **ast, t_list **token_list)
-{
-	t_token *token;
-	int		reopen;
+/* int			ast_parse(t_ast **ast, t_list **token_list) */
+/* { */
+/* 	t_token *token; */
+/* 	int		reopen; */
 
-	reopen = 0;
-	while ((token = *token_list ? (*token_list)->data : NULL))
-	{
-		if (TK_IS_SEP(token->id))
-		{
-			*ast = start_complexe_command(*ast, token_list, &reopen);
-			if (reopen)
-			{
-				*ast = flush_tree(*ast);
-				return (reopen);
-			}
-		}
-		else if ((*ast = create_simple_command(token_list)) == NULL)
-		{
-			*ast = flush_tree(*ast);
-			return (PARSER_ERROR);
-		}
-	}
-	return (PARSER_SUCCESS);
-}
-
-
-qweqwe
-{
-	arbre2 = create_tree(2);
-	arbre_sep = create_sep_tree();
-	arbre1 = create_tree(1);
-	arbre_sep->right = arbre2;
-	abre_sep->left = arbre1:
-
-
-		arbre_sep->left = create_tree(1);
-		arbre_sep->right = create_tree(2);
-
-		arbre_ls;
-		arbre_&&;
-		arbre_&&->left = arbre_ls;
-		\\
-		arbre_ls;
-		arbre_&&->right = arbre_ls;
-		\\
-		\\
-		ls && ls | ls ; ls
-}
+/* 	reopen = 0; */
+/* 	while ((token = *token_list ? (*token_list)->data : NULL)) */
+/* 	{ */
+/* 		if (TK_IS_SEP(token->id)) */
+/* 		{ */
+/* 			*ast = start_complexe_command(*ast, token_list, &reopen); */
+/* 			if (reopen) */
+/* 			{ */
+/* 				*ast = flush_tree(*ast); */
+/* 				return (reopen); */
+/* 			} */
+/* 		} */
+/* 		else if ((*ast = create_simple_command(token_list)) == NULL) */
+/* 		{ */
+/* 			*ast = flush_tree(*ast); */
+/* 			return (PARSER_ERROR); */
+/* 		} */
+/* 	} */
+/* 	return (PARSER_SUCCESS); */
+/* } */

@@ -2,6 +2,7 @@
 # define T_AST_H
 
 # include "t_token.h"
+# include "parser_slr.h"
 
 /*
 **	The following enumeration corresponds to different grammar symbols we'll be
@@ -14,15 +15,15 @@
 **	CMD_WORD applies to any word belonging to a command.
 */
 
-typedef	enum {
-	SIMPLE_COMMAND,
-	IO_REDIRECT,
-	COMPLEXE_COMMAND = 666,
-	CMD_WORD = 999,
-	CMD_NAME,
-	CMD_PREFIX,
-	CMD_SUFFIX
-}	t_symbol;
+/* typedef	enum { */
+/* 	SIMPLE_COMMAND, */
+/* 	IO_REDIRECT, */
+/* 	COMPLEXE_COMMAND = 666, */
+/* 	CMD_WORD = 999, */
+/* 	CMD_NAME, */
+/* 	CMD_PREFIX, */
+/* 	CMD_SUFFIX */
+/* }	t_symbol; */
 
 /*
 **	The following structure represents a node of the AST.
@@ -35,20 +36,20 @@ typedef	enum {
 **		CMD_PREFIX `foo' and CMD_PREFIX `bar' (see IMPLICIT SYMBOLS).
 */
 
-typedef	struct		s_ast
-{
-	t_list			*child;
-	struct s_token	*token;
-	t_symbol		symbol;
-	char			*heredoc_content;
-}					t_ast;
+/* typedef	struct		s_ast */
+/* { */
+/* 	t_list			*child; */
+/* 	struct s_token	*token; */
+/* 	t_symbol		symbol; */
+/* 	char			*heredoc_content; */
+/* }					t_ast; */
 
 /*
 **	In file srcs/parser/t_ast.c
 */
 
 t_ast				*ast_create_node(t_token *token, t_list *child, \
-		t_symbol symbol);
+		int symbol);
 t_ast				*free_ast_node(t_ast *node);
 t_ast				*flush_tree(t_ast *ast);
 #endif

@@ -1,17 +1,17 @@
 #ifndef AUTOMATON_H
 # define AUTOMATON_H
 #include "libft.h"
-#include <stdio.h>
+#include "t_token.h"
 
 //int	acc = 10000;
-enum e_token {
-	TK_PLUS,
-	$,
-	TK_STAR,
-	TK_OPEN,
-	TK_CLOSE,
-	TK_ID,
-};
+/* enum e_token { */
+/* 	TK_PLUS, */
+/* 	$, */
+/* 	TK_STAR, */
+/* 	TK_OPEN, */
+/* 	TK_CLOSE, */
+/* 	TK_ID, */
+/* }; */
 
 enum shift {
 	s0,
@@ -126,6 +126,29 @@ enum shift {
 	s109,
 	s110,
 	s111,
+	// Start of recently added
+	s123,
+	s135,
+	s136,
+	s139,
+	s140,
+	s141,
+	s145,
+	s153,
+	s148,
+	s154,
+	s152,
+	s158,
+	s161,
+	s162,
+	s163,
+	s165,
+	s168,
+	s169,
+	s171,
+	s172,
+	s178,
+	s179,
 	r0 = 4242,
 	r1,
 	r2,
