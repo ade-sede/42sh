@@ -128,7 +128,6 @@ SRC_FILE = \
 	\
 	parser_slr/get_action.c \
 	parser_slr/parser.c \
-	parser_slr/reduce.c \
 	parser_slr/utils.c \
 	\
 	failure/get_errno_1.c \

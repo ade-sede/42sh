@@ -48,7 +48,7 @@ int		parse(t_ast **ast, t_list *token_list)
 		{
 			printf("r%d\n", action -4242);
 			if (tmp->data)
-				printf(MAG"#"CYN"%s"MAG"#\n"RESET, ((t_token *)tmp->data)->value);
+				printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)tmp->data)->value, ((t_token *)tmp->data)->id);
 			reduce(&state_stack, &ast_stack, action - 4242);
 			state = get_goto(state_stack, action - 4242);
 			if (state == -1)
