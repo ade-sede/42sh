@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/12 16:22:27 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/23 12:40:51 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ char		**env_create_environ(const char **original, size_t *new_size)
 		*new_size = original_size;
 	return (new_environ);
 }
+
+PS1=qweqwe
+LOL=qweqwe
+PATH=qweqewq
+
+size_t	index
+ value = env_getenv(env->environ, "PATH", NULL);
+ value = /bin
+ index == 2;
 
 char		*env_getenv(const char **environ, const char *key_start, \
 		size_t *index)

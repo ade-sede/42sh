@@ -2,14 +2,15 @@ Une pile d'etat avec les etats suivants:
 DEFAULT
 WORD
 OPERATOR
-EXPAND
+EXPAND_PARAM
+EXPAND_COMMAND
+EXPAND_ARH
 DQUOTES
 QUOTES
-HISTORY_EXPAND
 BACKSLASH
 
 Le lexer est est active depuis le lancement du line editing.
 A chaque debut de boucle, il est detruit. A chaque char ajoute / supprime de buff, il est construit.
 
-Un cache qui contient le dernier etat qui se fait pop ?
+Un cache qui contient le dernier etat qui se fait pop ? = reverse stack ?
 Chaque token contient en plus des informations comme start_token et end_token, qui nous permettent de savoir ou line->pos se situe.
