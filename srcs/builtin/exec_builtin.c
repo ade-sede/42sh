@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 22:40:51 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/12 18:14:15 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/10/23 15:40:10 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 
-/*
-**{"unset", &builtin_unset},
-**{"set", &builtin_set},
-*/
+
+
 
 static t_builtin	g_builtin[] =
 {
@@ -31,6 +29,8 @@ static t_builtin	g_builtin[] =
 	{"setenv", &builtin_setenv},
 	{"echo", &builtin_echo},
 	{"alias", &builtin_alias},
+	{"unset", &builtin_unset},
+	{"set", &builtin_set},
 	{"unalias", &builtin_unalias},
 	{NULL, NULL}
 };
