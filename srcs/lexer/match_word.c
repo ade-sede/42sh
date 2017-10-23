@@ -19,6 +19,8 @@ static char	*g_reserved_word_list[] = {
 	"{",
 	"}",
 	"!",
+	"(",
+	")",
 	"in",
 	NULL
 };

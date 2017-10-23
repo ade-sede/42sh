@@ -14,7 +14,8 @@ t_token		*create_token(char *value, int type, char delimiter)
 	token->value = value;
 	token->id = 0;
 	token->type = type;
-	token->size = ft_strlen(value);
+	if (value)
+		token->size = ft_strlen(value);
 	token->cmd_name = 0;
 	return (token);
 }

@@ -41,6 +41,12 @@ void	lex_and_parse(t_job_control *jc, t_ast *ast, char *buff)
 	while (42)
 	{
 		res_lexer = lex_all(&lex, &token_list);
+
+		t_token	*dollar_token;
+
+		dollar_token = create_token(ft_strdup("$"), 0, 0);
+		dollar_token->id = $;
+		ft_simple_lst_pushback(&token_list, ft_simple_lst_create(dollar_token));
 		res_parser = parse(&ast, token_list);
 		if (res_parser == PARSER_ERROR)
 			return (remove_lexer(&lex));

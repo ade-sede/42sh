@@ -6,9 +6,9 @@ int	token_table[] = {TK_AND_IF, TK_OR_IF, TK_BANG, TK_PIPE, TK_LPAREN, TK_RPAREN
 /*
 **	l etat acceptant est mis a 10000 arbitrairement et l etat r0 a 4242
 */
-int	nb_col = 39;
+int	nb_col = 40;
 
-int	action_table[][39] = {
+int	action_table[][40] = {
 {-1,-1,r104,-1,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,r104,s3,-1,-1,r104},
 {-1,-1,s10,-1,s29,-1,s30,s35,-1,s27,s31,-1,-1,s32,-1,-1,-1,-1,s33,s34,s28,-1,-1,-1,s26,s37,s39,s40,s41,s42,s43,s44,s45,s46,s47,-1,-1,-1,-1},
 {-1,-1,r103,-1,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,r103,s48,-1,-1,r103},

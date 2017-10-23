@@ -59,7 +59,7 @@ typedef enum
 	TK_LPAREN,
 	TK_RPAREN,
 	TK_IN,
-	$
+	$ = 666
 }	t_token_id;
 
 /*
