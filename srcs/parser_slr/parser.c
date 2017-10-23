@@ -4,6 +4,7 @@
 
 
 
+#include "color.h"
 #include <stdio.h>
 
 void	debug_pstate(t_listint *stack)
@@ -46,6 +47,8 @@ int		parse(t_ast **ast, t_list *token_list)
 		if (action >= 4242)
 		{
 			printf("r%d\n", action -4242);
+			if (tmp->data)
+				printf(MAG"#"CYN"%s"MAG"#\n"RESET, ((t_token *)tmp->data)->value);
 			reduce(&state_stack, &ast_stack, action - 4242);
 			state = get_goto(state_stack, action - 4242);
 			if (state == -1)
