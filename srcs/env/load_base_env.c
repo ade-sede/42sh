@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   load_base_env.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/23 15:19:45 by seddaoud         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "env.h"
 #include "libft.h"
 #include "printf.h"
 #include "hash_table.h"
@@ -28,11 +15,11 @@ void		env_load_base_env(t_env *env, const char **environ)
 	env->local = NULL;
 	env->environ = env_create_environ(environ, &(env->environ_size));
 	env_load_shlvl_pwd(env);
-		while (i != env->environ_size)
-		{
-			add_to_local(&env->local, ft_strdup(env->environ[i]));
-			++i;
-		}
+	while (i != env->environ_size)
+	{
+		add_to_local(&env->local, ft_strdup(env->environ[i]));
+		++i;
+	}
 	create_hash_table(&env->hash_table, env->environ);
 }
 
@@ -52,6 +39,6 @@ void		env_load_shlvl_pwd(t_env *env)
 		env_change_value(env, "SHLVL", index, new_entry);
 		free(new_entry);
 	}
-	env_add_change(env, "SHELL", "21sh");
-	env_add_change(env, "HISTFILE", ".21sh_history");
+	env_add_change(env, "SHELL", "42sh");
+	env_add_change(env, "HISTFILE", ".42sh_history");
 }

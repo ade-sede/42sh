@@ -1,26 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exec_builtin.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 22:40:51 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/23 15:11:08 by seddaoud         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "libft.h"
 #include "env.h"
 #include "builtin.h"
 #include "exec.h"
 #include "read.h"
 #include <sys/wait.h>
 #include <fcntl.h>
-/*
-**{"unset", &builtin_unset},
-**{"set", &builtin_set},
-*/
 
 static t_builtin	g_builtin[] =
 {

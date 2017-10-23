@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   add_var.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/23 15:19:53 by seddaoud         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "env.h"
 #include "hash_table.h"
 #include "libft.h"
 #include "local.h"
@@ -26,7 +13,7 @@ void	env_add_var(t_env *env, const char *key, const char *value)
 	new_environ_size = env->environ_size + 1;
 	new_environ = palloc(sizeof(char*) * (new_environ_size + 1));
 	new_key_value = ft_strsurround(key, "=", value);
-		add_to_local(&env->local, ft_strdup(new_key_value));
+	add_to_local(&env->local, ft_strdup(new_key_value));
 	ft_memcpy(new_environ, environ, env->environ_size * sizeof(*new_environ));
 	new_environ[new_environ_size - 1] = new_key_value;
 	new_environ[new_environ_size] = NULL;
@@ -45,6 +32,7 @@ void	env_reload_tree_hash(t_env *env)
 	create_hash_table(&env->hash_table, env->environ);
 }
 
+#include <stdio.h>
 void	env_change_value(t_env *env, const char *key, size_t key_index, \
 		const char *new_value)
 {
@@ -53,6 +41,7 @@ void	env_change_value(t_env *env, const char *key, size_t key_index, \
 	environ = env->environ;
 	free(environ[key_index]);
 	environ[key_index] = ft_strsurround(key, "=", new_value);
+	add_to_local(&env->local, ft_strsurround(key, "=", new_value));
 }
 
 void	env_add_change(t_env *env, const char *key, const char *value)
