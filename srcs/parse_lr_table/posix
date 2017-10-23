@@ -102,8 +102,10 @@ do_group         : Do compound_list Done           /* Apply rule 6 */
 simple_command   : cmd_prefix cmd_word cmd_suffix
                  | cmd_prefix cmd_word
                  | cmd_prefix
-                 | cmd_word cmd_suffix
-                 | cmd_word
+                 | cmd_name cmd_suffix
+                 | cmd_name
+                 ;
+cmd_name         : WORD                   /* Apply rule 7a */
                  ;
 cmd_word         : WORD                   /* Apply rule 7b */
                  ;

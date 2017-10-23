@@ -1,19 +1,5 @@
-#include "parser_slr.h"
-#include "t_token.h"
-
-//int	token_table[] = {TK_AND_IF, TK_OR_IF, TK_BANG, TK_PIPE, TK_LPAREN, TK_RPAREN, TK_FOR, TK_NAME, TK_IN, TK_WORD, TK_CASE, TK_ESAC, TK_DSEMI, TK_IF, TK_THEN, TK_FI, TK_ELIF, TK_ELSE, TK_WHILE, TK_UNTIL, TK_LBRACE, TK_RBRACE, TK_DO, TK_DONE, TK_ASSIGNMENT_WORD, TK_IO_NUMBER, TK_LESS, TK_LESSAND, TK_GREAT, TK_GREATAND, TK_DGREAT, TK_LESSGREAT, TK_CLOBBER, TK_DLESS, TK_DLESSDASH, TK_NEWLINE, TK_AND, TK_SEMI, $};
-
-int token_table[] = {$, TK_AND, TK_LPAREN, TK_RPAREN, TK_SEMI, TK_LESS, TK_GREAT, TK_AND_IF, TK_ASSIGNMENT_WORD, TK_BANG, TK_CLOBBER, TK_CASE, TK_DGREAT, TK_DLESS, TK_DLESSDASH, TK_DSEMI, TK_DO, TK_DONE, TK_ELIF, TK_ELSE, TK_ESAC, TK_FI, TK_FOR, TK_GREATAND, TK_IO_NUMBER, TK_IF, TK_IN, TK_LESSAND, TK_LESSGREAT, TK_LBRACE, TK_NEWLINE, TK_OR_IF, TK_RBRACE, TK_THEN, TK_UNTIL, TK_WORD, TK_WHILE, TK_PIPE
-};
-
-/*
-**	l etat acceptant est mis a 10000 arbitrairement et l etat r0 a 4242
-*/
-int	nb_col = 40;
-
-int	action_table[][40] = {
 {r105,-1,r105,-1,-1,r105,r105,-1,r105,r105,r105,r105,r105,r105,r105,-1,-1,-1,-1,-1,-1,-1,r105,r105,r105,r105,-1,r105,r105,r105,s4,-1,-1,-1,r105,r105,r105,-1},
-{10000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+{a,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
 {r2,-1,s30,-1,-1,s39,s41,-1,s27,s11,s45,s32,s43,s46,s47,-1,-1,-1,-1,-1,-1,-1,s31,s42,s37,s33,-1,s40,s44,s29,-1,-1,-1,-1,s35,s28,s34,-1},
 {r104,-1,r104,-1,-1,r104,r104,-1,r104,r104,r104,r104,r104,r104,r104,-1,-1,-1,-1,-1,-1,-1,r104,r104,r104,r104,-1,r104,r104,r104,s48,-1,-1,-1,r104,r104,r104,-1},
 {r102,-1,r102,-1,-1,r102,r102,-1,r102,r102,r102,r102,r102,r102,r102,-1,-1,-1,-1,-1,-1,-1,r102,r102,r102,r102,-1,r102,r102,r102,r102,-1,-1,-1,r102,r102,r102,-1},
@@ -1704,25 +1690,3 @@ int	action_table[][40] = {
 {-1,r35,-1,-1,r35,r35,r35,r35,-1,-1,r35,-1,r35,r35,r35,r35,-1,-1,-1,-1,r35,-1,-1,r35,r35,-1,-1,r35,r35,-1,r35,r35,-1,-1,-1,-1,-1,r35},
 {-1,r40,-1,-1,r40,r40,r40,r40,-1,-1,r40,-1,r40,r40,r40,r40,-1,-1,-1,-1,r40,-1,-1,r40,r40,-1,-1,r40,r40,-1,r40,r40,-1,-1,-1,-1,-1,r40},
 {-1,r41,-1,-1,r41,r41,r41,r41,-1,-1,r41,-1,r41,r41,r41,r41,-1,-1,-1,-1,r41,-1,-1,r41,r41,-1,-1,r41,r41,-1,r41,r41,-1,-1,-1,-1,-1,r41},
-};
-
-
-#include <stdio.h>
-
-int		get_action(t_token *token, int state)
-{
-	int		col = 0;
-	int		line;
-
-	while (col < nb_col && token_table[col] != token->id)
-		col++;
-	if (state == 50 || (state == 71 && token->id == TK_DO) || (state == 109 && token->id == TK_DO))
-		printf("COLONE MAUDITE\n");
-	if (col == nb_col)
-	{
-		printf("Eror get action bad token\n");
-		return (-1);
-	}
-	line = state;
-	return (action_table[line][col]);
-}
