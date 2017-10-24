@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   edit_init.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:58 by vcombey          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "line_editing.h"
 
 /*
@@ -47,4 +35,7 @@ void		edit_line_init(t_line *line, void (*sig_handler)(void))
 	line->old_pos = 0;
 	line->len = 0;
 	line->sig_handler = sig_handler;
+	line->read.delim = '\n';
+	line->read.flags = 0;
+	line->read.nchars = 0;
 }

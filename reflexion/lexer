@@ -1,16 +1,59 @@
-Une pile d'etat avec les etats suivants:
-DEFAULT
-WORD
-OPERATOR
-EXPAND_PARAM
-EXPAND_COMMAND
-EXPAND_AR
-DQUOTES
-QUOTES
-BACKSLASH
+lex_state
+{
+		PARAMETER_EXPANSION,
+		COMMAND_SUBSTITUTION,
+		ARITHMETIQUE_EXPANSION,
+		TILD_EXPANSION,
+		DOUBLE_QUOTES,
+		QUOTES,
+		BACKSLASHED,
+		DEFAULT,
+		COMMENT,
+		WHITESPACES,
+		OPERATOR
+}
 
-Le lexer est est active depuis le lancement du line editing.
-A chaque debut de boucle, il est detruit. A chaque char ajoute / supprime de buff, il est construit.
+LE : refresh refreshes line only from where the cursor is. No blinking, not so slow. ?
 
-Un cache qui contient le dernier etat qui se fait pop ? = reverse stack ?
-Chaque token contient en plus des informations comme start_token et end_token, qui nous permettent de savoir ou line->pos se situe.
+
+Always run Lexer during LE. Fully dynamic.
+
+#define STACKSIZE 40
+int	token_limits[STACKSIZE][4] 
+
+delimiting comments and whitespaces instead of skipping them for the sake of syntax coloring.
+Comment and whitespaces should be removed from the token list before sending to parser.
+
+When entering a state, on the index of the state, the stack contains the start
+and end of the states. For example, in the string `ls "libft"`, when treating
+double quotes, state[1][0] = DQUOTES, state[1][1] is $index_of_first_dquote and
+state[1][2] is $index_of_closing_dquote.
+[x][3] is a counter. Counting how many input has been pop since the state appeared.
+
+/* if this is a le_lexer, re-break tokens into mini tokens. */
+Re break token into mini tokens.
+
+Example ls "$lol libft"
+		012345678901234
+state[0][0] = DEFAULT
+state[0][1] = 0 (Where did this state beging ? on index 0)
+state[0][2] = 1 (What is the last valid character found in this state (the character before the one that triggered token_demilitation))
+
+
+This way we have all control informations, at all time about tokens.
+Clear the line, launch the dynamic lexer. It will write to the terminal with appropriate colors.
+
+/* everytime, right before we pop input, write the character, applying color rules if syntax color is on. ?? */
+
+start_lex
+{
+	skip_comments.
+		start_token = *input;
+	while (not_done)
+	{
+		if (*state = DEFAULT)
+		{
+			if (*input == '\\')
+		}
+	}
+}

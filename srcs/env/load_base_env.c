@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   load_base_env.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/19 15:45:21 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "env.h"
 #include "libft.h"
 #include "printf.h"
 #include "hash_table.h"
@@ -52,6 +39,6 @@ void		env_load_shlvl_pwd(t_env *env)
 		env_change_value(env, "SHLVL", index, new_entry);
 		free(new_entry);
 	}
-	env_add_change(env, "SHELL", "21sh");
-	env_add_change(env, "HISTFILE", ".21sh_history");
+	env_add_change(env, "SHELL", "42sh");
+	env_add_change(env, "HISTFILE", ".42sh_history");
 }

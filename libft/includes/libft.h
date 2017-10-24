@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 22:42:31 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:42:36 by vcombey          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
@@ -125,4 +113,12 @@ void				ft_putnbr(int n);
 
 void				fatal(const char *error_str);
 int					ft_is_executable(char *dir, char *file);
+
+void				ft_strpush(char **str, char c);
+int					ft_strarrstrn(char **array, char *str, unsigned int n);
+unsigned int		ft_parrlen(void **array);
+void				ft_parrpush(void ***tab, void *elem);
+void				**ft_parrnew(void);
+void	ft_strspush(char **str, char *push);
+
 #endif

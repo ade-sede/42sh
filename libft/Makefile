@@ -108,6 +108,12 @@ SRC = \
 	ft_simple_lst_del_one.c \
 	ft_lst_rev.c \
 	ft_getopt.c \
+	ft_strpush.c \
+	ft_strarrstrn.c \
+	ft_parrlen.c \
+	ft_parrpush.c \
+	ft_parrnew.c \
+	ft_strspush.c \
 
 NAME ?= libft.a
 

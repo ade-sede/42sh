@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   edit_write.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 22:40:47 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/11 22:40:58 by vcombey          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "line_editing.h"
 #include "env.h"
 #include <stdio.h>
@@ -34,7 +22,10 @@ static void	term_write_char(t_line *line, size_t i)
 			if (i >= line->visu_start && i < line->pos)
 				ft_putstr("\e[39;42m");
 	}
-	write(2, line->buff + i, 1);
+	if (((line->read).flags & S))
+		write(2, "*", 1);
+	else
+		write(2, line->buff + i, 1);
 	if (line->visu_mode)
 	{
 		if (line->pos < line->visu_start)

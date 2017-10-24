@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   add_var.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 22:40:48 by vcombey           #+#    #+#             */
-/*   Updated: 2017/10/23 12:43:02 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "env.h"
 #include "hash_table.h"
 #include "libft.h"
 #include "local.h"
@@ -45,6 +32,7 @@ void	env_reload_tree_hash(t_env *env)
 	create_hash_table(&env->hash_table, env->environ);
 }
 
+#include <stdio.h>
 void	env_change_value(t_env *env, const char *key, size_t key_index, \
 		const char *new_value)
 {
@@ -53,6 +41,7 @@ void	env_change_value(t_env *env, const char *key, size_t key_index, \
 	environ = env->environ;
 	free(environ[key_index]);
 	environ[key_index] = ft_strsurround(key, "=", new_value);
+	add_to_local(&env->local, ft_strsurround(key, "=", new_value));
 }
 
 void	env_add_change(t_env *env, const char *key, const char *value)

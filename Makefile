@@ -29,6 +29,8 @@ SRC_FILE = \
 	builtin/unset.c \
 	builtin/set.c \
 	builtin/function_set.c \
+	builtin/read.c \
+	builtin/read_options.c \
 	\
 	completion/comple_bin_matches.c \
 	completion/comple_escape.c \
@@ -46,20 +48,18 @@ SRC_FILE = \
 	completion/ternary_search_tree.c \
 	completion/ternary_search_tree_add.c \
 	\
-	env/add_to_local.c \
-	env/add_var.c \
+	env/local_add.c \
+	env/env_add.c \
 	env/env_create_completion_tree.c \
 	env/environ.c \
-	env/key_of_local.c \
 	env/load_base_env.c \
-	env/local_get_var.c \
+	env/local_get.c \
 	env/prompt.c \
 	env/prompt_zsh.c \
-	env/remove_var.c \
-	env/remove_var_from_local.c \
+	env/env_remove.c \
+	env/local_remove.c \
 	env/t_env.c \
 	env/get_ps1.c \
-	env/value_of_local.c \
 	\
 	exec/exec_bin.c \
 	exec/exec_heredoc.c \
@@ -221,7 +221,6 @@ $(NAME): $(OBJS)
 	@printf "$(COLOR_GREEN)successfully created objects files for binary $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 	@printf "$(COLOR_VIOLET)creating $(NAME) ... $(COLOR_NOCOLOR)\n"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION)
-	@printf "$(COLOR_UP)$(COLOR_CLEAR)"
 	
 $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)
