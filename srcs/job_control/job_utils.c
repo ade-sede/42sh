@@ -38,3 +38,34 @@ int	job_is_completed(t_job *j)
 			return 0;
 	return 1;
 }
+
+t_job	*job_new()
+{
+	t_job	*new;
+
+	new = ft_memalloc(sizeof(t_job));
+	return (new);
+}
+
+t_process	*process_new(t_ast *command)
+{
+	t_job	*new;
+
+	new = ft_memalloc(sizeof(t_process));
+	new->command = command;
+	return (new);
+}
+
+void	process_add(t_process *new, t_process **first_process)
+{
+	new->next = *first_process;
+	*first_process = new;
+}
+
+void	job_add_process()
+{
+	t_job	*new;
+
+	new = ft_memalloc(sizeof(t_job));
+	return (new);
+}

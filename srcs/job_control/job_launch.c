@@ -44,7 +44,8 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		close(errfile);
 	}
 	/* Exec the new process.  Make sure we exit.  */
-	exec_bin(singleton_env(), p->argv);
+//	exec_bin(singleton_env(), p->argv);
+	exec(p->node)
 	exit(1);
 }
 
