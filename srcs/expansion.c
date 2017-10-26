@@ -110,12 +110,24 @@ char		*getset_str(char *str, int size)
 		*(str + size) = '\0';
 		s = ft_strdup(str);
 		*(str + size) = tmp;
-		ft_putendl(s);
+		//ft_putendl(s);
 	}
 	return (s);
 }
 
-char		*recup_str(char **str, t_list_d *lst)
+char		*recup_str_first(char **str, char *string)
+{
+	int		size;
+	char	*ret;
+	size = *str - string;
+	if (!(ret = (char *)ft_memalloc(sizeof(char) * size)))
+		return (NULL);
+	ft_strncpy(ret, string, size - 1);
+	++(*str);
+	return(ret);
+}
+
+char		*recup_str(char **str, t_list_d *lst, char *string)
 {
 	char		*ret;
 	int			size;
@@ -124,6 +136,8 @@ char		*recup_str(char **str, t_list_d *lst)
 	size = 0;
 	flag = 0;
 	ret = NULL;
+	if (**str == '#')
+		return (recup_str_first(str, string));
 	if (**str == '?' && (flag = 1))
 	{
 		ret = ft_strchr(++*str, '?');
@@ -145,7 +159,7 @@ char		*recup_str(char **str, t_list_d *lst)
 	return (NULL);
 }
 
-int			recup(char **str, t_lst_head *head, char **new)
+int			recup(char **str, t_lst_head *head, char **new, char *string)
 {
 	t_list_d	*tmp;
 	int			depl;
@@ -169,7 +183,7 @@ int			recup(char **str, t_lst_head *head, char **new)
 	if (depl && ++*str)
 		*new = recup_number(depl, head);
 	else
-		*new = recup_str(str, head->first);
+		*new = recup_str(str, head->first, string);
 	if (*new)
 		return (0);
 	**str = '\0';
@@ -183,7 +197,7 @@ int 		cut_w_fprec(char **new)
 	char *tmp2;
 	char tmp_swap;
 
-	ft_putendl("tamere");
+	//ft_putendl("tamere");
 	tmp = ft_strstr(*new, getset_str(NULL, 0));
 	if (!tmp || !getset_str(NULL, 0))
 		return (5);
@@ -207,7 +221,7 @@ int			designators(char **new, char **str)
 
 	if (!((**str == ':' && ++(*str)) || isdesignator(**str)))
 		return (-1);
-	ft_putendl(*str);
+	//ft_putendl(*str);
 	if (isdesignator(**str) && **str != '%')
 	{
 		if (**str == '^')
@@ -363,7 +377,7 @@ int			cotetage(char **new, int flag)
 	in_tmp = 0;
 	in_new = 0;
 	nbrajout = count_words_space(*new);
-	if (!(tmp = (char *)malloc(sizeof(char) * (ft_strlen(tmp) + nbrajout + 1))))
+	if (!(tmp = (char *)ft_memalloc(ft_strlen(*new) + nbrajout + 1)))
 		return (0);
 	if (ft_isspace(**new))
 	{
@@ -387,6 +401,7 @@ int			cotetage(char **new, int flag)
 		while (*(*new + in_new) && (!ft_isspace(*(*new + in_new)) || flag == 1)
 				&& ++in_new)
 		{
+			*(tmp + in_tmp + in_new - 1) = 'q';
 			*(tmp + in_tmp + in_new - 1) = *(*new + in_new - 1);
 			if (*(*new + in_new - 1) == '\'')
 			{
@@ -555,7 +570,7 @@ int			expansion(char **string, t_lst_head *head)
 			return (0);
 	}
 	str_change = str;
-	if (!(ret = recup(&str, head, &str_new)))
+	if (!(ret = recup(&str, head, &str_new, *string)))
 		ret = designators(&str_new, &str);
 	while (!ret && !(ret = modifier(&str_new, &str)))
 		;
@@ -643,7 +658,7 @@ int main(int ac, char **av)
 	head = NULL;
 	history_load_test(".21sh_history", &head);
 
-	str = ft_strdup("!?ddd?:%");
+	str = ft_strdup("dfs !#!#!#!#:q:q:q:q !#:q !#:q !#:q:q:q:q:q:q:q:q:q:q:q:q");
 	ft_putendl(str);
 	ft_putendl("start");
 	i = expansion(&str, head);
