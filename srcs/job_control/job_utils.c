@@ -61,11 +61,3 @@ void	process_add(t_process *new, t_process **first_process)
 	new->next = *first_process;
 	*first_process = new;
 }
-
-void	job_add_process()
-{
-	t_job	*new;
-
-	new = ft_memalloc(sizeof(t_job));
-	return (new);
-}

@@ -63,4 +63,9 @@ void	continue_job(t_job *j, int foreground);
 t_job	*find_job(t_job_control *jc, pid_t pgid);
 void	wait_for_job(t_job_control *jc, t_job *j);
 void	format_job_info(t_job *j, const char *status);
+t_job	*job_new();
+t_process	*process_new(t_ast *command);
+void	process_add(t_process *new, t_process **first_process);
+t_job_control	*singleton_jc(void);
+
 #endif

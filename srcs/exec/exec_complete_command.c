@@ -6,6 +6,5 @@
 
 int exec_complete_command(t_ast *ast)
 {
-	if (ast->child[0])
-		return (exec(ast->child[0]));
+	return (exec(ast->child[0]));
 }

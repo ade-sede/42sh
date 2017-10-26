@@ -149,7 +149,6 @@ SRC_FILE = \
 	exec/exec_do_group.c \
 	exec/exec_else_part.c \
 	exec/exec_for_clause.c \
-	exec/exec_func \
 	exec/exec_function_body.c \
 	exec/exec_function_definiti.c \
 	exec/exec_if_clause.c \

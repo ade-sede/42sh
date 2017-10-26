@@ -8,7 +8,6 @@
 
 int exec_for_clause(t_ast *ast)
 {
-
-
-
+	(void)ast;
+	return (1);
 }
