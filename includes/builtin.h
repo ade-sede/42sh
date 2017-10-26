@@ -38,7 +38,7 @@ int				builtin_cd(t_env *env, const char **argv);
 ** In exec_builtin.c
 */
 
-int				exec_builtin(t_env *env, const char **argv, t_lst_head *head);
+int				exec_builtin(t_env *env, const char **argv);
 
 /*
 ** In echo.c

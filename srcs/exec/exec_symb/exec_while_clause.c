@@ -1,3 +1,4 @@
+#include "exec.h"
 /*
 **	while_clause     : While compound_list do_group
 */

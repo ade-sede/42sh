@@ -33,11 +33,10 @@ void		*get_exec_builtin(const char **argv)
 	return (g_builtin[i].f);
 }
 
-int			exec_builtin(t_env *env, const char **argv, t_lst_head *head)
+int			exec_builtin(t_env *env, const char **argv)
 {
 	int			(*f)(t_env*, const char**);
 
-	(void)head;
 	if ((f = get_exec_builtin(argv)) == NULL)
 		return (0);
 	env->previous_exit = f(env, argv);

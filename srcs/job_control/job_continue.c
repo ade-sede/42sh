@@ -20,7 +20,7 @@ void	continue_job(t_job *j, int foreground)
 {
 	mark_job_as_running(j);
 	if (foreground)
-		put_job_in_foreground(j, 1);
+		put_job_in_foreground(singleton_jc(), j, 1);
 	else
 		put_job_in_background(j, 1);
 }

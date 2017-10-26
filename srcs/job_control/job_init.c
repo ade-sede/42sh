@@ -8,7 +8,6 @@
 /* Make sure the shell is running interactively as the foreground job
    before proceeding. */
 
-t_job *first_job;
 void	init_shell(t_job_control *jc)
 {
 

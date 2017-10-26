@@ -44,7 +44,7 @@ int exec_pipeline(t_ast *ast)
 		new_job = job_new();
 		fill_job(pipe_sequence, &first_process);
 		new_job->first_process = first_process;
-		return (launch_job(singleton_jc(), new_job, 1));
+		launch_job(singleton_jc(), new_job, 1);
 	}
 	if (is_token(ast->child[0], TK_BANG))
 	{

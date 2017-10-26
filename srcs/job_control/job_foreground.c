@@ -19,7 +19,7 @@ void	put_job_in_foreground(t_job_control *jc, t_job *j, int cont)
 	}
 
 	/* Wait for it to report.  */
-	wait_for_job(j);
+	wait_for_job(jc, j);
 
 	/* Put the shell back in the foreground.  */
 	tcsetpgrp(jc->shell_terminal, jc->shell_pgid);

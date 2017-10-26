@@ -1,3 +1,5 @@
+#include "exec.h"
+
 int		is_token(t_ast *ast, int token_id)
 {
 	if (ast && ast->token && ast->token->id == token_id)

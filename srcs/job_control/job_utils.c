@@ -49,7 +49,7 @@ t_job	*job_new()
 
 t_process	*process_new(t_ast *command)
 {
-	t_job	*new;
+	t_process	*new;
 
 	new = ft_memalloc(sizeof(t_process));
 	new->command = command;

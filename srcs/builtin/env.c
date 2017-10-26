@@ -73,7 +73,7 @@ static int			exec_env(t_env new_env, const char **argv)
 	create_hash_table(&new_env);
 	child = fork();
 	if (child == 0)
-		exit(exec_builtin(&new_env, argv, NULL));
+		exit(exec_builtin(&new_env, argv));
 	else
 		wait(&ret);
 	/* if (!WEXITSTATUS(ret)) */

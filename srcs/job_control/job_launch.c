@@ -1,4 +1,5 @@
 #include "job_control.h"
+#include "exec.h"
 
 void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		int infile, int outfile, int errfile,
@@ -45,7 +46,7 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 	}
 	/* Exec the new process.  Make sure we exit.  */
 //	exec_bin(singleton_env(), p->argv);
-	exec(p->node)
+	exec(p->command);
 	exit(1);
 }
 

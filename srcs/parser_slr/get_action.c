@@ -1967,11 +1967,12 @@ void	reduce(t_listint **state_stack, t_list **ast_stack, int reduce_rule)
 	symbol = rule.symbol;
 	printf("reduce by rule : %s\n", rules[reduce_rule]);
 	new = new_ast(NULL, symbol);
-	while (i < nb_child)
+	i = nb_child - 1;
+	while (i >= 0)
 	{
 		ft_lstint_pop(state_stack);
 		new->child[i] = ft_lst_pop(ast_stack)->data;
-		i++;
+		i--;
 	}
 	ft_simple_lst_add(ast_stack, ft_simple_lst_create(new));
 }

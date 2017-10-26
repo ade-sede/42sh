@@ -61,9 +61,6 @@ SRC_FILE = \
 	env/get_ps1.c \
 	env/value_of_local.c \
 	\
-	exec/lex_and_parse.c \
-	exec/main_loop.c \
-	\
 	globing/curly_bracket_split.c \
 	globing/curly_brackets.c \
 	globing/curly_brackets_is_range.c \
@@ -138,35 +135,36 @@ SRC_FILE = \
 	signal/all_signal_dfl.c \
 	signal/all_signal_ign.c \
 	\
-	exec/exec.c \
-	exec/exec_and_or.c \
-	exec/exec_case_clause.c \
-	exec/exec_command.c \
-	exec/exec_complete_command.c \
-	exec/exec_complete_commands.c \
-	exec/exec_compound_command.c \
-	exec/exec_compound_list.c \
-	exec/exec_do_group.c \
-	exec/exec_else_part.c \
-	exec/exec_for_clause.c \
-	exec/exec_function_body.c \
-	exec/exec_function_definiti.c \
-	exec/exec_if_clause.c \
-	exec/exec_list.c \
-	exec/exec_pipe_sequence.c \
-	exec/exec_pipeline.c \
-	exec/exec_program.c \
 	exec/exec_redir.c \
-	exec/exec_save \
-	exec/exec_simple_command.c \
-	exec/exec_subshell.c \
-	exec/exec_symb \
-	exec/exec_term.c \
-	exec/exec_until_clause.c \
-	exec/exec_while_clause.c \
 	exec/lex_and_parse.c \
 	exec/main_loop.c \
 	exec/redir_utils.c \
+	exec/exec_utils.c \
+	exec/exec_io_redirect.c \
+ \
+	exec/exec_symb/exec.c \
+	exec/exec_symb/exec_and_or.c \
+	exec/exec_symb/exec_case_clause.c \
+	exec/exec_symb/exec_command.c \
+	exec/exec_symb/exec_complete_command.c \
+	exec/exec_symb/exec_complete_commands.c \
+	exec/exec_symb/exec_compound_command.c \
+	exec/exec_symb/exec_compound_list.c \
+	exec/exec_symb/exec_do_group.c \
+	exec/exec_symb/exec_else_part.c \
+	exec/exec_symb/exec_for_clause.c \
+	exec/exec_symb/exec_function_body.c \
+	exec/exec_symb/exec_function_definition.c \
+	exec/exec_symb/exec_if_clause.c \
+	exec/exec_symb/exec_list.c \
+	exec/exec_symb/exec_pipe_sequence.c \
+	exec/exec_symb/exec_pipeline.c \
+	exec/exec_symb/exec_program.c \
+	exec/exec_symb/exec_simple_command.c \
+	exec/exec_symb/exec_subshell.c \
+	exec/exec_symb/exec_term.c \
+	exec/exec_symb/exec_until_clause.c \
+	exec/exec_symb/exec_while_clause.c \
 	\
 	job_control/job_background.c \
 	job_control/job_continue.c \
@@ -175,6 +173,7 @@ SRC_FILE = \
 	job_control/job_launch.c \
 	job_control/job_stop.c \
 	job_control/job_utils.c \
+	job_control/singleton_jc.c \
 	\
 	main.c \
 
@@ -251,6 +250,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/completion
 	@/bin/mkdir -p $(OBJ_DIR)/env
 	@/bin/mkdir -p $(OBJ_DIR)/exec
+	@/bin/mkdir -p $(OBJ_DIR)/exec/exec_symb/
 	@/bin/mkdir -p $(OBJ_DIR)/globing
 	@/bin/mkdir -p $(OBJ_DIR)/hash_table
 	@/bin/mkdir -p $(OBJ_DIR)/history

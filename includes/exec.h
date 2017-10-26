@@ -44,7 +44,7 @@ int				check_pipes(t_ast *ast, t_lst_head *head);
 **	In file srcs/exec/exec_redir.c
 */
 
-void			*get_exec_redir_func(t_ast *child_node);
+void			*get_exec_redir_func(t_token_id id); \
 int				merge_fd(int io_number, char *target, t_list **redir_stack, \
 				t_token_id id);
 int				file_redir(int io_number, char *target, t_list **redir_stack, \
@@ -82,4 +82,7 @@ int				exec_dup(t_list *redir_stack);
 int				exec(t_ast	*ast);
 int		is_token(t_ast *ast, int token_id);
 int		is_symb(t_ast *ast, int symbol);
+
+
+void	exec_io_redirect(t_ast	*ast, t_list **redirect_list);
 #endif

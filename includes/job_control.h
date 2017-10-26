@@ -10,10 +10,12 @@
 # include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "t_ast.h"
+# include "libft.h"
 typedef struct	s_process
 {
   struct s_process	*next;       /* next process in pipeline */
-  t_ast				*command;     /* for exec */
+  t_ast				*command;    /* for exec */
   pid_t				pid;         /* process ID */
   char				completed;   /* true if process has completed */
   char				stopped;     /* true if process has stopped */
