@@ -1,3 +1,5 @@
+#include "exec.h"
+
 static t_exec_func	g_exec_func[] =
 {
 	{PROGRAM, &exec_program},
@@ -23,14 +25,19 @@ static t_exec_func	g_exec_func[] =
 	{DO_GROUP, &exec_do_group},
 	{SIMPLE_COMMAND, &exec_simple_command},
 	{0, NULL},
-}
+};
 
 int		exec(t_ast	*ast)
 {
+	int		i;
+
+	i = 0;
 	while (g_exec_func[i].f)
 	{
 		if (ast->symbol == g_exec_func[i].symbol)
-			g_exec_func[i].f(ast);
+			return (g_exec_func[i].f(ast));
 		i++;
 	}
+	printf("error : symbol not recognized by exec function");
+	return (1);
 }

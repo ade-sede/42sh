@@ -1,3 +1,4 @@
+#include "exec.h"
 /*
 **	for_clause       : For name                                      do_group
 **	                 | For name                       sequential_sep do_group
@@ -7,7 +8,6 @@
 
 int exec_for_clause(t_ast *ast)
 {
-
-
-
+	(void)ast;
+	return (1);
 }

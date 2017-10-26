@@ -1,3 +1,4 @@
+#include "exec.h"
 /*
 **	pipe_sequence    :                             command
 **	                 | pipe_sequence '|' linebreak command

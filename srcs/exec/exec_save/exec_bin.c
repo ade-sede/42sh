@@ -1,3 +1,4 @@
+#include "exec.h"
 #include "libft.h"
 #include "env.h"
 #include "sys/wait.h"

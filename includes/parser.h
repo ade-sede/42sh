@@ -83,34 +83,4 @@
 **	pushed to the left of the tree (wich is the start of the child list).
 */
 
-/*
-**	In file srcs/parser/parse.c
-*/
-
-int			ast_parse(t_ast **ast, t_list **token_list);
-
-/*
-**	In file srcs/parser/parse_complexe_command.c
-*/
-
-t_ast		*start_complexe_command(t_ast *ast, t_list **token_list,
-		int *reopen);
-
-
-/*
-**	In file srcs/parser/parse_redir.c
-*/
-
-t_ast		*append_redir(t_ast *root, t_token *token, t_list **token_list);
-
-/*
-**	In file srcs/parser/parse_simple_command.c
-*/
-
-t_ast		*create_simple_command(t_list **token_list);
-t_ast		*fill_simple_command(t_ast *simple_cmd, t_list **token_list);
-void		read_tree(t_ast *ast_start);
-t_ast		*complete_complexe_command(t_ast *ast, t_list **token_list,
-		int *reopen);
-
 #endif

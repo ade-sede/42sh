@@ -7,6 +7,7 @@
 # include "t_line.h"
 # include "history.h"
 # include "job_control.h"
+# include "exec_symbol.h"
 
 typedef struct	s_redir
 {
@@ -51,32 +52,11 @@ int				file_redir(int io_number, char *target, t_list **redir_stack, \
 int				exec_redir(t_list *child_list, t_list **redir_stack);
 
 /*
-**	In file srcs/exec/exec_separator.c
-*/
-
-int				logical_or(t_ast *ast, t_lst_head *head);
-int				semi_colon(t_ast *ast, t_lst_head *head);
-int				logical_and(t_ast *ast, t_lst_head *head);
-int				exec_pipe(t_ast *ast, t_lst_head *head);
-
-/*
 **	In file srcs/exec/exec_signals.c
 */
 
 void			nothing(int signum);
 void			no_handle_signals(void);
-
-/*
-**	In file srcs/exec/exec_simple_commands.c
-*/
-
-void			exec_simple_command(t_ast *ast, t_lst_head *head);
-
-/*
-**	In file srcs/exec/exec_tree.c
-*/
-
-int				exec_tree(t_ast *ast, t_lst_head *head);
 
 /*
 **	In file srcs/exec/main_loop.c
@@ -86,7 +66,6 @@ void			lex_and_parse(t_job_control *jc, t_ast *ast, char *buff);
 char			*line_editing_get_input(t_line *line, t_hist *hist,
 		void (*sig_handler)(void));
 void			init_main_loop(t_line *line, t_hist *hist);
-void			exec(t_env *env, const char **argv, t_lst_head *head);
 void			main_loop(t_env *env);
 
 /*
@@ -98,4 +77,9 @@ void			close_dup(t_list *redir_stack);
 void			push_dup(int io_number, int target_fd, int natural_fd, \
 				t_list **redir_stack);
 int				exec_dup(t_list *redir_stack);
+
+
+int				exec(t_ast	*ast);
+int		is_token(t_ast *ast, int token_id);
+int		is_symb(t_ast *ast, int symbol);
 #endif
