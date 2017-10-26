@@ -1,3 +1,4 @@
+#include "exec.h"
 /*
 **	compound_list    : linebreak term
 **	                 | linebreak term separator

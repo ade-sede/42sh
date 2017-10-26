@@ -1,3 +1,4 @@
+#include "exec.h"
 /*
 **	complete_command : list separator_op
 **	                 | list

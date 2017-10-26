@@ -138,7 +138,46 @@ SRC_FILE = \
 	signal/all_signal_dfl.c \
 	signal/all_signal_ign.c \
 	\
-	main.c
+	exec/exec.c \
+	exec/exec_and_or.c \
+	exec/exec_case_clause.c \
+	exec/exec_command.c \
+	exec/exec_complete_command.c \
+	exec/exec_complete_commands.c \
+	exec/exec_compound_command.c \
+	exec/exec_compound_list.c \
+	exec/exec_do_group.c \
+	exec/exec_else_part.c \
+	exec/exec_for_clause.c \
+	exec/exec_func \
+	exec/exec_function_body.c \
+	exec/exec_function_definiti.c \
+	exec/exec_if_clause.c \
+	exec/exec_list.c \
+	exec/exec_pipe_sequence.c \
+	exec/exec_pipeline.c \
+	exec/exec_program.c \
+	exec/exec_redir.c \
+	exec/exec_save \
+	exec/exec_simple_command.c \
+	exec/exec_subshell.c \
+	exec/exec_symb \
+	exec/exec_term.c \
+	exec/exec_until_clause.c \
+	exec/exec_while_clause.c \
+	exec/lex_and_parse.c \
+	exec/main_loop.c \
+	exec/redir_utils.c \
+	\
+	job_control/job_background.c \
+	job_control/job_continue.c \
+	job_control/job_foreground.c \
+	job_control/job_init.c \
+	job_control/job_launch.c \
+	job_control/job_stop.c \
+	job_control/job_utils.c \
+	\
+	main.c \
 
 INCLUDES_FILES = \
 	t_ast.h \

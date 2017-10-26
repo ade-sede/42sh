@@ -2,6 +2,7 @@
 # define AUTOMATON_H
 #include "libft.h"
 #include "t_token.h"
+#include "t_ast.h"
 
 # ifndef PARSER_ERROR
 #  define PARSER_ERROR 1
@@ -2317,13 +2318,6 @@ enum shift {
 	r181,
 	r182,
 };
-
-typedef struct			s_ast
-{
-	struct s_ast	*child[7];
-	int				symbol;
-	t_token			*token;
-}						t_ast;
 
 enum e_symbol {
 	PROGRAM,

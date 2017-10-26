@@ -1,3 +1,4 @@
+#include "exec.h"
 /*
 **	list             : list separator_op and_or
 **	                 |                   and_or
