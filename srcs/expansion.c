@@ -1,11 +1,11 @@
 
 /*
- **
- ** non relier
- **
- **
- **
- */
+**
+** non relier
+**
+**
+**
+*/
 
 #include "libft.h"
 #include "../includes/history.h"
@@ -92,6 +92,29 @@ char	*ft_strrnstr(const char *big, const char *little, size_t little_len)
 	return (NULL);
 }
 
+char		*getset_str(char *str, int size)
+{
+	static char	*s = NULL;
+	char		tmp;
+	char		*tmp_str;
+
+	if (str)
+	{
+		free(s);
+		tmp_str = ft_strchr(str, ' ');
+		if (tmp_str)
+			if (tmp_str - str < size)
+				size = tmp_str - str;
+		tmp = *(str + size);
+
+		*(str + size) = '\0';
+		s = ft_strdup(str);
+		*(str + size) = tmp;
+		ft_putendl(s);
+	}
+	return (s);
+}
+
 char		*recup_str(char **str, t_list_d *lst)
 {
 	char		*ret;
@@ -100,9 +123,13 @@ char		*recup_str(char **str, t_list_d *lst)
 
 	size = 0;
 	flag = 0;
+	ret = NULL;
 	if (**str == '?' && (flag = 1))
-		size =
-			(ret = ft_strchr(++*str, '?')) ? ret - *str : ft_strlen(*str);
+	{
+		ret = ft_strchr(++*str, '?');
+		size = (ret) ? ret - *str : ft_strlen(*str);
+		getset_str(*str, size);
+	}
 	else
 		while (*(*str + size) && (!ft_isspace(*(*str + size)) &&
 					*(*str + size) != ':' && !isdesignator(*(*str + size))))
@@ -112,7 +139,7 @@ char		*recup_str(char **str, t_list_d *lst)
 	{
 		lst = lst->next;
 	}
-	*str += size;
+	*str += size + (ret != NULL);
 	if (lst)
 		return (ft_strdup(lst->data));
 	return (NULL);
@@ -150,6 +177,29 @@ int			recup(char **str, t_lst_head *head, char **new)
 	return (3);
 }
 
+int 		cut_w_fprec(char **new)
+{
+	char *tmp;
+	char *tmp2;
+	char tmp_swap;
+
+	ft_putendl("tamere");
+	tmp = ft_strstr(*new, getset_str(NULL, 0));
+	if (!tmp || !getset_str(NULL, 0))
+		return (5);
+	tmp2 = ft_strchr(tmp, ' ');
+	while (*tmp != ' ' && tmp > *new)
+		--tmp;
+	if (*tmp == ' ')
+		++tmp;
+	//ft_putendl(tmp);
+	//ft_putendl(tmp2);
+	if (tmp2)
+		*tmp2 = '\0';
+	ft_strcpy(*new, tmp);
+	return (0);
+}
+
 int			designators(char **new, char **str)
 {
 	int		start;
@@ -158,7 +208,7 @@ int			designators(char **new, char **str)
 	if (!((**str == ':' && ++(*str)) || isdesignator(**str)))
 		return (-1);
 	ft_putendl(*str);
-	if (isdesignator(**str))
+	if (isdesignator(**str) && **str != '%')
 	{
 		if (**str == '^')
 		{
@@ -207,6 +257,8 @@ int			designators(char **new, char **str)
 		else
 			--*str;
 	}
+	else if (**str == '%' && ++*str)
+		return (cut_w_fprec(new));
 	else if ((--(*str)))
 		return (0);
 	++*str;
@@ -591,7 +643,7 @@ int main(int ac, char **av)
 	head = NULL;
 	history_load_test(".21sh_history", &head);
 
-	str = ft_strdup("!!");
+	str = ft_strdup("!?ddd?:%");
 	ft_putendl(str);
 	ft_putendl("start");
 	i = expansion(&str, head);
