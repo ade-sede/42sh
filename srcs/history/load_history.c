@@ -29,6 +29,7 @@ static void	routine(t_hist *h, char *cat)
 		ft_double_lst_add(&h->list, list);
 }
 
+#include <stdio.h>
 int			history_load(t_hist *h, t_env *env)
 {
 	int			fd;
@@ -36,6 +37,7 @@ int			history_load(t_hist *h, t_env *env)
 	char		*cat;
 
 	cat = NULL;
+	line = NULL;
 	init_hist_struct(h, env);
 	if ((fd = open(h->file, O_RDWR | O_CREAT, 0644)) == -1)
 		return (0);

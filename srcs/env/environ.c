@@ -24,15 +24,6 @@ char		**env_create_environ(const char **original, size_t *new_size)
 	return (new_environ);
 }
 
-PS1=qweqwe
-LOL=qweqwe
-PATH=qweqewq
-
-size_t	index
- value = env_getenv(env->environ, "PATH", NULL);
- value = /bin
- index == 2;
-
 char		*env_getenv(const char **environ, const char *key_start, \
 		size_t *index)
 {

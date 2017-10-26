@@ -1,0 +1,102 @@
+do
+{
+	while (*state != g_state_table.state)
+	{
+		++g_state_table;
+	}
+	if (g_state_table)
+		done = f_state_table.func();
+}
+while (*state != DEFAULT)
+
+if (*state == def)
+{
+	if (*input == 0)
+		shift = INPUT_END or pop_state();
+	if (*input == [&><|;])
+		shift = OPERATOR;
+	if (*input == $)
+		shift = PARAM_EXPAND;
+	if (*input = ~)
+		shift = TILD_EXP
+	if (*input == `)
+		shift = CMD_SUBST
+	if (*input == [ 	])
+		shift = whitespace;
+	if (*input = #)
+		shift = comment
+	if (*input = \)
+		{	
+			shift = word;
+			shift = BS;
+		}
+	else
+		shift = WORD;
+		return;
+}
+
+if (*state == histo_expand)
+{
+}
+
+if (*state == word)
+{
+	if (*input == 0)
+		pop_state();
+	if (*input == [&><|;])
+		pop_state()
+	if (*input = \)
+		shift = BS
+	if (*input == $)
+		shift = PARAM_EXPAND;
+	if (*input == `)
+		shift = CMD_SUBST
+	if (*input == [ 	])
+		pop_state()
+	if (*input = END_OF_INPUT)
+		pop_state()
+		quotes
+		dquotes
+	else
+		pop_input();
+}
+
+if (*state == PARAM_EXPAND)
+{
+	if (input == '(') && count == 1)
+		change CMD_SUBST
+	if (input == ~)
+		pop_state()
+}
+
+if (*state == COMMAND_SUBST)
+{
+	if (input == '(' && count == 1)
+		change AR_EXPAND
+	if (input == '(' && count != 1)
+		++nest;
+	if (input == ')' && nest == 0
+		pop_state();
+	if (input == ')' && nest != 0)
+		--nest;
+}
+
+if (*state == AR_SUBST)
+{
+	if (*input == '(')
+		++nest;
+	if (*input == ')')
+		--nest;
+	if (*input ==  $)
+		shift = PARAM_EXPAND
+	if (nest == -2)
+		pop_state();
+}
+
+if (*state == DQUOTE)
+{
+	if (*input == ")
+		pop_state;
+	if (*input == $)
+		shift PARAM_EXPAND
+}
