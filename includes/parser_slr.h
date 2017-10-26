@@ -11,16 +11,6 @@
 #  define PARSER_SUCCESS 0
 # endif
 
-//int	acc = 10000;
-/* enum e_token { */
-/* 	TK_PLUS, */
-/* 	$, */
-/* 	TK_STAR, */
-/* 	TK_OPEN, */
-/* 	TK_CLOSE, */
-/* 	TK_ID, */
-/* }; */
-
 enum shift {
 	s0,
 	s1,
@@ -2320,7 +2310,7 @@ enum shift {
 };
 
 enum e_symbol {
-	PROGRAM,
+	PROGRAM = 1,
 	COMPLETE_COMMANDS,
 	COMPLETE_COMMAND,
 	LIST,
