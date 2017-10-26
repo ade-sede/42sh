@@ -221,3 +221,14 @@ separator        : separator_op linebreak
 sequential_sep   : ';' linebreak
                  | newline_list
                  ;
+
+
+
+
+
+
+func execute_while_condition(pipeline)
+{
+	push_pipeline(pipeline, singleton_while);
+	signal;
+}

@@ -4,9 +4,7 @@
 
 int exec_while_clause(t_ast *ast)
 {
-	while (exec(ast->child[0]) == EXIT_SUCCESS)
-	{
+	while (exec(ast->child[1]) == EXIT_SUCCESS)
 		exec(ast->child[2]);
-	}
 	return (EXIT_SUCCESS);
 }

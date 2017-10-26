@@ -5,7 +5,5 @@
 
 int exec_pipe_sequence(t_ast *ast)
 {
-	//fork mother_fucker
-	job_add(command);
-
+	return (exec(ast->child[0]));
 }
