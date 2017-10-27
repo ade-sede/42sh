@@ -16,7 +16,7 @@ void	exec_main_loop(t_lexer *lex, t_ast *ast, t_job_control *jc)
 	(void)jc;
 	history_append_command_to_list((char*)lex->line);
 	conf_term_normal();
-	exec(ast);
+	singleton_env()->previous_exit = exec(ast);
 	//ft_strdel((char **)&lex->line);
 	conf_term_canonical();
 	//ast = flush_tree(ast);

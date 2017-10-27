@@ -38,7 +38,7 @@ int			exec_builtin(t_env *env, const char **argv)
 	int			(*f)(t_env*, const char**);
 
 	if ((f = get_exec_builtin(argv[0])) == NULL)
-		return (0);
+		return (EXIT_FAILURE);
 	env->previous_exit = f(env, argv);
-	return (1);
+	return (env->previous_exit);
 }

@@ -114,20 +114,9 @@ int		exec_simple_command(t_ast *ast)
 	if (cmd_suffix)
 		exec_cmd_suffix(cmd_suffix, &redirect_list, av + 1);
 	exec_dup(redirect_list);
-	if (!(exec_builtin(singleton_env(), (const char **)av)))
-	{
-		exec_bin(singleton_env(), (const char **)av);
-/*
-**			if (is_symb(ast->child[0], CMD_NAME))
-**			{
-**				new_job = job_new();
-**				new_job->first_process = process_new(ast->child[0]);
-**				(new_job->first_process)->av = av;
-**				launch_job(singleton_jc(), new_job, 1);
-**			}
-*/
-		//printf("command not found\n");
-	}
+	if (get_exec_builtin(av[0]))
+		return (exec_builtin(singleton_env(), (const char **)av));
+	exec_bin(singleton_env(), (const char **)av);
 	close_dup(redirect_list);
-	return (singleton_env()->previous_exit);
+	return (0);
 }
