@@ -1,96 +1,25 @@
-lex_state
-{
-		PARAMETER_EXPANSION,
-		COMMAND_SUBSTITUTION,
-		ARITHMETIQUE_EXPANSION,
-		TILD_EXPANSION,
-		DOUBLE_QUOTES,
-		QUOTES,
-		BACKSLASHED,
-		DEFAULT,
-		COMMENT,
-		WHITESPACES,
-		OPERATOR
-}
-
-#define _STATE 0
-#define _START 1
-#define _END 2
-#define _COUNT 3
-#define _NEST 4
-
-struct s_token
-{
-	char	*value;
-	int		type;
-	int		id;
-	t_list	*state_stack;
-	t_token_style
-}
-
-// Cur state is a node of the state_stack list. state_stack is the address of the first node
-struct s_lexer	
-{
-	t_list	*curr_state;
-	t_list	*state_stack;
-}
-lex_one_token(t_lexer *lex)
-{
-	delim_token
-	create_token
-}
-
-
-struct s_action_table
-{
-	int		 state;
-	void	(*function)();
-};
-
 struct s_action_table g_action_table[]
 {
 	{STATE, function};
 	{NULL, NULL};
 }
 
-Quand un token dit "ferme" pop son etat (shift vers etat precedant), il doit toujours laisse la tete de lecture sur l'input suivant. Sinon, on avance que quand on conserve l'etat ().
-
-Everything poped from the global stack of the lexer, must end up in reverse in the token's stack. So we list_add everything we pop
-
-pop_state(lex, token_ss)
+/*
+**
+/*
+t_list *lex_one_token_le_oriented(t_lexer *lex)
 {
-	t_list	*prev;
-	t_list	*tmp;
-	ft_lst_add(&token_ss, lex->curr_state);
-	tmp = *lex->state_stack;
-	while (tmp != lex->curr_state)
-	{
-		prev = tmp;
-		tmp = tmp->next;
-	}
-	prev->next = NULL;
+	delim_token
+	return (tokenize_le);
 }
 
-push_state(lex, info)
+lex_one_token_exec_oriented(t_lexer *lex)
 {
-	lex->curr_state = ft_lst_create(info);
-	lst_pushback(lex->state_stack, lex->curr_state);
+	delim_token
+	if (*state = DEF)
+		tokenize_full;
+	else
+		reopen
 }
 
-delim_token()
-{
-	void	(*action)() = NULL;
-	while (lex->state != INPUT_END && lex->line[lex->index])
-	{
-		action = get_action(state);
-		if (action)
-			action();
-	}
-}
-ls -l !lk*:q lol
-
-1) ls -l !lk*:q lol
-2) !lk*:q
-
-
-ret = 
+// SUBGESTION : reverse stack to smooth operations in most cases.

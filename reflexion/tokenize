@@ -1,0 +1,21 @@
+tokenize_exec_oriented(lex, state_stack)
+{
+	size_t	size;
+
+	struct s_token *token;
+	token->state_stack = state_stack;
+	token->type = token->state_stack->data[_STATE];
+	size = (token->state_stack->data[_END] - token->state_stack->data[_START]) + 1;
+
+	// if
+
+	token->value = ft_strsub(token->state_stack, token->state_stack->data[_START], size);
+	// else
+
+	token->value = ft_memalloc(sizeof(char) * size);
+	ft_memcpy(token->value, lex->line, size);
+
+	// endif
+
+	get_token_id();
+}

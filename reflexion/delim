@@ -1,0 +1,68 @@
+delim_token()
+{
+	void	(*action)() = NULL;
+	while (1)
+	{
+		if (lex->state == DEFAULT && lex->index != 0) // lex->state == DEFAULT and local stack isnt empty
+			break ;
+		if (lex->line[lex-index] == 0)
+			break ;
+		action = get_action(state);
+		action();
+	}
+}
+
+/* Quand un token dit "ferme" pop son etat (shift vers etat precedant), il doit
+** toujours laisse la tete de lecture sur l'input suivant. Sinon, on avance que
+** quand on conserve l'etat ().
+** Everything poped from the global stack of the lexer, must end up in reverse
+** in the token's stack. So we list_add everything we pop
+*/
+
+pop_state(lex, token_ss)
+{
+
+	t_list	*prev;
+	t_list	*tmp = NULL;
+
+	// EDIT END_INFO (_END)
+	lex->curr_state[_END] = lex->index
+
+	// Add to local_token_list
+	ft_lst_add(&token_ss, lex->curr_state);
+
+	//Cut last node from the list
+	tmp = *lex->state_stack;
+	while (tmp != lex->curr_state)
+	{
+		prev = tmp;
+		tmp = tmp->next;
+	}
+	if (tmp)
+		prev->next = NULL;
+}
+
+pop_input(lex)
+{
+	++(lex->curr_state->data[_count]);
+	++(lex->index);
+}
+
+push_state(lex, new_state)
+{
+	int		info[5];
+
+	// Load info
+	info[_STATE] = state;
+	info[_START] = lex->index;
+	info[_END] = -1;
+	info[_COUNT] = 0;
+	info[_NEST] = 0;
+	lex->curr_state = ft_lst_create(info);
+	lst_pushback(lex->state_stack, lex->curr_state);
+}
+
+change_state(lex, int new_state)
+{
+	lex->curr_state->data[_STATE]=new_state
+}

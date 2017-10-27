@@ -1,0 +1,44 @@
+struct s_token
+{
+	char	*value;
+	int		type;
+	int		id;
+	t_list	*state_stack;
+	struct s_token *(create_token)()
+	t_token_style
+}
+
+// Cur state is a node of the state_stack list. state_stack is the address of the first node
+struct s_lexer	
+{
+	t_list	*curr_state;
+	t_list	*state_stack;
+}
+
+struct s_action_table
+{
+	int		 state;
+	void	(*function)();
+};
+
+enum
+{
+		PARAMETER_EXPANSION,
+		COMMAND_SUBSTITUTION,
+		ARITHMETIQUE_EXPANSION,
+		TILD_EXPANSION,
+		DOUBLE_QUOTES,
+		QUOTES,
+		BACKSLASHED,
+		WORD,
+		DEFAULT,
+		COMMENT,
+		WHITESPACES,
+		OPERATOR
+}lex_state;
+
+#define _STATE 0
+#define _START 1
+#define _END 2
+#define _COUNT 3
+#define _NEST 4
