@@ -141,6 +141,7 @@ SRC_FILE = \
 	exec/redir_utils.c \
 	exec/exec_utils.c \
 	exec/exec_io_redirect.c \
+	exec/exec_save/exec_bin.c \
  \
 	exec/exec_symb/exec.c \
 	exec/exec_symb/exec_and_or.c \
@@ -250,6 +251,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/completion
 	@/bin/mkdir -p $(OBJ_DIR)/env
 	@/bin/mkdir -p $(OBJ_DIR)/exec
+	@/bin/mkdir -p $(OBJ_DIR)/exec/exec_save/
 	@/bin/mkdir -p $(OBJ_DIR)/exec/exec_symb/
 	@/bin/mkdir -p $(OBJ_DIR)/globing
 	@/bin/mkdir -p $(OBJ_DIR)/hash_table

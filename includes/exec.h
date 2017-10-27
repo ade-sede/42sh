@@ -23,6 +23,7 @@ void			ft_exec_bin_absolute(t_env *env, const char **argv);
 void			ft_exec_bin_path(t_env *env, const char **argv);
 int				exec_bin_no_fork(t_env *env, const char **argv);
 int				fork_exec_bin(t_env *env, const char **argv, t_lst_head *head);
+int				exec_bin(t_env *env, const char **argv);
 
 /*
 **	In file srcs/exec/exec_heredoc.c

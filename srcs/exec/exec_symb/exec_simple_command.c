@@ -1,6 +1,8 @@
 #include "exec.h"
 #include "builtin.h"
 #include "local.h"
+#include "job_control.h"
+
 /*
 **	cmd_suffix       :            io_redirect
 **	                 | cmd_suffix io_redirect
@@ -85,6 +87,7 @@ int		exec_simple_command(t_ast *ast)
 	char	**av;
 	t_list	*redirect_list = NULL;
 	t_ast	*cmd_suffix = NULL;
+	t_job		*new_job;
 
 	av = ft_memalloc(sizeof(char *) *4096);
 	ft_bzero((void*)av, 4096 * 8);
@@ -109,7 +112,16 @@ int		exec_simple_command(t_ast *ast)
 		exec_cmd_suffix(cmd_suffix, &redirect_list, av + 1);
 	exec_dup(redirect_list);
 	if (!(exec_builtin(singleton_env(), (const char **)av)))
-		printf("command not found\n");
+	{
+		if (is_symb(ast->child[0], CMD_NAME))
+		{
+			new_job = job_new();
+			new_job->first_process = process_new(ast->child[0]);
+			(new_job->first_process)->av = av;
+			launch_job(singleton_jc(), new_job, 1);
+		}
+		//printf("command not found\n");
+	}
 	close_dup(redirect_list);
 	return (singleton_env()->previous_exit);
 }
