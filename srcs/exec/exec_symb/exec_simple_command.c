@@ -98,10 +98,7 @@ int		exec_simple_command(t_ast *ast)
 	if (is_symb(ast->child[1], CMD_WORD))
 		av[0] = extract_word(ast->child[1]->child[0]);
 	else if (is_symb(ast->child[0], CMD_NAME))
-	{
-		printf("boujour\n");
 		av[0] = extract_word(ast->child[0]->child[0]);
-	}
 		//av[0] = extract_word(ast->child[0]->child[0]);
 	printf("%s\n", av[0]);
 	if (is_symb(ast->child[1], CMD_SUFFIX))

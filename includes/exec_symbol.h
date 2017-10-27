@@ -2,6 +2,7 @@
 # define EXEC_SYMBOL_H
 
 # include "t_ast.h"
+# include "parser_slr.h"
 
 typedef struct	s_exec_func
 {
@@ -31,5 +32,11 @@ int	exec_function_definition(t_ast *ast);
 int	exec_function_body(t_ast *ast);
 int	exec_do_group(t_ast *ast);
 int	exec_simple_command(t_ast *ast);
+void	debug_symbol(t_ast *ast);
 
+struct	s_sym_to_string
+{
+	enum e_symbol	symbol;
+	char			*string;
+};
 #endif

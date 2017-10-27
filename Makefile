@@ -166,6 +166,7 @@ SRC_FILE = \
 	exec/exec_symb/exec_term.c \
 	exec/exec_symb/exec_until_clause.c \
 	exec/exec_symb/exec_while_clause.c \
+	exec/debug_symbol.c \
 	\
 	job_control/job_background.c \
 	job_control/job_continue.c \
