@@ -1,5 +1,7 @@
 #include "job_control.h"
 
+#include <stdlib.h>
+
 /* Find the active job with the indicated pgid.  */
 t_job	*find_job(t_job_control *jc, pid_t pgid)
 {
@@ -44,6 +46,9 @@ t_job	*job_new()
 	t_job	*new;
 
 	new = ft_memalloc(sizeof(t_job));
+	new->stdin = STDIN_FILENO;
+	new->stdout = STDOUT_FILENO;
+	new->stderr = STDERR_FILENO;
 	return (new);
 }
 
