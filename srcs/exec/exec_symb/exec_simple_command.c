@@ -81,6 +81,15 @@ char	*extract_word(t_ast *ast)
 **	                 | cmd_name cmd_suffix
 **	                 | cmd_name
 */
+char	*get_cmd_name(t_ast	*ast)
+{
+	if (is_symb(ast->child[1], CMD_WORD))
+		return (extract_word(ast->child[1]->child[0]));
+	else if (is_symb(ast->child[0], CMD_NAME))
+		return (extract_word(ast->child[0]->child[0]));
+	return (NULL);
+}
+
 
 int		exec_simple_command(t_ast *ast)
 {
@@ -95,11 +104,8 @@ int		exec_simple_command(t_ast *ast)
 	if (is_symb(ast->child[0], CMD_PREFIX))
 		exec_cmd_prefix(ast->child[0], &redirect_list);
 
-	if (is_symb(ast->child[1], CMD_WORD))
-		av[0] = extract_word(ast->child[1]->child[0]);
-	else if (is_symb(ast->child[0], CMD_NAME))
-		av[0] = extract_word(ast->child[0]->child[0]);
-		//av[0] = extract_word(ast->child[0]->child[0]);
+	av[0] = get_cmd_name(ast);
+
 	printf("%s\n", av[0]);
 	if (is_symb(ast->child[1], CMD_SUFFIX))
 		cmd_suffix = ast->child[1];

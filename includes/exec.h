@@ -84,4 +84,6 @@ int				is_token(t_ast *ast, int token_id);
 int				is_symb(t_ast *ast, int symbol);
 
 void			exec_io_redirect(t_ast	*ast, t_list **redirect_list);
+
+char	*get_cmd_name(t_ast	*ast);
 #endif

@@ -1,5 +1,6 @@
 #include "exec.h"
 #include "job_control.h"
+#include "hash_table.h"
 /*
 **	pipeline         :      pipe_sequence
 **	                 | Bang pipe_sequence
@@ -13,12 +14,13 @@
 
 int		pipe_sequence_has_to_fork(t_ast	*pipe_sequence)
 {
-//	t_ast	*simple_command;
+	t_ast	*simple_command;
 
 	if (pipe_sequence->child[3] != NULL)
 		return (1);
-//	simple_command = pipe_sequence->child[0]->child[0];
-//	if (is_symb(simple_command, SIMPLE_COMMAND) && !is_builtin(simple_command))
+	simple_command = pipe_sequence->child[0]->child[0];
+	debug_symbol(simple_command);
+	if (is_symb(simple_command, SIMPLE_COMMAND) && hash_get(singleton_env()->hash_table, get_cmd_name(simple_command)))
 		return (1);
 	return (0);
 }
@@ -74,7 +76,7 @@ int exec_pipeline(t_ast *ast)
 //		debug_process(new_job->first_process);
 		launch_job(singleton_jc(), new_job, 1);
 		exit_status = get_exit_status(first_process);
-		printf("exit_status %d\n", exit_status);
+//printf("exit_status %d\n", exit_status);
 	}
 	else
 		exit_status = exec(pipe_sequence);
