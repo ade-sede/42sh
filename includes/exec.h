@@ -79,11 +79,9 @@ void			push_dup(int io_number, int target_fd, int natural_fd, \
 				t_list **redir_stack);
 int				exec_dup(t_list *redir_stack);
 
-
 int				exec(t_ast	*ast);
-int		is_token(t_ast *ast, int token_id);
-int		is_symb(t_ast *ast, int symbol);
+int				is_token(t_ast *ast, int token_id);
+int				is_symb(t_ast *ast, int symbol);
 
-
-void	exec_io_redirect(t_ast	*ast, t_list **redirect_list);
+void			exec_io_redirect(t_ast	*ast, t_list **redirect_list);
 #endif

@@ -47,6 +47,12 @@ void	fill_job(t_ast *pipe_sequence, t_process **first_process)
 **			printf("----\n");
 **	}
 */
+int		get_exit_status(t_process *first_process)
+{
+	while (first_process && first_process->next)
+		first_process = first_process->next;
+	return (WIFEXITED(first_process->status));
+}
 
 int exec_pipeline(t_ast *ast)
 {
@@ -67,12 +73,12 @@ int exec_pipeline(t_ast *ast)
 		new_job->first_process = first_process;
 //		debug_process(new_job->first_process);
 		launch_job(singleton_jc(), new_job, 1);
-		return (42);
+		exit_status = get_exit_status(first_process);
+		printf("exit_status %d\n", exit_status);
 	}
+	else
+		exit_status = exec(pipe_sequence);
 	if (is_token(ast->child[0], TK_BANG))
-	{
-		exit_status = exec(ast->child[1]);
 		return (exit_status > 0 ? 0 : exit_status);
-	}
-	return (exec(ast->child[0]));
+	return (exit_status);
 }
