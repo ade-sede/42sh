@@ -46,8 +46,8 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 	}
 	/* Exec the new process.  Make sure we exit.  */
 //	exec_bin(singleton_env(), p->argv);
-	exec_bin(singleton_env(), (const char**)p->av);
-	//exec(p->command);
+//	exec_bin(singleton_env(), (const char**)p->av);
+	exec(p->command);
 	exit(1);
 }
 
