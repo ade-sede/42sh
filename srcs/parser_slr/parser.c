@@ -46,9 +46,11 @@ int		parse(t_ast **ast, t_list *token_list)
 		}
 		if (action >= 4242)
 		{
-			printf("r%d\n", action -4242);
-			if (tmp->data)
-				printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)tmp->data)->value, ((t_token *)tmp->data)->id);
+//			printf("r%d\n", action -4242);
+			/*
+**				if (tmp->data)
+**					printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)tmp->data)->value, ((t_token *)tmp->data)->id);
+*/
 			reduce(&state_stack, &ast_stack, action - 4242);
 			state = get_goto(state_stack, action - 4242);
 			if (state == -1)
@@ -56,13 +58,13 @@ int		parse(t_ast **ast, t_list *token_list)
 		}
 		else
 		{
-			printf("s%d\n", action);
+		//	printf("s%d\n", action);
 			ft_simple_lst_add(&ast_stack, ft_simple_lst_create(new_ast(tmp->data, -1)));
 			tmp = tmp->next;
 			state = action;
 		}
 		ft_lstint_add(&state_stack, state);
-		debug_pstate(state_stack);
+		//debug_pstate(state_stack);
 	}
 	return (0);
 	/* return (NULL); */
