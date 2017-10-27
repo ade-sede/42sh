@@ -1998,7 +1998,7 @@ int		get_goto(t_listint *state_stack, int reduce_rule)
 		col++;
 	}
 	col += offset;
-	if ((col == symbol_table_len) || (res_state = g_lr_table[state_stack->data][col]) == -1)
+	if ((col == symbol_table_len + offset) || (res_state = g_lr_table[state_stack->data][col]) == -1)
 	{
 		printf("goto error state -1 \n");
 		return (-1);
