@@ -1,4 +1,5 @@
 #include "exec.h"
+#include "builtin.h"
 #include "job_control.h"
 #include "hash_table.h"
 /*
@@ -20,7 +21,7 @@ int		pipe_sequence_has_to_fork(t_ast	*pipe_sequence)
 		return (1);
 	simple_command = pipe_sequence->child[0]->child[0];
 	debug_symbol(simple_command);
-	if (is_symb(simple_command, SIMPLE_COMMAND) && hash_get(singleton_env()->hash_table, get_cmd_name(simple_command)))
+	if (is_symb(simple_command, SIMPLE_COMMAND) && !get_exec_builtin(get_cmd_name(simple_command)))
 		return (1);
 	return (0);
 }

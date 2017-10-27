@@ -23,12 +23,12 @@ static t_builtin	g_builtin[] =
 	{NULL, NULL}
 };
 
-void		*get_exec_builtin(const char **argv)
+void		*get_exec_builtin(const char *cmd)
 {
 	int			i;
 
 	i = 0;
-	while (g_builtin[i].key && !ft_strequ(g_builtin[i].key, argv[0]))
+	while (g_builtin[i].key && !ft_strequ(g_builtin[i].key, cmd))
 		i++;
 	return (g_builtin[i].f);
 }
@@ -37,7 +37,7 @@ int			exec_builtin(t_env *env, const char **argv)
 {
 	int			(*f)(t_env*, const char**);
 
-	if ((f = get_exec_builtin(argv)) == NULL)
+	if ((f = get_exec_builtin(argv[0])) == NULL)
 		return (0);
 	env->previous_exit = f(env, argv);
 	return (1);

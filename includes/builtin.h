@@ -100,4 +100,5 @@ typedef struct	s_builtin
 	int			(*f)(t_env*, const char**);
 }				t_builtin;
 
+void		*get_exec_builtin(const char *argv);
 #endif

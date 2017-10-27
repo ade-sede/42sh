@@ -17,6 +17,7 @@ void	init_shell(t_job_control *jc)
 
 	if (jc->shell_is_interactive)
 	{
+		printf("shell is interactive\n");
 		/* Loop until we are in the foreground.  */
 		while (tcgetpgrp(jc->shell_terminal) != (jc->shell_pgid = getpgrp()))
 			kill(-jc->shell_pgid, SIGTTIN);
