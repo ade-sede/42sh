@@ -35,8 +35,11 @@ static char		*cut_w(char *s, int start, int end)
 	end = (end < 0) ? len + end : end;
 	start = (start < 0) ? len + start : start;
 	if ((start && ret == s) || (len <= end) || start > end)
+	{
+		free(s);
 		return (NULL);
-	if (s != ret)
+	}
+	if (s != ret && (i += s - ret))
 		ret = ft_strcpy(s, ret);
 	if (start && len == end)
 		return (ret);
@@ -197,9 +200,17 @@ int 		cut_w_fprec(char **new)
 //	char tmp_swap;
 
 	//ft_putendl("tamere");
+	if (!getset_str(NULL, 0))
+	{
+		ft_strdel(new);
+		return (11);
+	}
 	tmp = ft_strstr(*new, getset_str(NULL, 0));
-	if (!tmp || !getset_str(NULL, 0))
+	if (!tmp)
+	{
+		ft_strdel(new);
 		return (5);
+	}
 	tmp2 = ft_strchr(tmp, ' ');
 	while (*tmp != ' ' && tmp > *new)
 		--tmp;
@@ -273,7 +284,7 @@ int			designators(char **new, char **str)
 			--*str;
 	}
 	else if (**str == '%' && ++*str)
-		return (cut_w_fprec(new));
+		return(cut_w_fprec(new));
 	else if ((--(*str)))
 		return (0);
 	++*str;
@@ -499,7 +510,10 @@ int			insert_chang(char **new, char **chang)
 	if (!chang)
 		return (6);
 	if (!(where = ft_strstr(*new, *chang)))
+	{
+		ft_strdel(new);
 		return (7);
+	}
 	str_in_str(new, where - *new, *(chang + 1), ft_strlen(*chang));
 	return (0);
 }
@@ -561,7 +575,7 @@ int			expansion(char **string, t_lst_head *head)
 	int		ret;
 
 	if (!*string || !**string || !head)
-		return (10);
+		return (0);
 	str = *string;
 	while (*str != '!' || isbang(*(str + 1)))
 	{
@@ -611,7 +625,7 @@ void		bang_error(int error, char *str)
 		ft_putstr_fd("substitution failed", 2);
 	else if (error == 8)
 		ft_putstr_fd("bad word specifier", 2);
-	else if (error == 10)
+	else if (error == 10) //pu la
 		ft_putstr_fd("commande ou historique vide", 2);
 	write(1, "\n", 2);
 }
