@@ -29,6 +29,8 @@ char		*get_ps1(t_env *env, size_t *len)
 	ft_striter(current_dir, &trim_newline);
 	*len += ft_strlen(current_dir);
 	current_dir = ft_strjoin3_free(CYN, current_dir, RESET, 2);
-	git_status = get_git_status(len);
+	//git_status = get_git_status(len);
+	git_status = ft_strdup(" ");
+	*len += 1;
 	return (ft_strjoin3_free(previous_exit, current_dir, git_status, 7));
 }

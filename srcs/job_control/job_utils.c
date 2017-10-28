@@ -58,6 +58,7 @@ t_process	*process_new(t_ast *command)
 
 	new = ft_memalloc(sizeof(t_process));
 	new->command = command;
+	new->av = ft_strnew(1);
 	return (new);
 }
 

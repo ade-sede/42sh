@@ -41,7 +41,6 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 	else if (pid == 0 || errno == ECHILD)
 	{
 		perror("no process ready to report");
-		printf("no process ready to report\n");
 		/* No processes ready to report.  */
 		return -1;
 	}
@@ -87,6 +86,17 @@ void	format_job_info(t_job *j, const char *status)
 	fprintf(stderr, "%ld (%s): %s\n", (long)j->pgid, status, j->command);
 }
 
+void	format_job_info_process(t_job *j, const char *status)
+{
+	t_process	*p;
+
+	p = j->first_process;
+	while (p)
+	{
+	fprintf(stderr, "%ld (%s): %s\n", (long)p->pid, status, p->av);
+		p = p->next;
+	}
+}
 /* Notify the user about stopped or terminated jobs.
 **    Delete terminated jobs from the active t_job list.  */
 

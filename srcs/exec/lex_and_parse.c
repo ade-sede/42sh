@@ -18,6 +18,7 @@ void	exec_main_loop(t_lexer *lex, t_ast *ast, t_job_control *jc)
 	conf_term_normal();
 	singleton_env()->previous_exit = exec(ast);
 	//ft_strdel((char **)&lex->line);
+	//do_job_notification(singleton_jc());
 	conf_term_canonical();
 	//ast = flush_tree(ast);
 	//ft_simple_lst_remove(&lex->stack, free_token);

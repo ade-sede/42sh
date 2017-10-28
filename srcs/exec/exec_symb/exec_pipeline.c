@@ -26,17 +26,36 @@ int		pipe_sequence_has_to_fork(t_ast	*pipe_sequence)
 	return (0);
 }
 
+t_process	*fill_process(t_ast *ast, t_process *process)
+{
+	int	i;
+	t_ast	*child;
+
+	i = 0;
+	while (ast && ast->child[i])
+	{
+		child = ast->child[i];
+		if (child && child->token)
+			process->av = ft_strjoin3_free(process->av, " ", child->token->value, 4);
+		else
+			fill_process(child, process);
+		i++;
+	}
+	return (process);
+}
+
 void	fill_job(t_ast *pipe_sequence, t_process **first_process)
 {
 	if (pipe_sequence->child[0] && !pipe_sequence->child[3])
-		return (process_add(process_new(pipe_sequence->child[0]), first_process));
+		return (process_add(fill_process(pipe_sequence->child[0],
+				process_new(pipe_sequence->child[0])), first_process));
 	if (pipe_sequence->child[0] && pipe_sequence->child[3])
 	{
-		process_add(process_new(pipe_sequence->child[3]), first_process);
+		process_add(fill_process(pipe_sequence->child[3],
+				process_new(pipe_sequence->child[3])), first_process);
 		fill_job(pipe_sequence->child[0], first_process);
 	}
 }
-
 
 /*
 **	void	debug_process(t_process *first_process)
@@ -50,6 +69,7 @@ void	fill_job(t_ast *pipe_sequence, t_process **first_process)
 **			printf("----\n");
 **	}
 */
+
 int		get_exit_status(t_process *first_process)
 {
 	while (first_process && first_process->next)

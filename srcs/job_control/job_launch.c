@@ -78,11 +78,13 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 		if (pid == 0)
 			launch_process(jc, p, j->pgid, infile,
 					outfile, j->stderr, foreground);
+
 		else if (pid < 0)
 		{
 			perror ("fork");
 			exit (1);
 		}
+
 		else
 		{
 			p->pid = pid;
@@ -100,7 +102,7 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 		infile = mypipe[0];
 		p = p->next;
 	}
-	format_job_info (j, "launched");
+	format_job_info_process(j, "launched");
 	if (!jc->shell_is_interactive)
 		wait_for_job(jc, j);
 	else if (foreground)

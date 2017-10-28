@@ -28,7 +28,7 @@ void	init_shell(t_job_control *jc)
 		signal(SIGTSTP, SIG_IGN);
 		signal(SIGTTIN, SIG_IGN);
 		signal(SIGTTOU, SIG_IGN);
-		signal(SIGCHLD, SIG_IGN);
+//		signal(SIGCHLD, SIG_IGN);
 
 		/* Put ourselves in our own process group.  */
 		jc->shell_pgid = getpid();

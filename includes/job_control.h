@@ -16,7 +16,7 @@ typedef struct	s_process
 {
   struct s_process	*next;       /* next process in pipeline */
   t_ast				*command;    /* for exec */
-  char				**av;
+  char				*av;
   pid_t				pid;         /* process ID */
   char				completed;   /* true if process has completed */
   char				stopped;     /* true if process has stopped */
@@ -70,6 +70,7 @@ t_job	*job_new();
 t_process	*process_new(t_ast *command);
 void	process_add(t_process *new, t_process **first_process);
 t_job_control	*singleton_jc(void);
+void	format_job_info_process(t_job *j, const char *status);
 void	job_add(t_job *new, t_job **first_job);
 
 #endif
