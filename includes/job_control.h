@@ -36,6 +36,7 @@ typedef struct	s_job
 	int				stdin;
 	int				stdout;
 	int				stderr;         /* standard i/o channels */
+	int				exit_status;         /* exit_status of the pipeline */
 }				t_job;
 
 /* The active jobs are linked into a list.  This is its head.   */

@@ -66,6 +66,20 @@ void	update_status(t_job_control *jc)
 
 /* Check for processes that have status information available,
 **    blocking until all processes in the given t_t_job have reported.  */
+void	get_exit_status(t_job *j)
+{
+	t_process	*p;
+
+	p = j->first_process;
+	while (p && p->next)
+		p = p->next;
+	if (WIFEXITED(p->status))
+		j->exit_status = WEXITSTATUS(p->status);
+	else if (p->stopped)
+		j->exit_status = EXIT_FAILURE;
+	else if (WIFSIGNALED(p->status))
+		j->exit_status = EXIT_FAILURE;
+}
 
 void	wait_for_job(t_job_control *jc, t_job *j)
 {
@@ -77,6 +91,7 @@ void	wait_for_job(t_job_control *jc, t_job *j)
 			&& !job_is_stopped(j)
 			&& !job_is_completed(j))
 		pid = waitpid(WAIT_ANY, &status, WUNTRACED);
+	get_exit_status(j);
 }
 
 /* Format information about t_job status for the user to look at.  */

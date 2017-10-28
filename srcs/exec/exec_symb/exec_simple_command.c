@@ -109,7 +109,7 @@ int		exec_simple_command(t_ast *ast)
 	t_ast	*cmd_suffix = NULL;
 	int		nb_word;
 
-	av = ft_memalloc(sizeof(char *) *4096);
+	av = ft_memalloc(sizeof(char *) * 4096);
 	ft_bzero((void*)av, 4096 * 8);
 	exec_cmd_prefix(ast, &redirect_list);
 	if (is_symb(ast->child[0], CMD_PREFIX))
@@ -117,7 +117,7 @@ int		exec_simple_command(t_ast *ast)
 
 	av[0] = get_cmd_name(ast);
 
-	printf("%s\n", av[0]);
+//	printf("%s\n", av[0]);
 	if (is_symb(ast->child[1], CMD_SUFFIX))
 		cmd_suffix = ast->child[1];
 	if (is_symb(ast->child[2], CMD_SUFFIX))

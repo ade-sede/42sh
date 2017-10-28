@@ -33,7 +33,7 @@ int		parse(t_ast **ast, t_list *token_list)
 		action = get_action(tmp->data, state);
 		if (action == -1)
 		{
-			printf("Error action is -1\n");
+			printf("42sh: parse error near `%s'\n", ((t_token*)tmp->data)->value);
 			return (PARSER_ERROR);
 		}
 		if (action == 10000)
