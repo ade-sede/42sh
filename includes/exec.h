@@ -12,6 +12,8 @@ typedef struct	s_redir
 	int			(*f)(int, char*, t_list**, t_token_id);
 }				t_redir;
 
+int			expansion(char **string, t_lst_head *head);
+
 /*
 **	In file srcs/exec/exec_bin.c
 */

@@ -151,7 +151,8 @@ SRC_FILE = \
 	signal/all_signal_dfl.c \
 	signal/all_signal_ign.c \
 	\
-	main.c
+	main.c\
+	expansion.c
 
 INCLUDES_FILES = \
 	t_ast.h \
@@ -241,7 +242,8 @@ fclean: clean
 	@make -C $(LIB_DIR) fclean
 	@/bin/rm -f $(NAME)
 
-re: fclean all
+re: fclean
+	make
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf "$(COLOR_VIOLET)creating objects files for library $(COLOR_BLUE)$(NAME) ... \n$(COLOR_CYAN)"
