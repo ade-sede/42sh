@@ -54,7 +54,12 @@ int		get_exit_status(t_process *first_process)
 {
 	while (first_process && first_process->next)
 		first_process = first_process->next;
-	return (WIFEXITED(first_process->status));
+	if (WIFEXITED(first_process->status))
+	{
+		printf("WIFEXITED\nWEXITEDSTATUS:%d\n", WEXITSTATUS(first_process->status));
+		return (WEXITSTATUS(first_process->status));
+	}
+	return (EXIT_SUCCESS);
 }
 
 int exec_pipeline(t_ast *ast)
@@ -74,6 +79,7 @@ int exec_pipeline(t_ast *ast)
 		new_job = job_new();
 		fill_job(pipe_sequence, &first_process);
 		new_job->first_process = first_process;
+		job_add(new_job, &singleton_jc()->first_job);
 //		debug_process(new_job->first_process);
 		launch_job(singleton_jc(), new_job, 1);
 		exit_status = get_exit_status(first_process);

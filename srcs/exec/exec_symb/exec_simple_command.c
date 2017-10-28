@@ -26,7 +26,7 @@ void	exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 	if (word)
 	{
 		*av = ft_strdup(word->token->value);
-		av++;
+		av--;
 	}
 	if (io_redirect)
 		exec_io_redirect(io_redirect, redirect_list);
@@ -46,7 +46,6 @@ void	exec_assignment_word(t_ast *ast)
 {
 	add_to_local(&singleton_env()->local, ft_strdup(ast->token->value));
 }
-
 
 void	exec_cmd_prefix(t_ast	*ast, t_list **redirect_list)
 {
@@ -81,6 +80,7 @@ char	*extract_word(t_ast *ast)
 **	                 | cmd_name cmd_suffix
 **	                 | cmd_name
 */
+
 char	*get_cmd_name(t_ast	*ast)
 {
 	if (is_symb(ast->child[1], CMD_WORD))
@@ -90,6 +90,17 @@ char	*get_cmd_name(t_ast	*ast)
 	return (NULL);
 }
 
+int		count_words(t_ast *ast)
+{
+	int	word;
+
+	word = 0;
+	if (is_token(ast->child[0], TK_WORD) || is_token(ast->child[1], TK_WORD))
+		word = 1;
+	if (is_symb(ast->child[0], CMD_SUFFIX))
+		return (word + count_words(ast->child[0]));
+	return (word);
+}
 
 int		exec_simple_command(t_ast *ast)
 {
@@ -97,6 +108,7 @@ int		exec_simple_command(t_ast *ast)
 	t_list	*redirect_list = NULL;
 	t_ast	*cmd_suffix = NULL;
 //	t_job		*new_job;
+	int		nb_word;
 
 	av = ft_memalloc(sizeof(char *) *4096);
 	ft_bzero((void*)av, 4096 * 8);
@@ -111,8 +123,10 @@ int		exec_simple_command(t_ast *ast)
 		cmd_suffix = ast->child[1];
 	if (is_symb(ast->child[2], CMD_SUFFIX))
 		cmd_suffix = ast->child[2];
+
+	nb_word = count_words(cmd_suffix);
 	if (cmd_suffix)
-		exec_cmd_suffix(cmd_suffix, &redirect_list, av + 1);
+		exec_cmd_suffix(cmd_suffix, &redirect_list, av + nb_word);
 	exec_dup(redirect_list);
 	if (get_exec_builtin(av[0]))
 		return (exec_builtin(singleton_env(), (const char **)av));

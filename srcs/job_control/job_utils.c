@@ -61,6 +61,11 @@ t_process	*process_new(t_ast *command)
 	return (new);
 }
 
+void	job_add(t_job *new, t_job **first_job)
+{
+	new->next = *first_job;
+	*first_job = new;
+}
 void	process_add(t_process *new, t_process **first_process)
 {
 	new->next = *first_process;

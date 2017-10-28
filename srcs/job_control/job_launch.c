@@ -10,9 +10,9 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 	if (jc->shell_is_interactive)
 	{
 		/* Put the process into the process group and give the process group
-		**          the terminal, if appropriate.
-		**                   This has to be done both by the shell and in the individual
-		**                            child processes because of potential race conditions.  */
+		** the terminal, if appropriate.
+		** This has to be done both by the shell and in the individual
+		** child processes because of potential race conditions.  */
 		pid = getpid();
 		if (pgid == 0)
 			pgid = pid;

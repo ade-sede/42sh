@@ -70,5 +70,6 @@ t_job	*job_new();
 t_process	*process_new(t_ast *command);
 void	process_add(t_process *new, t_process **first_process);
 t_job_control	*singleton_jc(void);
+void	job_add(t_job *new, t_job **first_job);
 
 #endif
