@@ -1722,6 +1722,7 @@ int		get_action(t_token *token, int state)
 	return (g_lr_table[line][col]);
 }
 
+/*
 const static char *rules[112] = {
 	"$accept -> program $end",
 	"program -> linebreak complete_commands linebreak",
@@ -1836,7 +1837,7 @@ const static char *rules[112] = {
 	"sequential_sep -> ; linebreak",
 	"sequential_sep -> newline_list",
 };
-
+*/
 static const t_rule	g_rule_table[] = {
 	{0, 2},
 	{PROGRAM, 3},
@@ -1963,7 +1964,7 @@ void	reduce(t_listint **state_stack, t_list **ast_stack, int reduce_rule)
 	rule = g_rule_table[reduce_rule];
 	nb_child = rule.nb_child;
 	symbol = rule.symbol;
-	printf("reduce by rule : %s\n", rules[reduce_rule]);
+//	printf("reduce by rule : %s\n", rules[reduce_rule]);
 	new = new_ast(NULL, symbol);
 	i = nb_child - 1;
 	while (i >= 0)

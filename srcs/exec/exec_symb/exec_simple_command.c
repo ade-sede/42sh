@@ -107,7 +107,6 @@ int		exec_simple_command(t_ast *ast)
 	char	**av;
 	t_list	*redirect_list = NULL;
 	t_ast	*cmd_suffix = NULL;
-//	t_job		*new_job;
 	int		nb_word;
 
 	av = ft_memalloc(sizeof(char *) *4096);
@@ -124,9 +123,11 @@ int		exec_simple_command(t_ast *ast)
 	if (is_symb(ast->child[2], CMD_SUFFIX))
 		cmd_suffix = ast->child[2];
 
-	nb_word = count_words(cmd_suffix);
 	if (cmd_suffix)
+	{
+		nb_word = count_words(cmd_suffix);
 		exec_cmd_suffix(cmd_suffix, &redirect_list, av + nb_word);
+	}
 	exec_dup(redirect_list);
 	if (get_exec_builtin(av[0]))
 		return (exec_builtin(singleton_env(), (const char **)av));
