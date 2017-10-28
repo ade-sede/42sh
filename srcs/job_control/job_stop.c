@@ -39,8 +39,12 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 		return -1;
 	}
 	else if (pid == 0 || errno == ECHILD)
+	{
+		perror("no process ready to report");
+		printf("no process ready to report\n");
 		/* No processes ready to report.  */
 		return -1;
+	}
 	else {
 		/* Other weird errors.  */
 		perror ("waitpid");
