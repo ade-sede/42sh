@@ -17,4 +17,3 @@ int		builtin_bg(t_env *env, const char **argv)
 	continue_job(j, 0);
 	return (EXIT_SUCCESS);
 }
-

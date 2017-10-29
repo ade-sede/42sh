@@ -22,7 +22,7 @@ static t_builtin	g_builtin[] =
 	{"unalias", &builtin_unalias},
 	{"fg", &builtin_fg},
 	{"bg", &builtin_bg},
-//	{"jobs", &builtin_jobs},
+	{"jobs", &builtin_jobs},
 	{NULL, NULL}
 };
 

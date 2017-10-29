@@ -71,6 +71,13 @@ int				builtin_fg(t_env *env, const char **argv);
 */
 
 int				builtin_bg(t_env *env, const char **argv);
+
+/*
+** In jobs.c
+*/
+
+int				builtin_jobs(t_env *env, const char **argv);
+
 /*
 ** In set.c
 */
