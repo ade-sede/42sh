@@ -1,5 +1,4 @@
 #include "job_control.h"
-
 #include <stdlib.h>
 
 /* Find the active job with the indicated pgid.  */

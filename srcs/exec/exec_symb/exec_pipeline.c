@@ -20,7 +20,6 @@ int		pipe_sequence_has_to_fork(t_ast	*pipe_sequence)
 	if (pipe_sequence->child[3] != NULL)
 		return (1);
 	simple_command = pipe_sequence->child[0]->child[0];
-	debug_symbol(simple_command);
 	if (is_symb(simple_command, SIMPLE_COMMAND) && !get_exec_builtin(get_cmd_name(simple_command)))
 		return (1);
 	return (0);

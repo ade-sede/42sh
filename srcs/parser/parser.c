@@ -1,9 +1,5 @@
-#include "parser_slr.h"
 #include "parser.h"
-
-
-
-
+#include "parser.h"
 #include "color.h"
 #include <stdio.h>
 
@@ -38,7 +34,6 @@ int		parse(t_ast **ast, t_list *token_list)
 		}
 		if (action == 10000)
 		{
-			printf("APPARTIENT a la GRAMMAIRE\n");
 			if (ast_stack->next)
 				printf("error\n");
 			*ast = ast_stack->data;

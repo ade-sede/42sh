@@ -2,7 +2,7 @@
 # define EXEC_SYMBOL_H
 
 # include "t_ast.h"
-# include "parser_slr.h"
+# include "parser.h"
 
 typedef struct	s_exec_func
 {

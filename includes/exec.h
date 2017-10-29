@@ -3,7 +3,7 @@
 # include "t_token.h"
 # include "pipe.h"
 # include "t_ast.h"
-# include "parser_slr.h"
+# include "parser.h"
 # include "t_line.h"
 # include "history.h"
 # include "job_control.h"

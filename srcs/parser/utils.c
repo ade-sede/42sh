@@ -1,4 +1,4 @@
-#include "parser_slr.h"
+#include "parser.h"
 #include <ncurses.h>
 
 t_ast	*new_ast(t_token *token, int symbol)

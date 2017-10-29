@@ -123,9 +123,9 @@ SRC_FILE = \
 	line_editing/edit_get_coor.c \
 	line_editing/edit_cursor.c \
 	\
-	parser_slr/get_action.c \
-	parser_slr/parser.c \
-	parser_slr/utils.c \
+	parser/get_action.c \
+	parser/parser.c \
+	parser/utils.c \
 	\
 	failure/get_errno_1.c \
 	failure/get_errno_2.c \
@@ -199,7 +199,7 @@ INCLUDES_FILES = \
 	local.h \
 	my_signal.h \
 	job_control.h \
-	parser_slr.h \
+	parser.h \
 
 NAME ?= 42sh
 
@@ -259,7 +259,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/lexer
 	@/bin/mkdir -p $(OBJ_DIR)/line_editing
 	@/bin/mkdir -p $(OBJ_DIR)/main.c
-	@/bin/mkdir -p $(OBJ_DIR)/parser_slr
+	@/bin/mkdir -p $(OBJ_DIR)/parser
 	@/bin/mkdir -p $(OBJ_DIR)/failure
 	@/bin/mkdir -p $(OBJ_DIR)/signal
 	@/bin/mkdir -p $(OBJ_DIR)/job_control

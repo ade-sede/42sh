@@ -51,9 +51,6 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 	}
 }
 
-/* Check for processes that have status information available,
-**    without blocking.  */
-
 void	update_status(t_job_control *jc)
 {
 	int status;
@@ -64,8 +61,6 @@ void	update_status(t_job_control *jc)
 		pid = waitpid(WAIT_ANY, &status, WUNTRACED|WNOHANG);
 }
 
-/* Check for processes that have status information available,
-**    blocking until all processes in the given t_t_job have reported.  */
 void	get_exit_status(t_job *j)
 {
 	t_process	*p;
@@ -101,19 +96,40 @@ void	format_job_info(t_job *j, const char *status)
 	fprintf(stderr, "%ld (%s): %s\n", (long)j->pgid, status, j->command);
 }
 
+int		job_number(t_job *j)
+{
+	t_job	*first_job;
+	int		i;
+
+	i = 1;
+	first_job = singleton_jc()->first_job;
+	while (first_job && first_job != j)
+	{
+		i++;
+		first_job = first_job->next;
+	}
+	return (i);
+}
+
 void	format_job_info_process(t_job *j, const char *status)
 {
 	t_process	*p;
+	char		*job_no;
+	size_t		job_no_length;
 
+	job_no = ft_itoa(job_number(j));
+	job_no_length = ft_strlen(job_no);
+	fprintf(stderr, "[%d]", job_number(j));
 	p = j->first_process;
+	fprintf(stderr, " %ld %s: %s%s\n ", (long)p->pid, status, p->av, p->next ? " |" : "");
+	p = p->next;
 	while (p)
 	{
-	fprintf(stderr, "%ld (%s): %s\n", (long)p->pid, status, p->av);
+		ft_putnstr("                ", job_no_length + 2);
+		fprintf(stderr, "%ld %s: %s%s\n ", (long)p->pid, status, p->av, p->next ? " |" : "");
 		p = p->next;
 	}
 }
-/* Notify the user about stopped or terminated jobs.
-**    Delete terminated jobs from the active t_job list.  */
 
 void	do_job_notification(t_job_control *jc)
 {
@@ -121,36 +137,27 @@ void	do_job_notification(t_job_control *jc)
 	t_job		*jlast;
 	t_job		*jnext;
 
-	/* Update status information for child processes.  */
 	update_status (jc);
 	jlast = NULL;
 	j = jc->first_job;
 	while (j)
 	{
 		jnext = j->next;
-
-		/* If all processes have completed, tell the user the t_job has
-		**          completed and delete it from the list of active jobs.  */
 		if (job_is_completed (j)) {
-			format_job_info (j, "completed");
+			format_job_info_process (j, "completed");
 			if (jlast)
 				jlast->next = jnext;
 			else
 				jc->first_job = jnext;
-			//free_job (j);
+		//	free_job (j);
 		}
-
-		/* Notify the user about stopped jobs,
-		**          marking them so that we won’t do this more than once.  */
 		else if (job_is_stopped (j) && !j->notified) {
-			format_job_info (j, "stopped");
+			format_job_info_process (j, "stopped");
 			j->notified = 1;
 			jlast = j;
 		}
-
-		/* Don’t say anything about jobs that are still running.  */
 		else
 			jlast = j;
+		j = jnext;
 	}
-	j = jnext;
 }
