@@ -16,7 +16,6 @@ t_job	*find_job(t_job_control *jc, pid_t pgid)
 	return NULL;
 }
 
-
 /* Return true if all processes in the job have stopped or completed.  */
 int	job_is_stopped(t_job *j)
 {
@@ -67,6 +66,24 @@ void	job_add(t_job *new, t_job **first_job)
 	*first_job = new;
 }
 
+t_job	*get_last_job(t_job *j)
+{
+	while (j && j->next)
+		j = j->next;
+	return (j);
+}
+
+void	job_pushback(t_job *new, t_job **first_job)
+{
+	t_job	*j;
+
+	if (!*first_job)
+		return (job_add(new, first_job));
+	j = *first_job;
+	while (j && j->next)
+		j = j->next;
+	j->next = new;
+}
 void	process_add(t_process *new, t_process **first_process)
 {
 	new->next = *first_process;

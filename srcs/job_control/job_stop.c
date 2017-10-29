@@ -40,7 +40,7 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 	}
 	else if (pid == 0 || errno == ECHILD)
 	{
-		perror("no process ready to report");
+//		perror("no process ready to report");
 		/* No processes ready to report.  */
 		return -1;
 	}

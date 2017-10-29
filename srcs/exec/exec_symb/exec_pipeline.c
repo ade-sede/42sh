@@ -86,7 +86,7 @@ int exec_pipeline(t_ast *ast)
 		new_job = job_new();
 		fill_job(pipe_sequence, &first_process);
 		new_job->first_process = first_process;
-		job_add(new_job, &singleton_jc()->first_job);
+		job_pushback(new_job, &singleton_jc()->first_job);
 //		debug_process(new_job->first_process);
 		launch_job(singleton_jc(), new_job, 1);
 		exit_status = new_job->exit_status;

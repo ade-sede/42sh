@@ -61,6 +61,17 @@ t_list			*find_alias(t_list *alias, const char *argv, size_t len);
 int				builtin_unset(t_env *env, const char **argv);
 
 /*
+** In fg.c
+*/
+
+int				builtin_fg(t_env *env, const char **argv);
+
+/*
+** In fg.c
+*/
+
+int				builtin_bg(t_env *env, const char **argv);
+/*
 ** In set.c
 */
 

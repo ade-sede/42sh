@@ -28,6 +28,8 @@ SRC_FILE = \
 	builtin/unsetenv.c \
 	builtin/unset.c \
 	builtin/set.c \
+	builtin/fg.c \
+	builtin/bg.c \
 	builtin/function_set.c \
 	\
 	completion/comple_bin_matches.c \
