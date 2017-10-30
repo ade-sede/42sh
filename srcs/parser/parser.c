@@ -13,6 +13,14 @@ void	debug_pstate(t_listint *stack)
 	printf("\n");
 }
 
+int		check_reopen(t_list *ast_stack, t_list *token)
+{
+	(void)ast_stack;
+	if (((t_token*)token->data)->id == 666)
+		printf("reopen\n");
+	return (1);
+}
+
 int		parse(t_ast **ast, t_list *token_list)
 {
 	t_list		*tmp = NULL;
@@ -29,6 +37,7 @@ int		parse(t_ast **ast, t_list *token_list)
 		action = get_action(tmp->data, state);
 		if (action == -1)
 		{
+			check_reopen(ast_stack, tmp);
 			printf("42sh: parse error near `%s'\n", ((t_token*)tmp->data)->value);
 			return (PARSER_ERROR);
 		}

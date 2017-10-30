@@ -1,9 +1,0 @@
-pwd > file && pwd >> file || ls | cat  ; ls && ls | cat >> file || ls
-
-														 complete_command
-																
-																list
-
-												list			separator_op		andor
-
-												andor
