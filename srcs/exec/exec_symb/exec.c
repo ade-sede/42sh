@@ -21,7 +21,6 @@ static t_exec_func	g_exec_func[] =
 	{WHILE_CLAUSE, &exec_while_clause},
 	{UNTIL_CLAUSE, &exec_until_clause},
 	{FUNCTION_DEFINITION, &exec_function_definition},
-	{FUNCTION_BODY, &exec_function_body},
 	{DO_GROUP, &exec_do_group},
 	{SIMPLE_COMMAND, &exec_simple_command},
 	{0, NULL},
