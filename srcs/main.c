@@ -25,7 +25,8 @@ int	main(void)
 	env = singleton_env();
 	env_load_base_env(env, environ);
 	init_shell(jc);
-	conf_term_in();
+	if (jc->shell_is_interactive)
+		conf_term_in();
 	create_ternary_tree(env);
 	history_load(singleton_hist(), env);
 	main_loop(env);

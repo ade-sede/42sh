@@ -63,7 +63,7 @@ void			no_handle_signals(void);
 **	In file srcs/exec/main_loop.c
 */
 
-void			lex_and_parse(t_job_control *jc, t_ast *ast, char *buff);
+void			lex_and_parse(t_ast *ast, char *buff);
 char			*line_editing_get_input(t_line *line, t_hist *hist,
 		void (*sig_handler)(void));
 void			init_main_loop(t_line *line, t_hist *hist);

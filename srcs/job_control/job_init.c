@@ -40,9 +40,5 @@ void	init_shell(t_job_control *jc)
 
 		/* Grab control of the terminal.  */
 		tcsetpgrp(jc->shell_terminal, jc->shell_pgid);
-		//conf_term_in();
-
-		/* Save default terminal attributes for shell.  */
-//		tcgetattr(shell_terminal, &shell_tmodes);
 	}
 }

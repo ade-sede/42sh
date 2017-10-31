@@ -79,8 +79,10 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 	pid_t	parent_process_group_id;
 
 	if (!j->pgid)
+	{
 		if ((parent_process_group_id = getpgid(0)) != jc->shell_pgid)
 			j->pgid = parent_process_group_id;
+	}
 	infile = j->stdin;
 	p = j->first_process;
 	while (p)
