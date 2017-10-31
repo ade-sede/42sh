@@ -21,7 +21,11 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 				{
 					p->status = status;
 					if (WIFSTOPPED(status))
+					{
+						fprintf (stderr, "%d: stopped by signal %d.\n",
+								(int) pid, WSTOPSIG (p->status));
 						p->stopped = 1;
+					}
 					else
 					{
 						p->completed = 1;
@@ -29,14 +33,14 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 							fprintf (stderr, "%d: Terminated by signal %d.\n",
 									(int) pid, WTERMSIG (p->status));
 					}
-					return 0;
+					return (0);
 				}
 				p = p->next;
 			}
 			j = j->next;
 		}
 		fprintf (stderr, "No child process %d.\n", pid);
-		return -1;
+		return (-1);
 	}
 	else if (pid == 0 || errno == ECHILD)
 	{
@@ -44,7 +48,8 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 		/* No processes ready to report.  */
 		return -1;
 	}
-	else {
+	else
+	{
 		/* Other weird errors.  */
 		perror ("waitpid");
 		return -1;
@@ -103,7 +108,8 @@ void	do_job_notification(t_job_control *jc)
 	while (j)
 	{
 		jnext = j->next;
-		if (job_is_completed (j)) {
+		if (job_is_completed (j))
+		{
 			format_job_info_process (j, "completed");
 			if (jlast)
 				jlast->next = jnext;
@@ -111,7 +117,8 @@ void	do_job_notification(t_job_control *jc)
 				jc->first_job = jnext;
 		//	free_job (j);
 		}
-		else if (job_is_stopped (j) && !j->notified) {
+		else if (job_is_stopped (j) && !j->notified)
+		{
 			format_job_info_process (j, "stopped");
 			j->notified = 1;
 			jlast = j;

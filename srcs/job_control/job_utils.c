@@ -13,7 +13,7 @@ t_job	*find_job(t_job_control *jc, pid_t pgid)
 			return j;
 		j = j->next;
 	}
-	return NULL;
+	return (NULL);
 }
 
 /* Return true if all processes in the job have stopped or completed.  */
@@ -23,8 +23,8 @@ int	job_is_stopped(t_job *j)
 
 	for (p = j->first_process; p; p = p->next)
 		if (!p->completed && !p->stopped)
-			return 0;
-	return 1;
+			return (0);
+	return (1);
 }
 
 
@@ -35,8 +35,8 @@ int	job_is_completed(t_job *j)
 
 	for (p = j->first_process; p; p = p->next)
 		if (!p->completed)
-			return 0;
-	return 1;
+			return (0);
+	return (1);
 }
 
 t_job	*job_new()

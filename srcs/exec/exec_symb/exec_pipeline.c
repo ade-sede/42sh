@@ -87,10 +87,9 @@ int exec_pipeline(t_ast *ast)
 		fill_job(pipe_sequence, &first_process);
 		new_job->first_process = first_process;
 		job_pushback(new_job, &singleton_jc()->first_job);
-//		debug_process(new_job->first_process);
 		launch_job(singleton_jc(), new_job, 1);
 		exit_status = new_job->exit_status;
-//		printf("exit_status %d\n", exit_status);
+		do_job_notification(singleton_jc());
 	}
 	else
 		exit_status = exec(pipe_sequence);
