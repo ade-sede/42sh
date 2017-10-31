@@ -4,31 +4,27 @@
 void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		int infile, int outfile, int errfile,
 		int foreground,
-		int	controling_terminal)
+		int in_a_fork)
 {
 	pid_t	pid;
 
 	(void)foreground;
 	if (jc->shell_is_interactive)
 	{
-		/* Put the process into the process group and give the process group
-		** the terminal, if appropriate.
-		** This has to be done both by the shell and in the individual
-		** child processes because of potential race conditions.  */
 		pid = getpid();
 		if (pgid == 0)
 			pgid = pid;
 		setpgid(pid, pgid);
-		if (controling_terminal)
+		if (!in_a_fork)
 		{
-			fprintf(stderr, "put controling terminal");
+		//	fprintf(stderr, "put controling terminal");
 			if (tcsetpgrp(jc->shell_terminal, pgid) == -1)
 				perror("tcsetpgrp:");
 		}
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGTSTP, SIG_DFL);
 		signal(SIGTTIN, SIG_DFL);
-		signal(SIGTTOU, SIG_IGN); //attention
+		signal(SIGTTOU, SIG_DFL); //attention
 		signal(SIGCHLD, SIG_DFL);
 	}
 	if (infile != STDIN_FILENO)
@@ -89,8 +85,8 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 			j->pgid = parent_process_group_id;
 			in_a_fork = 1;
 		}
-		else if (foreground)
-			fprintf(stderr, "put controling terminal");
+//		else if (foreground)
+//			fprintf(stderr, "put controling terminal");
 	}
 	infile = j->stdin;
 	p = j->first_process;
@@ -106,7 +102,7 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 		pid = p_fork();
 		if (pid == 0)
 			launch_process(jc, p, j->pgid, infile,
-					outfile, j->stderr, foreground, !in_a_fork);
+					outfile, j->stderr, foreground, in_a_fork);
 		else
 		{
 			p->pid = pid;

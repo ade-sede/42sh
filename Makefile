@@ -180,6 +180,8 @@ SRC_FILE = \
 	job_control/job_utils.c \
 	job_control/singleton_jc.c \
 	job_control/job_format.c \
+	job_control/job_mark_status.c \
+	job_control/job_wait.c \
 	\
 	main.c \
 

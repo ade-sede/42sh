@@ -12,34 +12,32 @@
 # include <stdlib.h>
 # include "t_ast.h"
 # include "libft.h"
+
 typedef struct	s_process
 {
-  struct s_process	*next;       /* next process in pipeline */
-  t_ast				*command;    /* for exec */
-  char				*av;
-  pid_t				pid;         /* process ID */
-  char				completed;   /* true if process has completed */
-  char				stopped;     /* true if process has stopped */
-  int				status;      /* reported status value */
+	struct s_process	*next;
+	t_ast				*command;
+	char				*av;
+	pid_t				pid;
+	char				completed;
+	char				stopped;
+	char				signaled;
+	int					status;
 }				t_process;
 
-
-/* A job is a pipeline of processes.  */
 typedef struct	s_job
 {
-	struct s_job	*next;          /* next active job */
-	char			*command;       /* command line, used for messages */
-	t_process		*first_process; /* list of processes in this job */
-	pid_t			pgid;           /* process group ID */
-	char			notified;       /* true if user told about stopped job */
-	struct termios	tmodes;         /* saved terminal modes */
+	struct s_job	*next;
+	char			*command;
+	t_process		*first_process;
+	pid_t			pgid;
+	char			notified;
+	struct termios	tmodes;
 	int				stdin;
 	int				stdout;
-	int				stderr;         /* standard i/o channels */
-	int				exit_status;         /* exit_status of the pipeline */
+	int				stderr;
+	int				exit_status;
 }				t_job;
-
-/* The active jobs are linked into a list.  This is its head.   */
 
 typedef struct	s_job_control
 {
@@ -73,5 +71,6 @@ void	job_add(t_job *new, t_job **first_job);
 void	job_pushback(t_job *new, t_job **first_job);
 t_job	*get_last_job(t_job *j);
 void	format_job_info_process(t_job *j, const char *status);
+void	update_status(t_job_control *jc);
 
 #endif
