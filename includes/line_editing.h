@@ -87,7 +87,7 @@ void			edit_set_signals_open(void);
 void			edit_handle_sigwinch(int signum);
 void			conf_term_in(void);
 void			conf_term_canonical(void);
-void			conf_term_normal(void);
+void			conf_term_non_canonical(void);
 void			put_termcap(char *capacity);
 t_line			*singleton_line(void);
 

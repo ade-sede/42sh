@@ -176,7 +176,7 @@ SRC_FILE = \
 	job_control/job_foreground.c \
 	job_control/job_init.c \
 	job_control/job_launch.c \
-	job_control/job_stop.c \
+	job_control/job_notification.c \
 	job_control/job_utils.c \
 	job_control/singleton_jc.c \
 	job_control/job_format.c \

@@ -13,7 +13,7 @@ int	builtin_exit(t_env *env, const char **argv)
 	if (argc == 1)
 	{
 		history_write_to_histfile();
-		conf_term_normal();
+		conf_term_canonical();
 		exit(env->previous_exit);
 	}
 	if (argc > 2)
@@ -25,7 +25,7 @@ int	builtin_exit(t_env *env, const char **argv)
 	else
 	{
 		history_write_to_histfile();
-		conf_term_normal();
+		conf_term_canonical();
 		exit(exit_status);
 	}
 	return (EXIT_SUCCESS);

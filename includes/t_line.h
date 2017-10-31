@@ -12,7 +12,7 @@ typedef struct	s_line
 	size_t				ws_col;
 	char				*buff;
 	struct termios		canonical_mode;
-	struct termios		normal_mode;
+	struct termios		non_canonical_mode;
 	int					visu_mode;
 	int					completion;
 	int					history;

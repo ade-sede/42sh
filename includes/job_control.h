@@ -32,6 +32,7 @@ typedef struct	s_job
 	t_process		*first_process;
 	pid_t			pgid;
 	char			notified;
+	int				foreground;
 	struct termios	tmodes;
 	int				stdin;
 	int				stdout;

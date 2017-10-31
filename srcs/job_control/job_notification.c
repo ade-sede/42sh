@@ -9,12 +9,14 @@ void	do_job_notification(t_job_control *jc)
 	update_status(jc);
 	jlast = NULL;
 	j = jc->first_job;
+	//fprintf(stderr, "coucou\n");
 	while (j)
 	{
 		jnext = j->next;
 		if (job_is_completed (j))
 		{
-//			format_job_info_process (j, "completed");
+			if (!j->foreground)
+				format_job_info_process (j, "done");
 			if (jlast)
 				jlast->next = jnext;
 			else

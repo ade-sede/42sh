@@ -9,15 +9,15 @@
 **	The two following routines toggle the canonical mode ON and OFF.
 */
 
-void	conf_term_canonical(void)
+void	conf_term_non_canonical(void)
 {
-	if (tcsetattr(0, TCSADRAIN, &singleton_line()->canonical_mode) < 0)
+	if (tcsetattr(0, TCSANOW, &singleton_line()->non_canonical_mode) < 0)
 		fatal("tcsetattr error");
 }
 
-void	conf_term_normal(void)
+void	conf_term_canonical(void)
 {
-	if (tcsetattr(0, TCSADRAIN, &singleton_line()->normal_mode) < 0)
+	if (tcsetattr(0, TCSANOW, &singleton_line()->canonical_mode) < 0)
 		fatal("tcsetattr error");
 }
 
@@ -40,13 +40,13 @@ void	conf_term_in(void)
 		fatal("cant access data base");
 	if (tcgetattr(0, &term) == -1)
 		fatal("getattr error");
-	ft_memcpy(&line->normal_mode, &term, sizeof(struct termios));
-	ft_memcpy(&line->canonical_mode, &line->normal_mode,
+	ft_memcpy(&line->canonical_mode, &term, sizeof(struct termios));
+	ft_memcpy(&line->non_canonical_mode, &line->canonical_mode,
 			sizeof(struct termios));
-	line->canonical_mode.c_lflag &= ~(ICANON);
-	line->canonical_mode.c_lflag &= ~(ECHO);
-	line->canonical_mode.c_cc[VMIN] = 1;
-	line->canonical_mode.c_cc[VTIME] = 0;
-	if (tcsetattr(0, TCSANOW, &line->canonical_mode) < 0)
+	line->non_canonical_mode.c_lflag &= ~(ICANON);
+	line->non_canonical_mode.c_lflag &= ~(ECHO);
+	line->non_canonical_mode.c_cc[VMIN] = 1;
+	line->non_canonical_mode.c_cc[VTIME] = 0;
+	if (tcsetattr(0, TCSANOW, &line->non_canonical_mode) < 0)
 		fatal("tcsetattr error");
 }

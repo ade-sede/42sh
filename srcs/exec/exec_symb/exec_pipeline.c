@@ -89,7 +89,6 @@ int exec_pipeline(t_ast *ast)
 		job_pushback(new_job, &singleton_jc()->first_job);
 		launch_job(singleton_jc(), new_job, 1);
 		exit_status = new_job->exit_status;
-		do_job_notification(singleton_jc());
 	}
 	else
 		exit_status = exec(pipe_sequence);
