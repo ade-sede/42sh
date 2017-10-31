@@ -110,7 +110,7 @@ void	do_job_notification(t_job_control *jc)
 		jnext = j->next;
 		if (job_is_completed (j))
 		{
-			format_job_info_process (j, "completed");
+//			format_job_info_process (j, "completed");
 			if (jlast)
 				jlast->next = jnext;
 			else
