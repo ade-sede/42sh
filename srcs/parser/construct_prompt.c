@@ -32,7 +32,7 @@ char	*token_to_prompt(int token_id)
 	return (NULL);
 }
 
-char	*construct_prompt(t_list	*ast_stack)
+char	*parser_construct_prompt(t_list	*ast_stack)
 {
 	t_token_id	token_id;
 	char	*prompt;
@@ -53,8 +53,6 @@ char	*construct_prompt(t_list	*ast_stack)
 				prompt = ft_strjoin3_free(token_prompt, " ", prompt, 1);
 		}
 	}
-	prompt = ft_strjoin_free(prompt, ">", 2);
 	printf("prompt: %s\n", prompt);
 	return (prompt);
 }
-

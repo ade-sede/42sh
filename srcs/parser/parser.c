@@ -28,62 +28,60 @@ int		check_reopen(t_list *ast_stack, t_list *token)
 	int		reopen;
 
 	if ((reopen = ((t_token*)token->data)->id ) == 666)
-		printf("reopen\n");
-	debug_ast_stack(ast_stack);
-	if (reopen)
-		construct_prompt(ast_stack);
-	return (1);
+		return (PARSER_REOPEN);
+	printf("42sh: parse error near `%s'\n", ((t_token*)token->data)->value);
+	return (PARSER_ERROR);
 }
 
-int		parse(t_ast **ast, t_list *token_list)
+void	init_parser(t_parser *parser)
+{
+	parser->state_stack = NULL;
+	parser->state = 0;
+	parser->ast_stack = NULL;
+	parser->state_stack = ft_lstint_new(0);;
+}
+
+int		parse(t_parser *parser, t_ast **ast, t_list *token_list)
 {
 	t_list		*tmp = NULL;
-	t_listint	*state_stack = NULL;
-	int			state;
 	int			action;
-	t_list		*ast_stack = NULL;
+	t_token		*dollar_token;
 
-	state = 0;
-	state_stack = ft_lstint_new(0);;
+	dollar_token = create_token(ft_strdup("$"), 0, 0);
+	dollar_token->id = $;
+	ft_simple_lst_pushback(&token_list, ft_simple_lst_create(dollar_token));
 	tmp = token_list;
 	while (tmp)
 	{
-		action = get_action(tmp->data, state);
+		action = get_action(tmp->data, parser->state);
 		if (action == -1)
-		{
-			check_reopen(ast_stack, tmp);
-			printf("42sh: parse error near `%s'\n", ((t_token*)tmp->data)->value);
-			return (PARSER_ERROR);
-		}
+			return (check_reopen(parser->ast_stack, tmp));
 		if (action == 10000)
 		{
-			if (ast_stack->next)
+			if (parser->ast_stack->next)
 				printf("error\n");
-			*ast = ast_stack->data;
+			*ast = parser->ast_stack->data;
 			return (PARSER_SUCCESS);
 		}
-		if (action >= 4242)
+		if (action >= FIRST_REDUCE_RULE)
 		{
-//			printf("r%d\n", action -4242);
-			/*
-**				if (tmp->data)
-**					printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)tmp->data)->value, ((t_token *)tmp->data)->id);
-*/
-			reduce(&state_stack, &ast_stack, action - 4242);
-			state = get_goto(state_stack, action - 4242);
-			if (state == -1)
+
+			if (tmp->data)
+				printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)tmp->data)->value, ((t_token *)tmp->data)->id);
+			reduce(&parser->state_stack, &parser->ast_stack, action - FIRST_REDUCE_RULE);
+			parser->state = get_goto(parser->state_stack, action - FIRST_REDUCE_RULE);
+			if (parser->state == -1)
 				return (PARSER_ERROR);
 		}
 		else
 		{
 		//	printf("s%d\n", action);
-			ft_simple_lst_add(&ast_stack, ft_simple_lst_create(new_ast(tmp->data, -1)));
+			ft_simple_lst_add(&parser->ast_stack, ft_simple_lst_create(new_ast(tmp->data, -1)));
 			tmp = tmp->next;
-			state = action;
+			parser->state = action;
 		}
-		ft_lstint_add(&state_stack, state);
-		//debug_pstate(state_stack);
+		ft_lstint_add(&parser->state_stack, parser->state);
+		//debug_pstate(parser->state_stack);
 	}
 	return (0);
-	/* return (NULL); */
 }

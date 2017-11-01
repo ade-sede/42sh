@@ -10,7 +10,6 @@
 #include "job_control.h"
 #include "parser.h"
 
-
 void	exec_main_loop(t_lexer *lex, t_ast *ast)
 {
 	history_append_command_to_list((char*)lex->line);
@@ -24,7 +23,6 @@ void	exec_main_loop(t_lexer *lex, t_ast *ast)
 	//ast = flush_tree(ast);
 	//ft_simple_lst_remove(&lex->stack, free_token);
 }
-	
 
 void	remove_lexer(t_lexer *lex)
 {
@@ -38,22 +36,19 @@ void	lex_and_parse(t_ast *ast, char *buff)
 	t_list		*token_list;
 	int			res_lexer;
 	int			res_parser;
-	t_token		*dollar_token;
+	t_parser	parser;
 
 	lex = init_lexer(buff);
+	init_parser(&parser);
 	while (42)
 	{
 		res_lexer = lex_all(&lex, &token_list);
-		dollar_token = create_token(ft_strdup("$"), 0, 0);
-		dollar_token->id = $;
-		ft_simple_lst_pushback(&token_list, ft_simple_lst_create(dollar_token));
-		res_parser = parse(&ast, token_list);
+		res_parser = parse(&parser, &ast, token_list);
 		if (res_parser == PARSER_ERROR)
 			return (remove_lexer(&lex));
-		if (res_lexer > 0 || TK_IS_REOPEN_SEP(res_parser))
+		if (res_lexer > 0 || res_parser == PARSER_REOPEN)
 		{
-			reopen_line_editing(&lex, res_lexer, res_parser);
-			/* ast = flush_tree(ast); */
+			reopen_line_editing(&lex, &parser, res_lexer);
 			if (g_abort_opening)
 				return (remove_lexer(&lex));
 		}

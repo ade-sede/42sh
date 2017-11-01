@@ -5,12 +5,18 @@
 #include "t_ast.h"
 
 # ifndef PARSER_ERROR
+#  define PARSER_REOPEN 2
+# endif
+# ifndef PARSER_ERROR
 #  define PARSER_ERROR 1
 # endif
 # ifndef PARSER_SUCCESS
 #  define PARSER_SUCCESS 0
 # endif
 
+# ifndef FIRST_REDUCE_RULE
+#  define FIRST_REDUCE_RULE 4242
+# endif
 enum shift {
 	s0,
 	s1,
@@ -2371,11 +2377,19 @@ struct s_token_to_prompt
 	char		*string;
 };
 
+typedef struct	s_parser
+{
+	t_list		*ast_stack;
+	int			state;
+	t_listint	*state_stack;
+}				t_parser;
+
 int			get_action(t_token *token, int state);
 t_ast		*new_ast(t_token *token, int symbol);
 int			get_goto(t_listint *state_stack, int reduce_rule);
 void		reduce(t_listint **state_stack, t_list **ast_stack, int reduce_rule);
-int			parse(t_ast **ast, t_list *token_list);
+void	init_parser(t_parser *parser);
+int			parse(t_parser *parser, t_ast **ast, t_list *token_list);
 void		ast_print(t_ast *root, void (printer) (void *));
-char		*construct_prompt(t_list	*ast_stack);
+char	*parser_construct_prompt(t_list	*ast_stack);
 #endif
