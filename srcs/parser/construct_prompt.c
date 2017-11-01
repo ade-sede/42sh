@@ -53,6 +53,6 @@ char	*parser_construct_prompt(t_list	*ast_stack)
 				prompt = ft_strjoin3_free(token_prompt, " ", prompt, 1);
 		}
 	}
-	printf("prompt: %s\n", prompt);
+//	printf("prompt: %s\n", prompt);
 	return (prompt);
 }

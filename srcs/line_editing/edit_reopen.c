@@ -42,7 +42,7 @@ void		reopen_line_editing(t_lexer *lex, t_parser *parser, int res_lexer)
 	lexer_prompt = lexer_construct_prompt(res_lexer);
 
 	prompt = join_prompt(parser_prompt, lexer_prompt);
-	prompt = ft_strjoin_free(prompt, ">", 2);
+	prompt = ft_strjoin_free(prompt, "> ", 2);
 
 	env = singleton_env();
 	line = singleton_line();

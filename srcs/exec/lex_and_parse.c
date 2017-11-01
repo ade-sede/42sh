@@ -42,6 +42,7 @@ void	lex_and_parse(t_ast *ast, char *buff)
 	init_parser(&parser);
 	while (42)
 	{
+		token_list = NULL;
 		res_lexer = lex_all(&lex, &token_list);
 		res_parser = parse(&parser, &ast, token_list);
 		if (res_parser == PARSER_ERROR)
@@ -49,6 +50,7 @@ void	lex_and_parse(t_ast *ast, char *buff)
 		if (res_lexer > 0 || res_parser == PARSER_REOPEN)
 		{
 			reopen_line_editing(&lex, &parser, res_lexer);
+			token_list = NULL;
 			if (g_abort_opening)
 				return (remove_lexer(&lex));
 		}

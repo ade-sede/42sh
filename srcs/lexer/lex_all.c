@@ -1,5 +1,6 @@
 #include "t_token.h"
 #include "lexer.h"
+#include <stdio.h>
 
 int				lex_all(t_lexer *lex, t_list **token_list)
 {
@@ -14,9 +15,9 @@ int				lex_all(t_lexer *lex, t_list **token_list)
 			node = ft_simple_lst_create(token);
 		else
 			free_token(token);
-		ft_simple_lst_pushback(&lex->stack, node);
+		ft_simple_lst_pushback(token_list, node);
+	//	printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)node->data)->value, ((t_token *)node->data)->id);
 	}
-	*token_list = lex->stack;
 	if (reopen)
 		return (reopen);
 	return (LEXER_SUCCESS);
