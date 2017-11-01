@@ -37,6 +37,7 @@ void	lex_and_parse(t_ast *ast, char *buff)
 	int			res_lexer;
 	int			res_parser;
 	t_parser	parser;
+	t_token		*reopen_token;
 
 	lex = init_lexer(buff);
 	init_parser(&parser);
@@ -44,6 +45,12 @@ void	lex_and_parse(t_ast *ast, char *buff)
 	{
 		token_list = NULL;
 		res_lexer = lex_all(&lex, &token_list);
+		if (res_lexer > 0)
+		{
+			reopen_token = create_token(ft_strdup("quoted"), 0, 0);
+			reopen_token->id = 42;
+			ft_simple_lst_pushback(&token_list, ft_simple_lst_create(reopen_token));
+		}
 		res_parser = parse(&parser, &ast, token_list);
 		if (res_parser == PARSER_ERROR)
 			return (remove_lexer(&lex));

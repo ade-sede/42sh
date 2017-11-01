@@ -1713,7 +1713,7 @@ int		get_action(t_token *token, int state)
 
 	while (col < nb_col && token_table[col] != token->id)
 		col++;
-	if (col == nb_col)
+	if (col == nb_col && token->id != 42)
 	{
 		printf("Eror get action bad token\n");
 		return (-1);

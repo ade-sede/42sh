@@ -27,7 +27,7 @@ int		check_reopen(t_list *ast_stack, t_list *token)
 	(void)ast_stack;
 	int		reopen;
 
-	if ((reopen = ((t_token*)token->data)->id ) == 666)
+	if ((reopen = ((t_token*)token->data)->id ) == 666 || reopen == 42)
 		return (PARSER_REOPEN);
 	printf("42sh: parse error near `%s'\n", ((t_token*)token->data)->value);
 	return (PARSER_ERROR);
