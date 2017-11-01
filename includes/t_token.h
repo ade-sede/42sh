@@ -72,7 +72,11 @@ typedef enum
 **	of a simple command.
 **	Delimtier is the character that caused the token to be delimited.
 */
-
+struct t_token_id_to_string
+{
+	t_token_id		id;
+	char		*string;
+};
 typedef struct		s_token
 {
 	char			*value;
@@ -100,4 +104,5 @@ typedef struct		s_token
 t_token				*create_token(char *value, int type, char delimiter);
 void				free_token(void *value);
 void				free_token_list(t_list *token_list);
+void				debug_token(t_token *token);
 #endif

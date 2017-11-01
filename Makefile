@@ -128,6 +128,7 @@ SRC_FILE = \
 	\
 	parser/get_action.c \
 	parser/parser.c \
+	parser/construct_prompt.c \
 	parser/utils.c \
 	\
 	failure/get_errno_1.c \
@@ -170,6 +171,7 @@ SRC_FILE = \
 	exec/exec_symb/exec_until_clause.c \
 	exec/exec_symb/exec_while_clause.c \
 	exec/debug_symbol.c \
+	exec/debug_token.c \
 	\
 	job_control/job_background.c \
 	job_control/job_continue.c \

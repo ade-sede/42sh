@@ -2365,10 +2365,17 @@ typedef struct s_rule
 	int				nb_child;
 }				t_rule;
 
+struct s_token_to_prompt
+{
+	t_token_id	id;
+	char		*string;
+};
+
 int			get_action(t_token *token, int state);
 t_ast		*new_ast(t_token *token, int symbol);
 int			get_goto(t_listint *state_stack, int reduce_rule);
 void		reduce(t_listint **state_stack, t_list **ast_stack, int reduce_rule);
 int			parse(t_ast **ast, t_list *token_list);
 void		ast_print(t_ast *root, void (printer) (void *));
+char		*construct_prompt(t_list	*ast_stack);
 #endif

@@ -1,5 +1,4 @@
 #include "parser.h"
-#include "parser.h"
 #include "color.h"
 #include <stdio.h>
 
@@ -12,12 +11,27 @@ void	debug_pstate(t_listint *stack)
 		printf("%d ", tmp->data);
 	printf("\n");
 }
+#include "exec.h"
+void	debug_ast_stack(t_list *ast_stack)
+{
+	t_list	*tmp;
+
+	printf("state_stack: \n");
+	for (tmp = ast_stack; tmp; tmp = tmp->next)
+		debug_symbol(tmp->data);
+	printf("\n");
+}
 
 int		check_reopen(t_list *ast_stack, t_list *token)
 {
 	(void)ast_stack;
-	if (((t_token*)token->data)->id == 666)
+	int		reopen;
+
+	if ((reopen = ((t_token*)token->data)->id ) == 666)
 		printf("reopen\n");
+	debug_ast_stack(ast_stack);
+	if (reopen)
+		construct_prompt(ast_stack);
 	return (1);
 }
 

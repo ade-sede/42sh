@@ -50,6 +50,7 @@ struct s_sym_to_string	sts[] =
 	{SEPARATOR_OP,"SEPARATOR_OP"},
 	{SEPARATOR,"SEPARATOR"},
 	{SEQUENTIAL_SEP,"SEQUENTIAL_SEP"},
+	{0, NULL},
 };
 
 void	debug_symbol(t_ast *ast)
@@ -64,5 +65,6 @@ void	debug_symbol(t_ast *ast)
 		}
 		i++;
 	}
-	printf("symbol not found\n");
+	debug_token(ast->token);
+	//printf("symbol not found\n");
 }

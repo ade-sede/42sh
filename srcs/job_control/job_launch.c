@@ -1,6 +1,12 @@
 #include "job_control.h"
 #include "exec.h"
 
+void	quit_job(int signum)
+{
+	(void)signum;
+	kill(-getpgrp(), SIGQUIT); 
+}
+
 void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		int infile, int outfile, int errfile,
 		int foreground,
@@ -20,6 +26,8 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		//	fprintf(stderr, "put controling terminal");
 			if (tcsetpgrp(jc->shell_terminal, pgid) == -1)
 				perror("tcsetpgrp:");
+			if (foreground)
+				signal(SIGINT, quit_job);
 		}
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGTSTP, SIG_DFL);
@@ -125,7 +133,6 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 		infile = mypipe[0];
 		p = p->next;
 	}
-	//format_job_info_process(j, "launched");
 	if (!jc->shell_is_interactive)
 		wait_for_job(jc, j);
 	else if (foreground)

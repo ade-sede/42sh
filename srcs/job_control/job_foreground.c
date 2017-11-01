@@ -3,8 +3,6 @@
 
 void	put_job_in_foreground(t_job_control *jc, t_job *j, int cont, int in_a_fork)
 {
-	(void)in_a_fork;
-	
 	j->foreground = 1;
 //	fprintf(stderr, "in a fork %d", in_a_fork);
 	if (!in_a_fork)
