@@ -2,8 +2,9 @@
 /*
 **					  0       1         2        3            4     5
 ** if_clause        : If compound_list Then compound_list else_part Fi
-**					| If compound_list Then compound_list           Fi
+**					| If compound_list Then compound_list Fi
 */
+
 int exec_if_clause(t_ast *ast)
 {
 	if (exec(ast->child[1]) == EXIT_SUCCESS)
