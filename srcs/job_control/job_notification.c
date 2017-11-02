@@ -9,19 +9,20 @@ void	do_job_notification(t_job_control *jc)
 	update_status(jc);
 	jlast = NULL;
 	j = jc->first_job;
-	//fprintf(stderr, "coucou\n");
+//	fprintf(stderr, "job notification \n");
 	while (j)
 	{
 		jnext = j->next;
 		if (job_is_completed (j))
 		{
-			if (!j->foreground)
+//			fprintf(stderr, "job completed %s\n", j->first_process->av);
+			if (!j->foreground && jc->shell_is_interactive)
 				format_job_info_process (j, "done");
 			if (jlast)
 				jlast->next = jnext;
 			else
 				jc->first_job = jnext;
-		//	free_job (j);
+			//job_free(j);
 		}
 		else if (job_is_stopped (j) && !j->notified)
 		{

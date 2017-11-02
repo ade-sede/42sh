@@ -53,7 +53,10 @@ void	lex_and_parse(t_ast *ast, char *buff)
 		}
 		res_parser = parse(&parser, &ast, token_list);
 		if (res_parser == PARSER_ERROR)
+		{
+			history_append_command_to_list((char*)lex.line);
 			return (remove_lexer(&lex));
+		}
 		if (res_lexer > 0 || res_parser == PARSER_REOPEN)
 		{
 			reopen_line_editing(&lex, &parser, res_lexer);

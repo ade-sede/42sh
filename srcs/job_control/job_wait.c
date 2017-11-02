@@ -1,4 +1,6 @@
 #include "job_control.h"
+#include <errno.h>
+#include "color.h"
 
 void	update_status(t_job_control *jc)
 {
@@ -30,10 +32,14 @@ void	wait_for_job(t_job_control *jc, t_job *j)
 	int status;
 	pid_t pid;
 
-	pid = waitpid(WAIT_ANY, &status, WUNTRACED);
-	while (!mark_process_status(jc, pid, status)
-			&& !job_is_stopped(j)
-			&& !job_is_completed(j))
+	while (42)
+	{
+		errno = 0;
 		pid = waitpid(WAIT_ANY, &status, WUNTRACED);
+		if (!(!mark_process_status(jc, pid, status)
+					&& !job_is_stopped(j)
+					&& !job_is_completed(j)))
+			break ;
+	}
 	get_job_exit_status(j);
 }

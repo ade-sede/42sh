@@ -15,6 +15,7 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 		{
 			if (p->pid == pid)
 			{
+//				dprintf(2, "mark process_status pid found\n");
 				p->status = status;
 				if (WIFSTOPPED(status))
 					p->stopped = 1;

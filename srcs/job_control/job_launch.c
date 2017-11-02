@@ -117,12 +117,7 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 			if (jc->shell_is_interactive)
 			{
 				if (!j->pgid)
-				{
-					if ((parent_process_group_id = getpgid(0)) != jc->shell_pgid)
-						j->pgid = parent_process_group_id;
-					else
-						j->pgid = pid;
-				}
+					j->pgid = pid;
 				setpgid(pid, j->pgid);
 			}
 		}

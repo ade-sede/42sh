@@ -20,8 +20,10 @@ void	init_shell(t_job_control *jc)
 		printf("shell is interactive\n");
 		/* Loop until we are in the foreground.  */
 		while (tcgetpgrp(jc->shell_terminal) != (jc->shell_pgid = getpgrp()))
+		{
+			printf("kill ourself\n");
 			kill(-jc->shell_pgid, SIGTTIN);
-
+		}
 		/* Ignore interactive and job-control signals.  */
 		signal(SIGINT, SIG_IGN);
 		signal(SIGQUIT, SIG_IGN);
@@ -31,6 +33,7 @@ void	init_shell(t_job_control *jc)
 //		signal(SIGCHLD, SIG_IGN);
 
 		/* Put ourselves in our own process group.  */
+//		dprintf(2, "\nprocess group: %d, process id: %d\n", getpgrp(), getpid());
 		jc->shell_pgid = getpid();
 		if (setpgid(jc->shell_pgid, jc->shell_pgid) < 0)
 		{

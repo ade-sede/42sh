@@ -86,3 +86,19 @@ void	process_add(t_process *new, t_process **first_process)
 	new->next = *first_process;
 	*first_process = new;
 }
+
+void	job_free(t_job *job)
+{
+	t_process	*process;
+	t_process	*process_next;
+
+	process = job->first_process;
+	while (process)
+	{
+		process_next = process->next;
+		free_ast(process->command);
+		free(process->av);
+		free(process);
+		process = process_next;
+	}
+}

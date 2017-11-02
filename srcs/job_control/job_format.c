@@ -24,7 +24,7 @@ void	format_job_info_process(t_job *j, const char *status)
 
 	job_no = ft_itoa(job_number(j));
 	job_no_length = ft_strlen(job_no);
-	fprintf(stderr, "[%d]", job_number(j));
+	fprintf(stderr, "\n[%d]", job_number(j));
 	p = j->first_process;
 	fprintf(stderr, " %ld %s: %s%s\n ", (long)p->pid, status, p->av, p->next ? " |" : "");
 	p = p->next;

@@ -11,6 +11,19 @@ t_ast	*new_ast(t_token *token, int symbol)
 	return (new);
 }
 
+void	free_ast(t_ast *ast)
+{
+	int		i = 0;
+	if (!ast)
+		return ;
+	while (ast->child[i] && i < 7)
+	{
+		free_ast(ast->child[i]);
+		i++;
+	}
+	free(ast);
+}
+
 void	aux(t_ast *root, int li, int co, void (printer) (void *))
 {
 	t_ast	*child[3];

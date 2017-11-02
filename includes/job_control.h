@@ -73,5 +73,6 @@ void	job_pushback(t_job *new, t_job **first_job);
 t_job	*get_last_job(t_job *j);
 void	format_job_info_process(t_job *j, const char *status);
 void	update_status(t_job_control *jc);
+void	job_free(t_job *job);
 
 #endif
