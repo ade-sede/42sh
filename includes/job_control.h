@@ -50,7 +50,7 @@ typedef struct	s_job_control
 }				t_job_control;
 
 
-void	init_shell();
+void	init_job_control(t_job_control *jc);
 void	launch_job(t_job_control *jc, t_job *j, int foreground);
 int		mark_process_status(t_job_control *jc, pid_t pid, int status);
 void	do_job_notification(t_job_control *jc);

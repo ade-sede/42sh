@@ -1715,7 +1715,7 @@ int		get_action(t_token *token, int state)
 		col++;
 	if (col == nb_col && token->id != 42)
 	{
-		printf("Eror get action bad token\n");
+//		printf("Eror get action bad token\n");
 		return (-1);
 	}
 	line = state;

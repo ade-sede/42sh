@@ -38,19 +38,19 @@ char	*line_editing_get_input(t_line *line, t_hist *hist,
 	return (edit_get_input());
 }
 
-char	*file_get_input(void)
+char	*file_get_input(int stream)
 {
 	char	*line;
 	char	*buff;
 
 	line = NULL;
 	buff = ft_strdup("");
-	while (get_next_line(0, &line))
+	while (get_next_line(stream, &line))
 		buff = ft_strjoin3_free(buff, line, "\n", 6);
 	return (buff);
 }
 
-void	main_loop(t_env *env)
+void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt)
 {
 	char		*buff;
 
@@ -61,8 +61,10 @@ void	main_loop(t_env *env)
 		if (singleton_jc()->shell_is_interactive)
 			buff = ft_strdup(line_editing_get_input(singleton_line(), \
 						singleton_hist(), &edit_set_signals_open));
+		else if (c_opt)
+			buff = ft_strdup(buff_c_opt);
 		else
-			buff = file_get_input();
+			buff = file_get_input(stream);
 		if (!ft_strequ(buff, "\n"))
 			lex_and_parse(NULL, buff);
 		free(buff);

@@ -8,7 +8,7 @@
 /* Make sure the shell is running interactively as the foreground job
    before proceeding. */
 
-void	init_shell(t_job_control *jc)
+void	init_job_control(t_job_control *jc)
 {
 
 	/* See if we are running interactively.  */
