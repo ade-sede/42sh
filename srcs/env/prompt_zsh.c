@@ -45,8 +45,8 @@ char	*read_git_branch(int fd_close, int fd, size_t *len)
 		*ft_strchr(branch, ' ') = 0;
 	ft_strdel(&line);
 	*len += ft_strlen(branch);
-	git_status = ft_strjoin3_free(" \e[38;5;47mgit:(\e[38;5;203m",
-			branch, "\e[38;5;47m)", 2);
+	git_status = ft_strjoin3_free(" \033[34;01mgit:(\033[35;01m",
+			branch, "\e[34;5m)", 2);
 	*len += 7;
 	return (read_git_status(fd, len, git_status));
 }
