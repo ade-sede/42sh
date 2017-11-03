@@ -1,4 +1,5 @@
-
+#include"lexer.h"
+#include "libft.h"
 
 /*
 **	PARAMS:
@@ -23,9 +24,12 @@
 /*
 **	This function's job is concatening a list of tokens (returned one by one by
 **	the get_token() function), and concatenate them in a list of tokens, after
-**	applying alias expansion if necessary.  As for each alias expansion many
+**	applying alias expansion or history expansion if necessary.  As for each alias expansion and history expansion many
 **	tokens can be generated, and alias_expansion being recursive, this function
-**	will be called again within alias expansion.
+**	will be called again within alias expansion and history expansion.
+**	If history expansion is done, lex->line must be edited, and the placeholder
+**	replaced by its expanded value. Must apply the offset (value_size -
+**	place_holder_size) to lex->pos before resuming lexing.
 */
 
 /*
@@ -33,7 +37,7 @@
 **	but the parser has no uses for them, so they should be discarded here.
 */
 
-int		get_token_list(t_lexer *lex, t_list **token_list, t_list *aliast_list)
+int		get_token_list(t_lexer *lex, t_list **token_list, t_list *alias_list)
 {
 	t_token	*token;
 	t_list	*node;
@@ -49,4 +53,5 @@ int		get_token_list(t_lexer *lex, t_list **token_list, t_list *aliast_list)
 		node = ft_simple_lst_create(token);
 		ft_simple_lst_pushback(token_list, node);
 	}
+	return (lex->state->data[_T_STATE]);
 }
