@@ -11,4 +11,3 @@ int exec_term(t_ast *ast)
 	exec(ast->child[0]);
 	return (exec(ast->child[2]));
 }
-
