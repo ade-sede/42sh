@@ -10,6 +10,8 @@
 # include "alloc.h"
 # include "list.h"
 # include "array.h"
+# include "system.h"
+# include "btree.h"
 # define MALLOC_ERROR 666
 # define TRUE 1
 # define FALSE 0
@@ -28,14 +30,6 @@ typedef struct		s_coor
 	int		x;
 	int		y;
 }					t_coor;
-
-typedef struct		s_btree
-{
-	struct s_btree	*left;
-	struct s_btree	*right;
-	struct s_btree	*parent;
-	void			*data;
-}					t_btree;
 
 /*
 ** In file ft_abs.c

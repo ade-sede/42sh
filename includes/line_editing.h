@@ -2,6 +2,7 @@
 # define LINE_EDITING_H
 
 # include "t_line.h"
+# include "parser.h"
 # include "env.h"
 # include "termios.h"
 # include "term.h"
@@ -65,8 +66,7 @@ extern int		g_abort_opening;
 
 int				edit_del(t_line *line);
 t_coor			get_prompt_visual_offset(t_line *line);
-void			reopen_line_editing(t_lexer *lex, int res_lexer,
-		int res_parser);
+void		reopen_line_editing(t_lexer *lex, t_parser *parser, int res_lexer);
 void			term_putstr(t_line *line);
 void			edit_handle_sigint_reopen(int signum);
 void			edit_set_signals_reopen(void);
@@ -87,7 +87,7 @@ void			edit_set_signals_open(void);
 void			edit_handle_sigwinch(int signum);
 void			conf_term_in(void);
 void			conf_term_canonical(void);
-void			conf_term_normal(void);
+void			conf_term_non_canonical(void);
 void			put_termcap(char *capacity);
 t_line			*singleton_line(void);
 

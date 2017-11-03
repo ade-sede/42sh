@@ -65,20 +65,20 @@ static void	remove_option(t_env *env, int *x, const char **argv)
 	}
 }
 
-static void	set_pos_par(t_env *env, int x, int argc, const char **argv)
+void	set_pos_par(t_env *env, int x, int argc, const char **argv)
 {
-	int			nbr_pos_par;
+	int nbr_pos_par;
 
 	nbr_pos_par = 1;
+	if (x < argc)
+		ft_simple_lst_remove(&env->pos_par, ft_free);
 	while (x < argc)
 	{
-		if (nbr_pos_par <= 1)
-			ft_simple_lst_remove(&env->pos_par, ft_free);
 		ft_simple_lst_pushback(&env->pos_par, ft_simple_lst_create(
 					ft_strjoin3_free(ft_itoa(nbr_pos_par), "=",
-						(char *)argv[x], 0b100)));
-		nbr_pos_par++;
+						(char *)argv[x], 0b101)));
 		x++;
+		nbr_pos_par++;
 	}
 }
 

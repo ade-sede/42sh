@@ -38,7 +38,7 @@ int				builtin_cd(t_env *env, const char **argv);
 ** In exec_builtin.c
 */
 
-int				exec_builtin(t_env *env, const char **argv, t_lst_head *head);
+int				exec_builtin(t_env *env, const char **argv);
 
 /*
 ** In echo.c
@@ -61,10 +61,29 @@ t_list			*find_alias(t_list *alias, const char *argv, size_t len);
 int				builtin_unset(t_env *env, const char **argv);
 
 /*
+** In fg.c
+*/
+
+int				builtin_fg(t_env *env, const char **argv);
+
+/*
+** In fg.c
+*/
+
+int				builtin_bg(t_env *env, const char **argv);
+
+/*
+** In jobs.c
+*/
+
+int				builtin_jobs(t_env *env, const char **argv);
+
+/*
 ** In set.c
 */
 
 int				builtin_set(t_env *env, const char **argv);
+void			set_pos_par(t_env *env, int x, int argc, const char **argv);
 int				match_name_option(const char *argv);
 void			print_current_option(t_env *env);
 void			print_all_option(t_env *env);
@@ -100,4 +119,5 @@ typedef struct	s_builtin
 	int			(*f)(t_env*, const char**);
 }				t_builtin;
 
+void		*get_exec_builtin(const char *argv);
 #endif

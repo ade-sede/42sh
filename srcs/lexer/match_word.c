@@ -19,6 +19,8 @@ static char	*g_reserved_word_list[] = {
 	"{",
 	"}",
 	"!",
+	"(",
+	")",
 	"in",
 	NULL
 };
@@ -99,7 +101,7 @@ int			lex_id_word(t_lexer *lex, t_token *token, t_token_id *id)
 		if (lex_id_reserved_words(token, id) == 0)
 		{
 			if (TK_IS_REDIR(lex->last_id) && lex->last_id != TK_HERE)
-				*id = TK_NAME;
+				*id = TK_WORD;
 			else
 			{
 				if (lex->cmd_name_open && lex->last_id != TK_HERE)
@@ -111,7 +113,9 @@ int			lex_id_word(t_lexer *lex, t_token *token, t_token_id *id)
 			}
 		}
 	}
-	else
+	else if (lex->cmd_name_open)
 		*id = TK_ASSIGNMENT_WORD;
+	else
+		*id = TK_WORD;
 	return (1);
 }

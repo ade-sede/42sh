@@ -28,6 +28,9 @@ SRC_FILE = \
 	builtin/unsetenv.c \
 	builtin/unset.c \
 	builtin/set.c \
+	builtin/fg.c \
+	builtin/bg.c \
+	builtin/jobs.c \
 	builtin/function_set.c \
 	builtin/read.c \
 	builtin/read_options.c \
@@ -60,18 +63,6 @@ SRC_FILE = \
 	env/local_remove.c \
 	env/t_env.c \
 	env/get_ps1.c \
-	\
-	exec/exec_bin.c \
-	exec/exec_heredoc.c \
-	exec/exec_pipe.c \
-	exec/exec_redir.c \
-	exec/exec_separator.c \
-	exec/exec_signals.c \
-	exec/exec_simple_commands.c \
-	exec/exec_tree.c \
-	exec/main_loop.c \
-	exec/redir_utils.c \
-	exec/lex_and_parse.c \
 	\
 	globing/curly_bracket_split.c \
 	globing/curly_brackets.c \
@@ -135,13 +126,10 @@ SRC_FILE = \
 	line_editing/edit_get_coor.c \
 	line_editing/edit_cursor.c \
 	\
-	parser/parse.c \
-	parser/parse_complex_command.c \
-	parser/parse_pipe.c \
-	parser/parse_redir.c \
-	parser/parse_simple_command.c \
-	parser/t_ast.c \
-	parser/t_pipe.c \
+	parser/get_action.c \
+	parser/parser.c \
+	parser/construct_prompt.c \
+	parser/utils.c \
 	\
 	failure/get_errno_1.c \
 	failure/get_errno_2.c \
@@ -151,8 +139,54 @@ SRC_FILE = \
 	signal/all_signal_dfl.c \
 	signal/all_signal_ign.c \
 	\
-	main.c\
-	expansion.c
+	exec/exec_redir.c \
+	exec/lex_and_parse.c \
+	exec/main_loop.c \
+	exec/redir_utils.c \
+	exec/exec_utils.c \
+	exec/exec_io_redirect.c \
+	exec/exec_bin.c \
+ \
+	exec/exec_symb/exec.c \
+	exec/exec_symb/exec_and_or.c \
+	exec/exec_symb/exec_case_clause.c \
+	exec/exec_symb/exec_command.c \
+	exec/exec_symb/exec_complete_command.c \
+	exec/exec_symb/exec_complete_commands.c \
+	exec/exec_symb/exec_compound_command.c \
+	exec/exec_symb/exec_compound_list.c \
+	exec/exec_symb/exec_do_group.c \
+	exec/exec_symb/exec_else_part.c \
+	exec/exec_symb/exec_for_clause.c \
+	exec/exec_symb/exec_function_body.c \
+	exec/exec_symb/exec_function_definition.c \
+	exec/exec_symb/exec_if_clause.c \
+	exec/exec_symb/exec_list.c \
+	exec/exec_symb/exec_pipe_sequence.c \
+	exec/exec_symb/exec_pipeline.c \
+	exec/exec_symb/exec_program.c \
+	exec/exec_symb/exec_simple_command.c \
+	exec/exec_symb/exec_subshell.c \
+	exec/exec_symb/exec_term.c \
+	exec/exec_symb/exec_until_clause.c \
+	exec/exec_symb/exec_while_clause.c \
+	exec/debug_symbol.c \
+	exec/debug_token.c \
+	exec/exec_function.c \
+	\
+	job_control/job_background.c \
+	job_control/job_continue.c \
+	job_control/job_foreground.c \
+	job_control/job_init.c \
+	job_control/job_launch.c \
+	job_control/job_notification.c \
+	job_control/job_utils.c \
+	job_control/singleton_jc.c \
+	job_control/job_format.c \
+	job_control/job_mark_status.c \
+	job_control/job_wait.c \
+	\
+	main.c \
 
 INCLUDES_FILES = \
 	t_ast.h \
@@ -172,7 +206,9 @@ INCLUDES_FILES = \
 	t_lexer.h \
 	t_token.h \
 	local.h \
-	my_signal.h
+	my_signal.h \
+	job_control.h \
+	parser.h \
 
 NAME ?= 42sh
 
@@ -224,6 +260,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/completion
 	@/bin/mkdir -p $(OBJ_DIR)/env
 	@/bin/mkdir -p $(OBJ_DIR)/exec
+	@/bin/mkdir -p $(OBJ_DIR)/exec/exec_symb/
 	@/bin/mkdir -p $(OBJ_DIR)/globing
 	@/bin/mkdir -p $(OBJ_DIR)/hash_table
 	@/bin/mkdir -p $(OBJ_DIR)/history
@@ -233,6 +270,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/parser
 	@/bin/mkdir -p $(OBJ_DIR)/failure
 	@/bin/mkdir -p $(OBJ_DIR)/signal
+	@/bin/mkdir -p $(OBJ_DIR)/job_control
 
 clean:
 	@make -C $(LIB_DIR) clean

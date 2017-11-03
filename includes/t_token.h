@@ -41,22 +41,25 @@ typedef enum
 	TK_LESSGREAT,
 	TK_DLESSDASH,
 	TK_CLOBBER,
-	If = 21,
-	Then,
-	Else,
-	Elif,
-	Fi,
-	Do,
-	Done,
-	Case,
-	Esac,
-	While,
-	Until,
-	For,
-	Lbrace,
-	Rbrace,
-	Bang,
-	In
+	TK_IF = 21,
+	TK_THEN,
+	TK_ELSE,
+	TK_ELIF,
+	TK_FI,
+	TK_DO,
+	TK_DONE,
+	TK_CASE,
+	TK_ESAC,
+	TK_WHILE,
+	TK_UNTIL,
+	TK_FOR,
+	TK_LBRACE,
+	TK_RBRACE,
+	TK_BANG,
+	TK_LPAREN,
+	TK_RPAREN,
+	TK_IN,
+	$ = 666
 }	t_token_id;
 
 /*
@@ -69,7 +72,11 @@ typedef enum
 **	of a simple command.
 **	Delimtier is the character that caused the token to be delimited.
 */
-
+struct t_token_id_to_string
+{
+	t_token_id		id;
+	char		*string;
+};
 typedef struct		s_token
 {
 	char			*value;
@@ -97,4 +104,5 @@ typedef struct		s_token
 t_token				*create_token(char *value, int type, char delimiter);
 void				free_token(void *value);
 void				free_token_list(t_list *token_list);
+void				debug_token(t_token *token);
 #endif

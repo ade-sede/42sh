@@ -5,13 +5,22 @@ void	ft_simple_lst_add(t_list **first, t_list *new_node)
 {
 	if (new_node)
 	{
-		if (first == NULL || *first == NULL)
-			*first = new_node;
-		else
-		{
+		if (*first != NULL)
 			new_node->next = *first;
-			*first = new_node;
-		}
+		*first = new_node;
+	}
+}
+
+void	ft_genlst_add(void *first, void *new)
+{
+	t_gen_lst **first_cast = first;
+	t_gen_lst *new_cast = new;
+
+	if (new)
+	{
+		if (*first_cast != NULL)
+			new_cast->next = *first_cast;
+		*first_cast = new_cast;
 	}
 }
 

@@ -7,32 +7,10 @@
 #include "history.h"
 #include "line_editing.h"
 #include "lexer.h"
+#include "get_next_line.h"
 #include "parser.h"
-
-/*
-**	Receives an array containing the command name and its arguments, forwards
-**	this array to the appropriate function then frees it.
-*/
-
-void	exec(t_env *env, const char **argv, t_lst_head *head)
-{
-	size_t		index;
-
-	index = 0;
-	if (*argv != NULL)
-	{
-		if (!(exec_builtin(env, argv, head)))
-			fork_exec_bin(env, argv, head);
-	}
-	else
-		env->previous_exit = EXIT_FAILURE;
-	while (argv[index] != NULL)
-	{
-		free((void*)(argv[index]));
-		index++;
-	}
-	free(argv);
-}
+#include <stdio.h>
+#define LOCAL_BUFF_SIZE 4096
 
 void	init_main_loop(t_line *line, t_hist *hist)
 {
@@ -61,33 +39,19 @@ char	*line_editing_get_input(t_line *line, t_hist *hist,
 	return (edit_get_input());
 }
 
-/*static void	check_cur(void)
+char	*file_get_input(int stream)
 {
-	unsigned int	pos;
-	char			b[4];
+	char	*line;
+	char	*buff;
 
-	write(1,"\033[6n", 4);
-	read(0, b, 4);
-	if (b[3] != ';')
-		while (read(0, b, 1) == 1 && *b != ';')
-			;
-	pos = 0;
-	while (read(0, b, 1) == 1&& *b != 'R')
-		pos = pos * 10 + (unsigned int)(*b - '0');
-	if (pos != 1)
-	{
-		put_termcap("so");
-		put_termcap("mr");
-		ft_putchar('%');
-		put_termcap("so");
-		ft_putstr("\x1b[0m");
-		ft_putstr("\n");
-	}
-	
-}*/
+	line = NULL;
+	buff = ft_strdup("");
+	while (get_next_line(stream, &line))
+		buff = ft_strjoin3_free(buff, line, "\n", 6);
+	return (buff);
+}
 
-
-void	main_loop(t_env *env)
+void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt)
 {
 	char		*buff;
 
@@ -95,11 +59,17 @@ void	main_loop(t_env *env)
 	while (42)
 	{
 		load_prompt(env, singleton_line(), "PS1", "$> ");
-		buff = ft_strdup(line_editing_get_input(singleton_line(), \
-					singleton_hist(), &edit_set_signals_open));
-		if (!ft_str_is_clr(buff))
-			lex_and_parse(NULL, NULL, buff);
+		if (singleton_jc()->shell_is_interactive)
+			buff = ft_strdup(line_editing_get_input(singleton_line(), \
+						singleton_hist(), &edit_set_signals_open));
+		else if (c_opt)
+			buff = ft_strdup(buff_c_opt);
+		else
+			buff = file_get_input(stream);
+		if (!ft_strequ(buff, "\n"))
+			lex_and_parse(NULL, buff);
 		free(buff);
-		//check_cur();// todo
+		if (!singleton_jc()->shell_is_interactive)
+			exit (0);
 	}
 }

@@ -1,3 +1,4 @@
+#include "exec.h"
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -21,12 +22,12 @@ static t_redir	g_redir[] =
 	{-1, NULL}
 };
 
-void	*get_exec_redir_func(t_ast *child_node)
+void	*get_exec_redir_func(t_token_id id)
 {
 	size_t		i;
 
 	i = 0;
-	while (g_redir[i].f && g_redir[i].id != (int)child_node->token->id)
+	while (g_redir[i].f && g_redir[i].id != id)
 		i++;
 	return (g_redir[i].f);
 }
@@ -77,30 +78,4 @@ int		file_redir(int io_number, char *target, t_list **redir_stack, \
 	if (target_fd >= STDIN_FILENO)
 		push_dup(io_number, target_fd, FALSE, redir_stack);
 	return (1);
-}
-
-int		exec_redir(t_list *child_list, t_list **redir_stack)
-{
-	t_ast		*child_node;
-	int			io_number;
-	int			(*f)(int, char*, t_list**, t_token_id);
-	char		*target;
-	t_token_id	id;
-
-	io_number = -1;
-	while (child_list)
-	{
-		child_node = child_list->data;
-		if (child_node->token->id == TK_IO_NUMBER)
-			io_number = ft_atoi(child_node->token->value);
-		else if (TK_IS_REDIR(child_node->token->id))
-		{
-			f = get_exec_redir_func(child_node);
-			id = child_node->token->id;
-		}
-		else
-			target = child_node->token->value;
-		child_list = child_list->next;
-	}
-	return (f(io_number, target, redir_stack, id));
 }

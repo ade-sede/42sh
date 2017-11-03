@@ -26,6 +26,7 @@
 # ifndef RESET
 #  define RESET "\x1B[0m"
 # endif
+#include "t_ast.h"
 
 typedef struct				s_ternary_tree
 {
@@ -36,11 +37,19 @@ typedef struct				s_ternary_tree
 	struct s_ternary_tree	*down;
 }							t_ternary_tree;
 
+typedef struct				s_lst_func
+{
+	struct s_lst_func		*next;
+	char					*fname;
+	t_ast					*fct_body;
+}							t_lst_func;
+
 typedef struct				s_env
 {
 	char					**environ;
 	t_list					**hash_table;
 	t_list					*alias;
+	t_lst_func				*first_func;
 	t_list					*local;
 	t_list					*pos_par;
 	long					option;
