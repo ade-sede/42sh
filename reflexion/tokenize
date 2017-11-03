@@ -19,3 +19,19 @@ tokenize_exec_oriented(lex, state_stack)
 
 	get_token_id();
 }
+
+tokenize_le_oriented(lex, state_stack)
+{
+	size_t			start;
+	size_t			size;
+	size_t			end;
+	t_list			*curr_state;
+
+	struct s_token *token;
+
+	curr_sate = state_stack;
+	while (state_stack)
+	{
+		le_token_nested_tokens(lex, state_stack);
+	}
+}

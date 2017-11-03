@@ -41,4 +41,13 @@ enum
 #define _START 1
 #define _END 2
 #define _COUNT 3
-#define _NEST 4
+#define _DEPTH 4
+#define _NEST 5
+
+$'\netpgrp
+
+Subg pour gestion de hist expand :
+
+Idea 1) Garder un offset dans le lex, a appliquer a chaque operation qui s'effectue en se basant sur des index relatif a lex->line. Changer l'offset a chaque histo expand effectue
+
+Idea 2) Seul les index concernants la token qui contient l'histo expand ont besoin d'etre ajustes. -> l'offset est donc local au token et peut etre stocke dedans.

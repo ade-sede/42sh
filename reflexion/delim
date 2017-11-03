@@ -12,7 +12,8 @@ delim_token()
 	}
 }
 
-/* Quand un token dit "ferme" pop son etat (shift vers etat precedant), il doit
+/*
+Quand un token dit "ferme" pop son etat (shift vers etat precedant), il doit
 ** toujours laisse la tete de lecture sur l'input suivant. Sinon, on avance que
 ** quand on conserve l'etat ().
 ** Everything poped from the global stack of the lexer, must end up in reverse

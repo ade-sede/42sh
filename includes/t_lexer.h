@@ -1,50 +1,13 @@
 #ifndef T_LEXER_H
 # define T_LEXER_H
-# include <string.h>
-# include "list.h"
+# include "t_token.h"
 
 /*
-**	The lexer state indicates in wich context line[pos] is.
-**	Is it surrounded by dquotes ?
-**	Is it surrounded by quotes ?
-**	Is it after a backslash ?
-**	[...]
+**	State is a list which has int [3] has data. Each index of these 3 int holds data about the state of the current operation (_T_STATE -> current state of the automaton, _T_START -> where the current operation STARTED, _T_END -> 
 */
 
-typedef enum
+typedef struct	s_lexer
 {
-	DEFAULT,
-	WORD,
-	DQUOTED = 34,
-	QUOTED = 39,
-	BACKSLASH = 92,
-	OPERATOR,
-	EXPAND,
-	NEWLINE,
-	INPUT_END
-}	t_lexer_state;
-
-/*
-**	Line is the string we are tokenizing.
-**	Index represents our position on the string.
-**	stack->data should contain a t_token.
-*/
-
-typedef struct		s_lexer
-{
-	char			*line;
-	size_t			index;
-	size_t			token_start;
-	t_list			*stack;
-	int				reopen;
-	t_lexer_state	state;
-	int				last_id;
-	int				cmd_name_open;
-}					t_lexer;
-
-/*
-**	In file srcs/lexer/t_lexer.c
-*/
-
-t_lexer				init_lexer(const char *line);
+	t_list		*state;
+}				t_lexer;
 #endif

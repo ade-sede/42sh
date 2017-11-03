@@ -101,18 +101,7 @@ SRC_FILE = \
 	history/history_write.c \
 	history/load_history.c \
 	\
-	lexer/expand_alias.c \
-	lexer/expand_param.c \
-	lexer/expand_tild.c \
-	lexer/expand_word.c \
-	lexer/lexer.c \
-	lexer/match_expand.c \
-	lexer/match_operator.c \
-	lexer/match_token.c \
-	lexer/match_word.c \
-	lexer/t_lexer.c \
-	lexer/t_token.c \
-	lexer/lex_all.c \
+	lexer/get_token_list.c \
 	\
 	line_editing/conf_term.c \
 	line_editing/edit_reopen.c \
@@ -237,6 +226,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/parser
 	@/bin/mkdir -p $(OBJ_DIR)/failure
 	@/bin/mkdir -p $(OBJ_DIR)/signal
+	@/bin/mkdir -p $(OBJ_DIR)/new_lexer
 
 clean:
 	@make -C $(LIB_DIR) clean
