@@ -39,6 +39,22 @@ void	read_args(int ac, char **av, int *stream, char **buf, int *c_opt)
 	}
 }
 
+void	read_pointrc(t_env *env)
+{
+	char	*buff;
+	int		fd;
+
+	(void)env;
+	if ((fd = open("/Users/vcombey/.42shrc", O_RDONLY)) == -1)
+	{
+		perror("");
+		return ;
+	}
+	buff = file_get_input(fd);
+	lex_and_parse(NULL, buff);
+	free(buff);
+}
+
 int		main(int ac, char **av)
 {
 	extern const char	**environ;
@@ -58,6 +74,7 @@ int		main(int ac, char **av)
 		conf_term_in();
 	create_ternary_tree(env);
 	history_load(singleton_hist(), env);
+	read_pointrc(env);
 	main_loop(env, stream, buff_c_opt, c_opt);
 	env_free_env(env);
 	return (0);

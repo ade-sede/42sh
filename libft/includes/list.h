@@ -31,17 +31,26 @@ typedef struct	s_listint
 	struct s_listint	*next;
 }				t_listint;
 
+typedef struct	s_gen_lst
+{
+	struct s_gen_lst	*next;
+}				t_gen_lst;
+
 t_list		*ft_lst_pop(t_list **list);
+
 /*
 **	In file listint.c
 */
+
 int					ft_lstint_pop(t_listint **list);
 t_listint			*ft_lstint_new(int data);
 void				ft_lstint_add(t_listint **stack, int state);
+
 /*
 **	In file ft_lst_add.c
 */
 
+void				ft_genlst_add(void *first, void *new);
 void				ft_simple_lst_add(t_list **first, t_list *new_node);
 void				ft_double_lst_add(t_lst_head **head, t_list_d *new_node);
 
@@ -155,6 +164,7 @@ size_t				ft_lst_len(t_list *lst);
 /*
 **	in file ft_lst_iteri.c
 */
+
 void				ft_simple_lst_rev(t_list **lst);
 
 #endif

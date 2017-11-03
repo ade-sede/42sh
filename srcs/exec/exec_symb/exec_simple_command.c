@@ -73,14 +73,6 @@ char	*extract_word(t_ast *ast)
 	return (ft_strdup(ast->token->value));
 }
 
-/*
-**	simple_command   : cmd_prefix cmd_word cmd_suffix
-**	                 | cmd_prefix cmd_word
-**	                 | cmd_prefix
-**	                 | cmd_name cmd_suffix
-**	                 | cmd_name
-*/
-
 char	*get_cmd_name(t_ast	*ast)
 {
 	if (is_symb(ast->child[1], CMD_WORD))
@@ -102,11 +94,20 @@ int		count_words(t_ast *ast)
 	return (word);
 }
 
+/*
+**	simple_command   : cmd_prefix cmd_word cmd_suffix
+**	                 | cmd_prefix cmd_word
+**	                 | cmd_prefix
+**	                 | cmd_name cmd_suffix
+**	                 | cmd_name
+*/
+
 int		exec_simple_command(t_ast *ast)
 {
 	char	**av;
 	t_list	*redirect_list = NULL;
 	t_ast	*cmd_suffix = NULL;
+	t_ast	*fct_body = NULL;
 	int		nb_word;
 
 	av = ft_memalloc(sizeof(char *) * 4096);
@@ -117,7 +118,6 @@ int		exec_simple_command(t_ast *ast)
 
 	av[0] = get_cmd_name(ast);
 
-//	printf("%s\n", av[0]);
 	if (is_symb(ast->child[1], CMD_SUFFIX))
 		cmd_suffix = ast->child[1];
 	if (is_symb(ast->child[2], CMD_SUFFIX))
@@ -129,9 +129,13 @@ int		exec_simple_command(t_ast *ast)
 		exec_cmd_suffix(cmd_suffix, &redirect_list, av + nb_word);
 	}
 	exec_dup(redirect_list);
+	
+	if ((fct_body = get_function(singleton_env(), av[0]))) // si cmd name est le nom d une fct -> exec func
+		return (exec_function(fct_body, av));
+
 	if (get_exec_builtin(av[0]))
 		return (exec_builtin(singleton_env(), (const char **)av));
 	exec_bin(singleton_env(), (const char **)av);
 	close_dup(redirect_list);
-	return (0);
+	return (EXIT_SUCCESS);
 }

@@ -172,6 +172,7 @@ SRC_FILE = \
 	exec/exec_symb/exec_while_clause.c \
 	exec/debug_symbol.c \
 	exec/debug_token.c \
+	exec/exec_function.c \
 	\
 	job_control/job_background.c \
 	job_control/job_continue.c \

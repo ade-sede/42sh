@@ -113,7 +113,9 @@ int			lex_id_word(t_lexer *lex, t_token *token, t_token_id *id)
 			}
 		}
 	}
-	else
+	else if (lex->cmd_name_open)
 		*id = TK_ASSIGNMENT_WORD;
+	else
+		*id = TK_WORD;
 	return (1);
 }

@@ -1711,6 +1711,7 @@ int		get_action(t_token *token, int state)
 	int		col = 0;
 	int		line;
 
+	printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , token->value, token->id);
 	while (col < nb_col && token_table[col] != token->id)
 		col++;
 	if (col == nb_col && token->id != 42)

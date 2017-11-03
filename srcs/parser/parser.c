@@ -66,10 +66,10 @@ int		parse(t_parser *parser, t_ast **ast, t_list *token_list)
 		if (action >= FIRST_REDUCE_RULE)
 		{
 
-			/*
-**				if (tmp->data)
-**					printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)tmp->data)->value, ((t_token *)tmp->data)->id);
-*/
+			
+				if (tmp->data)
+					printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)tmp->data)->value, ((t_token *)tmp->data)->id);
+
 			reduce(&parser->state_stack, &parser->ast_stack, action - FIRST_REDUCE_RULE);
 			parser->state = get_goto(parser->state_stack, action - FIRST_REDUCE_RULE);
 			if (parser->state == -1)

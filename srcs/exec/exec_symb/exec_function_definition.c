@@ -2,12 +2,20 @@
 
 /*
 ** function_definition : fname '(' ')' linebreak function_body
-**                  ;
-** function_body    : compound_command                
-**                  | compound_command redirect_list 
 */
 
-int exec_function_definition(t_ast *ast) {
-	(void)ast;
-	return (1);
+t_lst_func	*func_lst_new(t_ast *fct_body, char *fname)
+{
+	t_lst_func	*new;
+	
+	new = ft_memalloc(sizeof(t_lst_func));
+	new->fct_body = fct_body;
+	new->fname = fname;
+	return (new);
+}
+
+int exec_function_definition(t_ast *ast)
+{
+	ft_genlst_add(&singleton_env()->first_func, func_lst_new(ast->child[4], ast->child[0]->child[0]->token->value));
+	return (EXIT_SUCCESS);
 }
