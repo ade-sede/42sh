@@ -12,7 +12,7 @@ int		builtin_fg(t_env *env, const char **argv)
 	(void)env;
 	(void)argv;
 	jc = singleton_jc();
-	if(!(j = get_last_job(jc->first_job)))
+	if(!(j = ft_genlst_last(jc->first_job)))
 		return (investigate_error(1, NULL, "fg: no current job", EXIT_FAILURE));
 	continue_job(j, 1);
 	return (EXIT_SUCCESS);

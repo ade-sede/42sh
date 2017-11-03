@@ -57,36 +57,6 @@ t_process	*process_new(t_ast *command)
 	return (new);
 }
 
-void	job_add(t_job *new, t_job **first_job)
-{
-	new->next = *first_job;
-	*first_job = new;
-}
-
-t_job	*get_last_job(t_job *j)
-{
-	while (j && j->next)
-		j = j->next;
-	return (j);
-}
-
-void	job_pushback(t_job *new, t_job **first_job)
-{
-	t_job	*j;
-
-	if (!*first_job)
-		return (job_add(new, first_job));
-	j = *first_job;
-	while (j && j->next)
-		j = j->next;
-	j->next = new;
-}
-void	process_add(t_process *new, t_process **first_process)
-{
-	new->next = *first_process;
-	*first_process = new;
-}
-
 void	job_free(t_job *job)
 {
 	t_process	*process;

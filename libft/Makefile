@@ -119,9 +119,16 @@ SRC = \
 	str/ft_strtrunc.c \
 	str/ft_tolower.c \
 	str/ft_toupper.c \
+	str/ft_strpush.c \
+	str/ft_strspush.c \
 	system/ft_is_executable.c \
 	system/size_term.c \
 	system/put_termcap.c \
+	parr/ft_parrlen.c \
+	parr/ft_parrnew.c \
+	parr/ft_parrpush.c \
+	parr/ft_strarrstrn.c \
+
 
 NAME ?= libft.a
 
@@ -174,6 +181,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/mem
 	@mkdir -p $(OBJ_DIR)/str
 	@mkdir -p $(OBJ_DIR)/system
+	@mkdir -p $(OBJ_DIR)/parr
 
 clean:
 	@printf "$(COLOR_RED)Removing object files ...$(COLOR_NOCOLOR)\n"

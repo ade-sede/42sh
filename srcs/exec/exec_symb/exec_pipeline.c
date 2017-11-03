@@ -46,28 +46,26 @@ t_process	*fill_process(t_ast *ast, t_process *process)
 void	fill_job(t_ast *pipe_sequence, t_process **first_process)
 {
 	if (pipe_sequence->child[0] && !pipe_sequence->child[3])
-		return (process_add(fill_process(pipe_sequence->child[0],
-				process_new(pipe_sequence->child[0])), first_process));
+		return (ft_genlst_add(first_process, fill_process(pipe_sequence->child[0], process_new(pipe_sequence->child[0]))));
 	if (pipe_sequence->child[0] && pipe_sequence->child[3])
 	{
-		process_add(fill_process(pipe_sequence->child[3],
-				process_new(pipe_sequence->child[3])), first_process);
+		ft_genlst_add(first_process, fill_process(pipe_sequence->child[3], process_new(pipe_sequence->child[3])));
 		fill_job(pipe_sequence->child[0], first_process);
 	}
 }
 
-/*
-**	void	debug_process(t_process *first_process)
-**	{
-**			printf("----\n");
-**		while (first_process)
-**		{
-**			debug_symbol(first_process->command);
-**			first_process = first_process->next;
-**		}
-**			printf("----\n");
-**	}
-*/
+
+void	debug_process(t_process *first_process)
+{
+		printf("----\n");
+	while (first_process)
+	{
+		debug_symbol(first_process->command);
+		first_process = first_process->next;
+	}
+		printf("----\n");
+}
+
 
 int exec_pipeline(t_ast *ast)
 {
@@ -85,8 +83,9 @@ int exec_pipeline(t_ast *ast)
 	{
 		new_job = job_new();
 		fill_job(pipe_sequence, &first_process);
+//		debug_process(first_process);
 		new_job->first_process = first_process;
-		job_pushback(new_job, &singleton_jc()->first_job);
+		ft_genlst_pushback(&singleton_jc()->first_job, new_job);
 		launch_job(singleton_jc(), new_job, 1);
 		exit_status = new_job->exit_status;
 	}

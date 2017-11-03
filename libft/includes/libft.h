@@ -111,7 +111,7 @@ int					ft_is_executable(char *dir, char *file);
 void				ft_strpush(char **str, char c);
 int					ft_strarrstrn(char **array, char *str, unsigned int n);
 unsigned int		ft_parrlen(void **array);
-void				ft_parrpush(void ***tab, void *elem);
+void				ft_parrpush(void ***tablo, void *elem);
 void				**ft_parrnew(void);
 void	ft_strspush(char **str, char *push);
 

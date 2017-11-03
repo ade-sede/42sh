@@ -124,7 +124,7 @@ int					builtin_read(t_env *env, const char **argv)
 	edit_line_init(singleton_line(), &edit_set_signals_reopen);
 	line->read = options;
 	values = edit_get_input();
-	conf_term_normal();
+	conf_term_canonical();
 	split = split_values(values, options);
 	//free(values);
 	assign_values((char**)argv, split, env);
