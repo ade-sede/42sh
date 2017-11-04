@@ -16,7 +16,7 @@ char	*read_git_status(int fd, size_t *len, char *git_status)
 		ft_strdel(&line);
 	}
 	else
-		git_status = ft_strjoin_free(git_status, "\e[38;5;83m ✓ \e[0m", 2);
+		git_status = ft_strjoin_free(git_status, "\e[38m ✓ \e[0m", 2);
 	*len += 3;
 	while (get_next_line(fd, &line))
 		free(line);
