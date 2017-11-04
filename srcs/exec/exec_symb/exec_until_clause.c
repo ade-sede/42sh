@@ -1,7 +1,12 @@
 #include "exec.h"
 
-int exec_until_clause(t_ast *ast)
+/*
+** until_clause     : Until compound_list do_group
+*/
+
+int exec_until_clause(t_ast *ast) 
 {
-	(void)ast;
-	return (42);
+	while (exec(ast->child[1]) == EXIT_FAILURE)
+		exec(ast->child[2]);
+	return (EXIT_SUCCESS);
 }
