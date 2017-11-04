@@ -145,6 +145,7 @@ SRC_FILE = \
 	exec/redir_utils.c \
 	exec/exec_utils.c \
 	exec/exec_io_redirect.c \
+	exec/exec_redirect_list.c \
 	exec/exec_bin.c \
  \
 	exec/exec_symb/exec.c \

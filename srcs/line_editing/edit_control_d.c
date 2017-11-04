@@ -1,4 +1,5 @@
 #include "line_editing.h"
+#include "history.h"
 
 /*
 **	When CTRL-D is read, if the line is empty :
@@ -12,6 +13,7 @@ int		control_d(t_line *line)
 {
 	if (line->len == 0)
 	{
+		history_write_to_histfile();
 		ft_putchar('\n');
 		exit(0);
 	}

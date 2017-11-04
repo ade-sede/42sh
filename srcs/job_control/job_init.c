@@ -10,7 +10,7 @@ void	init_job_control(t_job_control *jc)
 
 	if (jc->shell_is_interactive)
 	{
-		printf("shell is interactive\n");
+//		printf("shell is interactive\n");
 		while (tcgetpgrp(jc->shell_terminal) != (jc->shell_pgid = getpgrp()))
 		{
 			printf("kill ourself\n");

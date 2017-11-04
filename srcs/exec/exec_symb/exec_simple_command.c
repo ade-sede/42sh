@@ -47,7 +47,7 @@ void	exec_assignment_word(t_ast *ast)
 	add_to_local(&singleton_env()->local, ft_strdup(ast->token->value));
 }
 
-void	exec_cmd_prefix(t_ast	*ast, t_list **redirect_list)
+void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
 {
 	t_ast	*assignement_word = NULL;
 	t_ast	*io_redirect = NULL;

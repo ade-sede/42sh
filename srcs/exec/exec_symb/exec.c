@@ -37,6 +37,6 @@ int		exec(t_ast	*ast)
 			return (g_exec_func[i].f(ast));
 		i++;
 	}
-	printf("error : symbol not recognized by exec function");
+	printf("error : symbol not recognized by exec function\n");
 	return (1);
 }
