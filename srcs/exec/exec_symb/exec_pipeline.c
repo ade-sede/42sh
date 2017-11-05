@@ -92,6 +92,6 @@ int exec_pipeline(t_ast *ast)
 	else
 		exit_status = exec(pipe_sequence);
 	if (is_token(ast->child[0], TK_BANG))
-		return (exit_status > 0 ? EXIT_SUCCESS : exit_status);
+		return (exit_status > 0 ? EXIT_SUCCESS : EXIT_FAILURE);
 	return (exit_status);
 }
