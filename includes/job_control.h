@@ -43,6 +43,7 @@ typedef struct	s_job
 typedef struct	s_job_control
 {
 	t_job	*first_job;
+	int		background;
 	pid_t	shell_pgid;
 	struct	termios shell_tmodes;
 	int		shell_terminal;

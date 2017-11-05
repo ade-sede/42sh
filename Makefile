@@ -1,5 +1,3 @@
-#fields ************************** DEFINING COLORS ************************************** #
-
 COLOR_CLEAR		= \033[2K
 COLOR_UP		= \033[A
 COLOR_NOCOLOR	= \033[0m
@@ -162,7 +160,6 @@ SRC_FILE = \
 	exec/exec_symb/exec_function_body.c \
 	exec/exec_symb/exec_function_definition.c \
 	exec/exec_symb/exec_if_clause.c \
-	exec/exec_symb/exec_list.c \
 	exec/exec_symb/exec_pipe_sequence.c \
 	exec/exec_symb/exec_pipeline.c \
 	exec/exec_symb/exec_program.c \

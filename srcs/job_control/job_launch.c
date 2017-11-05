@@ -21,7 +21,7 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		if (pgid == 0)
 			pgid = pid;
 		setpgid(pid, pgid);
-		if (!in_a_fork)
+		if (!in_a_fork && foreground && !jc->background)
 		{
 		//	fprintf(stderr, "put controling terminal");
 			if (tcsetpgrp(jc->shell_terminal, pgid) == -1)
@@ -29,6 +29,8 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 			if (foreground)
 				signal(SIGINT, quit_job);
 		}
+		if (!foreground)
+			jc->background = 1;
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGTSTP, SIG_DFL);
 		signal(SIGTTIN, SIG_DFL);
@@ -128,7 +130,7 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 		infile = mypipe[0];
 		p = p->next;
 	}
-	if (!jc->shell_is_interactive)
+	if (!jc->shell_is_interactive || jc->background)
 		wait_for_job(jc, j);
 	else if (foreground)
 		put_job_in_foreground(jc, j, 0, in_a_fork);
