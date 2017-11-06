@@ -16,6 +16,22 @@ void	ft_simple_lst_remove(t_list **first, void (*f)(void*))
 	*first = NULL;
 }
 
+void	ft_genlst_remove(void *first, void (*f)(void*))
+{
+	t_gen_lst		**first_cast = first;
+	t_gen_lst		*node;
+	t_gen_lst		*tmp_next;
+
+	node = *first_cast;
+	while (node)
+	{
+		tmp_next = node->next;
+		ft_genlst_del_one(first_cast, node, (f));
+		node = tmp_next;
+	}
+	*first_cast = NULL;
+}
+
 void	ft_double_lst_remove(t_lst_head **head, void (*f)(void*))
 {
 	t_list_d	*curr;

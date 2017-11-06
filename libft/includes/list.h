@@ -75,6 +75,7 @@ void				ft_double_lst_del_one(t_lst_head **head, \
 
 void				ft_simple_lst_del_one(t_list **first, \
 		t_list *node, void(*f)(void*));
+void	ft_genlst_del_one(void *first, void *node, void (*f)(void*));
 
 /*
 **	In file ft_lst_dup.c
@@ -132,6 +133,7 @@ void				ft_double_lst_pushback(t_lst_head **head, \
 void				ft_simple_lst_remove(t_list	**first, void (*f)(void*));
 void				ft_double_lst_remove(t_lst_head **head, void (*f)(void*));
 void				ft_remove_head(t_lst_head **head, void (*f)(void*));
+void				ft_genlst_remove(void *first, void (*f)(void*));
 
 /*
 **	In file ft_lst_return_if.c

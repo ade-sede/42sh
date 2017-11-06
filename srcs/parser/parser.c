@@ -22,7 +22,7 @@ void	debug_ast_stack(t_list *ast_stack)
 	printf("\n");
 }
 
-int		check_reopen(t_list *ast_stack, t_list *token)
+int		check_reopen(t_ast_lst *ast_stack, t_list *token)
 {
 	(void)ast_stack;
 	int		reopen;
@@ -33,12 +33,29 @@ int		check_reopen(t_list *ast_stack, t_list *token)
 	return (PARSER_ERROR);
 }
 
+t_state_lst		*state_lst_new(int n)
+{
+	t_state_lst *new;
+
+	new = ft_memalloc(sizeof(t_state_lst));
+	new->state = n;
+	return (new);
+}
+
+t_ast_lst		*ast_lst_new(t_ast *ast)
+{
+	t_ast_lst *new;
+
+	new = ft_memalloc(sizeof(t_ast_lst));
+	new->ast = ast;
+	return (new);
+}
+
 void	init_parser(t_parser *parser)
 {
-	parser->state_stack = NULL;
 	parser->state = 0;
 	parser->ast_stack = NULL;
-	parser->state_stack = ft_lstint_new(0);;
+	parser->state_stack = state_lst_new(0);;
 }
 
 int		parse(t_parser *parser, t_ast **ast, t_list *token_list)
@@ -60,18 +77,15 @@ int		parse(t_parser *parser, t_ast **ast, t_list *token_list)
 		{
 			if (parser->ast_stack->next)
 				printf("error\n");
-			*ast = parser->ast_stack->data;
+			*ast = parser->ast_stack->ast;
 			return (PARSER_SUCCESS);
 		}
 		if (action >= FIRST_REDUCE_RULE)
 		{
-
-			
 			/*
 **					if (tmp->data)
 **						printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)tmp->data)->value, ((t_token *)tmp->data)->id);
 */
-
 			reduce(&parser->state_stack, &parser->ast_stack, action - FIRST_REDUCE_RULE);
 			parser->state = get_goto(parser->state_stack, action - FIRST_REDUCE_RULE);
 			if (parser->state == -1)
@@ -80,11 +94,11 @@ int		parse(t_parser *parser, t_ast **ast, t_list *token_list)
 		else
 		{
 		//	printf("s%d\n", action);
-			ft_simple_lst_add(&parser->ast_stack, ft_simple_lst_create(new_ast(tmp->data, -1)));
+			ft_genlst_add(&parser->ast_stack, ft_simple_lst_create(new_ast(tmp->data, -1)));
 			tmp = tmp->next;
 			parser->state = action;
 		}
-		ft_lstint_add(&parser->state_stack, parser->state);
+		ft_genlst_add(&parser->state_stack, new_state_lst(parser->state));
 		//debug_pstate(parser->state_stack);
 	}
 	return (0);

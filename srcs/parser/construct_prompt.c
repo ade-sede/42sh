@@ -32,19 +32,19 @@ char	*token_to_prompt(int token_id)
 	return (NULL);
 }
 
-char	*parser_construct_prompt(t_list	*ast_stack)
+char	*parser_construct_prompt(t_ast_lst	*ast_stack)
 {
 	t_token_id	token_id;
 	char	*prompt;
 	char	*token_prompt;
-	t_list	*tmp;
+	t_ast_lst	*tmp;
 
 	prompt = NULL;
 	for (tmp = ast_stack; tmp; tmp = tmp->next)
 	{
 		token_id = -1;
-		if (((t_ast *)tmp->data)->token)
-			token_id = ((t_ast *)tmp->data)->token->id;
+		if (tmp->ast->token)
+			token_id = tmp->ast->token->id;
 		if ((token_prompt = token_to_prompt(token_id)))
 		{
 			if (!prompt)

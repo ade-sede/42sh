@@ -54,3 +54,21 @@ void	ast_print(t_ast *root, void (printer) (void *))
 		return ;
 	aux(root, 0,  COLS / 2, printer);
 }
+
+t_state_lst	*new_state_lst(int n)
+{
+	t_state_lst *new;
+
+	new = ft_memalloc(sizeof(t_state_lst));
+	new->state = n;
+	return (new);
+}
+
+t_ast_lst	*new_ast_lst(t_ast *ast)
+{
+	t_ast_lst *new;
+
+	new = ft_memalloc(sizeof(t_ast_lst));
+	new->ast = ast;
+	return (new);
+}
