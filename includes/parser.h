@@ -2392,6 +2392,7 @@ typedef struct	s_ast_lst
 }				t_ast_lst;
 
 t_ast_lst	*new_ast_lst(t_ast *ast);
+void	free_ast_node(void *ast_node);
 
 typedef struct	s_parser
 {

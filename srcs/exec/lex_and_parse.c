@@ -16,11 +16,8 @@ void	exec_main_loop(t_ast *ast)
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_canonical();
 	singleton_env()->previous_exit = exec(ast);
-	//ft_strdel((char **)&lex->line);
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_non_canonical();
-	//ast = flush_tree(ast);
-	//ft_simple_lst_remove(&lex->stack, free_token);
 }
 
 void	remove_lexer(t_lexer *lex)
@@ -32,6 +29,8 @@ void	remove_lexer(t_lexer *lex)
 void	remove_parser(t_parser *parser)
 {
 	(void)parser;
+	ft_genlst_remove(&parser->state_stack, NULL);
+	ft_genlst_remove(&parser->ast_stack, free_ast_node);
 	//free_ast(parser->ast);
 }
 

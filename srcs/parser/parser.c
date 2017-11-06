@@ -53,6 +53,7 @@ t_ast_lst		*ast_lst_new(t_ast *ast)
 
 void	init_parser(t_parser *parser)
 {
+	ft_bzero(parser, sizeof(parser));
 	parser->state = 0;
 	parser->ast_stack = NULL;
 	parser->state_stack = state_lst_new(0);;
