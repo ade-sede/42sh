@@ -37,12 +37,17 @@
 **	but the parser has no uses for them, so they should be discarded here.
 */
 
+
+#include <stdio.h>
 int		get_token_list(t_lexer *lex, t_list **token_list, t_list *alias_list)
 {
 	t_token	*token;
 	t_list	*node;
+	t_list	*reversed_node;
 
-	while ((token = get_token(lex)) != NULL)
+	(void)alias_list;
+	dprintf(2, "%d\n", lex->line[lex->pos]);
+	while (lex->line[lex->pos] && (token = get_token(lex)) != NULL)
 	{
 		/* If token is a whitespace or a comment, discard it. Otherwise proceed to concatenation */
 
@@ -51,6 +56,8 @@ int		get_token_list(t_lexer *lex, t_list **token_list, t_list *alias_list)
 		/* 	node = ft_simple_lst_create(token); */
 		/* else */
 		node = ft_simple_lst_create(token);
+		reversed_node = ft_simple_lst_create(token);
+		ft_simple_lst_add(&lex->reversed_list, reversed_node);
 		ft_simple_lst_pushback(token_list, node);
 	}
 	return (((int*)lex->state->data)[_T_STATE]);

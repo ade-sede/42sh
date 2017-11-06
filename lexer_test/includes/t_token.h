@@ -16,6 +16,8 @@
 **	>= 20'.
 */
 
+# define OPERATOR_OFFSET 5
+# define RESERVED_WORDS_OFFSET 21
 enum
 {
 	TK_WORD,
@@ -23,7 +25,7 @@ enum
 	TK_NAME,
 	TK_NEWLINE,
 	TK_IO_NUMBER,
-	TK_LESS = 5,
+	TK_LESS = OPERATOR_OFFSET,
 	TK_HERE,
 	TK_GREAT,
 	TK_SEMI,
@@ -39,7 +41,7 @@ enum
 	TK_LESSGREAT,
 	TK_DLESSDASH,
 	TK_CLOBBER,
-	TK_IF = 21,
+	TK_IF = RESERVED_WORDS_OFFSET,
 	TK_THEN,
 	TK_ELSE,
 	TK_ELIF,
@@ -64,6 +66,7 @@ enum
 #define _T_START 1
 #define _T_END 2
 #define _T_COUNT 3
+#define _T_NEST 4
 
 typedef struct	s_token
 {
@@ -73,3 +76,7 @@ typedef struct	s_token
 	int					id;
 }				t_token;
 #endif
+
+
+t_token		*create_token(const char *source, ssize_t *info);
+void		free_token(void *value);

@@ -5,6 +5,23 @@
 # include <string.h>
 # include "list.h"
 
+
+/*
+**	Convenient debug data structure.
+*/
+
+struct s_debug_token_id
+{
+	int		id;
+	char	*name;
+};
+
+struct s_debug_token_state
+{
+	int		state;
+	char	*name;
+};
+
 /*
 **	Struct used to get action depending on state
 */
@@ -12,12 +29,18 @@
 struct	s_lex_action
 {
 	ssize_t	state;
-	void	(*func)(t_lexer *lex, ssize_t **state_info);
+	int		(*func)(t_lexer *lex, ssize_t **state_info);
 };
 
 /*
-**	ASSOCIATED DIRECTORY : lexer
+**	Macro to check if a character is a potential operator.
 */
+
+# ifndef IS_OPERATOR
+#  define _L_IS_OP1(c) (c == '<' || c == '>' || c == ';')
+#  define _L_IS_OP2(c) (c == '&' || c == '|')
+#  define CHAR_IS_OPERATOR(c) (_L_IS_OP1(c) || _L_IS_OP2(c))
+# endif
 
 /*
 **	In get_token.c
@@ -38,15 +61,31 @@ int		get_token_list(t_lexer *lex, t_list **token_list, t_list *aliast_list);
 int		change_state(t_lexer *lex, ssize_t new_state);
 int		pop_state(t_lexer *lex, ssize_t	**new_info);
 int		push_state(t_lexer *lex, ssize_t new_state);
-int		consume_input(t_lexer *lex, ssize_t *info);
+int		consume_input(t_lexer *lex);
 ssize_t	*create_state_info(void);
 
 /*
 **	REFERENCING ACTIONS
 */
 
-void	lex_action_default(t_lexer *lex, ssize_t **state_info);
-void	lex_action_word(t_lexer *lex, ssize_t **state_info);
-void	lex_action_whitespace(t_lexer *lex, ssize_t **state_info);
+int		lex_action_default(t_lexer *lex, ssize_t **state_info);
+int		lex_action_word(t_lexer *lex, ssize_t **state_info);
+int		lex_action_whitespace(t_lexer *lex, ssize_t **state_info);
+int		lex_action_dquotes(t_lexer *lex, ssize_t **state_info);
+int		lex_action_quotes(t_lexer *lex, ssize_t **state_info);
+int		lex_action_bs(t_lexer *lex, ssize_t **state_info);
+int		lex_action_operator(t_lexer *lex, ssize_t **state_info);
+int		lex_action_newline(t_lexer *lex, ssize_t **state_info);
+int		lex_action_comment(t_lexer *lex, ssize_t **state_info);
+int		lex_action_param_exp(t_lexer *lex, ssize_t **state_info);
+int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info);
 
+
+/*
+**	REFERENCING IDS
+*/
+
+
+int		id_operator(const char *value);
+int		id_reserved_words(const char *value);
 #endif

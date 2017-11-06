@@ -29,10 +29,15 @@ struct s_lex_action g_lex_action[] =
 **	Sorry, just wanted to try it once ...
 */
 
+
+#include <stdio.h>
+
 void	(*get_action(ssize_t state))(t_lexer *, ssize_t **)
 {
+	dprintf(2, "%ld\n", state);
 	size_t	i;
 
+	i = 0;
 	while (g_lex_action[i].state != state)
 		++i;
 	return (g_lex_action[i].func);
@@ -43,6 +48,12 @@ void	(*get_action(ssize_t state))(t_lexer *, ssize_t **)
 **	and the very last one is kept and used. If unnatural stop occurs, the last
 **	value is not used, and must be freed manually.
 */
+
+int		get_token_id(t_lexer *lex, t_token *token)
+{
+	(void)lex, (void)token;
+	return (TK_WORD);
+}
 
 t_token	*get_token(t_lexer *lex)
 {
@@ -60,8 +71,8 @@ t_token	*get_token(t_lexer *lex)
 	/* Check for errors */
 	if (((ssize_t*)lex->state->data)[_T_STATE] == DEFAULT) /* If everything is ok, TOKENIZE */
 	{
-		//token = create_token();
-		//id_token(&token);
+		token = create_token(lex->line, state_info);
+		token->id = get_token_id(lex, token);
 	}
 	else
 		free(state_info);

@@ -16,7 +16,7 @@ t_token		*create_token(const char *source, ssize_t *info)
 	token->value = ft_strsub(source, info[_T_START], size);
 	token->delim = source[info[_T_END] + 1];
 	token->state_info = info;
-	token->id = -1;
+	token->id = 0;
 	return (token);
 }
 

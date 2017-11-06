@@ -72,3 +72,10 @@ typedef struct	s_token
 	int					id;
 }				t_token;
 #endif
+
+/*
+**	In file t_token.c
+*/
+
+t_token		*create_token(const char *source, ssize_t *info);
+void		free_token(void *value);

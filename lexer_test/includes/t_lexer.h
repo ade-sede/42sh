@@ -44,7 +44,8 @@ enum
 	DQUOTES,
 	QUOTES,
 	BS,
-	HIST_EXP
+	HIST_EXP,
+	NEWLINE,
 };
 
 typedef struct	s_lexer
@@ -54,6 +55,7 @@ typedef struct	s_lexer
 	char		*line;
 	size_t		pos;
 	int			cmd_name_open;
+	t_list		*reversed_list;
 }				t_lexer;
 
 

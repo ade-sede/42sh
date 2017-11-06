@@ -1,10 +1,8 @@
 #include "t_lexer.h"
 #include "t_token.h"
 #include "lexer.h"
-#include "libft.h"
-
-/* static size_t	escaped_size(char *input) */
-/* { */
+#include "libft.h" 
+/* static size_t	escaped_size(char *input) */ /* { */
 /* 	size_t	i; */
 /* 	size_t	size; */
 
@@ -57,9 +55,10 @@ int		init_lexer(t_lexer *lex, const char *line)
 	ft_memset(lex, 0, sizeof(t_lexer));
 	lex->line = ft_strdup(line);
 	lex->pos = 0;
-	lex->state_list = NULL;
 	lex->state = NULL;
+	lex->state_list = NULL;
 	lex->cmd_name_open = 1;
+	lex->reversed_list = NULL;
 	push_state(lex, DEFAULT);
 	return (1);
 }

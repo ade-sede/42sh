@@ -4,19 +4,8 @@
 #include <stdio.h>
 #include <readline/readline.h>
 
-struct s_debug_token_id
-{
-	int		id;
-	char	*name;
-};
-
-struct s_debug_token_state
-{
-	int		state;
-	char	*name;
-};
-
-struct s_debug_token_state g_debug_token_state[]=
+#ifdef LEXER_DEBUG
+static struct s_debug_token_state g_debug_token_state[]=
 {
 	{DEFAULT,"DEFAULT"},
 	{WORD,"WORD"},
@@ -31,10 +20,11 @@ struct s_debug_token_state g_debug_token_state[]=
 	{QUOTES,"QUOTES"},
 	{BS,"BS"},
 	{HIST_EXP,"HIST_EXP"},
+	{NEWLINE, "NEWLINE"},
 	{-1, NULL}
 };
 
-struct s_debug_token_id g_debug_token_id[] =
+static struct s_debug_token_id g_debug_token_id[] =
 {
 	{TK_WORD, "TK_WORD"  },
 	{TK_ASSIGNMENT_WORD, "TK_ASSIGNMENT_WORD" },
@@ -83,17 +73,18 @@ static char	*get_state(int state)
 {
 	int	i = 0;
 
-	while  (g_debug_token_state->state != state && g_debug_token_state->state != -1)
+	while  (g_debug_token_state[i].state != state)
 		++i;
-	return (g_debug_token_state->name);
+	return (g_debug_token_state[i].name);
 }
 
 static char	*get_id(int id)
 {
 	int	i = 0;
-	while  (g_debug_token_id->id != id && g_debug_token_id->id != -1)
+
+	while  (g_debug_token_id[i].id != id)
 		++i;
-	return (g_debug_token_id->name);
+	return (g_debug_token_id[i].name);
 }
 
 static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size, size_t *state_size, size_t *id_size, size_t *end_size, size_t *start_size)
@@ -122,7 +113,7 @@ static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size
 			*state_size = token_state_size;
 
 		/*  Id size */
-		token_id_size = ft_strlen(get_id(token->state_info[_T_STATE]));
+		token_id_size = ft_strlen(get_id(token->id));
 		if (token_id_size > *id_size)
 			*id_size = token_id_size;
 
@@ -154,6 +145,9 @@ static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size
 
 static	int	debug_token_list(t_list *token_list)
 {
+	t_token	*token;
+	char	*end_str;
+	char	*start_str;
 	size_t	value_size = 0;
 	size_t	id_size = 0;
 	size_t	state_size = 0;
@@ -166,59 +160,111 @@ static	int	debug_token_list(t_list *token_list)
 	while (token_list)
 	{
 		/* Print bar */
-		printf("%s", i == 1 ? "\u250c" : "\u252c");
-		for (size_t i; i != value_size + 2; i++)
+		printf("%s", i == 1 ? "\u250c" : "\u251c");
+		for (size_t i = 0; i != value_size + 2; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u252c" : "\u253c");
-		for (size_t i; i != id_size + 2; i++)
+		for (size_t i = 0; i != id_size + 2; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u252c" : "\u253c");
-		for (size_t i; i != start_size + 2; i++)
+		for (size_t i = 0; i != start_size + 2; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u252c" : "\u253c");
-		for (size_t i; i != end_size + 2; i++)
+		for (size_t i = 0; i != end_size + 2; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u252c" : "\u253c");
-		for (size_t i; i != state_size + 2; i++)
+		for (size_t i = 0; i != state_size + 2; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u2510" : "\u2524");
+		printf("\n");
 
 
 		/* Print token */
+
+		token = token_list->data;
+		end_str = ft_itoa_base(token->state_info[_T_END], 10);
+		start_str = ft_itoa_base(token->state_info[_T_START], 10);
+
+		printf("%s", "\u2502");
+		printf(" %s", token->value);
+		for (int i = value_size - ft_strlen(token->value) + 1; i; --i)
+			printf(" ");
+		printf("%s", "\u2502");
+		printf(" %s", get_id(token->id));
+		for (int i = id_size - ft_strlen(get_id(token->id)) + 1; i; --i)
+			printf(" ");
+		printf("%s", "\u2502");
+		printf(" %s", start_str);
+		for (int i = start_size - ft_strlen(start_str) + 1; i; --i)
+			printf(" ");
+		printf("%s", "\u2502");
+		printf(" %s", end_str);
+		for (int i = end_size - ft_strlen(end_str) + 1; i; --i)
+			printf(" ");
+		printf("%s", "\u2502");
+		printf(" %s", get_state(token->state_info[_T_STATE]));
+		for (int i = state_size - ft_strlen(get_state(token->state_info[_T_STATE])) + 1; i; --i)
+			printf(" ");
+		printf("%s", "\u2502");
+		printf("\n");
+
+		free(end_str);
+		free(start_str);
+
 		i++;
+		token_list = token_list->next;
 	}
 	/* Print bot line */
 	printf("%s", "\u2514");
-	for (size_t i; i != value_size + 2; i++)
+	for (size_t i = 0; i != value_size + 2; i++)
 		printf("%s", "\u2500");
-	printf("%s\n", "\u2534");
-	for (size_t i; i != id_size + 2; i++)
+	printf("%s", "\u2534");
+	for (size_t i = 0; i != id_size + 2; i++)
 		printf("%s", "\u2500");
-	printf("%s\n", "\u2534");
-	for (size_t i; i != start_size + 2; i++)
+	printf("%s", "\u2534");
+	for (size_t i = 0; i != start_size + 2; i++)
 		printf("%s", "\u2500");
-	printf("%s\n", "\u2534");
-	for (size_t i; i != end_size + 2; i++)
+	printf("%s", "\u2534");
+	for (size_t i = 0; i != end_size + 2; i++)
 		printf("%s", "\u2500");
-	printf("%s\n", "\u2534");
-	for (size_t i; i != state_size + 2; i++)
+	printf("%s", "\u2534");
+	for (size_t i = 0; i != state_size + 2; i++)
 		printf("%s", "\u2500");
-	printf("%s", "\u2518");
+	printf("%s\n", "\u2518");
 	return (1);
 }
+#endif
 
 int		main(void)
 {
-	t_list	*token_list;
+	t_list	*token_list = NULL;
 
 	t_lexer	lex;
 	char	*buff;
+	size_t	ret;
 
 	buff = readline("$> ");
 	dprintf(2, "%s\n", buff);
+	buff = ft_strjoin(buff, "\n");
 
 	init_lexer(&lex, buff);
-	get_token_list(&lex, &token_list, NULL);
+	ret = get_token_list(&lex, &token_list, NULL);
+#ifdef LEXER_DEBUG
 	debug_token_list(token_list);
+	printf(PNK"Ret "RESET"%s\n", get_state(ret));
+#endif
+	while (ret != DEFAULT)
+	{
+		buff = ft_strchange(buff, ft_strjoin(buff, readline("> ")));
+		buff = ft_strjoin(buff, "\n");
+		lex.line = ft_strchange(lex.line, buff);
+		ret = get_token_list(&lex, &token_list, NULL);
+#ifdef LEXER_DEBUG
+		debug_token_list(token_list);
+		printf(PNK"Ret "RESET"%s\n", get_state(ret));
+#endif
+	}
+	free(buff);
+
 	return (0);
 }
