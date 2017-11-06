@@ -1,0 +1,821 @@
+[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[1;33m~[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m                                                
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/003-binary-test-exec-order[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell correctly finds binaries by iterating on paths within the environment variable PATH from left to right.[0m
+
+  Before test:
+[38;5;239m  01: mkdir -p "./virtual_path_1" "./virtual_path_2"
+  02: cp "./write_on_stdout" "./virtual_path_1/fake_echo"
+  03: cp "./write_on_stderr" "./virtual_path_2/fake_echo"
+  04: export PATH="/Users/vcombey/42ShellTester/tmp/virtual_path_1:/Users/vcombey/42ShellTester/tmp/virtual_path_2"[0m
+
+  STDIN:
+[38;5;239m  01: fake_echo TOKEN201711032237[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex TOKEN201711032237[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: TOKEN201711032237[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/004-binary-test-empty-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell finds binaries that are located in the current directory when the environment variable PATH is empty.[0m
+
+  Before test:
+[38;5;239m  01: export PATH=""[0m
+
+  STDIN:
+[38;5;239m  01: write_on_stdout "TOKEN201711032237"[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711032237`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: write_on_stdout: command not found[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/005-binary-test-wrong-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  This test purpose is to check if your shell is not able to use binary with a wrong PATH
+  We are changing the actual PATH by PATH=NULL
+  And executing the commande ls[0m
+
+  Before test:
+[38;5;239m  01: export PATH="/"[0m
+
+  STDIN:
+[38;5;239m  01: ls[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Cc]ommand not found`[0m
+[38;5;239m  01: ls: command not found[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/006-binary-undefined-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell retrieves the default value of the environment variable PATH if not set. This test depends on the presence of the UNIX binary `ls`, located in a path within the default environment variable PATH.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "TOKEN201711032237_006-BINARY-UNDEFINED-PATH"
+  02: touch "TOKEN201711032237_006-BINARY-UNDEFINED-PATH"
+  03: unset PATH[0m
+
+  STDIN:
+[38;5;239m  01: ls[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711032237_006-BINARY-UNDEFINED-PATH`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ls: command not found[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/007-binary-permission-denied[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to execute a non-permitted binary results in an error on standard error and a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf ./permission_denied
+  02: touch ./permission_denied
+  03: chmod 0 ./permission_denied[0m
+
+  STDIN:
+[38;5;239m  01: ./permission_denied[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Pp]ermission denied`[0m
+[38;5;239m  01: ./permission_denied: permission denied [0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status 0[0m
+
+  After test:
+[38;5;239m  01: if [ -d "./permission_denied" ]; then chmod 777 "./permission_denied"; fi
+  02: rm -rf "./permission_denied"[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/008-binary-too-many-symbolic-links-encountered[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to execute a path that encounters an infinite loop of symbolic link results in an error on standard error and a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf ./symbolic_link1 ./symbolic_link2 ./symbolic_link3
+  02: ln -s ./symbolic_link1 ./symbolic_link2
+  03: ln -s ./symbolic_link2 ./symbolic_link3
+  04: ln -s ./symbolic_link3 ./symbolic_link1[0m
+
+  STDIN:
+[38;5;239m  01: ./symbolic_link1[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Tt]oo many.*symbolic links`[0m
+[38;5;239m  01: ./symbolic_link1: no such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status 0[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/007-symbolic-link[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link as first argument with the builtin `cd` results in moving the linked directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link"
+  02: mkdir -p "./sub_directory"
+  03: ln -s "./sub_directory" "./symbolic_link"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp/symbolic_link$`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD
+  02: ------------------------------
+  03: TERM_PROGRAM=iTerm.app
+  04: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  05: TERM=xterm-256color
+  06: SHELL=42sh
+  07: MYVIMRC=/Users/vcombey/.vimrc
+  08: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  09: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.zG2VUMpNJe/Render
+  10: TERM_PROGRAM_VERSION=3.1.2
+  11: TERM_SESSION_ID=w0t0p2:37100867-C079-4118-8D03-47C98D10F280
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.Sf5nq9NNPs/Listeners
+  16: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  17: PAGER=less
+  18: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  19: DOTFILES=/Users/vcombey/.dotfiles
+  20: LSCOLORS=HxBxcxdxbxegedabagacad
+  21: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  22: ZSHRC=/Users/vcombey/.zshrc
+  23: PWD=/Users/vcombey/42ShellTester/tmp/sub_directory
+  24: EDITOR=vim
+  25: BASE16_THEME=classic-dark
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p2:37100867-C079-4118-8D03-47C98D10F280
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: COLORTERM=truecolor
+  40: OLDPWD=/Users/vcombey/42ShellTester/tmp
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=.42sh_history
+  43: PS1=$> 
+  44: PS2=dquote> 
+  45: PS3=quote> 
+  46: ------------------------------
+  47: TOTAL ENVIRONMENT VARIABLES: 43[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/008-symbolic-link-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link as first argument with the builtin `cd` results in moving to the linked directory. In this test, the directory is linked with to chained symbolic links.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2"
+  02: mkdir -p "./sub_directory"
+  03: ln -s "./sub_directory" "./symbolic_link1"
+  04: ln -s "./symbolic_link1" "./symbolic_link2"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link2
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp/symbolic_link2$`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD
+  02: ------------------------------
+  03: TERM_PROGRAM=iTerm.app
+  04: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  05: TERM=xterm-256color
+  06: SHELL=42sh
+  07: MYVIMRC=/Users/vcombey/.vimrc
+  08: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  09: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.zG2VUMpNJe/Render
+  10: TERM_PROGRAM_VERSION=3.1.2
+  11: TERM_SESSION_ID=w0t0p2:37100867-C079-4118-8D03-47C98D10F280
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.Sf5nq9NNPs/Listeners
+  16: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  17: PAGER=less
+  18: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  19: DOTFILES=/Users/vcombey/.dotfiles
+  20: LSCOLORS=HxBxcxdxbxegedabagacad
+  21: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  22: ZSHRC=/Users/vcombey/.zshrc
+  23: PWD=/Users/vcombey/42ShellTester/tmp/sub_directory
+  24: EDITOR=vim
+  25: BASE16_THEME=classic-dark
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p2:37100867-C079-4118-8D03-47C98D10F280
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: COLORTERM=truecolor
+  40: OLDPWD=/Users/vcombey/42ShellTester/tmp
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=.42sh_history
+  43: PS1=$> 
+  44: PS2=dquote> 
+  45: PS3=quote> 
+  46: ------------------------------
+  47: TOTAL ENVIRONMENT VARIABLES: 43[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/002-not-a-directory-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a file name as first argument with the builtin `cd` results in a Shell termination with a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: touch "./not_a_directory"[0m
+
+  STDIN:
+[38;5;239m  01: cd not_a_directory[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: Not a directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/004-permission-denied-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a directory without any permission as first argument with the builtin `cd` results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: if [ -d "./permission_denied" ]; then chmod 777 "./permission_denied"; fi
+  02: rm -rf "./permission_denied"
+  03: mkdir -m 0 "./permission_denied"[0m
+
+  STDIN:
+[38;5;239m  01: cd permission_denied[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: Permission denied[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+  After test:
+[38;5;239m  01: if [ -d "./permission_denied" ]; then chmod 777 "./permission_denied"; fi
+  02: rm -rf "./permission_denied"[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/005-too-many-symbolic-links-encountered[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link resulting in ELOOP error as first argument with the builtin `cd` results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2" "./symbolic_link3"
+  02: ln -s "./symbolic_link1" "./symbolic_link2"
+  03: ln -s "./symbolic_link2" "./symbolic_link3"
+  04: ln -s "./symbolic_link3" "./symbolic_link1"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link1
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp:PWD`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp:PWD[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Tt]oo many.*symbolic links`[0m
+[38;5;239m  01: cd: Out of streams resources[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/006-too-many-symbolic-links-encountered-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link resulting in ELOOP error as first argument with the builtin `cd` results in a Shell termination with a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2" "./symbolic_link3"
+  02: ln -s "./symbolic_link1" "./symbolic_link2"
+  03: ln -s "./symbolic_link2" "./symbolic_link3"
+  04: ln -s "./symbolic_link3" "./symbolic_link1"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link1[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: Out of streams resources[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/008-no-such-file-or-directory-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a non-existing path as first argument with the builtin `cd` results in a Shell termination with an error status code.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./no_such_file_or_directory"[0m
+
+  STDIN:
+[38;5;239m  01: cd no_such_file_or_directory[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: No such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/010-no-such-file-or-directory-symlink-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link that targets to a non-existing directory with the builtin `cd`  results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./enoent_symlink" "./enoent_directory"
+  02: ln -s "./enoent_directory" "./enoent_symlink"[0m
+
+  STDIN:
+[38;5;239m  01: cd ./enoent_symlink[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: No such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/options/001-not-following-links[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using symbolic links twice with the builtin `cd` and the option `-P` results in a correct environment variable PWD. The option `-P` makes the Shell to resolve symbolic links.[0m
+
+  Before test:
+[38;5;239m  01: rm -fr "./sub_directory_link" "./sub_directory"
+  02: mkdir -p "./sub_directory/sub_sub_directory"
+  03: ln -s "./sub_directory" "./sub_directory_link"
+  04: ln -s "./sub_sub_directory" "./sub_directory/sub_sub_directory_link"[0m
+
+  STDIN:
+[38;5;239m  01: cd -P sub_directory_link
+  02: cd -P sub_sub_directory_link
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `PWD=/Users/vcombey/42ShellTester/tmp/sub_directory/sub_sub_directory`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.zG2VUMpNJe/Render
+  09: TERM_PROGRAM_VERSION=3.1.2
+  10: TERM_SESSION_ID=w0t0p2:37100867-C079-4118-8D03-47C98D10F280
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.Sf5nq9NNPs/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  16: PAGER=less
+  17: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  18: DOTFILES=/Users/vcombey/.dotfiles
+  19: LSCOLORS=HxBxcxdxbxegedabagacad
+  20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  21: ZSHRC=/Users/vcombey/.zshrc
+  22: PWD=/Users/vcombey/42ShellTester/tmp
+  23: EDITOR=vim
+  24: BASE16_THEME=classic-dark
+  25: LANG=en_US.UTF-8
+  26: ITERM_PROFILE=Default
+  27: XPC_FLAGS=0x0
+  28: XPC_SERVICE_NAME=0
+  29: INSTALL_ROOT=/Users/vcombey/.sbcl
+  30: SHLVL=3
+  31: HOME=/Users/vcombey
+  32: COLORFGBG=7;0
+  33: ITERM_SESSION_ID=w0t0p2:37100867-C079-4118-8D03-47C98D10F280
+  34: LESS=-R
+  35: LOGNAME=vcombey
+  36: VISUAL=vim
+  37: LC_CTYPE=en_US.UTF-8
+  38: COLORTERM=truecolor
+  39: OLDPWD=/Users/vcombey/42ShellTester
+  40: _=/Users/vcombey/42/42sh/42sh
+  41: HISTFILE=.42sh_history
+  42: PS1=$> 
+  43: PS2=dquote> 
+  44: PS3=quote> 
+  45: ------------------------------
+  46: TOTAL ENVIRONMENT VARIABLES: 43[0m
+
+  STDERR:
+[31m[1;33m  WARNING    might be_empty[0m
+[38;5;239m  01: cd: No such file or directory
+  02: cd: No such file or directory[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/003-ignore-environment[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the option `-i` with the builtin `env` results in an empty environment sent to the given command.[0m
+
+  STDIN:
+[38;5;239m  01: env -i ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOTAL ENVIRONMENT VARIABLES: 0`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/005-set-variables[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `env` can modify or set multiple environment variables before executing the given command.[0m
+
+  Before test:
+[38;5;239m  01: export VARTEST1="OLD_VALUE"[0m
+
+  STDIN:
+[38;5;239m  01: env VARTEST1=TOKEN201711032237_1 VARTEST2=TOKEN201711032237_2 VARTEST3=TOKEN201711032237_3 ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST1=TOKEN201711032237_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST2=TOKEN201711032237_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST3=TOKEN201711032237_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ASAN:DEADLYSIGNAL
+  02: =================================================================
+  03: ==74997==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00010209e08c bp 0x7fff5db79100 sp 0x7fff5db79100 T0)
+  04: ==74997==The signal is caused by a READ memory access.
+  05: ==74997==Hint: address points to the zero page.
+  06:     #0 0x10209e08b in ft_strichr ft_strichr.c:11
+  07:     #1 0x10208cd3a in key_of_local local_get.c:35
+  08:     #2 0x10208c2e0 in find_key local_add.c:11
+  09:     #3 0x10208c23f in add_to_local local_add.c:29
+  10:     #4 0x10208c53f in env_change_value env_add.c:44
+  11:     #5 0x10208c5af in env_add_change env_add.c:54
+  12:     #6 0x10208c5f8 in env_add_var_from_string env_add.c:61
+  13:     #7 0x102087ab5 in build_new_env env.c:60
+  14:     #8 0x102087976 in builtin_env env.c:92
+  15:     #9 0x102087df3 in exec_builtin exec_builtin.c:40
+  16:     #10 0x102098ba2 in exec_simple_command exec_simple_command.c:137
+  17:     #11 0x1020978dc in exec exec.c:37
+  18:     #12 0x102097d57 in exec_command exec_command.c:15
+  19:     #13 0x1020978dc in exec exec.c:37
+  20:     #14 0x102098207 in exec_pipe_sequence exec_pipe_sequence.c:9
+  21:     #15 0x1020978dc in exec exec.c:37
+  22:     #16 0x10209856e in exec_pipeline exec_pipeline.c:90
+  23:     #17 0x1020978dc in exec exec.c:37
+  24:     #18 0x102097954 in exec_and_or exec_and_or.c:13
+  25:     #19 0x1020978dc in exec exec.c:37
+  26:     #20 0x1020981b4 in exec_list exec_list.c:10
+  27:     #21 0x1020978dc in exec exec.c:37
+  28:     #22 0x102097d77 in exec_complete_command exec_complete_command.c:9
+  29:     #23 0x1020978dc in exec exec.c:37
+  30:     #24 0x102097db4 in exec_complete_commands exec_complete_commands.c:10
+  31:     #25 0x1020978dc in exec exec.c:37
+  32:     #26 0x1020985e7 in exec_program exec_program.c:10
+  33:     #27 0x1020978dc in exec exec.c:37
+  34:     #28 0x102096c88 in exec_main_loop lex_and_parse.c:18
+  35:     #29 0x102096e5b in lex_and_parse lex_and_parse.c:70
+  36:     #30 0x10209711a in main_loop main_loop.c:70
+  37:     #31 0x10209a6d6 in main main.c:78
+  38:     #32 0x7fffc444c234 in start (libdyld.dylib:x86_64+0x5234)
+  39: 
+  40: ==74997==Register values:
+  41: rax = 0x0000000000000000  rbx = 0x0000000000000000  rcx = 0x00007fff5db79000  rdx = 0x0000000000000000  
+  42: rdi = 0x766e657465730076  rsi = 0x766e657465730076  rbp = 0x00007fff5db79100  rsp = 0x00007fff5db79100  
+  43:  r8 = 0x000000010572e96f   r9 = 0x000000010572e9c8  r10 = 0x00000000000000e0  r11 = 0x0000000000000000  
+  44: r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+  45: AddressSanitizer can not provide additional info.
+  46: SUMMARY: AddressSanitizer: SEGV ft_strichr.c:11 in ft_strichr
+  47: ==74997==ABORTING
+  48: ./lib/main.sh: line 102: 74997 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/errors/001-command-not-found[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `env` with an invalid binary as argument results in an error and failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./invalid_binary"[0m
+
+  STDIN:
+[38;5;239m  01: env ./invalid_binary[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Cc]ommand not found`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/errors/002-illegal-option[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `env` with an invalid option results in an error and failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f -- "-w"[0m
+
+  STDIN:
+[38;5;239m  01: env -w[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Ii]nvalid|[Ii]llegal) (option|argument)`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/multiple-options/001-ignore-environment-and-set-variable[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that `env -i` works if we use a second argument to set an environment variable, we are also checking if this command unset environments variables for a given binary.[0m
+
+  STDIN:
+[38;5;239m  01: env -i TESTVARIABLE=TOKEN201711032237 ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVARIABLE=TOKEN201711032237`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOTAL ENVIRONMENT VARIABLES: 1`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ASAN:DEADLYSIGNAL
+  02: =================================================================
+  03: ==75404==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00010610b08c bp 0x7fff59b0c100 sp 0x7fff59b0c100 T0)
+  04: ==75404==The signal is caused by a READ memory access.
+  05: ==75404==Hint: address points to the zero page.
+  06:     #0 0x10610b08b in ft_strichr ft_strichr.c:11
+  07:     #1 0x1060f9d3a in key_of_local local_get.c:35
+  08:     #2 0x1060f92e0 in find_key local_add.c:11
+  09:     #3 0x1060f923f in add_to_local local_add.c:29
+  10:     #4 0x1060f93cf in env_add_var env_add.c:16
+  11:     #5 0x1060f9595 in env_add_change env_add.c:52
+  12:     #6 0x1060f95f8 in env_add_var_from_string env_add.c:61
+  13:     #7 0x1060f4ab5 in build_new_env env.c:60
+  14:     #8 0x1060f4976 in builtin_env env.c:92
+  15:     #9 0x1060f4df3 in exec_builtin exec_builtin.c:40
+  16:     #10 0x106105ba2 in exec_simple_command exec_simple_command.c:137
+  17:     #11 0x1061048dc in exec exec.c:37
+  18:     #12 0x106104d57 in exec_command exec_command.c:15
+  19:     #13 0x1061048dc in exec exec.c:37
+  20:     #14 0x106105207 in exec_pipe_sequence exec_pipe_sequence.c:9
+  21:     #15 0x1061048dc in exec exec.c:37
+  22:     #16 0x10610556e in exec_pipeline exec_pipeline.c:90
+  23:     #17 0x1061048dc in exec exec.c:37
+  24:     #18 0x106104954 in exec_and_or exec_and_or.c:13
+  25:     #19 0x1061048dc in exec exec.c:37
+  26:     #20 0x1061051b4 in exec_list exec_list.c:10
+  27:     #21 0x1061048dc in exec exec.c:37
+  28:     #22 0x106104d77 in exec_complete_command exec_complete_command.c:9
+  29:     #23 0x1061048dc in exec exec.c:37
+  30:     #24 0x106104db4 in exec_complete_commands exec_complete_commands.c:10
+  31:     #25 0x1061048dc in exec exec.c:37
+  32:     #26 0x1061055e7 in exec_program exec_program.c:10
+  33:     #27 0x1061048dc in exec exec.c:37
+  34:     #28 0x106103c88 in exec_main_loop lex_and_parse.c:18
+  35:     #29 0x106103e5b in lex_and_parse lex_and_parse.c:70
+  36:     #30 0x10610411a in main_loop main_loop.c:70
+  37:     #31 0x1061076d6 in main main.c:78
+  38:     #32 0x7fffc444c234 in start (libdyld.dylib:x86_64+0x5234)
+  39: 
+  40: ==75404==Register values:
+  41: rax = 0x0000000000000000  rbx = 0x0000000000000000  rcx = 0x00007fff59b0c000  rdx = 0x0000000000000000  
+  42: rdi = 0x766e657465730076  rsi = 0x766e657465730076  rbp = 0x00007fff59b0c100  rsp = 0x00007fff59b0c100  
+  43:  r8 = 0x000000010779eb7f   r9 = 0x000000010779ebd8  r10 = 0x00000000000000e0  r11 = 0x0000000000000000  
+  44: r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+  45: AddressSanitizer can not provide additional info.
+  46: SUMMARY: AddressSanitizer: SEGV ft_strichr.c:11 in ft_strichr
+  47: ==75404==ABORTING
+  48: ./lib/main.sh: line 102: 75404 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/003-status-of-last-command[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `exit` without any argument results in a Shell termination and the exit status of the previous command.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42
+  02: exit[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/errors/001-too-many-args[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong number of arguments with the builtin `exit` does not result in the Shell termination but an error on standard error.[0m
+
+  STDIN:
+[38;5;239m  01: exit 21 42
+  02: ./write_on_stdout TOKEN201711032237[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711032237`[0m
+[38;5;239m  01: TOKEN201711032237[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Tt]oo many arguments|[Aa]rgument list too long)`[0m
+[38;5;239m  01: exit: to many arguments[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/errors/002-non-numeric-argument[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a non-numeric argument with the builtin `exit` results in the Shell termination and an error on standard error.[0m
+
+  STDIN:
+[38;5;239m  01: exit abc
+  02: ./write_on_stdout TOKEN201711032237[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711032237`[0m
+[38;5;239m  01: TOKEN201711032237[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Nn]umeric argument required`[0m
+[38;5;239m  01: exit: numeric argument required[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/004-invalid-identifier[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong variable name with the builtin `setenv` (or `export`) results in error.[0m
+
+  STDIN:
+[38;5;239m  01: setenv 42
+  02: export 42[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `(not.*identifier|must begin.*letter)`[0m
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..
+  02: export: command not found[0m
+
+Total tests: 54
+Total failed tests: 21
+Total pending tests: 0

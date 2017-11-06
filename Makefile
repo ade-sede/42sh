@@ -183,6 +183,7 @@ SRC_FILE = \
 	job_control/job_format.c \
 	job_control/job_mark_status.c \
 	job_control/job_wait.c \
+	job_control/job_fill_process_av.c \
 	\
 	main.c \
 

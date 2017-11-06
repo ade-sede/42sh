@@ -131,9 +131,18 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 		p = p->next;
 	}
 	if (!jc->shell_is_interactive || jc->background)
+	{
+//		fprintf(stderr, "shell not interactiv || background\n");
 		wait_for_job(jc, j);
+	}
 	else if (foreground)
+	{
+//		fprintf(stderr, "foreground\n");
 		put_job_in_foreground(jc, j, 0, in_a_fork);
+	}
 	else
+	{
+//		fprintf(stderr, "ackground\n");
 		put_job_in_background(j, 0);
+	}
 }

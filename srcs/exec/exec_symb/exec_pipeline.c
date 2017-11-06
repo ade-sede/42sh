@@ -25,31 +25,13 @@ int		pipe_sequence_has_to_fork(t_ast	*pipe_sequence)
 	return (0);
 }
 
-t_process	*fill_process(t_ast *ast, t_process *process)
-{
-	int	i;
-	t_ast	*child;
-
-	i = 0;
-	while (ast && ast->child[i])
-	{
-		child = ast->child[i];
-		if (child && child->token)
-			process->av = ft_strjoin3_free(process->av, " ", child->token->value, 4);
-		else
-			fill_process(child, process);
-		i++;
-	}
-	return (process);
-}
-
 void	fill_job(t_ast *pipe_sequence, t_process **first_process)
 {
 	if (pipe_sequence->child[0] && !pipe_sequence->child[3])
-		return (ft_genlst_add(first_process, fill_process(pipe_sequence->child[0], process_new(pipe_sequence->child[0]))));
+		return (ft_genlst_add(first_process, fill_process_av(pipe_sequence->child[0], process_new(pipe_sequence->child[0]))));
 	if (pipe_sequence->child[0] && pipe_sequence->child[3])
 	{
-		ft_genlst_add(first_process, fill_process(pipe_sequence->child[3], process_new(pipe_sequence->child[3])));
+		ft_genlst_add(first_process, fill_process_av(pipe_sequence->child[3], process_new(pipe_sequence->child[3])));
 		fill_job(pipe_sequence->child[0], first_process);
 	}
 }

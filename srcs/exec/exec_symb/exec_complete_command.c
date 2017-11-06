@@ -7,6 +7,7 @@ void	exec_asynchronous_list(t_ast *and_or)
 
 	new_job = job_new();
 	first_process = process_new(and_or);
+	fill_process_av(and_or, first_process);
 	new_job->first_process = first_process;
 	ft_genlst_pushback(&singleton_jc()->first_job, new_job);
 	launch_job(singleton_jc(), new_job, 0);

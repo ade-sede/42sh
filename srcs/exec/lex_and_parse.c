@@ -12,12 +12,12 @@
 
 void	exec_main_loop(t_lexer *lex, t_ast *ast)
 {
+	singleton_jc()->background = 0;
 	history_append_command_to_list((char*)lex->line);
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_canonical();
 	singleton_env()->previous_exit = exec(ast);
 	//ft_strdel((char **)&lex->line);
-	do_job_notification(singleton_jc());
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_non_canonical();
 	//ast = flush_tree(ast);
