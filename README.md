@@ -58,7 +58,8 @@ Commands|Functions|
 <kbd>Ctrl</kbd>+<kbd>C</kbd>|Terminate/Kill current foreground process.
 <kbd>Ctrl</kbd>+<kbd>Z</kbd>|Suspend/Stop current foreground process.
 
-## Tokens
+## Grammar
+### Tokens
 Tokens|Exemple|
 :-:|:--
 WORD| ls './srcs'
@@ -66,10 +67,7 @@ ASSIGNMENT_WORD| 'a=b' ;
 NAME| for 'foo' in bar; do ls; done
 NEWLINE| ls '\n' ls
 IO_NUMBER| ls ./srcs '2'&>1
-<br>
-## Grammar
-<br>
-Bellow the Backus Naur form of the POSIX Grammar which we parse and execute.
+### Rules
 Symbol|Components|
 :-:|:--
 complete_commands| complete_commands newline_list complete_command<br/>                                complete_command
