@@ -59,8 +59,6 @@ Commands|Functions|
 <kbd>Ctrl</kbd>+<kbd>Z</kbd>|Suspend/Stop current foreground process.
 
 ## Tokens
-
-Bellow the tokens of the POSIX Grammar which can take many litteral forms. In the exemple le token is in ' '.
 Commands|Functions|
 :-:|:--
 lala|lolo
