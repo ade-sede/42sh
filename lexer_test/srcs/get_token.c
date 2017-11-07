@@ -62,65 +62,6 @@ static int	(*get_action(ssize_t state))(t_lexer *, ssize_t **)
 	return (g_lex_action[i].func);
 }
 
-static t_list	*lst_get_nth(t_list *first, size_t n)
-{
-	if (n == 0)
-		return (first);
-	while (first && n > 0)
-	{
-		first = first->next;
-		--n;
-	}
-	return (first);
-}
-
-static int	get_id_routine(t_lexer *lex)
-{
-	t_token	*old_token = NULL;
-	t_list	*node = NULL;
-
-	node = lst_get_nth(lex->reversed_list, 1);
-	if (lex->cmd_name_open)
-		return (TRUE);
-	if (node)
-	{
-		old_token = node->data;
-		if (old_token->id == TK_CASE || old_token->id == TK_FOR || old_token->id == TK_IN)
-			return (TRUE);
-	}
-	node = lst_get_nth(lex->reversed_list, 3);
-	if (node)
-	{
-		old_token = node->data;
-		if (old_token->id == TK_CASE || old_token->id == TK_FOR)
-			return (TRUE);
-	}
-	return (FALSE);
-}
-
-static void	get_token_id(t_lexer *lex, t_token *token)
-{
-	ssize_t	*info;
-
-	info = token->state_info;
-
-	if (info[_T_STATE] == OPERATOR)
-	{
-		token->id = id_operator(token->value);
-		if (token->id == TK_AND_IF || token->id == TK_OR_IF || token->id == TK_PIPE || token->id == TK_SEMI || token->id == TK_CLOBBER)
-			lex->cmd_name_open = TRUE;
-	}
-	else if (info[_T_STATE] != COMMENT && info[_T_STATE] != WHITESPACE)
-	{
-		if (info[_T_STATE] != DQUOTES && info[_T_STATE] != QUOTES && (lex->cmd_name_open || get_id_routine(lex)))
-			token->id = id_reserved_words(token->value);
-		else
-			token->id = TK_WORD;
-		if (lex->cmd_name_open)
-			lex->cmd_name_open = FALSE;
-	}
-}
-
 t_token	*get_token(t_lexer *lex)
 {
 	/* INIT */

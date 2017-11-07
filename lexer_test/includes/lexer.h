@@ -41,6 +41,9 @@ struct	s_lex_action
 #  define _L_IS_OP2(c) (c == '&' || c == '|')
 #  define CHAR_IS_OPERATOR(c) (_L_IS_OP1(c) || _L_IS_OP2(c))
 # endif
+# ifndef IS_RESERVED_WORD
+# define IS_RESERVED_WORD(id) (id >= TK_IF && id <= TK_IN)
+# endif
 
 /*
 **	In get_token.c
@@ -86,6 +89,7 @@ int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info);
 */
 
 
+void	get_token_id(t_lexer *lex, t_token *token);
 int		id_operator(const char *value);
 int		id_reserved_words(const char *value);
 #endif

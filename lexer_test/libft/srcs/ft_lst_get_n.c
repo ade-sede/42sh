@@ -33,13 +33,18 @@ t_list_d	*ft_double_lst_get_n(t_list_d *first, int n)
 	return (first);
 }
 
+/*
+**	Recently changed :
+**	n == 0 refers to first. So n = 1 refers to first->next
+*/
+
 t_list		*ft_simple_lst_get_n(t_list *first, size_t n)
 {
 	if (n == 0)
-		return (NULL);
-	while (first && n > 1)
+		return (first);
+	while (first && n)
 	{
-		n--;
+		--n;
 		first = first->next;
 	}
 	return (first);

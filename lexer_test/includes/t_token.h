@@ -18,6 +18,7 @@
 
 # define OPERATOR_OFFSET 5
 # define RESERVED_WORDS_OFFSET 21
+
 enum
 {
 	TK_WORD,

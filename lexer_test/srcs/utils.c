@@ -21,7 +21,6 @@ static struct s_debug_token_state g_debug_token_state[]=
 	{DQUOTES,"DQUOTES"},
 	{QUOTES,"QUOTES"},
 	{BS,"BS"},
-	{HIST_EXP,"HIST_EXP"},
 	{NEWLINE, "NEWLINE"},
 	{-1, NULL}
 };

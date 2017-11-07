@@ -55,10 +55,15 @@ int		get_token_list(t_lexer *lex, t_list **token_list, t_list *alias_list)
 		/* if (!(node = expand_alias(lex, token, alias_list))) */
 		/* 	node = ft_simple_lst_create(token); */
 		/* else */
+		if (token->state_info[_T_STATE] == COMMENT || token->state_info[_T_STATE] == WHITESPACE)
+			free_token(token);
+		else
+		{
 		node = ft_simple_lst_create(token);
 		reversed_node = ft_simple_lst_create(token);
 		ft_simple_lst_add(&lex->reversed_list, reversed_node);
 		ft_simple_lst_pushback(token_list, node);
+		}
 	}
 	return (((int*)lex->state->data)[_T_STATE]);
 }

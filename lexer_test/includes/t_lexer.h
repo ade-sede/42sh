@@ -44,7 +44,6 @@ enum
 	DQUOTES,
 	QUOTES,
 	BS,
-	HIST_EXP,
 	NEWLINE,
 };
 

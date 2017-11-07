@@ -19,10 +19,11 @@ srcs/lexer_action/param_exp.c \
 srcs/lexer_action/cmd_subst.c \
 srcs/lexer_action/word.c \
 \
+srcs/id/get_token_id.c \
 srcs/id/operator.c \
 srcs/id/reserved_words.c
 
 all:
 	@rm -rf lexer_test
 	@make -C libft
-	@gcc -o lexer_test -g $(SRCS) -Iincludes -Ilibft/includes -Llibft -lft -lreadline -D LEXER_DEBUG -fsanitize=address -fno-omit-frame-pointer
+	@gcc -o lexer_test -g $(SRCS) -Iincludes -Ilibft/includes -Llibft -lft -lreadline -D LEXER_DEBUG #-fsanitize=address -fno-omit-frame-pointer
