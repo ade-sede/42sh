@@ -146,8 +146,8 @@ done
 You can find more exemple of what our shell handles in the Exemple directory.
 
 ## Authors
-* **Vincent Combey** - [vcombey](https://github.com/vcombey)
-* **Adrien DE SEDE** - [Ixskill](https://github.com/Ixskill)
-* **Said EDDAOUDI** - [github]()
-* **Thibaud CANAUD** - [tcanaud](https://github.com/tcanaud)
-* **Thibaut Dumoulin** - [github]()
+* **COMBEY Vincent** - [vcombey](https://github.com/vcombey)
+* **DE SEDE Adrien** - [Ixskill](https://github.com/Ixskill)
+* **EDDAOUDI Said** - [github]()
+* **CANAUD Thibaud** - [tcanaud](https://github.com/tcanaud)
+* **DUMOULIN Thibaut** - [github]()
