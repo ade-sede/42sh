@@ -58,16 +58,18 @@ Commands|Functions|
 <kbd>Ctrl</kbd>+<kbd>C</kbd>|Terminate/Kill current foreground process.
 <kbd>Ctrl</kbd>+<kbd>Z</kbd>|Suspend/Stop current foreground process.
 
-## Grammar
+## Tokens
 
 Bellow the tokens of the POSIX Grammar which can take many litteral forms. In the exemple le token is in ' '.
 Tokens|Exemple|
 :-:|:--
-WORD| ls './srcs'
-ASSIGNMENT_WORD| 'a=b' ;
-NAME| for 'foo' in bar; do ls; done
-NEWLINE| ls '\n' ls
-IO_NUMBER| ls ./srcs '2'&>1
+WORD| ls `./srcs`
+ASSIGNMENT\_WORD| `a=b`\;
+NAME| for `foo` in bar; do ls; done
+NEWLINE| ls `\n` ls
+IO\_NUMBER| ls ./srcs `2`&>1
+
+## Grammar
 <br>
 Bellow the Backus Naur form of the POSIX Grammar which we parse and execute.
 Symbol|Components|
