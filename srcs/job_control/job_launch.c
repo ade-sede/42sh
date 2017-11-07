@@ -33,8 +33,11 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 			jc->background = 1;
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGTSTP, SIG_DFL);
-		signal(SIGTTIN, SIG_DFL);
-		signal(SIGTTOU, SIG_DFL); //attention
+		if (!foreground)
+		{
+			signal(SIGTTIN, SIG_DFL);
+			signal(SIGTTOU, SIG_DFL); //attention
+		}
 		signal(SIGCHLD, SIG_DFL);
 	}
 	if (infile != STDIN_FILENO)
