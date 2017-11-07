@@ -60,6 +60,8 @@ Commands|Functions|
 
 ## Grammar
 ### Tokens
+Bellow the tokens of the POSIX Grammar which can take many litteral forms. In the exemple le token is in ' '.
+
 Tokens|Exemple|
 :-:|:--
 WORD| ls './srcs'
@@ -67,7 +69,10 @@ ASSIGNMENT_WORD| 'a=b' ;
 NAME| for 'foo' in bar; do ls; done
 NEWLINE| ls '\n' ls
 IO_NUMBER| ls ./srcs '2'&>1
+
 ### Rules
+Bellow the Backus Naur form of the POSIX Grammar which we parse and execute.
+
 Symbol|Components|
 :-:|:--
 complete_commands| complete_commands newline_list complete_command<br/>                                complete_command
