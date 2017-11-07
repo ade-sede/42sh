@@ -64,10 +64,6 @@ Bellow the tokens of the POSIX Grammar which can take many litteral forms. In th
 Tokens|Exemple|
 :-:|:--
 WORD| ls `./srcs`
-ASSIGNMENT\_WORD| `a=b`\;
-NAME| for `foo` in bar; do ls; done
-NEWLINE| ls `\n` ls
-IO\_NUMBER| ls ./srcs `2`&>1
 
 ## Grammar
 <br>
