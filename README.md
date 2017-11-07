@@ -61,10 +61,9 @@ Commands|Functions|
 ## Tokens
 
 Bellow the tokens of the POSIX Grammar which can take many litteral forms. In the exemple le token is in ' '.
-Tokens|Exemple|
+Commands|Functions|
 :-:|:--
-WORD| ls `./srcs`
-
+lala|lolo
 ## Grammar
 <br>
 Bellow the Backus Naur form of the POSIX Grammar which we parse and execute.
