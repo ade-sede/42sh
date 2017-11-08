@@ -11,10 +11,10 @@ int				lex_all(t_lexer *lex, t_list **token_list)
 	reopen = 0;
 	while ((token = start_lex(lex, &reopen)) != NULL)
 	{
-		if (!(node = exec_expand(token)))
+//		if (!(node = exec_expand(token)))
 			node = ft_simple_lst_create(token);
-		else
-			free_token(token);
+//		else
+//			free_token(token);
 		ft_simple_lst_pushback(token_list, node);
 	//	printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , ((t_token *)node->data)->value, ((t_token *)node->data)->id);
 	}

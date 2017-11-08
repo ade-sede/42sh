@@ -90,10 +90,6 @@ SRC_FILE = \
 	history/history_write.c \
 	history/load_history.c \
 	\
-	lexer/expand_alias.c \
-	lexer/expand_param.c \
-	lexer/expand_tild.c \
-	lexer/expand_word.c \
 	lexer/lexer.c \
 	lexer/match_expand.c \
 	lexer/match_operator.c \
@@ -146,31 +142,35 @@ SRC_FILE = \
 	exec/exec_redirect_list.c \
 	exec/exec_bin.c \
  \
-	exec/exec_symb/exec.c \
-	exec/exec_symb/exec_and_or.c \
-	exec/exec_symb/exec_case_clause.c \
-	exec/exec_symb/exec_command.c \
-	exec/exec_symb/exec_complete_command.c \
-	exec/exec_symb/exec_complete_commands.c \
-	exec/exec_symb/exec_compound_command.c \
-	exec/exec_symb/exec_compound_list.c \
-	exec/exec_symb/exec_do_group.c \
-	exec/exec_symb/exec_else_part.c \
-	exec/exec_symb/exec_for_clause.c \
-	exec/exec_symb/exec_function_body.c \
-	exec/exec_symb/exec_function_definition.c \
-	exec/exec_symb/exec_if_clause.c \
-	exec/exec_symb/exec_pipe_sequence.c \
-	exec/exec_symb/exec_pipeline.c \
-	exec/exec_symb/exec_program.c \
-	exec/exec_symb/exec_simple_command.c \
-	exec/exec_symb/exec_subshell.c \
-	exec/exec_symb/exec_term.c \
-	exec/exec_symb/exec_until_clause.c \
-	exec/exec_symb/exec_while_clause.c \
+	exec/symbol/exec.c \
+	exec/symbol/exec_and_or.c \
+	exec/symbol/exec_case_clause.c \
+	exec/symbol/exec_command.c \
+	exec/symbol/exec_complete_command.c \
+	exec/symbol/exec_complete_commands.c \
+	exec/symbol/exec_compound_command.c \
+	exec/symbol/exec_compound_list.c \
+	exec/symbol/exec_do_group.c \
+	exec/symbol/exec_else_part.c \
+	exec/symbol/exec_for_clause.c \
+	exec/symbol/exec_function_body.c \
+	exec/symbol/exec_function_definition.c \
+	exec/symbol/exec_if_clause.c \
+	exec/symbol/exec_pipe_sequence.c \
+	exec/symbol/exec_pipeline.c \
+	exec/symbol/exec_program.c \
+	exec/symbol/exec_simple_command.c \
+	exec/symbol/exec_subshell.c \
+	exec/symbol/exec_term.c \
+	exec/symbol/exec_until_clause.c \
+	exec/symbol/exec_while_clause.c \
 	exec/debug_symbol.c \
 	exec/debug_token.c \
 	exec/exec_function.c \
+	\
+	exec/expand/expand_param.c \
+	exec/expand/expand_tild.c \
+	exec/expand/expand_word.c \
 	\
 	job_control/job_background.c \
 	job_control/job_continue.c \
@@ -259,7 +259,8 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/completion
 	@/bin/mkdir -p $(OBJ_DIR)/env
 	@/bin/mkdir -p $(OBJ_DIR)/exec
-	@/bin/mkdir -p $(OBJ_DIR)/exec/exec_symb/
+	@/bin/mkdir -p $(OBJ_DIR)/exec/symbol/
+	@/bin/mkdir -p $(OBJ_DIR)/exec/expand/
 	@/bin/mkdir -p $(OBJ_DIR)/globing
 	@/bin/mkdir -p $(OBJ_DIR)/hash_table
 	@/bin/mkdir -p $(OBJ_DIR)/history
