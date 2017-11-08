@@ -95,6 +95,7 @@ SRC_FILE = \
 	lexer/t_lexer.c \
 	lexer/t_token.c \
 	lexer/utils.c \
+	lexer/lexer_construct_prompt.c \
 \
 	lexer/id/get_token_id.c \
 	lexer/id/operator.c \
@@ -136,7 +137,7 @@ SRC_FILE = \
 	\
 	parser/get_action.c \
 	parser/parser.c \
-	parser/construct_prompt.c \
+	parser/parser_construct_prompt.c \
 	parser/utils.c \
 	\
 	failure/get_errno_1.c \

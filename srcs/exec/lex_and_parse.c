@@ -36,7 +36,7 @@ void	remove_parser(t_parser *parser)
 
 void	quit_lex_and_parse(t_lexer *lex, t_parser *parser)
 {
-	if (!g_abort_opening)
+	if (!g_abort_opening && singleton_jc()->shell_is_interactive)
 		history_append_command_to_list((char*)lex->line);
 	remove_lexer(lex);
 	remove_parser(parser);

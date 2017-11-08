@@ -82,3 +82,4 @@ typedef struct	s_token
 t_token		*create_token(const char *source, ssize_t *info);
 void		free_token(void *value);
 t_token	*dup_token(t_token *original);
+void	debug_token(t_token *token);

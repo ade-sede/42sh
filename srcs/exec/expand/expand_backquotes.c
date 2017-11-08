@@ -1,3 +1,5 @@
+#include "job_control.h"
+
 char	*expand_backquotes(char *value)
 {
 	char	*res;

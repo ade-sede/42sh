@@ -6,17 +6,6 @@
 #include "exec.h"
 #include "lexer.h"
 
-
-char	*lexer_construct_prompt(int res_lexer)
-{
-	if (res_lexer == '"')
-		return (ft_strdup("dquote"));
-	else if (res_lexer == '\'')
-		return (ft_strdup("quote"));
-	return (NULL);
-}
-
-
 char	*join_prompt(char *parser_prompt, char *lexer_prompt)
 {
 	if (parser_prompt && lexer_prompt)
@@ -39,8 +28,7 @@ void		reopen_line_editing(t_lexer *lex, t_parser *parser)
 	char	*prompt;
 
 	parser_prompt = parser_construct_prompt(parser->ast_stack);
-	/* lexer_prompt = lexer_construct_prompt(res_lexer); */
-	lexer_prompt = ft_strdup(">");
+	lexer_prompt = lexer_construct_prompt(lex);
 
 	prompt = join_prompt(parser_prompt, lexer_prompt);
 	prompt = ft_strjoin_free(prompt, "> ", 2);
