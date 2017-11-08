@@ -92,4 +92,5 @@ int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info);
 void	get_token_id(t_lexer *lex, t_token *token);
 int		id_operator(const char *value);
 int		id_reserved_words(const char *value);
+int		id_word(t_lexer *lex, t_token *token);
 #endif

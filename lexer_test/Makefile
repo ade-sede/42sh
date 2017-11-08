@@ -21,6 +21,7 @@ srcs/lexer_action/word.c \
 \
 srcs/id/get_token_id.c \
 srcs/id/operator.c \
+srcs/id/words.c \
 srcs/id/reserved_words.c
 
 all:
