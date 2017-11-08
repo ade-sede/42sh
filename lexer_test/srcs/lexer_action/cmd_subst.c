@@ -1,7 +1,7 @@
 #include "lexer.h"
-#include <stdio.h>
 #include "libft.h"
 
+#include <stdio.h>
 int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info)
 {
 	ssize_t	*info;
@@ -15,8 +15,15 @@ int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info)
 	{
 		if (lex->line[lex->pos] == '`')
 		{
-			consume_input(lex);
-			pop_state(lex, state_info);
+			if (info[_T_COUNT] == 0)
+			{
+				consume_input(lex);
+			}
+			else
+			{
+				pop_state(lex, state_info);
+				consume_input(lex);
+			}
 		}
 		else if (lex->line[lex->pos] == '"')
 			push_state(lex, DQUOTES);

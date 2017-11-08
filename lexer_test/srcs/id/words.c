@@ -1,6 +1,7 @@
 #include "lexer.h"
 #include "libft.h"
 
+#include <stdio.h>
 static int		check_valid_name(const char *value, size_t size)
 {
 	size_t	i;
@@ -52,18 +53,23 @@ static int	check_assignement_word(t_lexer *lex, const char *value)
 	in_exp = -1;
 	eq_index = -1;
 	if (!lex->cmd_name_open)
+	{
 		return (FALSE);
+	}
 	while (value[i])
 	{
 		if (charcmp(value, i, '$'))
-			in_exp = 1;
+			in_exp = i;
 		if (charcmp(value, i, '='))
 			eq_index = i;
 		++i;
 	}
-	if (eq_index == -1 || eq_index == 0 || in_exp < eq_index)
+	if (eq_index == -1 || eq_index == 0 || (in_exp != -1 && in_exp < eq_index))
+	{
+		dprintf(2, "lol\n");
 		return (FALSE);
-	if (!check_valid_name(value, eq_index + 1))
+	}
+	if (!check_valid_name(value, eq_index))
 		return (FALSE);
 	return (TRUE);
 }

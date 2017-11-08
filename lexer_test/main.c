@@ -245,6 +245,9 @@ int		main(void)
 	buff = readline("$> ");
 	dprintf(2, "%s\n", buff);
 	buff = ft_strjoin(buff, "\n");
+	/* Factioral test */
+	buff = ft_strchange(buff, ft_strdup(" factorial()\n\n{\nif [ '$1' -gt '1' ]; then\ni=`expr $1 - 1`\nj=`factorial $i`\nk=`expr $1 * $j`\necho $k\nelse\necho 1\nfi\n}\n\nwhile :\ndo\necho 'Enter a number:'\nread x\nfactorial $x\ndone"));
+	dprintf(2, "%s\n", buff);
 
 	init_lexer(&lex, buff);
 	ret = get_token_list(&lex, &token_list, NULL);
