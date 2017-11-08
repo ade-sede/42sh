@@ -53,9 +53,7 @@ static int	check_assignement_word(t_lexer *lex, const char *value)
 	in_exp = -1;
 	eq_index = -1;
 	if (!lex->cmd_name_open)
-	{
 		return (FALSE);
-	}
 	while (value[i])
 	{
 		if (charcmp(value, i, '$'))
@@ -65,10 +63,7 @@ static int	check_assignement_word(t_lexer *lex, const char *value)
 		++i;
 	}
 	if (eq_index == -1 || eq_index == 0 || (in_exp != -1 && in_exp < eq_index))
-	{
-		dprintf(2, "lol\n");
 		return (FALSE);
-	}
 	if (!check_valid_name(value, eq_index))
 		return (FALSE);
 	return (TRUE);
@@ -103,7 +98,7 @@ static int	check_prev_1(t_lexer *lex)
 	t_token	*token = NULL;
 	t_list	*node = NULL;
 
-	node = ft_simple_lst_get_n(lex->reversed_list, 1);
+	node = lex->reversed_list;
 	if (!node)
 		return (FALSE);
 	token = node->data;
@@ -122,22 +117,14 @@ static int	check_prev_3(t_lexer *lex)
 
 	count = 0;
 	node = lex->reversed_list;
-	while (node && 1)
+	while (node)
 	{
 		token = node->data;
 		if (token->id != TK_NEWLINE)
 			break ;
 		node = node->next;
 	}
-	while (node && count != 1)
-	{
-		token = node->data;
-		if (token->id == TK_WORD || IS_RESERVED_WORD(token->id))
-			++count;
-		else
-			return (FALSE);
-		node = node->next;
-	}
+	node = ft_simple_lst_get_n(node, 1);
 	if (!node)
 		return (FALSE);
 	token = node->data;
@@ -168,6 +155,7 @@ static int	check_for(t_lexer *lex, const char *value)
 
 int		id_word(t_lexer *lex, t_token *token)
 {
+	dprintf(2, "#%s#\n", token->value);
 	t_token	*func_name_token;
 	int		id;
 	/* Apply prev_1 rule */
@@ -194,6 +182,9 @@ int		id_word(t_lexer *lex, t_token *token)
 	else if (lex->cmd_name_open || ft_strequ("(", token->value) || ft_strequ(")", token->value))
 		id = id_reserved_words(token->value);
 	else
+	{
+		dprintf(2, "#%s ELSE#\n", token->value);
 		id = TK_WORD;
+	}
 	return (id);
 }

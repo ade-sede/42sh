@@ -16,6 +16,8 @@ int		lex_action_param_exp(t_lexer *lex, ssize_t **state_info)
 		pop_state(lex, state_info);
 	else if (lex->line[lex->pos] == '`')
 		pop_state(lex, state_info);
+	else if (lex->line[lex->pos] == '\n')
+		pop_state(lex, state_info);
 	else if (lex->line[lex->pos] == ')')
 		pop_state(lex, state_info);
 	else if (lex->line[lex->pos] == '(' && info[_T_COUNT] == 1)

@@ -45,6 +45,9 @@ struct	s_lex_action
 # define IS_RESERVED_WORD(id) (id >= TK_IF && id <= TK_IN)
 # endif
 
+# define LEXER_SUCCESS 0
+# define LEXER_REOPEN 1
+
 /*
 **	In get_token.c
 */

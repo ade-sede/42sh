@@ -24,6 +24,7 @@
 # endif
 
 # define LEXER_SUCCESS 0
+# define LEXER_SUCCESS 0
 # define LEXER_DQUOTE DQUOTED
 # define LEXER_QUOTE QUOTED
 
