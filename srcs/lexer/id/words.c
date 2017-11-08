@@ -181,9 +181,6 @@ int		id_word(t_lexer *lex, t_token *token)
 	else if (lex->cmd_name_open || ft_strequ("(", token->value) || ft_strequ(")", token->value))
 		id = id_reserved_words(token->value);
 	else
-	{
-		dprintf(2, "#%s ELSE#\n", token->value);
 		id = TK_WORD;
-	}
 	return (id);
 }

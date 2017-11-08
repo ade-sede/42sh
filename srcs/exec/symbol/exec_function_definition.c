@@ -9,8 +9,8 @@ t_lst_func	*func_lst_new(t_ast *fct_body, char *fname)
 	t_lst_func	*new;
 	
 	new = ft_memalloc(sizeof(t_lst_func));
-	new->fct_body = fct_body;
-	new->fname = fname;
+	new->fct_body = dup_ast(fct_body);
+	new->fname = ft_strdup(fname);
 	return (new);
 }
 

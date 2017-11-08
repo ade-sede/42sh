@@ -158,6 +158,7 @@ SRC_FILE = \
 	 \
 	exec/symbol/exec.c \
 	exec/symbol/exec_and_or.c \
+	exec/symbol/exec_brace_group.c \
 	exec/symbol/exec_case_clause.c \
 	exec/symbol/exec_command.c \
 	exec/symbol/exec_complete_command.c \

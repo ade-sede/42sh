@@ -11,6 +11,25 @@ t_ast	*new_ast(t_token *token, int symbol)
 	return (new);
 }
 
+t_ast	*dup_ast(t_ast *ast)
+{
+	int		i = 0;
+	t_ast	*new;
+
+	if (!ast)
+		return (NULL);
+	if (ast->symbol)
+		new = new_ast(NULL, ast->symbol);
+	if (ast->token)
+		new = new_ast(dup_token(ast->token), 0);
+	while (ast->child[i] && i < 7)
+	{
+		new->child[i] = dup_ast(ast->child[i]);
+		i++;
+	}
+	return (new);
+}
+
 void	free_ast(t_ast *ast)
 {
 	int		i = 0;

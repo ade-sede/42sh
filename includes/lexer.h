@@ -69,6 +69,7 @@ int		pop_state(t_lexer *lex, ssize_t	**new_info);
 int		push_state(t_lexer *lex, ssize_t new_state);
 int		consume_input(t_lexer *lex);
 ssize_t	*create_state_info(void);
+void	copy_state_info(ssize_t *old_info, ssize_t *new_info);
 
 /*
 **	REFERENCING ACTIONS
