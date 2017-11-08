@@ -11,10 +11,14 @@ int		lex_action_default(t_lexer *lex, ssize_t **state_info)
 		push_state(lex, NEWLINE);
 	else if (CHAR_IS_OPERATOR(lex->line[lex->pos]))
 		push_state(lex, OPERATOR);
-	else if (lex->line[lex->pos] == '"')
-		push_state(lex, DQUOTES);
-	else if (lex->line[lex->pos] == '\'')
-		push_state(lex, QUOTES);
+/*
+**		else if (lex->line[lex->pos] == '"')
+**			push_state(lex, DQUOTES);
+*/
+	/*
+**		else if (lex->line[lex->pos] == '\'')
+**			push_state(lex, QUOTES);
+*/
 	else if (lex->line[lex->pos] == '#')
 		push_state(lex, COMMENT);
 	else

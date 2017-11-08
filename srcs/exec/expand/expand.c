@@ -5,27 +5,49 @@
 #include "exec.h"
 #include "glob.h"
 
-t_			*exec_expand(t_token *token)
+/*
+**
+*/
+
+char		**exec_expand(t_token *token)
 {
 	t_env	*env;
+	char	**step_1_ret = NULL;
 
-	env = singleton_env();
-	if (token->type == DQUOTED || token->type == QUOTED)
-	{
-		*token->value = 0;
-		if (token->size > 2)
-			token->value = ft_strchange(token->value, \
-					ft_strsub(token->value, 1, token->size - 2));
-		token->size -= 2;
-	}
-	if (token->type != QUOTED)
-	{
-		if (token->type != DQUOTED)
-		{
-			if (ft_strchr(token->value, '~'))
-				tild_expand(env, token);
-		}
-		parameter_expansion(env, token);
-	}
-	return (pathname_expansion(token, 1));
+	/*
+	**	Apply param expand, cmd_subst, ar_expand
+	*/
+
+	/*
+	** Delimiter des tokens d'expansion.
+	** Les traiter:
+	** - appeler Tilde_expansion, parameter_expansion, command_substitution, and arithmetic_expansion en fonction du token
+	** - ces fontions peuvent etre recursive dans le cas de aritmetic_expansion et parameter_expension
+	**  ${qweqew-:$lol} ; lol="a\nb"; ->recursif rappele de parameter_expansion
+	**  lol -> 1 champs
+	**  char *ret "a\nb"
+	*/
+
+	/*
+	**	Field Split -> n champs
+	*/
+
+	/*
+	**	Application du globing a CHAQUE CHAMP -> n * glob champs
+	*/
+
+	/*
+	**	Quote removal de chaque champ.
+	*/
+
+	/*
+	**	Concatenation dans un char **
+	**	ret;
+	*/
+
+	/*
+	**	
+	*/
+	if (token->state_info[_T_STATE] == CMD_SUBST)
+		step_1_ret = 
 }
