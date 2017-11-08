@@ -1,8 +1,6 @@
 #ifndef T_TOKEN_H
 # define T_TOKEN_H
-
-# include "t_lexer.h"
-# include <string.h>
+# include <sys/types.h>
 
 /*
 **	Every type of token we can find accoring to the POSIX STANDARD should be
@@ -18,14 +16,17 @@
 **	>= 20'.
 */
 
-typedef enum
+# define OPERATOR_OFFSET 5
+# define RESERVED_WORDS_OFFSET 21
+
+enum
 {
 	TK_WORD,
 	TK_ASSIGNMENT_WORD,
 	TK_NAME,
 	TK_NEWLINE,
 	TK_IO_NUMBER,
-	TK_LESS = 5,
+	TK_LESS = OPERATOR_OFFSET,
 	TK_HERE,
 	TK_GREAT,
 	TK_SEMI,
@@ -41,7 +42,7 @@ typedef enum
 	TK_LESSGREAT,
 	TK_DLESSDASH,
 	TK_CLOBBER,
-	TK_IF = 21,
+	TK_IF = RESERVED_WORDS_OFFSET,
 	TK_THEN,
 	TK_ELSE,
 	TK_ELIF,
@@ -60,49 +61,23 @@ typedef enum
 	TK_RPAREN,
 	TK_IN,
 	$ = 666
-}	t_token_id;
-
-/*
-**	Each delimited token will have its informations contained in this token.
-**	Value is the string of the delimited token.
-**	Id will be assumed to be TK_WORD unless it is possible to apply another id.
-**	Type corresponds to the state of the lexer when the token was delimited.
-**	Size is the lenght of the string.
-**	Cmd_name is a flag telling us if the token is considered to be the cmd_name
-**	of a simple command.
-**	Delimtier is the character that caused the token to be delimited.
-*/
-struct t_token_id_to_string
-{
-	t_token_id		id;
-	char		*string;
 };
-typedef struct		s_token
+
+#define _T_STATE 0
+#define _T_START 1
+#define _T_END 2
+#define _T_COUNT 3
+#define _T_NEST 4
+
+typedef struct	s_token
 {
-	char			*value;
-	t_token_id		id;
-	int				type;
-	size_t			size;
-	int				cmd_name;
-	char			delimiter;
-}					t_token;
-
-/*
-**	Macros to check if the id corresponds to a redirection, or a separator.
-*/
-
-# define TK_IS_REOPEN_SEP(id) (id == TK_AND_IF||id == TK_OR_IF||id == TK_PIPE)
-# define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
-# define TK_IS_GREAT_LESS(id) ( id == TK_GREAT || id == TK_LESS )
-# define TK_RP1(id) id == TK_IO_NUMBER || TK_IS_GREAT_LESS(id) || id == TK_HERE
-# define TK_IS_REDIR(id) (TK_RP1(id) || (id >= TK_DLESS && id <= TK_CLOBBER))
-
-/*
-**	In file srcs/lexer/t_token.c
-*/
-
-t_token				*create_token(char *value, int type, char delimiter);
-void				free_token(void *value);
-void				free_token_list(t_list *token_list);
-void				debug_token(t_token *token);
+	ssize_t				*state_info;
+	char				*value;
+	char				delim;
+	int					id;
+}				t_token;
 #endif
+
+
+t_token		*create_token(const char *source, ssize_t *info);
+void		free_token(void *value);

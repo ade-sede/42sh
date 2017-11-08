@@ -90,14 +90,28 @@ SRC_FILE = \
 	history/history_write.c \
 	history/load_history.c \
 	\
-	lexer/lexer.c \
-	lexer/match_expand.c \
-	lexer/match_operator.c \
-	lexer/match_token.c \
-	lexer/match_word.c \
+	lexer/get_token.c \
+	lexer/get_token_list.c \
 	lexer/t_lexer.c \
 	lexer/t_token.c \
-	lexer/lex_all.c \
+	lexer/utils.c \
+\
+	lexer/id/get_token_id.c \
+	lexer/id/operator.c \
+	lexer/id/reserved_words.c \
+	lexer/id/words.c \
+\
+	lexer/lexer_action/bs.c \
+	lexer/lexer_action/cmd_subst.c \
+	lexer/lexer_action/comment.c \
+	lexer/lexer_action/default.c \
+	lexer/lexer_action/dquotes.c \
+	lexer/lexer_action/newline.c \
+	lexer/lexer_action/operator.c \
+	lexer/lexer_action/param_exp.c \
+	lexer/lexer_action/quotes.c \
+	lexer/lexer_action/whitespace.c \
+	lexer/lexer_action/word.c \
 	\
 	line_editing/conf_term.c \
 	line_editing/edit_reopen.c \
@@ -141,7 +155,7 @@ SRC_FILE = \
 	exec/exec_io_redirect.c \
 	exec/exec_redirect_list.c \
 	exec/exec_bin.c \
- \
+	 \
 	exec/symbol/exec.c \
 	exec/symbol/exec_and_or.c \
 	exec/symbol/exec_case_clause.c \
@@ -167,10 +181,6 @@ SRC_FILE = \
 	exec/debug_symbol.c \
 	exec/debug_token.c \
 	exec/exec_function.c \
-	\
-	exec/expand/expand_param.c \
-	exec/expand/expand_tild.c \
-	exec/expand/expand_word.c \
 	\
 	job_control/job_background.c \
 	job_control/job_continue.c \
@@ -265,8 +275,9 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/hash_table
 	@/bin/mkdir -p $(OBJ_DIR)/history
 	@/bin/mkdir -p $(OBJ_DIR)/lexer
+	@/bin/mkdir -p $(OBJ_DIR)/lexer/id/
+	@/bin/mkdir -p $(OBJ_DIR)/lexer/lexer_action/
 	@/bin/mkdir -p $(OBJ_DIR)/line_editing
-	@/bin/mkdir -p $(OBJ_DIR)/main.c
 	@/bin/mkdir -p $(OBJ_DIR)/parser
 	@/bin/mkdir -p $(OBJ_DIR)/failure
 	@/bin/mkdir -p $(OBJ_DIR)/signal

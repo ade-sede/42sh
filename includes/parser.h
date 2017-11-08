@@ -2373,7 +2373,7 @@ typedef struct s_rule
 
 struct s_token_to_prompt
 {
-	t_token_id	id;
+	int			id;
 	char		*string;
 };
 

@@ -12,7 +12,7 @@
 typedef struct	s_redir
 {
 	int			id;
-	int			(*f)(int, char*, t_list**, t_token_id);
+	int			(*f)(int, char*, t_list**, int);
 }				t_redir;
 
 int			expansion(char **string, t_lst_head *head);
@@ -47,11 +47,11 @@ int				check_pipes(t_ast *ast, t_lst_head *head);
 **	In file srcs/exec/exec_redir.c
 */
 
-void			*get_exec_redir_func(t_token_id id); \
+void			*get_exec_redir_func(int id); \
 int				merge_fd(int io_number, char *target, t_list **redir_stack, \
-				t_token_id id);
+				int id);
 int				file_redir(int io_number, char *target, t_list **redir_stack, \
-				t_token_id id);
+				int id);
 int				exec_redir(t_list *child_list, t_list **redir_stack);
 
 /*
@@ -75,7 +75,7 @@ void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt);
 **	In file srcs/exec/redir_utils.c
 */
 
-int				redir_open_file(char *target, t_token_id id);
+int				redir_open_file(char *target, int id);
 void			close_dup(t_list *redir_stack);
 void			push_dup(int io_number, int target_fd, int natural_fd, \
 				t_list **redir_stack);

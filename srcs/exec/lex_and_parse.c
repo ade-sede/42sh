@@ -22,8 +22,10 @@ void	exec_main_loop(t_ast *ast)
 
 void	remove_lexer(t_lexer *lex)
 {
-	ft_strdel((char **)&lex->line);
-	ft_simple_lst_remove(&lex->stack, free_token);
+	(void)lex;
+	/* free_lexer(lex); */
+	/* ft_strdel((char **)&lex->line); */
+	/* ft_simple_lst_remove(&lex->stack, free_token); */
 }
 
 void	remove_parser(t_parser *parser)
@@ -49,22 +51,25 @@ void	lex_and_parse(t_ast *ast, char *buff)
 	t_parser	parser;
 	t_token		*reopen_token;
 
-	lexer = init_lexer(buff);
+	init_lexer(&lexer, buff);
 	init_parser(&parser);
 	while (!((res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS) || res_parser == PARSER_ERROR))
 	{
 		token_list = NULL;
-		res_lexer = lex_all(&lexer, &token_list);
-		if (res_lexer > 0)
+		res_lexer = get_token_list(&lexer, &token_list, NULL);
+		if (res_lexer == LEXER_REOPEN)
 		{
-			reopen_token = create_token(ft_strdup("quoted"), 0, 0);
+			reopen_token = ft_memalloc(sizeof(*reopen_token) * 1);
+			reopen_token->value = ft_strdup("quoted");
+			reopen_token->state_info = NULL;
+			reopen_token->delim = 0;
 			reopen_token->id = 42;
 			ft_simple_lst_pushback(&token_list, ft_simple_lst_create(reopen_token));
 		}
 		res_parser = parse(&parser, &ast, token_list);
-		if (res_lexer > 0 || res_parser == PARSER_REOPEN)
+		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{
-			reopen_line_editing(&lexer, &parser, res_lexer);
+			reopen_line_editing(&lexer, &parser);
 			token_list = NULL;
 			if (g_abort_opening)
 				break ;

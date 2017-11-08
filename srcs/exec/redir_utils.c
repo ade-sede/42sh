@@ -25,7 +25,7 @@ static int	safe_open(char *target, int mode)
 	return (target_fd);
 }
 
-int			redir_open_file(char *target, t_token_id id)
+int			redir_open_file(char *target, int id)
 {
 	int	target_fd;
 	int	mode;

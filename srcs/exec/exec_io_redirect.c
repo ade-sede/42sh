@@ -18,9 +18,9 @@
 void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 {
 	int			io_number;
-	int			(*f)(int, char*, t_list**, t_token_id);
+	int			(*f)(int, char*, t_list**, int);
 	char		*target;
-	t_token_id	id;
+	int	id;
 	t_ast		*io_file = NULL;
 	t_ast		*io_here = NULL;
 

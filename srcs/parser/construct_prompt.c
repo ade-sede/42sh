@@ -34,7 +34,7 @@ char	*token_to_prompt(int token_id)
 
 char	*parser_construct_prompt(t_ast_lst	*ast_stack)
 {
-	t_token_id	token_id;
+	int		token_id;
 	char	*prompt;
 	char	*token_prompt;
 	t_ast_lst	*tmp;

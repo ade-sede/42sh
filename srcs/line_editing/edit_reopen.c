@@ -29,7 +29,7 @@ char	*join_prompt(char *parser_prompt, char *lexer_prompt)
 
 }
 
-void		reopen_line_editing(t_lexer *lex, t_parser *parser, int res_lexer)
+void		reopen_line_editing(t_lexer *lex, t_parser *parser)
 {
 	char	*new_command;
 	t_line	*line;
@@ -39,7 +39,8 @@ void		reopen_line_editing(t_lexer *lex, t_parser *parser, int res_lexer)
 	char	*prompt;
 
 	parser_prompt = parser_construct_prompt(parser->ast_stack);
-	lexer_prompt = lexer_construct_prompt(res_lexer);
+	/* lexer_prompt = lexer_construct_prompt(res_lexer); */
+	lexer_prompt = ft_strdup(">");
 
 	prompt = join_prompt(parser_prompt, lexer_prompt);
 	prompt = ft_strjoin_free(prompt, "> ", 2);
