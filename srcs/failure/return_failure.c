@@ -31,34 +31,34 @@ int		get_logfd(const char *file)
 	return (fd);
 }
 
-/*
-**int		logwrite(const char *filename, const char *func_name,
-**const char *format, ...)
-**{
-**va_list		ap;
-**int			fd;
-**time_t		rawtime;
-**struct tm	*info;
-**char		time_str[26];
-**
-**time(&rawtime);
-**info = localtime(&rawtime);
-**fd = get_logfd(filename);
-**strftime(time_str, 26, "%Y-%m-%d %H:%M:%S", info);
-**if (fd >= 0)
-**{
-**va_start(ap, format);
-**dprintf(fd, "From "GRN"%s "RESET" @ %s"BLU"##\n"RESET,
-**func_name, time_str);
-**vdprintf(fd, format, ap);
-**dprintf(fd, BLU"##\n"RESET);
-**va_end(ap);
-**close(fd);
-**return (1);
-**}
-**return (-1);
-**}
-*/
+
+int		logwrite(const char *filename, const char *func_name,
+		const char *format, ...)
+{
+	va_list		ap;
+	int			fd;
+	time_t		rawtime;
+	struct tm	*info;
+	char		time_str[26];
+
+	time(&rawtime);
+	info = localtime(&rawtime);
+	fd = get_logfd(filename);
+	strftime(time_str, 26, "%Y-%m-%d %H:%M:%S", info);
+	if (fd >= 0)
+	{
+		va_start(ap, format);
+		dprintf(fd, "From "GRN"%s "RESET" @ %s"BLU"##\n"RESET,
+				func_name, time_str);
+		vdprintf(fd, format, ap);
+		dprintf(fd, BLU"##\n"RESET);
+		va_end(ap);
+		close(fd);
+		return (1);
+	}
+	return (-1);
+}
+
 
 int		investigate_error(int log, const char *prefix,
 		const char *custom_error, int return_value)
@@ -86,6 +86,6 @@ int		investigate_error(int log, const char *prefix,
 	return (return_value == -1 ? errno : return_value);
 }
 /*
-**	if (!log)
-**		logwrite(logfile, __func__, "%s\n", buff);
-*/
+ **	if (!log)
+ **		logwrite(logfile, __func__, "%s\n", buff);
+ */

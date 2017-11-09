@@ -7,6 +7,7 @@
 */
 
 #include <stdio.h>
+#include "line_editing.h"
 
 t_coor	get_prompt_visual_offset(t_line *line)
 {
@@ -35,8 +36,15 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 	y = 0;
 	while ((ssize_t)index != pos)
 	{
-		++x;
-		if (x == (int)line->ws_col || line->buff[index] == '\n')
+		if (line->buff[index] == '\t')//&& (x + 1) != (int)line->ws_col)
+		{
+			x += (x % 8) ? (8 - (x % 8)) : (8);
+			//if (x >= (int)line->ws_col)
+			//	x = line->ws_col;
+		}
+		else
+			++x;
+		if (x >= (int)line->ws_col || line->buff[index] == '\n')
 		{
 			x = 0;
 			++y;
@@ -45,6 +53,7 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 		if (line->buff[index] == 0)
 			break ;
 	}
+	//logwrite("log/def", __func__, "{%d : %d}\n", x, y);
 	return ((t_coor){x, y});
 }
 
@@ -65,8 +74,14 @@ size_t	get_char_mem_coor(size_t ret, t_line *line, size_t x_target,
 	y = pos.y;
 	while (y != y_target && line->buff[ret])
 	{
-		++x;
-		if (x == line->ws_col || line->buff[ret] == '\n')
+		//++x;
+		//edit add
+		if (line->buff[ret] == '\t')
+			x += (x % 8) ? (8 - (x % 8)) : (8);
+		else 
+			++x;
+		//end add
+		if (x >= line->ws_col || line->buff[ret] == '\n')
 		{
 			++y;
 			x = 0;
@@ -75,9 +90,13 @@ size_t	get_char_mem_coor(size_t ret, t_line *line, size_t x_target,
 	}
 	while (x != x_target)
 	{
-		if (x == line->ws_col || line->buff[ret] == '\n' || ret >= line->len)
+
+		if (x >= line->ws_col || line->buff[ret] == '\n' || ret >= line->len)
 			break ;
-		++x;
+		if (line->buff[ret] == '\t')
+			x += (x % 8) ? (8 - (x % 8)) : (8);
+		else
+			++x;
 		++ret;
 	}
 	return (ret);
