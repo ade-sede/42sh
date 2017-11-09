@@ -1,4 +1,5 @@
 #include "hash_table.h"
+#include "environ.h"
 #include "libft.h"
 #include "local.h"
 

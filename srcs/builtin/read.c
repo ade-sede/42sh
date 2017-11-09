@@ -1,6 +1,8 @@
 #include "libft.h"
+#include "environ.h"
+#include "hash_table.h"
 #include "builtin.h"
-#include "env.h"
+#include "t_env.h"
 #include "read.h"
 
 #include "local.h"

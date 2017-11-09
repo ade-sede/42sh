@@ -1,7 +1,8 @@
 #include "libft.h"
 #include "get_next_line.h"
 #include <unistd.h>
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 #include "exec.h"
 #include "builtin.h"
 #include "history.h"

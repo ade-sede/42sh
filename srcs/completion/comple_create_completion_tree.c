@@ -1,4 +1,6 @@
 #include "completion.h"
+#include "environ.h"
+#include "t_ternary_tree.h"
 #include "line_editing.h"
 #include <string.h>
 

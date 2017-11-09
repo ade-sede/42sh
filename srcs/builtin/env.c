@@ -1,4 +1,5 @@
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 #include "exec.h"
 #include "libft.h"
 #include "hash_table.h"

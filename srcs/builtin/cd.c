@@ -1,5 +1,6 @@
 #include "libft.h"
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 #include "failure.h"
 
 static int	update_pwd_old_pwd(char *cwd_before_chdir)
