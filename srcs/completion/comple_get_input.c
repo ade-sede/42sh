@@ -33,9 +33,6 @@ int		comple_loop(unsigned long long keycode, t_line *line,
 int		comple_get_input(t_line *line, int keycode)
 {
 	t_comple			*c;
-	//add by seddoaud
-	char	tmp;
-	//end add
 
 	c = singleton_comple();
 	if (line->completion)
@@ -51,16 +48,6 @@ int		comple_get_input(t_line *line, int keycode)
 	}
 	if (!(line->completion) && keycode == KEY_TAB)
 	{
-		tmp = line->buff[line->pos];
-		line->buff[line->pos] = '\0';
-		if (ft_str_is_clr(line->buff))
-		{
-			line->buff[line->pos] = tmp;
-			edit_add('\t', line);
-			put_termcap("ta");
-
-		}
-		line->buff[line->pos] = tmp;
 		comple_set_signals();
 		if (!(comple_init(line, c)))
 			return (0);

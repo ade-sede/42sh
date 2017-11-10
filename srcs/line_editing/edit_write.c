@@ -43,32 +43,34 @@ void		term_putstr(t_line *line)
 	size_t	i;
 	t_coor	pos;
 	t_coor	l_pos;
-	t_coor	tmp;
+	t_coor	tab_pos;
 	size_t	offset;
 	size_t	nb_newl;
 
 	i = 0;
 	while (line->buff[i])
 	{
-		if (line->buff[i] != '\n' && line->buff[i] != '\t')
-			term_write_char(line, i);
 		if (line->buff[i] == '\t')
 		{
-			tmp = get_char_visual_coor(line, i);
-			
-			//	offset = line->ws_col - (i + get_prompt_visual_offset(line).x);
-			offset = (tmp.x % 8) ? (8 - (tmp.x % 8)) : 8;
-			if ((offset + tmp.x) > line->ws_col || tmp.x == 0)
+			tab_pos = get_char_visual_coor(line, i);
+			offset = (tab_pos.x % 8) ? (8 - (tab_pos.x % 8)) : 8;
+			logwrite("/Users/ade-sede/projects/42sh/log/def", __func__, "index[%zu] {%d; %d} + offset = %zu\n & ws_col = %zu", i, tab_pos.x, tab_pos.y, offset, line->ws_col);
+			if (tab_pos.x == 0)	// If pos.x = 0 we need to both jump a line and write a tab
+			{
+				/* ft_putchar_fd('\n', 2); */
+				ft_putchar_fd('\t', 2);
+			}
+			else if (tab_pos.x + offset >= line->ws_col) // Jump line if tabulation would overflow the window.
+			{
+				ft_putchar_fd('\t', 2);
 				ft_putchar_fd('\n', 2);
+				/* if (i == 0 || (i > 0 && line->buff[i - 1] != '\t'))	// 2 tabulation could fit this condition. */
+				/* 	ft_putchar_fd('\n', 2); */
+			}
 			else
-				put_ntermcap("nd", (size_t)offset);
-			//logwrite("log/def", __func__, "{%d}", offset);
-			//if (tmp.y)
-			//{
-			//	tmp.y--;
-			//}
-		//		put_ntermcap("nd", (size_t)offset);
-			//check x et y
+			{
+				ft_putchar_fd('\t', 2);	// Write tabulation
+			}
 		}
 		else if (line->buff[i] == '\n')
 		{
@@ -80,6 +82,8 @@ void		term_putstr(t_line *line)
 				nb_newl = 2;
 			write(2, "\n\n", nb_newl);
 		}
+		else
+			term_write_char(line, i);
 		++i;
 	}
 }

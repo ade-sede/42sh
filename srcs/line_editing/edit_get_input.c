@@ -42,7 +42,7 @@ int					edit_loop(unsigned long long keycode, t_line *line)
 		}
 		i++;
 	}
-	if (ft_isprint((char)keycode))
+	if (ft_isprint((char)keycode) || keycode == KEY_TAB)
 		edit_add(keycode, line);
 	return (1);
 }
@@ -63,6 +63,19 @@ static void			init_read(t_line *l, unsigned long *keycode)
 
 int	g_abort_opening;
 
+static	int		go_comple(t_line *line, int keycode)
+{
+	char	tmp;
+	int		ret = TRUE;
+
+	tmp = line->buff[line->pos];
+	line->buff[line->pos] = '\0';
+	if (keycode == KEY_TAB && ft_str_is_clr(line->buff))
+		ret = FALSE;
+	line->buff[line->pos] = tmp;
+	return (ret);
+}
+
 char				*edit_get_input(void)
 {
 	unsigned long	keycode;
@@ -74,16 +87,6 @@ char				*edit_get_input(void)
 	{
 		init_read(l, &keycode);
 		read(0, &keycode, 1);
-#ifdef DEBUG_TAB
-		t_coor	pos;
-		ssize_t	i;
-		i = ft_strichr(l->buff, '\'');
-		if (i != -1)
-		{
-			pos = get_char_visual_coor(l, i);
-			//logwrite("/Users/seddaoud/projects/42sh/log/def", __func__, "{%d ; %d}\n", pos.x, pos.y);
-		}
-#endif
 		if (g_abort_opening)
 			return (edit_exit(l));
 		if (keycode == KEY_CTRL_D && l->heredoc && l->len == 0)
@@ -92,8 +95,10 @@ char				*edit_get_input(void)
 			read(0, (char *)&keycode + 1, 7);
 		if (keycode != KEY_ALT_UP && keycode != KEY_ALT_DOWN)
 			l->col_target = -1;
-		if (btsearch_get_input(l, keycode) || comple_get_input(l, keycode) ||
-				history_get_input(l, keycode))
+		if (go_comple(l, keycode))
+			if (comple_get_input(l, keycode))
+				continue ;
+		if (btsearch_get_input(l, keycode) || history_get_input(l, keycode))
 			continue ;
 		if (keycode == KEY_ENTER || (char)keycode == (l->read).delim)
 		{
