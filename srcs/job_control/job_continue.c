@@ -15,6 +15,7 @@ void	mark_job_as_running(t_job *j)
 void	continue_job(t_job *j, int foreground)
 {
 	mark_job_as_running(j);
+	format_job_info_process (j, "continue");
 	if (foreground)
 		put_job_in_foreground(singleton_jc(), j, 1, 0);
 	else

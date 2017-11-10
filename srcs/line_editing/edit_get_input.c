@@ -5,12 +5,12 @@
 
 static t_edit_func	g_edit_func[] =
 {
+	{KEY_ALT_SPACE, &verbatim},
 	{KEY_LEFT, &edit_left},
 	{KEY_RIGHT, &edit_right},
 	{KEY_ALT_RIGHT, &edit_word_right},
 	{KEY_ALT_LEFT, &edit_word_left},
-	{KEY_ALT_UP, &edit_up},
-	{KEY_ALT_DOWN, &edit_down},
+	{KEY_ALT_UP, &edit_up}, {KEY_ALT_DOWN, &edit_down},
 	{KEY_HOME, &edit_home},
 	{KEY_END, &edit_end},
 	{KEY_BACKSPACE, &edit_backspace},
@@ -24,10 +24,10 @@ static t_edit_func	g_edit_func[] =
 };
 
 /*
- **	Calls the routine corresponding to the keycode. If the keycode doesnt
- **	correspond to a command, it is simply appended to the buffer. (and will be
- **	printed next time a refresh is called).
- */
+**	Calls the routine corresponding to the keycode. If the keycode doesnt
+**	correspond to a command, it is simply appended to the buffer. (and will be
+**	printed next time a refresh is called).
+*/
 
 int					edit_loop(unsigned long long keycode, t_line *line)
 {
@@ -37,23 +37,23 @@ int					edit_loop(unsigned long long keycode, t_line *line)
 	while (g_edit_func[i].keycode)
 	{
 		if (g_edit_func[i].keycode == keycode)
-		{
 			keycode = g_edit_func[i].f(line);
-		}
 		i++;
 	}
-	if (ft_isprint((char)keycode) || keycode == KEY_TAB)
+	if (ft_isprint((char)keycode) || keycode == KEY_TAB || keycode == KEY_ENTER)
 		edit_add(keycode, line);
+	if (keycode == KEY_ENTER)
+		line->verbatim = 0;
 	return (1);
 }
 
 /*
- **	The function which starts the line editing, sets up the signals. Receives
- **	the keycode from history_move_loop(). Enters a loop in which each keycode
- **	is sent to edit_loop(), where it will be treated. If keycode is KEY_ENTER,
- **	editing is complete, and the line is returned. Every time is key is
- **	pressed, the displayed line is refreshed.
- */
+**	The function which starts the line editing, sets up the signals. Receives
+**	the keycode from history_move_loop(). Enters a loop in which each keycode
+**	is sent to edit_loop(), where it will be treated. If keycode is KEY_ENTER,
+**	editing is complete, and the line is returned. Every time is key is
+**	pressed, the displayed line is refreshed.
+*/
 
 static void			init_read(t_line *l, unsigned long *keycode)
 {
@@ -62,19 +62,6 @@ static void			init_read(t_line *l, unsigned long *keycode)
 }
 
 int	g_abort_opening;
-
-static	int		go_comple(t_line *line, int keycode)
-{
-	char	tmp;
-	int		ret = TRUE;
-
-	tmp = line->buff[line->pos];
-	line->buff[line->pos] = '\0';
-	if (keycode == KEY_TAB && ft_str_is_clr(line->buff))
-		ret = FALSE;
-	line->buff[line->pos] = tmp;
-	return (ret);
-}
 
 char				*edit_get_input(void)
 {
@@ -95,14 +82,13 @@ char				*edit_get_input(void)
 			read(0, (char *)&keycode + 1, 7);
 		if (keycode != KEY_ALT_UP && keycode != KEY_ALT_DOWN)
 			l->col_target = -1;
-		if (go_comple(l, keycode))
-			if (comple_get_input(l, keycode))
-				continue ;
-		if (btsearch_get_input(l, keycode) || history_get_input(l, keycode))
+		if (btsearch_get_input(l, keycode) || history_get_input(l, keycode) || comple_get_input(l, keycode))
 			continue ;
-		if (keycode == KEY_ENTER || (char)keycode == (l->read).delim)
+		if ((keycode == KEY_ENTER && !l->verbatim)|| (char)keycode == (l->read).delim)
 		{
-			if (keycode == KEY_ENTER && KEY_ENTER != (l->read).delim)
+			/* if (keycode == KEY_ENTER && l->verbatim) */
+			/* 	edit_add(keycode, l); */
+			else if (keycode == KEY_ENTER && KEY_ENTER != (l->read).delim)
 				edit_add(keycode, l);
 			else
 				return (edit_exit(l));

@@ -65,6 +65,6 @@ void	debug_symbol(t_ast *ast)
 		}
 		i++;
 	}
-	debug_token(ast->token);
+	/* debug_token(ast->token); */
 	//printf("symbol not found\n");
 }

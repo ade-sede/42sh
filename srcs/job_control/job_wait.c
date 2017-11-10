@@ -7,9 +7,13 @@ void	update_status(t_job_control *jc)
 	int status;
 	pid_t pid;
 
-	pid = waitpid(WAIT_ANY, &status, WUNTRACED|WNOHANG);
-	while (!mark_process_status(jc, pid, status))
+	while (42)
+	{
+		errno = 0;
 		pid = waitpid(WAIT_ANY, &status, WUNTRACED|WNOHANG);
+		if (!(!mark_process_status(jc, pid, status)))
+			break ;
+	}
 }
 
 void	get_job_exit_status(t_job *j)

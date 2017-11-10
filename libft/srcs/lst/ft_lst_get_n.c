@@ -33,11 +33,15 @@ t_list_d	*ft_double_lst_get_n(t_list_d *first, int n)
 	return (first);
 }
 
+/*
+**	0 is the current node, 1 is node->next;
+*/
+
 t_list		*ft_simple_lst_get_n(t_list *first, size_t n)
 {
 	if (n == 0)
-		return (NULL);
-	while (first && n > 1)
+		return (first);
+	while (first && n)
 	{
 		n--;
 		first = first->next;

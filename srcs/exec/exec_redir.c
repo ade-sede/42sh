@@ -22,7 +22,7 @@ static t_redir	g_redir[] =
 	{-1, NULL}
 };
 
-void	*get_exec_redir_func(t_token_id id)
+void	*get_exec_redir_func(int id)
 {
 	size_t		i;
 
@@ -47,7 +47,7 @@ void	*get_exec_redir_func(t_token_id id)
 */
 
 int		merge_fd(int io_number, char *target, t_list **redir_stack, \
-		t_token_id id)
+		int id)
 {
 	int	target_fd;
 	int	natural_fd;
@@ -66,7 +66,7 @@ int		merge_fd(int io_number, char *target, t_list **redir_stack, \
 }
 
 int		file_redir(int io_number, char *target, t_list **redir_stack, \
-		t_token_id id)
+		int id)
 {
 	int	target_fd;
 

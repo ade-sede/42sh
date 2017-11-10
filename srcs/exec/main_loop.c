@@ -58,6 +58,7 @@ void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt)
 	init_main_loop(singleton_line(), singleton_hist());
 	while (42)
 	{
+		do_job_notification(singleton_jc());
 		load_prompt(env, singleton_line(), "PS1", "$> ");
 		if (singleton_jc()->shell_is_interactive)
 			buff = ft_strdup(line_editing_get_input(singleton_line(), \

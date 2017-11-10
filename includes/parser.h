@@ -2373,23 +2373,41 @@ typedef struct s_rule
 
 struct s_token_to_prompt
 {
-	t_token_id	id;
+	int			id;
 	char		*string;
 };
 
+typedef struct	s_state_lst
+{
+	struct s_state_lst	*next;
+	int					state;
+}				t_state_lst;
+
+t_state_lst	*new_state_lst(int n);
+
+typedef struct	s_ast_lst
+{
+	struct s_ast_lst	*next;
+	t_ast				*ast;
+}				t_ast_lst;
+
+t_ast_lst	*new_ast_lst(t_ast *ast);
+void	free_ast_node(void *ast_node);
+
 typedef struct	s_parser
 {
-	t_list		*ast_stack;
+	t_ast_lst	*ast_stack;
 	int			state;
-	t_listint	*state_stack;
+	t_state_lst	*state_stack;
 }				t_parser;
 
 int			get_action(t_token *token, int state);
 t_ast		*new_ast(t_token *token, int symbol);
-int			get_goto(t_listint *state_stack, int reduce_rule);
-void		reduce(t_listint **state_stack, t_list **ast_stack, int reduce_rule);
+int		get_goto(t_state_lst *state_stack, int reduce_rule);
+void	reduce(t_state_lst **state_stack, t_ast_lst **ast_stack, int reduce_rule);
 void	init_parser(t_parser *parser);
 int			parse(t_parser *parser, t_ast **ast, t_list *token_list);
 void		ast_print(t_ast *root, void (printer) (void *));
-char	*parser_construct_prompt(t_list	*ast_stack);
+char	*parser_construct_prompt(t_ast_lst	*ast_stack);
+
 #endif

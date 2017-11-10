@@ -1954,7 +1954,7 @@ static const t_rule	g_rule_table[] = {
 	{SEQUENTIAL_SEP, 1},
 };
 
-void	reduce(t_listint **state_stack, t_list **ast_stack, int reduce_rule)
+void	reduce(t_state_lst **state_stack, t_ast_lst **ast_stack, int reduce_rule)
 {
 	t_rule			rule;
 	int				nb_child;
@@ -1970,18 +1970,19 @@ void	reduce(t_listint **state_stack, t_list **ast_stack, int reduce_rule)
 	i = nb_child - 1;
 	while (i >= 0)
 	{
-		ft_lstint_pop(state_stack);
-		new->child[i] = ft_lst_pop(ast_stack)->data;
+		ft_genlst_del_one(state_stack, *state_stack, NULL);
+		new->child[i] = (*ast_stack)->ast;
+		ft_genlst_del_one(ast_stack, *ast_stack,  NULL);
 		i--;
 	}
-	ft_simple_lst_add(ast_stack, ft_simple_lst_create(new));
+	ft_genlst_add(ast_stack, ft_simple_lst_create(new));
 }
 
 int	symbol_table_len = 47;
 
 static const enum e_symbol	g_symbol_table[47] = {AND_OR,BRACE_GROUP,CASE_CLAUSE,CASE_ITEM,CASE_ITEM_NS,CASE_LIST,CASE_LIST_NS,CMD_NAME,CMD_PREFIX,CMD_SUFFIX,CMD_WORD,COMMAND,COMPLETE_COMMAND,COMPLETE_COMMANDS,COMPOUND_COMMAND,COMPOUND_LIST,DO_GROUP,ELSE_PART,FILENAME,FNAME,FOR_CLAUSE,FUNCTION_BODY,FUNCTION_DEFINITION,HERE_END,IF_CLAUSE,SYM_IN,IO_FILE,IO_HERE,IO_REDIRECT,LINEBREAK,LIST,NAME,NEWLINE_LIST,PATTERN,PIPE_SEQUENCE,PIPELINE,PROGRAM,REDIRECT_LIST,SEPARATOR,SEPARATOR_OP,SEQUENTIAL_SEP,SIMPLE_COMMAND,SUBSHELL,TERM,UNTIL_CLAUSE,WHILE_CLAUSE,WORDLIST};
 
-int		get_goto(t_listint *state_stack, int reduce_rule)
+int		get_goto(t_state_lst *state_stack, int reduce_rule)
 {
 	enum e_symbol	symbol;
 	int				col;
@@ -1998,7 +1999,7 @@ int		get_goto(t_listint *state_stack, int reduce_rule)
 		col++;
 	}
 	col += offset;
-	if ((col == symbol_table_len + offset) || (res_state = g_lr_table[state_stack->data][col]) == -1)
+	if ((col == symbol_table_len + offset) || (res_state = g_lr_table[state_stack->state][col]) == -1)
 	{
 		printf("goto error state -1 \n");
 		return (-1);

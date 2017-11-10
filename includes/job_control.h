@@ -71,5 +71,6 @@ void	format_job_info_process(t_job *j, const char *status);
 void	format_job_info_process(t_job *j, const char *status);
 void	update_status(t_job_control *jc);
 void	job_free(t_job *job);
+t_process	*fill_process_av(t_ast *ast, t_process *process);
 
 #endif

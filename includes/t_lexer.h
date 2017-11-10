@@ -1,50 +1,63 @@
 #ifndef T_LEXER_H
 # define T_LEXER_H
+# include "t_token.h"
 # include <string.h>
 # include "list.h"
 
 /*
-**	The lexer state indicates in wich context line[pos] is.
-**	Is it surrounded by dquotes ?
-**	Is it surrounded by quotes ?
-**	Is it after a backslash ?
-**	[...]
+**	state_list is a list which has ssize_t* as data. Each of these 3 int holds
+**	data about the state of the current operation:
+**	data[_T_STATE] -> current state of the automaton
+**	data[_T_START] -> where the current operation STARTED (index of the first character to include IN the token)
+**	data[_T_END] -> where the operation ended (index of the last character to include IN the token)
+**	Its a stack of ssize_t
+**
+**	state is a pointer to a node of state_list, representing its current state
+**
+**	line is the adress of a string. This string is malloc'ed by init_lexer(),
+**	and must be freed at some point.
+**
+**	pos is our main offset, used to read the line char by char.
+**
+**	cmd_name_open is a flag, set to TRUE (1) if the next word we see can
+**	potentially be a command name, or FALSE (0) if it is not possible
+**	(obviously because we have already found one in the current command)
 */
 
-typedef enum
+
+/*
+**	The following enum concerns the different states the automata can go
+**	through.
+*/
+
+enum
 {
 	DEFAULT,
 	WORD,
-	DQUOTED = 34,
-	QUOTED = 39,
-	BACKSLASH = 92,
+	WHITESPACE,
+	COMMENT,
 	OPERATOR,
-	EXPAND,
+	PARAM_EXP,
+	CMD_SUBST,
+	TILD_EXP,
+	AR_EXP,
+	DQUOTES,
+	QUOTES,
+	BS,
 	NEWLINE,
-	INPUT_END
-}	t_lexer_state;
+};
 
-/*
-**	Line is the string we are tokenizing.
-**	Index represents our position on the string.
-**	stack->data should contain a t_token.
-*/
-
-typedef struct		s_lexer
+typedef struct	s_lexer
 {
-	char			*line;
-	size_t			index;
-	size_t			token_start;
-	t_list			*stack;
-	int				reopen;
-	t_lexer_state	state;
-	int				last_id;
-	int				cmd_name_open;
-}					t_lexer;
+	t_list		*state_list;
+	t_list		*state;
+	char		*line;
+	size_t		pos;
+	int			cmd_name_open;
+	t_list		*reversed_list;
+}				t_lexer;
 
-/*
-**	In file srcs/lexer/t_lexer.c
-*/
 
-t_lexer				init_lexer(const char *line);
+int			init_lexer(t_lexer *lex, const char *line);
+int			free_lexer(t_lexer *lex);
 #endif

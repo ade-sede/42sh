@@ -11,9 +11,29 @@ t_ast	*new_ast(t_token *token, int symbol)
 	return (new);
 }
 
+t_ast	*dup_ast(t_ast *ast)
+{
+	int		i = 0;
+	t_ast	*new;
+
+	if (!ast)
+		return (NULL);
+	if (ast->symbol)
+		new = new_ast(NULL, ast->symbol);
+	if (ast->token)
+		new = new_ast(dup_token(ast->token), 0);
+	while (ast->child[i] && i < 7)
+	{
+		new->child[i] = dup_ast(ast->child[i]);
+		i++;
+	}
+	return (new);
+}
+
 void	free_ast(t_ast *ast)
 {
 	int		i = 0;
+
 	if (!ast)
 		return ;
 	while (ast->child[i] && i < 7)
@@ -24,6 +44,10 @@ void	free_ast(t_ast *ast)
 	free(ast);
 }
 
+void	free_ast_node(void *ast_node)
+{
+	free_ast(((t_ast_lst *)ast_node)->ast);
+}
 void	aux(t_ast *root, int li, int co, void (printer) (void *))
 {
 	t_ast	*child[3];
@@ -53,4 +77,22 @@ void	ast_print(t_ast *root, void (printer) (void *))
 	if (!root)
 		return ;
 	aux(root, 0,  COLS / 2, printer);
+}
+
+t_state_lst	*new_state_lst(int n)
+{
+	t_state_lst *new;
+
+	new = ft_memalloc(sizeof(t_state_lst));
+	new->state = n;
+	return (new);
+}
+
+t_ast_lst	*new_ast_lst(t_ast *ast)
+{
+	t_ast_lst *new;
+
+	new = ft_memalloc(sizeof(t_ast_lst));
+	new->ast = ast;
+	return (new);
 }

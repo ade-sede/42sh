@@ -90,18 +90,29 @@ SRC_FILE = \
 	history/history_write.c \
 	history/load_history.c \
 	\
-	lexer/expand_alias.c \
-	lexer/expand_param.c \
-	lexer/expand_tild.c \
-	lexer/expand_word.c \
-	lexer/lexer.c \
-	lexer/match_expand.c \
-	lexer/match_operator.c \
-	lexer/match_token.c \
-	lexer/match_word.c \
+	lexer/get_token.c \
+	lexer/get_token_list.c \
 	lexer/t_lexer.c \
 	lexer/t_token.c \
-	lexer/lex_all.c \
+	lexer/utils.c \
+	lexer/lexer_construct_prompt.c \
+\
+	lexer/id/get_token_id.c \
+	lexer/id/operator.c \
+	lexer/id/reserved_words.c \
+	lexer/id/words.c \
+\
+	lexer/lexer_action/bs.c \
+	lexer/lexer_action/cmd_subst.c \
+	lexer/lexer_action/comment.c \
+	lexer/lexer_action/default.c \
+	lexer/lexer_action/dquotes.c \
+	lexer/lexer_action/newline.c \
+	lexer/lexer_action/operator.c \
+	lexer/lexer_action/param_exp.c \
+	lexer/lexer_action/quotes.c \
+	lexer/lexer_action/whitespace.c \
+	lexer/lexer_action/word.c \
 	\
 	line_editing/conf_term.c \
 	line_editing/edit_reopen.c \
@@ -123,10 +134,11 @@ SRC_FILE = \
 	line_editing/put_termcap.c \
 	line_editing/edit_get_coor.c \
 	line_editing/edit_cursor.c \
+	line_editing/edit_verbatim.c \
 	\
 	parser/get_action.c \
 	parser/parser.c \
-	parser/construct_prompt.c \
+	parser/parser_construct_prompt.c \
 	parser/utils.c \
 	\
 	failure/get_errno_1.c \
@@ -145,29 +157,30 @@ SRC_FILE = \
 	exec/exec_io_redirect.c \
 	exec/exec_redirect_list.c \
 	exec/exec_bin.c \
- \
-	exec/exec_symb/exec.c \
-	exec/exec_symb/exec_and_or.c \
-	exec/exec_symb/exec_case_clause.c \
-	exec/exec_symb/exec_command.c \
-	exec/exec_symb/exec_complete_command.c \
-	exec/exec_symb/exec_complete_commands.c \
-	exec/exec_symb/exec_compound_command.c \
-	exec/exec_symb/exec_compound_list.c \
-	exec/exec_symb/exec_do_group.c \
-	exec/exec_symb/exec_else_part.c \
-	exec/exec_symb/exec_for_clause.c \
-	exec/exec_symb/exec_function_body.c \
-	exec/exec_symb/exec_function_definition.c \
-	exec/exec_symb/exec_if_clause.c \
-	exec/exec_symb/exec_pipe_sequence.c \
-	exec/exec_symb/exec_pipeline.c \
-	exec/exec_symb/exec_program.c \
-	exec/exec_symb/exec_simple_command.c \
-	exec/exec_symb/exec_subshell.c \
-	exec/exec_symb/exec_term.c \
-	exec/exec_symb/exec_until_clause.c \
-	exec/exec_symb/exec_while_clause.c \
+	 \
+	exec/symbol/exec.c \
+	exec/symbol/exec_and_or.c \
+	exec/symbol/exec_brace_group.c \
+	exec/symbol/exec_case_clause.c \
+	exec/symbol/exec_command.c \
+	exec/symbol/exec_complete_command.c \
+	exec/symbol/exec_complete_commands.c \
+	exec/symbol/exec_compound_command.c \
+	exec/symbol/exec_compound_list.c \
+	exec/symbol/exec_do_group.c \
+	exec/symbol/exec_else_part.c \
+	exec/symbol/exec_for_clause.c \
+	exec/symbol/exec_function_body.c \
+	exec/symbol/exec_function_definition.c \
+	exec/symbol/exec_if_clause.c \
+	exec/symbol/exec_pipe_sequence.c \
+	exec/symbol/exec_pipeline.c \
+	exec/symbol/exec_program.c \
+	exec/symbol/exec_simple_command.c \
+	exec/symbol/exec_subshell.c \
+	exec/symbol/exec_term.c \
+	exec/symbol/exec_until_clause.c \
+	exec/symbol/exec_while_clause.c \
 	exec/debug_symbol.c \
 	exec/debug_token.c \
 	exec/exec_function.c \
@@ -183,6 +196,7 @@ SRC_FILE = \
 	job_control/job_format.c \
 	job_control/job_mark_status.c \
 	job_control/job_wait.c \
+	job_control/job_fill_process_av.c \
 	\
 	main.c \
 
@@ -258,13 +272,15 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/completion
 	@/bin/mkdir -p $(OBJ_DIR)/env
 	@/bin/mkdir -p $(OBJ_DIR)/exec
-	@/bin/mkdir -p $(OBJ_DIR)/exec/exec_symb/
+	@/bin/mkdir -p $(OBJ_DIR)/exec/symbol/
+	@/bin/mkdir -p $(OBJ_DIR)/exec/expand/
 	@/bin/mkdir -p $(OBJ_DIR)/globing
 	@/bin/mkdir -p $(OBJ_DIR)/hash_table
 	@/bin/mkdir -p $(OBJ_DIR)/history
 	@/bin/mkdir -p $(OBJ_DIR)/lexer
+	@/bin/mkdir -p $(OBJ_DIR)/lexer/id/
+	@/bin/mkdir -p $(OBJ_DIR)/lexer/lexer_action/
 	@/bin/mkdir -p $(OBJ_DIR)/line_editing
-	@/bin/mkdir -p $(OBJ_DIR)/main.c
 	@/bin/mkdir -p $(OBJ_DIR)/parser
 	@/bin/mkdir -p $(OBJ_DIR)/failure
 	@/bin/mkdir -p $(OBJ_DIR)/signal

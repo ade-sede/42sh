@@ -1,0 +1,385 @@
+[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m                      
+
+----------------------------------------------------------------
+
+[37;1m21sh/misc/002-simple-command-line[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell is able to execute a simple command line that contains separators `;`, pipes `|`, and a right redirection `>`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./size"
+  02: rm -rf "TOKEN201711032210"
+  03: echo '^'$(echo TOKEN201711032210_FILE_TOKEN201711032210_STDOUT | wc -c)'$' > "./size"[0m
+
+  STDIN:
+[38;5;239m  01: mkdir TOKEN201711032210 ; cd TOKEN201711032210 ; touch TOKEN201711032210_FILE ; ls -1 ; ls | cat | wc -c > TOKEN201711032210_STDOUT ; cat TOKEN201711032210_STDOUT[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711032210_FILE$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_each_regex_of_file `./size`[0m
+[38;5;239m  01: TOKEN201711032210_FILE
+  02:       23[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/pipe/006-exit-status[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the exit status of a pipeline command is the same as the last piped process.[0m
+
+  STDIN:
+[38;5;239m  01: ./sleep_and_exit_with_status 1 21 | ./exit_with_status 42[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/001-close-stdin[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the closing operator `&-` within the STDIN redirection `<` results in a closed standard input, so that `read(2)` results in a read error.[0m
+
+  Before test:
+[38;5;239m  01: rm -f ./read_on_stdin
+  02: gcc -Wall -Werror -Wextra "/Users/vcombey/42ShellTester/support/read-on-stdin/main.c" -o ./read_on_stdin[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin <&-[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `STDIN READ ERROR$`[0m
+[38;5;239m  01: STDIN READ ERROR[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `1`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/005-no-such-file[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong path within the STDIN redirection `<` results in an error.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./no_such_file"[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin <no_such_file[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Nn]o such file or directory`[0m
+[38;5;239m  01: open: No such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/touching/001-works[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the right redirection `>` without any command results in the creation of an empty file (same effect as `touch`).[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./new_empty_file"[0m
+
+  STDIN:
+[38;5;239m  01: >new_empty_file[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ASAN:DEADLYSIGNAL
+  02: =================================================================
+  03: ==42442==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000101cc7d5e bp 0x7fff5df4f430 sp 0x7fff5df4f430 T0)
+  04: ==42442==The signal is caused by a READ memory access.
+  05: ==42442==Hint: address points to the zero page.
+  06:     #0 0x101cc7d5d in ft_strcmp ft_strcmp.c:11
+  07:     #1 0x101cc806c in ft_strequ ft_strequ.c:6
+  08:     #2 0x101cb1e53 in get_exec_builtin exec_builtin.c:29
+  09:     #3 0x101cc236c in pipe_sequence_has_to_fork exec_pipeline.c:23
+  10:     #4 0x101cc2602 in exec_pipeline exec_pipeline.c:82
+  11:     #5 0x101cc19dc in exec exec.c:37
+  12:     #6 0x101cc1a54 in exec_and_or exec_and_or.c:13
+  13:     #7 0x101cc19dc in exec exec.c:37
+  14:     #8 0x101cc22b4 in exec_list exec_list.c:10
+  15:     #9 0x101cc19dc in exec exec.c:37
+  16:     #10 0x101cc1e77 in exec_complete_command exec_complete_command.c:9
+  17:     #11 0x101cc19dc in exec exec.c:37
+  18:     #12 0x101cc1eb4 in exec_complete_commands exec_complete_commands.c:10
+  19:     #13 0x101cc19dc in exec exec.c:37
+  20:     #14 0x101cc26e7 in exec_program exec_program.c:10
+  21:     #15 0x101cc19dc in exec exec.c:37
+  22:     #16 0x101cc0d88 in exec_main_loop lex_and_parse.c:18
+  23:     #17 0x101cc0f5b in lex_and_parse lex_and_parse.c:70
+  24:     #18 0x101cc121a in main_loop main_loop.c:70
+  25:     #19 0x101cc4726 in main main.c:78
+  26:     #20 0x7fffc444c234 in start (libdyld.dylib:x86_64+0x5234)
+  27: 
+  28: ==42442==Register values:
+  29: rax = 0x0000000000000000  rbx = 0x0000000000000000  rcx = 0x0000000000000063  rdx = 0x0000000101ccd230  
+  30: rdi = 0x0000000101cc9f4e  rsi = 0x0000000000000000  rbp = 0x00007fff5df4f430  rsp = 0x00007fff5df4f430  
+  31:  r8 = 0x000000010535da97   r9 = 0x0000000000000000  r10 = 0x0000000000000040  r11 = 0x0000000000000000  
+  32: r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+  33: AddressSanitizer can not provide additional info.
+  34: SUMMARY: AddressSanitizer: SEGV ft_strcmp.c:11 in ft_strcmp
+  35: ==42442==ABORTING
+  36: ./lib/main.sh: line 102: 42442 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_empty_file`[0m
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/002-together-stdout-first[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `M>&N`, that means `redirect M to where N is redirected`.
+  In this test the standard output is specified first.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711032210_1 TOKEN201711032210_2 1>new_file_stderr_and_stdout 2>&1[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711032210_2`[0m
+[38;5;239m  01: TOKEN201711032210_2[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_2`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711032210_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711032210_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/003-together-stderr-first[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `M>&N`, that means `redirect M to where N is redirected`.
+  In this test the standard error is specified first.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711032210_1 TOKEN201711032210_2 2>new_file_stderr_and_stdout 1>&2[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_2`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711032210_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_2`[0m
+[38;5;239m  01: TOKEN201711032210_1[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711032210_1$`[0m
+[31m[38;5;34m  SUCCESS    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711032210_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/004-together[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `&>...`, that means `redirect stdout and stderr to ...`.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "new_file_stderr_and_stdout"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711032210_1 TOKEN201711032210_2 &>new_file_stderr_and_stdout[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711032210_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_2`[0m
+[38;5;239m  01: TOKEN201711032210_1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711032210_2`[0m
+[38;5;239m  01: TOKEN201711032210_2
+  02: ASAN:DEADLYSIGNAL
+  03: =================================================================
+  04: ==43445==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000106031d5e bp 0x7fff59be5430 sp 0x7fff59be5430 T0)
+  05: ==43445==The signal is caused by a READ memory access.
+  06: ==43445==Hint: address points to the zero page.
+  07:     #0 0x106031d5d in ft_strcmp ft_strcmp.c:11
+  08:     #1 0x10603206c in ft_strequ ft_strequ.c:6
+  09:     #2 0x10601be53 in get_exec_builtin exec_builtin.c:29
+  10:     #3 0x10602c36c in pipe_sequence_has_to_fork exec_pipeline.c:23
+  11:     #4 0x10602c602 in exec_pipeline exec_pipeline.c:82
+  12:     #5 0x10602b9dc in exec exec.c:37
+  13:     #6 0x10602ba54 in exec_and_or exec_and_or.c:13
+  14:     #7 0x10602b9dc in exec exec.c:37
+  15:     #8 0x10602c2d8 in exec_list exec_list.c:12
+  16:     #9 0x10602b9dc in exec exec.c:37
+  17:     #10 0x10602be77 in exec_complete_command exec_complete_command.c:9
+  18:     #11 0x10602b9dc in exec exec.c:37
+  19:     #12 0x10602beb4 in exec_complete_commands exec_complete_commands.c:10
+  20:     #13 0x10602b9dc in exec exec.c:37
+  21:     #14 0x10602c6e7 in exec_program exec_program.c:10
+  22:     #15 0x10602b9dc in exec exec.c:37
+  23:     #16 0x10602ad88 in exec_main_loop lex_and_parse.c:18
+  24:     #17 0x10602af5b in lex_and_parse lex_and_parse.c:70
+  25:     #18 0x10602b21a in main_loop main_loop.c:70
+  26:     #19 0x10602e726 in main main.c:78
+  27:     #20 0x7fffc444c234 in start (libdyld.dylib:x86_64+0x5234)
+  28: 
+  29: ==43445==Register values:
+  30: rax = 0x0000000000000000  rbx = 0x0000000000000000  rcx = 0x0000000000000063  rdx = 0x0000000106037230  
+  31: rdi = 0x0000000106033f4e  rsi = 0x0000000000000000  rbp = 0x00007fff59be5430  rsp = 0x00007fff59be5430  
+  32:  r8 = 0x00007fffcd24d278   r9 = 0x00007fffcd24d400  r10 = 0x0000000000000000  r11 = 0x0000000000000246  
+  33: r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+  34: AddressSanitizer can not provide additional info.
+  35: SUMMARY: AddressSanitizer: SEGV ft_strcmp.c:11 in ft_strcmp
+  36: ==43445==ABORTING
+  37: ./lib/main.sh: line 102: 43445 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711032210_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711032210_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/005-together-with-whitespaces[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `&>...`, that means `redirect stdout and stderr to ...`.
+  In this test, we specify the file name in a separate field.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711032210_1 TOKEN201711032210_2 &>	  	new_file_stderr_and_stdout[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711032210_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_2`[0m
+[38;5;239m  01: TOKEN201711032210_1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711032210_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711032210_2`[0m
+[38;5;239m  01: TOKEN201711032210_2
+  02: ASAN:DEADLYSIGNAL
+  03: =================================================================
+  04: ==43602==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00010f98ed5e bp 0x7fff50288430 sp 0x7fff50288430 T0)
+  05: ==43602==The signal is caused by a READ memory access.
+  06: ==43602==Hint: address points to the zero page.
+  07:     #0 0x10f98ed5d in ft_strcmp ft_strcmp.c:11
+  08:     #1 0x10f98f06c in ft_strequ ft_strequ.c:6
+  09:     #2 0x10f978e53 in get_exec_builtin exec_builtin.c:29
+  10:     #3 0x10f98936c in pipe_sequence_has_to_fork exec_pipeline.c:23
+  11:     #4 0x10f989602 in exec_pipeline exec_pipeline.c:82
+  12:     #5 0x10f9889dc in exec exec.c:37
+  13:     #6 0x10f988a54 in exec_and_or exec_and_or.c:13
+  14:     #7 0x10f9889dc in exec exec.c:37
+  15:     #8 0x10f9892d8 in exec_list exec_list.c:12
+  16:     #9 0x10f9889dc in exec exec.c:37
+  17:     #10 0x10f988e77 in exec_complete_command exec_complete_command.c:9
+  18:     #11 0x10f9889dc in exec exec.c:37
+  19:     #12 0x10f988eb4 in exec_complete_commands exec_complete_commands.c:10
+  20:     #13 0x10f9889dc in exec exec.c:37
+  21:     #14 0x10f9896e7 in exec_program exec_program.c:10
+  22:     #15 0x10f9889dc in exec exec.c:37
+  23:     #16 0x10f987d88 in exec_main_loop lex_and_parse.c:18
+  24:     #17 0x10f987f5b in lex_and_parse lex_and_parse.c:70
+  25:     #18 0x10f98821a in main_loop main_loop.c:70
+  26:     #19 0x10f98b726 in main main.c:78
+  27:     #20 0x7fffc444c234 in start (libdyld.dylib:x86_64+0x5234)
+  28: 
+  29: ==43602==Register values:
+  30: rax = 0x0000000000000000  rbx = 0x0000000000000000  rcx = 0x0000000000000063  rdx = 0x000000010f994230  
+  31: rdi = 0x000000010f990f4e  rsi = 0x0000000000000000  rbp = 0x00007fff50288430  rsp = 0x00007fff50288430  
+  32:  r8 = 0x00007fffcd24d278   r9 = 0x00007fffcd24d400  r10 = 0x0000000000000000  r11 = 0x0000000000000246  
+  33: r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+  34: AddressSanitizer can not provide additional info.
+  35: SUMMARY: AddressSanitizer: SEGV ft_strcmp.c:11 in ft_strcmp
+  36: ==43602==ABORTING
+  37: ./lib/main.sh: line 102: 43602 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711032210_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711032210_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/separators/semicolon/003-parse-error-empty-inline-command[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the simicolon separator `;` with empty commands results in error.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout TOKEN201711032210 ; ; ./exit_with_status 42[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: 42sh: parse error near `;'[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Ss]yntax|[Pp]arse) error`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status `42`[0m
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/separators/semicolon/004-parse-error-empty-command[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the semicolon separator `;` without any command results in error.[0m
+
+  STDIN:
+[38;5;239m  01: ;[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: 42sh: parse error near `;'[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Pp]arse|[Ss]yntax) error`[0m
+[38;5;239m  (no output)[0m
+
+Total tests: 36
+Total failed tests: 11
+Total pending tests: 0

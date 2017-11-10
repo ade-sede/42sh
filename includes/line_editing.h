@@ -29,8 +29,10 @@
 # define KEY_ALT_C 42947
 # define KEY_ALT_P 32975
 # define KEY_ALT_V 10127586
+# define KEY_ALT_SPACE 41154
 # define KEY_ALT_R 44738
 # define KEY_CTRL_L 12
+# define KEY_CTRL_V 22
 # define BUFF_LINE_SIZE 10
 # define TAB_SIZE 8
 
@@ -67,7 +69,7 @@ extern int		g_abort_opening;
 
 int				edit_del(t_line *line);
 t_coor			get_prompt_visual_offset(t_line *line);
-void		reopen_line_editing(t_lexer *lex, t_parser *parser, int res_lexer);
+void		reopen_line_editing(t_lexer *lex, t_parser *parser);
 void			term_putstr(t_line *line);
 void			edit_handle_sigint_reopen(int signum);
 void			edit_set_signals_reopen(void);
@@ -93,6 +95,7 @@ void			put_termcap(char *capacity);
 t_line			*singleton_line(void);
 
 int				control_l(t_line *line);
+int				verbatim(t_line *line);
 int				control_d(t_line *line);
 int				edit_end(t_line *line);
 int				edit_home(t_line *line);

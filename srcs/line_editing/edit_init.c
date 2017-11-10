@@ -27,6 +27,7 @@ void		edit_line_init(t_line *line, void (*sig_handler)(void))
 		line->buff = ft_strnew(BUFF_LINE_SIZE);
 		line->size = BUFF_LINE_SIZE;
 	}
+	line->verbatim = 0;
 	line->completion = 0;
 	line->btsearch = 0;
 	line->history = 0;

@@ -18,6 +18,7 @@ typedef struct	s_line
 	int					completion;
 	int					history;
 	int					btsearch;
+	int					verbatim;
 	size_t				visu_start;
 	char				*copied_text;
 	char				*prompt;

@@ -42,3 +42,4 @@ libft/test/*
 21sh
 42sh
 minishell
+.*history

@@ -15,8 +15,7 @@ static void			backslash(char **line, char **word, char quote)
 		ft_strpush(word, '\n');
 	if (quote && **line == 't')
 		ft_strpush(word, '\t');
-	if (quote && **line == 'v')
-		ft_strpush(word, '\v');
+	if (quote && **line == 'v') ft_strpush(word, '\v');
 	if (quote && **line == 'a')
 		ft_strpush(word, '\a');
 	if (quote && **line == 'b')
