@@ -32,6 +32,7 @@
 # define KEY_ALT_R 44738
 # define KEY_CTRL_L 12
 # define BUFF_LINE_SIZE 10
+# define TAB_SIZE 8
 
 /*
 **	Reads input from the user, and allows the user to edit his input before

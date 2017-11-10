@@ -37,19 +37,42 @@ static void	term_write_char(t_line *line, size_t i)
 	}
 }
 
+#include <stdio.h>
 void		term_putstr(t_line *line)
 {
 	size_t	i;
 	t_coor	pos;
 	t_coor	l_pos;
+	t_coor	tab_pos;
+	size_t	offset;
 	size_t	nb_newl;
 
 	i = 0;
 	while (line->buff[i])
 	{
-		if (line->buff[i] != '\n')
-			term_write_char(line, i);
-		else
+		if (line->buff[i] == '\t')
+		{
+			tab_pos = get_char_visual_coor(line, i);
+			offset = (tab_pos.x % 8) ? (8 - (tab_pos.x % 8)) : 8;
+			if (tab_pos.x == 0)	// If pos.x = 0 we need to both jump a line and write a tab
+			{
+				/* ft_putchar_fd('\n', 2); */
+				ft_putchar_fd(' ', 2);
+				ft_putchar_fd('\t', 2);
+			}
+			else if (tab_pos.x + offset >= line->ws_col) // Jump line if tabulation would overflow the window.
+			{
+				ft_putchar_fd('\t', 2);
+				ft_putchar_fd('\n', 2);
+				/* if (i == 0 || (i > 0 && line->buff[i - 1] != '\t'))	// 2 tabulation could fit this condition. */
+				/* 	ft_putchar_fd('\n', 2); */
+			}
+			else
+			{
+				ft_putchar_fd('\t', 2);	// Write tabulation
+			}
+		}
+		else if (line->buff[i] == '\n')
 		{
 			pos = get_char_visual_coor(line, i);
 			l_pos = get_char_visual_coor(line, i - 1);
@@ -59,6 +82,8 @@ void		term_putstr(t_line *line)
 				nb_newl = 2;
 			write(2, "\n\n", nb_newl);
 		}
+		else
+			term_write_char(line, i);
 		++i;
 	}
 }
