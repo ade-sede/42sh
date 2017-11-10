@@ -54,10 +54,10 @@ void		term_putstr(t_line *line)
 		{
 			tab_pos = get_char_visual_coor(line, i);
 			offset = (tab_pos.x % 8) ? (8 - (tab_pos.x % 8)) : 8;
-			logwrite("/Users/ade-sede/projects/42sh/log/def", __func__, "index[%zu] {%d; %d} + offset = %zu\n & ws_col = %zu", i, tab_pos.x, tab_pos.y, offset, line->ws_col);
 			if (tab_pos.x == 0)	// If pos.x = 0 we need to both jump a line and write a tab
 			{
 				/* ft_putchar_fd('\n', 2); */
+				ft_putchar_fd(' ', 2);
 				ft_putchar_fd('\t', 2);
 			}
 			else if (tab_pos.x + offset >= line->ws_col) // Jump line if tabulation would overflow the window.

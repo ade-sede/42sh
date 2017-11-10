@@ -49,7 +49,6 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 		if (line->buff[index] == 0)
 			break ;
 	}
-	//logwrite("log/def", __func__, "{%d : %d}\n", x, y);
 	return ((t_coor){x, y});
 }
 
