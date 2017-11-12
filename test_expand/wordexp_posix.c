@@ -5,7 +5,7 @@
 #include "exec.h"
 #include "glob.h"
 
-#define W_BUFF_SIZE        1
+#define W_BUFF_SIZE        10
 #define W_ARRAY_SIZE        10
 #define WRDE_SYNTAX		42
 
@@ -31,15 +31,22 @@ void	w_newword (t_word *word)
 	word->maxlen = 0;
 }
 
+void	w_free (t_word *word)
+{
+	ft_strdel(&word->str);
+	word->actlen = 0;
+	word->maxlen = 0;
+}
+
 void	*ft_realloc_2(void *mem, size_t old_size, size_t new_size)
 {
 	void	*new_mem;
 
-	new_mem = ft_memalloc(sizeof(new_size));
+	new_mem = ft_memalloc(new_size * sizeof(char));
 	if (mem)
 	{
-		ft_memcpy(new_mem, mem, old_size);
-		//free(mem);
+		memcpy(new_mem, mem, old_size);
+		free(mem);
 	}
 	return (new_mem);
 }
@@ -48,7 +55,6 @@ char	*w_addchar (t_word *word, char ch)
 {
 	if (word->actlen == word->maxlen)
 	{
-		printf("pb\n");
 		word->maxlen += W_BUFF_SIZE;
 		word->str = (char *)ft_realloc_2 (word->str, word->actlen, 1 + word->maxlen);
 	}
@@ -98,8 +104,8 @@ int		w_addword (t_expand *exp, t_word *g_word, t_word *word)
 	exp->av_word[exp->actlen] = word->str;
 	exp->av_gword[exp->actlen] = g_word->str;
 	exp->actlen += + 1;
-//	w_newword (word);
-//	w_newword (g_word);
+	w_newword (word);
+	w_newword (g_word);
 	return (1);
 }
 
@@ -208,6 +214,26 @@ int		parse_dquote (t_word *g_word, t_word *word,
 	}
 	return (WRDE_SYNTAX);
 }
+
+int parse_tilde (t_word *g_word, t_word *word,
+             const char *words, size_t *offset)
+{
+      char* home;
+
+      home = getenv ("HOME");
+      if (home != NULL)
+	  {
+          w_addstr (word, home);
+          w_addstr (g_word, home);
+	  }
+      else
+	  {
+		  w_addchar (word, '~');
+		  w_addchar (g_word, '~');
+	  }
+	  return (1);
+}
+
 char	**wordexp (const char *words)
 {
 	size_t	offset;
@@ -250,24 +276,19 @@ char	**wordexp (const char *words)
 		   {
 		   ++offset;
 		   parse_backtick (&word, &word_length, &max_length, words,
-		   &offset, flags, pwordexp, ifs,
-		   ifs_white);
+		   &offset, flags, pwordexp, ifs);
 		   }
 		   else if (words[offset] == '$')
 		   {
-		   parse_dollars (&word, &word_length, &max_length, words,
-		   &offset, flags, pwordexp, ifs, ifs_white,
-		   0);
-		   }
-		   else if (words[offset] == '~')
-		   {
-		   parse_tilde (&word, &word_length, &max_length, words,
-		   &offset, pwordexp->we_wordc);
+			   parse_dollars (&word, &word_length, &max_length, words,
+			   &offset, flags, pwordexp, ifs, ,0);
 		   }*/
+		   else if (words[offset] == '~')
+			   parse_tilde (&g_word, &word, words, &offset);
 		else
 		{
-	//		printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
-	//		printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
+//			printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
+//			printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
 			w_addchar (&word, words[offset]);
 			w_addchar (&g_word, words[offset]);
 		}
