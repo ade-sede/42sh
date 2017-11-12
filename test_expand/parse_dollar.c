@@ -37,6 +37,7 @@ int		parse_param (t_word *g_word, t_word *word,
 			w_addchar (&env, words[*offset]);
 			++*offset;
 		}
+		--*offset;
 	}
 	else if (ft_isdigit (words[*offset]))
 	{
@@ -49,6 +50,7 @@ int		parse_param (t_word *g_word, t_word *word,
 			if (!brace)
 				break ;
 		}
+		--*offset;
 	}
 	else if (CHAR_IN_SET (words[*offset], "*@$"))
 	{
@@ -89,7 +91,7 @@ int		parse_param (t_word *g_word, t_word *word,
 	}
 	else
 	{
-		printf("env.str: {%s}", env.str);
+		printf("env.str: {%s}\n", env.str);
 		value = getenv (env.str);
 	}
 	w_free(&env);
@@ -132,12 +134,14 @@ int		parse_param (t_word *g_word, t_word *word,
 	{
 		/* Need to field-split */
 		char	**split = ft_strsplit(value, ifs);
+		size_t		i;
 		w_addstr (word, split[0]);
 		w_addstr (g_word, split[0]);
-		size_t		i = 1;
+		i = 1;
 		while (split[i])
 		{
 			w_addword (exp, g_word, word);
+			printf("split[i]: %s\n", split[i]);
 			w_addstr (word, split[i]);
 			w_addstr (g_word, split[i]);
 			i++;

@@ -173,8 +173,8 @@ char	**wordexp (const char *words)
 			   parse_tilde (&g_word, &word, words, &offset);
 		else
 		{
-//			printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
-//			printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
+			printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
+			printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
 			w_addchar (&word, words[offset]);
 			w_addchar (&g_word, words[offset]);
 		}
@@ -184,9 +184,7 @@ char	**wordexp (const char *words)
 		w_addword (&exp, &g_word, &word);
 	int	i;
 	for (i=0; i < exp.actlen; i++)
-	{
 		printf("w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
-	}
 	return (exp.av_word);
 }
 

@@ -72,11 +72,12 @@ int		w_addword (t_expand *exp, t_word *g_word, t_word *word)
 	/* Internally, NULL acts like "".  Convert NULLs to "" before
 	 * the caller sees them.
 	 */
+//	printf("exp->actlen: {%zu} exp->maxlen: {%zu}\n", exp->actlen, exp->maxlen);
 	if (exp->actlen == exp->maxlen)
 	{
 		exp->maxlen += W_ARRAY_SIZE;
-		exp->av_word = (char **)ft_realloc_2(exp->av_word, sizeof(char *) * exp->actlen, 1 + exp->maxlen);
-		exp->av_gword = (char **)ft_realloc_2(exp->av_gword, sizeof(char *) * exp->actlen, 1 + exp->maxlen);
+		exp->av_word = (char **)ft_realloc_2(exp->av_word, sizeof(char *) * exp->actlen, sizeof(char *) * (1 + exp->maxlen));
+		exp->av_gword = (char **)ft_realloc_2(exp->av_gword, sizeof(char *) * exp->actlen, sizeof(char *) *  (1 + exp->maxlen));
 	}
 	allocated = 0;
 	if (g_word->str == NULL)
