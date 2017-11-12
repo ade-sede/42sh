@@ -97,9 +97,9 @@ int		parse_param (t_word *g_word, t_word *word,
 	w_free(&env);
 	if (seen_hash)
 	{
-		char param_length[21];
-		param_length[20] = '\0';
-		w_addstr (word, ft_itoa (value ? strlen (value) : 0)); //TODO: itoa_word
+		char *param_length = ft_itoa (value ? strlen (value) : 0);
+		w_addstr (word, param_length);
+		free(param_length);
 		if (free_value)
 			free (value);
 		return 0;
@@ -146,6 +146,9 @@ int		parse_param (t_word *g_word, t_word *word,
 			w_addstr (g_word, split[i]);
 			i++;
 		}
+		if (free_value)
+			free (value);
+		ft_arraydel(&split);
 	}
 	return 0;
 }

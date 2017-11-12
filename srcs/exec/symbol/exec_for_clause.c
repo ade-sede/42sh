@@ -6,19 +6,18 @@
 **	                 |          WORD
 */
 		
-int		exec_wordlist(t_ast *wordlist, char *var, t_ast *do_group)
+char	**expand_wordlist(t_ast *wordlist, char **array_word)
 {
-	char	*word;
+	char		*word;
+	char		**word_expanded;
 
-	word = wordlist->child[1] ? ft_strdup(wordlist->child[1]->token->value) :
-		 ft_strdup(wordlist->child[0]->token->value);
-	if (!wordlist)
-		return (EXIT_SUCCESS);
-	add_to_local(&singleton_env()->local, ft_strjoin3_free(var, "=", word, 0b1));
-	exec(do_group);
+	word = wordlist->child[1] ? wordlist->child[1]->token->value :
+		 wordlist->child[0]->token->value;
+	word_expanded = word_expansion(word);
+	array_word = array_word ? array_join_free(array_word, word_expanded, 0b11) : word_expanded;
 	if (is_symb(wordlist->child[0], WORDLIST))
-		return (exec_wordlist(wordlist->child[0], var, do_group));
-	return (EXIT_SUCCESS);
+		return (expand_wordlist(wordlist->child[0], array_word);
+	return (array_word);
 }
 
 /*
@@ -30,9 +29,20 @@ int		exec_wordlist(t_ast *wordlist, char *var, t_ast *do_group)
 
 int exec_for_clause(t_ast *ast)
 {
+	char	**array_word;
+	int		i;
+	t_ast	*do_group;
 
-	debug_symbol(ast->child[1]);
-	if (ast->child[6])
-		return (exec_wordlist(ast->child[4], ast->child[1]->child[0]->token->value, ast->child[6]));
+	if (ast->child[4] && is_symb(ast->child[4], WORDLIST))
+		array_word = expand_wordlist(ast->child[4], NULL);
+	else
+		return (EXIT_SUCCESS);
+
+	do_group == ast->child[6];
+	for (i = 0; array_word[i]; i++)
+	{
+		add_to_local(&singleton_env()->local, ft_strjoin3_free(var, "=", array_word[i], 0));
+		exec(do_group);
+	}
 	return (EXIT_SUCCESS);
 }

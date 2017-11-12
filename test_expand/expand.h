@@ -5,6 +5,9 @@
 #define W_ARRAY_SIZE        10
 #define WRDE_SYNTAX		42
 
+#define NO_FIELDSPLITING	0b1
+#define NO_GLOBBING	   0b10
+
 typedef struct	s_expand
 {
 	char		**av_word;
@@ -29,6 +32,11 @@ int		w_addword (t_expand *exp, t_word *g_word, t_word *word);
 int		w_newexp (t_expand *exp);
 void	w_free (t_word *word);
 
+int		parse_dquote (t_word *g_word, t_word *word,
+		const char *words, size_t *offset,
+		t_expand *exp, const char *ifs);
+int		parse_squote (t_word *g_word, t_word *word, const char *words, size_t *offset);
+int		parse_backslash (t_word *g_word, t_word *word, const char *words, size_t *offset);
 int		parse_qtd_backslash (t_word *g_word, t_word *word, const char *words, size_t *offset);
 int		parse_dollars (t_word *g_word, t_word *word,
 		const char *words, size_t *offset,
