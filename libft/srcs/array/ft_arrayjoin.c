@@ -21,9 +21,9 @@ char			**ft_arrayjoin(char const **s1, char const **s2)
 static void		delete_array(char **s1, char **s2, int delete)
 {
 	if (delete & 2)
-		ft_arraydel(&s1);
+		free(s1);
 	if (delete & 1)
-		ft_arraydel(&s2);
+		free(s2);
 }
 
 char			**ft_arrayjoin_free(char **s1, char **s2, int delete)
