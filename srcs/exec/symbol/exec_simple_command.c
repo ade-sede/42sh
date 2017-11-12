@@ -1,4 +1,5 @@
 #include "exec.h"
+#include "expand.h"
 #include "builtin.h"
 #include "local.h"
 #include "job_control.h"
@@ -26,8 +27,8 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 		word = ast->child[1];
 	if (word)
 	{
-		word_expanded = word_expansion(word);
-		av = av ? array_join_free(word_expanded, av, 0b11) : word_expanded;
+		word_expanded = word_expansion(word->token->value, 0);
+		av = av ? ft_arrayjoin_free(word_expanded, av, 0b11) : word_expanded;
 	}
 	if (io_redirect)
 		exec_io_redirect(io_redirect, redirect_list);
@@ -48,7 +49,7 @@ void	exec_assignment_word(t_ast *ast)
 {
 	char		**word_expanded;
 	
-	word_expanded = word_expansion(ft_strchr(ast->token->value, '=') + 1, NO_GLOBBING | NO_FIELDSPLIT);
+	word_expanded = word_expansion(ft_strchr(ast->token->value, '=') + 1, NO_GLOBBING | NO_FIELDSPLITING);
 	add_to_local(&singleton_env()->local, word_expanded[0]);
 	free(word_expanded);
 }
@@ -79,15 +80,15 @@ char	*extract_word(t_ast *ast)
 	return (ft_strdup(ast->token->value));
 }
 
-char	**get_cmd_name(t_ast	*ast)
+char	**get_cmd_name(t_ast *ast)
 {
-	char 	*word;
+	char 	*word = NULL;
 
 	if (is_symb(ast->child[1], CMD_WORD))
-		word = extract_word(ast->child[1]->child[0]);
+		word = ast->child[1]->child[0]->token->value;
 	else if (is_symb(ast->child[0], CMD_NAME))
-		word = extract_word(ast->child[0]->child[0]);
-	return (word ? word_expansion(word): NULL);
+		word = ast->child[0]->child[0]->token->value;
+	return (word ? word_expansion(word, 0): NULL);
 }
 
 int		count_words(t_ast *ast)

@@ -26,6 +26,7 @@ SRC = \
 	ft_is_3.c \
 	get_next_line.c \
 	array/ft_arraychr.c \
+	array/ft_arrayjoin.c \
 	array/ft_arraydel.c \
 	array/ft_arraydup.c \
 	array/ft_arraylen.c \

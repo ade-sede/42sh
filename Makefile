@@ -184,6 +184,12 @@ SRC_FILE = \
 	exec/debug_token.c \
 	exec/exec_function.c \
 	\
+	exec/expand/parse_dollar.c \
+	exec/expand/parse_quote.c \
+	exec/expand/parse_tilde.c \
+	exec/expand/utils.c \
+	exec/expand/wordexp_posix.c \
+	\
 	job_control/job_background.c \
 	job_control/job_continue.c \
 	job_control/job_foreground.c \
