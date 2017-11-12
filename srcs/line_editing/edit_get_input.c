@@ -84,11 +84,11 @@ char				*edit_get_input(void)
 			l->col_target = -1;
 		if (btsearch_get_input(l, keycode) || history_get_input(l, keycode) || comple_get_input(l, keycode))
 			continue ;
-		if ((keycode == KEY_ENTER && !l->verbatim)|| (char)keycode == (l->read).delim)
+		if ((keycode == KEY_ENTER)|| (char)keycode == (l->read).delim)
 		{
 			/* if (keycode == KEY_ENTER && l->verbatim) */
 			/* 	edit_add(keycode, l); */
-			else if (keycode == KEY_ENTER && KEY_ENTER != (l->read).delim)
+			if (keycode == KEY_ENTER && KEY_ENTER != (l->read).delim)
 				edit_add(keycode, l);
 			else
 				return (edit_exit(l));
