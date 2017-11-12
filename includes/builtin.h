@@ -82,11 +82,14 @@ int				builtin_jobs(t_env *env, const char **argv);
 ** In set.c
 */
 
+# define ALLEXPORT 0b1L
+struct s_shopt_id
+{
+	long		id;
+	char	*value;
+};
+
 int				builtin_set(t_env *env, const char **argv);
-void			set_pos_par(t_env *env, int x, int argc, const char **argv);
-int				match_name_option(const char *argv);
-void			print_current_option(t_env *env);
-void			print_all_option(t_env *env);
 
 /*
 ** In file history.c

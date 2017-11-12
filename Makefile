@@ -206,6 +206,7 @@ SRC_FILE = \
 
 INCLUDES_FILES = \
 	builtin.h \
+	opt.h \
 	completion.h \
 	environ.h \
 	exec.h \
