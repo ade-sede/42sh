@@ -125,6 +125,7 @@ int		parse_param (t_word *g_word, t_word *word,
 				w_addchar (word, value[i]);
 			}
 			++(*offset);
+			i++;
 		}
 		if (free_value)
 			free (value);
