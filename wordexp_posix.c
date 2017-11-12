@@ -1102,8 +1102,8 @@ exec_comm (char *comm, char **word, size_t *word_length, size_t *max_length,
 	  int quoted = 0; /* 1 for singly-quoted, 2 for doubly-quoted */
 	  size_t comm_length;
 	  size_t comm_maxlen;
-	  char *comm = w_newword (&comm_length, &comm_maxlen);
-	
+	  t_word comm;
+	  w_newword (&comm);
 	  for (; words[*offset]; ++(*offset))
 	    {
 	      switch (words[*offset])
@@ -1164,7 +1164,7 @@ exec_comm (char *comm, char **word, size_t *word_length, size_t *max_length,
 	            ++paren_depth;
 	        }
 	
-	      comm = w_addchar (comm, &comm_length, &comm_maxlen, words[*offset]);
+	      w_addchar (comm, words[*offset]);
 	      if (comm == NULL)
 	        return WRDE_NOSPACE;
 	    }

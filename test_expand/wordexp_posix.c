@@ -103,26 +103,7 @@ int		parse_dquote (t_word *g_word, t_word *word,
 	return (WRDE_SYNTAX);
 }
 
-int parse_tilde (t_word *g_word, t_word *word,
-             const char *words, size_t *offset)
-{
-      char* home;
-
-      home = getenv ("HOME");
-      if (home != NULL)
-	  {
-          w_addstr (word, home);
-          w_addstr (g_word, home);
-	  }
-      else
-	  {
-		  w_addchar (word, '~');
-		  w_addchar (g_word, '~');
-	  }
-	  return (1);
-}
-
-char	**wordexp (const char *words)
+char	**wordexp (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPLITTING
 {
 	size_t	offset;
 	t_word	word;
@@ -173,8 +154,8 @@ char	**wordexp (const char *words)
 			   parse_tilde (&g_word, &word, words, &offset);
 		else
 		{
-			printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
-			printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
+//			printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
+//			printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
 			w_addchar (&word, words[offset]);
 			w_addchar (&g_word, words[offset]);
 		}
