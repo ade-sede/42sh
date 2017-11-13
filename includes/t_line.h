@@ -25,7 +25,8 @@ typedef struct	s_line
 	int					heredoc;
 	void				(*sig_handler)(void);
 	ssize_t				col_target;
-	t_read				read;
+	t_read				*read;
+	int					read_builtin;
 }				t_line;
 
 typedef struct	s_edit_func

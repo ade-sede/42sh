@@ -75,6 +75,7 @@ void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt);
 **	In file srcs/exec/redir_utils.c
 */
 
+int				safe_open(char *target, int mode);
 int				redir_open_file(char *target, int id);
 void			close_dup(t_list *redir_stack);
 void			push_dup(int io_number, int target_fd, int natural_fd, \

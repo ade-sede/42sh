@@ -4,6 +4,7 @@
 #include "env.h"
 //#include "error.h"
 #include "failure.h"
+#include "exec.h"
 
 static char parse_delim(char *arg, t_read *options, char ***args)
 {
@@ -64,9 +65,13 @@ static char	parse_fd(char *arg, t_read *options, char ***args)
 	}
 	else
 		return (0);
-	options->fd = fd;
-	write(1,"*",1);
-	return (1);
+	if (fd > -1 && fd < 3)
+		return (1);
+	if (fcntl((options->fd = fd), F_GETFL) != -1 && fcntl(fd, F_GETFD) != -1 && errno != EBADF)
+		return (1);
+	//return_failure("read: ", get_errno());
+//	options->fd = fd;
+	return (2);
 }
 
 static char	parse_prompt(char *arg, t_read *options, char ***args)
@@ -88,8 +93,8 @@ static char	parse_prompt(char *arg, t_read *options, char ***args)
 		free(word);
 		return (0);
 	}
-	ft_strpush(&word, '>');
-	ft_strpush(&word, ' ');
+	//ft_strpush(&word, '>');
+	//ft_strpush(&word, ' ');
 	options->prompt = word;
 	return (1);
 }

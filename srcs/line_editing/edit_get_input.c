@@ -109,15 +109,16 @@ char				*edit_get_input(void)
 				continue ;
 		if (btsearch_get_input(l, keycode) || history_get_input(l, keycode))
 			continue ;
-		if (keycode == KEY_ENTER || (char)keycode == (l->read).delim)
+//		if (l->read_builtin && char_is_read_delim(line, keycode)
+		if (keycode == KEY_ENTER || (l->read_builtin && (char)keycode == l->read->delim))
 		{
-			if (keycode == KEY_ENTER && KEY_ENTER != (l->read).delim)
+			if (l->read_builtin && keycode == KEY_ENTER && KEY_ENTER != l->read->delim)
 				edit_add(keycode, l);
 			else
 				return (edit_exit(l));
 		}
 		edit_loop(keycode, l);
-		if (l->read.nchars && l->read.nchars == (int)l->len) 
+		if (l->read_builtin && l->read->nchars && l->read->nchars == (int)l->len) 
 			return (edit_exit(l));
 	}
 	return (NULL);
