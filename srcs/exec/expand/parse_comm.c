@@ -11,10 +11,11 @@
 int		parse_comm (t_word *g_word, t_word *word,
 		const char *words, size_t *offset,
 		t_expand *exp, const char *ifs,
-		int quoted)
+		int no_ifs)
 {
 	int paren_depth = 1;
 	int quoted = 0;
+	int error = 0;
 	t_word comm;
 
 	w_newword (&comm);
@@ -40,17 +41,17 @@ int		parse_comm (t_word *g_word, t_word *word,
 			{
 				if (comm.str)
 				{
-					error = exec_comm (comm, flags, pwordexp, ifs);
-					free (comm);
+					error = exec_comm (comm.str, g_word, word, exp, ifs, no_ifs);
+					w_free (&comm);
 					return error;
 				}
 			}
 			if (words[*offset] == '(' && !quoted)
 				++paren_depth;
-			w_addchar (comm, words[*offset]);
-			++(*offset);
+			w_addchar (&comm, words[*offset]);
 		}
-		free (comm);
-
-		return WRDE_SYNTAX;
+		++*offset;
 	}
+	w_free (&comm);
+	return WRDE_SYNTAX;
+}

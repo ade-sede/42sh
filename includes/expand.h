@@ -46,6 +46,10 @@ int		parse_dollars (t_word *g_word, t_word *word,
 		const char *words, size_t *offset,
 		t_expand *exp, const char *ifs,
 		int quoted);
+int		parse_comm (t_word *g_word, t_word *word,
+		const char *words, size_t *offset,
+		t_expand *exp, const char *ifs,
+		int quoted);
 
 int parse_tilde (t_word *g_word, t_word *word,
              const char *words, size_t *offset);

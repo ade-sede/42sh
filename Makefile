@@ -192,6 +192,7 @@ SRC_FILE = \
 	exec/expand/utils.c \
 	exec/expand/wordexp_posix.c \
 	exec/expand/handle_fieldsplitting.c \
+	exec/expand/parse_comm.c \
 	\
 	job_control/job_background.c \
 	job_control/job_continue.c \
