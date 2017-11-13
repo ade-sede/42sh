@@ -24,12 +24,12 @@ static void	exec_comm_child (char *comm, int *fildes, int showerr)
 			dup2 (fd, STDERR_FILENO);
 			close (fd);
 		}
-		unsetenv ("IFS");
-		close (fildes[0]);
-		singleton_jc()->shell_is_interactive = 0;
-		lex_and_parse(NULL, comm);
-		abort ();
 	}
+	unsetenv ("IFS");
+	close (fildes[0]);
+	singleton_jc()->shell_is_interactive = 0;
+	lex_and_parse(NULL, comm);
+	abort ();
 }
 /* pwordexp contains NULL if field-splitting is forbidden */
 #define bufsize 128
