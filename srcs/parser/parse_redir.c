@@ -4,18 +4,14 @@
 /* #include "parser.h" */
 /* #include "exec.h" */
 
-/* /* */
 /* **	Creates an IO_REDIR node from 2 or 3 tokens. Returns this IO_REDIR node, */
 /* **	wich should be appended at the start of the command's child list. */
 /* **	The flag expected corresponds to what token the next part of the */
 /* **	redirection should be according to the one we just read. */
 /* **	1 = NAME */
 /* **	2 = REDIR */
-/* */ */
 
-/* /* */
 /* **	Getting input for heredoc tokens */
-/* */ */
 
 /* static char		*get_heredoc_input(char *value) */
 /* { */

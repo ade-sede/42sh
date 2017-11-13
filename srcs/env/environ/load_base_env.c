@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "environ.h"
 #include "printf.h"
 #include "hash_table.h"
 #include "local.h"
@@ -6,20 +7,26 @@
 void		env_load_base_env(t_env *env, const char **environ)
 {
 	size_t	i;
+	char	*pid_string;
 
 	i = 0;
 	env->environ = NULL;
 	env->previous_exit = 0;
 	env->option = 0;
 	env->alias = NULL;
+	env->first_func = NULL;
+	env->pos_param = NULL;
 	env->local = NULL;
 	env->environ = env_create_environ(environ, &(env->environ_size));
 	env_load_shlvl_pwd(env);
 	while (i != env->environ_size)
 	{
-		add_to_local(&env->local, ft_strdup(env->environ[i]));
+		local_add_change_from_string(&env->local, env->environ[i]);
 		++i;
 	}
+	pid_string = ft_itoa_base(getpid(), 10);
+	local_add_change_from_key_value(&env->local, "$", pid_string);
+	free(pid_string);
 	create_hash_table(&env->hash_table, env->environ);
 }
 

@@ -1,6 +1,7 @@
 #include "libft.h"
 #include "unistd.h"
-#include "env.h"
+#include "t_env.h"
+#include "prompt.h"
 #include "sys/wait.h"
 #include "get_next_line.h"
 #include "line_editing.h"

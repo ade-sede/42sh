@@ -1,7 +1,7 @@
 #include <dirent.h>
 #include "libft.h"
 #include "hash_table.h"
-#include "env.h"
+#include "t_env.h"
 
 void	free_hash_table(t_list ***hash_table)
 {

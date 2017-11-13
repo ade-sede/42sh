@@ -1,7 +1,8 @@
 #include <dirent.h>
+#include "environ.h"
 #include "libft.h"
 #include "hash_table.h"
-#include "env.h"
+#include "t_env.h"
 
 size_t	hash(unsigned char *str)
 {

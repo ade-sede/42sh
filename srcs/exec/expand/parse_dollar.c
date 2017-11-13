@@ -2,7 +2,8 @@
 #include "libft.h"
 #include "lexer.h"
 #include "parser.h"
-#include "env.h"
+#include "t_env.h"
+#include "local.h"
 #include "exec.h"
 #include "glob.h"
 #include "expand.h"
@@ -19,7 +20,6 @@ int		parse_param (t_word *g_word, t_word *word,
 	int seen_hash = 0;
 	int free_value = 0;
 	int special = 0;
-	char buffer[21];
 	int brace = words[*offset] == '{';
 	t_word env;
 	w_newword (&env);
@@ -64,9 +64,7 @@ int		parse_param (t_word *g_word, t_word *word,
 	{
 		if (seen_hash)
 		{
-			/* $# expands to the number of positional parameters */
-			buffer[20] = '\0';
-			value = ft_itoa (42);
+			value = var_get_value (singleton_env(), "#");
 			seen_hash = 0;
 		}
 		else
@@ -78,22 +76,10 @@ int		parse_param (t_word *g_word, t_word *word,
 			return 0;
 		}
 	}
-	/* Is it a numeric parameter? */
-	else if (ft_isdigit (env.str[0]))
-	{
-		int n = ft_atoi (env.str);
-
-		if (n >= 42)
-			/* Substitute NULL. */
-			value = NULL;
-		else
-			/* Replace with appropriate positional parameter. */
-			value = "42";
-	}
 	else
 	{
 		fprintf(stderr,"env.str: {%s}\n", env.str);
-		value = getenv (env.str);
+		value = var_get_value (singleton_env(), env.str);
 	}
 	w_free(&env);
 	if (seen_hash)

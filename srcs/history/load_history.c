@@ -2,7 +2,8 @@
 #include "get_next_line.h"
 #include <sys/types.h>
 #include <sys/stat.h>
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 
 static void	init_hist_struct(t_hist *h, t_env *env)
 {

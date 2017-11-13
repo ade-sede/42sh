@@ -1,17 +1,9 @@
-#include "env.h"
-#include "exec.h"
-#include "libft.h"
-#include "printf.h"
-#include "line_editing.h"
-#include "history.h"
-#include "completion.h"
-#include "get_next_line.h"
-#include "color.h"
-#include "my_signal.h"
-#include "job_control.h"
-#include "failure.h"
 #include <stdio.h>
-#include <errno.h>
+#include "environ.h"
+#include <fcntl.h>
+#include <stdlib.h>
+#include "libft.h"
+#include "exec.h"
 
 void	read_args(int ac, char **av, int *stream, char **buf, int *c_opt)
 {

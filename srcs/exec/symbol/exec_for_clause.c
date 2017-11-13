@@ -46,7 +46,7 @@ int exec_for_clause(t_ast *ast)
 	for (i = 0; array_word[i]; i++)
 	{
 		printf("var %s, array_word[i]: %s\n", var,array_word[i]);
-		add_to_local(&singleton_env()->local, ft_strjoin3_free(var, "=", array_word[i], 0));
+		local_add_change_from_key_value(&singleton_env()->local, var, array_word[i]);
 		exec(do_group);
 	}
 	return (EXIT_SUCCESS);

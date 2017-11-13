@@ -1,7 +1,6 @@
 #ifndef EXEC_H
 # define EXEC_H
 # include "t_token.h"
-# include "pipe.h"
 # include "t_ast.h"
 # include "parser.h"
 # include "t_line.h"
@@ -31,23 +30,11 @@ int				exec_bin(t_env *env, const char **argv);
 **	In file srcs/exec/exec_heredoc.c
 */
 
-int				exec_heredoc(t_list *child_list, t_list **redir_stack);
-
-/*
-**	In file srcs/exec/exec_pipe.c
-*/
-
-int				p_right(t_pipe *pr, t_ast *ast, t_lst_head *head);
-int				p_both(t_pipe *pr, t_pipe *pl, t_ast *ast, t_lst_head *head);
-int				wait_zombies(t_lst_head *head);
-int				p_left(t_pipe *pl, t_ast *ast, t_lst_head *head);
-int				check_pipes(t_ast *ast, t_lst_head *head);
-
 /*
 **	In file srcs/exec/exec_redir.c
 */
 
-void			*get_exec_redir_func(int id); \
+void			*get_exec_redir_func(int id);
 int				merge_fd(int io_number, char *target, t_list **redir_stack, \
 				int id);
 int				file_redir(int io_number, char *target, t_list **redir_stack, \

@@ -1,8 +1,10 @@
 #include "libft.h"
 #include "lexer.h"
 #include "parser.h"
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 #include "exec.h"
+#include "local.h"
 #include "glob.h"
 #include "expand.h"
 
@@ -137,7 +139,7 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 	(void)flag;
 	w_newexp (&exp);
 
-	ifs = env_getenv ((const char **)singleton_env()->environ, "IFS", NULL);
+	ifs = var_get_value (singleton_env(), "IFS");
 	if (ifs == NULL)
 		ifs = ft_strdup(" \t\n");
 

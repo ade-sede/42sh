@@ -51,7 +51,7 @@ void	exec_assignment_word(t_ast *ast)
 	
 	word_expanded = word_expansion(ft_strchr(ast->token->value, '=') + 1, NO_GLOBBING | NO_FIELDSPLITING);
 	if (word_expanded[0])
-		add_to_local(&singleton_env()->local, word_expanded[0]);
+		local_add_change_from_string(&singleton_env()->local, ast->token->value);
 	free(word_expanded);
 }
 

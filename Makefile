@@ -15,148 +15,80 @@ COLOR_WHITE		= \033[1;37m
 
 # **************************************************************************** #
 SRC_FILE = \
-	builtin/alias.c \
-	builtin/cd.c \
-	builtin/echo.c \
-	builtin/env.c \
-	builtin/exec_builtin.c \
-	builtin/exit.c \
-	builtin/setenv.c \
-	builtin/unalias.c \
-	builtin/unsetenv.c \
-	builtin/unset.c \
-	builtin/set.c \
-	builtin/fg.c \
-	builtin/bg.c \
-	builtin/jobs.c \
-	builtin/function_set.c \
-	builtin/read.c \
-	builtin/read_options.c \
+		   main.c \
+		   \
+		   builtin/alias.c \
+		   builtin/export.c \
+		   builtin/shopt.c \
+		   builtin/shift.c \
+		   builtin/bg.c \
+		   builtin/cd.c \
+		   builtin/echo.c \
+		   builtin/env.c \
+		   builtin/exec_builtin.c \
+		   builtin/exit.c \
+		   builtin/fg.c \
+		   builtin/jobs.c \
+		   builtin/read.c \
+		   builtin/read_options.c \
+		   builtin/set.c \
+		   builtin/setenv.c \
+		   builtin/unalias.c \
+		   builtin/unset.c \
+		   builtin/unsetenv.c \
+		   \
+		   completion/comple_bin_matches.c \
+		   completion/comple_create_completion_tree.c \
+		   completion/comple_escape.c \
+		   completion/comple_exit_matched.c \
+		   completion/comple_file_matches.c \
+		   completion/comple_get_input.c \
+		   completion/comple_get_word_cursor.c \
+		   completion/comple_glob_matches.c \
+		   completion/comple_init.c \
+		   completion/comple_matches.c \
+		   completion/comple_move.c \
+		   completion/comple_refresh.c \
+		   completion/comple_signals.c \
+		   completion/size_term.c \
+		   completion/ternary_search_tree.c \
+		   completion/ternary_search_tree_add.c \
+		   \
+		   env/t_env.c \
+		   \
+		env/opt/set_opt.c \
+		   \
+		env/local/pos_param.c \
+		env/local/local_add.c \
+		env/local/local_remove.c \
+		env/local/local_get.c \
+		env/local/t_local.c \
+			\
+	env/environ/env_add.c \
+	env/environ/env_remove.c \
+	env/environ/environ.c \
+	env/environ/load_base_env.c \
 	\
-	completion/comple_bin_matches.c \
-	completion/comple_escape.c \
-	completion/comple_exit_matched.c \
-	completion/comple_file_matches.c \
-	completion/comple_glob_matches.c \
-	completion/comple_get_input.c \
-	completion/comple_get_word_cursor.c \
-	completion/comple_init.c \
-	completion/comple_matches.c \
-	completion/comple_move.c \
-	completion/comple_refresh.c \
-	completion/comple_signals.c \
-	completion/size_term.c \
-	completion/ternary_search_tree.c \
-	completion/ternary_search_tree_add.c \
 	\
-	env/local_add.c \
-	env/env_add.c \
-	env/env_create_completion_tree.c \
-	env/environ.c \
-	env/load_base_env.c \
-	env/local_get.c \
-	env/prompt.c \
-	env/prompt_zsh.c \
-	env/env_remove.c \
-	env/local_remove.c \
-	env/t_env.c \
-	env/get_ps1.c \
+	env/prompt/get_ps1.c \
+	env/prompt/prompt.c \
+	env/prompt/prompt_zsh.c \
 	\
-	globing/curly_bracket_split.c \
-	globing/curly_brackets.c \
-	globing/curly_brackets_is_range.c \
-	globing/curly_brackets_range.c \
-	globing/glob.c \
-	globing/match.c \
-	globing/match_open_dir.c \
-	globing/square_bracket.c \
-	globing/star.c \
-	\
-	hash_table/hash.c \
-	hash_table/hash_free.c \
-	\
-	history/btsearch_add.c \
-	history/btsearch_del.c \
-	history/btsearch_exit.c \
-	history/btsearch_get_input.c \
-	history/btsearch_init.c \
-	history/btsearch_move.c \
-	history/btsearch_refresh.c \
-	history/btsearch_signals.c \
-	history/history_get_input.c \
-	history/history_init.c \
-	history/history_line_refresh.c \
-	history/history_move.c \
-	history/history_write.c \
-	history/load_history.c \
-	\
-	lexer/get_token.c \
-	lexer/get_token_list.c \
-	lexer/t_lexer.c \
-	lexer/t_token.c \
-	lexer/utils.c \
-	lexer/lexer_construct_prompt.c \
-\
-	lexer/id/get_token_id.c \
-	lexer/id/operator.c \
-	lexer/id/reserved_words.c \
-	lexer/id/words.c \
-\
-	lexer/lexer_action/bs.c \
-	lexer/lexer_action/cmd_subst.c \
-	lexer/lexer_action/comment.c \
-	lexer/lexer_action/default.c \
-	lexer/lexer_action/dquotes.c \
-	lexer/lexer_action/newline.c \
-	lexer/lexer_action/operator.c \
-	lexer/lexer_action/param_exp.c \
-	lexer/lexer_action/quotes.c \
-	lexer/lexer_action/whitespace.c \
-	lexer/lexer_action/word.c \
-	\
-	line_editing/conf_term.c \
-	line_editing/edit_reopen.c \
-	line_editing/edit_write.c \
-	line_editing/edit_control_d.c \
-	line_editing/edit_control_l.c \
-	line_editing/edit_copy_paste.c \
-	line_editing/edit_add.c \
-	line_editing/edit_del.c \
-	line_editing/edit_exit.c \
-	line_editing/edit_init.c \
-	line_editing/edit_insert_str.c \
-	line_editing/edit_move.c \
-	line_editing/edit_move_arrows.c \
-	line_editing/edit_move_cursor.c \
-	line_editing/edit_refresh.c \
-	line_editing/edit_signals.c \
-	line_editing/edit_get_input.c \
-	line_editing/put_termcap.c \
-	line_editing/edit_get_coor.c \
-	line_editing/edit_cursor.c \
-	\
-	parser/get_action.c \
-	parser/parser.c \
-	parser/parser_construct_prompt.c \
-	parser/utils.c \
-	\
-	failure/get_errno_1.c \
-	failure/get_errno_2.c \
-	failure/get_errno_3.c \
-	failure/return_failure.c \
-	\
-	signal/all_signal_dfl.c \
-	signal/all_signal_ign.c \
-	\
+	exec/debug_symbol.c \
+	exec/debug_token.c \
+	exec/exec_asynchronous_list.c \
+	exec/exec_bin.c \
+	exec/exec_function.c \
+	exec/exec_io_redirect.c \
 	exec/exec_redir.c \
+	exec/exec_redirect_list.c \
+	exec/exec_utils.c \
 	exec/lex_and_parse.c \
 	exec/main_loop.c \
 	exec/redir_utils.c \
-	exec/exec_utils.c \
-	exec/exec_io_redirect.c \
-	exec/exec_redirect_list.c \
-	exec/exec_bin.c \
-	 \
+	\
+	\
+	\
 	exec/symbol/exec.c \
 	exec/symbol/exec_and_or.c \
 	exec/symbol/exec_brace_group.c \
@@ -180,9 +112,105 @@ SRC_FILE = \
 	exec/symbol/exec_term.c \
 	exec/symbol/exec_until_clause.c \
 	exec/symbol/exec_while_clause.c \
-	exec/debug_symbol.c \
-	exec/debug_token.c \
-	exec/exec_function.c \
+	\
+	failure/get_errno_1.c \
+	failure/get_errno_2.c \
+	failure/get_errno_3.c \
+	failure/return_failure.c \
+	\
+	globing/curly_bracket_split.c \
+	globing/curly_brackets.c \
+	globing/curly_brackets_is_range.c \
+	globing/curly_brackets_range.c \
+	globing/glob.c \
+	globing/match.c \
+	globing/match_open_dir.c \
+	globing/square_bracket.c \
+	globing/star.c \
+	\
+	env/hash_table/hash.c \
+	env/hash_table/hash_free.c \
+	\
+	history/btsearch_add.c \
+	history/btsearch_del.c \
+	history/btsearch_exit.c \
+	history/btsearch_get_input.c \
+	history/btsearch_init.c \
+	history/btsearch_move.c \
+	history/btsearch_refresh.c \
+	history/btsearch_signals.c \
+	history/expansion.c \
+	history/history_get_input.c \
+	history/history_init.c \
+	history/history_line_refresh.c \
+	history/history_move.c \
+	history/history_write.c \
+	history/load_history.c \
+	\
+	job_control/job_background.c \
+	job_control/job_continue.c \
+	job_control/job_fill_process_av.c \
+	job_control/job_foreground.c \
+	job_control/job_format.c \
+	job_control/job_init.c \
+	job_control/job_launch.c \
+	job_control/job_mark_status.c \
+	job_control/job_notification.c \
+	job_control/job_utils.c \
+	job_control/job_wait.c \
+	job_control/singleton_jc.c \
+	\
+	lexer/get_token.c \
+	lexer/get_token_list.c \
+	lexer/lexer_construct_prompt.c \
+	lexer/t_lexer.c \
+	lexer/t_token.c \
+	lexer/utils.c \
+	\
+	lexer/id/get_token_id.c \
+	lexer/id/operator.c \
+	lexer/id/reserved_words.c \
+	lexer/id/words.c \
+	\
+	lexer/lexer_action/bs.c \
+	lexer/lexer_action/cmd_subst.c \
+	lexer/lexer_action/comment.c \
+	lexer/lexer_action/default.c \
+	lexer/lexer_action/dquotes.c \
+	lexer/lexer_action/newline.c \
+	lexer/lexer_action/operator.c \
+	lexer/lexer_action/param_exp.c \
+	lexer/lexer_action/quotes.c \
+	lexer/lexer_action/whitespace.c \
+	lexer/lexer_action/word.c \
+	\
+	line_editing/conf_term.c \
+	line_editing/edit_add.c \
+	line_editing/edit_control_d.c \
+	line_editing/edit_control_l.c \
+	line_editing/edit_copy_paste.c \
+	line_editing/edit_cursor.c \
+	line_editing/edit_del.c \
+	line_editing/edit_exit.c \
+	line_editing/edit_get_coor.c \
+	line_editing/edit_get_input.c \
+	line_editing/edit_init.c \
+	line_editing/edit_insert_str.c \
+	line_editing/edit_move.c \
+	line_editing/edit_move_arrows.c \
+	line_editing/edit_move_cursor.c \
+	line_editing/edit_refresh.c \
+	line_editing/edit_reopen.c \
+	line_editing/edit_signals.c \
+	line_editing/edit_write.c \
+	line_editing/put_termcap.c \
+	\
+	parser/get_action.c \
+	parser/parse_redir.c \
+	parser/parser.c \
+	parser/parser_construct_prompt.c \
+	parser/utils.c \
+	\
 	\
 	exec/expand/parse_dollar.c \
 	exec/expand/parse_quote.c \
@@ -193,43 +221,36 @@ SRC_FILE = \
 	exec/expand/wordexp_posix.c \
 	exec/expand/handle_fieldsplitting.c \
 	exec/expand/parse_comm.c \
-	\
-	job_control/job_background.c \
-	job_control/job_continue.c \
-	job_control/job_foreground.c \
-	job_control/job_init.c \
-	job_control/job_launch.c \
-	job_control/job_notification.c \
-	job_control/job_utils.c \
-	job_control/singleton_jc.c \
-	job_control/job_format.c \
-	job_control/job_mark_status.c \
-	job_control/job_wait.c \
-	job_control/job_fill_process_av.c \
-	\
-	main.c \
+	 \
+	signal/all_signal_dfl.c \
+	signal/all_signal_ign.c
 
 INCLUDES_FILES = \
-	t_ast.h \
-	builtin.h \
-	completion.h \
-	env.h \
-	exec.h \
-	glob.h \
-	glob_struct.h \
-	hash_table.h \
-	history.h \
-	lexer.h \
-	line_editing.h \
-	t_line.h \
-	parser.h \
-	pipe.h \
-	t_lexer.h \
-	t_token.h \
-	local.h \
-	my_signal.h \
-	job_control.h \
-	parser.h \
+				 builtin.h \
+				 shopt.h \
+				 completion.h \
+				 environ.h \
+				 exec.h \
+				 exec_symbol.h \
+				 failure.h \
+				 glob.h \
+				 glob_struct.h \
+				 hash_table.h \
+				 history.h \
+				 job_control.h \
+				 lexer.h \
+				 line_editing.h \
+				 local.h \
+				 my_signal.h \
+				 parser.h \
+				 prompt.h \
+				 read.h \
+				 t_ast.h \
+				 t_env.h \
+				 t_lexer.h \
+				 t_line.h \
+				 t_ternary_tree.h \
+				 t_token.h
 
 NAME ?= 42sh
 
@@ -274,17 +295,21 @@ $(NAME): $(OBJS)
 	@printf "$(COLOR_GREEN)successfully created objects files for binary $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 	@printf "$(COLOR_VIOLET)creating $(NAME) ... $(COLOR_NOCOLOR)\n"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION)
-	
+
 $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)
 	@/bin/mkdir -p $(OBJ_DIR)/builtin
 	@/bin/mkdir -p $(OBJ_DIR)/completion
 	@/bin/mkdir -p $(OBJ_DIR)/env
+	@/bin/mkdir -p $(OBJ_DIR)/env/environ
+	@/bin/mkdir -p $(OBJ_DIR)/env/local
+	@/bin/mkdir -p $(OBJ_DIR)/env/opt
+	@/bin/mkdir -p $(OBJ_DIR)/env/prompt
+	@/bin/mkdir -p $(OBJ_DIR)/env/hash_table
 	@/bin/mkdir -p $(OBJ_DIR)/exec
 	@/bin/mkdir -p $(OBJ_DIR)/exec/symbol/
 	@/bin/mkdir -p $(OBJ_DIR)/exec/expand/
 	@/bin/mkdir -p $(OBJ_DIR)/globing
-	@/bin/mkdir -p $(OBJ_DIR)/hash_table
 	@/bin/mkdir -p $(OBJ_DIR)/history
 	@/bin/mkdir -p $(OBJ_DIR)/lexer
 	@/bin/mkdir -p $(OBJ_DIR)/lexer/id/
