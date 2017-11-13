@@ -71,7 +71,7 @@ static char	**brace_expension(const char *words)
 	}
 	else
 	{
-		fprint(stderr,"match list null\n");
+		fprintf(stderr,"match list null\n");
 		matches = ft_memalloc(sizeof(char *) * (2));
 		matches[0] = ft_strdup(words);
 	}
@@ -116,8 +116,8 @@ static int		parse_loop (const char *words, t_expand *exp, const char *ifs)
 			parse_tilde (&g_word, &word, words, &offset);
 		else
 		{
-			//	fprint(stderr,"w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
-			//	fprint(stderr,"wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
+			//	fprintf(stderr,"w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
+			//	fprintf(stderr,"wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
 			w_addchar (&word, words[offset]);
 			w_addchar (&g_word, words[offset]);
 		}
@@ -149,7 +149,7 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 		i++;
 	}
 	//for (i=0; i < exp.actlen; i++)
-		//fprint(stderr,"w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
+		//fprintf(stderr,"w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
 	free(ifs);
 	if (!(flag & NO_GLOBBING))
 		return (pathname_expension(&exp));

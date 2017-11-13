@@ -92,7 +92,7 @@ int		parse_param (t_word *g_word, t_word *word,
 	}
 	else
 	{
-		fprint(stderr,"env.str: {%s}\n", env.str);
+		fprintf(stderr,"env.str: {%s}\n", env.str);
 		value = getenv (env.str);
 	}
 	w_free(&env);
@@ -153,7 +153,7 @@ int		parse_dollars (t_word *g_word, t_word *word,
 				return 0;
 			}
 		}
-		fprint(stderr,"parse dollar command substitution\n");
+		fprintf(stderr,"parse dollar command substitution\n");
 		(*offset) += 2;
 		return parse_comm (g_word, word, words, offset,
 				quoted? NULL : exp, ifs, quoted);

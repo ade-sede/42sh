@@ -4,6 +4,8 @@
 int		handle_fieldsplitting (char *value, t_word *g_word, t_word *word,	
 		t_expand *exp, const char *ifs, int quoted)
 {
+	if (!value)
+		return (0);
 	if (quoted || !exp)
 	{
 		/* no field-split */
