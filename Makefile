@@ -187,8 +187,11 @@ SRC_FILE = \
 	exec/expand/parse_dollar.c \
 	exec/expand/parse_quote.c \
 	exec/expand/parse_tilde.c \
+	exec/expand/parse_backtick.c \
+	exec/expand/exec_cmd_substitution.c \
 	exec/expand/utils.c \
 	exec/expand/wordexp_posix.c \
+	exec/expand/handle_fieldsplitting.c \
 	\
 	job_control/job_background.c \
 	job_control/job_continue.c \

@@ -54,5 +54,3 @@ int		parse_comm (t_word *g_word, t_word *word,
 
 		return WRDE_SYNTAX;
 	}
-
-

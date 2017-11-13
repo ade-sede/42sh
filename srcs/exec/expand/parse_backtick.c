@@ -19,15 +19,15 @@ int		parse_backtick (t_word *g_word, t_word *word,
 	{
 		if (words[*offset] == '`')
 		{
-			exec_comm (comm, word, word_length, max_length, flags,
-					pwordexp, ifs, ifs_white);
+			exec_comm (comm.str, g_word, word,
+					exp, ifs, quoted);
 			return 0;
 		}
 		else
-			w_addchar (comm, words[*offset]);
+			w_addchar (&comm, words[*offset]);
 		++(*offset);
 	}
-	free (comm);
+	w_free (&comm);
 	return WRDE_SYNTAX;
 }
 

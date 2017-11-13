@@ -78,7 +78,7 @@ static char	**brace_expension(const char *words)
 	return (matches);
 }
 
-int		parse_loop (const char *words, t_expand *exp, const char *ifs)
+static int		parse_loop (const char *words, t_expand *exp, const char *ifs)
 {
 	size_t	offset;
 	t_word	word;
@@ -105,14 +105,11 @@ int		parse_loop (const char *words, t_expand *exp, const char *ifs)
 			if (!word.str && !words[1 + offset])
 				w_addword (exp, &g_word, &word);
 		}
-		/*
-		   else if (words[offset] == '`')
-		   {
-		   ++offset;
-		   parse_backtick (&word, &word_length, &max_length, words,
-		   &offset, flags, pwordexp, ifs);
-		   }
-		   */
+		else if (words[offset] == '`')
+		{
+			++offset;
+			parse_backtick (&g_word, &word, words, &offset, exp, ifs, 0);
+		}
 		else if (words[offset] == '$')
 			parse_dollars (&g_word, &word, words, &offset, exp, ifs, 0);
 		else if (words[offset] == '~')
@@ -130,7 +127,7 @@ int		parse_loop (const char *words, t_expand *exp, const char *ifs)
 		w_addword (exp, &g_word, &word);
 	return (0);
 }
-	
+
 char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPLITTING
 {
 	char *ifs;
@@ -141,7 +138,6 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 	w_newexp (&exp);
 
 	ifs = env_getenv ((const char **)singleton_env()->environ, "IFS", NULL);
-	//ifs = getenv ("IFS");
 	if (ifs == NULL)
 		ifs = ft_strdup(" \t\n");
 

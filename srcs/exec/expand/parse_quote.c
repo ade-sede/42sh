@@ -82,15 +82,12 @@ int		parse_dquote (t_word *g_word, t_word *word,
 		else if (words[*offset] == '\\')
 			parse_qtd_backslash (g_word, word, words, offset);
 		else if (words[*offset] == '$')
-			   parse_dollars (g_word, word, words, offset, exp, ifs, 1);
-		/*
-		   else if (words[*offset] == '`')
-		   {
-		   ++(*offset);
-		   error = parse_backtick (word, word_length, max_length, words,
-		   offset, flags, NULL, NULL, NULL);
-		   }
-		   */
+			parse_dollars (g_word, word, words, offset, exp, ifs, 1);
+		else if (words[*offset] == '`')
+		{
+			++(*offset);
+			parse_backtick (g_word, word, words, offset, exp, ifs, 1);
+		}
 		else if (ft_strchr("*[?", words[*offset]))
 		{
 			w_addchar (g_word, '\\');
