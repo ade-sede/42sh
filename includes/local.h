@@ -23,6 +23,8 @@ int		local_add_change_from_string(t_list **first, const char *string);
 int		local_remove(t_list **local_list, const char *key);
 
 
-t_list	*local_get_node(t_list *first, const char *key);
+t_list		*local_get_node(t_list *first, const char *key);
 void		free_pos_param(void *value);
+t_list		*get_pos_param_node(t_list *first, int key);
+char			*local_get_value(t_list *first, const char *key);
 #endif

@@ -82,14 +82,13 @@ int				builtin_jobs(t_env *env, const char **argv);
 ** In set.c
 */
 
-struct s_shopt_id
-{
-	long		id;
-	char	*value;
-};
-
 int				builtin_set(t_env *env, const char **argv);
 
+
+int			builtin_shopt(t_env *env, const char **argv);
+
+int			builtin_shift(t_env *env, const char **argv);
+int			builtin_export(t_env *env, const char **argv);
 /*
 ** In file history.c
 */

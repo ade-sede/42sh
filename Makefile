@@ -18,6 +18,9 @@ SRC_FILE = \
 		   main.c \
 		   \
 		   builtin/alias.c \
+		   builtin/export.c \
+		   builtin/shopt.c \
+		   builtin/shift.c \
 		   builtin/bg.c \
 		   builtin/cd.c \
 		   builtin/echo.c \
@@ -52,6 +55,8 @@ SRC_FILE = \
 		   completion/ternary_search_tree_add.c \
 		   \
 		   env/t_env.c \
+		   \
+		env/opt/set_opt.c \
 		   \
 		env/local/pos_param.c \
 		env/local/local_add.c \
@@ -287,6 +292,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/env
 	@/bin/mkdir -p $(OBJ_DIR)/env/environ
 	@/bin/mkdir -p $(OBJ_DIR)/env/local
+	@/bin/mkdir -p $(OBJ_DIR)/env/opt
 	@/bin/mkdir -p $(OBJ_DIR)/env/prompt
 	@/bin/mkdir -p $(OBJ_DIR)/env/hash_table
 	@/bin/mkdir -p $(OBJ_DIR)/exec

@@ -18,6 +18,11 @@ static t_builtin	g_builtin[] =
 	{"fg", &builtin_fg},
 	{"bg", &builtin_bg},
 	{"jobs", &builtin_jobs},
+	{"set", &builtin_set},
+	{"unset", &builtin_unset},
+	{"shopt", &builtin_shopt},
+	{"shift", &builtin_shift},
+	{"export", &builtin_export},
 	{NULL, NULL}
 };
 

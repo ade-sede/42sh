@@ -11,22 +11,21 @@ void	env_add_var(t_env *env, const char *key, const char *value)
 	char		*new_key_value;
 	size_t		new_environ_size;
 
-	if (ft_str_isdigit(key))
+	if (ft_str_isdigit(key) || ft_strequ(key, "@") || ft_strequ(key, "*") || ft_strequ(key, "#") || ft_strequ(key, "?") || ft_strequ(key, "-") || ft_strequ(key, "$") || ft_strequ(key,"!"))
 	{
-		investigate_error(1, "Wrong assignement :", "key cannot be fully numeric", 0);
-		return ;
-	}
+		investigate_error(1, "Wrong assignement :", "key cannot be fully numeric or contain reserved symbols", 0);
+		return ; }
 	environ = env->environ;
 	new_environ_size = env->environ_size + 1;
 	new_environ = palloc(sizeof(char*) * (new_environ_size + 1));
 	new_key_value = ft_strsurround(key, "=", value);
-	local_add_change_from_string(&env->local, new_key_value);
 	ft_memcpy(new_environ, environ, env->environ_size * sizeof(*new_environ));
 	new_environ[new_environ_size - 1] = new_key_value;
 	new_environ[new_environ_size] = NULL;
 	free(env->environ);
 	env->environ = new_environ;
 	env->environ_size++;
+	local_add_change_from_string(&env->local, new_key_value);
 }
 
 void	env_reload_tree_hash(t_env *env)
@@ -54,10 +53,11 @@ void	env_change_value(t_env *env, const char *key, size_t key_index, \
 void	env_add_change(t_env *env, const char *key, const char *value)
 {
 	size_t	index;
+	char	*curr_val;
 
-	if (!(env_getenv((const char**)env->environ, key, &index)))
+	if ((curr_val = env_getenv((const char**)env->environ, key, &index)) == NULL)
 		env_add_var(env, key, value);
-	else
+	else if (!ft_strequ(curr_val, value))
 		env_change_value(env, key, index, value);
 }
 

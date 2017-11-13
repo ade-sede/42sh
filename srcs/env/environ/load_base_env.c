@@ -7,6 +7,7 @@
 void		env_load_base_env(t_env *env, const char **environ)
 {
 	size_t	i;
+	char	*pid_string;
 
 	i = 0;
 	env->environ = NULL;
@@ -23,6 +24,9 @@ void		env_load_base_env(t_env *env, const char **environ)
 		local_add_change_from_string(&env->local, env->environ[i]);
 		++i;
 	}
+	pid_string = ft_itoa_base(getpid(), 10);
+	local_add_change_from_key_value(&env->local, "$", pid_string);
+	free(pid_string);
 	create_hash_table(&env->hash_table, env->environ);
 }
 

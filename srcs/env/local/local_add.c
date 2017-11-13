@@ -1,5 +1,8 @@
 #include "local.h"
+#include "t_env.h"
+#include "environ.h"
 #include "libft.h"
+#include "shopt.h"
 
 int		local_add_from_key_value(t_list **first, const char *key, const char *value)
 {
@@ -7,6 +10,8 @@ int		local_add_from_key_value(t_list **first, const char *key, const char *value
 
 	local = create_local(key, value);
 	ft_simple_lst_pushback(first, ft_simple_lst_create(local));
+	if (singleton_env()->option & ALLEXPORT)
+		env_add_change(singleton_env(), key, value);
 	return (1);
 }
 
@@ -33,7 +38,8 @@ int		local_add_change_from_key_value(t_list **first, const char *key, const char
 	if ((node = local_get_node(*first, key)))
 	{
 		local = node->data;
-		local->value = ft_strchange(local->value, ft_strdup(value));
+		if (!ft_strequ(local->value, value))
+			local->value = ft_strchange(local->value, ft_strdup(value));
 	}
 	else
 		local_add_from_key_value(first, key, value);
