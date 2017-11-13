@@ -40,5 +40,6 @@ void		env_load_shlvl_pwd(t_env *env)
 		free(new_entry);
 	}
 	env_add_change(env, "SHELL", "42sh");
-	env_add_change(env, "HISTFILE", ".42sh_history");
+	if (!env_getenv((const char **)env->environ, "HISTFILE", NULL))
+		env_add_change(env, "HISTFILE", "42sh_history");
 }

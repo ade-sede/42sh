@@ -18,6 +18,7 @@ static t_builtin	g_builtin[] =
 	{"fg", &builtin_fg},
 	{"bg", &builtin_bg},
 	{"jobs", &builtin_jobs},
+	{"history", &builtin_history},
 	{NULL, NULL}
 };
 

@@ -1,0 +1,71 @@
+
+https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html
+
+var
+	HISTFILE                   default ~/.bash_history
+	#HISTSIZE					default 500 
+	#HISTFILESIZE			The maximum number of lines contained in the history file default 500 
+	#HISTIGNORE				indique chaine qui ne vas pas dans l'historique           default vide
+
+	#HISTCONTROL																		 default vide
+		 #export HISTCONTROL=ignoredups			dont replicate LAST commande
+		 #ignorespace							si premier caractere=' ' pas dans l'historique
+		 #ignoreboth								les deux precedent
+		 #erasedups								supprime toute les occurence precedente
+
+	HISTtimeformat			timestamp a rentrer a chaque fois, affichage selon(strftime)
+
+	#HISTCMD 		non modifiable, reset immedia
+			#The history number, or index in the history list, of the current command. If HISTCMD is unset, it loses its special properties, even if it is subsequently reset.
+
+shell var
+	histexpand				Enable !(bang)
+	history    				Enable command history, as described in Bash History Facilities. This option is on by default in interactive shells. 
+
+shell option
+	histappend				set dans HISTFILE directement
+	histreedit				re-edit, ca modifie historique
+	histverify				:p du bang, permet de regarder la commande avant exec
+
+builtin history
+
+	history [n]				affiche n derniere line de l'history, si (HISTTIMEFORMAT) definie :il est afficher  	  	parcourt de liste
+	history -c				clear list (HISTCMD)																		destruction de liste
+	history -d offset		detruit un maillon(situer a offset) (HISTCMD)												destruction de maillon
+
+		file = (filename ou dans HISTFILE (echec sinon))
+	history -a [filename]	ajoute les nouveau elem de la liste dans $file
+	history -n [filename]	ajoute les nouvelles line de $file a la liste (save la valeur lors du chargement) (un '*' apparait de temps en temps)
+	history -r [filename]	lit $file et ajoute a la liste
+	history -w [filename]	ecrit ce quil y a dans la liste dans $file
+																					ajout maillon deniere pos, dans fichier
+
+	history -p arg			Effectuer une substitution d'historique sur les arguments et afficher le résultat, ne depend pas de histexpand (sous bash a lair de buggue avec multiline)		bang
+	history -s arg			rajoute l'arg dans l'historique (la commande nest pas save)															ajout maillon
+
+Quand on lit le fichier d'historique, les lignes dont le \n est echappe par un \ font parti de la meme ligne (meme noeud d'historique)
+
+struct s_hist
+{
+	t_lst_head *lst_head
+	t_list_d	*last_read;
+	struct s_cmd_node current_cmd
+	size_t		last_line_read;
+	int			signum;
+}
+
+line update avant l'exec.
+exec ----- node->line = argument.
+if current_node
+	pushback_current_node
+
+struct s_cmd_node
+{
+	char *line;
+	int	index; // La ou se trouvait le curseur.
+	char *timestamp.
+}
+
+fonction pour rentrer la nouvelle partie de la liste dans l'historique
+fonction pour rentrer le fichier d'historique dans la liste.
+fonction pour afficher n noeuds de la liste.

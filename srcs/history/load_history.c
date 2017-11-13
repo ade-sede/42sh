@@ -4,40 +4,46 @@
 #include <sys/stat.h>
 #include "env.h"
 
-static void	init_hist_struct(t_hist *h, t_env *env)
+static void	init_hist_struct(t_hist *h)
 {
-	char		*hist_file;
-
 	ft_bzero(h, sizeof(t_hist));
-	hist_file = env_getenv((const char **)env->environ, "HISTFILE", NULL);
-	if (!hist_file)
-		hist_file = ".minishell_history";
-	h->file = hist_file;
 	h->list = NULL;
+	h->last_read = NULL;
 	h->writen_buff = ft_strnew(4096);
 	h->btsearch_buff = ft_strnew(4096);
 }
 
-static void	routine(t_hist *h, char *cat)
+t_cmd_node *ft_node_new(char *cat, int index)
+{
+	t_cmd_node *ret;
+
+	ret = ft_memalloc(sizeof(t_cmd_node));
+	ret->index = index;
+	ret->timestamp = ft_strdup("once upon a time ->	");
+	ret->line = ft_strdup(cat);
+	return (ret);
+}
+
+void	routine(t_hist *h, char *cat, int index)
 {
 	t_list_d	*list;
 
-	list = ft_double_lst_create(cat);
+	list = ft_double_lst_create(ft_node_new(cat, index));
 	if (h->list == NULL)
 		h->list = ft_create_head(list);
 	else
 		ft_double_lst_add(&h->list, list);
 }
 
-int			history_load(t_hist *h, t_env *env)
+int			history_load(t_hist *h)
 {
 	int			fd;
 	char		*line;
 	char		*cat;
 
 	cat = NULL;
-	init_hist_struct(h, env);
-	if ((fd = open(h->file, O_RDWR | O_CREAT, 0644)) == -1)
+	init_hist_struct(h);
+	if ((fd = open(histfile(), O_RDWR | O_CREAT, 0644)) == -1)
 		return (0);
 	while (get_next_line(fd, &line))
 	{
@@ -50,9 +56,10 @@ int			history_load(t_hist *h, t_env *env)
 			cat = line;
 		if (charcmp(cat, ft_strlen(cat) - 1, '\\'))
 			continue ;
-		routine(h, cat);
+		routine(h, cat, -1);
 		cat = NULL;
 	}
 	close(fd);
+	h->last_read = (h->list) ? h->list->last : NULL;
 	return (1);
 }

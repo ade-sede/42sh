@@ -2,22 +2,32 @@
 #include "failure.h"
 
 /*
-** void	history_refresh_command(t_hist *h, char *command)
-** {
-** 	write(h->fd, command, ft_strlen(command));
-** 	write(h->fd, "\n", 1);
-** }
-**
-** void	history_write_last_command(void)
-** {
-** 	t_hist		*h;
-** 	t_list_d	*list;
-**
-** 	h = singleton_hist();
-** 	list = h->list->first;
-** 	history_refresh_command(h, list->data);
-** }
-*/
+ ** void	history_refresh_command(t_hist *h, char *command)
+ ** {
+ ** 	write(h->fd, command, ft_strlen(command));
+ ** 	write(h->fd, "\n", 1);
+ ** }
+ **
+ ** void	history_write_last_command(void)
+ ** {
+ ** 	t_hist		*h;
+ ** 	t_list_d	*list;
+ **
+ ** 	h = singleton_hist();
+ ** 	list = h->list->first;
+ ** 	history_refresh_command(h, list->data);
+ ** }
+ */
+
+char		*histfile(void)
+{
+	t_env	*env;
+	char	*hist_file;
+
+	env = singleton_env();
+	hist_file = env_getenv((const char **)env->environ, "HISTFILE", NULL);
+	return(hist_file);
+}
 
 static int		write_to_hist(char *value, int fd)
 {
@@ -40,34 +50,36 @@ void			history_write_to_histfile(void)
 	t_list_d	*last;
 	int			fd;
 
-	h = singleton_hist();
-	if ((fd = open(h->file, O_RDWR | O_TRUNC)) == -1)
+	if (env_getenv((const char **)singleton_env()->environ, "HISTFILE", NULL))
 	{
-		investigate_error(1, "open", NULL, -1);
-		return ;
+		h = singleton_hist();
+		if ((fd = open(histfile(), O_RDWR)) == -1)
+		{
+			investigate_error(1, "open", NULL, -1);
+			return ;
+		}
+		last = (!h->last_read) ? NULL : h->last_read;
+		while (last)
+		{
+			write_to_hist((((t_cmd_node *)last->data)->line), fd);
+			write(fd, "\n", 1);
+			last = last->prev;
+		}
+		close(fd);
 	}
-	last = (!h->list) ? NULL : h->list->last;
-	while (last)
-	{
-		write_to_hist(last->data, fd);
-		write(fd, "\n", 1);
-		last = last->prev;
-	}
-	close(fd);
 }
 
-void			history_append_command_to_list(char *command)
+void			history_append_command_to_list(char *command) //int index
 {
 	t_hist		*h;
-	t_list_d	*list;
+	//t_list_d	*list;
+	//char *command;
 
 	h = singleton_hist();
+	//command = h->current_cmd->line;
 	if (command[0] == '\0' || ft_str_is_clr(command))
 		return ;
 	command[ft_strlen(command) - 1] = 0;
-	list = ft_double_lst_create(ft_strdup(command));
-	if (h->list == NULL)
-		h->list = ft_create_head(list);
-	else
-		ft_double_lst_add(&h->list, list);
+	routine(h, command, -1);
 }
+ 

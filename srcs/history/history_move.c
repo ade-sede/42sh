@@ -24,7 +24,7 @@ int		history_next(t_line *line, t_hist *h)
 	if (tmp)
 	{
 		h->cur = tmp;
-		history_line_refresh(line, h->cur->data);
+		history_line_refresh(line, ((t_cmd_node *)h->cur->data)->line);
 	}
 	else
 		put_termcap("bl");
@@ -43,7 +43,7 @@ int		history_prev(t_line *line, t_hist *h)
 	if (tmp)
 	{
 		h->cur = tmp;
-		history_line_refresh(line, h->cur->data);
+		history_line_refresh(line, ((t_cmd_node *)h->cur->data)->line);
 	}
 	else
 	{

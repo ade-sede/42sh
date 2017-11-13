@@ -45,7 +45,7 @@ void	read_pointrc(t_env *env)
 	int		fd;
 
 	(void)env;
-	if ((fd = open("/Users/vcombey/.42shrc", O_RDONLY)) == -1)
+	if ((fd = open("/Users/tdumouli/.42shrc", O_RDONLY)) == -1)
 	{
 		perror("");
 		return ;
@@ -73,7 +73,7 @@ int		main(int ac, char **av)
 	if (jc->shell_is_interactive)
 		conf_term_in();
 	create_ternary_tree(env);
-	history_load(singleton_hist(), env);
+	history_load(singleton_hist());
 	read_pointrc(env);
 	main_loop(env, stream, buff_c_opt, c_opt);
 	env_free_env(env);

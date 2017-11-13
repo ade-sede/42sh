@@ -32,6 +32,7 @@ SRC_FILE = \
 	builtin/function_set.c \
 	builtin/read.c \
 	builtin/read_options.c \
+	builtin/history.c \
 	\
 	completion/comple_bin_matches.c \
 	completion/comple_escape.c \

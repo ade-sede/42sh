@@ -6,20 +6,32 @@
 
 typedef struct	s_hist
 {
-	char		*file;
-	t_lst_head	*list;
-	t_list_d	*cur;
-	char		*writen_buff;
-	t_lst_head	*btsearch_list;
-	t_list_d	*btsearch_cur;
-	char		*btsearch_buff;
-	size_t		btsearch_buff_len;
-	int			signum;
-	int			fd;
+	t_lst_head			*list;
+	t_list_d			*last_read; //apres load
+	t_list_d			*cur;
+	struct s_cmd_node	*current_cmd;	//truc a pop
+	size_t				last_line_read; //taille de HISTFILE
+	int					signum;
+
+	char				*writen_buff;
+	t_lst_head			*btsearch_list;
+	t_list_d			*btsearch_cur;
+	char				*btsearch_buff;
+	size_t				btsearch_buff_len;
 }				t_hist;
 
+typedef struct s_cmd_node
+{
+	char				*line;
+	int					index; // La ou se trouvait le curseur.
+	char				*timestamp;
+}				t_cmd_node;
+
 t_hist			*singleton_hist(void);
-int				history_load(t_hist *h, t_env *env);
+int				history_load(t_hist *h);
+char			*histfile();
+t_cmd_node		*ft_node_new(char *cat, int index);
+void			routine(t_hist *h, char *cat, int index);
 
 int				history_get_input(t_line *line, unsigned long keycode);
 void			history_init(t_hist *h);
@@ -56,5 +68,7 @@ void			history_line_refresh(t_line *line, char *new_line);
 /*
 ** void			history_write_last_command();
 */
+
+#define HISTFILE ".42sh_history"
 
 #endif
