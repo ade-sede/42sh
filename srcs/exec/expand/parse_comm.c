@@ -41,15 +41,16 @@ int		parse_comm (t_word *g_word, t_word *word,
 			{
 				if (comm.str)
 				{
+				//	fprint(stderr,"exec comm\n");
 					error = exec_comm (comm.str, g_word, word, exp, ifs, no_ifs);
 					w_free (&comm);
 					return error;
 				}
 			}
-			if (words[*offset] == '(' && !quoted)
-				++paren_depth;
-			w_addchar (&comm, words[*offset]);
 		}
+		if (words[*offset] == '(' && !quoted)
+			++paren_depth;
+		w_addchar (&comm, words[*offset]);
 		++*offset;
 	}
 	w_free (&comm);

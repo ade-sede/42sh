@@ -72,7 +72,7 @@ int		w_addword (t_expand *exp, t_word *g_word, t_word *word)
 	/* Internally, NULL acts like "".  Convert NULLs to "" before
 	 * the caller sees them.
 	 */
-//	printf("exp->actlen: {%zu} exp->maxlen: {%zu}\n", exp->actlen, exp->maxlen);
+//	fprint(stderr,"exp->actlen: {%zu} exp->maxlen: {%zu}\n", exp->actlen, exp->maxlen);
 	if (exp->actlen == exp->maxlen)
 	{
 		exp->maxlen += W_ARRAY_SIZE;

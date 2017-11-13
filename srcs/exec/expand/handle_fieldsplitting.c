@@ -38,7 +38,7 @@ int		handle_fieldsplitting (char *value, t_word *g_word, t_word *word,
 		while (split[i])
 		{
 			w_addword (exp, g_word, word);
-			printf("split[i]: %s\n", split[i]);
+//			fprint(stderr,"split[i]: %s\n", split[i]);
 			w_addstr (word, split[i]);
 			w_addstr (g_word, split[i]);
 			i++;
