@@ -50,7 +50,8 @@ void	exec_assignment_word(t_ast *ast)
 	char		**word_expanded;
 	
 	word_expanded = word_expansion(ft_strchr(ast->token->value, '=') + 1, NO_GLOBBING | NO_FIELDSPLITING);
-	add_to_local(&singleton_env()->local, word_expanded[0]);
+	if (word_expanded[0])
+		add_to_local(&singleton_env()->local, word_expanded[0]);
 	free(word_expanded);
 }
 
@@ -125,12 +126,15 @@ int		exec_simple_command(t_ast *ast)
 	}
 	exec_dup(redirect_list);
 	
-	if ((fct_body = get_function(singleton_env(), av[0])))
-		return (exec_function(fct_body, av));
+	if (av)
+	{
+		if ((fct_body = get_function(singleton_env(), av[0])))
+			return (exec_function(fct_body, av));
 
-	if (get_exec_builtin(av[0]))
-		return (exec_builtin(singleton_env(), (const char **)av));
-	exec_bin(singleton_env(), (const char **)av);
+		if (get_exec_builtin(av[0]))
+			return (exec_builtin(singleton_env(), (const char **)av));
+		exec_bin(singleton_env(), (const char **)av);
+	}
 	close_dup(redirect_list);
 	return (EXIT_SUCCESS);
 }
