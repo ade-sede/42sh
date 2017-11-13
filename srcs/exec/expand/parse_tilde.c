@@ -6,6 +6,7 @@
 #include "glob.h"
 #include "expand.h"
 
+/*  on "~" */
 int parse_tilde (t_word *g_word, t_word *word,
              const char *words, size_t *offset)
 {

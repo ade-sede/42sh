@@ -6,7 +6,7 @@
 #include "glob.h"
 #include "expand.h"
 
-#define CHAR_IN_SET(c, str) ft_strchr(str, c) != NULL
+/*  after "$" */
 
 int		parse_param (t_word *g_word, t_word *word,
 		const char *words, size_t *offset,
@@ -153,6 +153,8 @@ int		parse_param (t_word *g_word, t_word *word,
 	}
 	return 0;
 }
+
+/*  on "$" */
 
 int		parse_dollars (t_word *g_word, t_word *word,
 		const char *words, size_t *offset,

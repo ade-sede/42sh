@@ -40,16 +40,21 @@ static char	**pathname_expension(t_expand *exp)
 		if (match_list)
 		{
 			matches = list_to_array(match_list);
-			av = ft_arrayjoin_free(matches, av, 0b11);
+			av = ft_arrayjoin_free(av, matches, 0b11);
 			ft_simple_lst_remove(&match_list, NULL);
+			ft_strdel(&exp->av_word[i]);
+			ft_strdel(&exp->av_gword[i]);
 		}
-		if (!match_list)
+		else
 		{
 			no_match[0] = exp->av_word[i];
-			av = ft_arrayjoin_free(no_match, av, 0b01);
+			av = ft_arrayjoin_free(av, no_match, 0b10);
+			ft_strdel(&exp->av_gword[i]);
 		}
 		i++;
 	}
+	free(exp->av_gword);
+	free(exp->av_word);
 	return (av);
 }
 
@@ -114,8 +119,8 @@ int		parse_loop (const char *words, t_expand *exp, const char *ifs)
 			parse_tilde (&g_word, &word, words, &offset);
 		else
 		{
-			//			printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
-			//			printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
+			//	printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
+			//	printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
 			w_addchar (&word, words[offset]);
 			w_addchar (&g_word, words[offset]);
 		}
@@ -135,8 +140,8 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 	(void)flag;
 	w_newexp (&exp);
 
-	//	ifs = env_getenv (singelton_env()->environ, "IFS", NULL);
-	ifs = getenv ("IFS");
+	ifs = env_getenv ((const char **)singleton_env()->environ, "IFS", NULL);
+	//ifs = getenv ("IFS");
 	if (ifs == NULL)
 		ifs = ft_strdup(" \t\n");
 
@@ -151,5 +156,6 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 		printf("w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
 	if (!(flag & NO_GLOBBING))
 		return (pathname_expension(&exp));
+	ft_arraydel(&exp.av_gword);
 	return (exp.av_word);
 }

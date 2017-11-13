@@ -1,4 +1,5 @@
 #include "exec.h"
+#include <stdio.h>
 #include "local.h"
 #include "expand.h"
 
@@ -44,6 +45,7 @@ int exec_for_clause(t_ast *ast)
 	var = ast->child[1]->child[0]->token->value;
 	for (i = 0; array_word[i]; i++)
 	{
+		printf("var %s, array_word[i]: %s\n", var,array_word[i]);
 		add_to_local(&singleton_env()->local, ft_strjoin3_free(var, "=", array_word[i], 0));
 		exec(do_group);
 	}

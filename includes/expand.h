@@ -8,6 +8,8 @@
 #define NO_FIELDSPLITING	0b1
 #define NO_GLOBBING	   0b10
 
+#define CHAR_IN_SET(c, str) ft_strchr(str, c) != NULL
+
 typedef struct	s_expand
 {
 	char		**av_word;

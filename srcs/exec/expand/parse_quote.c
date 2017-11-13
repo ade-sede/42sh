@@ -6,6 +6,7 @@
 #include "glob.h"
 #include "expand.h"
 
+/*  on \ */
 int		parse_backslash (t_word *g_word, t_word *word, const char *words, size_t *offset)
 {
 	char	ch;
@@ -23,6 +24,7 @@ int		parse_backslash (t_word *g_word, t_word *word, const char *words, size_t *o
 	return 0;
 }
 
+/*  on \ */
 int		parse_qtd_backslash (t_word *g_word, t_word *word, const char *words, size_t *offset)
 {
 	if (words[1 + *offset] == 0)
@@ -47,6 +49,7 @@ int		parse_qtd_backslash (t_word *g_word, t_word *word, const char *words, size_
 	return 0;
 }
 
+/*  after ' */
 int		parse_squote (t_word *g_word, t_word *word, const char *words, size_t *offset)
 {
 	while (words[*offset])
@@ -67,6 +70,7 @@ int		parse_squote (t_word *g_word, t_word *word, const char *words, size_t *offs
 	return WRDE_SYNTAX;
 }
 
+/*  after " */
 int		parse_dquote (t_word *g_word, t_word *word,
 		const char *words, size_t *offset,
 		t_expand *exp, const char *ifs)
