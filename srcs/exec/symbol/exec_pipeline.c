@@ -24,7 +24,7 @@ int		pipe_sequence_has_to_fork(t_ast	*pipe_sequence)
 	if (!(is_symb(simple_command, SIMPLE_COMMAND)))
 		return (0);
 	cmd_name_expanded = get_cmd_name(simple_command);
-	if (cmd_name_expanded && !get_exec_builtin(*cmd_name_expanded))
+	if (cmd_name_expanded && *cmd_name_expanded && !get_exec_builtin(*cmd_name_expanded))
 	{
 		ft_arraydel(&cmd_name_expanded);
 		return (1);

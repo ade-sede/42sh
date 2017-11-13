@@ -276,7 +276,7 @@ int		get_token_list(t_lexer *lex, t_list **token_list, t_list *alias_list)
 	t_list	*reversed_node;
 
 	(void)alias_list;
-	while (lex->line[lex->pos] && (token = get_token(lex)) != NULL)
+	while (lex->line && lex->pos < ft_strlen(lex->line) && lex->line[lex->pos] && (token = get_token(lex)) != NULL)
 	{
 		/* If token is a whitespace or a comment, discard it. Otherwise proceed to concatenation */
 

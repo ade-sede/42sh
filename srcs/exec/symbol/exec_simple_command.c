@@ -126,7 +126,7 @@ int		exec_simple_command(t_ast *ast)
 	}
 	exec_dup(redirect_list);
 	
-	if (av)
+	if (av && av[0])
 	{
 		if ((fct_body = get_function(singleton_env(), av[0])))
 			return (exec_function(fct_body, av));

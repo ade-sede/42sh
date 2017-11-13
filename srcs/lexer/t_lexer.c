@@ -53,6 +53,7 @@
 int		init_lexer(t_lexer *lex, const char *line)
 {
 	ft_memset(lex, 0, sizeof(t_lexer));
+//	fprintf(stderr, "init lexer : line: %s\n", line);
 	lex->line = ft_strdup(line);
 	lex->pos = 0;
 	lex->state = NULL;
