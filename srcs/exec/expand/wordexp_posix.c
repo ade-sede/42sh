@@ -150,6 +150,7 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 	}
 	for (i=0; i < exp.actlen; i++)
 		printf("w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
+	free(ifs);
 	if (!(flag & NO_GLOBBING))
 		return (pathname_expension(&exp));
 	ft_arraydel(&exp.av_gword);
