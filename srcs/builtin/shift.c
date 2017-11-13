@@ -13,7 +13,12 @@ int			builtin_shift(t_env *env, const char **argv)
 	t_list	*node_shift;
 	t_pos_param	*pos_param;
 	char	*tmp_max_param;
+	int		count;
+	char	*all_param;
+	char	*nb_param;
 
+	count = 1;
+	all_param = NULL;
 	len = ft_arraylen(argv);
 	if (len > 2)
 		return (investigate_error(1, "shift: ", "Too many arguments", EXIT_FAILURE));
@@ -42,7 +47,17 @@ int			builtin_shift(t_env *env, const char **argv)
 	{
 		pos_param = node_shift->data;
 		pos_param->key -= n;
+		++count;
+		if (all_param)
+			all_param = ft_strchange(all_param, ft_strsurround(all_param, " ", pos_param->value));
+		else
+			all_param = ft_strdup(pos_param->value);
 		node_shift = node_shift->next;
 	}
+	local_add_change_from_key_value(&env->local, "@", all_param);
+	local_add_change_from_key_value(&env->local, "*", all_param);
+	nb_param = ft_itoa_base(count - 1, 10);
+	local_add_change_from_key_value(&env->local, "#", nb_param);
+	free(nb_param);
 	return (EXIT_SUCCESS);
 }
