@@ -45,7 +45,7 @@ int		exec_comm (char *comm, t_word *g_word, t_word *word,
 	w_newword(&value);
 	if (!comm || !*comm)
 		return 0;
-//	fprintf(stderr, "cmd substitution {%s}\n", comm);
+	fprintf(stderr, "cmd substitution {%s}\n", comm);
 	p_pipe (fildes);
 	pid = p_fork();
 	if (pid == 0)
