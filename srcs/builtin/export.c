@@ -1,6 +1,7 @@
 #include "libft.h"
 #include "t_env.h"
 #include "environ.h"
+#include "local.h"
 
 #include <stdio.h>
 

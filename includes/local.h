@@ -1,6 +1,7 @@
 #ifndef LOCAL_H
 # define LOCAL_H
 #include "list.h"
+#include "t_env.h"
 
 typedef struct	s_local
 {
