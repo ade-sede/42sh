@@ -94,6 +94,7 @@ int		w_addword (t_expand *exp, t_word *g_word, t_word *word)
 
 int		w_newexp (t_expand *exp)
 {
+	ft_bzero(exp, sizeof(t_expand));
 	exp->av_word = (char **)ft_memalloc(sizeof(char *) * 1);
 	exp->av_gword = (char **)ft_memalloc(sizeof(char *) * 1);
 	exp->actlen = 0;

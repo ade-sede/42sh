@@ -7,27 +7,22 @@
 #include "expand.h"
 
 /*  after "`" */
-int		parse_backtick (t_word *g_word, t_word *word,
-		const char *words, size_t *offset,
-		t_expand *exp, const char *ifs,
-		int quoted)
+int		parse_backtick (t_expand *exp)
 {
 	t_word comm;
 	w_newword (&comm);
 
-	while (words[*offset])
+	while (exp->words[exp->offset])
 	{
-		if (words[*offset] == '`')
+		if (exp->words[exp->offset] == '`')
 		{
-			exec_comm (comm.str, g_word, word,
-					exp, ifs, quoted);
+			exec_comm (comm.str, exp);
 			return 0;
 		}
 		else
-			w_addchar (&comm, words[*offset]);
-		++(*offset);
+			w_addchar (&comm, exp->words[exp->offset]);
+		++(exp->offset);
 	}
 	w_free (&comm);
 	return WRDE_SYNTAX;
 }
-

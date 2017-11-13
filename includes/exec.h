@@ -74,7 +74,7 @@ int				is_symb(t_ast *ast, int symbol);
 
 void			exec_io_redirect(t_ast	*ast, t_list **redirect_list);
 
-char	**get_cmd_name(t_ast *ast);
+char	**get_cmd_name(t_ast *ast, int flag);
 t_ast	*get_function(t_env *env, char *cmd_name);
 int		exec_function(t_ast *fct_body, char **av);
 char	*file_get_input(int stream);
