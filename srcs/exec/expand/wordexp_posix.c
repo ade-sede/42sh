@@ -53,23 +53,34 @@ static char	**pathname_expension(t_expand *exp)
 	return (av);
 }
 
-char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPLITTING
+static char	**brace_expension(const char *words)
+{
+	t_list	*match_list;
+	char	**matches;
+
+	match_list = expand_curly_brackets((char *)words);
+	if (match_list)
+	{
+		matches = list_to_array(match_list);
+		ft_simple_lst_remove(&match_list, NULL);
+	}
+	else
+	{
+		printf("match list null\n");
+		matches = ft_memalloc(sizeof(char *) * (2));
+		matches[0] = ft_strdup(words);
+	}
+	return (matches);
+}
+
+int		parse_loop (const char *words, t_expand *exp, const char *ifs)
 {
 	size_t	offset;
 	t_word	word;
 	t_word	g_word;
-	char *ifs;
-	t_expand exp;
-(void)flag;
+
 	w_newword (&word);
 	w_newword (&g_word);
-	w_newexp (&exp);
-
-//	ifs = env_getenv (singelton_env()->environ, "IFS", NULL);
-	ifs = getenv ("IFS");
-	if (ifs == NULL)
-		ifs = ft_strdup(" \t\n");
-
 	offset = 0;
 	while (words[offset])
 	{
@@ -78,16 +89,16 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 		else if (words[offset] == '"')
 		{
 			++offset;
-			parse_dquote (&g_word, &word, words, &offset, &exp, ifs);
+			parse_dquote (&g_word, &word, words, &offset, exp, ifs);
 			if (!word.str && !words[1 + offset])
-				w_addword (&exp, &g_word, &word);
+				w_addword (exp, &g_word, &word);
 		}
 		else if (words[offset] == '\'')
 		{
 			++offset;
 			parse_squote (&g_word, &word, words, &offset);
 			if (!word.str && !words[1 + offset])
-				w_addword (&exp, &g_word, &word);
+				w_addword (exp, &g_word, &word);
 		}
 		/*
 		   else if (words[offset] == '`')
@@ -97,22 +108,45 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 		   &offset, flags, pwordexp, ifs);
 		   }
 		   */
-		   else if (words[offset] == '$')
-			   parse_dollars (&g_word, &word, words, &offset, &exp, ifs, 0);
-		   else if (words[offset] == '~')
-			   parse_tilde (&g_word, &word, words, &offset);
+		else if (words[offset] == '$')
+			parse_dollars (&g_word, &word, words, &offset, exp, ifs, 0);
+		else if (words[offset] == '~')
+			parse_tilde (&g_word, &word, words, &offset);
 		else
 		{
-//			printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
-//			printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
+			//			printf("w: {%s}, gw: {%s}\nwsize: {%zu}, gwsize: {%zu}\n", word.str, g_word.str, word.actlen, g_word.actlen);
+			//			printf("wsize max: {%zu}, gwsize max: {%zu}\n", word.maxlen, g_word.maxlen);
 			w_addchar (&word, words[offset]);
 			w_addchar (&g_word, words[offset]);
 		}
 		offset++;
 	}
 	if (word.str != NULL)
-		w_addword (&exp, &g_word, &word);
+		w_addword (exp, &g_word, &word);
+	return (0);
+}
+	
+char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPLITTING
+{
+	char *ifs;
+	char	**braced_words;
+	t_expand exp;
 	size_t i;
+	(void)flag;
+	w_newexp (&exp);
+
+	//	ifs = env_getenv (singelton_env()->environ, "IFS", NULL);
+	ifs = getenv ("IFS");
+	if (ifs == NULL)
+		ifs = ft_strdup(" \t\n");
+
+	braced_words = brace_expension(words);
+	i = 0;
+	while (braced_words[i])
+	{
+		parse_loop (braced_words[i], &exp, ifs);
+		i++;
+	}
 	for (i=0; i < exp.actlen; i++)
 		printf("w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
 	if (!(flag & NO_GLOBBING))

@@ -1,6 +1,7 @@
 #include "glob.h"
 #include "list.h"
 #include "libft.h"
+#include <stdio.h>
 
 void	curly_brackets_coma(t_list **res, char *expr, char *str, int end)
 {
@@ -87,7 +88,10 @@ t_list	*expand_curly_brackets(char *expr)
 
 	res = NULL;
 	if (!is_valid_curly_brackets(expr))
+	{
+		printf("bad curly bracket\n");
 		return (res);
+	}
 	curly_brackets(&res, ft_strdup(expr));
 	return (res);
 }
