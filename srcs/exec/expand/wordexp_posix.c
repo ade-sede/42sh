@@ -73,7 +73,7 @@ static char	**brace_expension(const char *words)
 	}
 	else
 	{
-		fprintf(stderr,"match list null\n");
+		//fprintf(stderr,"match list null\n");
 		matches = ft_memalloc(sizeof(char *) * (2));
 		matches[0] = ft_strdup(words);
 	}
