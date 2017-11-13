@@ -54,7 +54,7 @@ void	curly_brackets(t_list **res, char *expr)
 		end += start;
 	if (start == -1 || end == -1)
 	{
-		ft_simple_lst_add(res, ft_simple_lst_create(expr));
+		ft_simple_lst_pushback(res, ft_simple_lst_create(expr));
 		return ;
 	}
 	str = ft_strndup(expr + start + 1, end - start - 1);
