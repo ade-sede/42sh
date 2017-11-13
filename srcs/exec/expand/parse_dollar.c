@@ -15,7 +15,6 @@ int		parse_param (t_expand *exp)
 	size_t start = exp->offset;
 	char *value = NULL;
 	int seen_hash = 0;
-	int free_value = 0;
 	int special = 0;
 	int brace = exp->words[exp->offset] == '{';
 	t_word env;
@@ -83,16 +82,14 @@ int		parse_param (t_expand *exp)
 	{
 		char *param_length = ft_itoa (value ? strlen (value) : 0);
 		w_addstr (&exp->word, param_length);
-		free(param_length);
-		if (free_value)
-			free (value);
+		free (param_length);
+		free (value);
 		return 0;
 	}
 	if (value == NULL)
 		return 0;
 	handle_fieldsplitting(value, exp);
-	if (free_value)
-		free (value);
+	free (value);
 	return 0;
 }
 

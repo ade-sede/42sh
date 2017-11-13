@@ -36,7 +36,7 @@ void	read_pointrc(t_env *env)
 	int		fd;
 
 	(void)env;
-	if ((fd = open("/Users/seddaoud/.42shrc", O_RDONLY)) == -1)
+	if ((fd = open("/Users/vcombey/.42shrc", O_RDONLY)) == -1)
 	{
 		perror("");
 		return ;

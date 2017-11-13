@@ -73,9 +73,9 @@ int		is_valid_curly_brackets(char *expr)
 	i = 0;
 	while (expr[i])
 	{
-		if (expr[i] == '{')
+		if (expr[i] == '{' && !ft_is_backslash(expr, i))
 			depth++;
-		if (expr[i] == '}')
+		if (expr[i] == '}' && !ft_is_backslash(expr, i))
 			depth--;
 		i++;
 	}
