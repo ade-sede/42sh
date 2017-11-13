@@ -125,6 +125,8 @@ SRC = \
 	system/ft_is_executable.c \
 	system/size_term.c \
 	system/put_termcap.c \
+	system/pfork.c \
+	system/ppipe.c \
 	parr/ft_parrlen.c \
 	parr/ft_parrnew.c \
 	parr/ft_parrpush.c \

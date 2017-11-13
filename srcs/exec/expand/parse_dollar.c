@@ -106,51 +106,10 @@ int		parse_param (t_word *g_word, t_word *word,
 	}
 	if (value == NULL)
 		return 0;
-	if (quoted || !exp)
-	{
-		size_t		i = 0;
-		while (value[i])
-		{
-			if (value[i] == '\\')
-				parse_qtd_backslash (g_word, word, value, &i); //TODO: effet de bord
-			else if (ft_strchr("*[?", value[i]))
-			{
-				w_addchar (g_word, '\\');
-				w_addchar (g_word, value[i]); 
-				w_addchar (word, value[i]);
-			}
-			else
-			{
-				w_addchar (g_word, value[i]);
-				w_addchar (word, value[i]);
-			}
-			++(*offset);
-			i++;
-		}
-		if (free_value)
-			free (value);
-		return 0;
-	}
-	else
-	{
-		/* Need to field-split */
-		char	**split = ft_strsplit(value, ifs);
-		size_t		i;
-		w_addstr (word, split[0]);
-		w_addstr (g_word, split[0]);
-		i = 1;
-		while (split[i])
-		{
-			w_addword (exp, g_word, word);
-			printf("split[i]: %s\n", split[i]);
-			w_addstr (word, split[i]);
-			w_addstr (g_word, split[i]);
-			i++;
-		}
-		if (free_value)
-			free (value);
-		ft_arraydel(&split);
-	}
+	handle_fieldsplitting(value, g_word, word,	
+			exp, ifs, quoted);
+	if (free_value)
+		free (value);
 	return 0;
 }
 
