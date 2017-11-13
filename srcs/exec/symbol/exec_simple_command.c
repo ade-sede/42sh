@@ -44,7 +44,7 @@ void	exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 
 void	exec_assignment_word(t_ast *ast)
 {
-	add_to_local(&singleton_env()->local, ft_strdup(ast->token->value));
+	local_add_change_from_string(&singleton_env()->local, ast->token->value);
 }
 
 void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)

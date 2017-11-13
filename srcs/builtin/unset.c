@@ -9,12 +9,10 @@ int		builtin_unset(t_env *env, const char **argv)
 	if (ft_arraylen(argv) == 1)
 		return (EXIT_FAILURE);
 	x = 1;
-	while (argv[x] != NULL)
+	while (argv[x] && env->local)
 	{
-		if (!env->local)
-			break ;
-		remove_var_from_local(&env->local, (char*)argv[x]);
-		x++;
+		local_remove(&env->local, argv[x]);
+		++x;
 	}
 	return (EXIT_SUCCESS);
 }

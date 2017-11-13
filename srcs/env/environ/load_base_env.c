@@ -14,13 +14,13 @@ void		env_load_base_env(t_env *env, const char **environ)
 	env->option = 0;
 	env->alias = NULL;
 	env->first_func = NULL;
-	env->pos_par = NULL;
+	env->pos_param = NULL;
 	env->local = NULL;
 	env->environ = env_create_environ(environ, &(env->environ_size));
 	env_load_shlvl_pwd(env);
 	while (i != env->environ_size)
 	{
-		add_to_local(&env->local, ft_strdup(env->environ[i]));
+		local_add_change_from_string(&env->local, env->environ[i]);
 		++i;
 	}
 	create_hash_table(&env->hash_table, env->environ);

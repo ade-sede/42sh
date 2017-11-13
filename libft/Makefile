@@ -72,6 +72,7 @@ SRC = \
 	mem/ft_memset.c \
 	mem/ft_realloc.c \
 	mem/palloc.c \
+	str/ft_str_isdigit.c \
 	str/charcmp.c \
 	str/ft_atoi.c \
 	str/ft_buff_wchar.c \

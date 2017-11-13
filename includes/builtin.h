@@ -82,7 +82,6 @@ int				builtin_jobs(t_env *env, const char **argv);
 ** In set.c
 */
 
-# define ALLEXPORT 0b1L
 struct s_shopt_id
 {
 	long		id;

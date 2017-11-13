@@ -14,7 +14,7 @@ int		exec_wordlist(t_ast *wordlist, char *var, t_ast *do_group)
 		 ft_strdup(wordlist->child[0]->token->value);
 	if (!wordlist)
 		return (EXIT_SUCCESS);
-	add_to_local(&singleton_env()->local, ft_strjoin3_free(var, "=", word, 0b1));
+	local_add_change_from_key_value(&singleton_env()->local, var, word);
 	exec(do_group);
 	if (is_symb(wordlist->child[0], WORDLIST))
 		return (exec_wordlist(wordlist->child[0], var, do_group));

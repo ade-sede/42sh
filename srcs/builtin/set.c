@@ -1,7 +1,7 @@
 #include "local.h"
 #include "builtin.h"
 #include "t_env.h"
-#include "option.h"
+#include "shopt.h"
 #include "failure.h"
 #include "get_opt.h"
 
@@ -62,5 +62,6 @@ int			builtin_set(t_env *env, const char **argv)
 	}
 	if (g_programinfo.argerr)
 		return (EXIT_FAILURE);
+	add_pos_param(env, argv, g_programinfo.argcur, 1);
 	return (EXIT_SUCCESS);
 }
