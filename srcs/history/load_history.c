@@ -19,7 +19,7 @@ t_cmd_node *ft_node_new(char *cat, int index)
 
 	ret = ft_memalloc(sizeof(t_cmd_node));
 	ret->index = index;
-	ret->timestamp = ft_strdup("once upon a time ->	");
+	gettimeofday(&ret->timestamp, NULL);
 	ret->line = ft_strdup(cat);
 	return (ret);
 }

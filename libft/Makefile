@@ -20,12 +20,12 @@ COLOR_WHITE		= \033[1;37m
 SRC = \
 	fatal.c \
 	ft_digit_count.c \
-	ft_getopt.c \
 	ft_is_1.c \
 	ft_is_2.c \
 	ft_is_3.c \
 	get_next_line.c \
 	array/ft_arraychr.c \
+	array/ft_arrayjoin.c \
 	array/ft_arraydel.c \
 	array/ft_arraydup.c \
 	array/ft_arraylen.c \
@@ -73,6 +73,7 @@ SRC = \
 	mem/ft_memset.c \
 	mem/ft_realloc.c \
 	mem/palloc.c \
+	str/ft_str_isdigit.c \
 	str/charcmp.c \
 	str/ft_atoi.c \
 	str/ft_buff_wchar.c \
@@ -124,11 +125,14 @@ SRC = \
 	system/ft_is_executable.c \
 	system/size_term.c \
 	system/put_termcap.c \
+	system/pfork.c \
+	system/ppipe.c \
 	parr/ft_parrlen.c \
 	parr/ft_parrnew.c \
 	parr/ft_parrpush.c \
 	parr/ft_strarrstrn.c \
-
+	get_opt/get_opt.c \
+	get_opt/get_opt_display.c \
 
 NAME ?= libft.a
 
@@ -182,6 +186,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/str
 	@mkdir -p $(OBJ_DIR)/system
 	@mkdir -p $(OBJ_DIR)/parr
+	@mkdir -p $(OBJ_DIR)/get_opt
 
 clean:
 	@printf "$(COLOR_RED)Removing object files ...$(COLOR_NOCOLOR)\n"

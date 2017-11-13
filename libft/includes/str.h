@@ -278,5 +278,7 @@ int					ft_strrcmp(const char *s1, const char *s2);
 */
 
 int					ft_strrequ(const char *s1, const char *s2);
+
 int					ft_str_is_clr(char *str);
+int					ft_str_isdigit(const char *s);
 #endif
