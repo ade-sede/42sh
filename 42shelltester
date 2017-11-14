@@ -1,0 +1,2388 @@
+[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[1;33m~[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m                                                          
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/003-binary-test-exec-order[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell correctly finds binaries by iterating on paths within the environment variable PATH from left to right.[0m
+
+  Before test:
+[38;5;239m  01: mkdir -p "./virtual_path_1" "./virtual_path_2"
+  02: cp "./write_on_stdout" "./virtual_path_1/fake_echo"
+  03: cp "./write_on_stderr" "./virtual_path_2/fake_echo"
+  04: export PATH="/Users/vcombey/42ShellTester/tmp/virtual_path_1:/Users/vcombey/42ShellTester/tmp/virtual_path_2"[0m
+
+  STDIN:
+[38;5;239m  01: fake_echo TOKEN201711140046[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex TOKEN201711140046[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: TOKEN201711140046[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/004-binary-test-empty-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell finds binaries that are located in the current directory when the environment variable PATH is empty.[0m
+
+  Before test:
+[38;5;239m  01: export PATH=""[0m
+
+  STDIN:
+[38;5;239m  01: write_on_stdout "TOKEN201711140046"[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711140046`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: write_on_stdout: command not found[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/005-binary-test-wrong-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  This test purpose is to check if your shell is not able to use binary with a wrong PATH
+  We are changing the actual PATH by PATH=NULL
+  And executing the commande ls[0m
+
+  Before test:
+[38;5;239m  01: export PATH="/"[0m
+
+  STDIN:
+[38;5;239m  01: ls[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Cc]ommand not found`[0m
+[38;5;239m  01: ls: command not found[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/006-binary-undefined-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell retrieves the default value of the environment variable PATH if not set. This test depends on the presence of the UNIX binary `ls`, located in a path within the default environment variable PATH.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "TOKEN201711140046_006-BINARY-UNDEFINED-PATH"
+  02: touch "TOKEN201711140046_006-BINARY-UNDEFINED-PATH"
+  03: unset PATH[0m
+
+  STDIN:
+[38;5;239m  01: ls[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711140046_006-BINARY-UNDEFINED-PATH`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ls: command not found[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/007-binary-permission-denied[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to execute a non-permitted binary results in an error on standard error and a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf ./permission_denied
+  02: touch ./permission_denied
+  03: chmod 0 ./permission_denied[0m
+
+  STDIN:
+[38;5;239m  01: ./permission_denied[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Pp]ermission denied`[0m
+[38;5;239m  01: =================================================================
+  02: ==70481==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000029b52 at pc 0x00010722b77c bp 0x7fff589fc510 sp 0x7fff589fc508
+  03: READ of size 1 at 0x602000029b52 thread T0
+  04:     #0 0x10722b77b in match match.c:33
+  05:     #1 0x10722cd6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x10722b42a in glob glob.c:52
+  07:     #3 0x10725b62f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x10725a436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x107222af7 in get_cmd_name exec_simple_command.c:92
+  10:     #6 0x107221525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  11:     #7 0x107221c42 in exec_pipeline exec_pipeline.c:73
+  12:     #8 0x10721eb65 in exec exec.c:39
+  13:     #9 0x10721ecb1 in exec_and_or exec_and_or.c:13
+  14:     #10 0x10721eb65 in exec exec.c:39
+  15:     #11 0x107220017 in exec_complete_command exec_complete_command.c:45
+  16:     #12 0x10721eb65 in exec exec.c:39
+  17:     #13 0x1072202d1 in exec_complete_commands exec_complete_commands.c:10
+  18:     #14 0x10721eb65 in exec exec.c:39
+  19:     #15 0x107221f49 in exec_program exec_program.c:10
+  20:     #16 0x10721eb65 in exec exec.c:39
+  21:     #17 0x10721cfe5 in exec_main_loop lex_and_parse.c:18
+  22:     #18 0x10721d7b9 in lex_and_parse lex_and_parse.c:79
+  23:     #19 0x10721dfde in main_loop main_loop.c:72
+  24:     #20 0x10720390b in main main.c:69
+  25:     #21 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  26: 
+  27: 0x602000029b52 is located 0 bytes to the right of 2-byte region [0x602000029b50,0x602000029b52)
+  28: allocated by thread T0 here:
+  29:     #0 0x1073e2ffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  30:     #1 0x10726638f in palloc (42sh:x86_64+0x10006438f)
+  31:     #2 0x107268f9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  32:     #3 0x10722c57c in match_open_file match_open_dir.c:9
+  33:     #4 0x10722cb6a in match_open_dir match_open_dir.c:51
+  34:     #5 0x10722b42a in glob glob.c:52
+  35:     #6 0x10725b62f in pathname_expension wordexp_posix.c:42
+  36:     #7 0x10725a436 in word_expansion wordexp_posix.c:157
+  37:     #8 0x107222af7 in get_cmd_name exec_simple_command.c:92
+  38:     #9 0x107221525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  39:     #10 0x107221c42 in exec_pipeline exec_pipeline.c:73
+  40:     #11 0x10721eb65 in exec exec.c:39
+  41:     #12 0x10721ecb1 in exec_and_or exec_and_or.c:13
+  42:     #13 0x10721eb65 in exec exec.c:39
+  43:     #14 0x107220017 in exec_complete_command exec_complete_command.c:45
+  44:     #15 0x10721eb65 in exec exec.c:39
+  45:     #16 0x1072202d1 in exec_complete_commands exec_complete_commands.c:10
+  46:     #17 0x10721eb65 in exec exec.c:39
+  47:     #18 0x107221f49 in exec_program exec_program.c:10
+  48:     #19 0x10721eb65 in exec exec.c:39
+  49:     #20 0x10721cfe5 in exec_main_loop lex_and_parse.c:18
+  50:     #21 0x10721d7b9 in lex_and_parse lex_and_parse.c:79
+  51:     #22 0x10721dfde in main_loop main_loop.c:72
+  52:     #23 0x10720390b in main main.c:69
+  53:     #24 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  54: 
+  55: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  56: Shadow bytes around the buggy address:
+  57:   0x1c0400005310: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  58:   0x1c0400005320: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  59:   0x1c0400005330: fa fa fd fd fa fa 00 00 fa fa 00 00 fa fa fd fa
+  60:   0x1c0400005340: fa fa fd fa fa fa fd fa fa fa fd fd fa fa 00 00
+  61:   0x1c0400005350: fa fa fd fd fa fa fd fd fa fa 00 fa fa fa 02 fa
+  62: =>0x1c0400005360: fa fa fd fa fa fa fd fa fa fa[02]fa fa fa fa fa
+  63:   0x1c0400005370: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  64:   0x1c0400005380: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  65:   0x1c0400005390: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  66:   0x1c04000053a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  67:   0x1c04000053b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  68: Shadow byte legend (one shadow byte represents 8 application bytes):
+  69:   Addressable:           00
+  70:   Partially addressable: 01 02 03 04 05 06 07 
+  71:   Heap left redzone:       fa
+  72:   Freed heap region:       fd
+  73:   Stack left redzone:      f1
+  74:   Stack mid redzone:       f2
+  75:   Stack right redzone:     f3
+  76:   Stack after return:      f5
+  77:   Stack use after scope:   f8
+  78:   Global redzone:          f9
+  79:   Global init order:       f6
+  80:   Poisoned by user:        f7
+  81:   Container overflow:      fc
+  82:   Array cookie:            ac
+  83:   Intra object redzone:    bb
+  84:   ASan internal:           fe
+  85:   Left alloca redzone:     ca
+  86:   Right alloca redzone:    cb
+  87: ==70481==ABORTING
+  88: ./lib/main.sh: line 102: 70481 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status 0[0m
+
+  After test:
+[38;5;239m  01: if [ -d "./permission_denied" ]; then chmod 777 "./permission_denied"; fi
+  02: rm -rf "./permission_denied"[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/008-binary-too-many-symbolic-links-encountered[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to execute a path that encounters an infinite loop of symbolic link results in an error on standard error and a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf ./symbolic_link1 ./symbolic_link2 ./symbolic_link3
+  02: ln -s ./symbolic_link1 ./symbolic_link2
+  03: ln -s ./symbolic_link2 ./symbolic_link3
+  04: ln -s ./symbolic_link3 ./symbolic_link1[0m
+
+  STDIN:
+[38;5;239m  01: ./symbolic_link1[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Tt]oo many.*symbolic links`[0m
+[38;5;239m  01: =================================================================
+  02: ==70638==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000029b52 at pc 0x000103dd077c bp 0x7fff5be57510 sp 0x7fff5be57508
+  03: READ of size 1 at 0x602000029b52 thread T0
+  04:     #0 0x103dd077b in match match.c:33
+  05:     #1 0x103dd1d6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x103dd042a in glob glob.c:52
+  07:     #3 0x103e0062f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x103dff436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x103dc7af7 in get_cmd_name exec_simple_command.c:92
+  10:     #6 0x103dc6525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  11:     #7 0x103dc6c42 in exec_pipeline exec_pipeline.c:73
+  12:     #8 0x103dc3b65 in exec exec.c:39
+  13:     #9 0x103dc3cb1 in exec_and_or exec_and_or.c:13
+  14:     #10 0x103dc3b65 in exec exec.c:39
+  15:     #11 0x103dc5017 in exec_complete_command exec_complete_command.c:45
+  16:     #12 0x103dc3b65 in exec exec.c:39
+  17:     #13 0x103dc52d1 in exec_complete_commands exec_complete_commands.c:10
+  18:     #14 0x103dc3b65 in exec exec.c:39
+  19:     #15 0x103dc6f49 in exec_program exec_program.c:10
+  20:     #16 0x103dc3b65 in exec exec.c:39
+  21:     #17 0x103dc1fe5 in exec_main_loop lex_and_parse.c:18
+  22:     #18 0x103dc27b9 in lex_and_parse lex_and_parse.c:79
+  23:     #19 0x103dc2fde in main_loop main_loop.c:72
+  24:     #20 0x103da890b in main main.c:69
+  25:     #21 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  26: 
+  27: 0x602000029b52 is located 0 bytes to the right of 2-byte region [0x602000029b50,0x602000029b52)
+  28: allocated by thread T0 here:
+  29:     #0 0x103f8effc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  30:     #1 0x103e0b38f in palloc (42sh:x86_64+0x10006438f)
+  31:     #2 0x103e0df9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  32:     #3 0x103dd157c in match_open_file match_open_dir.c:9
+  33:     #4 0x103dd1b6a in match_open_dir match_open_dir.c:51
+  34:     #5 0x103dd042a in glob glob.c:52
+  35:     #6 0x103e0062f in pathname_expension wordexp_posix.c:42
+  36:     #7 0x103dff436 in word_expansion wordexp_posix.c:157
+  37:     #8 0x103dc7af7 in get_cmd_name exec_simple_command.c:92
+  38:     #9 0x103dc6525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  39:     #10 0x103dc6c42 in exec_pipeline exec_pipeline.c:73
+  40:     #11 0x103dc3b65 in exec exec.c:39
+  41:     #12 0x103dc3cb1 in exec_and_or exec_and_or.c:13
+  42:     #13 0x103dc3b65 in exec exec.c:39
+  43:     #14 0x103dc5017 in exec_complete_command exec_complete_command.c:45
+  44:     #15 0x103dc3b65 in exec exec.c:39
+  45:     #16 0x103dc52d1 in exec_complete_commands exec_complete_commands.c:10
+  46:     #17 0x103dc3b65 in exec exec.c:39
+  47:     #18 0x103dc6f49 in exec_program exec_program.c:10
+  48:     #19 0x103dc3b65 in exec exec.c:39
+  49:     #20 0x103dc1fe5 in exec_main_loop lex_and_parse.c:18
+  50:     #21 0x103dc27b9 in lex_and_parse lex_and_parse.c:79
+  51:     #22 0x103dc2fde in main_loop main_loop.c:72
+  52:     #23 0x103da890b in main main.c:69
+  53:     #24 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  54: 
+  55: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  56: Shadow bytes around the buggy address:
+  57:   0x1c0400005310: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  58:   0x1c0400005320: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  59:   0x1c0400005330: fa fa fd fd fa fa 00 00 fa fa 00 00 fa fa fd fa
+  60:   0x1c0400005340: fa fa fd fa fa fa fd fa fa fa fd fd fa fa 00 00
+  61:   0x1c0400005350: fa fa fd fd fa fa fd fd fa fa 00 fa fa fa 02 fa
+  62: =>0x1c0400005360: fa fa fd fa fa fa fd fa fa fa[02]fa fa fa fa fa
+  63:   0x1c0400005370: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  64:   0x1c0400005380: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  65:   0x1c0400005390: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  66:   0x1c04000053a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  67:   0x1c04000053b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  68: Shadow byte legend (one shadow byte represents 8 application bytes):
+  69:   Addressable:           00
+  70:   Partially addressable: 01 02 03 04 05 06 07 
+  71:   Heap left redzone:       fa
+  72:   Freed heap region:       fd
+  73:   Stack left redzone:      f1
+  74:   Stack mid redzone:       f2
+  75:   Stack right redzone:     f3
+  76:   Stack after return:      f5
+  77:   Stack use after scope:   f8
+  78:   Global redzone:          f9
+  79:   Global init order:       f6
+  80:   Poisoned by user:        f7
+  81:   Container overflow:      fc
+  82:   Array cookie:            ac
+  83:   Intra object redzone:    bb
+  84:   ASan internal:           fe
+  85:   Left alloca redzone:     ca
+  86:   Right alloca redzone:    cb
+  87: ==70638==ABORTING
+  88: ./lib/main.sh: line 102: 70638 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status 0[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/007-symbolic-link[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link as first argument with the builtin `cd` results in moving the linked directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link"
+  02: mkdir -p "./sub_directory"
+  03: ln -s "./sub_directory" "./symbolic_link"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp/symbolic_link$`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD
+  02: ------------------------------
+  03: TERM_PROGRAM=iTerm.app
+  04: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  05: TERM=xterm-256color
+  06: SHELL=42sh
+  07: MYVIMRC=/Users/vcombey/.vimrc
+  08: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  09: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.NuQT7N6ztJ/Render
+  10: TERM_PROGRAM_VERSION=3.1.5
+  11: TERM_SESSION_ID=w0t0p0:7BA2A6A7-6402-48E1-97BF-683DE2B6CC37
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: COMMAND_MODE=unix2003
+  16: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.qivNI7dCgr/Listeners
+  17: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  18: PAGER=less
+  19: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  20: DOTFILES=/Users/vcombey/.dotfiles
+  21: LSCOLORS=HxBxcxdxbxegedabagacad
+  22: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  23: ZSHRC=/Users/vcombey/.zshrc
+  24: PWD=/Users/vcombey/42ShellTester/tmp/sub_directory
+  25: EDITOR=vim
+  26: BASE16_THEME=base16-nord
+  27: LANG=en_US.UTF-8
+  28: ITERM_PROFILE=Default
+  29: XPC_FLAGS=0x0
+  30: XPC_SERVICE_NAME=0
+  31: INSTALL_ROOT=/Users/vcombey/.sbcl
+  32: SHLVL=3
+  33: HOME=/Users/vcombey
+  34: COLORFGBG=7;0
+  35: ITERM_SESSION_ID=w0t0p0:7BA2A6A7-6402-48E1-97BF-683DE2B6CC37
+  36: LESS=-R
+  37: LOGNAME=vcombey
+  38: VISUAL=vim
+  39: LC_CTYPE=en_US.UTF-8
+  40: SECURITYSESSIONID=186a7
+  41: COLORTERM=truecolor
+  42: OLDPWD=/Users/vcombey/42ShellTester/tmp
+  43: _=/Users/vcombey/42/42sh/42sh
+  44: HISTFILE=.42sh_history
+  45: PS1=$> 
+  46: PS2=dquote> 
+  47: PS3=quote> 
+  48: ------------------------------
+  49: TOTAL ENVIRONMENT VARIABLES: 45[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/008-symbolic-link-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link as first argument with the builtin `cd` results in moving to the linked directory. In this test, the directory is linked with to chained symbolic links.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2"
+  02: mkdir -p "./sub_directory"
+  03: ln -s "./sub_directory" "./symbolic_link1"
+  04: ln -s "./symbolic_link1" "./symbolic_link2"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link2
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp/symbolic_link2$`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD
+  02: ------------------------------
+  03: TERM_PROGRAM=iTerm.app
+  04: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  05: TERM=xterm-256color
+  06: SHELL=42sh
+  07: MYVIMRC=/Users/vcombey/.vimrc
+  08: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  09: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.NuQT7N6ztJ/Render
+  10: TERM_PROGRAM_VERSION=3.1.5
+  11: TERM_SESSION_ID=w0t0p0:7BA2A6A7-6402-48E1-97BF-683DE2B6CC37
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: COMMAND_MODE=unix2003
+  16: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.qivNI7dCgr/Listeners
+  17: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  18: PAGER=less
+  19: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  20: DOTFILES=/Users/vcombey/.dotfiles
+  21: LSCOLORS=HxBxcxdxbxegedabagacad
+  22: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  23: ZSHRC=/Users/vcombey/.zshrc
+  24: PWD=/Users/vcombey/42ShellTester/tmp/sub_directory
+  25: EDITOR=vim
+  26: BASE16_THEME=base16-nord
+  27: LANG=en_US.UTF-8
+  28: ITERM_PROFILE=Default
+  29: XPC_FLAGS=0x0
+  30: XPC_SERVICE_NAME=0
+  31: INSTALL_ROOT=/Users/vcombey/.sbcl
+  32: SHLVL=3
+  33: HOME=/Users/vcombey
+  34: COLORFGBG=7;0
+  35: ITERM_SESSION_ID=w0t0p0:7BA2A6A7-6402-48E1-97BF-683DE2B6CC37
+  36: LESS=-R
+  37: LOGNAME=vcombey
+  38: VISUAL=vim
+  39: LC_CTYPE=en_US.UTF-8
+  40: SECURITYSESSIONID=186a7
+  41: COLORTERM=truecolor
+  42: OLDPWD=/Users/vcombey/42ShellTester/tmp
+  43: _=/Users/vcombey/42/42sh/42sh
+  44: HISTFILE=.42sh_history
+  45: PS1=$> 
+  46: PS2=dquote> 
+  47: PS3=quote> 
+  48: ------------------------------
+  49: TOTAL ENVIRONMENT VARIABLES: 45[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/012-dot[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that playing with relative paths to the current directory with the builtin `cd` results in not changing the current directory.[0m
+
+  STDIN:
+[38;5;239m  01: cd .
+  02: cd ./
+  03: cd ./.
+  04: cd ././
+  05: cd ./././././././././.
+  06: /Users/vcombey/42ShellTester/tmp/display_pwd
+  07: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp:PWD`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: =================================================================
+  02: ==73460==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002d992 at pc 0x00010bd3e77c bp 0x7fff53ee8ed0 sp 0x7fff53ee8ec8
+  03: READ of size 1 at 0x60200002d992 thread T0
+  04:     #0 0x10bd3e77b in match match.c:33
+  05:     #1 0x10bd3fd6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x10bd3e42a in glob glob.c:52
+  07:     #3 0x10bd6e62f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x10bd6d436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x10bd3525a in exec_cmd_suffix exec_simple_command.c:30
+  10:     #6 0x10bd35e68 in exec_simple_command exec_simple_command.c:124
+  11:     #7 0x10bd31b65 in exec exec.c:39
+  12:     #8 0x10bd32c14 in exec_command exec_command.c:20
+  13:     #9 0x10bd31b65 in exec exec.c:39
+  14:     #10 0x10bd34325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  15:     #11 0x10bd31b65 in exec exec.c:39
+  16:     #12 0x10bd34d7e in exec_pipeline exec_pipeline.c:84
+  17:     #13 0x10bd31b65 in exec exec.c:39
+  18:     #14 0x10bd31cb1 in exec_and_or exec_and_or.c:13
+  19:     #15 0x10bd31b65 in exec exec.c:39
+  20:     #16 0x10bd33017 in exec_complete_command exec_complete_command.c:45
+  21:     #17 0x10bd31b65 in exec exec.c:39
+  22:     #18 0x10bd33354 in exec_complete_commands exec_complete_commands.c:12
+  23:     #19 0x10bd31b65 in exec exec.c:39
+  24:     #20 0x10bd33313 in exec_complete_commands exec_complete_commands.c:11
+  25:     #21 0x10bd31b65 in exec exec.c:39
+  26:     #22 0x10bd33313 in exec_complete_commands exec_complete_commands.c:11
+  27:     #23 0x10bd31b65 in exec exec.c:39
+  28:     #24 0x10bd33313 in exec_complete_commands exec_complete_commands.c:11
+  29:     #25 0x10bd31b65 in exec exec.c:39
+  30:     #26 0x10bd33313 in exec_complete_commands exec_complete_commands.c:11
+  31:     #27 0x10bd31b65 in exec exec.c:39
+  32:     #28 0x10bd33313 in exec_complete_commands exec_complete_commands.c:11
+  33:     #29 0x10bd31b65 in exec exec.c:39
+  34:     #30 0x10bd34f49 in exec_program exec_program.c:10
+  35:     #31 0x10bd31b65 in exec exec.c:39
+  36:     #32 0x10bd2ffe5 in exec_main_loop lex_and_parse.c:18
+  37:     #33 0x10bd307b9 in lex_and_parse lex_and_parse.c:79
+  38:     #34 0x10bd30fde in main_loop main_loop.c:72
+  39:     #35 0x10bd1690b in main main.c:69
+  40:     #36 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  41: 
+  42: 0x60200002d992 is located 0 bytes to the right of 2-byte region [0x60200002d990,0x60200002d992)
+  43: allocated by thread T0 here:
+  44:     #0 0x10bef6ffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  45:     #1 0x10bd7938f in palloc (42sh:x86_64+0x10006438f)
+  46:     #2 0x10bd7bf9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  47:     #3 0x10bd3f57c in match_open_file match_open_dir.c:9
+  48:     #4 0x10bd3fb6a in match_open_dir match_open_dir.c:51
+  49:     #5 0x10bd3e42a in glob glob.c:52
+  50:     #6 0x10bd6e62f in pathname_expension wordexp_posix.c:42
+  51:     #7 0x10bd6d436 in word_expansion wordexp_posix.c:157
+  52:     #8 0x10bd3525a in exec_cmd_suffix exec_simple_command.c:30
+  53:     #9 0x10bd35e68 in exec_simple_command exec_simple_command.c:124
+  54:     #10 0x10bd31b65 in exec exec.c:39
+  55:     #11 0x10bd32c14 in exec_command exec_command.c:20
+  56:     #12 0x10bd31b65 in exec exec.c:39
+  57:     #13 0x10bd34325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  58:     #14 0x10bd31b65 in exec exec.c:39
+  59:     #15 0x10bd34d7e in exec_pipeline exec_pipeline.c:84
+  60:     #16 0x10bd31b65 in exec exec.c:39
+  61:     #17 0x10bd31cb1 in exec_and_or exec_and_or.c:13
+  62:     #18 0x10bd31b65 in exec exec.c:39
+  63:     #19 0x10bd33017 in exec_complete_command exec_complete_command.c:45
+  64:     #20 0x10bd31b65 in exec exec.c:39
+  65:     #21 0x10bd33354 in exec_complete_commands exec_complete_commands.c:12
+  66:     #22 0x10bd31b65 in exec exec.c:39
+  67:     #23 0x10bd33313 in exec_complete_commands exec_complete_commands.c:11
+  68:     #24 0x10bd31b65 in exec exec.c:39
+  69:     #25 0x10bd33313 in exec_complete_commands exec_complete_commands.c:11
+  70:     #26 0x10bd31b65 in exec exec.c:39
+  71:     #27 0x10bd33313 in exec_complete_commands exec_complete_commands.c:11
+  72:     #28 0x10bd31b65 in exec exec.c:39
+  73:     #29 0x10bd33313 in exec_complete_commands exec_complete_commands.c:11
+  74: 
+  75: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  76: Shadow bytes around the buggy address:
+  77:   0x1c0400005ae0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  78:   0x1c0400005af0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa 00 00
+  79:   0x1c0400005b00: fa fa fd fa fa fa fd fa fa fa fd fa fa fa 03 fa
+  80:   0x1c0400005b10: fa fa fd fd fa fa 00 00 fa fa 00 03 fa fa 00 03
+  81:   0x1c0400005b20: fa fa 00 fa fa fa 02 fa fa fa fd fa fa fa fd fa
+  82: =>0x1c0400005b30: fa fa[02]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  83:   0x1c0400005b40: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  84:   0x1c0400005b50: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  85:   0x1c0400005b60: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  86:   0x1c0400005b70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  87:   0x1c0400005b80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  88: Shadow byte legend (one shadow byte represents 8 application bytes):
+  89:   Addressable:           00
+  90:   Partially addressable: 01 02 03 04 05 06 07 
+  91:   Heap left redzone:       fa
+  92:   Freed heap region:       fd
+  93:   Stack left redzone:      f1
+  94:   Stack mid redzone:       f2
+  95:   Stack right redzone:     f3
+  96:   Stack after return:      f5
+  97:   Stack use after scope:   f8
+  98:   Global redzone:          f9
+  99:   Global init order:       f6
+  100:   Poisoned by user:        f7
+  101:   Container overflow:      fc
+  102:   Array cookie:            ac
+  103:   Intra object redzone:    bb
+  104:   ASan internal:           fe
+  105:   Left alloca redzone:     ca
+  106:   Right alloca redzone:    cb
+  107: ==73460==ABORTING
+  108: ./lib/main.sh: line 102: 73460 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/002-not-a-directory-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a file name as first argument with the builtin `cd` results in a Shell termination with a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: touch "./not_a_directory"[0m
+
+  STDIN:
+[38;5;239m  01: cd not_a_directory[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: Not a directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/004-permission-denied-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a directory without any permission as first argument with the builtin `cd` results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: if [ -d "./permission_denied" ]; then chmod 777 "./permission_denied"; fi
+  02: rm -rf "./permission_denied"
+  03: mkdir -m 0 "./permission_denied"[0m
+
+  STDIN:
+[38;5;239m  01: cd permission_denied[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: Permission denied[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+  After test:
+[38;5;239m  01: if [ -d "./permission_denied" ]; then chmod 777 "./permission_denied"; fi
+  02: rm -rf "./permission_denied"[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/005-too-many-symbolic-links-encountered[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link resulting in ELOOP error as first argument with the builtin `cd` results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2" "./symbolic_link3"
+  02: ln -s "./symbolic_link1" "./symbolic_link2"
+  03: ln -s "./symbolic_link2" "./symbolic_link3"
+  04: ln -s "./symbolic_link3" "./symbolic_link1"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link1
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp:PWD`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp:PWD[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Tt]oo many.*symbolic links`[0m
+[38;5;239m  01: cd: Out of streams resources[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/006-too-many-symbolic-links-encountered-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link resulting in ELOOP error as first argument with the builtin `cd` results in a Shell termination with a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2" "./symbolic_link3"
+  02: ln -s "./symbolic_link1" "./symbolic_link2"
+  03: ln -s "./symbolic_link2" "./symbolic_link3"
+  04: ln -s "./symbolic_link3" "./symbolic_link1"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link1[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: Out of streams resources[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/008-no-such-file-or-directory-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a non-existing path as first argument with the builtin `cd` results in a Shell termination with an error status code.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./no_such_file_or_directory"[0m
+
+  STDIN:
+[38;5;239m  01: cd no_such_file_or_directory[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: No such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/009-no-such-file-or-directory-symlink[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link that targets to a non-existing directory with the builtin `cd`  results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./enoent_symlink" "./enoent_directory"
+  02: ln -s "./enoent_directory" "./enoent_symlink"[0m
+
+  STDIN:
+[38;5;239m  01: cd ./enoent_symlink
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp:PWD`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Nn]o such file or directory`[0m
+[38;5;239m  01: =================================================================
+  02: ==74732==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002abd2 at pc 0x0001077ac77c bp 0x7fff5847b190 sp 0x7fff5847b188
+  03: READ of size 1 at 0x60200002abd2 thread T0
+  04:     #0 0x1077ac77b in match match.c:33
+  05:     #1 0x1077add6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x1077ac42a in glob glob.c:52
+  07:     #3 0x1077dc62f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x1077db436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x1077a325a in exec_cmd_suffix exec_simple_command.c:30
+  10:     #6 0x1077a3e68 in exec_simple_command exec_simple_command.c:124
+  11:     #7 0x10779fb65 in exec exec.c:39
+  12:     #8 0x1077a0c14 in exec_command exec_command.c:20
+  13:     #9 0x10779fb65 in exec exec.c:39
+  14:     #10 0x1077a2325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  15:     #11 0x10779fb65 in exec exec.c:39
+  16:     #12 0x1077a2d7e in exec_pipeline exec_pipeline.c:84
+  17:     #13 0x10779fb65 in exec exec.c:39
+  18:     #14 0x10779fcb1 in exec_and_or exec_and_or.c:13
+  19:     #15 0x10779fb65 in exec exec.c:39
+  20:     #16 0x1077a1017 in exec_complete_command exec_complete_command.c:45
+  21:     #17 0x10779fb65 in exec exec.c:39
+  22:     #18 0x1077a12d1 in exec_complete_commands exec_complete_commands.c:10
+  23:     #19 0x10779fb65 in exec exec.c:39
+  24:     #20 0x1077a1313 in exec_complete_commands exec_complete_commands.c:11
+  25:     #21 0x10779fb65 in exec exec.c:39
+  26:     #22 0x1077a2f49 in exec_program exec_program.c:10
+  27:     #23 0x10779fb65 in exec exec.c:39
+  28:     #24 0x10779dfe5 in exec_main_loop lex_and_parse.c:18
+  29:     #25 0x10779e7b9 in lex_and_parse lex_and_parse.c:79
+  30:     #26 0x10779efde in main_loop main_loop.c:72
+  31:     #27 0x10778490b in main main.c:69
+  32:     #28 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  33: 
+  34: 0x60200002abd2 is located 0 bytes to the right of 2-byte region [0x60200002abd0,0x60200002abd2)
+  35: allocated by thread T0 here:
+  36:     #0 0x10796affc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  37:     #1 0x1077e738f in palloc (42sh:x86_64+0x10006438f)
+  38:     #2 0x1077e9f9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  39:     #3 0x1077ad57c in match_open_file match_open_dir.c:9
+  40:     #4 0x1077adb6a in match_open_dir match_open_dir.c:51
+  41:     #5 0x1077ac42a in glob glob.c:52
+  42:     #6 0x1077dc62f in pathname_expension wordexp_posix.c:42
+  43:     #7 0x1077db436 in word_expansion wordexp_posix.c:157
+  44:     #8 0x1077a325a in exec_cmd_suffix exec_simple_command.c:30
+  45:     #9 0x1077a3e68 in exec_simple_command exec_simple_command.c:124
+  46:     #10 0x10779fb65 in exec exec.c:39
+  47:     #11 0x1077a0c14 in exec_command exec_command.c:20
+  48:     #12 0x10779fb65 in exec exec.c:39
+  49:     #13 0x1077a2325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  50:     #14 0x10779fb65 in exec exec.c:39
+  51:     #15 0x1077a2d7e in exec_pipeline exec_pipeline.c:84
+  52:     #16 0x10779fb65 in exec exec.c:39
+  53:     #17 0x10779fcb1 in exec_and_or exec_and_or.c:13
+  54:     #18 0x10779fb65 in exec exec.c:39
+  55:     #19 0x1077a1017 in exec_complete_command exec_complete_command.c:45
+  56:     #20 0x10779fb65 in exec exec.c:39
+  57:     #21 0x1077a12d1 in exec_complete_commands exec_complete_commands.c:10
+  58:     #22 0x10779fb65 in exec exec.c:39
+  59:     #23 0x1077a1313 in exec_complete_commands exec_complete_commands.c:11
+  60:     #24 0x10779fb65 in exec exec.c:39
+  61:     #25 0x1077a2f49 in exec_program exec_program.c:10
+  62:     #26 0x10779fb65 in exec exec.c:39
+  63:     #27 0x10779dfe5 in exec_main_loop lex_and_parse.c:18
+  64:     #28 0x10779e7b9 in lex_and_parse lex_and_parse.c:79
+  65:     #29 0x10779efde in main_loop main_loop.c:72
+  66: 
+  67: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  68: Shadow bytes around the buggy address:
+  69:   0x1c0400005520: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  70:   0x1c0400005530: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  71:   0x1c0400005540: fa fa fd fd fa fa fd fd fa fa 00 00 fa fa fd fa
+  72:   0x1c0400005550: fa fa fd fa fa fa fd fa fa fa fd fd fa fa 00 00
+  73:   0x1c0400005560: fa fa fd fd fa fa fd fd fa fa 00 fa fa fa 02 fa
+  74: =>0x1c0400005570: fa fa fd fa fa fa fd fa fa fa[02]fa fa fa fa fa
+  75:   0x1c0400005580: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  76:   0x1c0400005590: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  77:   0x1c04000055a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  78:   0x1c04000055b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  79:   0x1c04000055c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  80: Shadow byte legend (one shadow byte represents 8 application bytes):
+  81:   Addressable:           00
+  82:   Partially addressable: 01 02 03 04 05 06 07 
+  83:   Heap left redzone:       fa
+  84:   Freed heap region:       fd
+  85:   Stack left redzone:      f1
+  86:   Stack mid redzone:       f2
+  87:   Stack right redzone:     f3
+  88:   Stack after return:      f5
+  89:   Stack use after scope:   f8
+  90:   Global redzone:          f9
+  91:   Global init order:       f6
+  92:   Poisoned by user:        f7
+  93:   Container overflow:      fc
+  94:   Array cookie:            ac
+  95:   Intra object redzone:    bb
+  96:   ASan internal:           fe
+  97:   Left alloca redzone:     ca
+  98:   Right alloca redzone:    cb
+  99: ==74732==ABORTING
+  100: ./lib/main.sh: line 102: 74732 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/options/001-not-following-links[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using symbolic links twice with the builtin `cd` and the option `-P` results in a correct environment variable PWD. The option `-P` makes the Shell to resolve symbolic links.[0m
+
+  Before test:
+[38;5;239m  01: rm -fr "./sub_directory_link" "./sub_directory"
+  02: mkdir -p "./sub_directory/sub_sub_directory"
+  03: ln -s "./sub_directory" "./sub_directory_link"
+  04: ln -s "./sub_sub_directory" "./sub_directory/sub_sub_directory_link"[0m
+
+  STDIN:
+[38;5;239m  01: cd -P sub_directory_link
+  02: cd -P sub_sub_directory_link
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `PWD=/Users/vcombey/42ShellTester/tmp/sub_directory/sub_sub_directory`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.NuQT7N6ztJ/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: TERM_SESSION_ID=w0t0p0:7BA2A6A7-6402-48E1-97BF-683DE2B6CC37
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: COMMAND_MODE=unix2003
+  15: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.qivNI7dCgr/Listeners
+  16: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  17: PAGER=less
+  18: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  19: DOTFILES=/Users/vcombey/.dotfiles
+  20: LSCOLORS=HxBxcxdxbxegedabagacad
+  21: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  22: ZSHRC=/Users/vcombey/.zshrc
+  23: PWD=/Users/vcombey/42ShellTester/tmp
+  24: EDITOR=vim
+  25: BASE16_THEME=base16-nord
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p0:7BA2A6A7-6402-48E1-97BF-683DE2B6CC37
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: SECURITYSESSIONID=186a7
+  40: COLORTERM=truecolor
+  41: OLDPWD=/Users/vcombey/42ShellTester
+  42: _=/Users/vcombey/42/42sh/42sh
+  43: HISTFILE=.42sh_history
+  44: PS1=$> 
+  45: PS2=dquote> 
+  46: PS3=quote> 
+  47: ------------------------------
+  48: TOTAL ENVIRONMENT VARIABLES: 45[0m
+
+  STDERR:
+[31m[1;33m  WARNING    might be_empty[0m
+[38;5;239m  01: cd: No such file or directory
+  02: cd: No such file or directory[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/003-ignore-environment[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the option `-i` with the builtin `env` results in an empty environment sent to the given command.[0m
+
+  STDIN:
+[38;5;239m  01: env -i ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOTAL ENVIRONMENT VARIABLES: 0`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: =================================================================
+  02: ==76231==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002a792 at pc 0x00010145f77c bp 0x7fff5e7c8250 sp 0x7fff5e7c8248
+  03: READ of size 1 at 0x60200002a792 thread T0
+  04:     #0 0x10145f77b in match match.c:33
+  05:     #1 0x101460d6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x10145f42a in glob glob.c:52
+  07:     #3 0x10148f62f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x10148e436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x10145625a in exec_cmd_suffix exec_simple_command.c:30
+  10:     #6 0x101456e68 in exec_simple_command exec_simple_command.c:124
+  11:     #7 0x101452b65 in exec exec.c:39
+  12:     #8 0x101453c14 in exec_command exec_command.c:20
+  13:     #9 0x101452b65 in exec exec.c:39
+  14:     #10 0x101455325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  15:     #11 0x101452b65 in exec exec.c:39
+  16:     #12 0x101455d7e in exec_pipeline exec_pipeline.c:84
+  17:     #13 0x101452b65 in exec exec.c:39
+  18:     #14 0x101452cb1 in exec_and_or exec_and_or.c:13
+  19:     #15 0x101452b65 in exec exec.c:39
+  20:     #16 0x101454017 in exec_complete_command exec_complete_command.c:45
+  21:     #17 0x101452b65 in exec exec.c:39
+  22:     #18 0x1014542d1 in exec_complete_commands exec_complete_commands.c:10
+  23:     #19 0x101452b65 in exec exec.c:39
+  24:     #20 0x101455f49 in exec_program exec_program.c:10
+  25:     #21 0x101452b65 in exec exec.c:39
+  26:     #22 0x101450fe5 in exec_main_loop lex_and_parse.c:18
+  27:     #23 0x1014517b9 in lex_and_parse lex_and_parse.c:79
+  28:     #24 0x101451fde in main_loop main_loop.c:72
+  29:     #25 0x10143790b in main main.c:69
+  30:     #26 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  31: 
+  32: 0x60200002a792 is located 0 bytes to the right of 2-byte region [0x60200002a790,0x60200002a792)
+  33: allocated by thread T0 here:
+  34:     #0 0x101618ffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  35:     #1 0x10149a38f in palloc (42sh:x86_64+0x10006438f)
+  36:     #2 0x10149cf9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  37:     #3 0x10146057c in match_open_file match_open_dir.c:9
+  38:     #4 0x101460b6a in match_open_dir match_open_dir.c:51
+  39:     #5 0x10145f42a in glob glob.c:52
+  40:     #6 0x10148f62f in pathname_expension wordexp_posix.c:42
+  41:     #7 0x10148e436 in word_expansion wordexp_posix.c:157
+  42:     #8 0x10145625a in exec_cmd_suffix exec_simple_command.c:30
+  43:     #9 0x101456e68 in exec_simple_command exec_simple_command.c:124
+  44:     #10 0x101452b65 in exec exec.c:39
+  45:     #11 0x101453c14 in exec_command exec_command.c:20
+  46:     #12 0x101452b65 in exec exec.c:39
+  47:     #13 0x101455325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  48:     #14 0x101452b65 in exec exec.c:39
+  49:     #15 0x101455d7e in exec_pipeline exec_pipeline.c:84
+  50:     #16 0x101452b65 in exec exec.c:39
+  51:     #17 0x101452cb1 in exec_and_or exec_and_or.c:13
+  52:     #18 0x101452b65 in exec exec.c:39
+  53:     #19 0x101454017 in exec_complete_command exec_complete_command.c:45
+  54:     #20 0x101452b65 in exec exec.c:39
+  55:     #21 0x1014542d1 in exec_complete_commands exec_complete_commands.c:10
+  56:     #22 0x101452b65 in exec exec.c:39
+  57:     #23 0x101455f49 in exec_program exec_program.c:10
+  58:     #24 0x101452b65 in exec exec.c:39
+  59:     #25 0x101450fe5 in exec_main_loop lex_and_parse.c:18
+  60:     #26 0x1014517b9 in lex_and_parse lex_and_parse.c:79
+  61:     #27 0x101451fde in main_loop main_loop.c:72
+  62:     #28 0x10143790b in main main.c:69
+  63:     #29 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  64: 
+  65: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  66: Shadow bytes around the buggy address:
+  67:   0x1c04000054a0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  68:   0x1c04000054b0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa 00 00
+  69:   0x1c04000054c0: fa fa fd fa fa fa fd fa fa fa fd fa fa fa 00 06
+  70:   0x1c04000054d0: fa fa fd fd fa fa 00 00 fa fa fd fd fa fa fd fd
+  71:   0x1c04000054e0: fa fa 00 fa fa fa 02 fa fa fa fd fa fa fa fd fa
+  72: =>0x1c04000054f0: fa fa[02]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  73:   0x1c0400005500: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  74:   0x1c0400005510: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  75:   0x1c0400005520: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  76:   0x1c0400005530: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  77:   0x1c0400005540: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  78: Shadow byte legend (one shadow byte represents 8 application bytes):
+  79:   Addressable:           00
+  80:   Partially addressable: 01 02 03 04 05 06 07 
+  81:   Heap left redzone:       fa
+  82:   Freed heap region:       fd
+  83:   Stack left redzone:      f1
+  84:   Stack mid redzone:       f2
+  85:   Stack right redzone:     f3
+  86:   Stack after return:      f5
+  87:   Stack use after scope:   f8
+  88:   Global redzone:          f9
+  89:   Global init order:       f6
+  90:   Poisoned by user:        f7
+  91:   Container overflow:      fc
+  92:   Array cookie:            ac
+  93:   Intra object redzone:    bb
+  94:   ASan internal:           fe
+  95:   Left alloca redzone:     ca
+  96:   Right alloca redzone:    cb
+  97: ==76231==ABORTING
+  98: ./lib/main.sh: line 102: 76231 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/005-set-variables[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `env` can modify or set multiple environment variables before executing the given command.[0m
+
+  Before test:
+[38;5;239m  01: export VARTEST1="OLD_VALUE"[0m
+
+  STDIN:
+[38;5;239m  01: env VARTEST1=TOKEN201711140046_1 VARTEST2=TOKEN201711140046_2 VARTEST3=TOKEN201711140046_3 ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST1=TOKEN201711140046_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST2=TOKEN201711140046_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST3=TOKEN201711140046_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: =================================================================
+  02: ==76691==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002aa52 at pc 0x00010552377c bp 0x7fff5a704230 sp 0x7fff5a704228
+  03: READ of size 1 at 0x60200002aa52 thread T0
+  04:     #0 0x10552377b in match match.c:33
+  05:     #1 0x105524d6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x10552342a in glob glob.c:52
+  07:     #3 0x10555362f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x105552436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x10551a25a in exec_cmd_suffix exec_simple_command.c:30
+  10:     #6 0x10551ae68 in exec_simple_command exec_simple_command.c:124
+  11:     #7 0x105516b65 in exec exec.c:39
+  12:     #8 0x105517c14 in exec_command exec_command.c:20
+  13:     #9 0x105516b65 in exec exec.c:39
+  14:     #10 0x105519325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  15:     #11 0x105516b65 in exec exec.c:39
+  16:     #12 0x105519d7e in exec_pipeline exec_pipeline.c:84
+  17:     #13 0x105516b65 in exec exec.c:39
+  18:     #14 0x105516cb1 in exec_and_or exec_and_or.c:13
+  19:     #15 0x105516b65 in exec exec.c:39
+  20:     #16 0x105518017 in exec_complete_command exec_complete_command.c:45
+  21:     #17 0x105516b65 in exec exec.c:39
+  22:     #18 0x1055182d1 in exec_complete_commands exec_complete_commands.c:10
+  23:     #19 0x105516b65 in exec exec.c:39
+  24:     #20 0x105519f49 in exec_program exec_program.c:10
+  25:     #21 0x105516b65 in exec exec.c:39
+  26:     #22 0x105514fe5 in exec_main_loop lex_and_parse.c:18
+  27:     #23 0x1055157b9 in lex_and_parse lex_and_parse.c:79
+  28:     #24 0x105515fde in main_loop main_loop.c:72
+  29:     #25 0x1054fb90b in main main.c:69
+  30:     #26 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  31: 
+  32: 0x60200002aa52 is located 0 bytes to the right of 2-byte region [0x60200002aa50,0x60200002aa52)
+  33: allocated by thread T0 here:
+  34:     #0 0x1056dbffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  35:     #1 0x10555e38f in palloc (42sh:x86_64+0x10006438f)
+  36:     #2 0x105560f9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  37:     #3 0x10552457c in match_open_file match_open_dir.c:9
+  38:     #4 0x105524b6a in match_open_dir match_open_dir.c:51
+  39:     #5 0x10552342a in glob glob.c:52
+  40:     #6 0x10555362f in pathname_expension wordexp_posix.c:42
+  41:     #7 0x105552436 in word_expansion wordexp_posix.c:157
+  42:     #8 0x10551a25a in exec_cmd_suffix exec_simple_command.c:30
+  43:     #9 0x10551ae68 in exec_simple_command exec_simple_command.c:124
+  44:     #10 0x105516b65 in exec exec.c:39
+  45:     #11 0x105517c14 in exec_command exec_command.c:20
+  46:     #12 0x105516b65 in exec exec.c:39
+  47:     #13 0x105519325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  48:     #14 0x105516b65 in exec exec.c:39
+  49:     #15 0x105519d7e in exec_pipeline exec_pipeline.c:84
+  50:     #16 0x105516b65 in exec exec.c:39
+  51:     #17 0x105516cb1 in exec_and_or exec_and_or.c:13
+  52:     #18 0x105516b65 in exec exec.c:39
+  53:     #19 0x105518017 in exec_complete_command exec_complete_command.c:45
+  54:     #20 0x105516b65 in exec exec.c:39
+  55:     #21 0x1055182d1 in exec_complete_commands exec_complete_commands.c:10
+  56:     #22 0x105516b65 in exec exec.c:39
+  57:     #23 0x105519f49 in exec_program exec_program.c:10
+  58:     #24 0x105516b65 in exec exec.c:39
+  59:     #25 0x105514fe5 in exec_main_loop lex_and_parse.c:18
+  60:     #26 0x1055157b9 in lex_and_parse lex_and_parse.c:79
+  61:     #27 0x105515fde in main_loop main_loop.c:72
+  62:     #28 0x1054fb90b in main main.c:69
+  63:     #29 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  64: 
+  65: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  66: Shadow bytes around the buggy address:
+  67:   0x1c04000054f0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  68:   0x1c0400005500: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  69:   0x1c0400005510: fa fa fd fd fa fa 00 00 fa fa fd fa fa fa fd fa
+  70:   0x1c0400005520: fa fa fd fa fa fa 00 06 fa fa fd fd fa fa 00 00
+  71:   0x1c0400005530: fa fa fd fd fa fa fd fd fa fa 00 fa fa fa 02 fa
+  72: =>0x1c0400005540: fa fa fd fa fa fa fd fa fa fa[02]fa fa fa fa fa
+  73:   0x1c0400005550: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  74:   0x1c0400005560: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  75:   0x1c0400005570: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  76:   0x1c0400005580: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  77:   0x1c0400005590: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  78: Shadow byte legend (one shadow byte represents 8 application bytes):
+  79:   Addressable:           00
+  80:   Partially addressable: 01 02 03 04 05 06 07 
+  81:   Heap left redzone:       fa
+  82:   Freed heap region:       fd
+  83:   Stack left redzone:      f1
+  84:   Stack mid redzone:       f2
+  85:   Stack right redzone:     f3
+  86:   Stack after return:      f5
+  87:   Stack use after scope:   f8
+  88:   Global redzone:          f9
+  89:   Global init order:       f6
+  90:   Poisoned by user:        f7
+  91:   Container overflow:      fc
+  92:   Array cookie:            ac
+  93:   Intra object redzone:    bb
+  94:   ASan internal:           fe
+  95:   Left alloca redzone:     ca
+  96:   Right alloca redzone:    cb
+  97: ==76691==ABORTING
+  98: ./lib/main.sh: line 102: 76691 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/errors/001-command-not-found[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `env` with an invalid binary as argument results in an error and failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./invalid_binary"[0m
+
+  STDIN:
+[38;5;239m  01: env ./invalid_binary[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Cc]ommand not found`[0m
+[38;5;239m  01: =================================================================
+  02: ==77203==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002a612 at pc 0x00010f16377c bp 0x7fff50ac4250 sp 0x7fff50ac4248
+  03: READ of size 1 at 0x60200002a612 thread T0
+  04:     #0 0x10f16377b in match match.c:33
+  05:     #1 0x10f164d6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x10f16342a in glob glob.c:52
+  07:     #3 0x10f19362f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x10f192436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x10f15a25a in exec_cmd_suffix exec_simple_command.c:30
+  10:     #6 0x10f15ae68 in exec_simple_command exec_simple_command.c:124
+  11:     #7 0x10f156b65 in exec exec.c:39
+  12:     #8 0x10f157c14 in exec_command exec_command.c:20
+  13:     #9 0x10f156b65 in exec exec.c:39
+  14:     #10 0x10f159325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  15:     #11 0x10f156b65 in exec exec.c:39
+  16:     #12 0x10f159d7e in exec_pipeline exec_pipeline.c:84
+  17:     #13 0x10f156b65 in exec exec.c:39
+  18:     #14 0x10f156cb1 in exec_and_or exec_and_or.c:13
+  19:     #15 0x10f156b65 in exec exec.c:39
+  20:     #16 0x10f158017 in exec_complete_command exec_complete_command.c:45
+  21:     #17 0x10f156b65 in exec exec.c:39
+  22:     #18 0x10f1582d1 in exec_complete_commands exec_complete_commands.c:10
+  23:     #19 0x10f156b65 in exec exec.c:39
+  24:     #20 0x10f159f49 in exec_program exec_program.c:10
+  25:     #21 0x10f156b65 in exec exec.c:39
+  26:     #22 0x10f154fe5 in exec_main_loop lex_and_parse.c:18
+  27:     #23 0x10f1557b9 in lex_and_parse lex_and_parse.c:79
+  28:     #24 0x10f155fde in main_loop main_loop.c:72
+  29:     #25 0x10f13b90b in main main.c:69
+  30:     #26 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  31: 
+  32: 0x60200002a612 is located 0 bytes to the right of 2-byte region [0x60200002a610,0x60200002a612)
+  33: allocated by thread T0 here:
+  34:     #0 0x10f320ffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  35:     #1 0x10f19e38f in palloc (42sh:x86_64+0x10006438f)
+  36:     #2 0x10f1a0f9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  37:     #3 0x10f16457c in match_open_file match_open_dir.c:9
+  38:     #4 0x10f164b6a in match_open_dir match_open_dir.c:51
+  39:     #5 0x10f16342a in glob glob.c:52
+  40:     #6 0x10f19362f in pathname_expension wordexp_posix.c:42
+  41:     #7 0x10f192436 in word_expansion wordexp_posix.c:157
+  42:     #8 0x10f15a25a in exec_cmd_suffix exec_simple_command.c:30
+  43:     #9 0x10f15ae68 in exec_simple_command exec_simple_command.c:124
+  44:     #10 0x10f156b65 in exec exec.c:39
+  45:     #11 0x10f157c14 in exec_command exec_command.c:20
+  46:     #12 0x10f156b65 in exec exec.c:39
+  47:     #13 0x10f159325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  48:     #14 0x10f156b65 in exec exec.c:39
+  49:     #15 0x10f159d7e in exec_pipeline exec_pipeline.c:84
+  50:     #16 0x10f156b65 in exec exec.c:39
+  51:     #17 0x10f156cb1 in exec_and_or exec_and_or.c:13
+  52:     #18 0x10f156b65 in exec exec.c:39
+  53:     #19 0x10f158017 in exec_complete_command exec_complete_command.c:45
+  54:     #20 0x10f156b65 in exec exec.c:39
+  55:     #21 0x10f1582d1 in exec_complete_commands exec_complete_commands.c:10
+  56:     #22 0x10f156b65 in exec exec.c:39
+  57:     #23 0x10f159f49 in exec_program exec_program.c:10
+  58:     #24 0x10f156b65 in exec exec.c:39
+  59:     #25 0x10f154fe5 in exec_main_loop lex_and_parse.c:18
+  60:     #26 0x10f1557b9 in lex_and_parse lex_and_parse.c:79
+  61:     #27 0x10f155fde in main_loop main_loop.c:72
+  62:     #28 0x10f13b90b in main main.c:69
+  63:     #29 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  64: 
+  65: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  66: Shadow bytes around the buggy address:
+  67:   0x1c0400005470: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  68:   0x1c0400005480: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  69:   0x1c0400005490: fa fa 00 00 fa fa fd fa fa fa fd fa fa fa fd fa
+  70:   0x1c04000054a0: fa fa fd fd fa fa 00 00 fa fa fd fd fa fa fd fd
+  71:   0x1c04000054b0: fa fa 00 fa fa fa 02 fa fa fa fd fa fa fa fd fa
+  72: =>0x1c04000054c0: fa fa[02]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  73:   0x1c04000054d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  74:   0x1c04000054e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  75:   0x1c04000054f0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  76:   0x1c0400005500: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  77:   0x1c0400005510: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  78: Shadow byte legend (one shadow byte represents 8 application bytes):
+  79:   Addressable:           00
+  80:   Partially addressable: 01 02 03 04 05 06 07 
+  81:   Heap left redzone:       fa
+  82:   Freed heap region:       fd
+  83:   Stack left redzone:      f1
+  84:   Stack mid redzone:       f2
+  85:   Stack right redzone:     f3
+  86:   Stack after return:      f5
+  87:   Stack use after scope:   f8
+  88:   Global redzone:          f9
+  89:   Global init order:       f6
+  90:   Poisoned by user:        f7
+  91:   Container overflow:      fc
+  92:   Array cookie:            ac
+  93:   Intra object redzone:    bb
+  94:   ASan internal:           fe
+  95:   Left alloca redzone:     ca
+  96:   Right alloca redzone:    cb
+  97: ==77203==ABORTING
+  98: ./lib/main.sh: line 102: 77203 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/errors/002-illegal-option[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `env` with an invalid option results in an error and failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f -- "-w"[0m
+
+  STDIN:
+[38;5;239m  01: env -w[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Ii]nvalid|[Ii]llegal) (option|argument)`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/multiple-options/001-ignore-environment-and-set-variable[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that `env -i` works if we use a second argument to set an environment variable, we are also checking if this command unset environments variables for a given binary.[0m
+
+  STDIN:
+[38;5;239m  01: env -i TESTVARIABLE=TOKEN201711140046 ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVARIABLE=TOKEN201711140046`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOTAL ENVIRONMENT VARIABLES: 1`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: =================================================================
+  02: ==77697==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002a8b2 at pc 0x00010983977c bp 0x7fff563ee250 sp 0x7fff563ee248
+  03: READ of size 1 at 0x60200002a8b2 thread T0
+  04:     #0 0x10983977b in match match.c:33
+  05:     #1 0x10983ad6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x10983942a in glob glob.c:52
+  07:     #3 0x10986962f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x109868436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x10983025a in exec_cmd_suffix exec_simple_command.c:30
+  10:     #6 0x109830e68 in exec_simple_command exec_simple_command.c:124
+  11:     #7 0x10982cb65 in exec exec.c:39
+  12:     #8 0x10982dc14 in exec_command exec_command.c:20
+  13:     #9 0x10982cb65 in exec exec.c:39
+  14:     #10 0x10982f325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  15:     #11 0x10982cb65 in exec exec.c:39
+  16:     #12 0x10982fd7e in exec_pipeline exec_pipeline.c:84
+  17:     #13 0x10982cb65 in exec exec.c:39
+  18:     #14 0x10982ccb1 in exec_and_or exec_and_or.c:13
+  19:     #15 0x10982cb65 in exec exec.c:39
+  20:     #16 0x10982e017 in exec_complete_command exec_complete_command.c:45
+  21:     #17 0x10982cb65 in exec exec.c:39
+  22:     #18 0x10982e2d1 in exec_complete_commands exec_complete_commands.c:10
+  23:     #19 0x10982cb65 in exec exec.c:39
+  24:     #20 0x10982ff49 in exec_program exec_program.c:10
+  25:     #21 0x10982cb65 in exec exec.c:39
+  26:     #22 0x10982afe5 in exec_main_loop lex_and_parse.c:18
+  27:     #23 0x10982b7b9 in lex_and_parse lex_and_parse.c:79
+  28:     #24 0x10982bfde in main_loop main_loop.c:72
+  29:     #25 0x10981190b in main main.c:69
+  30:     #26 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  31: 
+  32: 0x60200002a8b2 is located 0 bytes to the right of 2-byte region [0x60200002a8b0,0x60200002a8b2)
+  33: allocated by thread T0 here:
+  34:     #0 0x1099f6ffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  35:     #1 0x10987438f in palloc (42sh:x86_64+0x10006438f)
+  36:     #2 0x109876f9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  37:     #3 0x10983a57c in match_open_file match_open_dir.c:9
+  38:     #4 0x10983ab6a in match_open_dir match_open_dir.c:51
+  39:     #5 0x10983942a in glob glob.c:52
+  40:     #6 0x10986962f in pathname_expension wordexp_posix.c:42
+  41:     #7 0x109868436 in word_expansion wordexp_posix.c:157
+  42:     #8 0x10983025a in exec_cmd_suffix exec_simple_command.c:30
+  43:     #9 0x109830e68 in exec_simple_command exec_simple_command.c:124
+  44:     #10 0x10982cb65 in exec exec.c:39
+  45:     #11 0x10982dc14 in exec_command exec_command.c:20
+  46:     #12 0x10982cb65 in exec exec.c:39
+  47:     #13 0x10982f325 in exec_pipe_sequence exec_pipe_sequence.c:9
+  48:     #14 0x10982cb65 in exec exec.c:39
+  49:     #15 0x10982fd7e in exec_pipeline exec_pipeline.c:84
+  50:     #16 0x10982cb65 in exec exec.c:39
+  51:     #17 0x10982ccb1 in exec_and_or exec_and_or.c:13
+  52:     #18 0x10982cb65 in exec exec.c:39
+  53:     #19 0x10982e017 in exec_complete_command exec_complete_command.c:45
+  54:     #20 0x10982cb65 in exec exec.c:39
+  55:     #21 0x10982e2d1 in exec_complete_commands exec_complete_commands.c:10
+  56:     #22 0x10982cb65 in exec exec.c:39
+  57:     #23 0x10982ff49 in exec_program exec_program.c:10
+  58:     #24 0x10982cb65 in exec exec.c:39
+  59:     #25 0x10982afe5 in exec_main_loop lex_and_parse.c:18
+  60:     #26 0x10982b7b9 in lex_and_parse lex_and_parse.c:79
+  61:     #27 0x10982bfde in main_loop main_loop.c:72
+  62:     #28 0x10981190b in main main.c:69
+  63:     #29 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  64: 
+  65: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  66: Shadow bytes around the buggy address:
+  67:   0x1c04000054c0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  68:   0x1c04000054d0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  69:   0x1c04000054e0: fa fa 00 00 fa fa fd fa fa fa fd fa fa fa fd fa
+  70:   0x1c04000054f0: fa fa 00 06 fa fa fd fd fa fa 00 00 fa fa fd fd
+  71:   0x1c0400005500: fa fa fd fd fa fa 00 fa fa fa 02 fa fa fa fd fa
+  72: =>0x1c0400005510: fa fa fd fa fa fa[02]fa fa fa fa fa fa fa fa fa
+  73:   0x1c0400005520: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  74:   0x1c0400005530: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  75:   0x1c0400005540: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  76:   0x1c0400005550: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  77:   0x1c0400005560: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  78: Shadow byte legend (one shadow byte represents 8 application bytes):
+  79:   Addressable:           00
+  80:   Partially addressable: 01 02 03 04 05 06 07 
+  81:   Heap left redzone:       fa
+  82:   Freed heap region:       fd
+  83:   Stack left redzone:      f1
+  84:   Stack mid redzone:       f2
+  85:   Stack right redzone:     f3
+  86:   Stack after return:      f5
+  87:   Stack use after scope:   f8
+  88:   Global redzone:          f9
+  89:   Global init order:       f6
+  90:   Poisoned by user:        f7
+  91:   Container overflow:      fc
+  92:   Array cookie:            ac
+  93:   Intra object redzone:    bb
+  94:   ASan internal:           fe
+  95:   Left alloca redzone:     ca
+  96:   Right alloca redzone:    cb
+  97: ==77697==ABORTING
+  98: ./lib/main.sh: line 102: 77697 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/002-status-passed-as-argument[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a number as first argument with the builtin `exit` results in the Shell termination with given number as exit status.[0m
+
+  STDIN:
+[38;5;239m  01: exit 42[0m
+
+  STDOUT:
+[31m[1;33m  WARNING    might be_empty[0m
+[38;5;239m  01: tcsetattr error[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/003-status-of-last-command[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `exit` without any argument results in a Shell termination and the exit status of the previous command.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42
+  02: exit[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: =================================================================
+  02: ==78020==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002a152 at pc 0x00010950277c bp 0x7fff56725450 sp 0x7fff56725448
+  03: READ of size 1 at 0x60200002a152 thread T0
+  04:     #0 0x10950277b in match match.c:33
+  05:     #1 0x109503d6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x10950242a in glob glob.c:52
+  07:     #3 0x10953262f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x109531436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x1094f9af7 in get_cmd_name exec_simple_command.c:92
+  10:     #6 0x1094f8525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  11:     #7 0x1094f8c42 in exec_pipeline exec_pipeline.c:73
+  12:     #8 0x1094f5b65 in exec exec.c:39
+  13:     #9 0x1094f5cb1 in exec_and_or exec_and_or.c:13
+  14:     #10 0x1094f5b65 in exec exec.c:39
+  15:     #11 0x1094f7017 in exec_complete_command exec_complete_command.c:45
+  16:     #12 0x1094f5b65 in exec exec.c:39
+  17:     #13 0x1094f72d1 in exec_complete_commands exec_complete_commands.c:10
+  18:     #14 0x1094f5b65 in exec exec.c:39
+  19:     #15 0x1094f7313 in exec_complete_commands exec_complete_commands.c:11
+  20:     #16 0x1094f5b65 in exec exec.c:39
+  21:     #17 0x1094f8f49 in exec_program exec_program.c:10
+  22:     #18 0x1094f5b65 in exec exec.c:39
+  23:     #19 0x1094f3fe5 in exec_main_loop lex_and_parse.c:18
+  24:     #20 0x1094f47b9 in lex_and_parse lex_and_parse.c:79
+  25:     #21 0x1094f4fde in main_loop main_loop.c:72
+  26:     #22 0x1094da90b in main main.c:69
+  27:     #23 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  28: 
+  29: 0x60200002a152 is located 0 bytes to the right of 2-byte region [0x60200002a150,0x60200002a152)
+  30: allocated by thread T0 here:
+  31:     #0 0x1096beffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  32:     #1 0x10953d38f in palloc (42sh:x86_64+0x10006438f)
+  33:     #2 0x10953ff9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  34:     #3 0x10950357c in match_open_file match_open_dir.c:9
+  35:     #4 0x109503b6a in match_open_dir match_open_dir.c:51
+  36:     #5 0x10950242a in glob glob.c:52
+  37:     #6 0x10953262f in pathname_expension wordexp_posix.c:42
+  38:     #7 0x109531436 in word_expansion wordexp_posix.c:157
+  39:     #8 0x1094f9af7 in get_cmd_name exec_simple_command.c:92
+  40:     #9 0x1094f8525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  41:     #10 0x1094f8c42 in exec_pipeline exec_pipeline.c:73
+  42:     #11 0x1094f5b65 in exec exec.c:39
+  43:     #12 0x1094f5cb1 in exec_and_or exec_and_or.c:13
+  44:     #13 0x1094f5b65 in exec exec.c:39
+  45:     #14 0x1094f7017 in exec_complete_command exec_complete_command.c:45
+  46:     #15 0x1094f5b65 in exec exec.c:39
+  47:     #16 0x1094f72d1 in exec_complete_commands exec_complete_commands.c:10
+  48:     #17 0x1094f5b65 in exec exec.c:39
+  49:     #18 0x1094f7313 in exec_complete_commands exec_complete_commands.c:11
+  50:     #19 0x1094f5b65 in exec exec.c:39
+  51:     #20 0x1094f8f49 in exec_program exec_program.c:10
+  52:     #21 0x1094f5b65 in exec exec.c:39
+  53:     #22 0x1094f3fe5 in exec_main_loop lex_and_parse.c:18
+  54:     #23 0x1094f47b9 in lex_and_parse lex_and_parse.c:79
+  55:     #24 0x1094f4fde in main_loop main_loop.c:72
+  56:     #25 0x1094da90b in main main.c:69
+  57:     #26 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  58: 
+  59: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  60: Shadow bytes around the buggy address:
+  61:   0x1c04000053d0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  62:   0x1c04000053e0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  63:   0x1c04000053f0: fa fa fd fd fa fa 00 00 fa fa 00 00 fa fa fd fa
+  64:   0x1c0400005400: fa fa fd fa fa fa fd fa fa fa fd fd fa fa 00 00
+  65:   0x1c0400005410: fa fa fd fd fa fa fd fd fa fa 00 fa fa fa 02 fa
+  66: =>0x1c0400005420: fa fa fd fa fa fa fd fa fa fa[02]fa fa fa fa fa
+  67:   0x1c0400005430: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  68:   0x1c0400005440: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  69:   0x1c0400005450: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  70:   0x1c0400005460: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  71:   0x1c0400005470: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  72: Shadow byte legend (one shadow byte represents 8 application bytes):
+  73:   Addressable:           00
+  74:   Partially addressable: 01 02 03 04 05 06 07 
+  75:   Heap left redzone:       fa
+  76:   Freed heap region:       fd
+  77:   Stack left redzone:      f1
+  78:   Stack mid redzone:       f2
+  79:   Stack right redzone:     f3
+  80:   Stack after return:      f5
+  81:   Stack use after scope:   f8
+  82:   Global redzone:          f9
+  83:   Global init order:       f6
+  84:   Poisoned by user:        f7
+  85:   Container overflow:      fc
+  86:   Array cookie:            ac
+  87:   Intra object redzone:    bb
+  88:   ASan internal:           fe
+  89:   Left alloca redzone:     ca
+  90:   Right alloca redzone:    cb
+  91: ==78020==ABORTING
+  92: ./lib/main.sh: line 102: 78020 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/errors/001-too-many-args[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong number of arguments with the builtin `exit` does not result in the Shell termination but an error on standard error.[0m
+
+  STDIN:
+[38;5;239m  01: exit 21 42
+  02: ./write_on_stdout TOKEN201711140046[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711140046`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Tt]oo many arguments|[Aa]rgument list too long)`[0m
+[38;5;239m  01: exit: to many arguments
+  02: =================================================================
+  03: ==78138==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002b792 at pc 0x00010a07977c bp 0x7fff55bae510 sp 0x7fff55bae508
+  04: READ of size 1 at 0x60200002b792 thread T0
+  05:     #0 0x10a07977b in match match.c:33
+  06:     #1 0x10a07ad6c in match_open_dir match_open_dir.c:55
+  07:     #2 0x10a07942a in glob glob.c:52
+  08:     #3 0x10a0a962f in pathname_expension wordexp_posix.c:42
+  09:     #4 0x10a0a8436 in word_expansion wordexp_posix.c:157
+  10:     #5 0x10a070af7 in get_cmd_name exec_simple_command.c:92
+  11:     #6 0x10a06f525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  12:     #7 0x10a06fc42 in exec_pipeline exec_pipeline.c:73
+  13:     #8 0x10a06cb65 in exec exec.c:39
+  14:     #9 0x10a06ccb1 in exec_and_or exec_and_or.c:13
+  15:     #10 0x10a06cb65 in exec exec.c:39
+  16:     #11 0x10a06e017 in exec_complete_command exec_complete_command.c:45
+  17:     #12 0x10a06cb65 in exec exec.c:39
+  18:     #13 0x10a06e354 in exec_complete_commands exec_complete_commands.c:12
+  19:     #14 0x10a06cb65 in exec exec.c:39
+  20:     #15 0x10a06ff49 in exec_program exec_program.c:10
+  21:     #16 0x10a06cb65 in exec exec.c:39
+  22:     #17 0x10a06afe5 in exec_main_loop lex_and_parse.c:18
+  23:     #18 0x10a06b7b9 in lex_and_parse lex_and_parse.c:79
+  24:     #19 0x10a06bfde in main_loop main_loop.c:72
+  25:     #20 0x10a05190b in main main.c:69
+  26:     #21 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  27: 
+  28: 0x60200002b792 is located 0 bytes to the right of 2-byte region [0x60200002b790,0x60200002b792)
+  29: allocated by thread T0 here:
+  30:     #0 0x10a236ffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  31:     #1 0x10a0b438f in palloc (42sh:x86_64+0x10006438f)
+  32:     #2 0x10a0b6f9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  33:     #3 0x10a07a57c in match_open_file match_open_dir.c:9
+  34:     #4 0x10a07ab6a in match_open_dir match_open_dir.c:51
+  35:     #5 0x10a07942a in glob glob.c:52
+  36:     #6 0x10a0a962f in pathname_expension wordexp_posix.c:42
+  37:     #7 0x10a0a8436 in word_expansion wordexp_posix.c:157
+  38:     #8 0x10a070af7 in get_cmd_name exec_simple_command.c:92
+  39:     #9 0x10a06f525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  40:     #10 0x10a06fc42 in exec_pipeline exec_pipeline.c:73
+  41:     #11 0x10a06cb65 in exec exec.c:39
+  42:     #12 0x10a06ccb1 in exec_and_or exec_and_or.c:13
+  43:     #13 0x10a06cb65 in exec exec.c:39
+  44:     #14 0x10a06e017 in exec_complete_command exec_complete_command.c:45
+  45:     #15 0x10a06cb65 in exec exec.c:39
+  46:     #16 0x10a06e354 in exec_complete_commands exec_complete_commands.c:12
+  47:     #17 0x10a06cb65 in exec exec.c:39
+  48:     #18 0x10a06ff49 in exec_program exec_program.c:10
+  49:     #19 0x10a06cb65 in exec exec.c:39
+  50:     #20 0x10a06afe5 in exec_main_loop lex_and_parse.c:18
+  51:     #21 0x10a06b7b9 in lex_and_parse lex_and_parse.c:79
+  52:     #22 0x10a06bfde in main_loop main_loop.c:72
+  53:     #23 0x10a05190b in main main.c:69
+  54:     #24 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  55: 
+  56: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  57: Shadow bytes around the buggy address:
+  58:   0x1c04000056a0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  59:   0x1c04000056b0: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  60:   0x1c04000056c0: fa fa fd fd fa fa fd fa fa fa fd fa fa fa fd fa
+  61:   0x1c04000056d0: fa fa fd fd fa fa 00 00 fa fa fd fd fa fa fd fd
+  62:   0x1c04000056e0: fa fa 00 fa fa fa 02 fa fa fa fd fa fa fa fd fa
+  63: =>0x1c04000056f0: fa fa[02]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  64:   0x1c0400005700: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  65:   0x1c0400005710: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  66:   0x1c0400005720: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  67:   0x1c0400005730: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  68:   0x1c0400005740: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  69: Shadow byte legend (one shadow byte represents 8 application bytes):
+  70:   Addressable:           00
+  71:   Partially addressable: 01 02 03 04 05 06 07 
+  72:   Heap left redzone:       fa
+  73:   Freed heap region:       fd
+  74:   Stack left redzone:      f1
+  75:   Stack mid redzone:       f2
+  76:   Stack right redzone:     f3
+  77:   Stack after return:      f5
+  78:   Stack use after scope:   f8
+  79:   Global redzone:          f9
+  80:   Global init order:       f6
+  81:   Poisoned by user:        f7
+  82:   Container overflow:      fc
+  83:   Array cookie:            ac
+  84:   Intra object redzone:    bb
+  85:   ASan internal:           fe
+  86:   Left alloca redzone:     ca
+  87:   Right alloca redzone:    cb
+  88: ==78138==ABORTING
+  89: ./lib/main.sh: line 102: 78138 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/002-add-new-variable[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `setenv` (or `export`) can add a new variable to the environment, either with the syntax `setenv KEY VALUE` or with `setenv KEY=VALUE`.[0m
+
+  Before test:
+[38;5;239m  01: unset "TESTVAR1"[0m
+
+  STDIN:
+[38;5;239m  01: setenv TESTVAR1 VALUE_TOKEN201711140046
+  02: ./display_env
+  03: 
+  04: setenv TESTVAR1=VALUE_TOKEN201711140046
+  05: ./display_env
+  06: 
+  07: export TESTVAR1=VALUE_TOKEN201711140046
+  08: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR1=VALUE_TOKEN201711140046`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..
+  02: =================================================================
+  03: ==79250==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002d2f2 at pc 0x00010422077c bp 0x7fff5ba07250 sp 0x7fff5ba07248
+  04: READ of size 1 at 0x60200002d2f2 thread T0
+  05:     #0 0x10422077b in match match.c:33
+  06:     #1 0x104221d6c in match_open_dir match_open_dir.c:55
+  07:     #2 0x10422042a in glob glob.c:52
+  08:     #3 0x10425062f in pathname_expension wordexp_posix.c:42
+  09:     #4 0x10424f436 in word_expansion wordexp_posix.c:157
+  10:     #5 0x104217af7 in get_cmd_name exec_simple_command.c:92
+  11:     #6 0x104216525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  12:     #7 0x104216c42 in exec_pipeline exec_pipeline.c:73
+  13:     #8 0x104213b65 in exec exec.c:39
+  14:     #9 0x104213cb1 in exec_and_or exec_and_or.c:13
+  15:     #10 0x104213b65 in exec exec.c:39
+  16:     #11 0x104215017 in exec_complete_command exec_complete_command.c:45
+  17:     #12 0x104213b65 in exec exec.c:39
+  18:     #13 0x104215354 in exec_complete_commands exec_complete_commands.c:12
+  19:     #14 0x104213b65 in exec exec.c:39
+  20:     #15 0x104215313 in exec_complete_commands exec_complete_commands.c:11
+  21:     #16 0x104213b65 in exec exec.c:39
+  22:     #17 0x104215313 in exec_complete_commands exec_complete_commands.c:11
+  23:     #18 0x104213b65 in exec exec.c:39
+  24:     #19 0x104215313 in exec_complete_commands exec_complete_commands.c:11
+  25:     #20 0x104213b65 in exec exec.c:39
+  26:     #21 0x104215313 in exec_complete_commands exec_complete_commands.c:11
+  27:     #22 0x104213b65 in exec exec.c:39
+  28:     #23 0x104216f49 in exec_program exec_program.c:10
+  29:     #24 0x104213b65 in exec exec.c:39
+  30:     #25 0x104211fe5 in exec_main_loop lex_and_parse.c:18
+  31:     #26 0x1042127b9 in lex_and_parse lex_and_parse.c:79
+  32:     #27 0x104212fde in main_loop main_loop.c:72
+  33:     #28 0x1041f890b in main main.c:69
+  34:     #29 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  35: 
+  36: 0x60200002d2f2 is located 0 bytes to the right of 2-byte region [0x60200002d2f0,0x60200002d2f2)
+  37: allocated by thread T0 here:
+  38:     #0 0x10449fffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  39:     #1 0x10425b38f in palloc (42sh:x86_64+0x10006438f)
+  40:     #2 0x10425df9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  41:     #3 0x10422157c in match_open_file match_open_dir.c:9
+  42:     #4 0x104221b6a in match_open_dir match_open_dir.c:51
+  43:     #5 0x10422042a in glob glob.c:52
+  44:     #6 0x10425062f in pathname_expension wordexp_posix.c:42
+  45:     #7 0x10424f436 in word_expansion wordexp_posix.c:157
+  46:     #8 0x104217af7 in get_cmd_name exec_simple_command.c:92
+  47:     #9 0x104216525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  48:     #10 0x104216c42 in exec_pipeline exec_pipeline.c:73
+  49:     #11 0x104213b65 in exec exec.c:39
+  50:     #12 0x104213cb1 in exec_and_or exec_and_or.c:13
+  51:     #13 0x104213b65 in exec exec.c:39
+  52:     #14 0x104215017 in exec_complete_command exec_complete_command.c:45
+  53:     #15 0x104213b65 in exec exec.c:39
+  54:     #16 0x104215354 in exec_complete_commands exec_complete_commands.c:12
+  55:     #17 0x104213b65 in exec exec.c:39
+  56:     #18 0x104215313 in exec_complete_commands exec_complete_commands.c:11
+  57:     #19 0x104213b65 in exec exec.c:39
+  58:     #20 0x104215313 in exec_complete_commands exec_complete_commands.c:11
+  59:     #21 0x104213b65 in exec exec.c:39
+  60:     #22 0x104215313 in exec_complete_commands exec_complete_commands.c:11
+  61:     #23 0x104213b65 in exec exec.c:39
+  62:     #24 0x104215313 in exec_complete_commands exec_complete_commands.c:11
+  63:     #25 0x104213b65 in exec exec.c:39
+  64:     #26 0x104216f49 in exec_program exec_program.c:10
+  65:     #27 0x104213b65 in exec exec.c:39
+  66:     #28 0x104211fe5 in exec_main_loop lex_and_parse.c:18
+  67:     #29 0x1042127b9 in lex_and_parse lex_and_parse.c:79
+  68: 
+  69: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  70: Shadow bytes around the buggy address:
+  71:   0x1c0400005a00: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  72:   0x1c0400005a10: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  73:   0x1c0400005a20: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fa
+  74:   0x1c0400005a30: fa fa fd fa fa fa fd fa fa fa 00 06 fa fa fd fd
+  75:   0x1c0400005a40: fa fa 00 00 fa fa fd fd fa fa fd fd fa fa 00 fa
+  76: =>0x1c0400005a50: fa fa 02 fa fa fa fd fa fa fa fd fa fa fa[02]fa
+  77:   0x1c0400005a60: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  78:   0x1c0400005a70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  79:   0x1c0400005a80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  80:   0x1c0400005a90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  81:   0x1c0400005aa0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  82: Shadow byte legend (one shadow byte represents 8 application bytes):
+  83:   Addressable:           00
+  84:   Partially addressable: 01 02 03 04 05 06 07 
+  85:   Heap left redzone:       fa
+  86:   Freed heap region:       fd
+  87:   Stack left redzone:      f1
+  88:   Stack mid redzone:       f2
+  89:   Stack right redzone:     f3
+  90:   Stack after return:      f5
+  91:   Stack use after scope:   f8
+  92:   Global redzone:          f9
+  93:   Global init order:       f6
+  94:   Poisoned by user:        f7
+  95:   Container overflow:      fc
+  96:   Array cookie:            ac
+  97:   Intra object redzone:    bb
+  98:   ASan internal:           fe
+  99:   Left alloca redzone:     ca
+  100:   Right alloca redzone:    cb
+  101: ==79250==ABORTING
+  102: ./lib/main.sh: line 102: 79250 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/003-set-existing-variable[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `setenv` (or `export`) can add a new variable to the environment, either with the syntax `setenv KEY VALUE` or with `setenv KEY=VALUE`.[0m
+
+  Before test:
+[38;5;239m  01: export "TESTVAR1=OLD_TOKEN201711140046"[0m
+
+  STDIN:
+[38;5;239m  01: setenv TESTVAR1 NEW_TOKEN201711140046
+  02: ./display_env
+  03: 
+  04: setenv TESTVAR1=NEW_TOKEN201711140046
+  05: ./display_env
+  06: 
+  07: export TESTVAR1=NEW_TOKEN201711140046
+  08: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR1=NEW_TOKEN201711140046`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..
+  02: =================================================================
+  03: ==79409==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200002d372 at pc 0x00010e8b677c bp 0x7fff51371230 sp 0x7fff51371228
+  04: READ of size 1 at 0x60200002d372 thread T0
+  05:     #0 0x10e8b677b in match match.c:33
+  06:     #1 0x10e8b7d6c in match_open_dir match_open_dir.c:55
+  07:     #2 0x10e8b642a in glob glob.c:52
+  08:     #3 0x10e8e662f in pathname_expension wordexp_posix.c:42
+  09:     #4 0x10e8e5436 in word_expansion wordexp_posix.c:157
+  10:     #5 0x10e8adaf7 in get_cmd_name exec_simple_command.c:92
+  11:     #6 0x10e8ac525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  12:     #7 0x10e8acc42 in exec_pipeline exec_pipeline.c:73
+  13:     #8 0x10e8a9b65 in exec exec.c:39
+  14:     #9 0x10e8a9cb1 in exec_and_or exec_and_or.c:13
+  15:     #10 0x10e8a9b65 in exec exec.c:39
+  16:     #11 0x10e8ab017 in exec_complete_command exec_complete_command.c:45
+  17:     #12 0x10e8a9b65 in exec exec.c:39
+  18:     #13 0x10e8ab354 in exec_complete_commands exec_complete_commands.c:12
+  19:     #14 0x10e8a9b65 in exec exec.c:39
+  20:     #15 0x10e8ab313 in exec_complete_commands exec_complete_commands.c:11
+  21:     #16 0x10e8a9b65 in exec exec.c:39
+  22:     #17 0x10e8ab313 in exec_complete_commands exec_complete_commands.c:11
+  23:     #18 0x10e8a9b65 in exec exec.c:39
+  24:     #19 0x10e8ab313 in exec_complete_commands exec_complete_commands.c:11
+  25:     #20 0x10e8a9b65 in exec exec.c:39
+  26:     #21 0x10e8ab313 in exec_complete_commands exec_complete_commands.c:11
+  27:     #22 0x10e8a9b65 in exec exec.c:39
+  28:     #23 0x10e8acf49 in exec_program exec_program.c:10
+  29:     #24 0x10e8a9b65 in exec exec.c:39
+  30:     #25 0x10e8a7fe5 in exec_main_loop lex_and_parse.c:18
+  31:     #26 0x10e8a87b9 in lex_and_parse lex_and_parse.c:79
+  32:     #27 0x10e8a8fde in main_loop main_loop.c:72
+  33:     #28 0x10e88e90b in main main.c:69
+  34:     #29 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  35: 
+  36: 0x60200002d372 is located 0 bytes to the right of 2-byte region [0x60200002d370,0x60200002d372)
+  37: allocated by thread T0 here:
+  38:     #0 0x10ea6effc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  39:     #1 0x10e8f138f in palloc (42sh:x86_64+0x10006438f)
+  40:     #2 0x10e8f3f9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  41:     #3 0x10e8b757c in match_open_file match_open_dir.c:9
+  42:     #4 0x10e8b7b6a in match_open_dir match_open_dir.c:51
+  43:     #5 0x10e8b642a in glob glob.c:52
+  44:     #6 0x10e8e662f in pathname_expension wordexp_posix.c:42
+  45:     #7 0x10e8e5436 in word_expansion wordexp_posix.c:157
+  46:     #8 0x10e8adaf7 in get_cmd_name exec_simple_command.c:92
+  47:     #9 0x10e8ac525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  48:     #10 0x10e8acc42 in exec_pipeline exec_pipeline.c:73
+  49:     #11 0x10e8a9b65 in exec exec.c:39
+  50:     #12 0x10e8a9cb1 in exec_and_or exec_and_or.c:13
+  51:     #13 0x10e8a9b65 in exec exec.c:39
+  52:     #14 0x10e8ab017 in exec_complete_command exec_complete_command.c:45
+  53:     #15 0x10e8a9b65 in exec exec.c:39
+  54:     #16 0x10e8ab354 in exec_complete_commands exec_complete_commands.c:12
+  55:     #17 0x10e8a9b65 in exec exec.c:39
+  56:     #18 0x10e8ab313 in exec_complete_commands exec_complete_commands.c:11
+  57:     #19 0x10e8a9b65 in exec exec.c:39
+  58:     #20 0x10e8ab313 in exec_complete_commands exec_complete_commands.c:11
+  59:     #21 0x10e8a9b65 in exec exec.c:39
+  60:     #22 0x10e8ab313 in exec_complete_commands exec_complete_commands.c:11
+  61:     #23 0x10e8a9b65 in exec exec.c:39
+  62:     #24 0x10e8ab313 in exec_complete_commands exec_complete_commands.c:11
+  63:     #25 0x10e8a9b65 in exec exec.c:39
+  64:     #26 0x10e8acf49 in exec_program exec_program.c:10
+  65:     #27 0x10e8a9b65 in exec exec.c:39
+  66:     #28 0x10e8a7fe5 in exec_main_loop lex_and_parse.c:18
+  67:     #29 0x10e8a87b9 in lex_and_parse lex_and_parse.c:79
+  68: 
+  69: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  70: Shadow bytes around the buggy address:
+  71:   0x1c0400005a10: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  72:   0x1c0400005a20: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  73:   0x1c0400005a30: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fa
+  74:   0x1c0400005a40: fa fa fd fa fa fa fd fa fa fa 00 06 fa fa fd fd
+  75:   0x1c0400005a50: fa fa 00 00 fa fa fd fd fa fa fd fd fa fa 00 fa
+  76: =>0x1c0400005a60: fa fa 02 fa fa fa fd fa fa fa fd fa fa fa[02]fa
+  77:   0x1c0400005a70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  78:   0x1c0400005a80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  79:   0x1c0400005a90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  80:   0x1c0400005aa0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  81:   0x1c0400005ab0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  82: Shadow byte legend (one shadow byte represents 8 application bytes):
+  83:   Addressable:           00
+  84:   Partially addressable: 01 02 03 04 05 06 07 
+  85:   Heap left redzone:       fa
+  86:   Freed heap region:       fd
+  87:   Stack left redzone:      f1
+  88:   Stack mid redzone:       f2
+  89:   Stack right redzone:     f3
+  90:   Stack after return:      f5
+  91:   Stack use after scope:   f8
+  92:   Global redzone:          f9
+  93:   Global init order:       f6
+  94:   Poisoned by user:        f7
+  95:   Container overflow:      fc
+  96:   Array cookie:            ac
+  97:   Intra object redzone:    bb
+  98:   ASan internal:           fe
+  99:   Left alloca redzone:     ca
+  100:   Right alloca redzone:    cb
+  101: ==79409==ABORTING
+  102: ./lib/main.sh: line 102: 79409 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/004-invalid-identifier[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong variable name with the builtin `setenv` (or `export`) results in error.[0m
+
+  STDIN:
+[38;5;239m  01: setenv 42
+  02: export 42[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `(not.*identifier|must begin.*letter)`[0m
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/005-add-and-set-multiple-variables[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `setenv` (or `export`) can add multiples variables into the environment, either with the syntax `setenv KEY VALUE` or with `setenv KEY=VALUE`.[0m
+
+  Before test:
+[38;5;239m  01: unset "TESTVAR1"
+  02: unset "TESTVAR2"
+  03: unset "TESTVAR3"
+  04: unset "TESTVAR4"
+  05: unset "TESTVAR5"
+  06: unset "TESTVAR6"
+  07: unset "TESTVAR7"
+  08: unset "TESTVAR8"
+  09: unset "TESTVAR9"
+  10: unset "TESTVAR10"
+  11: 
+  12: export "TEST2VAR1=OLD_TOKEN201711140046_1"
+  13: export "TEST2VAR2=OLD_TOKEN201711140046_2"
+  14: export "TEST2VAR3=OLD_TOKEN201711140046_3"
+  15: export "TEST2VAR4=OLD_TOKEN201711140046_4"
+  16: export "TEST2VAR5=OLD_TOKEN201711140046_5"
+  17: export "TEST2VAR6=OLD_TOKEN201711140046_6"
+  18: export "TEST2VAR7=OLD_TOKEN201711140046_7"
+  19: export "TEST2VAR8=OLD_TOKEN201711140046_8"
+  20: export "TEST2VAR9=OLD_TOKEN201711140046_9"
+  21: export "TEST2VAR10=OLD_TOKEN201711140046_10"[0m
+
+  STDIN:
+[38;5;239m  01: setenv TESTVAR1 VALUE_TOKEN201711140046_1
+  02: setenv TEST2VAR1 VALUE_TOKEN201711140046_1
+  03: setenv TESTVAR2 VALUE_TOKEN201711140046_2
+  04: setenv TEST2VAR2 VALUE_TOKEN201711140046_2
+  05: setenv TESTVAR3 VALUE_TOKEN201711140046_3
+  06: setenv TEST2VAR3 VALUE_TOKEN201711140046_3
+  07: setenv TESTVAR4 VALUE_TOKEN201711140046_4
+  08: setenv TEST2VAR4 VALUE_TOKEN201711140046_4
+  09: setenv TESTVAR5 VALUE_TOKEN201711140046_5
+  10: setenv TEST2VAR5 VALUE_TOKEN201711140046_5
+  11: setenv TESTVAR6 VALUE_TOKEN201711140046_6
+  12: setenv TEST2VAR6 VALUE_TOKEN201711140046_6
+  13: setenv TESTVAR7 VALUE_TOKEN201711140046_7
+  14: setenv TEST2VAR7 VALUE_TOKEN201711140046_7
+  15: setenv TESTVAR8 VALUE_TOKEN201711140046_8
+  16: setenv TEST2VAR8 VALUE_TOKEN201711140046_8
+  17: setenv TESTVAR9 VALUE_TOKEN201711140046_9
+  18: setenv TEST2VAR9 VALUE_TOKEN201711140046_9
+  19: setenv TESTVAR10 VALUE_TOKEN201711140046_10
+  20: setenv TEST2VAR10 VALUE_TOKEN201711140046_10
+  21: ./display_env
+  22: 
+  23: setenv TESTVAR1=VALUE_TOKEN201711140046_1
+  24: setenv TEST2VAR1=VALUE_TOKEN201711140046_1
+  25: setenv TESTVAR2=VALUE_TOKEN201711140046_2
+  26: setenv TEST2VAR2=VALUE_TOKEN201711140046_2
+  27: setenv TESTVAR3=VALUE_TOKEN201711140046_3
+  28: setenv TEST2VAR3=VALUE_TOKEN201711140046_3
+  29: setenv TESTVAR4=VALUE_TOKEN201711140046_4
+  30: setenv TEST2VAR4=VALUE_TOKEN201711140046_4
+  31: setenv TESTVAR5=VALUE_TOKEN201711140046_5
+  32: setenv TEST2VAR5=VALUE_TOKEN201711140046_5
+  33: setenv TESTVAR6=VALUE_TOKEN201711140046_6
+  34: setenv TEST2VAR6=VALUE_TOKEN201711140046_6
+  35: setenv TESTVAR7=VALUE_TOKEN201711140046_7
+  36: setenv TEST2VAR7=VALUE_TOKEN201711140046_7
+  37: setenv TESTVAR8=VALUE_TOKEN201711140046_8
+  38: setenv TEST2VAR8=VALUE_TOKEN201711140046_8
+  39: setenv TESTVAR9=VALUE_TOKEN201711140046_9
+  40: setenv TEST2VAR9=VALUE_TOKEN201711140046_9
+  41: setenv TESTVAR10=VALUE_TOKEN201711140046_10
+  42: setenv TEST2VAR10=VALUE_TOKEN201711140046_10
+  43: ./display_env
+  44: 
+  45: export TESTVAR1=VALUE_TOKEN201711140046_1
+  46: export TEST2VAR1=VALUE_TOKEN201711140046_1
+  47: export TESTVAR2=VALUE_TOKEN201711140046_2
+  48: export TEST2VAR2=VALUE_TOKEN201711140046_2
+  49: export TESTVAR3=VALUE_TOKEN201711140046_3
+  50: export TEST2VAR3=VALUE_TOKEN201711140046_3
+  51: export TESTVAR4=VALUE_TOKEN201711140046_4
+  52: export TEST2VAR4=VALUE_TOKEN201711140046_4
+  53: export TESTVAR5=VALUE_TOKEN201711140046_5
+  54: export TEST2VAR5=VALUE_TOKEN201711140046_5
+  55: export TESTVAR6=VALUE_TOKEN201711140046_6
+  56: export TEST2VAR6=VALUE_TOKEN201711140046_6
+  57: export TESTVAR7=VALUE_TOKEN201711140046_7
+  58: export TEST2VAR7=VALUE_TOKEN201711140046_7
+  59: export TESTVAR8=VALUE_TOKEN201711140046_8
+  60: export TEST2VAR8=VALUE_TOKEN201711140046_8
+  61: export TESTVAR9=VALUE_TOKEN201711140046_9
+  62: export TEST2VAR9=VALUE_TOKEN201711140046_9
+  63: export TESTVAR10=VALUE_TOKEN201711140046_10
+  64: export TEST2VAR10=VALUE_TOKEN201711140046_10
+  65: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR1=VALUE_TOKEN201711140046_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR2=VALUE_TOKEN201711140046_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR3=VALUE_TOKEN201711140046_3`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR4=VALUE_TOKEN201711140046_4`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR5=VALUE_TOKEN201711140046_5`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR6=VALUE_TOKEN201711140046_6`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR7=VALUE_TOKEN201711140046_7`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR8=VALUE_TOKEN201711140046_8`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR9=VALUE_TOKEN201711140046_9`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR10=VALUE_TOKEN201711140046_10`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR1=VALUE_TOKEN201711140046_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR2=VALUE_TOKEN201711140046_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR3=VALUE_TOKEN201711140046_3`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR4=VALUE_TOKEN201711140046_4`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR5=VALUE_TOKEN201711140046_5`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR6=VALUE_TOKEN201711140046_6`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR7=VALUE_TOKEN201711140046_7`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR8=VALUE_TOKEN201711140046_8`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR9=VALUE_TOKEN201711140046_9`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR10=VALUE_TOKEN201711140046_10`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..
+  02: usage: setenv key1=value1 key2=value2 ..
+  03: usage: setenv key1=value1 key2=value2 ..
+  04: usage: setenv key1=value1 key2=value2 ..
+  05: usage: setenv key1=value1 key2=value2 ..
+  06: usage: setenv key1=value1 key2=value2 ..
+  07: usage: setenv key1=value1 key2=value2 ..
+  08: usage: setenv key1=value1 key2=value2 ..
+  09: usage: setenv key1=value1 key2=value2 ..
+  10: usage: setenv key1=value1 key2=value2 ..
+  11: usage: setenv key1=value1 key2=value2 ..
+  12: usage: setenv key1=value1 key2=value2 ..
+  13: usage: setenv key1=value1 key2=value2 ..
+  14: usage: setenv key1=value1 key2=value2 ..
+  15: usage: setenv key1=value1 key2=value2 ..
+  16: usage: setenv key1=value1 key2=value2 ..
+  17: usage: setenv key1=value1 key2=value2 ..
+  18: usage: setenv key1=value1 key2=value2 ..
+  19: usage: setenv key1=value1 key2=value2 ..
+  20: usage: setenv key1=value1 key2=value2 ..
+  21: =================================================================
+  22: ==79733==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200005e552 at pc 0x0001027cd77c bp 0x7fff5d458690 sp 0x7fff5d458688
+  23: READ of size 1 at 0x60200005e552 thread T0
+  24:     #0 0x1027cd77b in match match.c:33
+  25:     #1 0x1027ced6c in match_open_dir match_open_dir.c:55
+  26:     #2 0x1027cd42a in glob glob.c:52
+  27:     #3 0x1027fd62f in pathname_expension wordexp_posix.c:42
+  28:     #4 0x1027fc436 in word_expansion wordexp_posix.c:157
+  29:     #5 0x1027c4af7 in get_cmd_name exec_simple_command.c:92
+  30:     #6 0x1027c3525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  31:     #7 0x1027c3c42 in exec_pipeline exec_pipeline.c:73
+  32:     #8 0x1027c0b65 in exec exec.c:39
+  33:     #9 0x1027c0cb1 in exec_and_or exec_and_or.c:13
+  34:     #10 0x1027c0b65 in exec exec.c:39
+  35:     #11 0x1027c2017 in exec_complete_command exec_complete_command.c:45
+  36:     #12 0x1027c0b65 in exec exec.c:39
+  37:     #13 0x1027c2354 in exec_complete_commands exec_complete_commands.c:12
+  38:     #14 0x1027c0b65 in exec exec.c:39
+  39:     #15 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  40:     #16 0x1027c0b65 in exec exec.c:39
+  41:     #17 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  42:     #18 0x1027c0b65 in exec exec.c:39
+  43:     #19 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  44:     #20 0x1027c0b65 in exec exec.c:39
+  45:     #21 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  46:     #22 0x1027c0b65 in exec exec.c:39
+  47:     #23 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  48:     #24 0x1027c0b65 in exec exec.c:39
+  49:     #25 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  50:     #26 0x1027c0b65 in exec exec.c:39
+  51:     #27 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  52:     #28 0x1027c0b65 in exec exec.c:39
+  53:     #29 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  54:     #30 0x1027c0b65 in exec exec.c:39
+  55:     #31 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  56:     #32 0x1027c0b65 in exec exec.c:39
+  57:     #33 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  58:     #34 0x1027c0b65 in exec exec.c:39
+  59:     #35 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  60:     #36 0x1027c0b65 in exec exec.c:39
+  61:     #37 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  62:     #38 0x1027c0b65 in exec exec.c:39
+  63:     #39 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  64:     #40 0x1027c0b65 in exec exec.c:39
+  65:     #41 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  66:     #42 0x1027c0b65 in exec exec.c:39
+  67:     #43 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  68:     #44 0x1027c0b65 in exec exec.c:39
+  69:     #45 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  70:     #46 0x1027c0b65 in exec exec.c:39
+  71:     #47 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  72:     #48 0x1027c0b65 in exec exec.c:39
+  73:     #49 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  74:     #50 0x1027c0b65 in exec exec.c:39
+  75:     #51 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  76:     #52 0x1027c0b65 in exec exec.c:39
+  77:     #53 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  78:     #54 0x1027c0b65 in exec exec.c:39
+  79:     #55 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  80:     #56 0x1027c0b65 in exec exec.c:39
+  81:     #57 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  82:     #58 0x1027c0b65 in exec exec.c:39
+  83:     #59 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  84:     #60 0x1027c0b65 in exec exec.c:39
+  85:     #61 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  86:     #62 0x1027c0b65 in exec exec.c:39
+  87:     #63 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  88:     #64 0x1027c0b65 in exec exec.c:39
+  89:     #65 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  90:     #66 0x1027c0b65 in exec exec.c:39
+  91:     #67 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  92:     #68 0x1027c0b65 in exec exec.c:39
+  93:     #69 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  94:     #70 0x1027c0b65 in exec exec.c:39
+  95:     #71 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  96:     #72 0x1027c0b65 in exec exec.c:39
+  97:     #73 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  98:     #74 0x1027c0b65 in exec exec.c:39
+  99:     #75 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  100:     #76 0x1027c0b65 in exec exec.c:39
+  101:     #77 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  102:     #78 0x1027c0b65 in exec exec.c:39
+  103:     #79 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  104:     #80 0x1027c0b65 in exec exec.c:39
+  105:     #81 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  106:     #82 0x1027c0b65 in exec exec.c:39
+  107:     #83 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  108:     #84 0x1027c0b65 in exec exec.c:39
+  109:     #85 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  110:     #86 0x1027c0b65 in exec exec.c:39
+  111:     #87 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  112:     #88 0x1027c0b65 in exec exec.c:39
+  113:     #89 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  114:     #90 0x1027c0b65 in exec exec.c:39
+  115:     #91 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  116:     #92 0x1027c0b65 in exec exec.c:39
+  117:     #93 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  118:     #94 0x1027c0b65 in exec exec.c:39
+  119:     #95 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  120:     #96 0x1027c0b65 in exec exec.c:39
+  121:     #97 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  122:     #98 0x1027c0b65 in exec exec.c:39
+  123:     #99 0x1027c3f49 in exec_program exec_program.c:10
+  124:     #100 0x1027c0b65 in exec exec.c:39
+  125:     #101 0x1027befe5 in exec_main_loop lex_and_parse.c:18
+  126:     #102 0x1027bf7b9 in lex_and_parse lex_and_parse.c:79
+  127:     #103 0x1027bffde in main_loop main_loop.c:72
+  128:     #104 0x1027a590b in main main.c:69
+  129:     #105 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  130: 
+  131: 0x60200005e552 is located 0 bytes to the right of 2-byte region [0x60200005e550,0x60200005e552)
+  132: allocated by thread T0 here:
+  133:     #0 0x10298bffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  134:     #1 0x10280838f in palloc (42sh:x86_64+0x10006438f)
+  135:     #2 0x10280af9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  136:     #3 0x1027ce57c in match_open_file match_open_dir.c:9
+  137:     #4 0x1027ceb6a in match_open_dir match_open_dir.c:51
+  138:     #5 0x1027cd42a in glob glob.c:52
+  139:     #6 0x1027fd62f in pathname_expension wordexp_posix.c:42
+  140:     #7 0x1027fc436 in word_expansion wordexp_posix.c:157
+  141:     #8 0x1027c4af7 in get_cmd_name exec_simple_command.c:92
+  142:     #9 0x1027c3525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  143:     #10 0x1027c3c42 in exec_pipeline exec_pipeline.c:73
+  144:     #11 0x1027c0b65 in exec exec.c:39
+  145:     #12 0x1027c0cb1 in exec_and_or exec_and_or.c:13
+  146:     #13 0x1027c0b65 in exec exec.c:39
+  147:     #14 0x1027c2017 in exec_complete_command exec_complete_command.c:45
+  148:     #15 0x1027c0b65 in exec exec.c:39
+  149:     #16 0x1027c2354 in exec_complete_commands exec_complete_commands.c:12
+  150:     #17 0x1027c0b65 in exec exec.c:39
+  151:     #18 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  152:     #19 0x1027c0b65 in exec exec.c:39
+  153:     #20 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  154:     #21 0x1027c0b65 in exec exec.c:39
+  155:     #22 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  156:     #23 0x1027c0b65 in exec exec.c:39
+  157:     #24 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  158:     #25 0x1027c0b65 in exec exec.c:39
+  159:     #26 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  160:     #27 0x1027c0b65 in exec exec.c:39
+  161:     #28 0x1027c2313 in exec_complete_commands exec_complete_commands.c:11
+  162:     #29 0x1027c0b65 in exec exec.c:39
+  163: 
+  164: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  165: Shadow bytes around the buggy address:
+  166:   0x1c040000bc50: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  167:   0x1c040000bc60: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  168:   0x1c040000bc70: fa fa fd fd fa fa fd fd fa fa fd fa fa fa fd fa
+  169:   0x1c040000bc80: fa fa fd fa fa fa 00 06 fa fa fd fd fa fa 00 00
+  170:   0x1c040000bc90: fa fa fd fd fa fa fd fd fa fa 00 fa fa fa 02 fa
+  171: =>0x1c040000bca0: fa fa fd fa fa fa fd fa fa fa[02]fa fa fa fa fa
+  172:   0x1c040000bcb0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  173:   0x1c040000bcc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  174:   0x1c040000bcd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  175:   0x1c040000bce0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  176:   0x1c040000bcf0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  177: Shadow byte legend (one shadow byte represents 8 application bytes):
+  178:   Addressable:           00
+  179:   Partially addressable: 01 02 03 04 05 06 07 
+  180:   Heap left redzone:       fa
+  181:   Freed heap region:       fd
+  182:   Stack left redzone:      f1
+  183:   Stack mid redzone:       f2
+  184:   Stack right redzone:     f3
+  185:   Stack after return:      f5
+  186:   Stack use after scope:   f8
+  187:   Global redzone:          f9
+  188:   Global init order:       f6
+  189:   Poisoned by user:        f7
+  190:   Container overflow:      fc
+  191:   Array cookie:            ac
+  192:   Intra object redzone:    bb
+  193:   ASan internal:           fe
+  194:   Left alloca redzone:     ca
+  195:   Right alloca redzone:    cb
+  196: ==79733==ABORTING
+  197: ./lib/main.sh: line 102: 79733 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/misc/001-copy-of-environment[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A Shell must send a copy of the environment to its child processes.[0m
+
+  Before test:
+[38;5;239m  01: export COPYENV_VAR1="TOKEN201711140046_VAR1"
+  02: export COPYENV_VAR2="TOKEN201711140046_VAR2"
+  03: export COPYENV_VAR3="TOKEN201711140046_VAR3"[0m
+
+  STDIN:
+[38;5;239m  01: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `COPYENV_VAR1=TOKEN201711140046_VAR1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `COPYENV_VAR2=TOKEN201711140046_VAR2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `COPYENV_VAR3=TOKEN201711140046_VAR3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: =================================================================
+  02: ==80311==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000029d52 at pc 0x0001022c677c bp 0x7fff5d961490 sp 0x7fff5d961488
+  03: READ of size 1 at 0x602000029d52 thread T0
+  04:     #0 0x1022c677b in match match.c:33
+  05:     #1 0x1022c7d6c in match_open_dir match_open_dir.c:55
+  06:     #2 0x1022c642a in glob glob.c:52
+  07:     #3 0x1022f662f in pathname_expension wordexp_posix.c:42
+  08:     #4 0x1022f5436 in word_expansion wordexp_posix.c:157
+  09:     #5 0x1022bdaf7 in get_cmd_name exec_simple_command.c:92
+  10:     #6 0x1022bc525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  11:     #7 0x1022bcc42 in exec_pipeline exec_pipeline.c:73
+  12:     #8 0x1022b9b65 in exec exec.c:39
+  13:     #9 0x1022b9cb1 in exec_and_or exec_and_or.c:13
+  14:     #10 0x1022b9b65 in exec exec.c:39
+  15:     #11 0x1022bb017 in exec_complete_command exec_complete_command.c:45
+  16:     #12 0x1022b9b65 in exec exec.c:39
+  17:     #13 0x1022bb2d1 in exec_complete_commands exec_complete_commands.c:10
+  18:     #14 0x1022b9b65 in exec exec.c:39
+  19:     #15 0x1022bcf49 in exec_program exec_program.c:10
+  20:     #16 0x1022b9b65 in exec exec.c:39
+  21:     #17 0x1022b7fe5 in exec_main_loop lex_and_parse.c:18
+  22:     #18 0x1022b87b9 in lex_and_parse lex_and_parse.c:79
+  23:     #19 0x1022b8fde in main_loop main_loop.c:72
+  24:     #20 0x10229e90b in main main.c:69
+  25:     #21 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  26: 
+  27: 0x602000029d52 is located 0 bytes to the right of 2-byte region [0x602000029d50,0x602000029d52)
+  28: allocated by thread T0 here:
+  29:     #0 0x102480ffc in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55ffc)
+  30:     #1 0x10230138f in palloc (42sh:x86_64+0x10006438f)
+  31:     #2 0x102303f9b in ft_strdup (42sh:x86_64+0x100066f9b)
+  32:     #3 0x1022c757c in match_open_file match_open_dir.c:9
+  33:     #4 0x1022c7b6a in match_open_dir match_open_dir.c:51
+  34:     #5 0x1022c642a in glob glob.c:52
+  35:     #6 0x1022f662f in pathname_expension wordexp_posix.c:42
+  36:     #7 0x1022f5436 in word_expansion wordexp_posix.c:157
+  37:     #8 0x1022bdaf7 in get_cmd_name exec_simple_command.c:92
+  38:     #9 0x1022bc525 in pipe_sequence_has_to_fork exec_pipeline.c:27
+  39:     #10 0x1022bcc42 in exec_pipeline exec_pipeline.c:73
+  40:     #11 0x1022b9b65 in exec exec.c:39
+  41:     #12 0x1022b9cb1 in exec_and_or exec_and_or.c:13
+  42:     #13 0x1022b9b65 in exec exec.c:39
+  43:     #14 0x1022bb017 in exec_complete_command exec_complete_command.c:45
+  44:     #15 0x1022b9b65 in exec exec.c:39
+  45:     #16 0x1022bb2d1 in exec_complete_commands exec_complete_commands.c:10
+  46:     #17 0x1022b9b65 in exec exec.c:39
+  47:     #18 0x1022bcf49 in exec_program exec_program.c:10
+  48:     #19 0x1022b9b65 in exec exec.c:39
+  49:     #20 0x1022b7fe5 in exec_main_loop lex_and_parse.c:18
+  50:     #21 0x1022b87b9 in lex_and_parse lex_and_parse.c:79
+  51:     #22 0x1022b8fde in main_loop main_loop.c:72
+  52:     #23 0x10229e90b in main main.c:69
+  53:     #24 0x7fff9a202234 in start (libdyld.dylib:x86_64+0x5234)
+  54: 
+  55: SUMMARY: AddressSanitizer: heap-buffer-overflow match.c:33 in match
+  56: Shadow bytes around the buggy address:
+  57:   0x1c0400005350: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  58:   0x1c0400005360: fa fa fd fd fa fa fd fd fa fa fd fd fa fa fd fd
+  59:   0x1c0400005370: fa fa 00 00 fa fa 00 00 fa fa fd fa fa fa fd fa
+  60:   0x1c0400005380: fa fa fd fa fa fa 00 06 fa fa fd fd fa fa 00 00
+  61:   0x1c0400005390: fa fa fd fd fa fa fd fd fa fa 00 fa fa fa 02 fa
+  62: =>0x1c04000053a0: fa fa fd fa fa fa fd fa fa fa[02]fa fa fa fa fa
+  63:   0x1c04000053b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  64:   0x1c04000053c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  65:   0x1c04000053d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  66:   0x1c04000053e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  67:   0x1c04000053f0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  68: Shadow byte legend (one shadow byte represents 8 application bytes):
+  69:   Addressable:           00
+  70:   Partially addressable: 01 02 03 04 05 06 07 
+  71:   Heap left redzone:       fa
+  72:   Freed heap region:       fd
+  73:   Stack left redzone:      f1
+  74:   Stack mid redzone:       f2
+  75:   Stack right redzone:     f3
+  76:   Stack after return:      f5
+  77:   Stack use after scope:   f8
+  78:   Global redzone:          f9
+  79:   Global init order:       f6
+  80:   Poisoned by user:        f7
+  81:   Container overflow:      fc
+  82:   Array cookie:            ac
+  83:   Intra object redzone:    bb
+  84:   ASan internal:           fe
+  85:   Left alloca redzone:     ca
+  86:   Right alloca redzone:    cb
+  87: ==80311==ABORTING
+  88: ./lib/main.sh: line 102: 80311 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+Total tests: 54
+Total failed tests: 24
+Total pending tests: 0

@@ -30,9 +30,9 @@ int		get_end_bracket(char *expr)
 	i = 0;
 	while (expr[i])
 	{
-		if (expr[i] == '{')
+		if (expr[i] == '{' && !ft_is_backslash(expr, i))
 			depth++;
-		if (expr[i] == '}')
+		if (expr[i] == '}' && !ft_is_backslash(expr, i))
 			depth--;
 		if (depth == 0)
 			return (i);
@@ -41,16 +41,40 @@ int		get_end_bracket(char *expr)
 	return (-1);
 }
 
+int		get_start_bracket(char *expr)
+{
+	int		start;
+	int		start_tmp;
+
+	start = ft_strichr(expr, '{');
+	while (start != -1 && ft_is_backslash(expr, start))
+	{
+		start_tmp = start + 1;
+		start = ft_strichr(expr + start_tmp, '{');
+		if (start != -1)
+			start += start_tmp;
+	}
+	return (start);
+}
+
 void	curly_brackets(t_list **res, char *expr)
 {
 	int		start;
+	int		start_tmp;
 	int		end;
 	char	*str;
 
 	start = -1;
 	end = -1;
-	start = ft_strichr(expr, '{');
-	if (start != -1 && (end = get_end_bracket(expr + start)) != -1)
+	start = get_start_bracket(expr);
+	while (start != -1 && (end = get_end_bracket(expr + start)) == -1)
+	{
+		start_tmp = start + 1;
+		start = get_start_bracket(expr + start_tmp);
+		if (start != -1)
+			start += start_tmp;
+	}
+	if (start != -1 && end != -1)
 		end += start;
 	if (start == -1 || end == -1)
 	{
@@ -87,11 +111,13 @@ t_list	*expand_curly_brackets(char *expr)
 	t_list *res;
 
 	res = NULL;
-	if (!is_valid_curly_brackets(expr))
-	{
-		printf("bad curly bracket\n");
-		return (res);
-	}
+	/*
+**		if (!is_valid_curly_brackets(expr))
+**		{
+**	//		printf("bad curly bracket\n");
+**			return (res);
+**		}
+*/
 	curly_brackets(&res, ft_strdup(expr));
 	return (res);
 }
