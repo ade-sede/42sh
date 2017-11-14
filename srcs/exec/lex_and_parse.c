@@ -12,6 +12,7 @@
 
 void	exec_main_loop(t_ast *ast)
 {
+	//parse_heredoc
 	singleton_jc()->background = 0;
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_canonical();
