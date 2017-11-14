@@ -41,6 +41,10 @@ int		get_end_bracket(char *expr)
 	return (-1);
 }
 
+/*
+** find first '{' wich is not backslashed
+*/
+
 int		get_start_bracket(char *expr)
 {
 	int		start;
@@ -56,6 +60,12 @@ int		get_start_bracket(char *expr)
 	}
 	return (start);
 }
+
+/*
+** get start and end of pattern {-}, increase start until there il a closing '}'
+** whith the same depth : "{1,{1..10}"
+** here start will point to {1..10} at the end of the loop
+*/
 
 void	curly_brackets(t_list **res, char *expr)
 {
