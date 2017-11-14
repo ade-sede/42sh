@@ -22,10 +22,7 @@ void	exec_main_loop(t_ast *ast)
 
 void	remove_lexer(t_lexer *lex)
 {
-	(void)lex;
-	/* free_lexer(lex); */
-	/* ft_strdel((char **)&lex->line); */
-	/* ft_simple_lst_remove(&lex->stack, free_token); */
+	free_lexer(lex);
 }
 
 void	remove_parser(t_parser *parser)
@@ -33,7 +30,6 @@ void	remove_parser(t_parser *parser)
 	ft_genlst_remove(&parser->state_stack, NULL);
 	ft_genlst_remove(&parser->ast_stack, free_ast_node);
 }
-
 void	quit_lex_and_parse(t_lexer *lex, t_parser *parser)
 {
 	if (!g_abort_opening && singleton_jc()->shell_is_interactive)

@@ -123,8 +123,7 @@ char			*edit_exit(t_line *line);
 int				ft_insert_str_dest(char *str, char *dest, size_t dest_len);
 int				edit_insert_str(t_line *line, char *dest, char *str);
 
-void			realoc_line_buff(char **buff, unsigned int *size,
-		unsigned int size_needed);
+void			realoc_line_buff(t_line *line, size_t new_size);
 
 /*
 ** copy_paste func

@@ -21,7 +21,7 @@ void		edit_line_init(t_line *line, void (*sig_handler)(void))
 {
 	g_abort_opening = 0;
 	ft_bzero(line->buff, line->len);
-	if (line->size > BUFF_LINE_SIZE)
+	if (line->size >= BUFF_LINE_SIZE)
 	{
 		free(line->buff);
 		line->buff = ft_strnew(BUFF_LINE_SIZE);

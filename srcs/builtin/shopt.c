@@ -6,6 +6,7 @@
 struct s_shopt_mask g_shopt_mask[] = 
 {
 	{ALLEXPORT, "allexport"},
+	{SYNCOLOR, "syncolor"},
 };
 
 int			builtin_shopt(t_env *env, const char **argv)

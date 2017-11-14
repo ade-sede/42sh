@@ -3,6 +3,7 @@
 #include "environ.h"
 #include "libft.h"
 #include "shopt.h"
+#include <stdio.h>
 
 int		local_add_from_key_value(t_list **first, const char *key, const char *value)
 {
@@ -11,7 +12,9 @@ int		local_add_from_key_value(t_list **first, const char *key, const char *value
 	local = create_local(key, value);
 	ft_simple_lst_pushback(first, ft_simple_lst_create(local));
 	if (singleton_env()->option & ALLEXPORT)
+	{
 		env_add_change(singleton_env(), key, value);
+	}
 	return (1);
 }
 
@@ -25,8 +28,7 @@ int		local_add_from_string(t_list **first, const char *string)
 		return (0);
 	tmp = *pos;
 	*pos = 0;
-	local_add_from_key_value(first, string, pos + 1);
-	*pos = tmp;
+	local_add_from_key_value(first, string, pos + 1); *pos = tmp;
 	return (1);
 }	
 

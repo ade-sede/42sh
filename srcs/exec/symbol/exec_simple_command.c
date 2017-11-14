@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_simple_command.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/14 14:48:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/14 14:59:05 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "exec.h"
 #include "expand.h"
 #include "builtin.h"
@@ -35,9 +47,7 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 	if (is_symb(ast->child[0], CMD_SUFFIX))
 		return (exec_cmd_suffix(ast->child[0], redirect_list, av));
 	return (av);
-}
-
-/*
+} /*
 **	cmd_prefix       :            io_redirect
 **	                 | cmd_prefix io_redirect
 **	                 |            ASSIGNMENT_WORD
@@ -45,6 +55,7 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 **	                 ;
 */
 
+#include <stdio.h>
 void	exec_assignment_word(t_ast *ast)
 {
 	char		**word_expanded;

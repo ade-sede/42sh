@@ -13,11 +13,27 @@
 **	- The third TK_WORD / RESERVED_WORD before current token id'ed as TK_FOR or TK_CASE
 */
 
-#include <stdio.h>
-
 /*
 **	Problem with case a b \n\n\n in c
 */
+
+/*
+**	Must reset cmd_name only if the last operator wasnt a redir
+*/
+
+static int	check_prev_one_redir(t_lexer *lex)
+{
+	t_token	*token = NULL;
+	t_list	*node = NULL;
+
+	node = lex->reversed_list;
+	if (!node)
+		return (FALSE);
+	token = node->data;
+	if (token->id != TK_LESS && token->id != TK_HERE && token->id != TK_GREAT && token->id != TK_DLESS && token->id != TK_DGREAT && token->id != TK_LESSAND && token->id != TK_GREATAND)
+		return (TRUE);
+	return (FALSE);
+}
 
 void	get_token_id(t_lexer *lex, t_token *token)
 {
@@ -36,7 +52,7 @@ void	get_token_id(t_lexer *lex, t_token *token)
 	else if (info[_T_STATE] != COMMENT && info[_T_STATE] != WHITESPACE) // Token is anything else
 	{
 		token->id = id_word(lex, token);
-		if (token->id != TK_ASSIGNMENT_WORD && lex->cmd_name_open)
+		if (token->id != TK_ASSIGNMENT_WORD && lex->cmd_name_open && check_prev_one_redir(lex))
 			lex->cmd_name_open = FALSE;
 	}
 }

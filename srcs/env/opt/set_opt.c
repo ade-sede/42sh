@@ -23,6 +23,7 @@ int	set_shell_opt(t_env *env, int sign, const char *option_value)
 	if (sign == '-')
 		env->option |= g_shopt_mask[i].mask;
 	if (sign == '+')
-		env->option ^= g_shopt_mask[i].mask;
+		if (env->option & g_shopt_mask[i].mask)
+			env->option ^= g_shopt_mask[i].mask;
 	return (1);
 }

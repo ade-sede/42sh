@@ -48,6 +48,7 @@ void		term_putstr(t_line *line)
 	size_t	nb_newl;
 
 	i = 0;
+	/* while (line->buff[i]) */
 	while (line->buff[i])
 	{
 		if (line->buff[i] == '\t')

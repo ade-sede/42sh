@@ -42,10 +42,7 @@ static char	*get_state(int state)
 /*
 **	Pushes a ssize_t* whose _T_STATE index is set to new_state.
 **	_T_START set to lex->pos
-**	_T_END set to -1 (undefined)
-**	_T_COUNT set to 0.
-*/
-
+**	_T_END set to -1 (undefined) **	_T_COUNT set to 0.  */ 
 ssize_t	*create_state_info(void)
 {
 	ssize_t	*info;
