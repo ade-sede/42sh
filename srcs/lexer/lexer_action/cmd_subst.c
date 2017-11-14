@@ -1,7 +1,7 @@
 #include "lexer.h"
 #include "libft.h"
-
 #include <stdio.h>
+
 int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info)
 {
 	ssize_t	*info;

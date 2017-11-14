@@ -1,6 +1,6 @@
 #include "libft.h"
 #include "array.h"
-#include "env.h"
+#include "environ.h"
 #include "hash_table.h"
 
 t_env	*singleton_env(void)

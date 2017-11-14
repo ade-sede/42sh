@@ -14,6 +14,10 @@ int		lex_action_param_exp(t_lexer *lex, ssize_t **state_info)
 		push_state(lex, QUOTES);
 	else if (lex->line[lex->pos] == ' ' || lex->line[lex->pos] == '\t')
 		pop_state(lex, state_info);
+	else if (CHAR_IS_OPERATOR(lex->line[lex->pos]))
+		pop_state(lex, state_info);
+	else if (lex->line[lex->pos] == '"')
+		pop_state(lex, state_info);
 	else if (lex->line[lex->pos] == '`')
 		pop_state(lex, state_info);
 	else if (lex->line[lex->pos] == '\n')

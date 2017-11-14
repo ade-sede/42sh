@@ -1,5 +1,6 @@
 #include "line_editing.h"
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 
 /*
 **	Functions used to temper with the terminal's configuration.

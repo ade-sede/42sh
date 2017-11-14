@@ -59,28 +59,6 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 	exit(1);
 }
 
-int		p_fork(void)
-{
-	pid_t	pid;
-
-	pid = fork();
-	if (pid < 0)
-	{
-		perror ("fork");
-		exit (1);
-	}
-	return (pid);
-}
-
-void	p_pipe(int	mypipe[2])
-{
-	if (pipe (mypipe) < 0)
-	{
-		perror ("pipe");
-		exit (1);
-	}
-}
-
 void	launch_job(t_job_control *jc, t_job *j, int foreground)
 {
 	t_process	*p;

@@ -1,6 +1,6 @@
 #ifndef BUILTIN_H
 # define BUILTIN_H
-# include "env.h"
+# include "t_env.h"
 # include "history.h"
 # include "fcntl.h"
 
@@ -83,11 +83,12 @@ int				builtin_jobs(t_env *env, const char **argv);
 */
 
 int				builtin_set(t_env *env, const char **argv);
-void			set_pos_par(t_env *env, int x, int argc, const char **argv);
-int				match_name_option(const char *argv);
-void			print_current_option(t_env *env);
-void			print_all_option(t_env *env);
 
+
+int			builtin_shopt(t_env *env, const char **argv);
+
+int			builtin_shift(t_env *env, const char **argv);
+int			builtin_export(t_env *env, const char **argv);
 /*
 ** In file history.c
 */

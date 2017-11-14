@@ -1,5 +1,5 @@
 #include "line_editing.h"
-#include "env.h"
+#include "t_env.h"
 #include <stdio.h>
 #include "failure.h"
 #include "color.h"
@@ -19,8 +19,9 @@ void	edit_refresh_line(t_line *line)
 	t_coor pos;
 
 	term_putstr(line);
+	/* ft_putstr_fd(line->buff, 2); */
 	pos = get_char_visual_coor(line, line->len);
-	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n'))
+	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n' && line->buff[line->pos - 1] != '\t'))
 		put_termcap("do");
 }
 

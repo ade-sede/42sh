@@ -1,4 +1,5 @@
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 #include "exec.h"
 #include "libft.h"
 #include "hash_table.h"
@@ -38,9 +39,7 @@ static const char	**apply_opt(t_env *env, const char **argv, int *error)
 			return (argv);
 	}
 	return (argv);
-}
-
-static const char	**build_new_env(t_env *env, const char **argv, int *error)
+} static const char	**build_new_env(t_env *env, const char **argv, int *error)
 {
 	int	eq_index;
 
