@@ -24,10 +24,15 @@ int		lex_action_param_exp(t_lexer *lex, ssize_t **state_info)
 		pop_state(lex, state_info);
 	else if (lex->line[lex->pos] == ')')
 		pop_state(lex, state_info);
-	else if (lex->line[lex->pos] == '(' && info[_T_COUNT] == 1)
+	else if (lex->line[lex->pos] == '(')
 	{
-		change_state(lex, CMD_SUBST);
-		consume_input(lex);
+		if (lex->pos - info[_T_START] == 1)
+		{
+			change_state(lex, CMD_SUBST);
+			consume_input(lex);
+		}
+		else
+			pop_state(lex, state_info);
 	}
 	else
 		consume_input(lex);

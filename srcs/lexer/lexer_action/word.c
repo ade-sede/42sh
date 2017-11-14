@@ -15,7 +15,7 @@ int		lex_action_word(t_lexer *lex, ssize_t **state_info)
 	else if (lex->line[lex->pos] == '(' || lex->line[lex->pos] == ')')
 	{
 		info = lex->state->data;
-		if (info[_T_COUNT] != 0)
+		if (lex->pos - info[_T_START] != 0)
 			pop_state(lex, state_info);
 		else
 		{

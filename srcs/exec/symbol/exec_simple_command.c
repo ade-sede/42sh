@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 14:48:38 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/14 14:59:05 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/11/14 18:53:16 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	exec_assignment_word(t_ast *ast)
 {
 	char		**word_expanded;
 	
+	dprintf(2, "yip\n");
 	word_expanded = word_expansion(ft_strchr(ast->token->value, '=') + 1, NO_GLOBBING | NO_FIELDSPLITING);
 	if (word_expanded[0])
 		local_add_change_from_string(&singleton_env()->local, ast->token->value);
@@ -92,7 +93,7 @@ char	*extract_word(t_ast *ast)
 	return (ft_strdup(ast->token->value));
 }
 
-char	**get_cmd_name(t_ast *ast)
+char	**get_cmd_name(t_ast *ast, int flag)
 {
 	char 	*word = NULL;
 
@@ -100,7 +101,7 @@ char	**get_cmd_name(t_ast *ast)
 		word = ast->child[1]->child[0]->token->value;
 	else if (is_symb(ast->child[0], CMD_NAME))
 		word = ast->child[0]->child[0]->token->value;
-	return (word ? word_expansion(word, 0): NULL);
+	return (word ? word_expansion(word, flag): NULL);
 }
 
 /*
@@ -119,11 +120,10 @@ int		exec_simple_command(t_ast *ast)
 	t_ast	*cmd_suffix = NULL;
 	t_ast	*fct_body = NULL;
 
-	exec_cmd_prefix(ast, &redirect_list);
 	if (is_symb(ast->child[0], CMD_PREFIX))
 		exec_cmd_prefix(ast->child[0], &redirect_list);
 
-	av = get_cmd_name(ast);
+	av = get_cmd_name(ast, 0);
 
 	if (is_symb(ast->child[1], CMD_SUFFIX))
 		cmd_suffix = ast->child[1];
@@ -137,7 +137,7 @@ int		exec_simple_command(t_ast *ast)
 	}
 	exec_dup(redirect_list);
 	
-	if (av)
+	if (av && av[0])
 	{
 		if ((fct_body = get_function(singleton_env(), av[0])))
 			return (exec_function(fct_body, av));

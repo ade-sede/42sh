@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "libft.h"
 #include "exec.h"
+#include <pwd.h>
 
 void	read_args(int ac, char **av, int *stream, char **buf, int *c_opt)
 {
@@ -30,17 +31,28 @@ void	read_args(int ac, char **av, int *stream, char **buf, int *c_opt)
 		exit(1);
 	}
 }
+
+#include <stdio.h>
 void	read_pointrc(t_env *env)
 {
 	char	*buff;
 	int		fd;
+	uid_t	uid;
+	struct passwd *pw;
 
 	(void)env;
-	if ((fd = open("/Users/seddaoud/.42shrc", O_RDONLY)) == -1)
+
+	uid = getuid();
+	pw = getpwuid(uid);
+	/* Check null */
+	char	*tmp = ft_strjoin(pw->pw_dir, "/.42shrc");
+	if ((fd = open(tmp, O_RDONLY)) == -1)
 	{
+		free(tmp);
 		perror("");
 		return ;
 	}
+	free(tmp);
 	buff = file_get_input(fd);
 	lex_and_parse(NULL, buff);
 	free(buff);

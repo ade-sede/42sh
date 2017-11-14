@@ -71,35 +71,33 @@ int		parse_squote (t_word *g_word, t_word *word, const char *words, size_t *offs
 }
 
 /*  after " */
-int		parse_dquote (t_word *g_word, t_word *word,
-		const char *words, size_t *offset,
-		t_expand *exp, const char *ifs)
+int		parse_dquote (t_expand *exp)
 {
-	while (words[*offset])
+	while (exp->words[exp->offset])
 	{
-		if (words[*offset] == '"')
+		if (exp->words[exp->offset] == '"')
 			return 0;
-		else if (words[*offset] == '\\')
-			parse_qtd_backslash (g_word, word, words, offset);
-		else if (words[*offset] == '$')
-			parse_dollars (g_word, word, words, offset, exp, ifs, 1);
-		else if (words[*offset] == '`')
+		else if (exp->words[exp->offset] == '\\')
+			parse_qtd_backslash (&exp->g_word, &exp->word, exp->words, &exp->offset);
+		else if (exp->words[exp->offset] == '$')
+			parse_dollars (exp);
+		else if (exp->words[exp->offset] == '`')
 		{
-			++(*offset);
-			parse_backtick (g_word, word, words, offset, exp, ifs, 1);
+			++(exp->offset);
+			parse_backtick (exp);
 		}
-		else if (ft_strchr("*[?", words[*offset]))
+		else if (ft_strchr("*[?", exp->words[exp->offset]))
 		{
-			w_addchar (g_word, '\\');
-			w_addchar (g_word, words[*offset]); 
-			w_addchar (word, words[*offset]);
+			w_addchar (&exp->g_word, '\\');
+			w_addchar (&exp->g_word, exp->words[exp->offset]); 
+			w_addchar (&exp->word, exp->words[exp->offset]);
 		}
 		else
 		{
-			w_addchar (g_word, words[*offset]);
-			w_addchar (word, words[*offset]);
+			w_addchar (&exp->g_word, exp->words[exp->offset]);
+			w_addchar (&exp->word, exp->words[exp->offset]);
 		}
-		++(*offset);
+		++(exp->offset);
 	}
 	return (WRDE_SYNTAX);
 }

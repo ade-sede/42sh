@@ -7,23 +7,20 @@
 #include "expand.h"
 
 /*  on "~" */
-int parse_tilde (t_word *g_word, t_word *word,
-             const char *words, size_t *offset)
+int parse_tilde (t_expand *exp)
 {
-	(void)words;
-	(void)offset;
       char* home;
 
       home = getenv ("HOME");
       if (home != NULL)
 	  {
-          w_addstr (word, home);
-          w_addstr (g_word, home);
+          w_addstr (&exp->word, home);
+          w_addstr (&exp->g_word, home);
 	  }
       else
 	  {
-		  w_addchar (word, '~');
-		  w_addchar (g_word, '~');
+		  w_addchar (&exp->word, '~');
+		  w_addchar (&exp->g_word, '~');
 	  }
 	  return (1);
 }
