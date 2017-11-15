@@ -22,7 +22,7 @@ int		func_cmp(t_matches *m, int to_match_i, int regex_i);
 
 t_list	*glob(char *regex);
 t_list	*expand_curly_brackets(char *expr);
-void	curly_brackets(t_list **res, char *expr);
+void	curly_brackets(t_list **res, char *expr, int offset);
 void	curly_brackets_range_alpha(t_list **res, char *expr, char *str, \
 		int end);
 void	curly_brackets_range_num(t_list **res, char *expr, char *str, int end);

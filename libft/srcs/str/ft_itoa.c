@@ -3,6 +3,18 @@
 #include "alloc.h"
 #include "mem.h"
 
+void	ft_itoa_word(int n, char nbr[20])
+{
+	char	*res;
+
+	ft_bzero(nbr, 20);
+	res = ft_itoa_base(n, 10);
+	int		i = -1;
+	while (res[++i])
+		nbr[i] = res[i];
+	free(res);
+}
+
 char	*ft_itoa(int n)
 {
 	return (ft_itoa_base(n, 10));

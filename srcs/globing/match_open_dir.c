@@ -52,7 +52,7 @@ int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
 		cpy_to_match[1] = m->to_match;
 		if (dirent->d_name[0] != '.' || \
 				(dirent->d_name[0] == '.' && m->regex[regex_i] == '.'))
-			bool_match |= (match(m, to_match_i + 1, regex_i));
+			bool_match |= (match(m, m->to_match[to_match_i] == '\0' ? to_match_i : to_match_i + 1, regex_i));
 		free(cpy_to_match[1]);
 	}
 	closedir(dir);

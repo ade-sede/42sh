@@ -30,7 +30,7 @@ int		stop_condition(t_matches *m)
 
 int		match(t_matches *m, int to_match_i, int regex_i)
 {
-	if (m->to_match[to_match_i] == '\0' && m->regex[regex_i] == '\0')
+	if (m->to_match[to_match_i] == '\0' && m->regex[regex_i] == '\0') //attention
 		return (stop_condition(m));
 	else if (m->to_match[to_match_i] == '\0' && m->regex[regex_i] != '\0' \
 			&& m->regex[regex_i] != '*' && m->regex[regex_i] != '/')

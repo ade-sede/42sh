@@ -283,4 +283,6 @@ int					ft_str_is_clr(char *str);
 int					ft_str_isdigit(const char *s);
 
 int					ft_is_backslash(char *str, int n);
+
+void	ft_itoa_word(int n, char nbr[20]);
 #endif
