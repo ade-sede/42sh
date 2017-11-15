@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 14:48:38 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/14 18:53:16 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/11/15 12:26:01 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,10 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 **	                 ;
 */
 
-#include <stdio.h>
 void	exec_assignment_word(t_ast *ast)
 {
 	char		**word_expanded;
 	
-	dprintf(2, "yip\n");
 	word_expanded = word_expansion(ft_strchr(ast->token->value, '=') + 1, NO_GLOBBING | NO_FIELDSPLITING);
 	if (word_expanded[0])
 		local_add_change_from_string(&singleton_env()->local, ast->token->value);

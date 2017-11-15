@@ -37,15 +37,16 @@ void	read_pointrc(t_env *env)
 {
 	char	*buff;
 	int		fd;
-	uid_t	uid;
-	struct passwd *pw;
+	char	*tmp;
 
+	tmp = ft_gethome();
+	/* CHECK THIS */
+	if (tmp)
+		tmp = ft_strjoin(tmp, "/.42shrc");
+	else
+		return ;
 	(void)env;
 
-	uid = getuid();
-	pw = getpwuid(uid);
-	/* Check null */
-	char	*tmp = ft_strjoin(pw->pw_dir, "/.42shrc");
 	if ((fd = open(tmp, O_RDONLY)) == -1)
 	{
 		free(tmp);

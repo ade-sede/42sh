@@ -12,9 +12,7 @@ int		local_add_from_key_value(t_list **first, const char *key, const char *value
 	local = create_local(key, value);
 	ft_simple_lst_pushback(first, ft_simple_lst_create(local));
 	if (singleton_env()->option & ALLEXPORT)
-	{
 		env_add_change(singleton_env(), key, value);
-	}
 	return (1);
 }
 

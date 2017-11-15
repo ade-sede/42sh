@@ -8,8 +8,6 @@ int		lex_action_quotes_le(t_lexer *lex, ssize_t **state_info, t_line *line)
 
 	if (lex->line[lex->pos] == 0)
 		return (FALSE);
-	if (lex->line[lex->pos] == '\\')
-		push_state_le(lex, BS);
 	else if (lex->line[lex->pos] ==  '\'')
 	{
 		info = lex->state->data;
