@@ -7,13 +7,13 @@
 **	storing many infos about the token.
 */
 
-t_token		*create_token(const char *source, struct s_info *info)
+t_token		*create_token(const char *source, struct s_info *info, size_t end_index)
 {
 	t_token		*token;
 
 	token = ft_memalloc(sizeof(*token) * 1);
 	token->value = ft_strdup(info->value);
-	token->delim = source[info->end + 1];
+	token->delim = source[end_index];
 	token->state_info = info;
 	token->id = 0;
 	return (token);

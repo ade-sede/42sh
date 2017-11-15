@@ -12,12 +12,12 @@ int		lex_action_cmd_subst(t_lexer *lex, struct s_info **state_info)
 	else if (lex->line[lex->pos] == '\\')
 		push_state(lex, BS);
 	/* else if (lex->line[info[_T_START]] == '`') */
-	else if (lex->line[info->start])
+	else if (info->value[0] == '`')
 	{
 		if (lex->line[lex->pos] == '`')
 		{
 			/* if (lex->pos - info[_T_START] == 0) */
-			if (lex->pos - info->start == 0)
+			if (info->count == 0)
 			{
 				consume_input(lex);
 			}

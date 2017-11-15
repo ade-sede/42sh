@@ -56,9 +56,6 @@ static int	(*get_action(ssize_t state))(t_lexer *, struct s_info **)
 	i = 0;
 	while (g_lex_action[i].state != state)
 		++i;
-#ifdef LEXER_DEBUG
-	/* dprintf(2, "Get action returned action %ld\n", g_lex_action[i].state);//			REMOVE */		
-#endif
 	return (g_lex_action[i].func);
 }
 
@@ -75,13 +72,13 @@ t_token	*get_token(t_lexer *lex)
 	state_info = NULL;
 
 	/* DELIM */
-	while (ret && !(state_info && state_info->end != -1 && ((struct s_info*)lex->state->data)->state == DEFAULT))
-		ret = get_action(((ssize_t*)lex->state->data)[_T_STATE])(lex, &state_info);
+	while (ret && !(state_info && state_info->count != 0 && ((struct s_info*)lex->state->data)->state == DEFAULT))
+		ret = get_action(((struct s_info*)lex->state->data)->state)(lex, &state_info);
 
 	/* Check for errors */
-	if (((ssize_t*)lex->state->data)[_T_STATE] == DEFAULT) /* If everything is ok, TOKENIZE */
+	if (((struct s_info*)lex->state->data)->state == DEFAULT) /* If everything is ok, TOKENIZE */
 	{
-		token = create_token(lex->line, state_info);
+		token = create_token(lex->line, state_info, lex->pos);
 		get_token_id(lex, token);
 	}
 	else

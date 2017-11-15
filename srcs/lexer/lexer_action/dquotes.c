@@ -13,7 +13,7 @@ int		lex_action_dquotes(t_lexer *lex, struct s_info **state_info)
 	{
 		info = lex->state->data;
 		/* if (lex->pos - info[_T_START] != 0) */
-		if (lex->pos - info->start != 0)
+		if (info->count != 0)
 		{
 			consume_input(lex);
 			pop_state(lex, state_info);

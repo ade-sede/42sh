@@ -40,7 +40,8 @@ int		free_lexer(t_lexer *lex)
 {
 	if (lex->reversed_list)
 		ft_simple_lst_remove(&lex->reversed_list, NULL);
-	ft_simple_lst_remove(&lex->state_list, ft_free);
+	if (lex->state_list)
+		ft_simple_lst_remove(&lex->state_list, free_info);
 	free(lex->line);
 	return (1);
 }
@@ -49,7 +50,8 @@ int		free_lexer_le(t_lexer *lex)
 {
 	if (lex->reversed_list)
 		ft_simple_lst_remove(&lex->reversed_list, NULL);
-	ft_simple_lst_remove(&lex->state_list, ft_free);
+	if (lex->state_list)
+		ft_simple_lst_remove(&lex->state_list, ft_free);
 	free(lex->line);
 	return (1);
 }

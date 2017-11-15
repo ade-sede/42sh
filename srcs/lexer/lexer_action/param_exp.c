@@ -27,7 +27,7 @@ int		lex_action_param_exp(t_lexer *lex, struct s_info **state_info)
 	else if (lex->line[lex->pos] == '(')
 	{
 		/* if (lex->pos - info[_T_START] == 1) */
-		if (lex->pos - info->start == 1)
+		if (info->count == 1)
 		{
 			change_state(lex, CMD_SUBST);
 			consume_input(lex);

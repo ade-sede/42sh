@@ -9,10 +9,11 @@ int		lex_action_bs(t_lexer *lex, struct s_info **state_info)
 	if (lex->line[lex->pos] == 0)
 		return (FALSE);
 	/* else if (lex->pos - info[_T_START] == 2) */
-	else if (lex->pos - info->start == 2)
+	else if (info->count == 2)
 	{
 		/* if (lex->line[info[_T_START] + 1] == '\n' && lex->line[lex->pos] == 0) */
-		if (lex->line[info->start + 1] == '\n' && lex->line[lex->pos] == 0)
+		/* if (lex->line[info->start + 1] == '\n' && lex->line[lex->pos] == 0) */
+		if (info->value[1] == '\n' && lex->line[lex->pos] == 0)
 			return (FALSE);
 		pop_state(lex, state_info);
 	}

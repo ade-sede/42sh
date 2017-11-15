@@ -84,16 +84,12 @@ static char	*get_id(int id)
 	return (g_debug_token_id[i].name);
 }
 
-static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size, size_t *state_size, size_t *id_size, size_t *end_size, size_t *start_size)
+static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size, size_t *state_size, size_t *id_size)
 {
 	t_token	*token = NULL;
-	char	*itoa_end = NULL;
-	char	*itoa_start = NULL;
 	size_t	token_value_size = 0;
 	size_t	token_id_size = 0;
 	size_t	token_state_size = 0;
-	size_t	token_start_size = 0;
-	size_t	token_end_size = 0;
 
 	while (token_list)
 	{
@@ -114,22 +110,6 @@ static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size
 		if (token_id_size > *id_size)
 			*id_size = token_id_size;
 
-		/* end */
-		itoa_end = ft_itoa_base(token->state_info->end, 10);
-		token_end_size = ft_strlen(itoa_end);
-		free(itoa_end);
-		if (token_end_size > *end_size)
-			*end_size = token_end_size;
-
-		/* state */
-		itoa_start = ft_itoa_base(token->state_info->state, 10);
-		token_start_size = ft_strlen(itoa_start);
-		free(itoa_start);
-		if (token_start_size > *start_size)
-			*start_size = token_start_size;
-
-
-
 
 		/* NUMBER */
 		(*nb)++;
@@ -143,31 +123,22 @@ static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size
 static	int	debug_token_list(t_list *token_list)
 {
 	t_token	*token;
-	char	*end_str;
-	char	*start_str;
 	size_t	value_size = 0;
 	size_t	id_size = 0;
 	size_t	state_size = 0;
-	size_t	start_size = 0;
-	size_t	end_size = 0;
 	size_t	nb = 0;
 	int		i = 1;
 
-	get_debug_tab_info(token_list, &nb, &value_size, &state_size, &id_size, &end_size, &start_size);
+	get_debug_tab_info(token_list, &nb, &value_size, &state_size, &id_size);
 	while (token_list)
 	{
+		token = token_list->data;
 		/* Print bar */
 		printf("%s", i == 1 ? "\u250c" : "\u251c");
 		for (size_t i = 0; i != value_size + 2; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u252c" : "\u253c");
 		for (size_t i = 0; i != id_size + 2; i++)
-			printf("%s", "\u2500");
-		printf("%s", i == 1 ? "\u252c" : "\u253c");
-		for (size_t i = 0; i != start_size + 2; i++)
-			printf("%s", "\u2500");
-		printf("%s", i == 1 ? "\u252c" : "\u253c");
-		for (size_t i = 0; i != end_size + 2; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u252c" : "\u253c");
 		for (size_t i = 0; i != state_size + 2; i++)
@@ -178,10 +149,6 @@ static	int	debug_token_list(t_list *token_list)
 
 		/* Print token */
 
-		token = token_list->data;
-		end_str = ft_itoa_base(token->state_info->end, 10);
-		start_str = ft_itoa_base(token->state_info->start, 10);
-
 		printf("%s", "\u2502");
 		printf(" %s", token->value);
 		for (int i = value_size - ft_strlen(token->value) + 1; i; --i)
@@ -191,22 +158,11 @@ static	int	debug_token_list(t_list *token_list)
 		for (int i = id_size - ft_strlen(get_id(token->id)) + 1; i; --i)
 			printf(" ");
 		printf("%s", "\u2502");
-		printf(" %s", start_str);
-		for (int i = start_size - ft_strlen(start_str) + 1; i; --i)
-			printf(" ");
-		printf("%s", "\u2502");
-		printf(" %s", end_str);
-		for (int i = end_size - ft_strlen(end_str) + 1; i; --i)
-			printf(" ");
-		printf("%s", "\u2502");
 		printf(" %s", get_state(token->state_info->state));
 		for (int i = state_size - ft_strlen(get_state(token->state_info->state)) + 1; i; --i)
 			printf(" ");
 		printf("%s", "\u2502");
 		printf("\n");
-
-		free(end_str);
-		free(start_str);
 
 		i++;
 		token_list = token_list->next;
@@ -217,12 +173,6 @@ static	int	debug_token_list(t_list *token_list)
 		printf("%s", "\u2500");
 	printf("%s", "\u2534");
 	for (size_t i = 0; i != id_size + 2; i++)
-		printf("%s", "\u2500");
-	printf("%s", "\u2534");
-	for (size_t i = 0; i != start_size + 2; i++)
-		printf("%s", "\u2500");
-	printf("%s", "\u2534");
-	for (size_t i = 0; i != end_size + 2; i++)
 		printf("%s", "\u2500");
 	printf("%s", "\u2534");
 	for (size_t i = 0; i != state_size + 2; i++)
@@ -278,6 +228,7 @@ int		get_token_list(t_lexer *lex, t_list **token_list, t_list *alias_list)
 	(void)alias_list;
 	while (lex->line[lex->pos] && (token = get_token(lex)) != NULL)
 	{
+		dprintf(2, "%s\n", token->value);
 		/* If token is a whitespace or a comment, discard it. Otherwise proceed to concatenation */
 
 		/* If token is a cmd_name, alias expand it. */
