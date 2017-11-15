@@ -20,8 +20,7 @@ static t_edit_func	g_edit_func[] =
 	{KEY_CTRL_D, &control_d},
 	{KEY_DELETE, &edit_del},
 	{KEY_CTRL_L, &control_l},
-	{0, NULL}
-};
+	{0, NULL} };
 
 /*
 **	Calls the routine corresponding to the keycode. If the keycode doesnt
@@ -63,6 +62,27 @@ static void			init_read(t_line *l, unsigned long *keycode)
 
 int	g_abort_opening;
 
+static int		end_of_input(t_line *line, int keycode)
+{
+	if (line->read_builtin)
+	{
+		if (line->read->nchars && line->read->nchars == (int)line->len)
+			return (1);
+		if (line->read->delim == KEY_ENTER && keycode == KEY_ENTER)
+			if (line->verbatim)
+				return (0);
+		if ((char)keycode == line->read->delim)
+			return (1);
+	}
+	else if (keycode == KEY_ENTER)
+	{
+		if (line->verbatim)
+			return (0);
+		return (1);
+	}
+	return (0);
+}
+
 char				*edit_get_input(void)
 {
 	unsigned long	keycode;
@@ -84,18 +104,9 @@ char				*edit_get_input(void)
 			l->col_target = -1;
 		if (btsearch_get_input(l, keycode) || history_get_input(l, keycode) || comple_get_input(l, keycode))
 			continue ;
-		if ((keycode == KEY_ENTER)|| (char)keycode == (l->read).delim)
-		{
-			/* if (keycode == KEY_ENTER && l->verbatim) */
-			/* 	edit_add(keycode, l); */
-			if (keycode == KEY_ENTER && KEY_ENTER != (l->read).delim)
-				edit_add(keycode, l);
-			else
-				return (edit_exit(l));
-		}
-		edit_loop(keycode, l);
-		if (l->read.nchars && l->read.nchars == (int)l->len) 
+		if (end_of_input(l, keycode))
 			return (edit_exit(l));
+		edit_loop(keycode, l);
 	}
 	return (NULL);
 }

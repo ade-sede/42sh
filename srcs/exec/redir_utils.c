@@ -11,7 +11,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-static int	safe_open(char *target, int mode)
+int	safe_open(char *target, int mode)
 {
 	int		target_fd;
 

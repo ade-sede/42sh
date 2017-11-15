@@ -36,7 +36,9 @@ void		edit_line_init(t_line *line, void (*sig_handler)(void))
 	line->old_pos = 0;
 	line->len = 0;
 	line->sig_handler = sig_handler;
-	line->read.delim = '\n';
-	line->read.flags = 0;
-	line->read.nchars = 0;
+	line->read = NULL;
+	line->read_builtin = 0;
+	//line->read.delim = '\n';
+	//line->read.flags = 0;
+	//line->read.nchars = 0;
 }
