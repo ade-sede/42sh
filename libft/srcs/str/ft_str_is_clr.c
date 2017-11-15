@@ -9,8 +9,23 @@ int		ft_str_is_clr(char *str)
 	while (str[i])
 	{
 		if (!ft_is_space(str[i]))
-			return (0);
+			return (FALSE);
 		i++;
 	}
-	return (1);
+	return (TRUE);
+}
+
+int		ft_str_is_clear_n(char *str, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] && n)
+	{
+		if (!ft_is_space(str[i]))
+			return (FALSE);
+		--n;
+		++i;
+	}
+	return (TRUE);
 }

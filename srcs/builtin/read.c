@@ -17,8 +17,7 @@ static void			backslash(char **line, char **word, char quote)
 		ft_strpush(word, '\n');
 	if (quote && **line == 't')
 		ft_strpush(word, '\t');
-	if (quote && **line == 'v')
-		ft_strpush(word, '\v');
+	if (quote && **line == 'v') ft_strpush(word, '\v');
 	if (quote && **line == 'a')
 		ft_strpush(word, '\a');
 	if (quote && **line == 'b')
@@ -116,20 +115,31 @@ int					builtin_read(t_env *env, const char **argv)
 	options.nchars = 0;
 	options.delim = '\n';
 
-	if (!parse_option(&options, &argv))
-		return (2);
-	conf_term_canonical();
+	/*
+	**if (!parse_option(&options, &argv))
+		**return (2);
+	*/
+	
+	if (!(error = parse_option(&options, &argv)) || error == 2)
+		return !(error) ? 2 : 1;
+	if (isatty(options.fd))
+		conf_term_non_canonical();
 	load_prompt(env, line, NULL,options.prompt ?options.prompt: "read> ");//"$> ");
 	ft_putstr("\033[31m");// fd (2)
 	put_prompt(line);
 	ft_putstr("\x1b[0m");// fd (2)
 	edit_line_init(singleton_line(), &edit_set_signals_reopen);
-	line->read = options;
+	line->read = &options;
+	line->read_builtin = 1;
 	values = edit_get_input();
-	conf_term_canonical();
+	if (isatty(options.fd))
+		conf_term_canonical();
 	split = split_values(values, options);
 	//free(values);
 	assign_values((char**)argv, split, env);
+	line->read_builtin ^= error;
+	line->read = NULL;
+	ft_bzero(line->buff, ft_strlen(line->buff));
 	//ft_parrfree((void**)split);
 	//line->read = options;
 	//ft_putchar('"');	

@@ -283,4 +283,5 @@ int					ft_str_is_clr(char *str);
 int					ft_str_isdigit(const char *s);
 
 int					ft_is_backslash(char *str, int n);
+int					ft_str_is_clear_n(char *str, size_t n);
 #endif

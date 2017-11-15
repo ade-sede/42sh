@@ -204,6 +204,7 @@ SRC_FILE = \
 		   line_editing/edit_signals.c \
 		   line_editing/edit_write.c \
 		   line_editing/put_termcap.c \
+		line_editing/edit_verbatim.c \
 		   \
 		   parser/get_action.c \
 		   parser/parse_redir.c \
