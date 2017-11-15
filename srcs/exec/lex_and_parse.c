@@ -16,8 +16,12 @@ void	exec_main_loop(t_ast *ast)
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_canonical();
 	singleton_env()->previous_exit = exec(ast);
+	//ft_putendl("4");
+	//sleep(5);
 	if (singleton_jc()->shell_is_interactive)
-		conf_term_non_canonical();
+		conf_term_non_canonical(); //leaks
+	//sleep(5);
+	//ft_putendl("fin");
 }
 
 void	remove_lexer(t_lexer *lex)
@@ -55,27 +59,51 @@ void	lex_and_parse(t_ast *ast, char *buff)
 	init_parser(&parser);
 	while (!((res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS) || res_parser == PARSER_ERROR))
 	{
+//	ft_putendl("Db");
+//	sleep(5);
+//	ft_putendl("Db");
 		token_list = NULL;
 		res_lexer = get_token_list(&lexer, &token_list, NULL);
+//	sleep(5);
+//	ft_putendl("1");
 		if (res_lexer == LEXER_REOPEN)
 		{
+//	sleep(5);
+//	ft_putendl("2");
 			reopen_token = ft_memalloc(sizeof(*reopen_token) * 1);
 			reopen_token->value = ft_strdup("quoted");
 			reopen_token->state_info = NULL;
 			reopen_token->delim = 0;
 			reopen_token->id = 42;
 			ft_simple_lst_pushback(&token_list, ft_simple_lst_create(reopen_token));
+//	sleep(5);
+//	ft_putendl("3");
 		}
-		res_parser = parse(&parser, &ast, token_list);
+//	sleep(5);
+//	ft_putendl("4");
+		res_parser = parse(&parser, &ast, token_list); //leaks
+//	sleep(5);
+//	ft_putendl("5");
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{
+//	sleep(5);
+//	ft_putendl("6");
 			reopen_line_editing(&lexer, &parser);
 			token_list = NULL;
 			if (g_abort_opening)
 				break ;
 		}
+//	sleep(5);
+//	ft_putendl("Fb");
 	}
+//	ft_putendl("0");
+//	sleep(5);
+//	ft_putendl("1");
 	if (res_parser == PARSER_SUCCESS && !g_abort_opening)
-		exec_main_loop(ast);
+		exec_main_loop(ast); // leaks
+//	sleep(5);
+//	ft_putendl("??");
 	quit_lex_and_parse(&lexer, &parser);
+//	sleep(5);
+//	ft_putendl("3");
 }

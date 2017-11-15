@@ -65,7 +65,7 @@ int		main(int ac, char **av)
 		conf_term_in();
 	create_ternary_tree(env);
 	history_load(singleton_hist());
-	read_pointrc(env);
+	read_pointrc(env); //6 leaks
 	main_loop(env, stream, buff_c_opt, c_opt);
 	env_free_env(env);
 	return (0);

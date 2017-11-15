@@ -3,6 +3,7 @@
 # include "libft.h"
 # include "line_editing.h"
 # include "fcntl.h"
+#include <sys/time.h>
 
 typedef struct	s_hist
 {
@@ -24,7 +25,7 @@ typedef struct s_cmd_node
 {
 	char				*line;
 	int					index; // La ou se trouvait le curseur.
-	char				*timestamp;
+	struct timeval		timestamp;
 }				t_cmd_node;
 
 t_hist			*singleton_hist(void);
@@ -62,7 +63,7 @@ void			btsearch_first_search(t_hist *h);
 void			create_strstr_btsearch_buff(t_list_d *item);
 
 void			history_append_command_to_list(char *command);
-void			history_write_to_histfile(void);
+void			history_write_to_histfile(t_list_d *l);
 void			history_line_refresh(t_line *line, char *new_line);
 
 /*

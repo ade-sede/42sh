@@ -69,7 +69,7 @@ void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt)
 		else
 			buff = file_get_input(stream);
 		if (!ft_strequ(buff, "\n"))
-			lex_and_parse(NULL, buff);
+			lex_and_parse(NULL, buff); //leaks
 		free(buff);
 		if (!singleton_jc()->shell_is_interactive)
 			exit (0);

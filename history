@@ -29,15 +29,15 @@ shell option
 
 builtin history
 
-	history [n]				affiche n derniere line de l'history, si (HISTTIMEFORMAT) definie :il est afficher  	  	parcourt de liste
-	history -c				clear list (HISTCMD)																		destruction de liste
-	history -d offset		detruit un maillon(situer a offset) (HISTCMD)												destruction de maillon
+o-	history [n]				affiche n derniere line de l'history, si (HISTTIMEFORMAT) definie :il est afficher  	  	parcourt de liste
+o	history -c				clear list (HISTCMD)																		destruction de liste
+o	history -d offset		detruit un maillon(situer a offset) (HISTCMD)												destruction de maillon
 
 		file = (filename ou dans HISTFILE (echec sinon))
-	history -a [filename]	ajoute les nouveau elem de la liste dans $file
-	history -n [filename]	ajoute les nouvelles line de $file a la liste (save la valeur lors du chargement) (un '*' apparait de temps en temps)
-	history -r [filename]	lit $file et ajoute a la liste
-	history -w [filename]	ecrit ce quil y a dans la liste dans $file
+o	history -a [filename]	ajoute les nouveau elem de la liste dans $file
+o	history -n [filename]	ajoute les nouvelles line de $file a la liste (save la valeur lors du chargement) (un '*' apparait de temps en temps)
+o	history -r [filename]	lit $file et ajoute a la liste
+o	history -w [filename]	ecrit ce quil y a dans la liste dans $file
 																					ajout maillon deniere pos, dans fichier
 
 	history -p arg			Effectuer une substitution d'historique sur les arguments et afficher le résultat, ne depend pas de histexpand (sous bash a lair de buggue avec multiline)		bang

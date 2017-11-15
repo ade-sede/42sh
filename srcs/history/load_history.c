@@ -19,9 +19,10 @@ t_cmd_node *ft_node_new(char *cat, int index)
 	t_cmd_node *ret;
 
 	ret = ft_memalloc(sizeof(t_cmd_node));
+//	printf("%lx\n", (long int)ret);
 	ret->index = index;
 	gettimeofday(&ret->timestamp, NULL);
-	ret->line = ft_strdup(cat);
+	ret->line = cat;
 	return (ret);
 }
 
@@ -48,6 +49,11 @@ int			history_load(t_hist *h)
 		return (0);
 	while (get_next_line(fd, &line))
 	{
+		if (!cat && !*line)
+		{
+			free(line);
+			continue ;
+		}
 		if (cat)
 		{
 			cat[ft_strlen(cat) - 1] = '\n';
@@ -57,10 +63,12 @@ int			history_load(t_hist *h)
 			cat = line;
 		if (charcmp(cat, ft_strlen(cat) - 1, '\\'))
 			continue ;
+		++h->last_line_read;
 		routine(h, cat, -1);
 		cat = NULL;
 	}
+//		h->last_read = (h->list) ? h->list->first : NULL;
+//			ft_putendl(((t_cmd_node *)h->last_read->data)->line);
 	close(fd);
-	h->last_read = (h->list) ? h->list->last : NULL;
 	return (1);
 }

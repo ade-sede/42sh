@@ -31,6 +31,7 @@
 */
 
 size_t				ft_strlen(const char *s);
+size_t				ft_strstrlen(const char **s);
 size_t				ft_strlen_color(char *s);
 
 /*

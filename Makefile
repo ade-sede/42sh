@@ -12,7 +12,6 @@ COLOR_BLUE		= \033[1;34m
 COLOR_VIOLET	= \033[1;35m
 COLOR_CYAN		= \033[1;36m
 COLOR_WHITE		= \033[1;37m
-
 # **************************************************************************** #
 SRC_FILE = \
 		   main.c \
@@ -36,6 +35,7 @@ SRC_FILE = \
 		   builtin/unalias.c \
 		   builtin/unset.c \
 		   builtin/unsetenv.c \
+		   builtin/history.c \
 		   \
 		   completion/comple_bin_matches.c \
 		   completion/comple_create_completion_tree.c \
@@ -224,7 +224,6 @@ SRC_FILE = \
 	 \
 	signal/all_signal_dfl.c \
 	signal/all_signal_ign.c
-
 INCLUDES_FILES = \
 				 builtin.h \
 				 shopt.h \
@@ -251,20 +250,16 @@ INCLUDES_FILES = \
 				 t_line.h \
 				 t_ternary_tree.h \
 				 t_token.h
-
 NAME ?= 42sh
-
 # defining those variables allows auto completion to occure.
 APPEND=
 ASAN=
 TEST_FILE=
-
 LIB_DIR = libft
 LIB_INC = -I$(LIB_DIR)/includes
 LOCAL_INC = -Iincludes
 SRC_DIR = srcs
 OBJ_DIR = objs
-
 ifeq ($(ASAN),yes)
 	SANITIZER ?= -fsanitize=address -fno-omit-frame-pointer
 endif
@@ -273,29 +268,20 @@ CFLAGS ?= -g3 -Wall -Wextra -Werror
 CC ?= gcc
 LDFLAGS = -L$(LIB_DIR) -lft -ltermcap
 INCLUDES = $(LOCAL_INC) $(LIB_INC)
-
 INCLUDES_DEP = $(addprefix ./includes/, $(INCLUDES_FILES))
-
 SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
-
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC_FILE:.c=.o))
-
 .phony: all test hello_word lib $(OBJ_DIR) $(NAME) clean fclean re
-
 all: hello_word lib $(OBJ_DIR) $(NAME) $(INCLUDES_DEP)
 	@printf "$(COLOR_CLEAR)$(COLOR_GREEN)successfully created $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
-
 hello_word:
 	@printf "$(COLOR_VIOLET)$(COLOR_UNDERLINE)compiling$(COLOR_NOCOLOR) $(COLOR_BLUE)$(NAME) ...$(COLOR_NOCOLOR)\n"
-
 lib:
 	@make -C $(LIB_DIR) APPEND="$(APPEND)" OPTIMIZATION="$(OPTIMIZATION)" CC="$(CC)"
-
 $(NAME): $(OBJS) 
 	@printf "$(COLOR_GREEN)successfully created objects files for binary $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 	@printf "$(COLOR_VIOLET)creating $(NAME) ... $(COLOR_NOCOLOR)\n"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION)
-
 $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)
 	@/bin/mkdir -p $(OBJ_DIR)/builtin
@@ -319,25 +305,21 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/failure
 	@/bin/mkdir -p $(OBJ_DIR)/signal
 	@/bin/mkdir -p $(OBJ_DIR)/job_control
-
 clean:
 	@make -C $(LIB_DIR) clean
 	@/bin/rm -rf $(OBJ_DIR)
-
 fclean: clean
 	@make -C $(LIB_DIR) fclean
 	@/bin/rm -f $(NAME)
-
 re: fclean
 	make
-
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf "$(COLOR_VIOLET)creating objects files for library $(COLOR_BLUE)$(NAME) ... \n$(COLOR_CYAN)"
 	$(CC) $(OPTIMIZATION) $(CFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) -c -o $@ $^
 	@printf "\n$(COLOR_NOCOLOR)$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_UP)$(COLOR_CLEAR)"
-
 test: 
 	@printf "$(COLOR_VIOLET)compiling test $(TEST_FILE) ... $(COLOR_RESET)\n"
 	@$(CC) -g $(TEST_FILE) $(INCLUDES) $(LDFLAGS) $(SANITIZER) $(APPEND)
 	@printf "$(COLOR_GREEN)done !!! launching $(TEST_FILE) now !!!\n$(COLOR_NOCOLOR)"
 	@./a.out
+#fin

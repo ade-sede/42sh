@@ -65,8 +65,8 @@ int		parse(t_parser *parser, t_ast **ast, t_list *token_list)
 	int			action;
 	t_token		*dollar_token;
 
-	dollar_token = ft_memalloc(sizeof(*dollar_token) * 1);
-	dollar_token->value = ft_strdup("End token");
+	dollar_token = ft_memalloc(sizeof(*dollar_token) * 1); //leaks
+	dollar_token->value = ft_strdup("End token"); //leaks
 	dollar_token->state_info = NULL;
 	dollar_token->delim = 0;
 	dollar_token->id = $;
