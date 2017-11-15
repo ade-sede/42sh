@@ -56,174 +56,189 @@ SRC_FILE = \
 		   \
 		   env/t_env.c \
 		   \
-		env/opt/set_opt.c \
+		   env/opt/set_opt.c \
 		   \
-		env/local/pos_param.c \
-		env/local/local_add.c \
-		env/local/local_remove.c \
-		env/local/local_get.c \
-		env/local/t_local.c \
-			\
-	env/environ/env_add.c \
-	env/environ/env_remove.c \
-	env/environ/environ.c \
-	env/environ/load_base_env.c \
-	\
-	\
-	env/prompt/get_ps1.c \
-	env/prompt/prompt.c \
-	env/prompt/prompt_zsh.c \
-	\
-	exec/debug_symbol.c \
-	exec/debug_token.c \
-	exec/exec_asynchronous_list.c \
-	exec/exec_bin.c \
-	exec/exec_function.c \
-	exec/exec_io_redirect.c \
-	exec/exec_redir.c \
-	exec/exec_redirect_list.c \
-	exec/exec_utils.c \
-	exec/lex_and_parse.c \
-	exec/main_loop.c \
-	exec/redir_utils.c \
-	\
-	\
-	\
-	exec/symbol/exec.c \
-	exec/symbol/exec_and_or.c \
-	exec/symbol/exec_brace_group.c \
-	exec/symbol/exec_case_clause.c \
-	exec/symbol/exec_command.c \
-	exec/symbol/exec_complete_command.c \
-	exec/symbol/exec_complete_commands.c \
-	exec/symbol/exec_compound_command.c \
-	exec/symbol/exec_compound_list.c \
-	exec/symbol/exec_do_group.c \
-	exec/symbol/exec_else_part.c \
-	exec/symbol/exec_for_clause.c \
-	exec/symbol/exec_function_body.c \
-	exec/symbol/exec_function_definition.c \
-	exec/symbol/exec_if_clause.c \
-	exec/symbol/exec_pipe_sequence.c \
-	exec/symbol/exec_pipeline.c \
-	exec/symbol/exec_program.c \
-	exec/symbol/exec_simple_command.c \
-	exec/symbol/exec_subshell.c \
-	exec/symbol/exec_term.c \
-	exec/symbol/exec_until_clause.c \
-	exec/symbol/exec_while_clause.c \
-	\
-	failure/get_errno_1.c \
-	failure/get_errno_2.c \
-	failure/get_errno_3.c \
-	failure/return_failure.c \
-	\
-	globing/curly_bracket_split.c \
-	globing/curly_brackets.c \
-	globing/curly_brackets_is_range.c \
-	globing/curly_brackets_range.c \
-	globing/glob.c \
-	globing/match.c \
-	globing/match_open_dir.c \
-	globing/square_bracket.c \
-	globing/star.c \
-	\
-	env/hash_table/hash.c \
-	env/hash_table/hash_free.c \
-	\
-	history/btsearch_add.c \
-	history/btsearch_del.c \
-	history/btsearch_exit.c \
-	history/btsearch_get_input.c \
-	history/btsearch_init.c \
-	history/btsearch_move.c \
-	history/btsearch_refresh.c \
-	history/btsearch_signals.c \
-	history/expansion.c \
-	history/history_get_input.c \
-	history/history_init.c \
-	history/history_line_refresh.c \
-	history/history_move.c \
-	history/history_write.c \
-	history/load_history.c \
-	\
-	job_control/job_background.c \
-	job_control/job_continue.c \
-	job_control/job_fill_process_av.c \
-	job_control/job_foreground.c \
-	job_control/job_format.c \
-	job_control/job_init.c \
-	job_control/job_launch.c \
-	job_control/job_mark_status.c \
-	job_control/job_notification.c \
-	job_control/job_utils.c \
-	job_control/job_wait.c \
-	job_control/singleton_jc.c \
-	\
-	lexer/get_token.c \
-	lexer/get_token_list.c \
-	lexer/lexer_construct_prompt.c \
-	lexer/t_lexer.c \
-	lexer/t_token.c \
-	lexer/utils.c \
-	\
-	lexer/id/get_token_id.c \
-	lexer/id/operator.c \
-	lexer/id/reserved_words.c \
-	lexer/id/words.c \
-	\
-	lexer/lexer_action/bs.c \
-	lexer/lexer_action/cmd_subst.c \
-	lexer/lexer_action/comment.c \
-	lexer/lexer_action/default.c \
-	lexer/lexer_action/dquotes.c \
-	lexer/lexer_action/newline.c \
-	lexer/lexer_action/operator.c \
-	lexer/lexer_action/param_exp.c \
-	lexer/lexer_action/quotes.c \
-	lexer/lexer_action/whitespace.c \
-	lexer/lexer_action/word.c \
-	\
-	line_editing/conf_term.c \
-	line_editing/edit_add.c \
-	line_editing/edit_control_d.c \
-	line_editing/edit_control_l.c \
-	line_editing/edit_copy_paste.c \
-	line_editing/edit_cursor.c \
-	line_editing/edit_del.c \
-	line_editing/edit_exit.c \
-	line_editing/edit_get_coor.c \
-	line_editing/edit_get_input.c \
-	line_editing/edit_init.c \
-	line_editing/edit_insert_str.c \
-	line_editing/edit_move.c \
-	line_editing/edit_move_arrows.c \
-	line_editing/edit_move_cursor.c \
-	line_editing/edit_refresh.c \
-	line_editing/edit_reopen.c \
-	line_editing/edit_signals.c \
-	line_editing/edit_write.c \
-	line_editing/put_termcap.c \
-	\
-	parser/get_action.c \
-	parser/parse_redir.c \
-	parser/parser.c \
-	parser/parser_construct_prompt.c \
-	parser/utils.c \
-	\
-	\
-	exec/expand/parse_dollar.c \
-	exec/expand/parse_quote.c \
-	exec/expand/parse_tilde.c \
-	exec/expand/parse_backtick.c \
-	exec/expand/exec_cmd_substitution.c \
-	exec/expand/utils.c \
-	exec/expand/wordexp_posix.c \
-	exec/expand/handle_fieldsplitting.c \
-	exec/expand/parse_comm.c \
-	 \
-	signal/all_signal_dfl.c \
-	signal/all_signal_ign.c
+		   env/local/pos_param.c \
+		   env/local/local_add.c \
+		   env/local/local_remove.c \
+		   env/local/local_get.c \
+		   env/local/t_local.c \
+		   \
+		   env/environ/env_add.c \
+		   env/environ/env_remove.c \
+		   env/environ/environ.c \
+		   env/environ/load_base_env.c \
+		   \
+		   \
+		   env/prompt/get_ps1.c \
+		   env/prompt/prompt.c \
+		   env/prompt/prompt_zsh.c \
+		   \
+		   exec/debug_symbol.c \
+		   exec/debug_token.c \
+		   exec/exec_asynchronous_list.c \
+		   exec/exec_bin.c \
+		   exec/exec_function.c \
+		   exec/exec_io_redirect.c \
+		   exec/exec_redir.c \
+		   exec/exec_redirect_list.c \
+		   exec/exec_utils.c \
+		   exec/lex_and_parse.c \
+		   exec/main_loop.c \
+		   exec/redir_utils.c \
+		   \
+		   \
+		   \
+		   exec/symbol/exec.c \
+		   exec/symbol/exec_and_or.c \
+		   exec/symbol/exec_brace_group.c \
+		   exec/symbol/exec_case_clause.c \
+		   exec/symbol/exec_command.c \
+		   exec/symbol/exec_complete_command.c \
+		   exec/symbol/exec_complete_commands.c \
+		   exec/symbol/exec_compound_command.c \
+		   exec/symbol/exec_compound_list.c \
+		   exec/symbol/exec_do_group.c \
+		   exec/symbol/exec_else_part.c \
+		   exec/symbol/exec_for_clause.c \
+		   exec/symbol/exec_function_body.c \
+		   exec/symbol/exec_function_definition.c \
+		   exec/symbol/exec_if_clause.c \
+		   exec/symbol/exec_pipe_sequence.c \
+		   exec/symbol/exec_pipeline.c \
+		   exec/symbol/exec_program.c \
+		   exec/symbol/exec_simple_command.c \
+		   exec/symbol/exec_subshell.c \
+		   exec/symbol/exec_term.c \
+		   exec/symbol/exec_until_clause.c \
+		   exec/symbol/exec_while_clause.c \
+		   \
+		   failure/get_errno_1.c \
+		   failure/get_errno_2.c \
+		   failure/get_errno_3.c \
+		   failure/return_failure.c \
+		   \
+		   globing/curly_bracket_split.c \
+		   globing/curly_brackets.c \
+		   globing/curly_brackets_is_range.c \
+		   globing/curly_brackets_range.c \
+		   globing/glob.c \
+		   globing/match.c \
+		   globing/match_open_dir.c \
+		   globing/square_bracket.c \
+		   globing/star.c \
+		   \
+		   env/hash_table/hash.c \
+		   env/hash_table/hash_free.c \
+		   \
+		   history/btsearch_add.c \
+		   history/btsearch_del.c \
+		   history/btsearch_exit.c \
+		   history/btsearch_get_input.c \
+		   history/btsearch_init.c \
+		   history/btsearch_move.c \
+		   history/btsearch_refresh.c \
+		   history/btsearch_signals.c \
+		   history/expansion.c \
+		   history/history_get_input.c \
+		   history/history_init.c \
+		   history/history_line_refresh.c \
+		   history/history_move.c \
+		   history/history_write.c \
+		   history/load_history.c \
+		   \
+		   job_control/job_background.c \
+		   job_control/job_continue.c \
+		   job_control/job_fill_process_av.c \
+		   job_control/job_foreground.c \
+		   job_control/job_format.c \
+		   job_control/job_init.c \
+		   job_control/job_launch.c \
+		   job_control/job_mark_status.c \
+		   job_control/job_notification.c \
+		   job_control/job_utils.c \
+		   job_control/job_wait.c \
+		   job_control/singleton_jc.c \
+		   \
+		   lexer/get_token.c \
+		   lexer/get_token_list.c \
+		   lexer/lexer_construct_prompt.c \
+		   lexer/t_lexer.c \
+		   lexer/t_token.c \
+		   lexer/utils.c \
+		   \
+		   lexer/id/get_token_id.c \
+		   lexer/id/operator.c \
+		   lexer/id/reserved_words.c \
+		   lexer/id/words.c \
+		   \
+		   lexer/lexer_action/bs.c \
+		   lexer/lexer_action/cmd_subst.c \
+		   lexer/lexer_action/comment.c \
+		   lexer/lexer_action/default.c \
+		   lexer/lexer_action/dquotes.c \
+		   lexer/lexer_action/newline.c \
+		   lexer/lexer_action/operator.c \
+		   lexer/lexer_action/param_exp.c \
+		   lexer/lexer_action/quotes.c \
+		   lexer/lexer_action/whitespace.c \
+		   lexer/lexer_action/word.c \
+		   \
+		   line_editing/conf_term.c \
+		   line_editing/edit_add.c \
+		   line_editing/edit_control_d.c \
+		   line_editing/edit_control_l.c \
+		   line_editing/edit_copy_paste.c \
+		   line_editing/edit_cursor.c \
+		   line_editing/edit_del.c \
+		   line_editing/edit_exit.c \
+		   line_editing/edit_get_coor.c \
+		   line_editing/edit_get_input.c \
+		   line_editing/edit_init.c \
+		   line_editing/edit_insert_str.c \
+		   line_editing/edit_move.c \
+		   line_editing/edit_move_arrows.c \
+		   line_editing/edit_move_cursor.c \
+		   line_editing/edit_refresh.c \
+		   line_editing/edit_reopen.c \
+		   line_editing/edit_signals.c \
+		   line_editing/edit_write.c \
+		   line_editing/put_termcap.c \
+		line_editing/edit_verbatim.c \
+		   \
+		   parser/get_action.c \
+		   parser/parse_redir.c \
+		   parser/parser.c \
+		   parser/parser_construct_prompt.c \
+		   parser/utils.c \
+		   \
+		   \
+		   exec/expand/parse_dollar.c \
+		   exec/expand/parse_quote.c \
+		   exec/expand/parse_tilde.c \
+		   exec/expand/parse_backtick.c \
+		   exec/expand/exec_cmd_substitution.c \
+		   exec/expand/utils.c \
+		   exec/expand/wordexp_posix.c \
+		   exec/expand/handle_fieldsplitting.c \
+		   exec/expand/parse_comm.c \
+		   \
+		   line_editing/syntax_coloring//delim.c \
+		   line_editing/syntax_coloring//loop.c \
+		   line_editing/syntax_coloring//utils.c \
+		   line_editing/syntax_coloring//write.c \
+		   \
+		   line_editing/syntax_coloring//lexer_action_le/bs.c \
+		   line_editing/syntax_coloring//lexer_action_le/cmd_subst.c \
+		   line_editing/syntax_coloring//lexer_action_le/comment.c \
+		   line_editing/syntax_coloring//lexer_action_le/default.c \
+		   line_editing/syntax_coloring//lexer_action_le/dquotes.c \
+		   line_editing/syntax_coloring//lexer_action_le/newline.c \
+		   line_editing/syntax_coloring//lexer_action_le/operator.c \
+		   line_editing/syntax_coloring//lexer_action_le/param_exp.c \
+		   line_editing/syntax_coloring//lexer_action_le/quotes.c \
+		   line_editing/syntax_coloring//lexer_action_le/whitespace.c \
+		   line_editing/syntax_coloring//lexer_action_le/word.c
 
 INCLUDES_FILES = \
 				 builtin.h \
@@ -315,9 +330,10 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/lexer/id/
 	@/bin/mkdir -p $(OBJ_DIR)/lexer/lexer_action/
 	@/bin/mkdir -p $(OBJ_DIR)/line_editing
+	@/bin/mkdir -p $(OBJ_DIR)/line_editing/syntax_coloring
+	@/bin/mkdir -p $(OBJ_DIR)/line_editing/syntax_coloring/lexer_action_le
 	@/bin/mkdir -p $(OBJ_DIR)/parser
 	@/bin/mkdir -p $(OBJ_DIR)/failure
-	@/bin/mkdir -p $(OBJ_DIR)/signal
 	@/bin/mkdir -p $(OBJ_DIR)/job_control
 
 clean:

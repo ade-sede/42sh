@@ -1,8 +1,11 @@
 #include "line_editing.h"
+#include "syntax_coloring.h"
 #include "t_env.h"
+#include "t_lexer.h"
 #include <stdio.h>
 #include "failure.h"
 #include "color.h"
+#include "shopt.h"
 
 void	edit_refresh_cursor(t_line *line)
 {
@@ -16,12 +19,27 @@ void	edit_refresh_cursor(t_line *line)
 
 void	edit_refresh_line(t_line *line)
 {
-	t_coor pos;
+	t_coor	pos;
+	t_lexer lex;
+	int		ret;
 
-	term_putstr(line);
-	/* ft_putstr_fd(line->buff, 2); */
+	ret = DEFAULT;
+	if (singleton_env()->option & SYNCOLOR)
+	{
+		init_lexer(&lex, line->buff);
+		ret = loop_le_delim(&lex, line);
+		if (ret != DEFAULT)
+		{
+			ft_putstr_fd(RED, 2);
+			ft_putchar_fd('_', 2);
+			ft_putstr_fd(RESET, 2);
+		}
+		free_lexer(&lex);
+	}
+	else
+		term_putstr(line);
 	pos = get_char_visual_coor(line, line->len);
-	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n' && line->buff[line->pos - 1] != '\t'))
+	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n' && line->buff[line->pos - 1] != '\t') && ret == DEFAULT)
 		put_termcap("do");
 }
 

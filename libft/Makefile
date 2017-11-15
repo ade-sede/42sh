@@ -124,6 +124,7 @@ SRC = \
 	str/ft_strpush.c \
 	str/ft_strspush.c \
 	system/ft_is_executable.c \
+	system/get_home.c \
 	system/size_term.c \
 	system/put_termcap.c \
 	system/pfork.c \

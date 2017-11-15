@@ -23,6 +23,7 @@ static t_builtin	g_builtin[] =
 	{"shopt", &builtin_shopt},
 	{"shift", &builtin_shift},
 	{"export", &builtin_export},
+	{"read", &builtin_read},
 	{NULL, NULL}
 };
 

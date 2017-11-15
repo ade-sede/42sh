@@ -42,5 +42,6 @@ int		lex_action_operator(t_lexer *lex, ssize_t **state_info)
 		consume_input(lex);
 	else
 		pop_state(lex, state_info);
+	free(operator_string);
 	return (TRUE);
 }

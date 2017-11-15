@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "lexer.h"
 
-struct s_lex_action g_lex_action[] = 
+static struct s_lex_action g_lex_action[] = 
 {
 	{DEFAULT, &lex_action_default},
 	{WORD, &lex_action_word},

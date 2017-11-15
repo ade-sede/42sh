@@ -21,7 +21,7 @@ int	edit_insert_str(t_line *line, char *dest, char *str)
 	dest_len = ft_strlen(dest);
 	len = ft_strlen(str);
 	if (line->len + len >= line->size)
-		realoc_line_buff(&line->buff, &line->size, line->len + len);
+		realoc_line_buff(line, line->len + len + 1);
 	ft_insert_str_dest(line->buff + dest_pos, str, dest_len);
 	line->pos = dest_pos + len;
 	line->len = ft_strlen(line->buff);

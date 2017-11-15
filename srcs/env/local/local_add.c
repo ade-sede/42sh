@@ -4,6 +4,10 @@
 #include "libft.h"
 #include "shopt.h"
 
+
+
+#include <stdio.h>
+
 int		local_add_from_key_value(t_list **first, const char *key, const char *value)
 {
 	t_local	*local;
@@ -53,7 +57,7 @@ int		local_add_change_from_string(t_list **first, const char *string)
 	char	*little_key;
 
 	pos = ft_strichr(string, '=');
-	little_key = ft_strsub(string, 0, pos + 1);
+	little_key = ft_strsub(string, 0, pos);
 	if ((node = local_get_node(*first, little_key)))
 		local_add_change_from_key_value(first, little_key, string + pos + 1);
 	else

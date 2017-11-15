@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_simple_command.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/14 14:48:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/15 15:21:49 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "exec.h"
 #include "expand.h"
 #include "builtin.h"
@@ -35,9 +47,7 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 	if (is_symb(ast->child[0], CMD_SUFFIX))
 		return (exec_cmd_suffix(ast->child[0], redirect_list, av));
 	return (av);
-}
-
-/*
+} /*
 **	cmd_prefix       :            io_redirect
 **	                 | cmd_prefix io_redirect
 **	                 |            ASSIGNMENT_WORD
@@ -45,13 +55,16 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 **	                 ;
 */
 
+#include <stdio.h>
 void	exec_assignment_word(t_ast *ast)
 {
 	char		**word_expanded;
 	
 	word_expanded = word_expansion(ft_strchr(ast->token->value, '=') + 1, NO_GLOBBING | NO_FIELDSPLITING);
-	if (word_expanded[0])
+	/* if (word_expanded[0]) */
+	/* { */
 		local_add_change_from_string(&singleton_env()->local, ast->token->value);
+	/* } */
 	free(word_expanded);
 }
 
@@ -108,7 +121,6 @@ int		exec_simple_command(t_ast *ast)
 	t_ast	*cmd_suffix = NULL;
 	t_ast	*fct_body = NULL;
 
-	exec_cmd_prefix(ast, &redirect_list);
 	if (is_symb(ast->child[0], CMD_PREFIX))
 		exec_cmd_prefix(ast->child[0], &redirect_list);
 

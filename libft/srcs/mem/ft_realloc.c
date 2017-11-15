@@ -27,7 +27,7 @@ void	*cl_realloc(size_t curr_size, void *ptr, size_t new_size)
 	void	*new_memory;
 
 	if (!ptr)
-		return (palloc(new_size));
+		return (ft_memalloc(new_size));
 	else if (new_size == 0)
 	{
 		free(ptr);

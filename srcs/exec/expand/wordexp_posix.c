@@ -139,7 +139,7 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 	w_newexp (&exp);
 
 	exp.flag = flag;
-	exp.ifs = var_get_value (singleton_env(), "IFS");
+	exp.ifs = ft_strdup(var_get_value (singleton_env(), "IFS"));
 	if (exp.ifs == NULL)
 		exp.ifs = ft_strdup(" \t\n");
 

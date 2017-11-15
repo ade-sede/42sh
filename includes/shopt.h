@@ -10,8 +10,9 @@
 **	If you edit OPTNB, recompile the program.
 */
 
-# define OPTNB 1U
+# define OPTNB 2U
 # define ALLEXPORT 0b1L
+# define SYNCOLOR 0b10L
 
 struct s_shopt_mask
 {

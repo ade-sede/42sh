@@ -3,7 +3,7 @@
 
 int		handle_fieldsplitting (char *value, t_expand *exp)
 {
-	if (!value)
+	if (!value || (value && *value == 0))
 		return (0);
 	if (exp->quoted || !exp)
 	{
