@@ -41,34 +41,45 @@ char	*line_editing_get_input(t_line *line, t_hist *hist,
 	return (edit_get_input());
 }
 
-int		stream_get_line(int stream, char **buff)
+char	*stream_get_line(int stream)
 {
-	*buff = NULL;
-	if (get_next_line(stream, buff) <= 0)
+	char	*buff;
+	buff = NULL;
+	get_next_line(stream, &buff);
+	return (buff);
+}
+
+int		get_input(t_modes *modes, char **buff)
+{
+	if (modes->mode == INTERACTIVE_MODE)
+		*buff = ft_strdup(line_editing_get_input(singleton_line(), \
+					singleton_hist(), &edit_set_signals_open));
+	else if (modes->mode == STRING_MODE)
+		*buff = ft_strdup(modes->string);
+	else
+		*buff = stream_get_line(modes->stream);
+	if (!*buff)
 		return (0);
 	return (1);
 }
 
-void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt)
+void	main_loop(t_env *env, t_modes *modes)
 {
 	char		*buff;
 
-	init_main_loop(singleton_line(), singleton_hist());
+	if (modes->mode == INTERACTIVE_MODE)
+		init_main_loop(singleton_line(), singleton_hist());
 	while (42)
 	{
-		do_job_notification(singleton_jc());
-		load_prompt(env, singleton_line(), "PS1", "$> ");
-		if (singleton_jc()->shell_is_interactive)
-			buff = ft_strdup(line_editing_get_input(singleton_line(), \
-						singleton_hist(), &edit_set_signals_open));
-		else if (c_opt)
-			buff = ft_strdup(buff_c_opt);
-		else if (!(stream_get_line(stream, &buff)))
+		if (modes->mode == INTERACTIVE_MODE)
+		{
+			do_job_notification(singleton_jc());
+			load_prompt(env, singleton_line(), "PS1", "$> ");
+		}
+		if (!get_input(modes, &buff))
 			exit(ft_atoi(local_get_value(env->local, "$?")));
 		if (!ft_strequ(buff, "\n"))
-			lex_and_parse(NULL, buff, stream);
+			lex_and_parse(NULL, buff, modes);
 		free(buff);
-		if (c_opt)
-			exit(ft_atoi(local_get_value(env->local, "$?")));
 	}
 }

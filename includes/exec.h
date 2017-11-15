@@ -7,6 +7,7 @@
 # include "history.h"
 # include "job_control.h"
 # include "exec_symbol.h"
+# include "modes.h"
 
 typedef struct	s_redir
 {
@@ -52,11 +53,12 @@ void			no_handle_signals(void);
 **	In file srcs/exec/main_loop.c
 */
 
-void	lex_and_parse(t_ast *ast, char *buff, int stream);
+void	lex_and_parse(t_ast *ast, char *buff, t_modes *modes);
 char			*line_editing_get_input(t_line *line, t_hist *hist,
 		void (*sig_handler)(void));
 void			init_main_loop(t_line *line, t_hist *hist);
-void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt);
+void	main_loop(t_env *env, t_modes *modes);
+int		get_input(t_modes *modes, char **buff);
 
 /*
 **	In file srcs/exec/redir_utils.c
@@ -79,5 +81,5 @@ char	**get_cmd_name(t_ast *ast, int flag);
 t_ast	*get_function(t_env *env, char *cmd_name);
 int		exec_function(t_ast *fct_body, char **av);
 void	exec_redirect_list(t_ast *ast, t_list **redirect_list);
-int		stream_get_line(int stream, char **buff);
+char	*stream_get_line(int stream);
 #endif

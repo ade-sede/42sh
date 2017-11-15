@@ -45,20 +45,19 @@ void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list *token_list)
 	remove_parser(parser);
 }
 
-int		reopen(t_lexer *lex, t_parser *parser, int stream)
+int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes)
 {
 	char	*new_command;
 
-	if (singleton_jc()->shell_is_interactive)
+	if (modes->mode == INTERACTIVE_MODE)
 		reopen_line_editing(lex, parser, &new_command);
-	else
-		stream_get_line(stream, &new_command);
-	lex->line = ft_strchange((char*)lex->line, \
-			ft_strjoin((char*)lex->line, new_command));
+	else if (!get_input(modes, &new_command))
+		exit(ft_atoi(local_get_value(singleton_env()->local, "$?")));
+	lex->line = ft_strjoin_free(lex->line, new_command, 0b10);
 	return (1);
 }
 
-void	lex_and_parse(t_ast *ast, char *buff, int stream)
+void	lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 {
 	t_lexer		lexer;
 	t_list		*token_list;
@@ -86,7 +85,7 @@ void	lex_and_parse(t_ast *ast, char *buff, int stream)
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{
 //			free (buff);
-			reopen(&lexer, &parser, stream);
+			reopen(&lexer, &parser, modes);
 			token_list = NULL;
 			if (g_abort_opening)
 				break ;
