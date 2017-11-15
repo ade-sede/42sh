@@ -57,9 +57,9 @@ void	read_pointrc(t_env *env)
 		return ;
 	}
 	free(tmp);
-	if (!(stream_get_line(fd, &buff)))
+	if (!(buff = stream_get_line(fd)))
 		return ;
-	lex_and_parse(NULL, buff, fd);
+	lex_and_parse(NULL, buff, modes);
 	free(buff);
 }
 
