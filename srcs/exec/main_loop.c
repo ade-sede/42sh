@@ -77,7 +77,7 @@ void	main_loop(t_env *env, t_modes *modes)
 			load_prompt(env, singleton_line(), "PS1", "$> ");
 		}
 		if (!get_input(modes, &buff))
-			exit(ft_atoi(local_get_value(env->local, "$?")));
+			return (-1);
 		if (!ft_strequ(buff, "\n"))
 			lex_and_parse(NULL, buff, modes);
 		free(buff);

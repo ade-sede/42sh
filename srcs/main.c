@@ -94,3 +94,4 @@ int		main(int ac, char **av)
 	env_free_env(env);
 	return (0);
 }
+		//exit(ft_atoi(local_get_value(singleton_env()->local, "$?")));

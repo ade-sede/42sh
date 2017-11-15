@@ -52,7 +52,7 @@ int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes)
 	if (modes->mode == INTERACTIVE_MODE)
 		reopen_line_editing(lex, parser, &new_command);
 	else if (!get_input(modes, &new_command))
-		exit(ft_atoi(local_get_value(singleton_env()->local, "$?")));
+		return (0);
 	lex->line = ft_strjoin_free(lex->line, new_command, 0b10);
 	return (1);
 }
