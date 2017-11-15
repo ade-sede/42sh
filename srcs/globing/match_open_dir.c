@@ -3,18 +3,17 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-int	match_open_file(t_matches *m, int to_match_i, int regex_i, char *file_name)
-{
-	if (ft_strequ(m->dir, "."))
-		m->to_match = ft_strdup(file_name);
-	else if (ft_strequ(m->dir, "/"))
-		m->to_match = ft_strjoin(m->dir, file_name);
-	else
-		m->to_match = ft_strjoin3_free(m->dir, "/", file_name, 0);
-	(void)to_match_i;
-	(void)regex_i;
-	return (0);
-}
+/*
+**	char *match_open_file(char *m_dir, char *file_name)
+**	{
+**		if (ft_strequ(m_dir, "."))
+**			return (ft_strdup(file_name));
+**		else if (ft_strequ(m_dir, "/"))
+**			return (ft_strjoin(m_dir, file_name));
+**		else
+**			return (ft_strjoin3_free(m_dir, "/", file_name, 0));
+**	}
+*/
 
 int	bad_dir(char *dir_name)
 {
@@ -31,7 +30,7 @@ int	end_match_open_dir(t_matches *m, char *cpy_to_match[2], char *m_dir_cpy, \
 	return (bool_match);
 }
 
-int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
+int	match_open_dir(t_matches *m, int m_i, int r_i, char *dir_name)
 {
 	int				bool_match;
 	DIR				*dir;
@@ -46,13 +45,30 @@ int	match_open_dir(t_matches *m, int to_match_i, int regex_i, char *dir_name)
 		return (bad_dir(dir_name));
 	m_dir_cpy = m->dir;
 	m->dir = dir_name;
+//	printf("m->dir: {%s}\n", m->dir);
 	while ((dirent = readdir(dir)) != NULL)
 	{
-		match_open_file(m, to_match_i, regex_i, dirent->d_name);
-		cpy_to_match[1] = m->to_match;
-		if (dirent->d_name[0] != '.' || \
-				(dirent->d_name[0] == '.' && m->regex[regex_i] == '.'))
-			bool_match |= (match(m, m->to_match[to_match_i] == '\0' ? to_match_i : to_match_i + 1, regex_i));
+		if (ft_strequ(m->dir, "."))
+		{
+			m->to_match = ft_strdup(dirent->d_name);
+			cpy_to_match[1] = m->to_match;
+			bool_match |= (match(m, m_i, r_i));
+		}
+		else if (ft_strequ(m->dir, "/"))
+		{
+			m->to_match = (ft_strjoin(m->dir, dirent->d_name));
+			cpy_to_match[1] = m->to_match;
+			bool_match |= (match(m, m_i + 1, r_i));
+		}
+		else
+		{
+			m->to_match = (ft_strjoin3_free(m->dir, "/", dirent->d_name, 0));
+			cpy_to_match[1] = m->to_match;
+			bool_match |= (match(m, m_i + 1, r_i));
+		}
+		//m->to_match = match_open_file(m->dir, dirent->d_name);
+		//cpy_to_match[1] = m->to_match;
+		//if (dirent->d_name[0] != '.' || (dirent->d_name[0] == '.' && m->regex[r_i] == '.'))
 		free(cpy_to_match[1]);
 	}
 	closedir(dir);
