@@ -11,9 +11,22 @@
 #include "get_opt.h"
 
 static t_option g_option[] = {
-	{1, "c", 2, "clear list", "clear the history list"},
+	{1, "c", OPTION_BOOL, "\t", "clear the history list"},
+	{2, "d", OPTION_STRING, "offset", "delete one node"},
+	{3, "a", OPTION_STRING, "[filename]", "Append the new history lines"},
+	{4, "n", OPTION_STRING, "[filename]", "Append the history lines not already read from the history file"},
+	{5, "r", OPTION_STRING, "[filename]", "append the current history file"},
+	{6, "w", OPTION_STRING, "[filename]", "Write out the current history to the history file"},
+	{7, "s", OPTION_STRING, "args", "The args are added to the end of the history list as a single entry."},
 	{0, NULL, 0, NULL, NULL}
 };
+
+/*
+static t_programinfo pi = {
+	"history", "Command Line history", 
+	g_option, NULL, 0, 0, 1, 0, NULL, 0, 0
+};
+*/
 
 void	aff_node(t_list_d *list, int aff)
 {
@@ -61,12 +74,11 @@ int			file_to_list(t_hist *h, const char *histf, int i)
 
 	cat = NULL;
 	histf = (histf) ? histf : histfile();
+	ft_putendl(histf);
 	if ((fd = open(histf, O_RDWR | O_CREAT, 0644)) == -1)
 		return (0);
 	while (get_next_line(fd, &line))
 	{
-
-	printf("%lx line\n", (long int)line);
 		if ((!cat && !*line) || (i && --i))
 		{
 			free(line);
@@ -98,89 +110,78 @@ void	free_node(void *nd)
 	free(node->line);
 }
 
+void opt(int opt_id, t_hist *h, const char **argv)
+{
+	int i;
+	t_list_d *sup;
+	
+	if (opt_id == 1)
+	{
+		ft_remove_head(&(h->list), free_node);
+		h->last_read = NULL;
+	}
+	else if (opt_id == 2)
+	{
+		i = ft_atoi(*(argv + 1));
+		if (i > h->list->node_count)
+			ft_putendl_fd("out of range", 2);
+		else
+		{
+			sup = ft_double_lst_get_n((i < 0) ? h->list->first : h->list->last, ~i + 1);
+			ft_double_lst_del_one(&(h->list), sup, free_node);
+		}
+	}
+	else if (opt_id == 3)
+		file_to_list(h, *(argv + 2), h->last_line_read - 1);
+	else if (opt_id == 5)
+		file_to_list(h, *(argv + 2), -1);
+	else if (opt_id == 4)
+	{
+		history_write_to_histfile(h->last_read);
+		h->last_read = h->list->last;
+	}
+	else if (opt_id == 6)
+		history_write_to_histfile(h->list->last);
+	else if (opt_id == 7)
+		h->current_cmd = ft_node_new(ft_strdup(*(argv + 2)), -1); //a changer
+}
+
+int aff_hist(int argc, const char **argv, t_hist *h)
+{
+	int i;
+	if (argc == 1)
+		i = h->list->node_count;
+	else if (argc == 2)
+		i = ft_atoi(*(argv + 1));
+	else
+		return (EXIT_FAILURE);
+	if (h && h->list)
+		double_lst_for_n(h->list->last, h->list->node_count, aff_node, -1);
+	return (EXIT_SUCCESS);
+}
+
 int			builtin_history(t_env *env, const char **argv)
 {
 	t_hist  *h;
-	//int     opt_id;
+	int     opt_id;
 	size_t  argc;
 
 		(void)env;
 	//	(void)argv;
 	h = singleton_hist();
 	//	t_programinfo pi;
-
 	t_programinfo pi = { "history", "Command Line history", g_option, NULL, 0, 0, 1, 0, NULL, 0, 0 };
-	(void)pi;
+
 	argc = ft_arraylen(argv);
-	if (argc == 1)
-	{
-		if (h && h->list)
-			double_lst_for_n(h->list->last, h->list->node_count, aff_node, -1);
-		return (EXIT_SUCCESS);
-	}
-/*
-**	h->current_cmd = ft_node_new(ft_strdup(*(argv + 1)), -1);
-**
-** history -s
-*/
-
-/*
-**history_write_to_histfile(h->list->last);
-**
-**
-** history -w
-*/
-
-/*
-**	history_write_to_histfile(h->last_read);
-**h->last_read = h->list->last;
-**
-**history -n
-*/
-
-/*
-**	ft_remove_head(&(h->list), free_node);
-**	history -c
-*/
-
-	/*
-int i;
-t_list_d *sup;
-i = ft_atoi(*(argv + 1));
-if (i > h->list->node_count)
-	ft_putendl_fd("out of range", 2);
-else
-{
-	sup = ft_double_lst_get_n((i < 0) ? h->list->first : h->list->last, ~i + 1);
-	ft_double_lst_del_one(&(h->list), sup, free_node);
-}
-**
-** history -d offset
-*/
-
-/*
-**if (*(argv + 1))
-**file_to_list(h, *(argv + 2), -1);
-**
-** history -r filename
-*/
-
-/*
-**if (*(argv + 1))
-**file_to_list(h, *(argv + 2), h->last_line_read - 1);
-**
-** history -a filename
-*/
-
-	/*
 	opt_init(&pi, argc, argv);
-	while (pi.argerr == 0 && (opt_id = get_opt(&pi) > 0))
-		if (opt_id == 1)
-			set_shell_opt(env, pi.min, pi.argopt);
+	opt_id = get_opt(&pi);
 	if (pi.argerr)
+	{
+		get_opt_display_error(&pi, opt_id);
 		return (EXIT_FAILURE);
-	add_pos_param(env, argv, pi.argcur, 1);
-	*/
+	}
+	if (opt_id < 1)
+		return(aff_hist(argc, argv, h));
+	opt(opt_id, h, argv);
 	return (EXIT_SUCCESS);
-	//	double_lst_for_n(h->list->last, h->list->node_count, aff_node, -1);
 }
