@@ -30,10 +30,11 @@ void	remove_parser(t_parser *parser)
 	ft_genlst_remove(&parser->state_stack, NULL);
 	ft_genlst_remove(&parser->ast_stack, free_ast_node);
 }
-void	quit_lex_and_parse(t_lexer *lex, t_parser *parser)
+void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list *token_list)
 {
 	if (!g_abort_opening && singleton_jc()->shell_is_interactive)
 		history_append_command_to_list((char*)lex->line);
+	ft_simple_lst_remove(&token_list, free_token);
 	remove_lexer(lex);
 	remove_parser(parser);
 }
@@ -73,5 +74,5 @@ void	lex_and_parse(t_ast *ast, char *buff)
 	}
 	if (res_parser == PARSER_SUCCESS && !g_abort_opening)
 		exec_main_loop(ast);
-	quit_lex_and_parse(&lexer, &parser);
+	quit_lex_and_parse(&lexer, &parser, token_list);
 }

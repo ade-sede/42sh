@@ -146,6 +146,7 @@ int		exec_simple_command(t_ast *ast)
 		if (get_exec_builtin(av[0]))
 			return (exec_builtin(singleton_env(), (const char **)av));
 		exec_bin(singleton_env(), (const char **)av);
+		ft_arraydel(&av);
 	}
 	close_dup(redirect_list);
 	return (EXIT_SUCCESS);
