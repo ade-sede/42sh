@@ -7,13 +7,14 @@ void	curly_brackets_coma(t_list **res, char *expr, char *str, int end)
 {
 	char	**splited;
 	int		i;
+	char	*new_str;
 
 	i = 0;
 	splited = ft_strsplit_coma_bracket(str);
 	while (splited[i])
 	{
-		curly_brackets(res, \
-				ft_strjoin3_free(expr, splited[i], expr + end + 1, 0), end + 1);
+		new_str = ft_strjoin3_free(expr, splited[i], expr + end + 1, 0);
+		curly_brackets(res, new_str, ft_strlen(expr));
 		i++;
 	}
 	ft_arraydel(&splited);

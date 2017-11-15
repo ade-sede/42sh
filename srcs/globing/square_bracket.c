@@ -77,7 +77,7 @@ int	func_square_bracket(t_matches *m, int m_i, int r_i)
 	exclamation = 0;
 	if (m->regex[r_i + 1] == '!')
 		exclamation = 1;
-	if (match_square_bracket(m->to_match[m_i], m->regex, r_i, \
+	if (!m->to_match[m_i] && match_square_bracket(m->to_match[m_i], m->regex, r_i, \
 				end_square_bracket) ^ exclamation)
 		return (match(m, m_i + 1, end_square_bracket + 1));
 	return (0);
