@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "libft.h"
 #include "exec.h"
+#include "local.h"
 #include <pwd.h>
 
 void	read_args(int ac, char **av, int *stream, char **buf, int *c_opt)
@@ -54,8 +55,9 @@ void	read_pointrc(t_env *env)
 		return ;
 	}
 	free(tmp);
-	buff = file_get_input(fd);
-	lex_and_parse(NULL, buff);
+	if (!(stream_get_line(fd, &buff)))
+		return ;
+	lex_and_parse(NULL, buff, fd);
 	free(buff);
 }
 
@@ -78,6 +80,7 @@ int		main(int ac, char **av)
 		conf_term_in();
 	create_ternary_tree(env);
 	history_load(singleton_hist(), env);
+	local_add_change_from_key_value(&env->local, "$?", "0");
 	read_pointrc(env);
 	main_loop(env, stream, buff_c_opt, c_opt);
 	env_free_env(env);

@@ -6,6 +6,7 @@
 #include "get_next_line.h"
 #include "line_editing.h"
 #include "failure.h"
+#include "local.h"
 
 static void	trim_newline(char *str)
 {
@@ -21,7 +22,7 @@ char		*get_ps1(t_env *env, size_t *len)
 	char *current_dir;
 	char *previous_exit;
 
-	previous_exit = (env->previous_exit == 0) ? \
+	previous_exit = (ft_atoi(local_get_value(env->local, "$?")) == 0) ? \
 		ft_strjoin3_free(GRN, "➜  ", RESET, 0) : \
 			ft_strjoin3_free(RED, "➜  ", RESET, 0);
 	*len += 3;

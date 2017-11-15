@@ -10,6 +10,7 @@
 #include "lexer.h"
 #include "get_next_line.h"
 #include "parser.h"
+#include "local.h"
 #include <stdio.h>
 #define LOCAL_BUFF_SIZE 4096
 
@@ -40,16 +41,12 @@ char	*line_editing_get_input(t_line *line, t_hist *hist,
 	return (edit_get_input());
 }
 
-char	*file_get_input(int stream)
+int		stream_get_line(int stream, char **buff)
 {
-	char	*line;
-	char	*buff;
-
-	line = NULL;
-	buff = ft_strdup("");
-	while (get_next_line(stream, &line))
-		buff = ft_strjoin3_free(buff, line, "\n", 6);
-	return (buff);
+	*buff = NULL;
+	if (get_next_line(stream, buff) <= 0)
+		return (0);
+	return (1);
 }
 
 void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt)
@@ -66,12 +63,12 @@ void	main_loop(t_env *env, int stream, char *buff_c_opt, int c_opt)
 						singleton_hist(), &edit_set_signals_open));
 		else if (c_opt)
 			buff = ft_strdup(buff_c_opt);
-		else
-			buff = file_get_input(stream);
+		else if (!(stream_get_line(stream, &buff)))
+			exit(ft_atoi(local_get_value(env->local, "$?")));
 		if (!ft_strequ(buff, "\n"))
-			lex_and_parse(NULL, buff);
+			lex_and_parse(NULL, buff, stream);
 		free(buff);
-		if (!singleton_jc()->shell_is_interactive)
-			exit (0);
+		if (c_opt)
+			exit(ft_atoi(local_get_value(env->local, "$?")));
 	}
 }

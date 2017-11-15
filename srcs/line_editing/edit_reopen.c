@@ -18,9 +18,8 @@ char	*join_prompt(char *parser_prompt, char *lexer_prompt)
 
 }
 
-void		reopen_line_editing(t_lexer *lex, t_parser *parser)
+void		reopen_line_editing(t_lexer *lex, t_parser *parser, char **new_command)
 {
-	char	*new_command;
 	t_line	*line;
 	t_env	*env;
 	char	*parser_prompt;
@@ -36,8 +35,6 @@ void		reopen_line_editing(t_lexer *lex, t_parser *parser)
 	env = singleton_env();
 	line = singleton_line();
 	load_prompt(env, line, NULL, prompt);
-	new_command = line_editing_get_input(line, \
+	*new_command = line_editing_get_input(line, \
 			singleton_hist(), &edit_set_signals_reopen);
-	lex->line = ft_strchange((char*)lex->line, \
-			ft_strjoin((char*)lex->line, new_command));
 }

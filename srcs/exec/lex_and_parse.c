@@ -9,13 +9,19 @@
 #include "parser.h"
 #include "job_control.h"
 #include "parser.h"
+#include "local.h"
 
 void	exec_main_loop(t_ast *ast)
 {
+	int		exit_status;
+	char	nbr[20];
+
 	singleton_jc()->background = 0;
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_canonical();
-	singleton_env()->previous_exit = exec(ast);
+	exit_status = exec(ast);
+	local_add_change_from_key_value(&singleton_env()->local, "$?", ft_itoa_word(exit_status, nbr));
+	printf("{%s}\n", nbr);
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_non_canonical();
 }
@@ -39,7 +45,20 @@ void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list *token_list)
 	remove_parser(parser);
 }
 
-void	lex_and_parse(t_ast *ast, char *buff)
+int		reopen(t_lexer *lex, t_parser *parser, int stream)
+{
+	char	*new_command;
+
+	if (singleton_jc()->shell_is_interactive)
+		reopen_line_editing(lex, parser, &new_command);
+	else
+		stream_get_line(stream, &new_command);
+	lex->line = ft_strchange((char*)lex->line, \
+			ft_strjoin((char*)lex->line, new_command));
+	return (1);
+}
+
+void	lex_and_parse(t_ast *ast, char *buff, int stream)
 {
 	t_lexer		lexer;
 	t_list		*token_list;
@@ -66,7 +85,8 @@ void	lex_and_parse(t_ast *ast, char *buff)
 		res_parser = parse(&parser, &ast, token_list);
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{
-			reopen_line_editing(&lexer, &parser);
+//			free (buff);
+			reopen(&lexer, &parser, stream);
 			token_list = NULL;
 			if (g_abort_opening)
 				break ;
