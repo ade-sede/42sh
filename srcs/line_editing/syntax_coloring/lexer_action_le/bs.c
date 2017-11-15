@@ -9,7 +9,7 @@ int		lex_action_bs_le(t_lexer *lex, ssize_t **state_info, t_line *line)
 	info = lex->state->data;
 	if (lex->line[lex->pos] == 0)
 		return (FALSE);
-	if (info[_T_COUNT] == 2)
+	if (lex->pos - info[_T_START] == 2)
 	{
 		if (lex->line[info[_T_START] + 1] == '\n' && lex->line[lex->pos] == 0)
 			return (FALSE);

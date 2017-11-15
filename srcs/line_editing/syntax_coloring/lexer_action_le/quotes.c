@@ -11,7 +11,7 @@ int		lex_action_quotes_le(t_lexer *lex, ssize_t **state_info, t_line *line)
 	else if (lex->line[lex->pos] ==  '\'')
 	{
 		info = lex->state->data;
-		if (info[_T_COUNT] != 0)
+		if (lex->pos - info[_T_START] != 0)
 		{
 			consume_input_le(lex, line);
 			pop_state_le(lex, state_info);

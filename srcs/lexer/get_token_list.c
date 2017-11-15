@@ -105,7 +105,7 @@ static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size
 			*value_size = token_value_size;
 
 		/* State_size */
-		token_state_size = ft_strlen(get_state(token->state_info[_T_STATE]));
+		token_state_size = ft_strlen(get_state(token->state_info->state));
 		if (token_state_size > *state_size)
 			*state_size = token_state_size;
 
@@ -115,14 +115,14 @@ static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size
 			*id_size = token_id_size;
 
 		/* end */
-		itoa_end = ft_itoa_base(token->state_info[_T_END], 10);
+		itoa_end = ft_itoa_base(token->state_info->end, 10);
 		token_end_size = ft_strlen(itoa_end);
 		free(itoa_end);
 		if (token_end_size > *end_size)
 			*end_size = token_end_size;
 
 		/* state */
-		itoa_start = ft_itoa_base(token->state_info[_T_START], 10);
+		itoa_start = ft_itoa_base(token->state_info->state, 10);
 		token_start_size = ft_strlen(itoa_start);
 		free(itoa_start);
 		if (token_start_size > *start_size)
@@ -179,8 +179,8 @@ static	int	debug_token_list(t_list *token_list)
 		/* Print token */
 
 		token = token_list->data;
-		end_str = ft_itoa_base(token->state_info[_T_END], 10);
-		start_str = ft_itoa_base(token->state_info[_T_START], 10);
+		end_str = ft_itoa_base(token->state_info->end, 10);
+		start_str = ft_itoa_base(token->state_info->start, 10);
 
 		printf("%s", "\u2502");
 		printf(" %s", token->value);
@@ -199,8 +199,8 @@ static	int	debug_token_list(t_list *token_list)
 		for (int i = end_size - ft_strlen(end_str) + 1; i; --i)
 			printf(" ");
 		printf("%s", "\u2502");
-		printf(" %s", get_state(token->state_info[_T_STATE]));
-		for (int i = state_size - ft_strlen(get_state(token->state_info[_T_STATE])) + 1; i; --i)
+		printf(" %s", get_state(token->state_info->state));
+		for (int i = state_size - ft_strlen(get_state(token->state_info->state)) + 1; i; --i)
 			printf(" ");
 		printf("%s", "\u2502");
 		printf("\n");
@@ -284,7 +284,7 @@ int		get_token_list(t_lexer *lex, t_list **token_list, t_list *alias_list)
 		/* if (!(node = expand_alias(lex, token, alias_list))) */
 		/* 	node = ft_simple_lst_create(token); */
 		/* else */
-		if (token->state_info[_T_STATE] == COMMENT || token->state_info[_T_STATE] == WHITESPACE)
+		if (token->state_info->state == COMMENT || token->state_info->state == WHITESPACE)
 			free_token(token);
 		else
 		{

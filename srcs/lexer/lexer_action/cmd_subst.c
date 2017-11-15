@@ -2,20 +2,22 @@
 #include "libft.h"
 #include <stdio.h>
 
-int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info)
+int		lex_action_cmd_subst(t_lexer *lex, struct s_info **state_info)
 {
-	ssize_t	*info;
+	struct s_info *info;
 
 	info = lex->state->data;
 	if (lex->line[lex->pos] == 0)
 		return (FALSE);
 	else if (lex->line[lex->pos] == '\\')
 		push_state(lex, BS);
-	else if (lex->line[info[_T_START]] == '`')
+	/* else if (lex->line[info[_T_START]] == '`') */
+	else if (lex->line[info->start])
 	{
 		if (lex->line[lex->pos] == '`')
 		{
-			if (lex->pos - info[_T_START] == 0)
+			/* if (lex->pos - info[_T_START] == 0) */
+			if (lex->pos - info->start == 0)
 			{
 				consume_input(lex);
 			}
@@ -38,7 +40,8 @@ int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info)
 	{
 		if (lex->line[lex->pos] == '(')
 		{
-			(info[_T_NEST])++;
+			/* (info[_T_NEST])++; */
+			info->nest++;
 			consume_input(lex);
 		}
 		else if (lex->line[lex->pos] == '"')
@@ -49,14 +52,16 @@ int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info)
 			push_state(lex, PARAM_EXP);
 		else if (lex->line[lex->pos] == ')')
 		{
-			if (info[_T_NEST] == 0)
+			/* if (info[_T_NEST] == 0) */
+			if (info->nest == 0)
 			{
 				consume_input(lex);
 				pop_state(lex, state_info);
 			}
 			else
 			{
-				(info[_T_NEST])--;
+				/* (info[_T_NEST])--; */
+				info->nest--;
 				consume_input(lex);
 			}
 		}

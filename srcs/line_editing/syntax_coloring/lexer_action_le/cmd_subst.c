@@ -16,7 +16,7 @@ int		lex_action_cmd_subst_le(t_lexer *lex, ssize_t **state_info, t_line *line)
 	{
 		if (lex->line[lex->pos] == '`')
 		{
-			if (info[_T_COUNT] == 0)
+			if (lex->pos - info[_T_START] == 0)
 			{
 				consume_input_le(lex, line);
 			}

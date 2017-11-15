@@ -49,7 +49,7 @@ static struct s_lex_action g_lex_action[] =
 
 #include <stdio.h>
 
-static int	(*get_action(ssize_t state))(t_lexer *, ssize_t **)
+static int	(*get_action(ssize_t state))(t_lexer *, struct s_info **)
 {
 	size_t	i;
 
@@ -65,7 +65,8 @@ static int	(*get_action(ssize_t state))(t_lexer *, ssize_t **)
 t_token	*get_token(t_lexer *lex)
 {
 	/* INIT */
-	ssize_t	*state_info;
+	/* ssize_t	*state_info; */
+	struct s_info *state_info;
 	t_token	*token;
 	int		ret;
 
@@ -74,7 +75,7 @@ t_token	*get_token(t_lexer *lex)
 	state_info = NULL;
 
 	/* DELIM */
-	while (ret && !(state_info && state_info[_T_END] != -1 && ((ssize_t*)lex->state->data)[_T_STATE] == DEFAULT))
+	while (ret && !(state_info && state_info->end != -1 && ((struct s_info*)lex->state->data)->state == DEFAULT))
 		ret = get_action(((ssize_t*)lex->state->data)[_T_STATE])(lex, &state_info);
 
 	/* Check for errors */
@@ -84,6 +85,6 @@ t_token	*get_token(t_lexer *lex)
 		get_token_id(lex, token);
 	}
 	else
-		free(state_info);
+		free_info(state_info);
 	return (token);
 }

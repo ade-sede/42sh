@@ -22,10 +22,10 @@ static char	*g_operator_list[] =
 	NULL
 };
 
-int		lex_action_operator(t_lexer *lex, ssize_t **state_info)
+int		lex_action_operator(t_lexer *lex, struct s_info **state_info)
 {
 	char	*operator_string;
-	ssize_t	*info;
+	struct s_info *info;
 	size_t	i;
 
 	i = 0;
@@ -35,7 +35,7 @@ int		lex_action_operator(t_lexer *lex, ssize_t **state_info)
 		pop_state(lex, state_info);
 		return (TRUE);
 	}
-	operator_string = ft_strsub(lex->line, info[_T_START], info[_T_COUNT] + 1);
+	operator_string = ft_strsub(lex->line, info->start, info->count + 1);
 	while (g_operator_list[i] && !ft_strequ(g_operator_list[i], operator_string))
 		++i;
 	if (g_operator_list[i])
