@@ -60,7 +60,7 @@ int		parse_param (t_expand *exp)
 	{
 		if (seen_hash)
 		{
-			value = var_get_value (singleton_env(), "#");
+			value = ft_strdup(var_get_value (singleton_env(), "#"));
 			seen_hash = 0;
 		}
 		else
@@ -75,7 +75,7 @@ int		parse_param (t_expand *exp)
 	else
 	{
 		//fprintf(stderr,"env.str: {%s}\n", env.str);
-		value = var_get_value (singleton_env(), env.str);
+		value = ft_strdup(var_get_value (singleton_env(), env.str));
 	}
 	w_free(&env);
 	if (seen_hash)

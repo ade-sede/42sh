@@ -26,9 +26,10 @@ static int	load_special_params(t_env *env)
 	pid_string = ft_itoa_base(getpid(), 10);
 	ppid_string = ft_itoa_base(getppid(), 10);
 	local_add_change_from_key_value(&env->local, "$", pid_string);
-	free(pid_string);
 	local_add_change_from_key_value(&env->local, "PID", pid_string);
 	local_add_change_from_key_value(&env->local, "PPID", ppid_string);
+	free(pid_string);
+	free(ppid_string);
 	return (1);
 }
 
