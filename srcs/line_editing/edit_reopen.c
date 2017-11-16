@@ -35,6 +35,6 @@ void		reopen_line_editing(t_lexer *lex, t_parser *parser, char **new_command)
 	env = singleton_env();
 	line = singleton_line();
 	load_prompt(env, line, NULL, prompt);
-	*new_command = line_editing_get_input(line, \
+	*new_command = line_editing_get_line(line, \
 			singleton_hist(), &edit_set_signals_reopen);
 }

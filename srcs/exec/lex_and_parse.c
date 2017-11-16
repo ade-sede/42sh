@@ -20,7 +20,7 @@ void	exec_main_loop(t_ast *ast)
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_canonical();
 	exit_status = exec(ast);
-	local_add_change_from_key_value(&singleton_env()->local, "$?", ft_itoa_word(exit_status, nbr));
+	local_add_change_from_key_value(&singleton_env()->local, "?", ft_itoa_word(exit_status, nbr));
 	printf("{%s}\n", nbr);
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_non_canonical();
@@ -45,19 +45,9 @@ void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list *token_list)
 	remove_parser(parser);
 }
 
-int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes)
-{
-	char	*new_command;
+// execute one command and get input from the shell mode if needed
 
-	if (modes->mode == INTERACTIVE_MODE)
-		reopen_line_editing(lex, parser, &new_command);
-	else if (!get_input(modes, &new_command))
-		return (0);
-	lex->line = ft_strjoin_free(lex->line, new_command, 0b10);
-	return (1);
-}
-
-void	lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
+int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 {
 	t_lexer		lexer;
 	t_list		*token_list;
@@ -85,7 +75,8 @@ void	lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{
 //			free (buff);
-			reopen(&lexer, &parser, modes);
+			if (!reopen(&lexer, &parser, modes))
+				return (0);
 			token_list = NULL;
 			if (g_abort_opening)
 				break ;
@@ -94,4 +85,7 @@ void	lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	if (res_parser == PARSER_SUCCESS && !g_abort_opening)
 		exec_main_loop(ast);
 	quit_lex_and_parse(&lexer, &parser, token_list);
+	if (res_parser == PARSER_ERROR && modes->mode > 0)
+		return (0);
+	return (1);
 }

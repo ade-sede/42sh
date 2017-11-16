@@ -26,6 +26,7 @@ void	read_args(int ac, char **av, t_modes *modes)
 	{
 		modes->mode = STRING_MODE;
 		modes->string = av[2];
+		//printf("modes->string %s\n", modes->string);
 	}
 	else
 	{
@@ -38,10 +39,11 @@ void	read_args(int ac, char **av, t_modes *modes)
 #include <stdio.h>
 void	read_pointrc(t_env *env)
 {
-	char	*buff;
 	int		fd;
 	char	*tmp;
+	t_modes				modes;
 
+	ft_bzero(&modes, sizeof(t_modes));
 	tmp = ft_gethome();
 	/* CHECK THIS */
 	if (tmp)
@@ -57,10 +59,9 @@ void	read_pointrc(t_env *env)
 		return ;
 	}
 	free(tmp);
-	if (!(buff = stream_get_line(fd)))
-		return ;
-	lex_and_parse(NULL, buff, modes);
-	free(buff);
+	modes.mode = FILE_MODE; 
+	modes.stream = fd;
+	main_loop(env, &modes);
 }
 
 int		main(int ac, char **av)
@@ -72,26 +73,26 @@ int		main(int ac, char **av)
 
 	ft_bzero(&modes, sizeof(t_modes));
 	read_args(ac, av, &modes);
-	jc = singleton_jc();
 	env = singleton_env();
 	env_load_base_env(env, environ);
+	jc = singleton_jc();
+	read_pointrc(env);
 	if (modes.mode == 0)
 		init_job_control(jc);
-	if (!jc->shell_is_interactive)
+	if (!jc->shell_is_interactive && modes.mode == 0)
 	{
 		modes.mode = FILE_MODE;
 		modes.stream = STDIN_FILENO;
 	}
 	if (modes.mode == INTERACTIVE_MODE)
 	{
-		conf_term_in();
+		conf_term_init();
 		history_load(singleton_hist(), env);
 		create_ternary_tree(env);
 	}
-	local_add_change_from_key_value(&env->local, "$?", "0");
-	read_pointrc(env);
-	main_loop(env, &modes);
+	local_add_change_from_key_value(&env->local, "?", "0");
+	if (!(main_loop(env, &modes)))
+		exit(ft_atoi(local_get_value(singleton_env()->local, "?")));
 	env_free_env(env);
 	return (0);
 }
-		//exit(ft_atoi(local_get_value(singleton_env()->local, "$?")));

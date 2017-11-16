@@ -88,7 +88,7 @@ void			edit_line_init(t_line *line, void (*sig_handler)(void));
 char			*edit_get_input(void);
 void			edit_set_signals_open(void);
 void			edit_handle_sigwinch(int signum);
-void			conf_term_in(void);
+void			conf_term_init(void);
 void			conf_term_canonical(void);
 void			conf_term_non_canonical(void);
 void			put_termcap(char *capacity);

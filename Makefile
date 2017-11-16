@@ -86,6 +86,7 @@ SRC_FILE = \
 		   exec/lex_and_parse.c \
 		   exec/main_loop.c \
 		   exec/redir_utils.c \
+		   exec/get_input.c \
 		   \
 		   \
 		   \

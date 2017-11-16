@@ -53,11 +53,9 @@ void			no_handle_signals(void);
 **	In file srcs/exec/main_loop.c
 */
 
-void	lex_and_parse(t_ast *ast, char *buff, t_modes *modes);
-char			*line_editing_get_input(t_line *line, t_hist *hist,
-		void (*sig_handler)(void));
+int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes);
 void			init_main_loop(t_line *line, t_hist *hist);
-void	main_loop(t_env *env, t_modes *modes);
+int		main_loop(t_env *env, t_modes *modes);
 int		get_input(t_modes *modes, char **buff);
 
 /*
@@ -82,4 +80,7 @@ t_ast	*get_function(t_env *env, char *cmd_name);
 int		exec_function(t_ast *fct_body, char **av);
 void	exec_redirect_list(t_ast *ast, t_list **redirect_list);
 char	*stream_get_line(int stream);
+char	*line_editing_get_line(t_line *line, t_hist *hist,
+		void (*sig_handler)(void));
+int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes);
 #endif

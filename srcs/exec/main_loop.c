@@ -32,38 +32,9 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->col_target = -1;
 }
 
-char	*line_editing_get_input(t_line *line, t_hist *hist,
-		void (*sig_handler)(void))
-{
-	put_prompt(line);
-	history_init(hist);
-	edit_line_init(line, sig_handler);
-	return (edit_get_input());
-}
+//loop until end of input in case of noninteractive mode
 
-char	*stream_get_line(int stream)
-{
-	char	*buff;
-	buff = NULL;
-	get_next_line(stream, &buff);
-	return (buff);
-}
-
-int		get_input(t_modes *modes, char **buff)
-{
-	if (modes->mode == INTERACTIVE_MODE)
-		*buff = ft_strdup(line_editing_get_input(singleton_line(), \
-					singleton_hist(), &edit_set_signals_open));
-	else if (modes->mode == STRING_MODE)
-		*buff = ft_strdup(modes->string);
-	else
-		*buff = stream_get_line(modes->stream);
-	if (!*buff)
-		return (0);
-	return (1);
-}
-
-void	main_loop(t_env *env, t_modes *modes)
+int		main_loop(t_env *env, t_modes *modes)
 {
 	char		*buff;
 
@@ -77,9 +48,9 @@ void	main_loop(t_env *env, t_modes *modes)
 			load_prompt(env, singleton_line(), "PS1", "$> ");
 		}
 		if (!get_input(modes, &buff))
-			return (-1);
-		if (!ft_strequ(buff, "\n"))
-			lex_and_parse(NULL, buff, modes);
+			return (0);
+		if (!lex_and_parse(NULL, buff, modes))
+			return (0);
 		free(buff);
 	}
 }
