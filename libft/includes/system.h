@@ -11,5 +11,6 @@ void	put_ntermcap(char *capacity, int n);
 void	goto_termcap(char *capacity, int co, int li);
 void	p_pipe(int	mypipe[2]);
 int		p_fork(void);
+char	*ft_gethome(void);
 
 #endif

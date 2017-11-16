@@ -29,8 +29,10 @@
 # define KEY_ALT_C 42947
 # define KEY_ALT_P 32975
 # define KEY_ALT_V 10127586
+# define KEY_ALT_SPACE 41154
 # define KEY_ALT_R 44738
 # define KEY_CTRL_L 12
+# define KEY_CTRL_V 22
 # define BUFF_LINE_SIZE 10
 # define TAB_SIZE 8
 
@@ -93,6 +95,7 @@ void			put_termcap(char *capacity);
 t_line			*singleton_line(void);
 
 int				control_l(t_line *line);
+int				verbatim(t_line *line);
 int				control_d(t_line *line);
 int				edit_end(t_line *line);
 int				edit_home(t_line *line);
@@ -123,8 +126,7 @@ char			*edit_exit(t_line *line);
 int				ft_insert_str_dest(char *str, char *dest, size_t dest_len);
 int				edit_insert_str(t_line *line, char *dest, char *str);
 
-void			realoc_line_buff(char **buff, unsigned int *size,
-		unsigned int size_needed);
+void			realoc_line_buff(t_line *line, size_t new_size);
 
 /*
 ** copy_paste func

@@ -2,7 +2,7 @@
 #include "libft.h"
 #include "shopt.h"
 
-struct s_shopt_mask g_shopt_mask[OPTNB];
+struct s_shopt_mask g_shopt_mask[OPTNB + 1];
 
 /*
 **	Sign is '-' if value must be set '+' if it must be
@@ -16,6 +16,8 @@ int	set_shell_opt(t_env *env, int sign, const char *option_value)
 	size_t	i;
 
 	i = 0;
+	if (!option_value)
+		return (0);
 	while (i != OPTNB && !ft_strequ(g_shopt_mask[i].string, option_value))
 		++i;
 	if (i == OPTNB)
@@ -23,6 +25,7 @@ int	set_shell_opt(t_env *env, int sign, const char *option_value)
 	if (sign == '-')
 		env->option |= g_shopt_mask[i].mask;
 	if (sign == '+')
-		env->option ^= g_shopt_mask[i].mask;
+		if (env->option & g_shopt_mask[i].mask)
+			env->option ^= g_shopt_mask[i].mask;
 	return (1);
 }

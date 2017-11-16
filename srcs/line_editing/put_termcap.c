@@ -23,7 +23,7 @@ void	put_ntermcap(char *capacity, int n)
 	}
 }
 
-void	goto_termcap(char *capacity, int co, int li)
-{
-	tputs(tgoto(tgetstr(capacity, NULL), co, li), 1, int_putchar);
-}
+/* void	goto_termcap(char *capacity, int co, int li) */
+/* { */
+/* 	tputs(tgoto(tgetstr(capacity, NULL), co, li), 1, int_putchar); */
+/* } */

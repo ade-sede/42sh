@@ -35,7 +35,7 @@ struct s_debug_token_state
 struct	s_lex_action
 {
 	ssize_t	state;
-	int		(*func)(t_lexer *lex, ssize_t **state_info);
+	int		(*func)(t_lexer *lex, struct s_info **state_info);
 };
 
 /*
@@ -65,33 +65,41 @@ t_token	*get_token(t_lexer *lex);
 */
 
 int		get_token_list(t_lexer *lex, t_list **token_list, t_list *aliast_list);
+t_list	*expand_alias(t_lexer *lex, t_token *token, t_list *alias_list);
 
 /*
 **	In utils.c
 */
 
-int		change_state(t_lexer *lex, ssize_t new_state);
-int		pop_state(t_lexer *lex, ssize_t	**new_info);
-int		push_state(t_lexer *lex, ssize_t new_state);
+/* int		change_state(t_lexer *lex, ssize_t new_state); */
+/* int		pop_state(t_lexer *lex, ssize_t	**new_info); */
+/* int		push_state(t_lexer *lex, ssize_t new_state); */
+/* int		consume_input(t_lexer *lex); */
+/* ssize_t	*create_state_info(void); */
+/* void	copy_state_info(ssize_t *old_info, ssize_t *new_info); */
+void	free_info(void *ptr);
+struct s_info	*create_state_info(void);
+void	copy_state_info(struct s_info *old_info, struct s_info *new_info);
+int		push_state(t_lexer *lex, int new_state);
 int		consume_input(t_lexer *lex);
-ssize_t	*create_state_info(void);
-void	copy_state_info(ssize_t *old_info, ssize_t *new_info);
+int		pop_state(t_lexer *lex, struct s_info **info);
+int			change_state(t_lexer *lex, int	new_state);
 
 /*
 **	REFERENCING ACTIONS
 */
 
-int		lex_action_default(t_lexer *lex, ssize_t **state_info);
-int		lex_action_word(t_lexer *lex, ssize_t **state_info);
-int		lex_action_whitespace(t_lexer *lex, ssize_t **state_info);
-int		lex_action_dquotes(t_lexer *lex, ssize_t **state_info);
-int		lex_action_quotes(t_lexer *lex, ssize_t **state_info);
-int		lex_action_bs(t_lexer *lex, ssize_t **state_info);
-int		lex_action_operator(t_lexer *lex, ssize_t **state_info);
-int		lex_action_newline(t_lexer *lex, ssize_t **state_info);
-int		lex_action_comment(t_lexer *lex, ssize_t **state_info);
-int		lex_action_param_exp(t_lexer *lex, ssize_t **state_info);
-int		lex_action_cmd_subst(t_lexer *lex, ssize_t **state_info);
+int		lex_action_default(t_lexer *lex, struct s_info **state_info);
+int		lex_action_word(t_lexer *lex, struct s_info **state_info);
+int		lex_action_whitespace(t_lexer *lex, struct s_info **state_info);
+int		lex_action_dquotes(t_lexer *lex, struct s_info **state_info);
+int		lex_action_quotes(t_lexer *lex, struct s_info **state_info);
+int		lex_action_bs(t_lexer *lex, struct s_info **state_info);
+int		lex_action_operator(t_lexer *lex, struct s_info **state_info);
+int		lex_action_newline(t_lexer *lex, struct s_info **state_info);
+int		lex_action_comment(t_lexer *lex, struct s_info **state_info);
+int		lex_action_param_exp(t_lexer *lex, struct s_info **state_info);
+int		lex_action_cmd_subst(t_lexer *lex, struct s_info **state_info);
 
 
 /*

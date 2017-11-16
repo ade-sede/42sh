@@ -21,10 +21,10 @@ static void	create_alias(t_env *env, const char *argv, int eq_index, int *ret)
 
 	node = find_alias(env->alias, argv, eq_index + 1);
 	if (node)
-		node->data = ft_strchange(node->data, ft_strdup(argv));
+		node->data = ft_strchange(node->data, cl_strdup(argv));
 	else
 		ft_simple_lst_pushback(&env->alias, \
-				ft_simple_lst_create(ft_strdup(argv)));
+				ft_simple_lst_create(cl_strdup(argv)));
 	*ret = EXIT_SUCCESS;
 }
 

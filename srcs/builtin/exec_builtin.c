@@ -13,7 +13,7 @@ static t_builtin	g_builtin[] =
 	{"unsetenv", &builtin_unsetenv},
 	{"setenv", &builtin_setenv},
 	{"echo", &builtin_echo},
-	{"alias", &builtin_alias},
+	/* {"alias", &builtin_alias}, */
 	{"unalias", &builtin_unalias},
 	{"fg", &builtin_fg},
 	{"bg", &builtin_bg},
@@ -23,6 +23,7 @@ static t_builtin	g_builtin[] =
 	{"shopt", &builtin_shopt},
 	{"shift", &builtin_shift},
 	{"export", &builtin_export},
+	{"read", &builtin_read},
 	{NULL, NULL}
 };
 

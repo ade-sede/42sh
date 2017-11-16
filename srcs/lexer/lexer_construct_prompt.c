@@ -16,7 +16,7 @@ char	*lexer_construct_prompt(t_lexer *lex)
 {
 	int		state;
 
-	state = ((int*)lex->state->data)[_T_STATE];
+	state = ((struct s_info*)lex->state->data)->state;
 	int	i = 0;
 	while (g_state_to_promt[i].string)
 	{

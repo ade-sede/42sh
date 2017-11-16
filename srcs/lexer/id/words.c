@@ -93,6 +93,8 @@ static int	check_io_number(t_token *token)
 ** TK_LPAREN || token->id == TK_RPAREN)
 */
 
+#include <stdio.h>
+
 static int	check_prev_1(t_lexer *lex)
 {
 	t_token	*token = NULL;
@@ -103,7 +105,9 @@ static int	check_prev_1(t_lexer *lex)
 		return (FALSE);
 	token = node->data;
 	if (token->id == TK_NEWLINE)
+	{
 		return (TRUE);
+	}
 	if (IS_RESERVED_WORD(token->id) && token->id != TK_FOR && token->id != TK_CASE && token->id != TK_IN)
 		return (TRUE);
 	return (FALSE);

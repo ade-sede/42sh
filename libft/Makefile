@@ -74,6 +74,7 @@ SRC = \
 	mem/ft_realloc.c \
 	mem/palloc.c \
 	str/ft_str_isdigit.c \
+	str/ft_is_backslash.c \
 	str/charcmp.c \
 	str/ft_atoi.c \
 	str/ft_buff_wchar.c \
@@ -123,6 +124,7 @@ SRC = \
 	str/ft_strpush.c \
 	str/ft_strspush.c \
 	system/ft_is_executable.c \
+	system/get_home.c \
 	system/size_term.c \
 	system/put_termcap.c \
 	system/pfork.c \
