@@ -27,7 +27,6 @@ enum
 	TK_NEWLINE,
 	TK_IO_NUMBER,
 	TK_LESS = OPERATOR_OFFSET,
-	TK_HERE,
 	TK_GREAT,
 	TK_SEMI,
 	TK_PIPE,
@@ -69,17 +68,27 @@ enum
 #define _T_COUNT 3
 #define _T_NEST 4
 
+struct s_info
+{
+	int		state;
+	int		count;
+	int		nest;
+	char	*value;
+};
+
 typedef struct	s_token
 {
-	ssize_t				*state_info;
+	/* ssize_t				*state_info; */
+	struct	s_info		*state_info;
 	char				*value;
 	char				delim;
 	int					id;
+	int					cmd_name;
 }				t_token;
 #endif
 
 
-t_token		*create_token(const char *source, ssize_t *info);
+t_token		*create_token(const char *source, struct s_info *info, size_t end_index);
 void		free_token(void *value);
 t_token	*dup_token(t_token *original);
 void	debug_token(t_token *token);

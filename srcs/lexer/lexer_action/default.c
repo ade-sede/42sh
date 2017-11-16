@@ -1,10 +1,13 @@
 #include "lexer.h"
 #include "libft.h"
 
-int		lex_action_default(t_lexer *lex, ssize_t **state_info)
+int		lex_action_default(t_lexer *lex, struct s_info **state_info)
 {
 	if (lex->line[lex->pos] == 0)
+	{
+		dprintf(2, "Done in lexer with line = #%s#\n", lex->line);
 		return (TRUE);
+	}
 	if (lex->line[lex->pos] == ' ' || lex->line[lex->pos] == '\t')
 		push_state(lex, WHITESPACE);
 	else if (lex->line[lex->pos] == '\n')

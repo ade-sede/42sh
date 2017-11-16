@@ -161,6 +161,7 @@ SRC_FILE = \
 		   job_control/singleton_jc.c \
 		   \
 		   lexer/get_token.c \
+		   lexer/alias.c \
 		   lexer/get_token_list.c \
 		   lexer/lexer_construct_prompt.c \
 		   lexer/t_lexer.c \

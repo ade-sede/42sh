@@ -43,12 +43,33 @@ static char	*get_state(int state)
 **	Pushes a ssize_t* whose _T_STATE index is set to new_state.
 **	_T_START set to lex->pos
 **	_T_END set to -1 (undefined) **	_T_COUNT set to 0.  */ 
-ssize_t	*create_state_info(void)
-{
-	ssize_t	*info;
 
-	info = palloc(sizeof(*info) * 5);
-	ft_memset(info, 0, sizeof(*info) * 5);
+/* ssize_t	*create_state_info(void) */
+/* { */
+/* 	ssize_t	*info; */
+
+/* 	info = palloc(sizeof(*info) * 5); */
+/* 	ft_memset(info, 0, sizeof(*info) * 5); */
+/* 	return (info); */
+/* } */
+
+void	free_info(void *ptr)
+{
+	struct s_info *info;
+
+	info = ptr;
+	if (info)
+		free(info->value);
+	free(info);
+}
+
+struct s_info	*create_state_info(void)
+{
+	struct s_info *info;
+
+	info = palloc(sizeof(*info));
+	ft_memset(info, 0, sizeof(*info));
+	info->value = ft_strnew(0);
 	return (info);
 }
 
@@ -56,51 +77,92 @@ ssize_t	*create_state_info(void)
 **	
 */
 
-void	copy_state_info(ssize_t *old_info, ssize_t *new_info)
+void	copy_state_info(struct s_info *old_info, struct s_info *new_info)
 {
-	new_info[_T_STATE] = old_info[_T_STATE];
-	new_info[_T_START] = old_info[_T_START];
-	new_info[_T_END] = old_info[_T_END];
-	new_info[_T_STATE] = old_info[_T_STATE];
-	new_info[_T_NEST] = old_info[_T_NEST];
+	ft_memcpy(new_info, old_info, sizeof(struct s_info));
 }
+/* void	copy_state_info(ssize_t *old_info, ssize_t *new_info) */
+/* { */
+/* 	new_info[_T_STATE] = old_info[_T_STATE]; */
+/* 	new_info[_T_START] = old_info[_T_START]; */
+/* 	new_info[_T_END] = old_info[_T_END]; */
+/* 	new_info[_T_STATE] = old_info[_T_STATE]; */
+/* 	new_info[_T_NEST] = old_info[_T_NEST]; */
+/* } */
 
-int		push_state(t_lexer *lex, ssize_t new_state)
+int		push_state(t_lexer *lex, int new_state)
 {
-	ssize_t	*info;
-	t_list	*node;
-
+	struct s_info *info;
+	t_list *node;
 #ifdef LEXER_DEBUG
-	ssize_t	*old_state;
+	struct s_info	*old_state;
 
 	if (lex->state)
 	{
 		old_state = lex->state->data;
-		dprintf(2, GRN"Pushed "RESET"state %s when reading "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu] in state %s\n", get_state(new_state), lex->line[lex->pos], lex->pos, get_state(old_state[_T_STATE]));
+		dprintf(2, GRN"Pushed "RESET"state %s when reading "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu] in state %s\n", get_state(new_state), lex->line[lex->pos], lex->pos, get_state(old_state->state));
 	}
 #endif
 	info = create_state_info();
-	info[_T_STATE] = new_state;
-	info[_T_START] = lex->pos;
-	info[_T_END] = -1;
-	info[_T_COUNT] = 0;
-	info[_T_NEST] = 0;
+	info->state = new_state;
+	info->nest = 0;
+	info->count = 0;
 	node = ft_simple_lst_create(info);
 	ft_simple_lst_pushback(&lex->state_list, node);
 	lex->state = node;
 	return (1);
 }
 
+/* int		push_state(t_lexer *lex, ssize_t new_state) */
+/* { */
+/* 	ssize_t	*info; */
+/* 	t_list	*node; */
+
+/* #ifdef LEXER_DEBUG */
+/* 	ssize_t	*old_state; */
+
+/* 	if (lex->state) */
+/* 	{ */
+/* 		old_state = lex->state->data; */
+/* 		dprintf(2, GRN"Pushed "RESET"state %s when reading "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu] in state %s\n", get_state(new_state), lex->line[lex->pos], lex->pos, get_state(old_state[_T_STATE])); */
+/* 	} */
+/* #endif */
+/* 	info = create_state_info(); */
+/* 	info[_T_STATE] = new_state; */
+/* 	info[_T_START] = lex->pos; */
+/* 	info[_T_END] = -1; */
+/* 	info[_T_COUNT] = 0; */
+/* 	info[_T_NEST] = 0; */
+/* 	node = ft_simple_lst_create(info); */
+/* 	ft_simple_lst_pushback(&lex->state_list, node); */
+/* 	lex->state = node; */
+/* 	return (1); */
+/* } */
+
+/* int		consume_input(t_lexer *lex) */
+/* { */
+/* 	ssize_t	*info; */
+
+/* 	info = lex->state->data; */
+/* #ifdef LEXER_DEBUG */
+/* 		dprintf(2, YEL"Adding "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu] to current state %s\n", lex->line[lex->pos], lex->pos, get_state(info[_T_STATE])); */
+/* #endif */
+/* 	lex->pos++; */
+/* 	(info[_T_COUNT])++; */
+/* 	return (1); */
+/* } */
+
 int		consume_input(t_lexer *lex)
 {
-	ssize_t	*info;
-
+	struct s_info	*info;
 	info = lex->state->data;
 #ifdef LEXER_DEBUG
-		dprintf(2, YEL"Adding "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu] to current state %s\n", lex->line[lex->pos], lex->pos, get_state(info[_T_STATE]));
+		dprintf(2, YEL"Adding "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu] to current state %s\n", lex->line[lex->pos], lex->pos, get_state(info->state));
 #endif
+	info->value = cl_realloc(info->count, info->value, info->count + 1 + 1);
+	info->value[info->count] = lex->line[lex->pos];
 	lex->pos++;
-	(info[_T_COUNT])++;
+	info->count++;
 	return (1);
 }
 
@@ -112,27 +174,53 @@ int		consume_input(t_lexer *lex)
 **	pop_state.
 */
 
-int		pop_state(t_lexer *lex, ssize_t	**info)
+int		pop_state(t_lexer *lex, struct s_info **info)
 {
-	ssize_t	*old_info;
-	ssize_t	*new_info;
-
-	free(*info);
-	new_info = create_state_info();
-	old_info = lex->state->data;
-	old_info[_T_END] = lex->pos - 1;
-	copy_state_info(old_info, new_info);
+	struct s_info *current_info;
+	struct s_info *parent_info;
+	
+	free_info(*info);
+	*info = create_state_info();
+	current_info = lex->state->data;
+	copy_state_info(current_info, *info);
 #ifdef LEXER_DEBUG
-	dprintf(2, RED"Poped "RESET"state %s when reading "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu]\n", get_state(old_info[_T_STATE]), lex->line[lex->pos], lex->pos);
+	dprintf(2, RED"Poped "RESET"state %s when reading "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu]\n", get_state(current_info->state), lex->line[lex->pos], lex->pos);
 #endif
 	ft_simple_lst_del_one(&lex->state_list, lex->state, NULL);
 	lex->state = ft_last_simple_lst(lex->state_list);
-	*info = new_info;
+	parent_info = lex->state->data;
+	parent_info->value = ft_strchange(parent_info->value, ft_strjoin(parent_info->value, (*info)->value));
+	parent_info->count += (*info)->count;
+	return (1);
+}
+/* int		pop_state(t_lexer *lex, ssize_t	**info) */
+/* { */
+/* 	ssize_t	*old_info; */
+/* 	ssize_t	*new_info; */
+
+/* 	free(*info); */
+/* 	new_info = create_state_info(); */
+/* 	old_info = lex->state->data; */
+/* 	old_info[_T_END] = lex->pos - 1; */
+/* 	copy_state_info(old_info, new_info); */
+/* #ifdef LEXER_DEBUG */
+/* 	dprintf(2, RED"Poped "RESET"state %s when reading "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu]\n", get_state(old_info[_T_STATE]), lex->line[lex->pos], lex->pos); */
+/* #endif */
+/* 	ft_simple_lst_del_one(&lex->state_list, lex->state, NULL); */
+/* 	lex->state = ft_last_simple_lst(lex->state_list); */
+/* 	*info = new_info; */
+/* 	return (1); */
+/* } */
+
+int			change_state(t_lexer *lex, int	new_state)
+{
+	
+	((struct s_info*)lex->state->data)->state = new_state;
 	return (1);
 }
 
-int		change_state(t_lexer *lex, ssize_t new_state)
-{
-	((ssize_t*)lex->state->data)[_T_STATE] = new_state;
-	return (0);
-}
+/* int		change_state(t_lexer *lex, ssize_t new_state) */
+/* { */
+/* 	((ssize_t*)lex->state->data)[_T_STATE] = new_state; */
+/* 	return (0); */
+/* } */

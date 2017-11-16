@@ -1,7 +1,7 @@
 #include "lexer.h"
 #include "libft.h"
 
-int		lex_action_comment(t_lexer *lex, ssize_t **state_info)
+int		lex_action_comment(t_lexer *lex, struct s_info **state_info)
 {
 	if (lex->line[lex->pos] == 0)
 		pop_state(lex, state_info);

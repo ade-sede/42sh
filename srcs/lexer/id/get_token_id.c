@@ -30,29 +30,32 @@ static int	check_prev_one_redir(t_lexer *lex)
 	if (!node)
 		return (TRUE);
 	token = node->data;
-	if (token->id != TK_LESS && token->id != TK_HERE && token->id != TK_GREAT && token->id != TK_DLESS && token->id != TK_DGREAT && token->id != TK_LESSAND && token->id != TK_GREATAND)
+	if (token->id != TK_LESS && token->id != TK_GREAT && token->id != TK_DLESS && token->id != TK_DGREAT && token->id != TK_LESSAND && token->id != TK_GREATAND)
 		return (TRUE);
 	return (FALSE);
 }
 
 void	get_token_id(t_lexer *lex, t_token *token)
 {
-	ssize_t	*info;
+	struct s_info	*info;
 
 	info = token->state_info;
 
-	if (info[_T_STATE] == OPERATOR) // Token is an operator
+	if (info->state == OPERATOR) // Token is an operator
 	{
 		token->id = id_operator(token->value);
 		if (token->id == TK_AND_IF || token->id == TK_OR_IF || token->id == TK_PIPE || token->id == TK_SEMI || token->id == TK_CLOBBER)
 			lex->cmd_name_open = TRUE;
 	}
-	else if (info[_T_STATE] == NEWLINE) // Token is an operator
+	else if (info->state == NEWLINE) // Token is an operator
 		token->id = TK_NEWLINE;
-	else if (info[_T_STATE] != COMMENT && info[_T_STATE] != WHITESPACE) // Token is anything else
+	else if (info->state != COMMENT && info->state != WHITESPACE) // Token is anything else
 	{
 		token->id = id_word(lex, token);
 		if (token->id != TK_ASSIGNMENT_WORD && lex->cmd_name_open && check_prev_one_redir(lex))
+		{
+			token->cmd_name = TRUE;
 			lex->cmd_name_open = FALSE;
+		}
 	}
 }

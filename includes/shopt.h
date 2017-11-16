@@ -20,7 +20,7 @@ struct s_shopt_mask
 	char	*string;
 };
 
-extern struct s_shopt_mask g_shopt_mask[OPTNB];
+extern struct s_shopt_mask g_shopt_mask[OPTNB + 1];
 
 int	set_shell_opt(t_env *env, int sign, const char *option_value);
 #endif

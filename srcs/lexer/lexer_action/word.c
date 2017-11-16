@@ -2,20 +2,21 @@
 #include "libft.h"
 
 #include <stdio.h>
-int		lex_action_word(t_lexer *lex, ssize_t **state_info)
+int		lex_action_word(t_lexer *lex, struct s_info **state_info)
 {
-	ssize_t	*info;
+	struct s_info *info;
 
 	if (lex->line[lex->pos] == 0)
 		pop_state(lex, state_info);
-	if (lex->line[lex->pos] == '\\')
+	else if (lex->line[lex->pos] == '\\')
 		push_state(lex, BS);
 	else if (lex->line[lex->pos] == '\n')
 		pop_state(lex, state_info);
 	else if (lex->line[lex->pos] == '(' || lex->line[lex->pos] == ')')
 	{
 		info = lex->state->data;
-		if (lex->pos - info[_T_START] != 0)
+		/* if (lex->pos - info[_T_START] != 0) */
+		if (info->count != 0)
 			pop_state(lex, state_info);
 		else
 		{
