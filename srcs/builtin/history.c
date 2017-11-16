@@ -13,10 +13,10 @@
 static t_option g_option[] = {
 	{1, "c", OPTION_BOOL, "\t", "clear the history list"},
 	{2, "d", OPTION_STRING, "offset", "delete one node"},
-	{3, "a", OPTION_STRING, "[filename]", "Append the new history lines"},
-	{4, "n", OPTION_STRING, "[filename]", "Append the history lines not already read from the history file"},
-	{5, "r", OPTION_STRING, "[filename]", "append the current history file"},
-	{6, "w", OPTION_STRING, "[filename]", "Write out the current history to the history file"},
+	{3, "a", OPTION_BOOL, "[filename]", "Append the new history lines"},
+	{4, "n", OPTION_BOOL, "[filename]", "Append the history lines not already read from the history file"},
+	{5, "r", OPTION_BOOL, "[filename]", "append the current history file"},
+	{6, "w", OPTION_BOOL, "[filename]", "Write out the current history to the history file"},
 	{7, "s", OPTION_STRING, "args", "The args are added to the end of the history list as a single entry."},
 	{0, NULL, 0, NULL, NULL}
 };
@@ -42,8 +42,6 @@ void	aff_node(t_list_d *list, int aff)
 		strftime(result, sizeof(result), format,
 				localtime(&((t_cmd_node *)list->data)->timestamp.tv_sec));
 		ft_putstr(result);
-		//ft_putnbr((ssize_t)((t_cmd_node *)list->data)->timestamp.tv_sec);
-		//	ft_putstr(((t_cmd_node *)list->data)->timestamp);
 	}
 	ft_putendl(((t_cmd_node *)list->data)->line);
 }
@@ -74,7 +72,6 @@ int			file_to_list(t_hist *h, const char *histf, int i)
 
 	cat = NULL;
 	histf = (histf) ? histf : histfile();
-	ft_putendl(histf);
 	if ((fd = open(histf, O_RDWR | O_CREAT, 0644)) == -1)
 		return (0);
 	while (get_next_line(fd, &line))
@@ -110,6 +107,18 @@ void	free_node(void *nd)
 	free(node->line);
 }
 
+char	*joinarg(const char **arg)
+{
+	int		i;
+	char	*ret;
+
+	i = 2;
+	ret = ft_strdup(*(arg + i));
+	while (*(arg + ++i))
+		ret = ft_strjoin3_free(ret, " ", (char *)*(arg + i), 1);
+	return (ret);
+}
+
 void opt(int opt_id, t_hist *h, const char **argv)
 {
 	int i;
@@ -122,7 +131,7 @@ void opt(int opt_id, t_hist *h, const char **argv)
 	}
 	else if (opt_id == 2)
 	{
-		i = ft_atoi(*(argv + 1));
+		i = ft_atoi(*(argv + 2));
 		if (i > h->list->node_count)
 			ft_putendl_fd("out of range", 2);
 		else
@@ -134,16 +143,18 @@ void opt(int opt_id, t_hist *h, const char **argv)
 	else if (opt_id == 3)
 		file_to_list(h, *(argv + 2), h->last_line_read - 1);
 	else if (opt_id == 5)
-		file_to_list(h, *(argv + 2), -1);
+		file_to_list(h, *(argv + 2), 0);
 	else if (opt_id == 4)
 	{
-		history_write_to_histfile(h->last_read);
-		h->last_read = h->list->last;
+		history_write_to_histfile(h->last_read, *(argv + 2));
+		h->last_read = h->list->first;
 	}
 	else if (opt_id == 6)
-		history_write_to_histfile(h->list->last);
+	{
+		history_write_to_histfile(h->list->last, *(argv + 2));
+	}
 	else if (opt_id == 7)
-		h->current_cmd = ft_node_new(ft_strdup(*(argv + 2)), -1); //a changer
+		h->current_cmd = ft_node_new(joinarg(argv), -1); //a changer
 }
 
 int aff_hist(int argc, const char **argv, t_hist *h)

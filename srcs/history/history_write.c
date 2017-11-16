@@ -45,7 +45,7 @@ static int		write_to_hist(char *value, int fd)
 	return (1);
 }
 
-void			history_write_to_histfile(t_list_d *last)
+void			history_write_to_histfile(t_list_d *last, const char *hist)
 {
 	t_hist		*h;
 	int			fd;
@@ -53,7 +53,7 @@ void			history_write_to_histfile(t_list_d *last)
 	if (env_getenv((const char **)singleton_env()->environ, "HISTFILE", NULL))
 	{
 		h = singleton_hist();
-		if ((fd = open(histfile(), O_RDWR | O_APPEND)) == -1)
+		if ((fd = open((hist) ? hist : histfile(), O_RDWR | O_APPEND)) == -1)
 		{
 			investigate_error(1, "open", NULL, -1);
 			return ;

@@ -13,7 +13,7 @@ int		control_d(t_line *line)
 {
 	if (line->len == 0)
 	{
-		history_write_to_histfile(NULL);
+		history_write_to_histfile(NULL, NULL);
 		ft_putchar('\n');
 		exit(0);
 	}
