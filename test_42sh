@@ -1,33 +1,501 @@
-[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m  
+[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m                                      
 
 ----------------------------------------------------------------
 
-[37;1m42sh/globbing/bracket-expansion/star[0m [31m[38;5;160m(FAILED)[0m
+[37;1m21sh/pipe/006-exit-status[0m [31m[38;5;160m(FAILED)[0m
 
   Description:
-[38;5;239m  The purpose of this test is to check that globing works with star as patern and does not match '.' and '..'.[0m
-
-  Before test:
-[38;5;239m  01: rm -rf "./test_globbing"
-  02: mkdir "./test_globbing"
-  03: cd "./test_globbing"
-  04: touch '1' '2' '3'[0m
+[38;5;239m  The purpose of this test is to check that the exit status of a pipeline command is the same as the last piped process.[0m
 
   STDIN:
-[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout *[0m
+[38;5;239m  01: ./sleep_and_exit_with_status 1 21 | ./exit_with_status 42[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to match_regex `1@`[0m
-[31m[38;5;34m  SUCCESS    expected_to match_regex `2@`[0m
-[31m[38;5;34m  SUCCESS    expected_to match_regex `3@`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `.@`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `..@`[0m
-[38;5;239m  01: 1@2@3@[0m
+[38;5;239m  (no output)[0m
 
   STDERR:
 [31m[38;5;34m  SUCCESS    expected_to be_empty[0m
 [38;5;239m  (no output)[0m
 
-Total tests: 4
-Total failed tests: 1
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/001-close-stdin[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the closing operator `&-` within the STDIN redirection `<` results in a closed standard input, so that `read(2)` results in a read error.[0m
+
+  Before test:
+[38;5;239m  01: rm -f ./read_on_stdin
+  02: gcc -Wall -Werror -Wextra "/Users/vcombey/42ShellTester/support/read-on-stdin/main.c" -o ./read_on_stdin[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin <&-[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `STDIN READ ERROR$`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `1`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/002-filename[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a file path `simple_text_file` within the STDIN redirection `<` results in the ability of the child process to read on this file through the file descriptor STDIN.[0m
+
+  Before test:
+[38;5;239m  01: echo "TOKEN201711152017_LINE_1" > simple_text_file
+  02: echo "TOKEN201711152017_LINE_2" >> simple_text_file
+  03: echo "TOKEN201711152017_LINE_3" >> simple_text_file[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin <simple_text_file[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_LINE_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_LINE_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_LINE_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/003-filename-with-whitespaces[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a file path `simple_text_file` within the STDIN redirection `<` results in the ability of the child process to read on this file through the file descriptor STDIN.
+  The file path is specified in a separated field.[0m
+
+  Before test:
+[38;5;239m  01: echo "TOKEN201711152017_LINE_1" > simple_text_file
+  02: echo "TOKEN201711152017_LINE_2" >> simple_text_file
+  03: echo "TOKEN201711152017_LINE_3" >> simple_text_file[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin < 	 simple_text_file[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_LINE_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_LINE_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_LINE_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/004-absolute-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using an absolute path to a file within the STDIN redirection `<` results in the ability of the child process to read on this file through the file descriptor STDIN.[0m
+
+  Before test:
+[38;5;239m  01: echo "TOKEN201711152017_LINE_1" > simple_text_file
+  02: echo "TOKEN201711152017_LINE_2" >> simple_text_file
+  03: echo "TOKEN201711152017_LINE_3" >> simple_text_file[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin </Users/vcombey/42ShellTester/tmp/simple_text_file[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_LINE_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_LINE_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_LINE_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/005-no-such-file[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong path within the STDIN redirection `<` results in an error.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./no_such_file"[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin <no_such_file[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Nn]o such file or directory`[0m
+[38;5;239m  01: open: No such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/appending/002-append-stdout-to-file[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A double right redirection opens the file with the oflag `O_APPEND`, so that its size is not truncated to 0 and output is written at the end of file. If the file does not exist, it is created.
+  In this test, the standard output is appended to the file.[0m
+
+  Before test:
+[38;5;239m  01: ./write_on_stdout "TOKEN201711152017_first" >append_file_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_stdout TOKEN201711152017_stderr 1>>append_file_stdout[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_stdout`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_stderr`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to create_file `append_file_stdout` matching_regex `TOKEN201711152017_first`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `append_file_stdout` matching_regex `TOKEN201711152017_stdout`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/appending/003-append-stderr-to-file[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A double right redirection opens the file with the oflag `O_APPEND`, so that its size is not truncated to 0 and output is written at the end of file. If the file does not exist, it is created.
+  In this test, the standard error is appended to the file.[0m
+
+  Before test:
+[38;5;239m  01: ./write_on_stdout "TOKEN201711152017_first" >append_file_stderr[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_stdout TOKEN201711152017_stderr 2>>append_file_stderr[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_stdout`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_stderr`[0m
+[38;5;239m  01: 42sh: parse error near `2'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to create_file `append_file_stderr` matching_regex `TOKEN201711152017_first`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `append_file_stderr` matching_regex `TOKEN201711152017_stderr`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/appending/multiple/001-append-twice-separately[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A double right redirection opens the file with the oflag `O_APPEND`, so that its size is not truncated to 0 and output is written at the end of file. If the file does not exist, it is created.
+  In this test, each output is appended to different files.[0m
+
+  Before test:
+[38;5;239m  01: ./write_on_stdout "TOKEN201711152017_stdout_first" >append_file_stdout
+  02: ./write_on_stdout "TOKEN201711152017_stderr_first" >append_file_stderr[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_stdout_second TOKEN201711152017_stderr_second 1>>append_file_stdout 2>>append_file_stderr[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_stdout_second`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_stderr_second`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to create_file `append_file_stdout` matching_regex `TOKEN201711152017_stdout_first$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `append_file_stdout` matching_regex `TOKEN201711152017_stdout_second$`[0m
+[31m[38;5;34m  SUCCESS    expected_to create_file `append_file_stderr` matching_regex `TOKEN201711152017_stderr_first$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `append_file_stderr` matching_regex `TOKEN201711152017_stderr_second$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/closing/002-close-stdout[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  Closing the standard output has the same behavior as redirecting to `/dev/null` (e.g. `ls 1>/dev/null`).[0m
+
+  Before test:
+[38;5;239m  01: rm -f "-"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_stdout TOKEN201711152017_stderr 1>&-[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_stdout`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_stderr`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not create_file `-`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/closing/003-close-stderr[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  Closing the standard error has the same behavior as redirecting to `/dev/null` (e.g. `ls 2>/dev/null`).[0m
+
+  Before test:
+[38;5;239m  01: rm -f "-"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_stdout TOKEN201711152017_stderr 2>&-[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_stdout`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_stderr`[0m
+[38;5;239m  01: 42sh: parse error near `2'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not create_file `-`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/001-separately[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A different right redirection may be specified for each output.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "new_file_stderr"
+  02: rm -f "new_file_stdout"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_1 TOKEN201711152017_2 1>new_file_stdout 2>new_file_stderr[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stdout` matching_regex `TOKEN201711152017_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr` matching_regex `TOKEN201711152017_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/002-together-stdout-first[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `M>&N`, that means `redirect M to where N is redirected`.
+  In this test the standard output is specified first.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_1 TOKEN201711152017_2 1>new_file_stderr_and_stdout 2>&1[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152017_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152017_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/003-together-stderr-first[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `M>&N`, that means `redirect M to where N is redirected`.
+  In this test the standard error is specified first.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_1 TOKEN201711152017_2 2>new_file_stderr_and_stdout 1>&2[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  01: 42sh: parse error near `2'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152017_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152017_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/004-together[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `&>...`, that means `redirect stdout and stderr to ...`.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "new_file_stderr_and_stdout"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_1 TOKEN201711152017_2 &>new_file_stderr_and_stdout[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  01: TOKEN201711152017_1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  01: TOKEN201711152017_2[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152017_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152017_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/005-together-with-whitespaces[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `&>...`, that means `redirect stdout and stderr to ...`.
+  In this test, we specify the file name in a separate field.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_1 TOKEN201711152017_2 &>	  	new_file_stderr_and_stdout[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  01: TOKEN201711152017_1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152017_2`[0m
+[38;5;239m  01: TOKEN201711152017_2[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152017_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152017_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/stderr/001-works[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that redirecting the standard error STDERR to a file `2>` works. In this test, the binary writes a token on each standard and error output, so that only the STDOUT is outputted and STDERR is written in a file `new_file_stderr`.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./new_file_stderr"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152017_STDOUT TOKEN201711152017_STDERR 2>new_file_stderr[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152017_STDOUT`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152017_STDERR`[0m
+[38;5;239m  01: 42sh: parse error near `2'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr` matching_regex `TOKEN201711152017_STDERR`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr` with_nb_of_lines 1[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/stdout/001-with-explicit-fd[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check if '1>' redirect STDIN to a file.
+  We are using echo with one argument. The output should NOT return anything on the standard output.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file[0m
+
+  STDIN:
+[38;5;239m  01: /bin/echo TOKEN1 1>new_file[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex TOKEN1[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file new_file matching_regex TOKEN1[0m
+[31m[38;5;160m  FAILURE    expected_to create_file new_file with_nb_of_lines 1[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/separators/semicolon/003-parse-error-empty-inline-command[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the simicolon separator `;` with empty commands results in error.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout TOKEN201711152017 ; ; ./exit_with_status 42[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `([Ss]yntax|[Pp]arse) error`[0m
+[38;5;239m  01: 42sh: parse error near `;'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status `42`[0m
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+Total tests: 36
+Total failed tests: 19
 Total pending tests: 0

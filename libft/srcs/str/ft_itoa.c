@@ -3,7 +3,7 @@
 #include "alloc.h"
 #include "mem.h"
 
-void	ft_itoa_word(int n, char nbr[20])
+char	*ft_itoa_word(int n, char nbr[20])
 {
 	char	*res;
 
@@ -13,6 +13,7 @@ void	ft_itoa_word(int n, char nbr[20])
 	while (res[++i])
 		nbr[i] = res[i];
 	free(res);
+	return (nbr);
 }
 
 char	*ft_itoa(int n)

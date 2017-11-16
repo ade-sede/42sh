@@ -1,5 +1,6 @@
 #include "libft.h"
 #include "t_env.h"
+#include "local.h"
 #include "builtin.h"
 #include "failure.h"
 #include "history.h"
@@ -10,10 +11,11 @@ int	builtin_exit(t_env *env, const char **argv)
 	int		argc;
 
 	argc = ft_arraylen(argv);
+	exit_status = ft_atoi(local_get_value(env->local, "$?"));
 	if (argc == 1)
 	{
 		history_write_to_histfile();
-		exit(env->previous_exit);
+		exit(exit_status);
 	}
 	if (argc > 2)
 		return (investigate_error(1, NULL, "exit: to many arguments",

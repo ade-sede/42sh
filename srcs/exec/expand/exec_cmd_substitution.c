@@ -25,7 +25,7 @@ static void	exec_comm_child (char *comm, int *fildes, int no_showerr)
 	close (fildes[0]);
 	singleton_jc()->shell_is_interactive = 0;
 //	fprintf(stderr, "exec_comm_child {%s}\n", comm);
-	lex_and_parse(NULL, comm);
+	lex_and_parse(NULL, comm, 0); // TODO: attention
 	exit (1);
 }
 /* pwordexp contains NULL if field-splitting is forbidden */
