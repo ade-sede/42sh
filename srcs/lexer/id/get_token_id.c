@@ -30,7 +30,7 @@ static int	check_prev_one_redir(t_lexer *lex)
 	if (!node)
 		return (TRUE);
 	token = node->data;
-	if (token->id != TK_LESS && token->id != TK_HERE && token->id != TK_GREAT && token->id != TK_DLESS && token->id != TK_DGREAT && token->id != TK_LESSAND && token->id != TK_GREATAND)
+	if (token->id != TK_LESS && token->id != TK_GREAT && token->id != TK_DLESS && token->id != TK_DGREAT && token->id != TK_LESSAND && token->id != TK_GREATAND)
 		return (TRUE);
 	return (FALSE);
 }

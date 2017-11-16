@@ -43,6 +43,11 @@ void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 	else if (is_symb(ast->child[1], IO_HERE))
 		io_here = ast->child[1];
 //	if (io_here)
+	/*
+	** creer pipe
+	** ecrire ast->heredoc pipe[WRITE_END]
+	** push_dup(io_number, pipe[READ_END], FALSE, redirect_list)
+	*/
 }
 
 /*
