@@ -84,6 +84,7 @@ typedef struct	s_token
 	char				*value;
 	char				delim;
 	int					id;
+	int					cmd_name;
 }				t_token;
 #endif
 

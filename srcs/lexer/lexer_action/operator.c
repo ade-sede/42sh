@@ -36,8 +36,8 @@ int		lex_action_operator(t_lexer *lex, struct s_info **state_info)
 		return (TRUE);
 	}
 	operator_string = ft_strnew(info->count + 1);
-	ft_memcpy(operator_string, info->value, ft_strlen(info->value));
-	operator_string[info->count + 1] = lex->line[lex->pos];
+	ft_memcpy(operator_string, info->value, info->count);
+	operator_string[info->count] = lex->line[lex->pos];
 	while (g_operator_list[i] && !ft_strequ(g_operator_list[i], operator_string))
 		++i;
 	if (g_operator_list[i])

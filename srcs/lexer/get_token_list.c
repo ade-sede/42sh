@@ -225,28 +225,29 @@ int		get_token_list(t_lexer *lex, t_list **token_list, t_list *alias_list)
 	t_list	*node;
 	t_list	*reversed_node;
 
-	(void)alias_list;
 	while (lex->line[lex->pos] && (token = get_token(lex)) != NULL)
 	{
-		dprintf(2, "%s\n", token->value);
+#ifdef LEXER_DEBUG
+		dprintf(2, "CLOSED A TOKEN\n");
+#endif
 		/* If token is a whitespace or a comment, discard it. Otherwise proceed to concatenation */
 
 		/* If token is a cmd_name, alias expand it. */
-		/* if (!(node = expand_alias(lex, token, alias_list))) */
-		/* 	node = ft_simple_lst_create(token); */
-		/* else */
 		if (token->state_info->state == COMMENT || token->state_info->state == WHITESPACE)
 			free_token(token);
 		else
 		{
-		node = ft_simple_lst_create(token);
-		reversed_node = ft_simple_lst_create(token);
-		ft_simple_lst_add(&lex->reversed_list, reversed_node);
-		ft_simple_lst_pushback(token_list, node);
+			if (!(node = expand_alias(lex, token, alias_list)))
+			{
+				node = ft_simple_lst_create(token);
+				reversed_node = ft_simple_lst_create(token);
+				ft_simple_lst_add(&lex->reversed_list, reversed_node);
+			}
+			ft_simple_lst_pushback(token_list, node);
 		}
 	}
 #ifdef LEXER_DEBUG
 	debug_token_list(*token_list);
 #endif
-	return ((((int*)lex->state->data)[_T_STATE] != DEFAULT) ? LEXER_REOPEN : LEXER_SUCCESS);
+	return ((((struct s_info*)lex->state->data)->state != DEFAULT) ? LEXER_REOPEN : LEXER_SUCCESS);
 }

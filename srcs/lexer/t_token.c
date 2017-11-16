@@ -16,6 +16,7 @@ t_token		*create_token(const char *source, struct s_info *info, size_t end_index
 	token->delim = source[end_index];
 	token->state_info = info;
 	token->id = 0;
+	token->cmd_name = 0;
 	return (token);
 }
 

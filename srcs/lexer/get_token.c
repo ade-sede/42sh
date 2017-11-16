@@ -72,8 +72,15 @@ t_token	*get_token(t_lexer *lex)
 	state_info = NULL;
 
 	/* DELIM */
-	while (ret && !(state_info && state_info->count != 0 && ((struct s_info*)lex->state->data)->state == DEFAULT))
+	while (ret)
+	{
+		if (((struct s_info*)lex->state->data)->state == DEFAULT)
+		{
+			if (state_info && state_info->count != 0)
+					break ;
+		}
 		ret = get_action(((struct s_info*)lex->state->data)->state)(lex, &state_info);
+	}
 
 	/* Check for errors */
 	if (((struct s_info*)lex->state->data)->state == DEFAULT) /* If everything is ok, TOKENIZE */

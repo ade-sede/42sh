@@ -53,6 +53,9 @@ void	get_token_id(t_lexer *lex, t_token *token)
 	{
 		token->id = id_word(lex, token);
 		if (token->id != TK_ASSIGNMENT_WORD && lex->cmd_name_open && check_prev_one_redir(lex))
+		{
+			token->cmd_name = TRUE;
 			lex->cmd_name_open = FALSE;
+		}
 	}
 }

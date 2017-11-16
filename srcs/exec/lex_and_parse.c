@@ -52,7 +52,7 @@ void	lex_and_parse(t_ast *ast, char *buff)
 	while (!((res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS) || res_parser == PARSER_ERROR))
 	{
 		token_list = NULL;
-		res_lexer = get_token_list(&lexer, &token_list, NULL);
+		res_lexer = get_token_list(&lexer, &token_list, singleton_env()->alias);
 		if (res_lexer == LEXER_REOPEN)
 		{
 			reopen_token = ft_memalloc(sizeof(*reopen_token) * 1);
