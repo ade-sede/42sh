@@ -26,21 +26,29 @@ char	*stream_get_line(int stream)
 	return (buff);
 }
 
-char	*string_get_line(char *string)
+/*
+**	i point after the last \n or to the \0
+*/
+
+char	*string_get_line(t_modes *modes)
 {
 	char	*res = NULL;
 	int		i = 0;
 
-	while (string[i])
+	while (modes->string[i])
 	{
-		if (string[i] == '\n')
-			break;
+		if (modes->string[i] == '\n')
+		{
+			while (modes->string[i] == '\n')
+				i++;
+			break ;
+		}
 		i++;
 	}
 	if (i > 0)
 	{
-		res = ft_strndup(string, i);
-		string += i;
+		res = ft_strndup(modes->string, i);
+		modes->string += i;
 	}
 	return (res);
 }
@@ -51,7 +59,7 @@ int		get_input(t_modes *modes, char **buff)
 		*buff = ft_strdup(line_editing_get_line(singleton_line(), \
 					singleton_hist(), &edit_set_signals_open));
 	else if (modes->mode == STRING_MODE)
-		*buff = string_get_line(modes->string);
+		*buff = string_get_line(modes);
 	else
 		*buff = stream_get_line(modes->stream);
 	if (!*buff)
