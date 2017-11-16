@@ -85,6 +85,7 @@ SRC_FILE = \
 	exec/exec_utils.c \
 	exec/lex_and_parse.c \
 	exec/main_loop.c \
+	exec/parse_heredoc.c \
 	exec/redir_utils.c \
 	\
 	\

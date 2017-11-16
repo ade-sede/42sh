@@ -79,4 +79,8 @@ t_ast	*get_function(t_env *env, char *cmd_name);
 int		exec_function(t_ast *fct_body, char **av);
 char	*file_get_input(int stream);
 void	exec_redirect_list(t_ast *ast, t_list **redirect_list);
+
+void	read_heredoc(t_ast *ast, char *target);
+void	parse_heredoc(t_ast *ast);
+
 #endif

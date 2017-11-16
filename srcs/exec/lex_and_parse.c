@@ -12,7 +12,8 @@
 
 void	exec_main_loop(t_ast *ast)
 {
-	//parse_heredoc
+	parse_heredoc(ast);
+	//TODO
 	singleton_jc()->background = 0;
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_canonical();
@@ -68,7 +69,8 @@ void	lex_and_parse(t_ast *ast, char *buff)
 			ft_simple_lst_pushback(&token_list, ft_simple_lst_create(reopen_token));
 		}
 		res_parser = parse(&parser, &ast, token_list);
-		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
+		//TODO edit said
+		if ((res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN) && res_parser != 2)
 		{
 			reopen_line_editing(&lexer, &parser);
 			token_list = NULL;

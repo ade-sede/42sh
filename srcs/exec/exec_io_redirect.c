@@ -42,7 +42,11 @@ void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 		io_here = ast->child[0];
 	else if (is_symb(ast->child[1], IO_HERE))
 		io_here = ast->child[1];
-//	if (io_here)
+	if (io_here)
+	{
+		target = ast->heredoc;//io_file->child[1]->child[0]->token->value;
+		f(io_number, target, redirect_list, id);
+	}
 }
 
 /*

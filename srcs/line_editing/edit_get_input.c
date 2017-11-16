@@ -49,7 +49,7 @@ int					edit_loop(unsigned long long keycode, t_line *line)
 
 /*
  **	The function which starts the line editing, sets up the signals. Receives
- **	the keycode from history_move_loop(). Enters a loop in which each keycode
+ **	the keycode from history_move_loop(). Enters a loop in which each keycode
  **	is sent to edit_loop(), where it will be treated. If keycode is KEY_ENTER,
  **	editing is complete, and the line is returned. Every time is key is
  **	pressed, the displayed line is refreshed.

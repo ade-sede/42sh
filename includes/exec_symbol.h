@@ -34,6 +34,7 @@ int	exec_do_group(t_ast *ast);
 int	exec_simple_command(t_ast *ast);
 int exec_brace_group(t_ast *ast);
 void	debug_symbol(t_ast *ast);
+char	*extract_word(t_ast *ast);
 
 struct	s_sym_to_string
 {
