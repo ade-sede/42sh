@@ -66,7 +66,7 @@ void	lex_and_parse(t_ast *ast, char *buff)
 		}
 		res_parser = parse(&parser, &ast, token_list);
 		//TODO edit said
-		if ((res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN) && res_parser != 2)
+		if ((res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN))
 		{
 			reopen_line_editing(&lexer, &parser);
 			token_list = NULL;
