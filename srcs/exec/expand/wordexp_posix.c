@@ -112,7 +112,10 @@ static int		parse_loop (const char *words, t_expand *exp)
 			parse_backtick (exp);
 		}
 		else if (words[exp->offset] == '$')
+		{
 			parse_dollars (exp);
+			//fprintf (stderr, "word {%s}\n", exp->word.str);
+		}
 		else if (words[exp->offset] == '~')
 			parse_tilde (exp);
 		else
@@ -126,7 +129,10 @@ static int		parse_loop (const char *words, t_expand *exp)
 		exp->offset++;
 	}
 	if (exp->word.str != NULL)
+	{
+			//fprintf (stderr, "word add {%s}\n", exp->word.str);
 		w_addword (exp, &exp->g_word, &exp->word);
+	}
 	return (0);
 }
 

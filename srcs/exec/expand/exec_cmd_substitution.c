@@ -57,6 +57,8 @@ int		exec_comm (char *comm, t_expand *exp)
 		maxnewlines += buflen;
 		w_addmem (&value, buffer, buflen);
 	}
+	//fprintf (stderr, "value cmd subst{%s}\n", value.str);
+
 	handle_fieldsplitting(value.str, exp);
 	w_free(&value);
 	return (0);

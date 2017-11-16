@@ -5,9 +5,10 @@ int		handle_fieldsplitting (char *value, t_expand *exp)
 {
 	if (!value || (value && *value == 0))
 		return (0);
-	if (exp->quoted || !exp)
+	if (exp->quoted || !exp || exp->flag & NO_FIELDSPLITING)
 	{
 		/* no field-split */
+	//fprintf (stderr, "no field splitting on {%s}\n", value);
 		size_t		i = 0;
 		while (value[i])
 		{
@@ -26,6 +27,7 @@ int		handle_fieldsplitting (char *value, t_expand *exp)
 			}
 			i++;
 		}
+		//fprintf (stderr, "no field spliting exp->word {%s}\n", exp->word.str);
 		return 0;
 	}
 	else
