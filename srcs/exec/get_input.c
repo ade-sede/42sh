@@ -8,6 +8,7 @@
 #include <pwd.h>
 #include "modes.h"
 #include "get_next_line.h"
+#include "lexer.h"
 
 char	*line_editing_get_line(t_line *line, t_hist *hist,
 		void (*sig_handler)(void))
@@ -71,6 +72,16 @@ int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes)
 {
 	char	*new_command;
 
+	/*
+	**	Si le parser a ete reouvert a cause d'un \ newline, il faut supprimer le \newline, et reculer le curseur de 2.
+	*/
+	if (((struct s_info*)lex->state->data)->state == BS)
+	{
+		ft_simple_lst_del_one(&lex->state_list, lex->state, free_info);
+		lex->line = ft_strchange(lex->line, ft_strndup(lex->line, ft_strlen(lex->line) - 2));
+		lex->state = ft_last_simple_lst(lex->state_list);
+		lex->pos -= 2;
+	}
 	if (modes->mode == INTERACTIVE_MODE)
 		reopen_line_editing(lex, parser, &new_command);
 	else if (!get_input(modes, &new_command))
