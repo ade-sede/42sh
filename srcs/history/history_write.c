@@ -27,7 +27,7 @@ char		*histfile(void)
 
 	env = singleton_env();
 	hist_file = env_getenv((const char **)env->environ, "HISTFILE", NULL);
-	return(hist_file);
+	return (hist_file);
 }
 
 static int		write_to_hist(char *value, int fd)
@@ -51,6 +51,7 @@ void			history_write_to_histfile(t_list_d *last, const char *hist)
 	int			fd;
 
 	if (env_getenv((const char **)singleton_env()->environ, "HISTFILE", NULL))
+	//if ((fd = open((hist) ? hist : histfile(), O_RDWR | O_TRUNC)) == -1)
 	{
 		h = singleton_hist();
 		if ((fd = open((hist) ? hist : histfile(), O_RDWR | O_APPEND)) == -1)
@@ -60,6 +61,7 @@ void			history_write_to_histfile(t_list_d *last, const char *hist)
 		}
 		if (!last)
 			last = (!h->last_read) ? NULL : h->last_read;
+		//	last = (!h->list) ? NULL : h->list->last;
 		while (last)
 		{
 			write_to_hist((((t_cmd_node *)last->data)->line), fd);

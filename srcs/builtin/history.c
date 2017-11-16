@@ -160,7 +160,7 @@ void opt(int opt_id, t_hist *h, const char **argv)
 int aff_hist(int argc, const char **argv, t_hist *h)
 {
 	int i;
-	if (argc == 1)
+	if (argc == 1 && h && h->list)
 		i = h->list->node_count;
 	else if (argc == 2)
 		i = ft_atoi(*(argv + 1));
