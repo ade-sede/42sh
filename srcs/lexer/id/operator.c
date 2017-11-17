@@ -4,7 +4,6 @@
 static char	*g_operator_list[] =
 {
 	"<",
-	"<<",
 	">",
 	";",
 	"|",

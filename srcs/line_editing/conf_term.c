@@ -32,7 +32,7 @@ void	conf_term_canonical(void)
 **	able to restore it, and toggles canonical mode.
 */
 
-void	conf_term_in(void)
+void	conf_term_init(void)
 {
 	char			*termtype;
 	struct termios	term;

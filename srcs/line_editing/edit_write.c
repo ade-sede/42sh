@@ -22,7 +22,7 @@ static void	term_write_char(t_line *line, size_t i)
 			if (i >= line->visu_start && i < line->pos)
 				ft_putstr("\e[39;42m");
 	}
-	if (((line->read).flags & S))
+	if (line->read_builtin && (line->read->flags & S))
 		write(2, "*", 1);
 	else
 		write(2, line->buff + i, 1);
@@ -48,6 +48,7 @@ void		term_putstr(t_line *line)
 	size_t	nb_newl;
 
 	i = 0;
+	/* while (line->buff[i]) */
 	while (line->buff[i])
 	{
 		if (line->buff[i] == '\t')

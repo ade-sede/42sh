@@ -218,6 +218,7 @@ char				*cl_strjoin(char const *s1, char const *s2);
 **	strtrim.c
 */
 
+char				*ft_strtrim_sequence(const char *s, const char *sequence);
 char				*ft_strtrim(char const *s);
 
 char				**ft_strsplit(char const *s, const char *str);
@@ -284,4 +285,7 @@ int					ft_str_is_clr(char *str);
 int					ft_str_isdigit(const char *s);
 
 int					ft_is_backslash(char *str, int n);
+
+char				*ft_itoa_word(int n, char nbr[20]);
+int					ft_str_is_clear_n(char *str, size_t n);
 #endif

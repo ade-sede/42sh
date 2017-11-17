@@ -29,7 +29,6 @@ static struct s_debug_token_id g_debug_token_id[] =
 	{TK_NEWLINE, "TK_NEWLINE" },
 	{TK_IO_NUMBER, "TK_IO_NUMBER" },
 	{TK_LESS, "TK_LESS" },
-	{TK_HERE, "TK_HERE" },
 	{TK_GREAT, "TK_GREAT" },
 	{TK_SEMI, "TK_SEMI" },
 	{TK_PIPE, "TK_PIPE" },
@@ -84,16 +83,12 @@ static char	*get_id(int id)
 	return (g_debug_token_id[i].name);
 }
 
-static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size, size_t *state_size, size_t *id_size, size_t *end_size, size_t *start_size)
+static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size, size_t *state_size, size_t *id_size)
 {
 	t_token	*token = NULL;
-	char	*itoa_end = NULL;
-	char	*itoa_start = NULL;
 	size_t	token_value_size = 0;
 	size_t	token_id_size = 0;
 	size_t	token_state_size = 0;
-	size_t	token_start_size = 0;
-	size_t	token_end_size = 0;
 
 	while (token_list)
 	{
@@ -105,7 +100,7 @@ static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size
 			*value_size = token_value_size;
 
 		/* State_size */
-		token_state_size = ft_strlen(get_state(token->state_info[_T_STATE]));
+		token_state_size = ft_strlen(get_state(token->state_info->state));
 		if (token_state_size > *state_size)
 			*state_size = token_state_size;
 
@@ -113,22 +108,6 @@ static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size
 		token_id_size = ft_strlen(get_id(token->id));
 		if (token_id_size > *id_size)
 			*id_size = token_id_size;
-
-		/* end */
-		itoa_end = ft_itoa_base(token->state_info[_T_END], 10);
-		token_end_size = ft_strlen(itoa_end);
-		free(itoa_end);
-		if (token_end_size > *end_size)
-			*end_size = token_end_size;
-
-		/* state */
-		itoa_start = ft_itoa_base(token->state_info[_T_START], 10);
-		token_start_size = ft_strlen(itoa_start);
-		free(itoa_start);
-		if (token_start_size > *start_size)
-			*start_size = token_start_size;
-
-
 
 
 		/* NUMBER */
@@ -143,31 +122,22 @@ static int	get_debug_tab_info(t_list *token_list, size_t *nb, size_t *value_size
 static	int	debug_token_list(t_list *token_list)
 {
 	t_token	*token;
-	char	*end_str;
-	char	*start_str;
 	size_t	value_size = 0;
 	size_t	id_size = 0;
 	size_t	state_size = 0;
-	size_t	start_size = 0;
-	size_t	end_size = 0;
 	size_t	nb = 0;
 	int		i = 1;
 
-	get_debug_tab_info(token_list, &nb, &value_size, &state_size, &id_size, &end_size, &start_size);
+	get_debug_tab_info(token_list, &nb, &value_size, &state_size, &id_size);
 	while (token_list)
 	{
+		token = token_list->data;
 		/* Print bar */
 		printf("%s", i == 1 ? "\u250c" : "\u251c");
 		for (size_t i = 0; i != value_size + 2; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u252c" : "\u253c");
 		for (size_t i = 0; i != id_size + 2; i++)
-			printf("%s", "\u2500");
-		printf("%s", i == 1 ? "\u252c" : "\u253c");
-		for (size_t i = 0; i != start_size + 2; i++)
-			printf("%s", "\u2500");
-		printf("%s", i == 1 ? "\u252c" : "\u253c");
-		for (size_t i = 0; i != end_size + 2; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u252c" : "\u253c");
 		for (size_t i = 0; i != state_size + 2; i++)
@@ -178,10 +148,6 @@ static	int	debug_token_list(t_list *token_list)
 
 		/* Print token */
 
-		token = token_list->data;
-		end_str = ft_itoa_base(token->state_info[_T_END], 10);
-		start_str = ft_itoa_base(token->state_info[_T_START], 10);
-
 		printf("%s", "\u2502");
 		printf(" %s", token->value);
 		for (int i = value_size - ft_strlen(token->value) + 1; i; --i)
@@ -191,22 +157,11 @@ static	int	debug_token_list(t_list *token_list)
 		for (int i = id_size - ft_strlen(get_id(token->id)) + 1; i; --i)
 			printf(" ");
 		printf("%s", "\u2502");
-		printf(" %s", start_str);
-		for (int i = start_size - ft_strlen(start_str) + 1; i; --i)
-			printf(" ");
-		printf("%s", "\u2502");
-		printf(" %s", end_str);
-		for (int i = end_size - ft_strlen(end_str) + 1; i; --i)
-			printf(" ");
-		printf("%s", "\u2502");
-		printf(" %s", get_state(token->state_info[_T_STATE]));
-		for (int i = state_size - ft_strlen(get_state(token->state_info[_T_STATE])) + 1; i; --i)
+		printf(" %s", get_state(token->state_info->state));
+		for (int i = state_size - ft_strlen(get_state(token->state_info->state)) + 1; i; --i)
 			printf(" ");
 		printf("%s", "\u2502");
 		printf("\n");
-
-		free(end_str);
-		free(start_str);
 
 		i++;
 		token_list = token_list->next;
@@ -217,12 +172,6 @@ static	int	debug_token_list(t_list *token_list)
 		printf("%s", "\u2500");
 	printf("%s", "\u2534");
 	for (size_t i = 0; i != id_size + 2; i++)
-		printf("%s", "\u2500");
-	printf("%s", "\u2534");
-	for (size_t i = 0; i != start_size + 2; i++)
-		printf("%s", "\u2500");
-	printf("%s", "\u2534");
-	for (size_t i = 0; i != end_size + 2; i++)
 		printf("%s", "\u2500");
 	printf("%s", "\u2534");
 	for (size_t i = 0; i != state_size + 2; i++)
@@ -275,27 +224,29 @@ int		get_token_list(t_lexer *lex, t_list **token_list, t_list *alias_list)
 	t_list	*node;
 	t_list	*reversed_node;
 
-	(void)alias_list;
-	while (lex->line && lex->pos < ft_strlen(lex->line) && lex->line[lex->pos] && (token = get_token(lex)) != NULL)
+	while (lex->line[lex->pos] && (token = get_token(lex)) != NULL)
 	{
+#ifdef LEXER_DEBUG
+		dprintf(2, "CLOSED A TOKEN\n");
+#endif
 		/* If token is a whitespace or a comment, discard it. Otherwise proceed to concatenation */
 
 		/* If token is a cmd_name, alias expand it. */
-		/* if (!(node = expand_alias(lex, token, alias_list))) */
-		/* 	node = ft_simple_lst_create(token); */
-		/* else */
-		if (token->state_info[_T_STATE] == COMMENT || token->state_info[_T_STATE] == WHITESPACE)
+		if (token->state_info->state == COMMENT || token->state_info->state == WHITESPACE)
 			free_token(token);
 		else
 		{
-		node = ft_simple_lst_create(token);
-		reversed_node = ft_simple_lst_create(token);
-		ft_simple_lst_add(&lex->reversed_list, reversed_node);
-		ft_simple_lst_pushback(token_list, node);
+			if (!(node = expand_alias(lex, token, alias_list)))
+			{
+				node = ft_simple_lst_create(token);
+				reversed_node = ft_simple_lst_create(token);
+				ft_simple_lst_add(&lex->reversed_list, reversed_node);
+			}
+			ft_simple_lst_pushback(token_list, node);
 		}
 	}
 #ifdef LEXER_DEBUG
 	debug_token_list(*token_list);
 #endif
-	return ((((int*)lex->state->data)[_T_STATE] != DEFAULT) ? LEXER_REOPEN : LEXER_SUCCESS);
+	return ((((struct s_info*)lex->state->data)->state != DEFAULT) ? LEXER_REOPEN : LEXER_SUCCESS);
 }

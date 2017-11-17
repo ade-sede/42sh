@@ -45,14 +45,27 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 **	                 ;
 */
 
+#include <stdio.h>
 void	exec_assignment_word(t_ast *ast)
 {
 	char		**word_expanded;
+	char		*eq_pos;
 	
-	word_expanded = word_expansion(ft_strchr(ast->token->value, '=') + 1, NO_GLOBBING | NO_FIELDSPLITING);
+	eq_pos = ft_strchr(ast->token->value, '=');
+	word_expanded = word_expansion(eq_pos + 1, NO_GLOBBING | NO_FIELDSPLITING);
 	if (word_expanded[0])
-		local_add_change_from_string(&singleton_env()->local, ast->token->value);
-	free(word_expanded);
+	{
+		//fprintf(stderr, "word expanded\n");
+		*eq_pos = 0;
+		local_add_change_from_key_value(singleton_env(), ast->token->value, word_expanded[0]);
+		*eq_pos = '=';
+	}
+	else
+	{
+		//fprintf(stderr, "word expanded NULL \n");
+		local_add_change_from_string(singleton_env(), ast->token->value);
+	}
+	ft_arraydel(&word_expanded);
 }
 
 void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
@@ -108,7 +121,6 @@ int		exec_simple_command(t_ast *ast)
 	t_ast	*cmd_suffix = NULL;
 	t_ast	*fct_body = NULL;
 
-	exec_cmd_prefix(ast, &redirect_list);
 	if (is_symb(ast->child[0], CMD_PREFIX))
 		exec_cmd_prefix(ast->child[0], &redirect_list);
 
@@ -134,6 +146,7 @@ int		exec_simple_command(t_ast *ast)
 		if (get_exec_builtin(av[0]))
 			return (exec_builtin(singleton_env(), (const char **)av));
 		exec_bin(singleton_env(), (const char **)av);
+		ft_arraydel(&av);
 	}
 	close_dup(redirect_list);
 	return (EXIT_SUCCESS);

@@ -24,6 +24,7 @@ static t_builtin	g_builtin[] =
 	{"shift", &builtin_shift},
 	{"export", &builtin_export},
 	{"history", &builtin_history},
+	{"read", &builtin_read},
 	{NULL, NULL}
 };
 

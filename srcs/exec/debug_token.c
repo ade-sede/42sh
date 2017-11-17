@@ -9,7 +9,6 @@ static struct s_debug_token_id g_debug_token_id[] =
 	{TK_NEWLINE, "TK_NEWLINE" },
 	{TK_IO_NUMBER, "TK_IO_NUMBER" },
 	{TK_LESS, "TK_LESS" },
-	{TK_HERE, "TK_HERE" },
 	{TK_GREAT, "TK_GREAT" },
 	{TK_SEMI, "TK_SEMI" },
 	{TK_PIPE, "TK_PIPE" },

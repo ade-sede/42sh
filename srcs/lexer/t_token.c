@@ -7,17 +7,16 @@
 **	storing many infos about the token.
 */
 
-t_token		*create_token(const char *source, ssize_t *info)
+t_token		*create_token(const char *source, struct s_info *info, size_t end_index)
 {
 	t_token		*token;
-	size_t		size;
 
 	token = ft_memalloc(sizeof(*token) * 1);
-	size = info[_T_END] - info[_T_START] + 1;
-	token->value = ft_strsub(source, info[_T_START], size);
-	token->delim = source[info[_T_END] + 1];
+	token->value = ft_strdup(info->value);
+	token->delim = source[end_index];
 	token->state_info = info;
 	token->id = 0;
+	token->cmd_name = 0;
 	return (token);
 }
 
@@ -42,6 +41,6 @@ void		free_token(void *value)
 		return ;
 	token = (t_token*)value;
 	free(token->value);
-	free(token->state_info);
+	free_info(token->state_info);
 	free(token);
 }

@@ -2,47 +2,7 @@
 #include "t_token.h"
 #include "lexer.h"
 #include "libft.h" 
-/* static size_t	escaped_size(char *input) */ /* { */
-/* 	size_t	i; */
-/* 	size_t	size; */
-
-/* 	i = 0; */
-/* 	size = 0; */
-/* 	while (input[i]) */
-/* 	{ */
-/* 		++size; */
-/* 		if (input[i] == '\n' && !charcmp(input, i, '\n')) */
-/* 			size -= 2; */
-/* 		++i; */
-/* 	} */
-/* 	return (size); */
-/* } */
-
-/* char			*trim_escaped_newline(char *new_line) */
-/* { */
-/* 	size_t	i; */
-/* 	size_t	j; */
-/* 	size_t	size; */
-/* 	char	*ret; */
-
-/* 	i = 0; */
-/* 	j = 0; */
-/* 	size = escaped_size(new_line); */
-/* 	ret = ft_memalloc(sizeof(char*) * size + 1); */
-/* 	while (new_line[i]) */
-/* 	{ */
-/* 		if (charcmp(new_line, i, '\\') && new_line[i + 1] == '\n') */
-/* 			i += 2; */
-/* 		else */
-/* 		{ */
-/* 			ret[j] = new_line[i]; */
-/* 			++j; */
-/* 			++i; */
-/* 		} */
-/* 	} */
-/* 	return (ret); */
-/* } */
-
+#include "syntax_coloring.h"
 
 /*
 **	Receives the address of an already existing lexer (already has an address)
@@ -53,8 +13,8 @@
 int		init_lexer(t_lexer *lex, const char *line)
 {
 	ft_memset(lex, 0, sizeof(t_lexer));
-//	fprintf(stderr, "init lexer : line: %s\n", line);
-	lex->line = ft_strdup(line);
+	/* lex->line = ft_strdup(line); */
+	lex->line = ft_strtrim_sequence(line, "\\\n");
 	lex->pos = 0;
 	lex->state = NULL;
 	lex->state_list = NULL;
@@ -64,11 +24,35 @@ int		init_lexer(t_lexer *lex, const char *line)
 	return (1);
 }
 
+int		init_le_lexer(t_lexer *lex, const char *line)
+{
+	ft_memset(lex, 0, sizeof(t_lexer));
+	lex->line = ft_strdup(line);
+	lex->pos = 0;
+	lex->state = NULL;
+	lex->state_list = NULL;
+	lex->cmd_name_open = 1;
+	lex->reversed_list = NULL;
+	push_state_le(lex, DEFAULT);
+	return (1);
+}
+
 int		free_lexer(t_lexer *lex)
 {
-	ft_simple_lst_remove(&lex->reversed_list, NULL);
-	ft_simple_lst_remove(&lex->state_list, ft_free);
+	if (lex->reversed_list)
+		ft_simple_lst_remove(&lex->reversed_list, NULL);
+	if (lex->state_list)
+		ft_simple_lst_remove(&lex->state_list, free_info);
 	free(lex->line);
-	free(lex);
+	return (1);
+}
+
+int		free_lexer_le(t_lexer *lex)
+{
+	if (lex->reversed_list)
+		ft_simple_lst_remove(&lex->reversed_list, NULL);
+	if (lex->state_list)
+		ft_simple_lst_remove(&lex->state_list, ft_free);
+	free(lex->line);
 	return (1);
 }

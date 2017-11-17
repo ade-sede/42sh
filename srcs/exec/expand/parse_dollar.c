@@ -60,7 +60,7 @@ int		parse_param (t_expand *exp)
 	{
 		if (seen_hash)
 		{
-			value = var_get_value (singleton_env(), "#");
+			value = ft_strdup(var_get_value (singleton_env(), "#"));
 			seen_hash = 0;
 		}
 		else
@@ -74,8 +74,10 @@ int		parse_param (t_expand *exp)
 	}
 	else
 	{
-		//fprintf(stderr,"env.str: {%s}\n", env.str);
-		value = var_get_value (singleton_env(), env.str);
+#ifdef EXPAND_DEBUG
+ fprintf(stderr,"env.str: {%s}\n", env.str);
+ #endif
+		value = ft_strdup(var_get_value (singleton_env(), env.str));
 	}
 	w_free(&env);
 	if (seen_hash)
@@ -129,7 +131,9 @@ int		parse_dollars (t_expand *exp)
 				return 0;
 			}
 		}
-		//fprintf(stderr,"parse dollar command substitution\n");
+#ifdef EXPAND_DEBUG
+ fprintf(stderr,"parse dollar command substitution\n");
+ #endif
 		(exp->offset) += 2;
 		return parse_comm (exp);
 	}

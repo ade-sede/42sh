@@ -17,11 +17,11 @@ typedef struct	s_pos_param
 
 t_local	*create_local(const char *key, const char *value);
 void				free_local(void *local);
-int		local_add_from_key_value(t_list **first, const char *key, const char *value);
-int		local_add_from_string(t_list **first, const char *string);
-int		local_add_change_from_key_value(t_list **first, const char *key, const char *value);
-int		local_add_change_from_string(t_list **first, const char *string);
-int		local_remove(t_list **local_list, const char *key);
+int		local_add_from_key_value(t_env *env, const char *key, const char *value);
+int		local_add_from_string(t_env *env, const char *string);
+int		local_add_change_from_key_value(t_env *env, const char *key, const char *value);
+int		local_add_change_from_string(t_env *env, const char *string);
+int		local_remove(t_env *env, const char *key);
 
 
 t_list		*local_get_node(t_list *first, const char *key);

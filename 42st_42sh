@@ -1,0 +1,3964 @@
+[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[1;33m~[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[1;33m~[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[1;33m~[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m                                                                                                                                                                                                                                      
+
+----------------------------------------------------------------
+
+[37;1m21sh/misc/002-simple-command-line[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell is able to execute a simple command line that contains separators `;`, pipes `|`, and a right redirection `>`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./size"
+  02: rm -rf "TOKEN201711152355"
+  03: echo '^'$(echo TOKEN201711152355_FILE_TOKEN201711152355_STDOUT | wc -c)'$' > "./size"[0m
+
+  STDIN:
+[38;5;239m  01: mkdir TOKEN201711152355 ; cd TOKEN201711152355 ; touch TOKEN201711152355_FILE ; ls -1 ; ls | cat | wc -c > TOKEN201711152355_STDOUT ; cat TOKEN201711152355_STDOUT[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711152355_FILE$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_each_regex_of_file `./size`[0m
+[38;5;239m  01: TOKEN201711152355_FILE
+  02:       23[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/pipe/006-exit-status[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the exit status of a pipeline command is the same as the last piped process.[0m
+
+  STDIN:
+[38;5;239m  01: ./sleep_and_exit_with_status 1 21 | ./exit_with_status 42[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/001-close-stdin[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the closing operator `&-` within the STDIN redirection `<` results in a closed standard input, so that `read(2)` results in a read error.[0m
+
+  Before test:
+[38;5;239m  01: rm -f ./read_on_stdin
+  02: gcc -Wall -Werror -Wextra "/Users/vcombey/42ShellTester/support/read-on-stdin/main.c" -o ./read_on_stdin[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin <&-[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `STDIN READ ERROR$`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `1`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/002-filename[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a file path `simple_text_file` within the STDIN redirection `<` results in the ability of the child process to read on this file through the file descriptor STDIN.[0m
+
+  Before test:
+[38;5;239m  01: echo "TOKEN201711152355_LINE_1" > simple_text_file
+  02: echo "TOKEN201711152355_LINE_2" >> simple_text_file
+  03: echo "TOKEN201711152355_LINE_3" >> simple_text_file[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin <simple_text_file[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_LINE_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_LINE_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_LINE_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/003-filename-with-whitespaces[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a file path `simple_text_file` within the STDIN redirection `<` results in the ability of the child process to read on this file through the file descriptor STDIN.
+  The file path is specified in a separated field.[0m
+
+  Before test:
+[38;5;239m  01: echo "TOKEN201711152355_LINE_1" > simple_text_file
+  02: echo "TOKEN201711152355_LINE_2" >> simple_text_file
+  03: echo "TOKEN201711152355_LINE_3" >> simple_text_file[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin < 	 simple_text_file[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_LINE_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_LINE_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_LINE_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/004-absolute-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using an absolute path to a file within the STDIN redirection `<` results in the ability of the child process to read on this file through the file descriptor STDIN.[0m
+
+  Before test:
+[38;5;239m  01: echo "TOKEN201711152355_LINE_1" > simple_text_file
+  02: echo "TOKEN201711152355_LINE_2" >> simple_text_file
+  03: echo "TOKEN201711152355_LINE_3" >> simple_text_file[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin </Users/vcombey/42ShellTester/tmp/simple_text_file[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_LINE_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_LINE_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_LINE_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/inputs/005-no-such-file[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong path within the STDIN redirection `<` results in an error.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./no_such_file"[0m
+
+  STDIN:
+[38;5;239m  01: ./read_on_stdin <no_such_file[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Nn]o such file or directory`[0m
+[38;5;239m  01: open: No such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/appending/002-append-stdout-to-file[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A double right redirection opens the file with the oflag `O_APPEND`, so that its size is not truncated to 0 and output is written at the end of file. If the file does not exist, it is created.
+  In this test, the standard output is appended to the file.[0m
+
+  Before test:
+[38;5;239m  01: ./write_on_stdout "TOKEN201711152355_first" >append_file_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_stdout TOKEN201711152355_stderr 1>>append_file_stdout[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_stdout`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_stderr`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to create_file `append_file_stdout` matching_regex `TOKEN201711152355_first`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `append_file_stdout` matching_regex `TOKEN201711152355_stdout`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/appending/003-append-stderr-to-file[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A double right redirection opens the file with the oflag `O_APPEND`, so that its size is not truncated to 0 and output is written at the end of file. If the file does not exist, it is created.
+  In this test, the standard error is appended to the file.[0m
+
+  Before test:
+[38;5;239m  01: ./write_on_stdout "TOKEN201711152355_first" >append_file_stderr[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_stdout TOKEN201711152355_stderr 2>>append_file_stderr[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_stdout`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_stderr`[0m
+[38;5;239m  01: 42sh: parse error near `2'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to create_file `append_file_stderr` matching_regex `TOKEN201711152355_first`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `append_file_stderr` matching_regex `TOKEN201711152355_stderr`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/appending/multiple/001-append-twice-separately[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A double right redirection opens the file with the oflag `O_APPEND`, so that its size is not truncated to 0 and output is written at the end of file. If the file does not exist, it is created.
+  In this test, each output is appended to different files.[0m
+
+  Before test:
+[38;5;239m  01: ./write_on_stdout "TOKEN201711152355_stdout_first" >append_file_stdout
+  02: ./write_on_stdout "TOKEN201711152355_stderr_first" >append_file_stderr[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_stdout_second TOKEN201711152355_stderr_second 1>>append_file_stdout 2>>append_file_stderr[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_stdout_second`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_stderr_second`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to create_file `append_file_stdout` matching_regex `TOKEN201711152355_stdout_first$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `append_file_stdout` matching_regex `TOKEN201711152355_stdout_second$`[0m
+[31m[38;5;34m  SUCCESS    expected_to create_file `append_file_stderr` matching_regex `TOKEN201711152355_stderr_first$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `append_file_stderr` matching_regex `TOKEN201711152355_stderr_second$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/closing/002-close-stdout[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  Closing the standard output has the same behavior as redirecting to `/dev/null` (e.g. `ls 1>/dev/null`).[0m
+
+  Before test:
+[38;5;239m  01: rm -f "-"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_stdout TOKEN201711152355_stderr 1>&-[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_stdout`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_stderr`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not create_file `-`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/closing/003-close-stderr[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  Closing the standard error has the same behavior as redirecting to `/dev/null` (e.g. `ls 2>/dev/null`).[0m
+
+  Before test:
+[38;5;239m  01: rm -f "-"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_stdout TOKEN201711152355_stderr 2>&-[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_stdout`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_stderr`[0m
+[38;5;239m  01: 42sh: parse error near `2'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not create_file `-`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/001-separately[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A different right redirection may be specified for each output.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "new_file_stderr"
+  02: rm -f "new_file_stdout"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_1 TOKEN201711152355_2 1>new_file_stdout 2>new_file_stderr[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stdout` matching_regex `TOKEN201711152355_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr` matching_regex `TOKEN201711152355_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/002-together-stdout-first[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `M>&N`, that means `redirect M to where N is redirected`.
+  In this test the standard output is specified first.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_1 TOKEN201711152355_2 1>new_file_stderr_and_stdout 2>&1[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152355_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152355_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/003-together-stderr-first[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `M>&N`, that means `redirect M to where N is redirected`.
+  In this test the standard error is specified first.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_1 TOKEN201711152355_2 2>new_file_stderr_and_stdout 1>&2[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  01: 42sh: parse error near `2'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152355_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152355_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/004-together[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `&>...`, that means `redirect stdout and stderr to ...`.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "new_file_stderr_and_stdout"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_1 TOKEN201711152355_2 &>new_file_stderr_and_stdout[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  01: TOKEN201711152355_1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  01: TOKEN201711152355_2[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152355_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152355_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/005-together-with-whitespaces[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `&>...`, that means `redirect stdout and stderr to ...`.
+  In this test, we specify the file name in a separate field.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_1 TOKEN201711152355_2 &>	  	new_file_stderr_and_stdout[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  01: TOKEN201711152355_1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152355_2`[0m
+[38;5;239m  01: TOKEN201711152355_2[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152355_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711152355_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/stderr/001-works[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that redirecting the standard error STDERR to a file `2>` works. In this test, the binary writes a token on each standard and error output, so that only the STDOUT is outputted and STDERR is written in a file `new_file_stderr`.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./new_file_stderr"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711152355_STDOUT TOKEN201711152355_STDERR 2>new_file_stderr[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_STDOUT`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_STDERR`[0m
+[38;5;239m  01: 42sh: parse error near `2'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr` matching_regex `TOKEN201711152355_STDERR`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr` with_nb_of_lines 1[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/stdout/001-with-explicit-fd[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check if '1>' redirect STDIN to a file.
+  We are using echo with one argument. The output should NOT return anything on the standard output.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file[0m
+
+  STDIN:
+[38;5;239m  01: /bin/echo TOKEN1 1>new_file[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex TOKEN1[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: 42sh: parse error near `1'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file new_file matching_regex TOKEN1[0m
+[31m[38;5;160m  FAILURE    expected_to create_file new_file with_nb_of_lines 1[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/separators/semicolon/003-parse-error-empty-inline-command[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the simicolon separator `;` with empty commands results in error.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout TOKEN201711152355 ; ; ./exit_with_status 42[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `([Ss]yntax|[Pp]arse) error`[0m
+[38;5;239m  01: 42sh: parse error near `;'[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status `42`[0m
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/005-export-empty-variable-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that exporting an empty variable does not add it to the environment, but can be displayed with the builtin `export`.[0m
+
+  Before test:
+[38;5;239m  01: unset "TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: export TOKEN201711152355
+  02: export[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355`[0m
+[38;5;239m  01: TERM_PROGRAM=iTerm.app
+  02: TERM=xterm-256color
+  03: SHELL=42sh
+  04: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  05: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  06: TERM_PROGRAM_VERSION=3.1.5
+  07: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  08: ZSH=/Users/vcombey/.oh-my-zsh
+  09: USER=vcombey
+  10: COMMAND_MODE=unix2003
+  11: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  12: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  13: PAGER=less
+  14: LSCOLORS=Gxfxcxdxbxegedabagacad
+  15: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  16: PWD=/Users/vcombey/42ShellTester/tmp
+  17: BASE16_THEME=base16-nord
+  18: ITERM_PROFILE=Default
+  19: XPC_FLAGS=0x0
+  20: XPC_SERVICE_NAME=0
+  21: SHLVL=3
+  22: HOME=/Users/vcombey
+  23: COLORFGBG=7;0
+  24: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  25: LESS=-R
+  26: LOGNAME=vcombey
+  27: LC_CTYPE=UTF-8
+  28: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  29: SECURITYSESSIONID=186a6
+  30: COLORTERM=truecolor
+  31: OLDPWD=/Users/vcombey/42ShellTester
+  32: _=/Users/vcombey/42/42sh/42sh
+  33: HISTFILE=/Users/vcombey/.42sh_history
+  34: PS1=$> 
+  35: PS2=dquote> 
+  36: PS3=quote> [0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/errors/001-invalid-identifier-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to export an invalid variable identifier results in error.[0m
+
+  STDIN:
+[38;5;239m  01: export 42=TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `(not.*identifier|must begin.*letter)`[0m
+[38;5;239m  01: Wrong assignement :: key cannot be fully numeric or contain reserved symbols[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/errors/002-invalid-identifier-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to export an invalid variable identifier results in error.[0m
+
+  STDIN:
+[38;5;239m  01: export .=TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `(not.*identifier|must begin.*letter)`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/errors/003-illegal-option[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `export` with an illegal option results in an error and a failure exit status.[0m
+
+  STDIN:
+[38;5;239m  01: export -w[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Ii]nvalid|[Ii]llegal) (option|argument)`[0m
+[38;5;239m  01: Wrong option -w[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/options/002-export-p-param-and-token-should-add-local-var-only-part1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check if export with -p option + token , add the variable into export list but not in env list. And don't display the export variable on stdout.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./stored_env"
+  02: unset "TOKEN201711152355_NAME"
+  03: export | awk 'BEGIN {FS="="} $0 !~ /^(OLDPWD|_)/ {print $1"="}' > "./stored_env"[0m
+
+  STDIN:
+[38;5;239m  01: export -p TOKEN201711152355_NAME
+  02: export[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_each_regex_of_file `./stored_env`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_NAME`[0m
+[38;5;239m  01: TERM_PROGRAM=iTerm.app
+  02: TERM=xterm-256color
+  03: SHELL=42sh
+  04: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  05: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  06: TERM_PROGRAM_VERSION=3.1.5
+  07: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  08: ZSH=/Users/vcombey/.oh-my-zsh
+  09: USER=vcombey
+  10: COMMAND_MODE=unix2003
+  11: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  12: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  13: PAGER=less
+  14: LSCOLORS=Gxfxcxdxbxegedabagacad
+  15: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  16: PWD=/Users/vcombey/42ShellTester/tmp
+  17: BASE16_THEME=base16-nord
+  18: ITERM_PROFILE=Default
+  19: XPC_FLAGS=0x0
+  20: XPC_SERVICE_NAME=0
+  21: SHLVL=3
+  22: HOME=/Users/vcombey
+  23: COLORFGBG=7;0
+  24: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  25: LESS=-R
+  26: LOGNAME=vcombey
+  27: LC_CTYPE=UTF-8
+  28: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  29: SECURITYSESSIONID=186a6
+  30: COLORTERM=truecolor
+  31: OLDPWD=/Users/vcombey/42ShellTester
+  32: _=/Users/vcombey/42/42sh/42sh
+  33: HISTFILE=/Users/vcombey/.42sh_history
+  34: PS1=$> 
+  35: PS2=dquote> 
+  36: PS3=quote> 
+  37: TERM_PROGRAM=iTerm.app
+  38: TERM=xterm-256color
+  39: SHELL=42sh
+  40: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  41: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  42: TERM_PROGRAM_VERSION=3.1.5
+  43: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  44: ZSH=/Users/vcombey/.oh-my-zsh
+  45: USER=vcombey
+  46: COMMAND_MODE=unix2003
+  47: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  48: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  49: PAGER=less
+  50: LSCOLORS=Gxfxcxdxbxegedabagacad
+  51: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  52: PWD=/Users/vcombey/42ShellTester/tmp
+  53: BASE16_THEME=base16-nord
+  54: ITERM_PROFILE=Default
+  55: XPC_FLAGS=0x0
+  56: XPC_SERVICE_NAME=0
+  57: SHLVL=3
+  58: HOME=/Users/vcombey
+  59: COLORFGBG=7;0
+  60: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  61: LESS=-R
+  62: LOGNAME=vcombey
+  63: LC_CTYPE=UTF-8
+  64: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  65: SECURITYSESSIONID=186a6
+  66: COLORTERM=truecolor
+  67: OLDPWD=/Users/vcombey/42ShellTester
+  68: _=/Users/vcombey/42/42sh/42sh
+  69: HISTFILE=/Users/vcombey/.42sh_history
+  70: PS1=$> 
+  71: PS2=dquote> 
+  72: PS3=quote> [0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/options/004-export-n-param[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m   The purpose of this test is to check that using the builtin `export` with option `-n` results in a removed environment variable.[0m
+
+  Before test:
+[38;5;239m  01: export TOKEN201711152355_NAME=TOKEN201711152355_VALUE[0m
+
+  STDIN:
+[38;5;239m  01: export -n TOKEN201711152355_NAME
+  02: export
+  03: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152355_NAME`[0m
+[38;5;239m  01: TERM_PROGRAM=iTerm.app
+  02: TERM=xterm-256color
+  03: SHELL=42sh
+  04: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  05: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  06: TERM_PROGRAM_VERSION=3.1.5
+  07: TOKEN201711152355_NAME=TOKEN201711152355_VALUE
+  08: OLDPWD=/Users/vcombey/42ShellTester
+  09: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  10: ZSH=/Users/vcombey/.oh-my-zsh
+  11: USER=vcombey
+  12: COMMAND_MODE=unix2003
+  13: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  14: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  15: PAGER=less
+  16: LSCOLORS=Gxfxcxdxbxegedabagacad
+  17: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  18: PWD=/Users/vcombey/42ShellTester/tmp
+  19: BASE16_THEME=base16-nord
+  20: ITERM_PROFILE=Default
+  21: XPC_FLAGS=0x0
+  22: XPC_SERVICE_NAME=0
+  23: SHLVL=3
+  24: HOME=/Users/vcombey
+  25: COLORFGBG=7;0
+  26: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  27: LESS=-R
+  28: LOGNAME=vcombey
+  29: LC_CTYPE=UTF-8
+  30: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  31: SECURITYSESSIONID=186a6
+  32: COLORTERM=truecolor
+  33: _=/Users/vcombey/42/42sh/42sh
+  34: HISTFILE=/Users/vcombey/.42sh_history
+  35: PS1=$> 
+  36: PS2=dquote> 
+  37: PS3=quote> 
+  38: ------------------------------
+  39: TERM_PROGRAM=iTerm.app
+  40: TERM=xterm-256color
+  41: SHELL=42sh
+  42: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  43: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  44: TERM_PROGRAM_VERSION=3.1.5
+  45: TOKEN201711152355_NAME=TOKEN201711152355_VALUE
+  46: OLDPWD=/Users/vcombey/42ShellTester
+  47: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  48: ZSH=/Users/vcombey/.oh-my-zsh
+  49: USER=vcombey
+  50: COMMAND_MODE=unix2003
+  51: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  52: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  53: PAGER=less
+  54: LSCOLORS=Gxfxcxdxbxegedabagacad
+  55: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  56: PWD=/Users/vcombey/42ShellTester/tmp
+  57: BASE16_THEME=base16-nord
+  58: ITERM_PROFILE=Default
+  59: XPC_FLAGS=0x0
+  60: XPC_SERVICE_NAME=0
+  61: SHLVL=3
+  62: HOME=/Users/vcombey
+  63: COLORFGBG=7;0
+  64: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  65: LESS=-R
+  66: LOGNAME=vcombey
+  67: LC_CTYPE=UTF-8
+  68: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  69: SECURITYSESSIONID=186a6
+  70: COLORTERM=truecolor
+  71: _=/Users/vcombey/42/42sh/42sh
+  72: HISTFILE=/Users/vcombey/.42sh_history
+  73: PS1=$> 
+  74: PS2=dquote> 
+  75: PS3=quote> 
+  76: ------------------------------
+  77: TOTAL ENVIRONMENT VARIABLES: 37[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: Wrong option -n[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/escaping/mixed/globbing/bracket-expansion/002-escaped-inversion-mark[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with an inversion mark `!` or `^` as pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' 'c' 'd' 'e' 'f' '!' '^'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [\!abc]
+  02: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [\^abc][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `!@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `[\^]@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `b@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `c@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `d@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `e@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `f@`[0m
+[31m[1;33m  WARNING    might match_regex `^!@a@b@c@$`[0m
+[31m[1;33m  WARNING    might match_regex `^[\^]@a@b@c@$`[0m
+[38;5;239m  01: [!abc]@
+  02: [^abc]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/escaping/mixed/globbing/bracket-expansion/003-it-takes-escaped-bracket-as-pattern-character[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a closing bracket ']' may be escaped in a backet expansion pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' 'c' 'd' 'e' 'f' ']'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [abc\]def]
+  02: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [abc\\\]def]
+  03: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [abc\\\\\]def]
+  04: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [abc\\\\\\\]def][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@` 4 times[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `b@` 4 times[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `c@` 4 times[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `]@` 4 times[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `d@` 4 times[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `e@` 4 times[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `f@` 4 times[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `def`[0m
+[31m[1;33m  WARNING    might match_regex `^]@a@b@c@d@e@f@$`[0m
+[38;5;239m  01: [abc]def]@
+  02: [abc\]def]@
+  03: [abc\\]def]@
+  04: [abc\\\]def]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/brace-expansion/ascii-range/010-big-range[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that brace expansion may be performed with a big numeric range.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_all_arguments_on_stdout {A..z}[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^A@B@C@D@E@F@G@H@I@J@K@L@M@N@O@P@Q@R@S@T@U@V@W@X@Y@Z@.+@.?@.+@.+@_@.+@a@b@c@d@e@f@g@h@i@j@k@l@m@n@o@p@q@r@s@t@u@v@w@x@y@z@$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: =================================================================
+  02: ==10887==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000037392 at pc 0x0001085da801 bp 0x7fff5767e4e0 sp 0x7fff5767e4d8
+  03: READ of size 1 at 0x602000037392 thread T0
+  04:     #0 0x1085da800 in parse_loop wordexp_posix.c:91
+  05:     #1 0x1085da2cb in word_expansion wordexp_posix.c:150
+  06:     #2 0x1085a0e0a in exec_cmd_suffix exec_simple_command.c:42
+  07:     #3 0x1085a1a85 in exec_simple_command exec_simple_command.c:136
+  08:     #4 0x10859d715 in exec exec.c:39
+  09:     #5 0x10859e7c4 in exec_command exec_command.c:20
+  10:     #6 0x10859d715 in exec exec.c:39
+  11:     #7 0x1085baa3f in launch_process job_launch.c:58
+  12:     #8 0x1085bb0bd in launch_job job_launch.c:95
+  13:     #9 0x1085a08bb in exec_pipeline exec_pipeline.c:80
+  14:     #10 0x10859d715 in exec exec.c:39
+  15:     #11 0x10859d861 in exec_and_or exec_and_or.c:13
+  16:     #12 0x10859d715 in exec exec.c:39
+  17:     #13 0x10859ebc7 in exec_complete_command exec_complete_command.c:45
+  18:     #14 0x10859d715 in exec exec.c:39
+  19:     #15 0x10859ee81 in exec_complete_commands exec_complete_commands.c:10
+  20:     #16 0x10859d715 in exec exec.c:39
+  21:     #17 0x1085a0af9 in exec_program exec_program.c:10
+  22:     #18 0x10859d715 in exec exec.c:39
+  23:     #19 0x10859b9e5 in exec_main_loop lex_and_parse.c:18
+  24:     #20 0x10859c339 in lex_and_parse lex_and_parse.c:76
+  25:     #21 0x10859cb8e in main_loop main_loop.c:72
+  26:     #22 0x1085817fb in main (42sh:x86_64+0x1000017fb)
+  27:     #23 0x7fffb3e08234 in start (libdyld.dylib:x86_64+0x5234)
+  28: 
+  29: 0x602000037392 is located 0 bytes to the right of 2-byte region [0x602000037390,0x602000037392)
+  30: allocated by thread T0 here:
+  31:     #0 0x108775f3c in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x58f3c)
+  32:     #1 0x1085ec4af in ft_memalloc (42sh:x86_64+0x10006c4af)
+  33:     #2 0x1085f1e5c in ft_strnew (42sh:x86_64+0x100071e5c)
+  34:     #3 0x1085f1209 in ft_strjoin3_free ft_strjoin3_free.c:26
+  35:     #4 0x1085a9514 in curly_brackets_range_alpha curly_brackets_range.c:18
+  36:     #5 0x1085aa01f in curly_brackets_range curly_brackets_range.c:71
+  37:     #6 0x1085a80a7 in curly_brackets curly_brackets.c:125
+  38:     #7 0x1085a8736 in expand_curly_brackets curly_brackets.c:137
+  39:     #8 0x1085da554 in brace_expension wordexp_posix.c:69
+  40:     #9 0x1085da21d in word_expansion wordexp_posix.c:146
+  41:     #10 0x1085a0e0a in exec_cmd_suffix exec_simple_command.c:42
+  42:     #11 0x1085a1a85 in exec_simple_command exec_simple_command.c:136
+  43:     #12 0x10859d715 in exec exec.c:39
+  44:     #13 0x10859e7c4 in exec_command exec_command.c:20
+  45:     #14 0x10859d715 in exec exec.c:39
+  46:     #15 0x1085baa3f in launch_process job_launch.c:58
+  47:     #16 0x1085bb0bd in launch_job job_launch.c:95
+  48:     #17 0x1085a08bb in exec_pipeline exec_pipeline.c:80
+  49:     #18 0x10859d715 in exec exec.c:39
+  50:     #19 0x10859d861 in exec_and_or exec_and_or.c:13
+  51:     #20 0x10859d715 in exec exec.c:39
+  52:     #21 0x10859ebc7 in exec_complete_command exec_complete_command.c:45
+  53:     #22 0x10859d715 in exec exec.c:39
+  54:     #23 0x10859ee81 in exec_complete_commands exec_complete_commands.c:10
+  55:     #24 0x10859d715 in exec exec.c:39
+  56:     #25 0x1085a0af9 in exec_program exec_program.c:10
+  57:     #26 0x10859d715 in exec exec.c:39
+  58:     #27 0x10859b9e5 in exec_main_loop lex_and_parse.c:18
+  59:     #28 0x10859c339 in lex_and_parse lex_and_parse.c:76
+  60:     #29 0x10859cb8e in main_loop main_loop.c:72
+  61: 
+  62: SUMMARY: AddressSanitizer: heap-buffer-overflow wordexp_posix.c:91 in parse_loop
+  63: Shadow bytes around the buggy address:
+  64:   0x1c0400006e20: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  65:   0x1c0400006e30: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  66:   0x1c0400006e40: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  67:   0x1c0400006e50: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  68:   0x1c0400006e60: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  69: =>0x1c0400006e70: fa fa[02]fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  70:   0x1c0400006e80: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  71:   0x1c0400006e90: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  72:   0x1c0400006ea0: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  73:   0x1c0400006eb0: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  74:   0x1c0400006ec0: fa fa 02 fa fa fa fd fd fa fa 02 fa fa fa fd fd
+  75: Shadow byte legend (one shadow byte represents 8 application bytes):
+  76:   Addressable:           00
+  77:   Partially addressable: 01 02 03 04 05 06 07 
+  78:   Heap left redzone:       fa
+  79:   Freed heap region:       fd
+  80:   Stack left redzone:      f1
+  81:   Stack mid redzone:       f2
+  82:   Stack right redzone:     f3
+  83:   Stack after return:      f5
+  84:   Stack use after scope:   f8
+  85:   Global redzone:          f9
+  86:   Global init order:       f6
+  87:   Poisoned by user:        f7
+  88:   Container overflow:      fc
+  89:   Array cookie:            ac
+  90:   Intra object redzone:    bb
+  91:   ASan internal:           fe
+  92:   Left alloca redzone:     ca
+  93:   Right alloca redzone:    cb
+  94: ==10887==ABORTING[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/multi/001-range-and-char[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that brackets expansion works with a range and 2 characters as pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch '1' '2' '3' 'a' 'b' 'z' 'C' '-' '[a-z-2]' 'a-z-2'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [a-z-2][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `-@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `2@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `b@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `z@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `1@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `3@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `C@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]a-z-2]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `a-z-2@`[0m
+[31m[1;33m  WARNING    might match_regex `^-@2@a@b@z@$`[0m
+[38;5;239m  01: [a-z-2]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/multi/002-reverse-range-and-chars[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that brackets expansion works with 2 patterns.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a4' 'a3' 'a2' 'a42' 'a[42]' 'z4' 'z3' 'z2' 'z42' 'z[42]' '42'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [!a-y][42]
+  02: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [^a-y][42][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `42@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `z4@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `z2@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `z3@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `z42@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `z[[]42]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `a3@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `a42@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `a[[]42]@`[0m
+[31m[1;33m  WARNING    might match_regex `^42@z2@z4@$`[0m
+[38;5;239m  01: [!a-y][42]@
+  02: [^a-y][42]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/multi/003-reverse-multi-hard[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check how the value inside multiple brackets are parsed with bracket as pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch '][' 'a[' '1['[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [!]az][[]
+  02: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [^]az][[][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `1[[]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `][[]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `a[[]@`[0m
+[31m[1;33m  WARNING    might match_regex `^1[[]@$`[0m
+[38;5;239m  01: [!]az][[]@
+  02: [^]az][[]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/multi/004-simple-bracket+char+range[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to control if 2 patterns splited by a minus characters can be match.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a-0' 'a-1' 'a-2' 'b-0' 'b-1' 'b-2' 'Z-0' 'Z-1' 'Z-2' 'a1' 'Z9' 'D4'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [aZ]-[1-9][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `a-1@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `a-2@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `Z-1@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `Z-2@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `a-0@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `b-0@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `b-1@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `b-2@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `a1@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `Z9@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `D4@`[0m
+[31m[1;33m  WARNING    might match_regex `^Z-1@Z-2@a-1@a-2@$`[0m
+[38;5;239m  01: [aZ]-[1-9]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/not/001-simple-opposit-match[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with the inversion mark `!` or `^`. The expected behavior is the reversion of the following pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' '1' 'Z' 'd' 'e' 'f' 'def'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [!a1Z]
+  02: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [^a1Z][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `d@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `e@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `f@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `def@`[0m
+[31m[1;33m  WARNING    might match_regex `^d@e@f@$`[0m
+[38;5;239m  01: [!a1Z]@
+  02: [^a1Z]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/not/002-simple-opposite-range[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with the inversion mark `!` or `^`. The expected behavior is the reversion of the following pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' 'c' 'z' '1' '2' '3' '42'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [!a-z]
+  02: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [^a-z][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `1@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `2@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `3@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `42@`[0m
+[31m[1;33m  WARNING    might match_regex `^1@2@3@$`[0m
+[38;5;239m  01: [!a-z]@
+  02: [^a-z]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/range-pattern/001-alpha-range[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with the following pattern `[a-z]`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'f' 'z' 'A' '1' '[a-z]'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [a-z][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `f@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `z@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `A@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `1@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]a-z]@`[0m
+[31m[1;33m  WARNING    might match_regex `^a@f@z@$`[0m
+[38;5;239m  01: [a-z]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/range-pattern/002-numeric-range[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with the following pattern `[0-9]`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch '4' '2' '1' '9' 'a' 'C' '[0-9]'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [0-9][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `1@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `2@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `4@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `9@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `a@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `C@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]0-9]@`[0m
+[31m[1;33m  WARNING    might match_regex `^1@2@4@9@$`[0m
+[38;5;239m  01: [0-9]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/range-pattern/003-ascii-range-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check if the bracket expansion works with the following pattern []-z].
+  One test use the following range which is the default range for bash:
+  < > , ; : ! ' " ( ) [ ] { } @ $ \ # % 1 2 3 4 5 6 7 8 9 a A b B c C d D e E f F g G h H i I j J k K l L m M n N o O p P q Q r R s S t T u U v V w W x X y Y z
+  The other use the ascii value, which does make more sense.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch '2' 'a' 'B' 'c' 'Z' '[' ']' '[]-z]'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout []-z][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `c@`[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `2@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `B@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `Z@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `[[]@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]]-z]@`[0m
+[31m[1;33m  WARNING    might match_regex `^]@a@c@$`[0m
+[38;5;239m  01: []-z]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/range-pattern/004-ascii-range-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with the following pattern `[1-z]`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch '2' 'a' 'B' 'c' 'Z' ']' '[' '[1-z]' '1-z' '-'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [1-z][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `2@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `B@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `c@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `Z@`[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `]@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `[[]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `-@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `1-z@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]1-z]@`[0m
+[31m[1;33m  WARNING    might match_regex `^2@B@Z@[[]@]@a@c@$`[0m
+[38;5;239m  01: [1-z]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/simple-pattern/001-simple-list[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with a simple list of characters as pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' 'c' 'd' 'e' 'f' '[bca]'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [bca][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `b@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `c@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `d@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `e@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `f@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]bca]@`[0m
+[31m[1;33m  WARNING    might match_regex `^a@b@c@$`[0m
+[38;5;239m  01: [bca]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/simple-pattern/002-multi-bracket[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with multiple brackets patterns.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch "TOKEN201711152355abcd" "TOKEN201711152355abc" "TOKEN201711152355abdc" "TOKEN201711152355b" "TOKEN201711152355" "TOKEN201711152355\[a]b\[c]\[d]"[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout TOKEN201711152355[a]b[c][d][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355abcd@$`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355abc@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355abdc@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355b@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152355[[]a]b[[]c][[]d]@`[0m
+[38;5;239m  01: TOKEN201711152355[a]b[c][d]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/simple-pattern/003-brackets-as-pattern[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with an opening bracket `[` and a closing bracket `]` as pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch '[' ']' 'a' 'Z' '[][]'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [][][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `[[]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `a@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `Z@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]][[]]@`[0m
+[31m[1;33m  WARNING    might match_regex `^[[]@]@$`[0m
+[38;5;239m  01: [][]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/simple-pattern/004-multi-bracket-multi-char[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to match a file name which contain a bracket as first character.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 21 23 24 25 26 27 28 29 ']' '[' '[12][34]' '1234'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [12][34][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `13@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `14@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `23@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `24@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `0[0-9]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `1[0-2]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `1[5-9]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `2[0-2]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `2[5-9]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `[[]@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `]@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]12][[]34]@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `1234@`[0m
+[31m[1;33m  WARNING    might match_regex `^13@14@23@24@$`[0m
+[38;5;239m  01: [12][34]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/single-char-pattern/001-single-char[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with a single character as pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' '[a]'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [a][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `b@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]a]@`[0m
+[31m[1;33m  WARNING    might match_regex `^a@$`[0m
+[38;5;239m  01: [a]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/single-char-pattern/002-closing-bracket-char[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with a closing bracket `]` as pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch ']' '[]]'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout []][0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `]@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]]]@`[0m
+[31m[1;33m  WARNING    might match_regex `^]@$`[0m
+[38;5;239m  01: []]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/bracket-expansion/single-char-pattern/003-opening-bracket-char[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the brackets expansion works with an opening bracket `[` as pattern.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch '[' '[[]'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [[][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `[[]@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[][[]]@`[0m
+[31m[1;33m  WARNING    might match_regex `^[[]@$`[0m
+[38;5;239m  01: [[]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/004-existing-variable-in-environment-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is initialize a local variable named as an environment variable and check if it's update the existing environment variable.[0m
+
+  Before test:
+[38;5;239m  01: export "TOKEN201711152355_NAME=TOKEN201711152355_VALUE_OLD"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355_NAME=TOKEN201711152355_VALUE_NEW
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_NAME=TOKEN201711152355_VALUE_NEW$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `^TOKEN201711152355_NAME=TOKEN201711152355_VALUE_OLD$`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  06: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  07: TERM_PROGRAM_VERSION=3.1.5
+  08: TOKEN201711152355_NAME=TOKEN201711152355_VALUE_OLD
+  09: OLDPWD=/Users/vcombey/42ShellTester
+  10: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: USER=vcombey
+  13: COMMAND_MODE=unix2003
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  16: PAGER=less
+  17: LSCOLORS=Gxfxcxdxbxegedabagacad
+  18: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  19: PWD=/Users/vcombey/42ShellTester/tmp
+  20: BASE16_THEME=base16-nord
+  21: ITERM_PROFILE=Default
+  22: XPC_FLAGS=0x0
+  23: XPC_SERVICE_NAME=0
+  24: SHLVL=3
+  25: HOME=/Users/vcombey
+  26: COLORFGBG=7;0
+  27: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  28: LESS=-R
+  29: LOGNAME=vcombey
+  30: LC_CTYPE=UTF-8
+  31: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  32: SECURITYSESSIONID=186a6
+  33: COLORTERM=truecolor
+  34: _=/Users/vcombey/42/42sh/42sh
+  35: HISTFILE=/Users/vcombey/.42sh_history
+  36: PS1=$> 
+  37: PS2=dquote> 
+  38: PS3=quote> 
+  39: ------------------------------
+  40: TOTAL ENVIRONMENT VARIABLES: 37[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/005-existing-variable-in-environment-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is initialize a local variable named as an environment variable and check if it's update the existing environment variable.[0m
+
+  Before test:
+[38;5;239m  01: export "TOKEN201711152355_NAME=TOKEN201711152355_VALUE"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355_NAME=
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_NAME=$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `^TOKEN201711152355_NAME=TOKEN201711152355_VALUE$`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  06: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  07: TERM_PROGRAM_VERSION=3.1.5
+  08: TOKEN201711152355_NAME=TOKEN201711152355_VALUE
+  09: OLDPWD=/Users/vcombey/42ShellTester
+  10: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: USER=vcombey
+  13: COMMAND_MODE=unix2003
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  16: PAGER=less
+  17: LSCOLORS=Gxfxcxdxbxegedabagacad
+  18: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  19: PWD=/Users/vcombey/42ShellTester/tmp
+  20: BASE16_THEME=base16-nord
+  21: ITERM_PROFILE=Default
+  22: XPC_FLAGS=0x0
+  23: XPC_SERVICE_NAME=0
+  24: SHLVL=3
+  25: HOME=/Users/vcombey
+  26: COLORFGBG=7;0
+  27: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  28: LESS=-R
+  29: LOGNAME=vcombey
+  30: LC_CTYPE=UTF-8
+  31: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  32: SECURITYSESSIONID=186a6
+  33: COLORTERM=truecolor
+  34: _=/Users/vcombey/42/42sh/42sh
+  35: HISTFILE=/Users/vcombey/.42sh_history
+  36: PS1=$> 
+  37: PS2=dquote> 
+  38: PS3=quote> 
+  39: ------------------------------
+  40: TOTAL ENVIRONMENT VARIABLES: 37[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/008-multiple-declaration-with-same-name[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that declaring the same variable several times in the same command line does work and does not result in error.[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355_NAME=TOKEN201711152355_VALUE1 TOKEN201711152355_NAME=TOKEN201711152355_VALUE2 TOKEN201711152355_NAME=TOKEN201711152355_VALUE3
+  02: ./write_on_stdout $TOKEN201711152355_NAME[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `^TOKEN201711152355_VALUE1$`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `^TOKEN201711152355_VALUE2$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_VALUE3$`[0m
+[38;5;239m  01: TOKEN201711152355_VALUE1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/009-last-exit-status[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the special variable `$?` may be expanded with the last exit status.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42
+  02: ./write_on_stderr $?[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^42$`[0m
+[38;5;239m  01: $?[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/mixed/inline-environment-variable/001-local-variable-shouldnt-be-set[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that declaring a variable and specifying a binary does not result in local variable declaration but a modified environment for the command.[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355_NAME=TOKEN201711152355_VALUE ./display_env
+  02: ./write_on_stderr $TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_NAME=TOKEN201711152355_VALUE$`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  06: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  07: TERM_PROGRAM_VERSION=3.1.5
+  08: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  09: ZSH=/Users/vcombey/.oh-my-zsh
+  10: USER=vcombey
+  11: COMMAND_MODE=unix2003
+  12: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  13: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  14: PAGER=less
+  15: LSCOLORS=Gxfxcxdxbxegedabagacad
+  16: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  17: PWD=/Users/vcombey/42ShellTester/tmp
+  18: BASE16_THEME=base16-nord
+  19: ITERM_PROFILE=Default
+  20: XPC_FLAGS=0x0
+  21: XPC_SERVICE_NAME=0
+  22: SHLVL=3
+  23: HOME=/Users/vcombey
+  24: COLORFGBG=7;0
+  25: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  26: LESS=-R
+  27: LOGNAME=vcombey
+  28: LC_CTYPE=UTF-8
+  29: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  30: SECURITYSESSIONID=186a6
+  31: COLORTERM=truecolor
+  32: OLDPWD=/Users/vcombey/42ShellTester
+  33: _=/Users/vcombey/42/42sh/42sh
+  34: HISTFILE=/Users/vcombey/.42sh_history
+  35: PS1=$> 
+  36: PS2=dquote> 
+  37: PS3=quote> 
+  38: ------------------------------
+  39: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_VALUE`[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `write on stderr`[0m
+[38;5;239m  01: write on stderr[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/mixed/redirections/001-truncating[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a redirection can be set with a local variable as file name.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "TOKEN201711152355_FILENAME"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355_NAME=TOKEN201711152355_FILENAME
+  02: ./write_on_stdout TOKEN201711152355_VALUE > $TOKEN201711152355_NAME[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `TOKEN201711152355_FILENAME` matching_regex `^TOKEN201711152355_VALUE$`[0m
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/mixed/redirections/002-appending[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a redirection can be set with a local variable as file name.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "TOKEN201711152355_FILENAME"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355_NAME=TOKEN201711152355_FILENAME
+  02: ./write_on_stdout TOKEN201711152355_VALUE1 >> $TOKEN201711152355_NAME
+  03: ./write_on_stdout TOKEN201711152355_VALUE2 >> $TOKEN201711152355_NAME[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `TOKEN201711152355_FILENAME` matching_regex `^TOKEN201711152355_VALUE1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `TOKEN201711152355_FILENAME` matching_regex `^TOKEN201711152355_VALUE2$`[0m
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/mixed/redirections/003-reading[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a redirection can be set with a local variable as file name.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "TOKEN201711152355_FILENAME"
+  02: echo "TOKEN201711152355_VALUE" > "TOKEN201711152355_FILENAME"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355_NAME=TOKEN201711152355_FILENAME
+  02: ./read_on_stdin < $TOKEN201711152355_NAME[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_VALUE@$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/mixed/tilde-expansion/001-process-tilde-expansion[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the tilde expansion `~` in variable declaration.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355=~
+  02: ./write_on_stdout TILDE:$TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TILDE:~`[0m
+[31m[1;33m  WARNING    might match_regex `TILDE:/TOKEN201711152355`[0m
+[38;5;239m  01: TILDE:~[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/double-quotes/mixed/escaping/004-it-results-in-error[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using backslash `\\` before the closing double-quote `"` does result in syntax error.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout "TOKEN201711152355\"[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `^TOKEN201711152355$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Ss]yntax|[Pp]arse) error`[0m
+[38;5;239m  01: dquote> [0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/double-quotes/mixed/globbing/bracket-expansion/001-it-works-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that an argument made with quoted and unquoted parts results in bracket pattern expansion.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout ["a"][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]a]@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^a@$`[0m
+[38;5;239m  01: [a]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/double-quotes/mixed/globbing/bracket-expansion/002-it-works-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that an argument made with quoted and unquoted parts results in bracket pattern expansion.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout ["a"bc"def"gh][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `b@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `c@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `d@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `e@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `f@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `g@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `h@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `bc`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `def`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `gh`[0m
+[38;5;239m  01: [abcdefgh]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/mixed/globbing/bracket-expansion/001-it-works-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that an argument made with quoted and unquoted parts results in bracket pattern expansion.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout [""'a'""][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]a]@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^a@$`[0m
+[38;5;239m  01: [a]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/mixed/globbing/bracket-expansion/002-it-works-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that an argument made with quoted and unquoted parts results in bracket pattern expansion.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout ["a"bc'def'gh][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `b@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `c@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `d@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `e@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `f@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `g@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `h@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `bc`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `def`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `gh`[0m
+[38;5;239m  01: [abcdefgh]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/simple-quotes/mixed/globbing/bracket-expansion/001-it-works-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that an argument made with quoted and unquoted parts results in bracket pattern expansion.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout ['a'][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `[[]a]@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^a@$`[0m
+[38;5;239m  01: [a]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/simple-quotes/mixed/globbing/bracket-expansion/002-it-works-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that an argument made with quoted and unquoted parts results in bracket pattern expansion.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout ['a'bc'def'gh][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `a@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `b@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `c@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `d@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `e@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `f@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `g@`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `h@`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `bc`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `def`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `gh`[0m
+[38;5;239m  01: [abcdefgh]@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/subshell/004-exit-status[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the exit status of a subshell command that is executed at the end of a script is correctly returned at termination by the parent shell.[0m
+
+  STDIN:
+[38;5;239m  01: (./exit_with_status 42)[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status 42[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/subshell/mixed/inline-environment-variable/001-modifies-the-child-environment-only-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that declaring a variable and specifying a binary in a subshell does not result in local variable declaration or a modified parent shell's environment, but only a modified child's environment.[0m
+
+  STDIN:
+[38;5;239m  01: (TOKEN201711152355_NAME=TOKEN201711152355_VALUE ./display_env)
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_NAME=TOKEN201711152355_VALUE$` once[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  06: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  07: TERM_PROGRAM_VERSION=3.1.5
+  08: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  09: ZSH=/Users/vcombey/.oh-my-zsh
+  10: USER=vcombey
+  11: COMMAND_MODE=unix2003
+  12: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  13: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  14: PAGER=less
+  15: LSCOLORS=Gxfxcxdxbxegedabagacad
+  16: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  17: PWD=/Users/vcombey/42ShellTester/tmp
+  18: BASE16_THEME=base16-nord
+  19: ITERM_PROFILE=Default
+  20: XPC_FLAGS=0x0
+  21: XPC_SERVICE_NAME=0
+  22: SHLVL=3
+  23: HOME=/Users/vcombey
+  24: COLORFGBG=7;0
+  25: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  26: LESS=-R
+  27: LOGNAME=vcombey
+  28: LC_CTYPE=UTF-8
+  29: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  30: SECURITYSESSIONID=186a6
+  31: COLORTERM=truecolor
+  32: OLDPWD=/Users/vcombey/42ShellTester
+  33: _=/Users/vcombey/42/42sh/42sh
+  34: HISTFILE=/Users/vcombey/.42sh_history
+  35: PS1=$> 
+  36: PS2=dquote> 
+  37: PS3=quote> 
+  38: ------------------------------
+  39: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: TOKEN201711152355_NAME=TOKEN201711152355_VALUE: command not found[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/subshell/mixed/inline-environment-variable/002-modifies-the-child-environment-only-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that declaring a variable and specifying a binary in a subshell does not result in local variable declaration or a modified parent shell's environment, but only a modified child's environment.[0m
+
+  STDIN:
+[38;5;239m  01: ( (TOKEN201711152355_NAME=TOKEN201711152355_VALUE ./display_env) ; ./display_env) ; ./display_env
+  02: [0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_NAME=TOKEN201711152355_VALUE$` once[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  06: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  07: TERM_PROGRAM_VERSION=3.1.5
+  08: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  09: ZSH=/Users/vcombey/.oh-my-zsh
+  10: USER=vcombey
+  11: COMMAND_MODE=unix2003
+  12: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  13: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  14: PAGER=less
+  15: LSCOLORS=Gxfxcxdxbxegedabagacad
+  16: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  17: PWD=/Users/vcombey/42ShellTester/tmp
+  18: BASE16_THEME=base16-nord
+  19: ITERM_PROFILE=Default
+  20: XPC_FLAGS=0x0
+  21: XPC_SERVICE_NAME=0
+  22: SHLVL=3
+  23: HOME=/Users/vcombey
+  24: COLORFGBG=7;0
+  25: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  26: LESS=-R
+  27: LOGNAME=vcombey
+  28: LC_CTYPE=UTF-8
+  29: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  30: SECURITYSESSIONID=186a6
+  31: COLORTERM=truecolor
+  32: OLDPWD=/Users/vcombey/42ShellTester
+  33: _=/Users/vcombey/42/42sh/42sh
+  34: HISTFILE=/Users/vcombey/.42sh_history
+  35: PS1=$> 
+  36: PS2=dquote> 
+  37: PS3=quote> 
+  38: ------------------------------
+  39: TOTAL ENVIRONMENT VARIABLES: 36
+  40: ------------------------------
+  41: TERM_PROGRAM=iTerm.app
+  42: TERM=xterm-256color
+  43: SHELL=42sh
+  44: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  45: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  46: TERM_PROGRAM_VERSION=3.1.5
+  47: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  48: ZSH=/Users/vcombey/.oh-my-zsh
+  49: USER=vcombey
+  50: COMMAND_MODE=unix2003
+  51: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  52: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  53: PAGER=less
+  54: LSCOLORS=Gxfxcxdxbxegedabagacad
+  55: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  56: PWD=/Users/vcombey/42ShellTester/tmp
+  57: BASE16_THEME=base16-nord
+  58: ITERM_PROFILE=Default
+  59: XPC_FLAGS=0x0
+  60: XPC_SERVICE_NAME=0
+  61: SHLVL=3
+  62: HOME=/Users/vcombey
+  63: COLORFGBG=7;0
+  64: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  65: LESS=-R
+  66: LOGNAME=vcombey
+  67: LC_CTYPE=UTF-8
+  68: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  69: SECURITYSESSIONID=186a6
+  70: COLORTERM=truecolor
+  71: OLDPWD=/Users/vcombey/42ShellTester
+  72: _=/Users/vcombey/42/42sh/42sh
+  73: HISTFILE=/Users/vcombey/.42sh_history
+  74: PS1=$> 
+  75: PS2=dquote> 
+  76: PS3=quote> 
+  77: ------------------------------
+  78: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: TOKEN201711152355_NAME=TOKEN201711152355_VALUE: command not found[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/inline-environment-variable/001-modifies-child-environment-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a binary may have its environment to be modified by appending variables inline.[0m
+
+  Before test:
+[38;5;239m  01: unset "TOKEN201711152355_VARIABLE"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355_VARIABLE=TOKEN201711152355_VALUE ./display_env
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_VARIABLE=TOKEN201711152355_VALUE$` once[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  06: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  07: TERM_PROGRAM_VERSION=3.1.5
+  08: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  09: ZSH=/Users/vcombey/.oh-my-zsh
+  10: USER=vcombey
+  11: COMMAND_MODE=unix2003
+  12: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  13: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  14: PAGER=less
+  15: LSCOLORS=Gxfxcxdxbxegedabagacad
+  16: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  17: PWD=/Users/vcombey/42ShellTester/tmp
+  18: BASE16_THEME=base16-nord
+  19: ITERM_PROFILE=Default
+  20: XPC_FLAGS=0x0
+  21: XPC_SERVICE_NAME=0
+  22: SHLVL=3
+  23: HOME=/Users/vcombey
+  24: COLORFGBG=7;0
+  25: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  26: LESS=-R
+  27: LOGNAME=vcombey
+  28: LC_CTYPE=UTF-8
+  29: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  30: SECURITYSESSIONID=186a6
+  31: COLORTERM=truecolor
+  32: OLDPWD=/Users/vcombey/42ShellTester
+  33: _=/Users/vcombey/42/42sh/42sh
+  34: HISTFILE=/Users/vcombey/.42sh_history
+  35: PS1=$> 
+  36: PS2=dquote> 
+  37: PS3=quote> 
+  38: ------------------------------
+  39: TOTAL ENVIRONMENT VARIABLES: 36
+  40: ------------------------------
+  41: TERM_PROGRAM=iTerm.app
+  42: TERM=xterm-256color
+  43: SHELL=42sh
+  44: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  45: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  46: TERM_PROGRAM_VERSION=3.1.5
+  47: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  48: ZSH=/Users/vcombey/.oh-my-zsh
+  49: USER=vcombey
+  50: COMMAND_MODE=unix2003
+  51: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  52: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  53: PAGER=less
+  54: LSCOLORS=Gxfxcxdxbxegedabagacad
+  55: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  56: PWD=/Users/vcombey/42ShellTester/tmp
+  57: BASE16_THEME=base16-nord
+  58: ITERM_PROFILE=Default
+  59: XPC_FLAGS=0x0
+  60: XPC_SERVICE_NAME=0
+  61: SHLVL=3
+  62: HOME=/Users/vcombey
+  63: COLORFGBG=7;0
+  64: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  65: LESS=-R
+  66: LOGNAME=vcombey
+  67: LC_CTYPE=UTF-8
+  68: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  69: SECURITYSESSIONID=186a6
+  70: COLORTERM=truecolor
+  71: OLDPWD=/Users/vcombey/42ShellTester
+  72: _=/Users/vcombey/42/42sh/42sh
+  73: HISTFILE=/Users/vcombey/.42sh_history
+  74: PS1=$> 
+  75: PS2=dquote> 
+  76: PS3=quote> 
+  77: ------------------------------
+  78: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/inline-environment-variable/002-modifies-child-environment-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a binary may have its environment to be modified by appending variables inline.[0m
+
+  Before test:
+[38;5;239m  01: unset "TOKEN201711152355_VARIABLE"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711152355_VARIABLE1=TOKEN201711152355_VALUE1 TOKEN201711152355_VARIABLE2=TOKEN201711152355_VALUE2 TOKEN201711152355_VARIABLE3=TOKEN201711152355_VALUE3 ./display_env
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_VARIABLE1=TOKEN201711152355_VALUE1$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_VARIABLE2=TOKEN201711152355_VALUE2$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355_VARIABLE3=TOKEN201711152355_VALUE3$` once[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  06: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  07: TERM_PROGRAM_VERSION=3.1.5
+  08: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  09: ZSH=/Users/vcombey/.oh-my-zsh
+  10: USER=vcombey
+  11: COMMAND_MODE=unix2003
+  12: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  13: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  14: PAGER=less
+  15: LSCOLORS=Gxfxcxdxbxegedabagacad
+  16: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  17: PWD=/Users/vcombey/42ShellTester/tmp
+  18: BASE16_THEME=base16-nord
+  19: ITERM_PROFILE=Default
+  20: XPC_FLAGS=0x0
+  21: XPC_SERVICE_NAME=0
+  22: SHLVL=3
+  23: HOME=/Users/vcombey
+  24: COLORFGBG=7;0
+  25: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  26: LESS=-R
+  27: LOGNAME=vcombey
+  28: LC_CTYPE=UTF-8
+  29: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  30: SECURITYSESSIONID=186a6
+  31: COLORTERM=truecolor
+  32: OLDPWD=/Users/vcombey/42ShellTester
+  33: _=/Users/vcombey/42/42sh/42sh
+  34: HISTFILE=/Users/vcombey/.42sh_history
+  35: PS1=$> 
+  36: PS2=dquote> 
+  37: PS3=quote> 
+  38: ------------------------------
+  39: TOTAL ENVIRONMENT VARIABLES: 36
+  40: ------------------------------
+  41: TERM_PROGRAM=iTerm.app
+  42: TERM=xterm-256color
+  43: SHELL=42sh
+  44: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  45: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  46: TERM_PROGRAM_VERSION=3.1.5
+  47: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  48: ZSH=/Users/vcombey/.oh-my-zsh
+  49: USER=vcombey
+  50: COMMAND_MODE=unix2003
+  51: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  52: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  53: PAGER=less
+  54: LSCOLORS=Gxfxcxdxbxegedabagacad
+  55: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  56: PWD=/Users/vcombey/42ShellTester/tmp
+  57: BASE16_THEME=base16-nord
+  58: ITERM_PROFILE=Default
+  59: XPC_FLAGS=0x0
+  60: XPC_SERVICE_NAME=0
+  61: SHLVL=3
+  62: HOME=/Users/vcombey
+  63: COLORFGBG=7;0
+  64: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  65: LESS=-R
+  66: LOGNAME=vcombey
+  67: LC_CTYPE=UTF-8
+  68: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  69: SECURITYSESSIONID=186a6
+  70: COLORTERM=truecolor
+  71: OLDPWD=/Users/vcombey/42ShellTester
+  72: _=/Users/vcombey/42/42sh/42sh
+  73: HISTFILE=/Users/vcombey/.42sh_history
+  74: PS1=$> 
+  75: PS2=dquote> 
+  76: PS3=quote> 
+  77: ------------------------------
+  78: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/inline-environment-variable/003-modifies-PATH-only[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a binary may have its environment to be modified by appending variables inline.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "temporary_directory"
+  02: mkdir -p "temporary_directory"
+  03: cd "temporary_directory"[0m
+
+  STDIN:
+[38;5;239m  01: PATH=.. write_on_stdout TOKEN201711152355
+  02: exit_with_status 42[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711152355$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Cc]ommand not found`[0m
+[38;5;239m  01: write_on_stdout: command not found
+  02: exit_with_status: command not found[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status `42`[0m
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/and/002-do-not-run-second[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the AND operator `&&` makes the right command to not be executed if the left one exits with an error status code.
+  The Shell should exit with the status code of the executed command.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42 && ./write_on_stdout TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might_not match_regex TOKEN201711152355[0m
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[1;33m  WARNING    might exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/and/003-run-until-failing[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the AND separator `&&` with chained commands results in the execution of all until the first fail.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 0 && ./exit_with_status 0 && ./exit_with_status 0 && ./exit_with_status 0 && ./write_on_stdout TOKEN201711152355_FIRST && ./exit_with_status 42 && ./write_on_stdout TOKEN201711152355_SECOND[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711152355_FIRST`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_SECOND`[0m
+[38;5;239m  01: TOKEN201711152355_FIRST[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/and/errors/001-parse-error-at-beginning[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  Parsing test.
+  The purpose of this test is to check that the AND operator `&&` must be placed after a valid command.
+  If not, the Shell should display an error and exit with an error status code.[0m
+
+  STDIN:
+[38;5;239m  01: && ./write_on_stdout TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might_not match_regex `TOKEN201711152355`[0m
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `([Ss]yntax|[Pp]arse) error`[0m
+[38;5;239m  01: 42sh: parse error near `&&'[0m
+
+  MISC:
+[31m[1;33m  WARNING    might_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/and/errors/002-parse-error-too-much-symbol[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  Parsing test.
+  The purpose of this test is to check that more than two '&' operators are detected as a syntax error.
+  It should not execute the two commands `write_on_stdout` but display an error and exit with an error status code.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout TOKEN201711152355 &&& ./write_on_stdout TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might_not match_regex `TOKEN201711152355`[0m
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `([Ss]yntax|[Pp]arse) error`[0m
+[38;5;239m  01: 42sh: parse error near `&'[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/mixed/001-and-or[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the two separators AND `&&` and OR `||` applies the good logic: The second command is executed if the first one succeeds, and the third command is executed if the second one fails or is not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42 && ./write_on_stderr TOKEN201711152355_ERROR 21 || ./write_on_stdout TOKEN201711152355_SUCCESS[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_SUCCESS`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/mixed/002-and-or[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the two separators AND `&&` and OR `||` applies the good logic: The second command is executed if the first one succeeds, and the third command is executed if the second one fails or is not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 0 && ./write_on_stderr TOKEN201711152355_ERROR 21 || ./write_on_stdout TOKEN201711152355_SUCCESS[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_SUCCESS`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711152355_ERROR`[0m
+[38;5;239m  01: TOKEN201711152355_ERROR[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/mixed/004-or-and[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the two separators OR `||` and AND `&&` applies the good logic: The second command is executed if the first one fails, and the third command is executed if the second one succeeds or is not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42 || ./write_on_stderr TOKEN201711152355_ERROR 21 && ./write_on_stdout TOKEN201711152355_SUCCESS[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_ERROR`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `21`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/mixed/005-or-and[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the two separators OR `||` and AND `&&` applies the good logic: The second command is executed if the first one fails, and the third command is executed if the second one succeeds or is not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42 || ./write_on_stdout TOKEN201711152355_SUCCESS && ./write_on_stderr TOKEN201711152355_ERROR 21[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_SUCCESS`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_ERROR`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `21`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/or/002-run-second-only[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the OR operator `||` makes the right command to be executed if the left one exits with an error status code.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42 || ./write_on_stdout TOKEN201711152355[0m
+
+  STDOUT:
+[31m[1;33m  WARNING    might match_regex `TOKEN201711152355`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    might exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/or/003-run-until-succeeding[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the OR separator `||` with chained commands results in the execution of all until the first succeed. The remaining commands are not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 1 || ./exit_with_status 2 || ./exit_with_status 3 || ./exit_with_status 4 || ./write_on_stdout TOKEN201711152355_FIRST || ./write_on_stdout TOKEN201711152355_SECOND[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_FIRST`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711152355_SECOND`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/or/errors/001-parse-error-at-beginning[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  Parsing test.
+  The purpose of this test is to check that the OR operator `||` must be placed after a valid command.
+  If not, the Shell should display an error and exit with an error status code.[0m
+
+  STDIN:
+[38;5;239m  01: || ./write_on_stdout TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `([Ss]yntax|[Pp]arse) error`[0m
+[38;5;239m  01: 42sh: parse error near `||'[0m
+
+  MISC:
+[31m[1;33m  WARNING    might_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/or/errors/002-parse-error-too-much-symbol[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  Parsing test.
+  The purpose of this test is to check that using more than two pipe symbols `|` is detected as an error.
+  The Shell should display an error and exit with a error status code.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout TOKEN201711152355 ||| ./write_on_stdout TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `([Ss]yntax|[Pp]arse) error`[0m
+[38;5;239m  01: 42sh: parse error near `|'[0m
+
+  MISC:
+[31m[1;33m  WARNING    might_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/003-expanded-with-PWD-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable PWD when followed by the symbol `+`.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~+[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~[+]`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711152355[+]`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42ShellTester/tmp$`[0m
+[38;5;239m  01: /TOKEN201711152355+[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/004-expanded-with-PWD-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable PWD when followed by the symbol `+`.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~+/TOKEN201711152355_SUBDIRECTORY[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~+/TOKEN201711152355_SUBDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711152355[+]/TOKEN201711152355_SUBDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42ShellTester/tmp/TOKEN201711152355_SUBDIRECTORY$`[0m
+[38;5;239m  01: /TOKEN201711152355+/TOKEN201711152355_SUBDIRECTORY[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/005-expanded-with-OLDPWD-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable OLDPWD when followed by the symbol `+`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./TOKEN201711152355_SUBDIRECTORY"
+  02: mkdir "./TOKEN201711152355_SUBDIRECTORY"
+  03: export "HOME=/TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: cd ./TOKEN201711152355_SUBDIRECTORY
+  02: /Users/vcombey/42ShellTester/tmp/write_on_stdout ~-[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~-`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711152355-`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42ShellTester/tmp$`[0m
+[38;5;239m  01: /TOKEN201711152355-[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/006-expanded-with-OLDPWD-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable OLDPWD when followed by the symbol `+`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./TOKEN201711152355_SUBDIRECTORY"
+  02: mkdir "./TOKEN201711152355_SUBDIRECTORY"
+  03: export "HOME=/TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: cd ./TOKEN201711152355_SUBDIRECTORY
+  02: /Users/vcombey/42ShellTester/tmp/write_on_stdout ~-/TOKEN201711152355_OTHERDIRECTORY[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~-/TOKEN201711152355_OTHERDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711152355-/TOKEN201711152355_OTHERDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42ShellTester/tmp/TOKEN201711152355_OTHERDIRECTORY$`[0m
+[38;5;239m  01: /TOKEN201711152355-/TOKEN201711152355_OTHERDIRECTORY[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/not-expanded/001-not-expanded-with-HOME-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be not expanded when not followed by an authorized symbol or user name.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~~[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~~$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711152355`[0m
+[38;5;239m  01: /TOKEN201711152355/TOKEN201711152355[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/not-expanded/002-not-expanded-with-HOME-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be not expanded when not followed by an authorized symbol or user name.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~TOKEN201711152355_UNKNOWNUSER[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~TOKEN201711152355_UNKNOWNUSER$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711152355TOKEN201711152355_UNKNOWNUSER`[0m
+[38;5;239m  01: /TOKEN201711152355TOKEN201711152355_UNKNOWNUSER[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/not-expanded/003-not-expanded-with-PWD[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` is not expanded with the environment variable PWD when not followed by the symbol `/`.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~+TOKEN201711152355_SUBDIRECTORY[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~[+]TOKEN201711152355_SUBDIRECTORY$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711152355[+]TOKEN201711152355_SUBDIRECTORY`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/Users/vcombey/42ShellTester/tmpTOKEN201711152355_SUBDIRECTORY`[0m
+[38;5;239m  01: /TOKEN201711152355+TOKEN201711152355_SUBDIRECTORY[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/not-expanded/004-not-expanded-with-OLDPWD[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` is not expanded with the environment variable OLDPWD when not followed by the symbol `/`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./TOKEN201711152355_SUBDIRECTORY"
+  02: mkdir "./TOKEN201711152355_SUBDIRECTORY"
+  03: export "HOME=/TOKEN201711152355"[0m
+
+  STDIN:
+[38;5;239m  01: cd ./TOKEN201711152355_SUBDIRECTORY
+  02: /Users/vcombey/42ShellTester/tmp/write_on_stdout ~-TOKEN201711152355_OTHERDIRECTORY[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~-TOKEN201711152355_OTHERDIRECTORY$`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/TOKEN201711152355-/TOKEN201711152355_OTHERDIRECTORY`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/Users/vcombey/42ShellTester/tmp/TOKEN201711152355_OTHERDIRECTORY`[0m
+[38;5;239m  01: /TOKEN201711152355-TOKEN201711152355_OTHERDIRECTORY[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/003-binary-test-exec-order[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell correctly finds binaries by iterating on paths within the environment variable PATH from left to right.[0m
+
+  Before test:
+[38;5;239m  01: mkdir -p "./virtual_path_1" "./virtual_path_2"
+  02: cp "./write_on_stdout" "./virtual_path_1/fake_echo"
+  03: cp "./write_on_stderr" "./virtual_path_2/fake_echo"
+  04: export PATH="/Users/vcombey/42ShellTester/tmp/virtual_path_1:/Users/vcombey/42ShellTester/tmp/virtual_path_2"[0m
+
+  STDIN:
+[38;5;239m  01: fake_echo TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex TOKEN201711152355[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: TOKEN201711152355[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/004-binary-test-empty-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell finds binaries that are located in the current directory when the environment variable PATH is empty.[0m
+
+  Before test:
+[38;5;239m  01: export PATH=""[0m
+
+  STDIN:
+[38;5;239m  01: write_on_stdout "TOKEN201711152355"[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: write_on_stdout: command not found[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/005-binary-test-wrong-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  This test purpose is to check if your shell is not able to use binary with a wrong PATH
+  We are changing the actual PATH by PATH=NULL
+  And executing the commande ls[0m
+
+  Before test:
+[38;5;239m  01: export PATH="/"[0m
+
+  STDIN:
+[38;5;239m  01: ls[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Cc]ommand not found`[0m
+[38;5;239m  01: ls: command not found[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/006-binary-undefined-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell retrieves the default value of the environment variable PATH if not set. This test depends on the presence of the UNIX binary `ls`, located in a path within the default environment variable PATH.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "TOKEN201711152355_006-BINARY-UNDEFINED-PATH"
+  02: touch "TOKEN201711152355_006-BINARY-UNDEFINED-PATH"
+  03: unset PATH[0m
+
+  STDIN:
+[38;5;239m  01: ls[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711152355_006-BINARY-UNDEFINED-PATH`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ls: command not found[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/007-binary-permission-denied[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to execute a non-permitted binary results in an error on standard error and a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf ./permission_denied
+  02: touch ./permission_denied
+  03: chmod 0 ./permission_denied[0m
+
+  STDIN:
+[38;5;239m  01: ./permission_denied[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Pp]ermission denied`[0m
+[38;5;239m  01: ./permission_denied: permission denied [0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status 0[0m
+
+  After test:
+[38;5;239m  01: if [ -d "./permission_denied" ]; then chmod 777 "./permission_denied"; fi
+  02: rm -rf "./permission_denied"[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/008-binary-too-many-symbolic-links-encountered[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to execute a path that encounters an infinite loop of symbolic link results in an error on standard error and a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf ./symbolic_link1 ./symbolic_link2 ./symbolic_link3
+  02: ln -s ./symbolic_link1 ./symbolic_link2
+  03: ln -s ./symbolic_link2 ./symbolic_link3
+  04: ln -s ./symbolic_link3 ./symbolic_link1[0m
+
+  STDIN:
+[38;5;239m  01: ./symbolic_link1[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Tt]oo many.*symbolic links`[0m
+[38;5;239m  01: ./symbolic_link1: no such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status 0[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/007-symbolic-link[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link as first argument with the builtin `cd` results in moving the linked directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link"
+  02: mkdir -p "./sub_directory"
+  03: ln -s "./sub_directory" "./symbolic_link"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp/symbolic_link$`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD
+  02: ------------------------------
+  03: TERM_PROGRAM=iTerm.app
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  07: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  08: TERM_PROGRAM_VERSION=3.1.5
+  09: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  10: ZSH=/Users/vcombey/.oh-my-zsh
+  11: USER=vcombey
+  12: COMMAND_MODE=unix2003
+  13: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  14: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  15: PAGER=less
+  16: LSCOLORS=Gxfxcxdxbxegedabagacad
+  17: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  18: PWD=/Users/vcombey/42ShellTester/tmp/sub_directory
+  19: BASE16_THEME=base16-nord
+  20: ITERM_PROFILE=Default
+  21: XPC_FLAGS=0x0
+  22: XPC_SERVICE_NAME=0
+  23: SHLVL=3
+  24: HOME=/Users/vcombey
+  25: COLORFGBG=7;0
+  26: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  27: LESS=-R
+  28: LOGNAME=vcombey
+  29: LC_CTYPE=UTF-8
+  30: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  31: SECURITYSESSIONID=186a6
+  32: COLORTERM=truecolor
+  33: OLDPWD=/Users/vcombey/42ShellTester/tmp
+  34: _=/Users/vcombey/42/42sh/42sh
+  35: HISTFILE=/Users/vcombey/.42sh_history
+  36: PS1=$> 
+  37: PS2=dquote> 
+  38: PS3=quote> 
+  39: ------------------------------
+  40: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/008-symbolic-link-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link as first argument with the builtin `cd` results in moving to the linked directory. In this test, the directory is linked with to chained symbolic links.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2"
+  02: mkdir -p "./sub_directory"
+  03: ln -s "./sub_directory" "./symbolic_link1"
+  04: ln -s "./symbolic_link1" "./symbolic_link2"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link2
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp/symbolic_link2$`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD
+  02: ------------------------------
+  03: TERM_PROGRAM=iTerm.app
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  07: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  08: TERM_PROGRAM_VERSION=3.1.5
+  09: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  10: ZSH=/Users/vcombey/.oh-my-zsh
+  11: USER=vcombey
+  12: COMMAND_MODE=unix2003
+  13: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  14: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  15: PAGER=less
+  16: LSCOLORS=Gxfxcxdxbxegedabagacad
+  17: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  18: PWD=/Users/vcombey/42ShellTester/tmp/sub_directory
+  19: BASE16_THEME=base16-nord
+  20: ITERM_PROFILE=Default
+  21: XPC_FLAGS=0x0
+  22: XPC_SERVICE_NAME=0
+  23: SHLVL=3
+  24: HOME=/Users/vcombey
+  25: COLORFGBG=7;0
+  26: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  27: LESS=-R
+  28: LOGNAME=vcombey
+  29: LC_CTYPE=UTF-8
+  30: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  31: SECURITYSESSIONID=186a6
+  32: COLORTERM=truecolor
+  33: OLDPWD=/Users/vcombey/42ShellTester/tmp
+  34: _=/Users/vcombey/42/42sh/42sh
+  35: HISTFILE=/Users/vcombey/.42sh_history
+  36: PS1=$> 
+  37: PS2=dquote> 
+  38: PS3=quote> 
+  39: ------------------------------
+  40: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/009-following-links[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using symbolic links twice with the builtin `cd` results in a correct environment variable PWD. By default, the path to the current directory should be a non-resolved symbolic path.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./sub_directory_link" "./sub_directory"
+  02: mkdir -p "./sub_directory/sub_sub_directory"
+  03: ln -s "./sub_directory" "./sub_directory_link"
+  04: ln -s "./sub_sub_directory" "./sub_directory/sub_sub_directory_link"[0m
+
+  STDIN:
+[38;5;239m  01: cd sub_directory_link
+  02: cd sub_sub_directory_link
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp/sub_directory_link/sub_sub_directory_link`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  06: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  07: TERM_PROGRAM_VERSION=3.1.5
+  08: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  09: ZSH=/Users/vcombey/.oh-my-zsh
+  10: USER=vcombey
+  11: COMMAND_MODE=unix2003
+  12: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  13: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  14: PAGER=less
+  15: LSCOLORS=Gxfxcxdxbxegedabagacad
+  16: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  17: PWD=/Users/vcombey/42ShellTester/tmp/sub_directory/sub_sub_directory
+  18: BASE16_THEME=base16-nord
+  19: ITERM_PROFILE=Default
+  20: XPC_FLAGS=0x0
+  21: XPC_SERVICE_NAME=0
+  22: SHLVL=3
+  23: HOME=/Users/vcombey
+  24: COLORFGBG=7;0
+  25: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  26: LESS=-R
+  27: LOGNAME=vcombey
+  28: LC_CTYPE=UTF-8
+  29: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  30: SECURITYSESSIONID=186a6
+  31: COLORTERM=truecolor
+  32: OLDPWD=/Users/vcombey/42ShellTester/tmp/sub_directory
+  33: _=/Users/vcombey/42/42sh/42sh
+  34: HISTFILE=/Users/vcombey/.42sh_history
+  35: PS1=$> 
+  36: PS2=dquote> 
+  37: PS3=quote> 
+  38: ------------------------------
+  39: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/012-dot[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that playing with relative paths to the current directory with the builtin `cd` results in not changing the current directory.[0m
+
+  STDIN:
+[38;5;239m  01: cd .
+  02: cd ./
+  03: cd ./.
+  04: cd ././
+  05: cd ./././././././././.
+  06: /Users/vcombey/42ShellTester/tmp/display_pwd
+  07: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp:PWD`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp$`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester:PWD
+  02: ------------------------------
+  03: TERM_PROGRAM=iTerm.app
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  07: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  08: TERM_PROGRAM_VERSION=3.1.5
+  09: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  10: ZSH=/Users/vcombey/.oh-my-zsh
+  11: USER=vcombey
+  12: COMMAND_MODE=unix2003
+  13: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  14: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  15: PAGER=less
+  16: LSCOLORS=Gxfxcxdxbxegedabagacad
+  17: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  18: PWD=/Users/vcombey/42ShellTester
+  19: BASE16_THEME=base16-nord
+  20: ITERM_PROFILE=Default
+  21: XPC_FLAGS=0x0
+  22: XPC_SERVICE_NAME=0
+  23: SHLVL=3
+  24: HOME=/Users/vcombey
+  25: COLORFGBG=7;0
+  26: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  27: LESS=-R
+  28: LOGNAME=vcombey
+  29: LC_CTYPE=UTF-8
+  30: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  31: SECURITYSESSIONID=186a6
+  32: COLORTERM=truecolor
+  33: OLDPWD=/Users/vcombey/42ShellTester
+  34: _=/Users/vcombey/42/42sh/42sh
+  35: HISTFILE=/Users/vcombey/.42sh_history
+  36: PS1=$> 
+  37: PS2=dquote> 
+  38: PS3=quote> 
+  39: ------------------------------
+  40: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/002-not-a-directory-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a file name as first argument with the builtin `cd` results in a Shell termination with a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: touch "./not_a_directory"[0m
+
+  STDIN:
+[38;5;239m  01: cd not_a_directory[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: Not a directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/004-permission-denied-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a directory without any permission as first argument with the builtin `cd` results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: if [ -d "./permission_denied" ]; then chmod 777 "./permission_denied"; fi
+  02: rm -rf "./permission_denied"
+  03: mkdir -m 0 "./permission_denied"[0m
+
+  STDIN:
+[38;5;239m  01: cd permission_denied[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: Permission denied[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+  After test:
+[38;5;239m  01: if [ -d "./permission_denied" ]; then chmod 777 "./permission_denied"; fi
+  02: rm -rf "./permission_denied"[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/005-too-many-symbolic-links-encountered[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link resulting in ELOOP error as first argument with the builtin `cd` results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2" "./symbolic_link3"
+  02: ln -s "./symbolic_link1" "./symbolic_link2"
+  03: ln -s "./symbolic_link2" "./symbolic_link3"
+  04: ln -s "./symbolic_link3" "./symbolic_link1"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link1
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp:PWD`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp:PWD[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Tt]oo many.*symbolic links`[0m
+[38;5;239m  01: cd: Out of streams resources[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/006-too-many-symbolic-links-encountered-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link resulting in ELOOP error as first argument with the builtin `cd` results in a Shell termination with a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2" "./symbolic_link3"
+  02: ln -s "./symbolic_link1" "./symbolic_link2"
+  03: ln -s "./symbolic_link2" "./symbolic_link3"
+  04: ln -s "./symbolic_link3" "./symbolic_link1"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link1[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: Out of streams resources[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/008-no-such-file-or-directory-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a non-existing path as first argument with the builtin `cd` results in a Shell termination with an error status code.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./no_such_file_or_directory"[0m
+
+  STDIN:
+[38;5;239m  01: cd no_such_file_or_directory[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: No such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/010-no-such-file-or-directory-symlink-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link that targets to a non-existing directory with the builtin `cd`  results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./enoent_symlink" "./enoent_directory"
+  02: ln -s "./enoent_directory" "./enoent_symlink"[0m
+
+  STDIN:
+[38;5;239m  01: cd ./enoent_symlink[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  01: cd: No such file or directory[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/options/001-not-following-links[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using symbolic links twice with the builtin `cd` and the option `-P` results in a correct environment variable PWD. The option `-P` makes the Shell to resolve symbolic links.[0m
+
+  Before test:
+[38;5;239m  01: rm -fr "./sub_directory_link" "./sub_directory"
+  02: mkdir -p "./sub_directory/sub_sub_directory"
+  03: ln -s "./sub_directory" "./sub_directory_link"
+  04: ln -s "./sub_sub_directory" "./sub_directory/sub_sub_directory_link"[0m
+
+  STDIN:
+[38;5;239m  01: cd -P sub_directory_link
+  02: cd -P sub_sub_directory_link
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `PWD=/Users/vcombey/42ShellTester/tmp/sub_directory/sub_sub_directory`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: TMPDIR=/var/folders/x1/h5xkx7bn4_xdp90cr3vsc1700000gp/T/
+  06: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.ZYSZCoCBD2/Render
+  07: TERM_PROGRAM_VERSION=3.1.5
+  08: TERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  09: ZSH=/Users/vcombey/.oh-my-zsh
+  10: USER=vcombey
+  11: COMMAND_MODE=unix2003
+  12: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.sqIwwksVVD/Listeners
+  13: __CF_USER_TEXT_ENCODING=0x1F6:0x0:0x1
+  14: PAGER=less
+  15: LSCOLORS=Gxfxcxdxbxegedabagacad
+  16: PATH=/Users/vcombey/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/vcombey/Users/vcombey/mongo/bin:/Users/vcombey/.gem/ruby/2.4.0/bin
+  17: PWD=/Users/vcombey/42ShellTester/tmp
+  18: BASE16_THEME=base16-nord
+  19: ITERM_PROFILE=Default
+  20: XPC_FLAGS=0x0
+  21: XPC_SERVICE_NAME=0
+  22: SHLVL=3
+  23: HOME=/Users/vcombey
+  24: COLORFGBG=7;0
+  25: ITERM_SESSION_ID=w0t0p0:775D1FFE-FD88-41B5-8CCD-B58442BE1622
+  26: LESS=-R
+  27: LOGNAME=vcombey
+  28: LC_CTYPE=UTF-8
+  29: BASE16_SHELL=/Users/vcombey/.config/base16-shell/
+  30: SECURITYSESSIONID=186a6
+  31: COLORTERM=truecolor
+  32: OLDPWD=/Users/vcombey/42ShellTester
+  33: _=/Users/vcombey/42/42sh/42sh
+  34: HISTFILE=/Users/vcombey/.42sh_history
+  35: PS1=$> 
+  36: PS2=dquote> 
+  37: PS3=quote> 
+  38: ------------------------------
+  39: TOTAL ENVIRONMENT VARIABLES: 36[0m
+
+  STDERR:
+[31m[1;33m  WARNING    might be_empty[0m
+[38;5;239m  01: cd: No such file or directory
+  02: cd: No such file or directory[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/003-ignore-environment[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the option `-i` with the builtin `env` results in an empty environment sent to the given command.[0m
+
+  STDIN:
+[38;5;239m  01: env -i ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOTAL ENVIRONMENT VARIABLES: 0`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/005-set-variables[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `env` can modify or set multiple environment variables before executing the given command.[0m
+
+  Before test:
+[38;5;239m  01: export VARTEST1="OLD_VALUE"[0m
+
+  STDIN:
+[38;5;239m  01: env VARTEST1=TOKEN201711152355_1 VARTEST2=TOKEN201711152355_2 VARTEST3=TOKEN201711152355_3 ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST1=TOKEN201711152355_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST2=TOKEN201711152355_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST3=TOKEN201711152355_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: =================================================================
+  02: ==36741==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x604000093380 at pc 0x0001067cd78d bp 0x7fff59447740 sp 0x7fff59447738
+  03: READ of size 8 at 0x604000093380 thread T0
+  04:     #0 0x1067cd78c in local_get_node local_get.c:11
+  05:     #1 0x1067cd471 in local_add_change_from_key_value local_add.c:42
+  06:     #2 0x1067ce381 in env_change_value env_add.c:50
+  07:     #3 0x1067ce544 in env_add_change env_add.c:61
+  08:     #4 0x1067ce642 in env_add_var_from_string env_add.c:68
+  09:     #5 0x1067bbb40 in build_new_env env.c:59
+  10:     #6 0x1067bb760 in builtin_env env.c:91
+  11:     #7 0x1067bc2c8 in exec_builtin exec_builtin.c:46
+  12:     #8 0x1067d8e04 in exec_simple_command exec_simple_command.c:147
+  13:     #9 0x1067d4715 in exec exec.c:39
+  14:     #10 0x1067d57c4 in exec_command exec_command.c:20
+  15:     #11 0x1067d4715 in exec exec.c:39
+  16:     #12 0x1067d6ed5 in exec_pipe_sequence exec_pipe_sequence.c:9
+  17:     #13 0x1067d4715 in exec exec.c:39
+  18:     #14 0x1067d792e in exec_pipeline exec_pipeline.c:84
+  19:     #15 0x1067d4715 in exec exec.c:39
+  20:     #16 0x1067d4861 in exec_and_or exec_and_or.c:13
+  21:     #17 0x1067d4715 in exec exec.c:39
+  22:     #18 0x1067d5bc7 in exec_complete_command exec_complete_command.c:45
+  23:     #19 0x1067d4715 in exec exec.c:39
+  24:     #20 0x1067d5e81 in exec_complete_commands exec_complete_commands.c:10
+  25:     #21 0x1067d4715 in exec exec.c:39
+  26:     #22 0x1067d7af9 in exec_program exec_program.c:10
+  27:     #23 0x1067d4715 in exec exec.c:39
+  28:     #24 0x1067d29e5 in exec_main_loop lex_and_parse.c:18
+  29:     #25 0x1067d3339 in lex_and_parse lex_and_parse.c:76
+  30:     #26 0x1067d3b8e in main_loop main_loop.c:72
+  31:     #27 0x1067b87fb in main (42sh:x86_64+0x1000017fb)
+  32:     #28 0x7fffb3e08234 in start (libdyld.dylib:x86_64+0x5234)
+  33: 
+  34: 0x604000093380 is located 0 bytes to the right of 48-byte region [0x604000093350,0x604000093380)
+  35: allocated by thread T0 here:
+  36:     #0 0x1069aff3c in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x58f3c)
+  37:     #1 0x10682495f in palloc (42sh:x86_64+0x10006d95f)
+  38:     #2 0x10681c4cb in ft_arrayjoin ft_arrayjoin.c:14
+  39:     #3 0x10681c5af in ft_arrayjoin_free ft_arrayjoin.c:33
+  40:     #4 0x1067d8b12 in exec_simple_command exec_simple_command.c:137
+  41:     #5 0x1067d4715 in exec exec.c:39
+  42:     #6 0x1067d57c4 in exec_command exec_command.c:20
+  43:     #7 0x1067d4715 in exec exec.c:39
+  44:     #8 0x1067d6ed5 in exec_pipe_sequence exec_pipe_sequence.c:9
+  45:     #9 0x1067d4715 in exec exec.c:39
+  46:     #10 0x1067d792e in exec_pipeline exec_pipeline.c:84
+  47:     #11 0x1067d4715 in exec exec.c:39
+  48:     #12 0x1067d4861 in exec_and_or exec_and_or.c:13
+  49:     #13 0x1067d4715 in exec exec.c:39
+  50:     #14 0x1067d5bc7 in exec_complete_command exec_complete_command.c:45
+  51:     #15 0x1067d4715 in exec exec.c:39
+  52:     #16 0x1067d5e81 in exec_complete_commands exec_complete_commands.c:10
+  53:     #17 0x1067d4715 in exec exec.c:39
+  54:     #18 0x1067d7af9 in exec_program exec_program.c:10
+  55:     #19 0x1067d4715 in exec exec.c:39
+  56:     #20 0x1067d29e5 in exec_main_loop lex_and_parse.c:18
+  57:     #21 0x1067d3339 in lex_and_parse lex_and_parse.c:76
+  58:     #22 0x1067d3b8e in main_loop main_loop.c:72
+  59:     #23 0x1067b87fb in main (42sh:x86_64+0x1000017fb)
+  60:     #24 0x7fffb3e08234 in start (libdyld.dylib:x86_64+0x5234)
+  61: 
+  62: SUMMARY: AddressSanitizer: heap-buffer-overflow local_get.c:11 in local_get_node
+  63: Shadow bytes around the buggy address:
+  64:   0x1c0800012620: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  65:   0x1c0800012630: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  66:   0x1c0800012640: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  67:   0x1c0800012650: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  68:   0x1c0800012660: fa fa fd fd fd fd fd fa fa fa 00 00 00 00 00 00
+  69: =>0x1c0800012670:[fa]fa 00 00 00 00 04 fa fa fa 00 00 00 00 06 fa
+  70:   0x1c0800012680: fa fa 00 00 00 00 05 fa fa fa 00 00 00 00 06 fa
+  71:   0x1c0800012690: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  72:   0x1c08000126a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  73:   0x1c08000126b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  74:   0x1c08000126c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  75: Shadow byte legend (one shadow byte represents 8 application bytes):
+  76:   Addressable:           00
+  77:   Partially addressable: 01 02 03 04 05 06 07 
+  78:   Heap left redzone:       fa
+  79:   Freed heap region:       fd
+  80:   Stack left redzone:      f1
+  81:   Stack mid redzone:       f2
+  82:   Stack right redzone:     f3
+  83:   Stack after return:      f5
+  84:   Stack use after scope:   f8
+  85:   Global redzone:          f9
+  86:   Global init order:       f6
+  87:   Poisoned by user:        f7
+  88:   Container overflow:      fc
+  89:   Array cookie:            ac
+  90:   Intra object redzone:    bb
+  91:   ASan internal:           fe
+  92:   Left alloca redzone:     ca
+  93:   Right alloca redzone:    cb
+  94: ==36741==ABORTING
+  95: ./lib/main.sh: line 102: 36741 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/errors/001-command-not-found[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `env` with an invalid binary as argument results in an error and failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./invalid_binary"[0m
+
+  STDIN:
+[38;5;239m  01: env ./invalid_binary[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Cc]ommand not found`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/errors/002-illegal-option[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `env` with an invalid option results in an error and failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f -- "-w"[0m
+
+  STDIN:
+[38;5;239m  01: env -w[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Ii]nvalid|[Ii]llegal) (option|argument)`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/multiple-options/001-ignore-environment-and-set-variable[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that `env -i` works if we use a second argument to set an environment variable, we are also checking if this command unset environments variables for a given binary.[0m
+
+  STDIN:
+[38;5;239m  01: env -i TESTVARIABLE=TOKEN201711152355 ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVARIABLE=TOKEN201711152355`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOTAL ENVIRONMENT VARIABLES: 1`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: =================================================================
+  02: ==37188==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6040000947f8 at pc 0x00010fe0078d bp 0x7fff4fe14740 sp 0x7fff4fe14738
+  03: READ of size 8 at 0x6040000947f8 thread T0
+  04:     #0 0x10fe0078c in local_get_node local_get.c:11
+  05:     #1 0x10fe00644 in local_add_change_from_string local_add.c:61
+  06:     #2 0x10fe0110b in env_add_var env_add.c:28
+  07:     #3 0x10fe014dc in env_add_change env_add.c:59
+  08:     #4 0x10fe01642 in env_add_var_from_string env_add.c:68
+  09:     #5 0x10fdeeb40 in build_new_env env.c:59
+  10:     #6 0x10fdee760 in builtin_env env.c:91
+  11:     #7 0x10fdef2c8 in exec_builtin exec_builtin.c:46
+  12:     #8 0x10fe0be04 in exec_simple_command exec_simple_command.c:147
+  13:     #9 0x10fe07715 in exec exec.c:39
+  14:     #10 0x10fe087c4 in exec_command exec_command.c:20
+  15:     #11 0x10fe07715 in exec exec.c:39
+  16:     #12 0x10fe09ed5 in exec_pipe_sequence exec_pipe_sequence.c:9
+  17:     #13 0x10fe07715 in exec exec.c:39
+  18:     #14 0x10fe0a92e in exec_pipeline exec_pipeline.c:84
+  19:     #15 0x10fe07715 in exec exec.c:39
+  20:     #16 0x10fe07861 in exec_and_or exec_and_or.c:13
+  21:     #17 0x10fe07715 in exec exec.c:39
+  22:     #18 0x10fe08bc7 in exec_complete_command exec_complete_command.c:45
+  23:     #19 0x10fe07715 in exec exec.c:39
+  24:     #20 0x10fe08e81 in exec_complete_commands exec_complete_commands.c:10
+  25:     #21 0x10fe07715 in exec exec.c:39
+  26:     #22 0x10fe0aaf9 in exec_program exec_program.c:10
+  27:     #23 0x10fe07715 in exec exec.c:39
+  28:     #24 0x10fe059e5 in exec_main_loop lex_and_parse.c:18
+  29:     #25 0x10fe06339 in lex_and_parse lex_and_parse.c:76
+  30:     #26 0x10fe06b8e in main_loop main_loop.c:72
+  31:     #27 0x10fdeb7fb in main (42sh:x86_64+0x1000017fb)
+  32:     #28 0x7fffb3e08234 in start (libdyld.dylib:x86_64+0x5234)
+  33: 
+  34: 0x6040000947f8 is located 0 bytes to the right of 40-byte region [0x6040000947d0,0x6040000947f8)
+  35: allocated by thread T0 here:
+  36:     #0 0x10ffdff3c in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x58f3c)
+  37:     #1 0x10fe5795f in palloc (42sh:x86_64+0x10006d95f)
+  38:     #2 0x10fe4f4cb in ft_arrayjoin ft_arrayjoin.c:14
+  39:     #3 0x10fe4f5af in ft_arrayjoin_free ft_arrayjoin.c:33
+  40:     #4 0x10fe0bb12 in exec_simple_command exec_simple_command.c:137
+  41:     #5 0x10fe07715 in exec exec.c:39
+  42:     #6 0x10fe087c4 in exec_command exec_command.c:20
+  43:     #7 0x10fe07715 in exec exec.c:39
+  44:     #8 0x10fe09ed5 in exec_pipe_sequence exec_pipe_sequence.c:9
+  45:     #9 0x10fe07715 in exec exec.c:39
+  46:     #10 0x10fe0a92e in exec_pipeline exec_pipeline.c:84
+  47:     #11 0x10fe07715 in exec exec.c:39
+  48:     #12 0x10fe07861 in exec_and_or exec_and_or.c:13
+  49:     #13 0x10fe07715 in exec exec.c:39
+  50:     #14 0x10fe08bc7 in exec_complete_command exec_complete_command.c:45
+  51:     #15 0x10fe07715 in exec exec.c:39
+  52:     #16 0x10fe08e81 in exec_complete_commands exec_complete_commands.c:10
+  53:     #17 0x10fe07715 in exec exec.c:39
+  54:     #18 0x10fe0aaf9 in exec_program exec_program.c:10
+  55:     #19 0x10fe07715 in exec exec.c:39
+  56:     #20 0x10fe059e5 in exec_main_loop lex_and_parse.c:18
+  57:     #21 0x10fe06339 in lex_and_parse lex_and_parse.c:76
+  58:     #22 0x10fe06b8e in main_loop main_loop.c:72
+  59:     #23 0x10fdeb7fb in main (42sh:x86_64+0x1000017fb)
+  60:     #24 0x7fffb3e08234 in start (libdyld.dylib:x86_64+0x5234)
+  61: 
+  62: SUMMARY: AddressSanitizer: heap-buffer-overflow local_get.c:11 in local_get_node
+  63: Shadow bytes around the buggy address:
+  64:   0x1c08000128a0: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  65:   0x1c08000128b0: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  66:   0x1c08000128c0: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  67:   0x1c08000128d0: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  68:   0x1c08000128e0: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  69: =>0x1c08000128f0: fa fa fd fd fd fd fd fd fa fa 00 00 00 00 00[fa]
+  70:   0x1c0800012900: fa fa fd fd fd fd fd fa fa fa fd fd fd fd fd fa
+  71:   0x1c0800012910: fa fa fd fd fd fd fd fa fa fa fd fd fd fd fd fa
+  72:   0x1c0800012920: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  73:   0x1c0800012930: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  74:   0x1c0800012940: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  75: Shadow byte legend (one shadow byte represents 8 application bytes):
+  76:   Addressable:           00
+  77:   Partially addressable: 01 02 03 04 05 06 07 
+  78:   Heap left redzone:       fa
+  79:   Freed heap region:       fd
+  80:   Stack left redzone:      f1
+  81:   Stack mid redzone:       f2
+  82:   Stack right redzone:     f3
+  83:   Stack after return:      f5
+  84:   Stack use after scope:   f8
+  85:   Global redzone:          f9
+  86:   Global init order:       f6
+  87:   Poisoned by user:        f7
+  88:   Container overflow:      fc
+  89:   Array cookie:            ac
+  90:   Intra object redzone:    bb
+  91:   ASan internal:           fe
+  92:   Left alloca redzone:     ca
+  93:   Right alloca redzone:    cb
+  94: ==37188==ABORTING
+  95: ./lib/main.sh: line 102: 37188 Abort trap: 6           /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/002-status-passed-as-argument[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a number as first argument with the builtin `exit` results in the Shell termination with given number as exit status.[0m
+
+  STDIN:
+[38;5;239m  01: exit 42[0m
+
+  STDOUT:
+[31m[1;33m  WARNING    might be_empty[0m
+[38;5;239m  01: tcsetattr error[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/003-status-of-last-command[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `exit` without any argument results in a Shell termination and the exit status of the previous command.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42
+  02: exit[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/errors/001-too-many-args[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong number of arguments with the builtin `exit` does not result in the Shell termination but an error on standard error.[0m
+
+  STDIN:
+[38;5;239m  01: exit 21 42
+  02: ./write_on_stdout TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711152355`[0m
+[38;5;239m  01: TOKEN201711152355[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Tt]oo many arguments|[Aa]rgument list too long)`[0m
+[38;5;239m  01: exit: to many arguments[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/errors/002-non-numeric-argument[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a non-numeric argument with the builtin `exit` results in the Shell termination and an error on standard error.[0m
+
+  STDIN:
+[38;5;239m  01: exit abc
+  02: ./write_on_stdout TOKEN201711152355[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711152355`[0m
+[38;5;239m  01: TOKEN201711152355[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Nn]umeric argument required`[0m
+[38;5;239m  01: exit: numeric argument required[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/004-invalid-identifier[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong variable name with the builtin `setenv` (or `export`) results in error.[0m
+
+  STDIN:
+[38;5;239m  01: setenv 42
+  02: export 42[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `(not.*identifier|must begin.*letter)`[0m
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..[0m
+
+Total tests: 286
+Total failed tests: 106
+Total pending tests: 3

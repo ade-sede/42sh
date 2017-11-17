@@ -11,7 +11,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-static int	safe_open(char *target, int mode)
+int	safe_open(char *target, int mode)
 {
 	int		target_fd;
 
@@ -27,10 +27,7 @@ static int	safe_open(char *target, int mode)
 
 int			redir_open_file(char *target, int id)
 {
-	int	target_fd;
-	int	mode;
-
-	mode = 0;
+	int	target_fd; int	mode; mode = 0;
 	if (id == TK_LESS)
 		mode |= O_RDONLY;
 	if (id != TK_LESS)

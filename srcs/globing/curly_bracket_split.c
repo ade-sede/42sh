@@ -2,7 +2,7 @@
 #include "list.h"
 #include "libft.h"
 
-static unsigned int	ft_count_words(char const *s, char c)
+static unsigned int	ft_count_words(char *s, char c)
 {
 	unsigned int	i;
 	unsigned int	nb_words;
@@ -19,9 +19,9 @@ static unsigned int	ft_count_words(char const *s, char c)
 			nb_words++;
 		while (s[i] && (!(s[i] == c && depth == 0)))
 		{
-			if (s[i] == '{')
+			if (s[i] == '{' && !ft_is_backslash(s, i))
 				depth++;
-			if (s[i] == '}')
+			if (s[i] == '}' && !ft_is_backslash(s, i))
 				depth--;
 			i++;
 		}
@@ -29,7 +29,7 @@ static unsigned int	ft_count_words(char const *s, char c)
 	return (nb_words);
 }
 
-static void			ft_malloc_t(char const *s, char **t, char c)
+static void			ft_malloc_t(char *s, char **t, char c)
 {
 	unsigned int	i;
 	unsigned int	no_words;
@@ -48,7 +48,7 @@ static void			ft_malloc_t(char const *s, char **t, char c)
 		nb_letters = 0;
 		while (s[i] && (!(s[i] == c && depth == 0)))
 		{
-			if (s[i] == '{' || s[i] == '}')
+			if ((s[i] == '{' || s[i] == '}') && !ft_is_backslash(s, i))
 				(s[i] == '{') ? depth++ : depth--;
 			i++;
 			nb_letters++;
@@ -58,7 +58,7 @@ static void			ft_malloc_t(char const *s, char **t, char c)
 	}
 }
 
-static void			ft_fill_t(char const *s, char **t, char c)
+static void			ft_fill_t(char *s, char **t, char c)
 {
 	unsigned int	i;
 	unsigned int	no_words;
@@ -77,7 +77,7 @@ static void			ft_fill_t(char const *s, char **t, char c)
 		no_letters = 0;
 		while (s[i] && (!(s[i] == c && depth == 0)))
 		{
-			if (s[i] == '{' || s[i] == '}')
+			if ((s[i] == '{' || s[i] == '}') && !ft_is_backslash(s, i))
 				(s[i] == '{') ? depth++ : depth--;
 			t[no_words][no_letters] = s[i];
 			i++;

@@ -4,10 +4,38 @@
 #include "hash_table.h"
 #include "local.h"
 
+static int	load_color(t_env *env)
+{
+	local_add_change_from_key_value(env, "word_color", RESET);
+	local_add_change_from_key_value(env, "default_color", RESET);
+	local_add_change_from_key_value(env, "comment_color", RESET);
+	local_add_change_from_key_value(env, "operator_color", PNK);
+	local_add_change_from_key_value(env, "param_exp_color", BLU);
+	local_add_change_from_key_value(env, "cmd_subst_color", RESET);
+	local_add_change_from_key_value(env, "dquotes_color", YEL);
+	local_add_change_from_key_value(env, "quotes_color", MAG);
+	local_add_change_from_key_value(env, "bs_color", CYN);
+	return (1);
+}
+
+static int	load_special_params(t_env *env)
+{
+	char	*pid_string;
+	char	*ppid_string;
+
+	pid_string = ft_itoa_base(getpid(), 10);
+	ppid_string = ft_itoa_base(getppid(), 10);
+	local_add_change_from_key_value(env, "$", pid_string);
+	local_add_change_from_key_value(env, "PID", pid_string);
+	local_add_change_from_key_value(env, "PPID", ppid_string);
+	free(pid_string);
+	free(ppid_string);
+	return (1);
+}
+
 void		env_load_base_env(t_env *env, const char **environ)
 {
 	size_t	i;
-	char	*pid_string;
 
 	i = 0;
 	env->environ = NULL;
@@ -21,13 +49,12 @@ void		env_load_base_env(t_env *env, const char **environ)
 	env_load_shlvl_pwd(env);
 	while (i != env->environ_size)
 	{
-		local_add_change_from_string(&env->local, env->environ[i]);
+		local_add_change_from_string(env, env->environ[i]);
 		++i;
 	}
-	pid_string = ft_itoa_base(getpid(), 10);
-	local_add_change_from_key_value(&env->local, "$", pid_string);
-	free(pid_string);
 	create_hash_table(&env->hash_table, env->environ);
+	load_special_params(env);
+	load_color(env);
 }
 
 void		env_load_shlvl_pwd(t_env *env)
@@ -35,6 +62,7 @@ void		env_load_shlvl_pwd(t_env *env)
 	char		buf[PATH_MAX];
 	size_t		index;
 	char		*new_entry;
+	char		*tmp;
 
 	if (env_getenv((const char**)env->environ, "PWD", &index) == NULL)
 		env_add_var(env, "PWD", getcwd(buf, PATH_MAX));
@@ -47,6 +75,13 @@ void		env_load_shlvl_pwd(t_env *env)
 		free(new_entry);
 	}
 	env_add_change(env, "SHELL", "42sh");
-	if (!env_getenv((const char **)env->environ, "HISTFILE", NULL))
-		env_add_change(env, "HISTFILE", "42sh_history");
+	tmp = ft_gethome();
+	if (tmp)
+	{
+		tmp = ft_strjoin(tmp, "/.42sh_history");
+		env_add_change(env, "HISTFILE", tmp);
+		free(tmp);
+	}
+	else
+		env_add_change(env, "HISTFILE", "");
 }

@@ -74,10 +74,10 @@ int add_pos_param(t_env *env, const char **argv, size_t index, size_t start)
 		++index;
 		++i;
 	}
-	local_add_change_from_key_value(&env->local, "@", all_param);
-	local_add_change_from_key_value(&env->local, "*", all_param);
+	local_add_change_from_key_value(env, "@", all_param);
+	local_add_change_from_key_value(env, "*", all_param);
 	nb_param = ft_itoa_base(i - 1, 10);
-	local_add_change_from_key_value(&env->local, "#", nb_param);
+	local_add_change_from_key_value(env, "#", nb_param);
 	free(nb_param);
 	return (1);
 }

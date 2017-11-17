@@ -8,10 +8,10 @@
 typedef struct	s_hist
 {
 	t_lst_head			*list;
-	t_list_d			*last_read; //apres load
+	t_list_d			*last_read;
 	t_list_d			*cur;
-	struct s_cmd_node	*current_cmd;	//truc a pop
-	size_t				last_line_read; //taille de HISTFILE
+	struct s_cmd_node	*current_cmd;
+	size_t				last_line_read;
 	int					signum;
 
 	char				*writen_buff;

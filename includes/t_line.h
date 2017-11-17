@@ -18,6 +18,7 @@ typedef struct	s_line
 	int					completion;
 	int					history;
 	int					btsearch;
+	int					verbatim;
 	size_t				visu_start;
 	char				*copied_text;
 	char				*prompt;
@@ -25,7 +26,8 @@ typedef struct	s_line
 	int					heredoc;
 	void				(*sig_handler)(void);
 	ssize_t				col_target;
-	t_read				read;
+	t_read				*read;
+	int					read_builtin;
 }				t_line;
 
 typedef struct	s_edit_func

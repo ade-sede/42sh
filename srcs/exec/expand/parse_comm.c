@@ -5,6 +5,7 @@
 #include "exec.h"
 #include "glob.h"
 #include "expand.h"
+#include <stdio.h>
 
 /*  after "$(" */
 
@@ -38,8 +39,10 @@ int		parse_comm (t_expand *exp)
 			{
 				if (comm.str)
 				{
-				//	fprint(stderr,"exec comm\n");
-					error = exec_comm (comm.str,exp);
+#ifdef EXPAND_DEBUG
+ fprintf(stderr,"exec comm\n");
+ #endif
+					error = exec_comm (comm.str, exp);
 					w_free (&comm);
 					return error;
 				}

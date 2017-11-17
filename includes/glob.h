@@ -7,8 +7,7 @@
 
 int		match_open_dir(t_matches *m, int to_match_i, int regex_i, \
 		char *dir_name);
-int		match_open_file(t_matches *m, int to_match_i, int regex_i, \
-		char *file_name);
+char *match_open_file(char *m_dir, char *file_name);
 int		char_is_escaped(char *regex, int regex_i);
 int		match(t_matches *m, int to_match_i, int regex_i);
 int		match_open_dir(t_matches *m, int to_match_i, int regex_i, \
@@ -22,7 +21,7 @@ int		func_cmp(t_matches *m, int to_match_i, int regex_i);
 
 t_list	*glob(char *regex);
 t_list	*expand_curly_brackets(char *expr);
-void	curly_brackets(t_list **res, char *expr);
+void	curly_brackets(t_list **res, char *expr, int offset);
 void	curly_brackets_range_alpha(t_list **res, char *expr, char *str, \
 		int end);
 void	curly_brackets_range_num(t_list **res, char *expr, char *str, int end);
