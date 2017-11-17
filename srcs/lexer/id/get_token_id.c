@@ -21,7 +21,7 @@
 **	Must reset cmd_name only if the last operator wasnt a redir
 */
 
-static int	check_prev_one_redir(t_lexer *lex)
+static int	check_prev_one_id(t_lexer *lex)
 {
 	t_token	*token = NULL;
 	t_list	*node = NULL;
@@ -35,6 +35,7 @@ static int	check_prev_one_redir(t_lexer *lex)
 	return (FALSE);
 }
 
+#include <stdio.h>
 void	get_token_id(t_lexer *lex, t_token *token)
 {
 	struct s_info	*info;
@@ -52,7 +53,7 @@ void	get_token_id(t_lexer *lex, t_token *token)
 	else if (info->state != COMMENT && info->state != WHITESPACE) // Token is anything else
 	{
 		token->id = id_word(lex, token);
-		if (token->id != TK_ASSIGNMENT_WORD && lex->cmd_name_open && check_prev_one_redir(lex))
+		if (token->id == TK_WORD && check_prev_one_id(lex))
 		{
 			token->cmd_name = TRUE;
 			lex->cmd_name_open = FALSE;

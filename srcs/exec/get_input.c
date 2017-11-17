@@ -62,7 +62,10 @@ int		get_input(t_modes *modes, char **buff)
 	else if (modes->mode == STRING_MODE)
 		*buff = string_get_line(modes);
 	else
+	{
 		*buff = stream_get_line(modes->stream);
+//		fprintf(stderr, "{%s}\n", *buff);
+	}
 	if (!*buff)
 		return (0);
 	return (1);

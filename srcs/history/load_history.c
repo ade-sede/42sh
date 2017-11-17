@@ -12,7 +12,7 @@ static void	init_hist_struct(t_hist *h, t_env *env)
 	ft_bzero(h, sizeof(t_hist));
 	hist_file = env_getenv((const char **)env->environ, "HISTFILE", NULL);
 	if (!hist_file)
-		hist_file = ".minishell_history";
+		hist_file = ".42sh_history";
 	h->file = hist_file;
 	h->list = NULL;
 	h->writen_buff = ft_strnew(4096);

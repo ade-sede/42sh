@@ -22,7 +22,7 @@ void	do_job_notification(t_job_control *jc)
 				jlast->next = jnext;
 			else
 				jc->first_job = jnext;
-			//job_free(j);
+			job_free(j);
 		}
 		else if (job_is_stopped (j) && !j->notified)
 		{

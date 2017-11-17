@@ -24,7 +24,9 @@ static void	exec_comm_child (char *comm, int *fildes, int no_showerr)
 	//unsetenv ("IFS");
 	close (fildes[0]);
 	singleton_jc()->shell_is_interactive = 0;
-//	fprintf(stderr, "exec_comm_child {%s}\n", comm);
+#ifdef EXPAND_DEBUG
+ fprintf(stderr, "exec_comm_child {%s}\n", comm);
+ #endif
 	lex_and_parse(NULL, comm, 0); // TODO: attention
 	exit (1);
 }
@@ -44,7 +46,9 @@ int		exec_comm (char *comm, t_expand *exp)
 	w_newword(&value);
 	if (!comm || !*comm)
 		return 0;
-	//fprintf(stderr, "cmd substitution {%s}\n", comm);
+#ifdef EXPAND_DEBUG
+ fprintf(stderr, "cmd substitution {%s}\n", comm);
+ #endif
 	p_pipe (fildes);
 	pid = p_fork();
 	if (pid == 0)
@@ -57,6 +61,10 @@ int		exec_comm (char *comm, t_expand *exp)
 		maxnewlines += buflen;
 		w_addmem (&value, buffer, buflen);
 	}
+#ifdef EXPAND_DEBUG
+ fprintf (stderr, "value cmd subst{%s}\n", value.str);
+ #endif
+
 	handle_fieldsplitting(value.str, exp);
 	w_free(&value);
 	return (0);

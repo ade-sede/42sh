@@ -174,10 +174,10 @@ int		id_word(t_lexer *lex, t_token *token)
 		func_name_token->id = TK_NAME;
 	if (check_io_number(token))
 		id = ft_atoi(token->value);
-	else if (check_prev_1(lex))
-		id = id_reserved_words(token->value);
 	else if (check_assignement_word(lex, token->value))
 		id = TK_ASSIGNMENT_WORD;
+	else if (check_prev_1(lex))
+		id = id_reserved_words(token->value);
 	else if (check_prev_3(lex))
 		id = id_reserved_words(token->value);
 	else if (check_for(lex, token->value))
