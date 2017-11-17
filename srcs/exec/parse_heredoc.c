@@ -23,7 +23,7 @@ void	read_heredoc(t_ast *ast, char *target)
 		buff = edit_get_input(); 
 		if (ft_strequ(buff, target) || ft_strchr(buff, 4))
 			break ;
-		cat = ft_strchange(cat, ft_strjoin(cat, buff));
+		cat = ft_strjoin_free(cat, buff, 0b11);
 	}
 	singleton_line()->heredoc = 0;
 	ast->heredoc = cat;
@@ -42,8 +42,8 @@ void	parse_heredoc(t_ast *ast)
 		parse_heredoc(ast->child[i]);
 		if (is_symb(ast, IO_HERE))
 		{
-			read_heredoc(ast, extract_word(ast->child[i]->child[1]));
-			write(1, "*", 1);
+			read_heredoc(ast, extract_word(ast->child[1]->child[0]));
+			//write(1, "*", 1);
 		}
 		i++;
 	}
