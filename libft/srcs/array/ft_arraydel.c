@@ -7,7 +7,7 @@ void	ft_arraydel(char ***tab)
 	tmp = *tab;
 	while (tmp && *tmp)
 	{
-		ft_bzero(*tmp, ft_strlen(*tmp));
+	//	ft_bzero(*tmp, ft_strlen(*tmp));
 		ft_memdel((void*)tmp);
 		tmp++;
 	}

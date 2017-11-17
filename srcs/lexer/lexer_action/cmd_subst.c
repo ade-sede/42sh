@@ -12,7 +12,7 @@ int		lex_action_cmd_subst(t_lexer *lex, struct s_info **state_info)
 	else if (lex->line[lex->pos] == '\\')
 		push_state(lex, BS);
 	/* else if (lex->line[info[_T_START]] == '`') */
-	else if (info->value[0] == '`')
+	else if (info->value.str[0] == '`')
 	{
 		if (lex->line[lex->pos] == '`')
 		{

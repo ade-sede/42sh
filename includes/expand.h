@@ -1,7 +1,6 @@
 #ifndef EXPAND_H
 # define EXPAND_H
 
-#define W_BUFF_SIZE        10
 #define W_ARRAY_SIZE        10
 #define WRDE_SYNTAX		42
 
@@ -11,13 +10,7 @@
 
 #define CHAR_IN_SET(c, str) ft_strchr(str, c) != NULL
 #include <stdlib.h>
-
-typedef struct	s_word
-{
-	char		*str;
-	size_t		actlen;
-	size_t		maxlen;
-}				t_word;
+#include "libft.h"
 
 typedef struct	s_expand
 {
@@ -34,14 +27,8 @@ typedef struct	s_expand
 	int			flag;
 }				t_expand;
 
-void	w_newword (t_word *word);
-void	*ft_realloc_2(void *mem, size_t old_size, size_t new_size);
-char	*w_addchar (t_word *word, char ch);
-char	*w_addmem (t_word *word, const char *str, size_t len);
-char	*w_addstr (t_word *word, const char *str);
 int		w_addword (t_expand *exp, t_word *g_word, t_word *word);
 int		w_newexp (t_expand *exp);
-void	w_free (t_word *word);
 
 char	**word_expansion (const char *words, int flag);
 

@@ -65,7 +65,7 @@ void	exec_assignment_word(t_ast *ast)
 		//fprintf(stderr, "word expanded NULL \n");
 		local_add_change_from_string(singleton_env(), ast->token->value);
 	}
-	ft_arraydel(&word_expanded);
+	//ft_arraydel(&word_expanded); //TODO: fait peter a=b
 }
 
 void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)

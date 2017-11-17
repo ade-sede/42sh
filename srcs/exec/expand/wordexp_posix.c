@@ -102,19 +102,15 @@ static int		parse_loop (const char *words, t_expand *exp)
 		{
 			++exp->offset;
 			parse_dquote (exp);
-			if (!exp->word.str && !words[1 + exp->offset])
-				w_addword (exp, &exp->g_word, &exp->word);
 		}
 		else if (words[exp->offset] == '\'')
 		{
 			++exp->offset;
 			parse_squote (&exp->g_word, &exp->word, words, &exp->offset);
-			if (!exp->word.str && !words[1 + exp->offset])
-				w_addword (exp, &exp->g_word, &exp->word);
 		}
 		else if (words[exp->offset] == '`')
 		{
-			++exp->offset;
+//			++exp->offset;
 			parse_backtick (exp);
 		}
 		else if (words[exp->offset] == '$')
@@ -145,7 +141,8 @@ static int		parse_loop (const char *words, t_expand *exp)
 	if (exp->word.str != NULL)
 	{
 #ifdef EXPAND_DEBUG
- fprintf (stderr, "word add {%s}\n", exp->word.str);
+		fprintf (stderr, "PARSE LOOP word add {%s}\n", exp->word.str);
+		fprintf (stderr, "PARSE LOOP word add {%s}\n", exp->g_word.str);
  #endif
 		w_addword (exp, &exp->g_word, &exp->word);
 	}
@@ -172,13 +169,14 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 		parse_loop (braced_words[i], &exp);
 		i++;
 	}
-	//for (i=0; i < exp.actlen; i++)
 #ifdef EXPAND_DEBUG
- fprintf(stderr,"w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
+	for (i=0; i < exp.actlen; i++)
+	 fprintf(stderr,"w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
  #endif
 	free((void *)exp.ifs);
+	ft_arraydel(&braced_words);
 	if (!(flag & NO_GLOBBING))
 		return (pathname_expension(&exp));
-	ft_arraydel(&exp.av_gword);
+//	ft_arraydel(&exp.av_gword); // FAIT PETER a=b
 	return (exp.av_word);
 }

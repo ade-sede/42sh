@@ -78,11 +78,14 @@ int		parse_param (t_expand *exp)
  fprintf(stderr,"env.str: {%s}\n", env.str);
  #endif
 		value = ft_strdup(var_get_value (singleton_env(), env.str));
+#ifdef EXPAND_DEBUG
+ fprintf(stderr,"value: {%s}\n", value);
+ #endif
 	}
 	w_free(&env);
 	if (seen_hash)
 	{
-		char *param_length = ft_itoa (value ? strlen (value) : 0);
+		char *param_length = ft_itoa (value ? ft_strlen (value) : 0);
 		w_addstr (&exp->word, param_length);
 		free (param_length);
 		free (value);

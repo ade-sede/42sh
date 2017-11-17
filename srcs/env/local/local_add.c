@@ -11,13 +11,9 @@
 int		local_add_from_key_value(t_env *env, const char *key, const char *value)
 {
 	t_local	*local;
-	char	*environ_value;
 
 	local = create_local(key, value);
 	ft_simple_lst_pushback(&env->local, ft_simple_lst_create(local));
-	environ_value = env_getenv((const char**)env->environ, key, NULL);
-	if (!environ_value || (environ_value && !ft_strequ(environ_value, value)))
-		env_add_change(env, key, value);
 	return (1);
 }
 

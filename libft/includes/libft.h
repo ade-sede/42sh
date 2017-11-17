@@ -12,6 +12,7 @@
 # include "array.h"
 # include "system.h"
 # include "btree.h"
+# include "string.h"
 # define MALLOC_ERROR 666
 # define TRUE 1
 # define FALSE 0

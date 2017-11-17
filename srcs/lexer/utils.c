@@ -59,8 +59,11 @@ void	free_info(void *ptr)
 
 	info = ptr;
 	if (info)
-		free(info->value);
-	free(info);
+	{
+		if (info->value.str)
+			w_free(&info->value);
+		free(info);
+	}
 }
 
 struct s_info	*create_state_info(void)
@@ -69,7 +72,8 @@ struct s_info	*create_state_info(void)
 
 	info = palloc(sizeof(*info));
 	ft_memset(info, 0, sizeof(*info));
-	info->value = ft_strnew(0);
+	//info->value = ft_strnew(0);
+	w_newword(&info->value);
 	//info->value = NULL;
 	return (info);
 }
@@ -161,8 +165,10 @@ int		consume_input(t_lexer *lex)
 #ifdef LEXER_DEBUG
 		dprintf(2, YEL"Adding "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu] to current state %s\n", lex->line[lex->pos], lex->pos, get_state(info->state));
 #endif
-	info->value = cl_realloc(info->count, info->value, info->count + 1 + 1);
-	info->value[info->count] = lex->line[lex->pos];
+
+	w_addchar(&info->value, lex->line[lex->pos]);
+	//dprintf(2, "{%s} {%zu} {%zu}\n", info->value.str , info->value.actlen,info->value.maxlen);
+	//dprintf(2, "info->value %s\n", info->value.str);
 	lex->pos++;
 	info->count++;
 	return (1);
@@ -177,13 +183,18 @@ int		consume_input(t_lexer *lex)
 
 int		pop_state(t_lexer *lex, struct s_info **info)
 {
-	struct s_info *current_state_info;
+	struct s_info *parent_info;
 
 	free_info(*info);
-	current_state_info = lex->state->data;
+	*info = lex->state->data;
+#ifdef LEXER_DEBUG
+	dprintf(2, RED"Poped"RESET" state %s when reading "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu] \n", get_state((*info)->state), lex->line[lex->pos], lex->pos);
+#endif
 	ft_simple_lst_del_one(&lex->state_list, lex->state, NULL);
 	lex->state = ft_last_simple_lst(lex->state_list);
-	*info = current_state_info;
+	parent_info = lex->state->data;
+	w_addstr(&parent_info->value, (*info)->value.str);
+	parent_info->count += (*info)->count;
 	return (1);
 }
 
