@@ -5,7 +5,6 @@
 
 struct s_shopt_mask g_shopt_mask[] = 
 {
-	{ALLEXPORT, "allexport"},
 	{SYNCOLOR, "syncolor"},
 	{-1, NULL},
 };

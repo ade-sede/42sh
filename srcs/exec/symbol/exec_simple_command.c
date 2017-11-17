@@ -57,13 +57,13 @@ void	exec_assignment_word(t_ast *ast)
 	{
 		//fprintf(stderr, "word expanded\n");
 		*eq_pos = 0;
-		local_add_change_from_key_value(&singleton_env()->local, ast->token->value, word_expanded[0]);
+		local_add_change_from_key_value(singleton_env(), ast->token->value, word_expanded[0]);
 		*eq_pos = '=';
 	}
 	else
 	{
 		//fprintf(stderr, "word expanded NULL \n");
-		local_add_change_from_string(&singleton_env()->local, ast->token->value);
+		local_add_change_from_string(singleton_env(), ast->token->value);
 	}
 	ft_arraydel(&word_expanded);
 }

@@ -9,7 +9,7 @@ int		lex_action_word_le(t_lexer *lex, ssize_t **state_info, t_line *line)
 
 	if (lex->line[lex->pos] == 0)
 		pop_state_le(lex, state_info);
-	if (lex->line[lex->pos] == '\\')
+	else if (lex->line[lex->pos] == '\\')
 		push_state_le(lex, BS);
 	else if (lex->line[lex->pos] == '\n')
 		pop_state_le(lex, state_info);

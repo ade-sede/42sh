@@ -217,6 +217,7 @@ char				*cl_strjoin(char const *s1, char const *s2);
 **	strtrim.c
 */
 
+char				*ft_strtrim_sequence(const char *s, const char *sequence);
 char				*ft_strtrim(char const *s);
 
 char				**ft_strsplit(char const *s, const char *str);

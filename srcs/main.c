@@ -93,7 +93,7 @@ int		main(int ac, char **av)
 		history_load(singleton_hist(), env);
 		create_ternary_tree(env);
 	}
-	local_add_change_from_key_value(&env->local, "?", "0");
+	local_add_change_from_key_value(env, "?", "0");
 	if (!(main_loop(env, &modes)))
 		exit(ft_atoi(local_get_value(singleton_env()->local, "?")));
 	env_free_env(env);

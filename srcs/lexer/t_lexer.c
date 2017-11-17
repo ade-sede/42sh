@@ -13,7 +13,8 @@
 int		init_lexer(t_lexer *lex, const char *line)
 {
 	ft_memset(lex, 0, sizeof(t_lexer));
-	lex->line = ft_strdup(line);
+	/* lex->line = ft_strdup(line); */
+	lex->line = ft_strtrim_sequence(line, "\\\n");
 	lex->pos = 0;
 	lex->state = NULL;
 	lex->state_list = NULL;

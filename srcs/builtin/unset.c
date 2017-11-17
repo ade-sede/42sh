@@ -11,7 +11,7 @@ int		builtin_unset(t_env *env, const char **argv)
 	x = 1;
 	while (argv[x] && env->local)
 	{
-		local_remove(&env->local, argv[x]);
+		local_remove(env, argv[x]);
 		++x;
 	}
 	return (EXIT_SUCCESS);

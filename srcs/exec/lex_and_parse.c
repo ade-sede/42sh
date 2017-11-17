@@ -22,7 +22,7 @@ void	exec_main_loop(t_ast *ast)
 //	(void)ast;
 //	exit_status = 0; ////////////
 	exit_status = exec(ast);
-	local_add_change_from_key_value(&singleton_env()->local, "?", ft_itoa_word(exit_status, nbr));
+	local_add_change_from_key_value(singleton_env(), "?", ft_itoa_word(exit_status, nbr));
 	//printf("{%s}\n", nbr);
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_non_canonical();

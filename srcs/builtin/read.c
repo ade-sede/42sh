@@ -79,7 +79,7 @@ static void			assign_values(char **vars, char **values, t_env *env)
 			ft_strpush(vars, ' ');
 			ft_strspush(vars, *values++);
 		}
-		ptr ? env_add_var_from_string(env, *vars, len) : local_add_change_from_string(&env->local, *vars);
+		ptr ? env_add_var_from_string(env, *vars, len) : local_add_change_from_string(env, *vars);
 		if (path)
 			env_reload_tree_hash(env);
 		vars++;

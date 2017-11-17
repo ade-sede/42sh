@@ -6,15 +6,15 @@
 
 static int	load_color(t_env *env)
 {
-	local_add_change_from_key_value(&env->local, "word_color", RESET);
-	local_add_change_from_key_value(&env->local, "default_color", RESET);
-	local_add_change_from_key_value(&env->local, "comment_color", RESET);
-	local_add_change_from_key_value(&env->local, "operator_color", RESET);
-	local_add_change_from_key_value(&env->local, "param_exp_color", BLU);
-	local_add_change_from_key_value(&env->local, "cmd_subst_color", RESET);
-	local_add_change_from_key_value(&env->local, "dquotes_color", YEL);
-	local_add_change_from_key_value(&env->local, "quotes_color", MAG);
-	local_add_change_from_key_value(&env->local, "bs_color", CYN);
+	local_add_change_from_key_value(env, "word_color", RESET);
+	local_add_change_from_key_value(env, "default_color", RESET);
+	local_add_change_from_key_value(env, "comment_color", RESET);
+	local_add_change_from_key_value(env, "operator_color", PNK);
+	local_add_change_from_key_value(env, "param_exp_color", BLU);
+	local_add_change_from_key_value(env, "cmd_subst_color", RESET);
+	local_add_change_from_key_value(env, "dquotes_color", YEL);
+	local_add_change_from_key_value(env, "quotes_color", MAG);
+	local_add_change_from_key_value(env, "bs_color", CYN);
 	return (1);
 }
 
@@ -25,9 +25,9 @@ static int	load_special_params(t_env *env)
 
 	pid_string = ft_itoa_base(getpid(), 10);
 	ppid_string = ft_itoa_base(getppid(), 10);
-	local_add_change_from_key_value(&env->local, "$", pid_string);
-	local_add_change_from_key_value(&env->local, "PID", pid_string);
-	local_add_change_from_key_value(&env->local, "PPID", ppid_string);
+	local_add_change_from_key_value(env, "$", pid_string);
+	local_add_change_from_key_value(env, "PID", pid_string);
+	local_add_change_from_key_value(env, "PPID", ppid_string);
 	free(pid_string);
 	free(ppid_string);
 	return (1);
@@ -49,7 +49,7 @@ void		env_load_base_env(t_env *env, const char **environ)
 	env_load_shlvl_pwd(env);
 	while (i != env->environ_size)
 	{
-		local_add_change_from_string(&env->local, env->environ[i]);
+		local_add_change_from_string(env, env->environ[i]);
 		++i;
 	}
 	create_hash_table(&env->hash_table, env->environ);
