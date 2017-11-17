@@ -65,7 +65,7 @@ t_token	*get_token(t_lexer *lex);
 */
 
 int		get_token_list(t_lexer *lex, t_list **token_list, t_list *aliast_list);
-t_list	*expand_alias(t_lexer *lex, t_token *token, t_list *alias_list);
+t_list	*expand_alias(t_lexer *lex, t_token **token, t_list *alias_list);
 
 /*
 **	In utils.c
