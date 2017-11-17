@@ -59,7 +59,9 @@ t_list	*glob(char *regex)
 	else
 		m_i = 0;
 
-//	printf("regex: %s\n", regex);
+#ifdef GLOB_DEBUG
+ printf("regex: %s\n", regex);
+ #endif
 	m = (t_matches){NULL, NULL, regex, dir_name};
 	if (!match_open_dir(&m, m_i, r_i, dir_name))
 		return (NULL);

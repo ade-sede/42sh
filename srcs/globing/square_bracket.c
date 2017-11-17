@@ -73,11 +73,13 @@ int	func_square_bracket(t_matches *m, int m_i, int r_i)
 	int	end_square_bracket;
 
 	end_square_bracket = get_end_square_bracket(m->regex, r_i);
-//	printf("{%s}", ft_strsub(m->regex, r_i, end_square_bracket - r_i + 1));
+#ifdef GLOB_DEBUG
+ printf("{%s}", ft_strsub(m->regex, r_i, end_square_bracket - r_i + 1));
+ #endif
 	exclamation = 0;
 	if (m->regex[r_i + 1] == '!')
 		exclamation = 1;
-	if (!m->to_match[m_i] && match_square_bracket(m->to_match[m_i], m->regex, r_i, \
+	if (!(m->to_match[m_i] == '.') && match_square_bracket(m->to_match[m_i], m->regex, r_i, \
 				end_square_bracket) ^ exclamation)
 		return (match(m, m_i + 1, end_square_bracket + 1));
 	return (0);

@@ -11,7 +11,9 @@ int	func_star(t_matches *m, int m_i, int r_i)
 
 	i = m_i;
 	bool_match = 0;
-//	printf("star mi: %c\n", m->to_match[i]);
+#ifdef GLOB_DEBUG
+ printf("star mi: %c\n", m->to_match[i]);
+ #endif
 	if (m->to_match[i] == '.')
 		return (0);
 	while (!bool_match && m->to_match[i])

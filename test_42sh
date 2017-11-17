@@ -1,65 +1,65 @@
-[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m      
+[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m      
 
 ----------------------------------------------------------------
 
-[37;1mvcombey/dollar-expansion/003-expanded-no_value-3[0m [31m[38;5;160m(FAILED)[0m
+[37;1m42sh/escaping/mixed/globbing/brace-expansion/001-it-does-not-expand-braces-1[0m [31m[38;5;160m(FAILED)[0m
 
   Description:
-[38;5;239m  The purpose of this test is to check that a simple expansion $PARAM works[0m
-
-  Before test:
-[38;5;239m[0m
+[38;5;239m  The purpose of this test is to check that escaping braces does not result in an expansion process.[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout $fsdfdsjdfsfdsfsd[0m
+[38;5;239m  01: ./write_all_arguments_on_stdout \{1..2} {1\..2} {1.\.2} {1..2\}[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^$`[0m
-[38;5;239m  01: write on stdout[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^[{]1..2}@[{]1..2}@[{]1..2}@[{]1..2}@$`[0m
+[38;5;239m  (no output)[0m
 
   STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
 [38;5;239m  (no output)[0m
 
 ----------------------------------------------------------------
 
-[37;1mvcombey/dollar-expansion/not-expanded/001-expanded-dollar-1[0m [31m[38;5;160m(FAILED)[0m
+[37;1m42sh/escaping/mixed/globbing/bracket-expansion/001-it-does-not-expand-brackets[0m [31m[38;5;160m(FAILED)[0m
 
   Description:
-[38;5;239m  The purpose of this test is to check that a $ is not expand[0m
+[38;5;239m  The purpose of this test is to check that escaping brackets does not result in an expansion process.[0m
 
   Before test:
-[38;5;239m[0m
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' 'c'[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout $[0m
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout \[abc] [abc\] \[abc\][0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^\$$`[0m
-[38;5;239m  01: $[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^[[]abc]@[[]abc]@[[]abc]@$`[0m
+[38;5;239m  (no output)[0m
 
   STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
 [38;5;239m  (no output)[0m
 
 ----------------------------------------------------------------
 
-[37;1mvcombey/dollar-expansion/not-expanded/003-expanded-no-var-in-brace-3[0m [31m[38;5;160m(FAILED)[0m
+[37;1m42sh/globbing/brace-expansion/ascii-range/010-big-range[0m [31m[38;5;160m(FAILED)[0m
 
   Description:
-[38;5;239m  The purpose of this test is to check that a $ is not expand[0m
-
-  Before test:
-[38;5;239m[0m
+[38;5;239m  The purpose of this test is to check that brace expansion may be performed with a big numeric range.[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout $[0m
+[38;5;239m  01: ./write_all_arguments_on_stdout {A..z}[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^\$$`[0m
-[38;5;239m  01: $[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^A@B@C@D@E@F@G@H@I@J@K@L@M@N@O@P@Q@R@S@T@U@V@W@X@Y@Z@.+@.?@.+@.+@_@.+@a@b@c@d@e@f@g@h@i@j@k@l@m@n@o@p@q@r@s@t@u@v@w@x@y@z@$`[0m
+[38;5;239m  01: A@B@C@D@E@F@G@H@I@J@K@L@M@N@O@P@Q@R@S@T@U@V@W@X@Y@Z@[@]@^@_@a@b@c@d@e@f@g@h@i@j@k@l@m@n@o@p@q@r@s@t@u@v@w@x@y@z@[0m
 
   STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
 [38;5;239m  (no output)[0m
 
-Total tests: 5
+Total tests: 72
 Total failed tests: 3
 Total pending tests: 0
