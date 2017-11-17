@@ -80,6 +80,7 @@ void		env_load_shlvl_pwd(t_env *env)
 	{
 		tmp = ft_strjoin(tmp, "/.42sh_history");
 		env_add_change(env, "HISTFILE", tmp);
+		free(tmp);
 	}
 	else
 		env_add_change(env, "HISTFILE", "");

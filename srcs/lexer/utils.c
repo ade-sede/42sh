@@ -70,6 +70,7 @@ struct s_info	*create_state_info(void)
 	info = palloc(sizeof(*info));
 	ft_memset(info, 0, sizeof(*info));
 	info->value = ft_strnew(0);
+	//info->value = NULL;
 	return (info);
 }
 
@@ -155,6 +156,7 @@ int		push_state(t_lexer *lex, int new_state)
 int		consume_input(t_lexer *lex)
 {
 	struct s_info	*info;
+
 	info = lex->state->data;
 #ifdef LEXER_DEBUG
 		dprintf(2, YEL"Adding "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu] to current state %s\n", lex->line[lex->pos], lex->pos, get_state(info->state));
@@ -167,50 +169,23 @@ int		consume_input(t_lexer *lex)
 }
 
 /*
-**	The cache info is freed and replaced by the one freshly
-**	poped.
-**	lex->pos - 1 is considered to be the end of the last token.
-**	So closed token like quotes need to consume 1 more input before they
-**	pop_state.
+**	Est utilise pour finir l'etat courrant.
+**	L'etat courrant doit etre disponible dans *info
+**	L'etat courrant doit disparaitre de la state_list
+**	le pointeur sur l'etat courrant, doit etre remi sur l'etat precedant.
 */
 
 int		pop_state(t_lexer *lex, struct s_info **info)
 {
-	struct s_info *current_info;
-	struct s_info *parent_info;
-	
+	struct s_info *current_state_info;
+
 	free_info(*info);
-	*info = create_state_info();
-	current_info = lex->state->data;
-	copy_state_info(current_info, *info);
-#ifdef LEXER_DEBUG
-	dprintf(2, RED"Poped "RESET"state %s when reading "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu]\n", get_state(current_info->state), lex->line[lex->pos], lex->pos);
-#endif
+	current_state_info = lex->state->data;
 	ft_simple_lst_del_one(&lex->state_list, lex->state, NULL);
 	lex->state = ft_last_simple_lst(lex->state_list);
-	parent_info = lex->state->data;
-	parent_info->value = ft_strchange(parent_info->value, ft_strjoin(parent_info->value, (*info)->value));
-	parent_info->count += (*info)->count;
+	*info = current_state_info;
 	return (1);
 }
-/* int		pop_state(t_lexer *lex, ssize_t	**info) */
-/* { */
-/* 	ssize_t	*old_info; */
-/* 	ssize_t	*new_info; */
-
-/* 	free(*info); */
-/* 	new_info = create_state_info(); */
-/* 	old_info = lex->state->data; */
-/* 	old_info[_T_END] = lex->pos - 1; */
-/* 	copy_state_info(old_info, new_info); */
-/* #ifdef LEXER_DEBUG */
-/* 	dprintf(2, RED"Poped "RESET"state %s when reading "MAG"#"CYN"%c"MAG"#"RESET" on index [%zu]\n", get_state(old_info[_T_STATE]), lex->line[lex->pos], lex->pos); */
-/* #endif */
-/* 	ft_simple_lst_del_one(&lex->state_list, lex->state, NULL); */
-/* 	lex->state = ft_last_simple_lst(lex->state_list); */
-/* 	*info = new_info; */
-/* 	return (1); */
-/* } */
 
 int			change_state(t_lexer *lex, int	new_state)
 {
