@@ -64,6 +64,9 @@ void	read_pointrc(t_env *env)
 	main_loop(env, &modes);
 }
 
+#include <sys/resource.h>
+#include <stdio.h>
+
 int		main(int ac, char **av)
 {
 	extern const char	**environ;

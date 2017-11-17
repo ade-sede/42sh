@@ -66,9 +66,10 @@ void	job_free(t_job *job)
 	while (process)
 	{
 		process_next = process->next;
-		free_ast(process->command);
+	//	free_ast(process->command);
 		free(process->av);
 		free(process);
 		process = process_next;
 	}
+	free (job);
 }

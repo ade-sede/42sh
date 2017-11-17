@@ -55,15 +55,17 @@ void	exec_assignment_word(t_ast *ast)
 	word_expanded = word_expansion(eq_pos + 1, NO_GLOBBING | NO_FIELDSPLITING);
 	if (word_expanded[0])
 	{
-		fprintf(stderr, "word expanded\n");
-		local_add_change_from_string(&singleton_env()->local, word_expanded[0]);
+		//fprintf(stderr, "word expanded\n");
+		*eq_pos = 0;
+		local_add_change_from_key_value(&singleton_env()->local, ast->token->value, word_expanded[0]);
+		*eq_pos = '=';
 	}
 	else
 	{
-		fprintf(stderr, "word expanded NULL \n");
-		local_add_change_from_string(&singleton_env()->local, eq_pos + 1);
+		//fprintf(stderr, "word expanded NULL \n");
+		local_add_change_from_string(&singleton_env()->local, ast->token->value);
 	}
-	free(word_expanded);
+	ft_arraydel(&word_expanded);
 }
 
 void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)

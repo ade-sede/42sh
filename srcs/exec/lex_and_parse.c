@@ -19,6 +19,8 @@ void	exec_main_loop(t_ast *ast)
 	singleton_jc()->background = 0;
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_canonical();
+//	(void)ast;
+//	exit_status = 0; ////////////
 	exit_status = exec(ast);
 	local_add_change_from_key_value(&singleton_env()->local, "?", ft_itoa_word(exit_status, nbr));
 	//printf("{%s}\n", nbr);
@@ -72,6 +74,7 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 			ft_simple_lst_pushback(&token_list, ft_simple_lst_create(reopen_token));
 		}
 		res_parser = parse(&parser, &ast, token_list);
+	//	res_parser = PARSER_SUCCESS;
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{
 //			free (buff);

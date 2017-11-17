@@ -16,7 +16,7 @@ void	update_status(t_job_control *jc)
 	}
 }
 
-void	get_job_exit_status(t_job *j)
+int		get_job_exit_status(t_job *j)
 {
 	t_process	*p;
 
@@ -24,14 +24,15 @@ void	get_job_exit_status(t_job *j)
 	while (p && p->next)
 		p = p->next;
 	if (WIFEXITED(p->status))
-		j->exit_status = WEXITSTATUS(p->status);
+		return (WEXITSTATUS(p->status));
 	else if (p->stopped)
-		j->exit_status = EXIT_FAILURE;
+		return (EXIT_FAILURE);
 	else if (WIFSIGNALED(p->status))
-		j->exit_status = EXIT_FAILURE;
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS); //TODO:attention peut etre exit failure
 }
 
-void	wait_for_job(t_job_control *jc, t_job *j)
+int		wait_for_job(t_job_control *jc, t_job *j)
 {
 	int status;
 	pid_t pid;
@@ -45,5 +46,5 @@ void	wait_for_job(t_job_control *jc, t_job *j)
 					&& !job_is_completed(j)))
 			break ;
 	}
-	get_job_exit_status(j);
+	return (get_job_exit_status(j));
 }

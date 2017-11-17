@@ -55,7 +55,6 @@ void	get_token_id(t_lexer *lex, t_token *token)
 		token->id = id_word(lex, token);
 		if (token->id == TK_WORD && check_prev_one_id(lex))
 		{
-			dprintf(2, "%s\n", token->value);
 			token->cmd_name = TRUE;
 			lex->cmd_name_open = FALSE;
 		}

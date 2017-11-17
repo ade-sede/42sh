@@ -59,7 +59,7 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 	exit(1);
 }
 
-void	launch_job(t_job_control *jc, t_job *j, int foreground)
+int		launch_job(t_job_control *jc, t_job *j, int foreground)
 {
 	t_process	*p;
 	pid_t	pid;
@@ -114,16 +114,16 @@ void	launch_job(t_job_control *jc, t_job *j, int foreground)
 	if (!jc->shell_is_interactive || jc->background)
 	{
 //		fprintf(stderr, "shell not interactiv || background\n");
-		wait_for_job(jc, j);
+		return (wait_for_job(jc, j));
 	}
 	else if (foreground)
 	{
 //		fprintf(stderr, "foreground\n");
-		put_job_in_foreground(jc, j, 0, in_a_fork);
+		return (put_job_in_foreground(jc, j, 0, in_a_fork));
 	}
 	else
 	{
 //		fprintf(stderr, "ackground\n");
-		put_job_in_background(j, 0);
+		return (put_job_in_background(j, 0));
 	}
 }

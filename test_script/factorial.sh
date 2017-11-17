@@ -4,7 +4,7 @@ factorial()
 {
   if test "$1" -gt "1" ; then
 	  i=$(expr $1 - 1)
-	  j=$(echo 1)
+	  j=$(factorial $i)
 	  k=$(expr $1 \* $j)
     echo $k
   else
