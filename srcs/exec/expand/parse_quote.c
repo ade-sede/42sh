@@ -80,7 +80,11 @@ int		parse_dquote (t_expand *exp)
 		else if (exp->words[exp->offset] == '\\')
 			parse_qtd_backslash (&exp->g_word, &exp->word, exp->words, &exp->offset);
 		else if (exp->words[exp->offset] == '$')
+		{
+			exp->quoted = 1;
 			parse_dollars (exp);
+			exp->quoted = 0;
+		}
 		else if (exp->words[exp->offset] == '`')
 		{
 			++(exp->offset);
