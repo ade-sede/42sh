@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 
-t_list	*expand_alias(t_lexer *lex, t_token *token, t_list *alias_list)
+t_list	*expand_alias(t_lexer *lex, t_token **token, t_list *alias_list)
 {
 	t_list	*alias_node;
 	t_list	*alias_copy;
@@ -16,12 +16,12 @@ t_list	*expand_alias(t_lexer *lex, t_token *token, t_list *alias_list)
 
 	alias_copy = NULL;
 	token_list = NULL;
-	if (token->cmd_name == FALSE)
+	if ((*token)->cmd_name == FALSE)
 		return (NULL);
 	if (!alias_list)
 		return (NULL);
 	ft_simple_lst_dup(&alias_copy, alias_list);
-	if ((alias_node = find_alias(alias_copy, token->value, ft_strlen(token->value))) != NULL)
+	if ((alias_node = find_alias(alias_copy, (*token)->value, ft_strlen((*token)->value))) != NULL)
 	{
 		alias_value = alias_node->data;
 		ft_simple_lst_del_one(&alias_copy, alias_node, NULL);
@@ -51,6 +51,10 @@ t_list	*expand_alias(t_lexer *lex, t_token *token, t_list *alias_list)
 	else
 		return (NULL);
 	ft_simple_lst_remove(&alias_copy, NULL);
-	free_token(token);
+	if (token_list || (!token_list && ret == LEXER_REOPEN))
+	{
+		free_token(*token);
+		*token = NULL;
+	}
 	return (token_list);
 }
