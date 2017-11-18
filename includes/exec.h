@@ -83,4 +83,8 @@ char	*stream_get_line(int stream);
 char	*line_editing_get_line(t_line *line, t_hist *hist,
 		void (*sig_handler)(void));
 int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes);
+
+void	read_heredoc(t_ast *ast, char *target);
+void	parse_heredoc(t_ast *ast);
+
 #endif

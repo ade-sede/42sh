@@ -23,6 +23,7 @@ void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 	int	id;
 	t_ast		*io_file = NULL;
 	t_ast		*io_here = NULL;
+	int			mypipe[2];
 
 	io_number = -1;
 	if (is_token(ast->child[0], TK_IO_NUMBER))
@@ -42,7 +43,14 @@ void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 		io_here = ast->child[0];
 	else if (is_symb(ast->child[1], IO_HERE))
 		io_here = ast->child[1];
-//	if (io_here)
+	if (io_here)
+	{
+		pipe(mypipe);
+		ft_putstr_fd(io_here->heredoc, mypipe[1]);
+		close(mypipe[1]);
+		push_dup(0, mypipe[0], FALSE, redirect_list);
+
+	}
 	/*
 	** creer pipe
 	** ecrire ast->heredoc pipe[WRITE_END]

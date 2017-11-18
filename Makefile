@@ -87,6 +87,7 @@ SRC_FILE = \
 		   exec/main_loop.c \
 		   exec/redir_utils.c \
 		   exec/get_input.c \
+		   exec/parse_heredoc.c \
 		   \
 		   \
 		   \
