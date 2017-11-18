@@ -41,7 +41,9 @@ static char	**pathname_expension(t_expand *exp)
 	i = 0;
 	while (i < exp->actlen)
 	{
-		match_list = glob(exp->av_gword[i]);
+		match_list = NULL;
+		if (has_glob_char(exp->av_gword[i]))
+			match_list = glob(exp->av_gword[i]);
 		if (match_list)
 		{
 			matches = list_to_array(match_list);

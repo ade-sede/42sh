@@ -22,37 +22,6 @@ void	curly_brackets_coma(t_list **res, char *expr, char *str, int end)
 	free(expr);
 }
 
-int		change_state_quote(char c, int quoted)
-{
-	if (c == '\'' && quoted != 3)
-	{
-		if (quoted == 0)
-			quoted = 1;
-		else if (quoted == 1)
-			quoted = 0;
-	}
-	else if (c == '"' && quoted != 3)
-	{
-		if (quoted == 0)
-			quoted = 2;
-		else if (quoted == 2)
-			quoted = 0;
-	}
-	else if (c == '\\')
-	{
-		if (quoted == 0)
-			quoted = 3;
-		else if (quoted == 3)
-			quoted = 0;
-	}
-	else
-	{
-		if (quoted == 3)
-			quoted = 0;
-	}
-	return quoted;
-}
-
 int		get_end_bracket(char *expr, int offset)
 {
 	int		depth;

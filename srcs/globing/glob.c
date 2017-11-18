@@ -45,6 +45,24 @@ int		func_cmp(t_matches *m, int m_i, int r_i)
 		return (match(m, m_i, r_i + 1));
 }
 
+int		has_glob_char(char *expr)
+{
+	size_t	i;
+	int		quoted;
+
+	quoted = 0;
+	i = 0;
+	while (expr[i])
+	{
+		if (quoted == 0 && ft_strchr("*[?", expr[i]))
+			return (1);
+		quoted = change_state_quote(expr[i], quoted);
+//		fprintf(stderr, "end_bracket quoted: %d, %c\n", quoted, expr[i]);
+		i++;
+	}
+	return (0);
+}
+
 t_list	*glob(char *regex)
 {
 	t_matches	m;
