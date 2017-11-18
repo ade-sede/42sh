@@ -1,7 +1,7 @@
 # 42sh
 A 42 school project. 
 A bash style shell with some features from Oh my Zsh.
-Made with 5 persons. A bash style shell with some features from Oh my Zsh.
+Made with 4 persons. A bash style shell with some features from Oh my Zsh.
 
 ## Line editing
 
@@ -46,7 +46,6 @@ Pattern|Behavior|
 `?`|Single char.
 `[a-z]`|Match range from `a` to `z`.
 `[!a-z]` `[^a-z]`|Exclude range from `a` to `z`.
-`{ab, ac}`|Match `ab` or `ac`.
 
 ## Job Control
 
@@ -57,6 +56,20 @@ Commands|Functions|
 `fg n`|Bring the specified jobs to foreground where `n` is the numerical value of the process found in `jobs`.
 <kbd>Ctrl</kbd>+<kbd>C</kbd>|Terminate/Kill current foreground process.
 <kbd>Ctrl</kbd>+<kbd>Z</kbd>|Suspend/Stop current foreground process.
+
+## Variable Expansion
+
+During execution, the shell perform various expansion as specified by [POSIX](http://pubs.opengroup.org/onlinepubs/9699919799//utilities/V3_chap02.html#tag_18_06_02). Our Shell do in order:
+
+commands | Functions
+:-:|:--
+• Brace Expansion: `a{d,c,b}e`|	  	Expansion of expressions within braces.
+• Tilde Expansion: ~|	  	Expansion of the ~ character.
+• Shell Parameter Expansion`$PATH, ${PATH}``${#PATH}`| expands local and environement variable.
+• Command Substitution: `$(ls)`, \`echo a\`|	  	Using the output of a command as an argument.
+• Word Splitting|	  	the result of the three expansions above are splitted into token using IFS variable.
+• Filename Expansion `*`, `[a-z]`, `[!a-z]`|	  	 match file with shell regex.
+• Quote Removal|	  	remove quotes and backslash as needed.
 
 ## Grammar
 ### Tokens
@@ -149,5 +162,4 @@ You can find more exemple of what our shell handles in the Exemple directory.
 * **COMBEY Vincent** - [vcombey](https://github.com/vcombey)
 * **DE SEDE Adrien** - [Ixskill](https://github.com/Ixskill)
 * **EDDAOUDI Said** - [github]()
-* **CANAUD Thibaud** - [tcanaud](https://github.com/tcanaud)
 * **DUMOULIN Thibaut** - [github]()

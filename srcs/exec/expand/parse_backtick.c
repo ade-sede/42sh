@@ -16,6 +16,9 @@ int		parse_backtick (t_expand *exp)
 	{
 		if (exp->words[exp->offset] == '`')
 		{
+#ifdef EXPAND_DEBUG
+			dprintf(2, exp->words[exp->offset]);
+#endif
 			exec_comm (comm.str, exp);
 			return 0;
 		}
