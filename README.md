@@ -61,15 +61,15 @@ Commands|Functions|
 
 During execution, the shell perform various expansion as specified by [POSIX](http://pubs.opengroup.org/onlinepubs/9699919799//utilities/V3_chap02.html#tag_18_06_02). Our Shell do in order:
 
-commands | Functions
-:-:|:--
-• Brace Expansion: `a{d,c,b}e`|	  	Expansion of expressions within braces.
-• Tilde Expansion: ~|	  	Expansion of the ~ character.
-• Shell Parameter Expansion`$PATH, ${PATH}``${#PATH}`| expands local and environement variable.
-• Command Substitution: `$(ls)`, \`echo a\`|	  	Using the output of a command as an argument.
-• Word Splitting|	  	the result of the three expansions above are splitted into token using IFS variable.
-• Filename Expansion `*`, `[a-z]`, `[!a-z]`|	  	 match file with shell regex.
-• Quote Removal|	  	remove quotes and backslash as needed.
+commands | Exemple | Functions
+:-:|:-:|:--
+• Brace Expansion: `a{d,c,b}e`|	`a{d,c,b}e` | 	Expansion of expressions within braces.
+• Tilde Expansion: |	`~` |	Expansion of the ~ character.
+• Shell Parameter Expansion| `$PATH`, `${PATH}`, `${#PATH}` |expands local and environement variable.
+• Command Substitution |	`$(ls)`, \`echo a\`|  	Using the output of a command as an argument.
+• Word Splitting|	$> IFS=a; var=baba echo $var => b b  |	the result of the three expansions above are splitted into token using IFS variable.
+• Filename Expansion |	`*`, `[a-z]`, `[!a-z]` | 	 match file with shell regex.
+• Quote Removal |	$>echo "lol" => lol  |	remove quotes and backslash as needed.
 
 ## Grammar
 ### Tokens
