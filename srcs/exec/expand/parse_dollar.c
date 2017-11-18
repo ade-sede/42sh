@@ -44,7 +44,7 @@ char	*get_param(t_expand *exp, int *seen_hash)
 		}
 	}
 		/* Special parameter. */
-	else if (CHAR_IN_SET (exp->words[exp->offset], "*@$"))
+	else if (CHAR_IN_SET (exp->words[exp->offset], "*@$?"))
 	{
 		w_addchar (&env, exp->words[exp->offset]);
 		++exp->offset;

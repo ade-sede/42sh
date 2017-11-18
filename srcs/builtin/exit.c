@@ -11,7 +11,7 @@ int	builtin_exit(t_env *env, const char **argv)
 	int		argc;
 
 	argc = ft_arraylen(argv);
-	exit_status = ft_atoi(local_get_value(env->local, "$?"));
+	exit_status = ft_atoi(local_get_value(env->local, "?"));
 	if (argc == 1)
 	{
 		history_write_to_histfile();

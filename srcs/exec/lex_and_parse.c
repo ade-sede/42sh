@@ -95,6 +95,8 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	}
 	if (res_parser == PARSER_SUCCESS && !g_abort_opening)
 		exec_main_loop(ast);
+	else
+		local_add_change_from_key_value(singleton_env(), "?", "1");
 	quit_lex_and_parse(&lexer, &parser, &big_list);
 	if (res_parser == PARSER_ERROR && modes->mode > 0)
 		return (0);
