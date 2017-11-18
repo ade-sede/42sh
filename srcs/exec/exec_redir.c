@@ -78,5 +78,4 @@ int		file_redir(int io_number, char *target, t_list **redir_stack, \
 	if (target_fd >= STDIN_FILENO)
 		push_dup(io_number, target_fd, FALSE, redir_stack);
 	return (1);
-	}
 }

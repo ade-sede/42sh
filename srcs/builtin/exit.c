@@ -34,12 +34,7 @@ int	builtin_exit(t_env *env, const char **argv)
 	int		argc;
 
 	argc = ft_arraylen(argv);
-<<<<<<< HEAD
-	//exit_status = ft_isnum(local_get_value(env->local, "$?")) ? ft_atoi(local_get_value(env->local, "$?")) : 255;
 	exit_status = ft_getstat(env, local_get_value(env->local, "$?"));
-=======
-	exit_status = ft_atoi(local_get_value(env->local, "?"));
->>>>>>> 874c48fcc1a62d2af6c0b1669ed0c6714d656f71
 	if (argc == 1)
 	{
 		//ft_putstr_fd("exit\n", 2);
