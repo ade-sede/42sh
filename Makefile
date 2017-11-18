@@ -121,6 +121,7 @@ SRC_FILE = \
 		   failure/return_failure.c \
 		   \
 		   globing/curly_bracket_split.c \
+		   globing/change_state_quote.c \
 		   globing/curly_brackets.c \
 		   globing/curly_brackets_is_range.c \
 		   globing/curly_brackets_range.c \

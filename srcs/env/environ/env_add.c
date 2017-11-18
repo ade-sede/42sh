@@ -15,7 +15,7 @@ void	env_add_var(t_env *env, const char *key, const char *value)
 	if (ft_str_isdigit(key) || ft_strequ(key, "@") || ft_strequ(key, "*") || ft_strequ(key, "#") || ft_strequ(key, "?") || ft_strequ(key, "-") || ft_strequ(key, "$") || ft_strequ(key,"!"))
 	{
 		dprintf(2, "%s: ", key);
-		investigate_error(1, "Wrong assignement :", "key cannot be fully numeric or contain reserved symbols", 0);
+		investigate_error(1, "Wrong assignement :", "not a valid identifier", 0);
 		return ;
 	}
 	environ = env->environ;

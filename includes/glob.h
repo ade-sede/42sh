@@ -18,6 +18,7 @@ int		func_square_bracket(t_matches *m, int to_match_i, int regex_i);
 int		valid_square_bracket(char *regex, int regex_i);
 int		func_star(t_matches *m, int to_match_i, int regex_i);
 int		func_cmp(t_matches *m, int to_match_i, int regex_i);
+int		has_glob_char(char *expr);
 
 t_list	*glob(char *regex);
 t_list	*expand_curly_brackets(char *expr);
@@ -29,4 +30,6 @@ void	curly_brackets_range(t_list **res, char *expr, char *str, int end);
 int		curly_brackets_is_range(char *str);
 char	**ft_strsplit_coma_bracket(char *expr);
 int		ft_is_start_of_digit(char c);
+
+int		change_state_quote(char c, int quoted);
 #endif
