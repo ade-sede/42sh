@@ -14,7 +14,7 @@
 **	                 | LESSGREAT filename
 **	                 | CLOBBER   filename
 */
-
+#include "failure.h"
 void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 {
 	int			io_number;
@@ -45,11 +45,17 @@ void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 		io_here = ast->child[1];
 	if (io_here)
 	{
-		pipe(mypipe);
+		/* create the pipe */
+		if (pipe(mypipe) == -1)
+		{
+			investigate_error(1, "pipe", "pipe failed",
+						EXIT_FAILURE);
+			return ;
+		}
+		//pipe(mypipe);
 		ft_putstr_fd(io_here->heredoc, mypipe[1]);
 		close(mypipe[1]);
 		push_dup(io_number == -1 ? STDIN_FILENO : io_number, mypipe[0], FALSE, redirect_list);
-
 	}
 	/*
 	** creer pipe
