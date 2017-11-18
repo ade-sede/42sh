@@ -16,10 +16,12 @@ void	exec_main_loop(t_ast *ast)
 	int		exit_status;
 	char	nbr[20];
 
-	parse_heredoc(ast);
 	singleton_jc()->background = 0;
 	if (singleton_jc()->shell_is_interactive)
+	{
+		parse_heredoc(ast);
 		conf_term_canonical();
+	}
 //	(void)ast;
 //	exit_status = 0; ////////////
 	exit_status = exec(ast);

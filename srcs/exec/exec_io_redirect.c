@@ -48,7 +48,7 @@ void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 		pipe(mypipe);
 		ft_putstr_fd(io_here->heredoc, mypipe[1]);
 		close(mypipe[1]);
-		push_dup(0, mypipe[0], FALSE, redirect_list);
+		push_dup(STDIN_FILENO, mypipe[0], FALSE, redirect_list);
 
 	}
 	/*
