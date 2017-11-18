@@ -5,36 +5,38 @@
 #include "failure.h"
 #include "history.h"
 
+//TODO: pas besoin normalement '?' est initialiser au debut et est proteger, l utilisateur ne peut pas corrompre la variable
 
-static int	ft_isnum(char *str)
-{
-	char	*beg;
-
-	if (!(beg = str))
-		return (0);
-	while (str && *str && *str >= 0 && *str <= 9)
-		str++;
-	if(str && *str && str != beg)
-		return (1);
-	return (0);
-}
-
-static int	ft_getstat(t_env *env, char *str)
-{
-	if(!str)
-		return (0);
-	if(ft_isnum(str))
-		return ft_atoi(local_get_value(env->local, "$?"));
-	return (255);
-}
-
+//static int	ft_isnum(char *str)
+//{
+//	char	*beg;
+//
+//	if (!(beg = str))
+//		return (0);
+//	while (str && *str && *str >= 0 && *str <= 9)
+//		str++;
+//	if(str && *str && str != beg)
+//		return (1);
+//	return (0);
+//}
+//
+//static int	ft_getstat(t_env *env, char *str)
+//{
+//	if(!str)
+//		return (0);
+//	if(ft_isnum(str))
+//		return ft_atoi(local_get_value(env->local, "?"));
+//	return (255);
+//}
+//
+//
 int	builtin_exit(t_env *env, const char **argv)
 {
 	int		exit_status;
 	int		argc;
 
 	argc = ft_arraylen(argv);
-	exit_status = ft_getstat(env, local_get_value(env->local, "$?"));
+	exit_status = ft_atoi(local_get_value(env->local, "?"));
 	if (argc == 1)
 	{
 		//ft_putstr_fd("exit\n", 2);
