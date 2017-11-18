@@ -11,5 +11,6 @@ typedef struct			s_ast
 
 t_ast	*new_ast(t_token *token, int symbol);
 void	free_ast(t_ast *ast);
+void	free_ast_and_token(t_ast *ast);
 t_ast	*dup_ast(t_ast *ast);
 #endif

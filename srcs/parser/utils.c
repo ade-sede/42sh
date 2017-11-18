@@ -44,6 +44,22 @@ void	free_ast(t_ast *ast)
 	free(ast);
 }
 
+void	free_ast_and_token(t_ast *ast)
+{
+	int		i = 0;
+
+	if (!ast)
+		return ;
+	while (ast->child[i] && i < 7)
+	{
+		free_ast(ast->child[i]);
+		i++;
+	}
+	if (ast->token)
+		free_token(ast->token);
+	free(ast);
+}
+
 void	free_ast_node(void *ast_node)
 {
 	free_ast(((t_ast_lst *)ast_node)->ast);

@@ -2,7 +2,7 @@
 #include "local.h"
 #include "builtin.h"
 
-t_ast	*get_function(t_env *env, char *cmd_name)
+t_lst_func		*get_function(t_env *env, char *cmd_name)
 {
 	t_lst_func		*tmp;
 
@@ -10,7 +10,7 @@ t_ast	*get_function(t_env *env, char *cmd_name)
 	while (tmp)
 	{
 		if (ft_strequ(tmp->fname, cmd_name))
-			return (tmp->fct_body);
+			return (tmp);
 		tmp = tmp->next;
 	}
 	return (NULL);

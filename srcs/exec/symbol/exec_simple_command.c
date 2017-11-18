@@ -119,7 +119,7 @@ int		exec_simple_command(t_ast *ast)
 	char	**av_cmdsuffix = NULL;
 	t_list	*redirect_list = NULL;
 	t_ast	*cmd_suffix = NULL;
-	t_ast	*fct_body = NULL;
+	t_lst_func	*fct = NULL;
 
 	if (is_symb(ast->child[0], CMD_PREFIX))
 		exec_cmd_prefix(ast->child[0], &redirect_list);
@@ -140,8 +140,8 @@ int		exec_simple_command(t_ast *ast)
 	
 	if (av && av[0])
 	{
-		if ((fct_body = get_function(singleton_env(), av[0])))
-			return (exec_function(fct_body, av));
+		if ((fct = get_function(singleton_env(), av[0])))
+			return (exec_function(fct->fct_body, av));
 
 		if (get_exec_builtin(av[0]))
 			return (exec_builtin(singleton_env(), (const char **)av));
