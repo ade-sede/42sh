@@ -1,4 +1,6 @@
 #include "line_editing.h"
+#include "history.h"
+#include "builtin.h"
 
 /*
 **	When CTRL-D is read, if the line is empty :
@@ -10,10 +12,13 @@
 
 int		control_d(t_line *line)
 {
+	char	*command[] = {"exit", NULL};
+
 	if (line->len == 0)
 	{
+		history_write_to_histfile();
 		ft_putchar('\n');
-		exit(0);
+		builtin_exit(singleton_env(), (const char **)command);
 	}
 	return (edit_del(line));
 }

@@ -1,81 +1,18 @@
 #include "libft.h"
+#include "get_next_line.h"
 #include <unistd.h>
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 #include "exec.h"
 #include "builtin.h"
 #include "history.h"
 #include "line_editing.h"
 #include "lexer.h"
+#include "get_next_line.h"
 #include "parser.h"
+#include "local.h"
 #include <stdio.h>
 #define LOCAL_BUFF_SIZE 4096
-
-/*
-** #ifdef PARSER_DEBUG
-** #include <stdio.h>
-**
-** void	read_tree(t_ast *ast_start)
-** {
-** size_t	index;
-** t_token	*token_parent;
-** char	*parent_name;
-** t_list	*first_child;
-**
-** index = 0;
-** token_parent = ast_start->token;
-** printf(GRN"NODE = "RESET);
-** if (token_parent)
-** parent_name = token_parent->value;
-** else
-** {
-** if (ast_start->symbol == SIMPLE_COMMAND)
-** parent_name = "SIMPLE_COMMAND";
-** if (ast_start->symbol == IO_REDIRECT)
-** parent_name = "IO_REDIRECT";
-** }
-** printf(MAG"#"CYN"%s"MAG"#"RESET""YEL"(%d)\n"RESET, parent_name,
-** ast_start->symbol);
-** first_child = ast_start->child;
-** while (first_child)
-** {
-** printf(RED"Starting treatment of child nb "BLU"%zu"RESET" of parent"
-** MAG"#"CYN"%s"MAG"#"YEL"(%d)\n"RESET, index, parent_name, \
-** ast_start->symbol);
-** if (first_child->data)
-** read_tree(first_child->data);
-** printf(PNK"\nBACK TO PARENT -> "RESET"Current node = "CYN"%s"RESET" !!!\n",
-** parent_name);
-** first_child = first_child->next;
-** index++;
-** }
-** }
-** #endif
-*/
-
-/*
-**	Receives an array containing the command name and its arguments, forwards
-**	this array to the appropriate function then frees it.
-*/
-
-void	exec(t_env *env, const char **argv, t_lst_head *head)
-{
-	size_t		index;
-
-	index = 0;
-	if (*argv != NULL)
-	{
-		if (!(exec_builtin(env, argv, head)))
-			fork_exec_bin(env, argv, head);
-	}
-	else
-		env->previous_exit = EXIT_FAILURE;
-	while (argv[index] != NULL)
-	{
-		free((void*)(argv[index]));
-		index++;
-	}
-	free(argv);
-}
 
 void	init_main_loop(t_line *line, t_hist *hist)
 {
@@ -95,88 +32,25 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->col_target = -1;
 }
 
-char	*line_editing_get_input(t_line *line, t_hist *hist,
-		void (*sig_handler)(void))
-{
-	put_prompt(line);
-	history_init(hist);
-	edit_line_init(line, sig_handler);
-	return (edit_get_input());
-}
+//loop until end of input in case of noninteractive mode
 
-void	lexer_debug(t_list *token_list)
-{
-	t_list	*test;
-	t_token	*token;
-
-	test = token_list;
-	while (test)
-	{
-		token = test->data;
-		test = test->next;
-	}
-}
-
-void	lex_and_parse(char *buff)
-{
-	t_lexer		lex;
-	t_lst_head	*head;
-	t_list		*token_list;
-	t_ast		*ast;
-	int			res_lexer;
-	int			res_parser;
-
-	ast = NULL;
-	head = NULL;
-	lex = init_lexer(buff);
-	while (42)
-	{
-		res_lexer = lex_all(&lex, &token_list);
-		res_parser = ast_parse(&ast, &head, &token_list);
-		if (res_parser == PARSER_ERROR)
-		{
-			ft_strdel((char **)&lex.line);
-			ft_simple_lst_remove(&lex.stack, free_token);
-			return ;
-		}
-		if (res_lexer > 0 || TK_IS_REOPEN_SEP(res_parser))
-		{
-			reopen_line_editing(&lex, res_lexer, res_parser);
-			ft_remove_head(&head, free_pipe);
-			ast = flush_tree(ast);
-			if (g_abort_opening)
-			{
-				ft_strdel((char **)&lex.line);
-				ft_simple_lst_remove(&lex.stack, free_token);
-				return ;
-			}
-		}
-		if (res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS)
-			break ;
-	}
-	history_append_command_to_list((char*)lex.line);
-	conf_term_normal();
-	exec_tree(ast, head);
-	ft_strdel((char **)&lex.line);
-	conf_term_canonical();
-	ast = flush_tree(ast);
-	if (head != NULL)
-		ft_remove_head(&head, free_pipe);
-	ft_simple_lst_remove(&lex.stack, free_token);
-}
-
-void	main_loop(t_env *env)
+int		main_loop(t_env *env, t_modes *modes)
 {
 	char		*buff;
 
-	init_main_loop(singleton_line(), singleton_hist());
+	if (modes->mode == INTERACTIVE_MODE)
+		init_main_loop(singleton_line(), singleton_hist());
 	while (42)
 	{
-		load_prompt(env, singleton_line(), "PS1", "$> ");
-		buff = ft_strdup(line_editing_get_input(singleton_line(), \
-					singleton_hist(), &edit_set_signals_open));
-		if (!ft_strequ(buff, "\n"))
-			lex_and_parse(buff);
+		if (modes->mode == INTERACTIVE_MODE)
+		{
+			do_job_notification(singleton_jc());
+			load_prompt(env, singleton_line(), "PS1", "$> ");
+		}
+		if (!get_input(modes, &buff))
+			return (0);
+		if (!lex_and_parse(NULL, buff, modes))
+			return (0);
 		free(buff);
 	}
 }

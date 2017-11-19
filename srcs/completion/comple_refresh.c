@@ -43,12 +43,6 @@ void	comple_refresh_line(t_line *line, t_comple c)
 	put_prompt(line);
 	edit_refresh_line(line);
 	edit_refresh_cursor(line);
-
-
-	//move_cursor_firstline_from_lastline(line);
-	//put_prompt(line);
-	//edit_refresh_line(line);
-	//edit_refresh_cursor(line);
 }
 
 size_t	comple_listart_big_completion(t_comple c)

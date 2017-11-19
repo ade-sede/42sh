@@ -23,4 +23,3 @@ void	history_line_refresh(t_line *line, char *new_line)
 	edit_refresh_line(line);
 	edit_refresh_cursor(line);
 }
-

@@ -1,6 +1,7 @@
 #include <sys/ioctl.h>
 #include <stdlib.h>
 #include "line_editing.h"
+#include "failure.h"
 
 size_t				get_ws_col(void)
 {
@@ -18,8 +19,7 @@ size_t				get_ws_row(void)
 	return (w.ws_row);
 }
 
-#include "failure.h"
-size_t	get_reserved_line(size_t ws_row, t_line *line)
+size_t				get_reserved_line(size_t ws_row, t_line *line)
 {
 	size_t	used_by_prompt;
 	size_t	used_by_buff;

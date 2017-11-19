@@ -1,5 +1,6 @@
 #include "libft.h"
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 #include "failure.h"
 
 static int	update_pwd_old_pwd(char *cwd_before_chdir)
@@ -13,7 +14,10 @@ static int	update_pwd_old_pwd(char *cwd_before_chdir)
 	if ((cwd = getcwd(buf, PATH_MAX)) == NULL)
 		return (investigate_error(1, "cd", NULL, -1));
 	env_add_change(env, "PWD", (const char*)cwd);
-	env_add_change(env, "OLDPWD", (const char*)cwd_before_chdir);
+	if (cwd_before_chdir)
+		env_add_change(env, "OLDPWD", (const char*)cwd_before_chdir);
+	else
+		env_remove_var(env, "OLDPWD");
 	free(cwd_before_chdir);
 	return (EXIT_SUCCESS);
 }
@@ -34,6 +38,7 @@ int			builtin_cd(t_env *env, const char **argv)
 	char	*cwd_before_chdir;
 	char	*new_pwd;
 
+	cwd_before_chdir = NULL;
 	if (ft_arraylen(argv) == 1)
 	{
 		if (!(new_pwd = env_getenv((const char**)env->environ, "HOME", NULL)))
@@ -50,6 +55,6 @@ int			builtin_cd(t_env *env, const char **argv)
 		new_pwd = (char*)argv[1];
 	ft_bzero(buf, PATH_MAX);
 	if ((cwd_before_chdir = ft_strdup(getcwd(buf, PATH_MAX))) == NULL)
-		return (investigate_error(1, "cd", NULL, -1));
+		investigate_error(1, "cd", NULL, -1);
 	return (return_builtin_cd(new_pwd, cwd_before_chdir));
 }

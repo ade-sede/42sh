@@ -1,4 +1,5 @@
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
 #include "exec.h"
 #include "libft.h"
 #include "hash_table.h"
@@ -38,9 +39,7 @@ static const char	**apply_opt(t_env *env, const char **argv, int *error)
 			return (argv);
 	}
 	return (argv);
-}
-
-static const char	**build_new_env(t_env *env, const char **argv, int *error)
+} static const char	**build_new_env(t_env *env, const char **argv, int *error)
 {
 	int	eq_index;
 
@@ -65,6 +64,22 @@ static const char	**build_new_env(t_env *env, const char **argv, int *error)
 	return (argv);
 }
 
+static int			exec_env(t_env *new_env, const char **argv)
+{
+	pid_t	child;
+	int		ret;
+
+	create_hash_table(&new_env->hash_table, new_env->environ);
+	child = fork();
+	if (child == 0)
+		exit(exec_builtin(new_env, argv));
+	else
+		wait(&ret);
+	/* if (!WEXITSTATUS(ret)) */
+	/* 	fork_exec_bin(&new_env, argv, NULL); */
+	return (1);
+}
+
 int					builtin_env(t_env *old_env, const char **argv)
 {
 	t_env	new_env;
@@ -75,14 +90,14 @@ int					builtin_env(t_env *old_env, const char **argv)
 		return (EXIT_FAILURE);
 	argv = build_new_env(&new_env, argv + 1, &error);
 	if (error)
+	{
+		env_free_env(&new_env);
 		return (EXIT_FAILURE);
+	}
 	if (!(*argv))
 		env_print_environ((const char**)new_env.environ);
 	else
-	{
-		create_hash_table(&new_env);
-		fork_exec_bin(&new_env, argv, NULL);
-	}
+		exec_env(&new_env, argv);
 	env_free_env(&new_env);
 	return (EXIT_SUCCESS);
 }

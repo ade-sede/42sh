@@ -36,7 +36,7 @@ typedef struct	s_fourretout
 	int			i;
 }				t_fourretout;
 
-char			*comple_escape(char *input);
+char			*comple_escape(size_t i, size_t j, char *input);
 /*
 ** signaux
 */
@@ -72,6 +72,7 @@ void			delete_word(char *to_replace);
 char			*get_current_word_cursor(t_line *line);
 void			comple_bin_match_trip_layer(t_ternary_tree *node,
 				char ***matches, char **cur, size_t size);
-char			**ft_array_string_realloc(char **origin, size_t o_size, size_t n_size);
+char			**ft_array_string_realloc(char **origin, size_t o_size,
+		size_t n_size);
 size_t			get_reserved_line(size_t ws_row, t_line *line);
 #endif

@@ -6,11 +6,12 @@
 #include "exec.h"
 #include "line_editing.h"
 #include "lexer.h"
+#include "failure.h"
 #include "parser.h"
 #include <errno.h>
 #include <stdio.h>
 
-static int	safe_open(char *target, int mode)
+int	safe_open(char *target, int mode)
 {
 	int		target_fd;
 
@@ -20,18 +21,13 @@ static int	safe_open(char *target, int mode)
 	else
 		target_fd = open(target, mode);
 	if (target_fd == -1)
-	{
-		perror("open: ");
-	}
+		investigate_error(1, "open", NULL, 0);
 	return (target_fd);
 }
 
-int			redir_open_file(char *target, t_token_id id)
+int			redir_open_file(char *target, int id)
 {
-	int	target_fd;
-	int	mode;
-
-	mode = 0;
+	int	target_fd; int	mode; mode = 0;
 	if (id == TK_LESS)
 		mode |= O_RDONLY;
 	if (id != TK_LESS)

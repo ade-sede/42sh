@@ -1,6 +1,7 @@
 #ifndef T_LINE_H
 # define T_LINE_H
 # include "termios.h"
+# include "read.h"
 # include <string.h>
 
 typedef struct	s_line
@@ -12,11 +13,12 @@ typedef struct	s_line
 	size_t				ws_col;
 	char				*buff;
 	struct termios		canonical_mode;
-	struct termios		normal_mode;
+	struct termios		non_canonical_mode;
 	int					visu_mode;
 	int					completion;
 	int					history;
 	int					btsearch;
+	int					verbatim;
 	size_t				visu_start;
 	char				*copied_text;
 	char				*prompt;
@@ -24,6 +26,8 @@ typedef struct	s_line
 	int					heredoc;
 	void				(*sig_handler)(void);
 	ssize_t				col_target;
+	t_read				*read;
+	int					read_builtin;
 }				t_line;
 
 typedef struct	s_edit_func

@@ -1,111 +1,64 @@
 #include "local.h"
 #include "builtin.h"
-#include "env.h"
-#include "option.h"
+#include "t_env.h"
+#include "shopt.h"
+#include "failure.h"
+#include "get_opt.h"
+#include <stdio.h>
 
-static int	print_list(t_list *list, t_list *pos)
+static t_option g_option[] = {
+	{1, "o", OPTION_STRING, "shell option", "Set / Unset a shell option"},
+	{0, NULL, 0, NULL, NULL}
+};
+
+
+static int	display_all(t_env *env)
 {
-	t_list		*tmp_list;
-	t_list		*tmp_pos;
+	t_list	*local_list;
+	t_local	*local;
+	t_list	*pos_param_list;
+	t_pos_param	*pos_param;
 
-	tmp_list = list;
-	while (tmp_list != NULL)
+	local_list = env->local;
+	pos_param_list = env->pos_param;
+	while (local_list)
 	{
-		ft_putendl(tmp_list->data);
-		tmp_list = tmp_list->next;
+		local = local_list->data;
+		ft_putstr_fd(local->key, 2);
+		ft_putstr_fd("=", 2);
+		ft_putstr_fd(local->value, 2);
+		ft_putchar_fd('\n', 2);
+		local_list = local_list->next;
 	}
-	tmp_pos = pos;
-	while (tmp_pos != NULL)
+	while (pos_param_list)
 	{
-		ft_putendl(tmp_pos->data);
-		tmp_pos = tmp_pos->next;
+		pos_param = pos_param_list->data;
+		dprintf(2, "%d", pos_param->key);
+		ft_putstr_fd("=", 2);
+		ft_putstr_fd(pos_param->value, 2);
+		ft_putchar_fd('\n', 2);
+		pos_param_list = pos_param_list->next;
 	}
-	return (EXIT_SUCCESS);
-}
-
-static void	add_option(t_env *env, int *x, const char **argv)
-{
-	int		option_id;
-
-	if (argv[*x][2] != '\0')
-	{
-		if ((option_id = match_name_option(argv[*x])) != -1)
-			env->option = env->option | option_id;
-	}
-	else if (argv[*x + 1] != NULL)
-	{
-		*x = *x + 1;
-		if ((option_id = match_name_option(argv[*x])) != -1)
-			env->option = env->option | option_id;
-	}
-	else
-	{
-		print_current_option(env);
-	}
-}
-
-static void	remove_option(t_env *env, int *x, const char **argv)
-{
-	int		option_id;
-
-	if (argv[*x][2] != '\0')
-	{
-		if ((option_id = match_name_option(argv[*x])) != -1)
-			env->option = env->option & ~option_id;
-	}
-	else if (argv[*x + 1] != NULL)
-	{
-		*x = *x + 1;
-		if ((option_id = match_name_option(argv[*x])) != -1)
-			env->option = env->option & ~option_id;
-	}
-	else
-	{
-		print_all_option(env);
-	}
-}
-
-static void	set_pos_par(t_env *env, int x, int argc, const char **argv)
-{
-	int			nbr_pos_par;
-
-	nbr_pos_par = 1;
-	while (x < argc)
-	{
-		if (nbr_pos_par <= 1)
-			ft_simple_lst_remove(&env->pos_par, ft_free);
-		ft_simple_lst_pushback(&env->pos_par, ft_simple_lst_create(
-					ft_strjoin3_free(ft_itoa(nbr_pos_par), "=",
-						(char *)argv[x], 0b100)));
-		nbr_pos_par++;
-		x++;
-	}
+	return (1);
 }
 
 int			builtin_set(t_env *env, const char **argv)
 {
-	int			x;
-	int			argc;
-
+	int		opt_id;
+	size_t	argc;
+	t_programinfo pi = { "set", "Assign positional parameters / set unset shell variables", g_option, NULL, 0, 0, 1, 0, NULL, 0, 0 };
 	argc = ft_arraylen(argv);
 	if (argc == 1)
-		return (print_list(env->local, env->pos_par));
-	x = 1;
-	while (x < argc)
 	{
-		if (argv[x][0] == '-' && argv[x][1] == 'o')
-			remove_option(env, &x, argv);
-		else if (argv[x][0] == '+' && argv[x][1] == 'o')
-			add_option(env, &x, argv);
-		else if (argv[x][0] == '-' && argv[x][0] == '-')
-		{
-			x++;
-			break ;
-		}
-		else
-			break ;
-		x++;
+		display_all(env);
+		return (EXIT_SUCCESS);
 	}
-	set_pos_par(env, x, argc, argv);
+	opt_init(&pi, argc, argv);
+	while (pi.argerr == 0 && (opt_id = get_opt(&pi) > 0))
+		if (opt_id == 1)
+			set_shell_opt(env, pi.min, pi.argopt);
+	if (pi.argerr)
+		return (EXIT_FAILURE);
+	add_pos_param(env, argv, pi.argcur, 1);
 	return (EXIT_SUCCESS);
 }

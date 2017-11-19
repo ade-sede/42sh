@@ -10,6 +10,9 @@
 # include "alloc.h"
 # include "list.h"
 # include "array.h"
+# include "system.h"
+# include "btree.h"
+# include "string.h"
 # define MALLOC_ERROR 666
 # define TRUE 1
 # define FALSE 0
@@ -28,14 +31,6 @@ typedef struct		s_coor
 	int		x;
 	int		y;
 }					t_coor;
-
-typedef struct		s_btree
-{
-	struct s_btree	*left;
-	struct s_btree	*right;
-	struct s_btree	*parent;
-	void			*data;
-}					t_btree;
 
 /*
 ** In file ft_abs.c
@@ -113,4 +108,12 @@ void				ft_putnbr(int n);
 
 void				fatal(const char *error_str);
 int					ft_is_executable(char *dir, char *file);
+
+void				ft_strpush(char **str, char c);
+int					ft_strarrstrn(char **array, char *str, unsigned int n);
+unsigned int		ft_parrlen(void **array);
+void				ft_parrpush(void ***tablo, void *elem);
+void				**ft_parrnew(void);
+void	ft_strspush(char **str, char *push);
+
 #endif

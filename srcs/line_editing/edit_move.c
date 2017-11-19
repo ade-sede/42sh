@@ -36,6 +36,11 @@ int		edit_word_right(t_line *line)
 int		edit_home(t_line *line)
 {
 	line->pos = cursor_goto_buff(line, 0, line->pos);
+	if (line->visu_mode)
+	{
+		line->old_pos = line->pos;
+		edit_refresh(line);
+	}
 	return (1);
 }
 
@@ -46,5 +51,10 @@ int		edit_home(t_line *line)
 int		edit_end(t_line *line)
 {
 	line->pos = cursor_goto_buff(line, line->len, line->pos);
+	if (line->visu_mode)
+	{
+		line->old_pos = line->pos;
+		edit_refresh(line);
+	}
 	return (1);
 }

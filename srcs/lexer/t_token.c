@@ -1,22 +1,36 @@
-#include "t_token.h"
 #include "libft.h"
+#include "t_token.h"
+#include "lexer.h"
 
 /*
-**	Creates a token, storing the string value, its type and the value's lenght.
+**	Creates a token, allocating memory for it and the string it contains,
+**	storing many infos about the token.
 */
 
-t_token		*create_token(char *value, int type, char delimiter)
+t_token		*create_token(const char *source, struct s_info *info, size_t end_index)
 {
 	t_token		*token;
 
-	token = palloc(sizeof(*token));
-	token->delimiter = delimiter;
-	token->value = value;
+	token = ft_memalloc(sizeof(*token) * 1);
+	token->value = ft_strdup(info->value.str);
+	token->delim = source[end_index];
+	token->state_info = info;
 	token->id = 0;
-	token->type = type;
-	token->size = ft_strlen(value);
 	token->cmd_name = 0;
 	return (token);
+}
+
+t_token	*dup_token(t_token *original)
+{
+	t_token	*new;
+
+	new = ft_memalloc(sizeof(t_token));
+	new->state_info = create_state_info();
+	copy_state_info(original->state_info, new->state_info);
+	new->value = ft_strdup(original->value);
+	new->delim = original->delim;
+	new->id = original->id;
+	return (new);
 }
 
 void		free_token(void *value)
@@ -26,20 +40,7 @@ void		free_token(void *value)
 	if (!value)
 		return ;
 	token = (t_token*)value;
-	if (token->value)
-		free(token->value);
+	free(token->value);
+	free_info(token->state_info);
 	free(token);
-}
-
-void		free_token_list(t_list *token_list)
-{
-	t_list	*tmp;
-
-	while (token_list)
-	{
-		tmp = token_list->next;
-		free_token(token_list->data);
-		free(token_list);
-		token_list = tmp;
-	}
 }

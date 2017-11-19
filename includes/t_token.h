@@ -1,9 +1,7 @@
 #ifndef T_TOKEN_H
 # define T_TOKEN_H
-
-# include "t_lexer.h"
-# include <string.h>
-
+# include <sys/types.h>
+# include "libft.h"
 /*
 **	Every type of token we can find accoring to the POSIX STANDARD should be
 **	listed in the following enums. The first enum of each groups starts at the
@@ -18,15 +16,17 @@
 **	>= 20'.
 */
 
-typedef enum
+# define OPERATOR_OFFSET 5
+# define RESERVED_WORDS_OFFSET 21
+
+enum
 {
 	TK_WORD,
 	TK_ASSIGNMENT_WORD,
 	TK_NAME,
 	TK_NEWLINE,
 	TK_IO_NUMBER,
-	TK_LESS = 5,
-	TK_HERE,
+	TK_LESS = OPERATOR_OFFSET,
 	TK_GREAT,
 	TK_SEMI,
 	TK_PIPE,
@@ -41,60 +41,54 @@ typedef enum
 	TK_LESSGREAT,
 	TK_DLESSDASH,
 	TK_CLOBBER,
-	If = 21,
-	Then,
-	Else,
-	Elif,
-	Fi,
-	Do,
-	Done,
-	Case,
-	Esac,
-	While,
-	Until,
-	For,
-	Lbrace,
-	Rbrace,
-	Bang,
-	In
-}	t_token_id;
+	TK_IF = RESERVED_WORDS_OFFSET,
+	TK_THEN,
+	TK_ELSE,
+	TK_ELIF,
+	TK_FI,
+	TK_DO,
+	TK_DONE,
+	TK_CASE,
+	TK_ESAC,
+	TK_WHILE,
+	TK_UNTIL,
+	TK_FOR,
+	TK_LBRACE,
+	TK_RBRACE,
+	TK_BANG,
+	TK_LPAREN,
+	TK_RPAREN,
+	TK_IN,
+	$ = 666
+};
 
-/*
-**	Each delimited token will have its informations contained in this token.
-**	Value is the string of the delimited token.
-**	Id will be assumed to be TK_WORD unless it is possible to apply another id.
-**	Type corresponds to the state of the lexer when the token was delimited.
-**	Size is the lenght of the string.
-**	Cmd_name is a flag telling us if the token is considered to be the cmd_name
-**	of a simple command.
-**	Delimtier is the character that caused the token to be delimited.
-*/
+#define _T_STATE 0
+#define _T_START 1
+#define _T_END 2
+#define _T_COUNT 3
+#define _T_NEST 4
 
-typedef struct		s_token
+struct s_info
 {
-	char			*value;
-	t_token_id		id;
-	int				type;
-	size_t			size;
-	int				cmd_name;
-	char			delimiter;
-}					t_token;
+	int		state;
+	int		count;
+	int		nest;
+	t_word	value;
+};
 
-/*
-**	Macros to check if the id corresponds to a redirection, or a separator.
-*/
-
-# define TK_IS_REOPEN_SEP(id) (id == TK_AND_IF||id == TK_OR_IF||id == TK_PIPE)
-# define TK_IS_SEP(id) (id >= TK_SEMI && id <= TK_DSEMI)
-# define TK_IS_GREAT_LESS(id) ( id == TK_GREAT || id == TK_LESS )
-# define TK_RP1(id) id == TK_IO_NUMBER || TK_IS_GREAT_LESS(id) || id == TK_HERE
-# define TK_IS_REDIR(id) (TK_RP1(id) || (id >= TK_DLESS && id <= TK_CLOBBER))
-
-/*
-**	In file srcs/lexer/t_token.c
-*/
-
-t_token				*create_token(char *value, int type, char delimiter);
-void				free_token(void *value);
-void				free_token_list(t_list *token_list);
+typedef struct	s_token
+{
+	/* ssize_t				*state_info; */
+	struct	s_info		*state_info;
+	char				*value;
+	char				delim;
+	int					id;
+	int					cmd_name;
+}				t_token;
 #endif
+
+
+t_token		*create_token(const char *source, struct s_info *info, size_t end_index);
+void		free_token(void *value);
+t_token	*dup_token(t_token *original);
+void	debug_token(t_token *token);

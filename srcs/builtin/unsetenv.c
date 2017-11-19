@@ -1,4 +1,6 @@
-#include "env.h"
+#include "t_env.h"
+#include "environ.h"
+#include "hash_table.h"
 #include "libft.h"
 #include "failure.h"
 

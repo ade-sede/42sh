@@ -18,111 +18,124 @@ COLOR_WHITE		= \033[1;37m
 # **************************************************************************** #
 
 SRC = \
-	ft_lst_len.c \
-	ft_str_is_clr.c \
-	ft_lst_last.c \
-	ft_strjoin3_free.c \
-	ft_is_executable.c \
-	ft_strlen.c \
-	ft_strchr.c \
-	ft_strrchr.c \
-	ft_strichr.c \
-	ft_strcpy.c \
-	ft_strcmp.c \
-	ft_strncmp.c \
-	ft_strncpy.c \
-	ft_strdup.c \
-	ft_strstr.c \
-	ft_strnstr.c \
-	ft_strncat.c \
-	ft_strlcat.c \
-	ft_strcat.c \
-	ft_strchange.c \
-	ft_abs.c \
-	ft_lst_iteri.c \
-	get_next_line.c \
-	ft_putnstr.c \
-	ft_arraymax_f.c \
-	ft_arraychr.c \
-	ft_arraylen.c \
-	palloc.c \
-	ft_putstr.c \
-	ft_putchar.c \
-	ft_bzero.c \
-	ft_memset.c \
-	ft_memalloc.c \
-	ft_calloc.c \
-	ft_memcpy.c \
-	ft_memcmp.c \
-	ft_memccpy.c \
-	ft_memchr.c \
-	ft_memmove.c \
-	ft_arraydup.c \
-	ft_atoi.c \
+	fatal.c \
+	str/string.c \
+	ft_digit_count.c \
 	ft_is_1.c \
 	ft_is_2.c \
-	ft_toupper.c \
-	ft_tolower.c \
-	ft_memdel.c \
-	ft_putnbr.c \
-	ft_strnew.c \
-	ft_strdel.c \
-	ft_strclr.c \
-	ft_striter.c \
-	ft_striteri.c \
-	ft_strmap.c \
-	ft_strmapi.c \
-	ft_strequ.c \
-	ft_strnequ.c \
-	ft_strsub.c \
-	ft_strjoin.c \
-	ft_strtrim.c \
-	ft_strsplit.c \
-	ft_strsplit_keep.c \
-	charcmp.c \
-	ft_itoa.c \
-	ft_arraydel.c \
-	fatal.c \
-	free.c \
-	ft_buff_wchar.c \
-	ft_lst_add.c \
-	ft_lst_create.c \
-	ft_lst_del_one.c \
-	ft_lst_dup.c \
-	ft_lst_for_n.c \
-	ft_lst_foreach.c \
-	ft_lst_get_n.c \
-	ft_lst_pushback.c \
-	ft_lst_remove.c \
-	ft_lst_return_if.c \
-	ft_lst_sort_insert.c \
-	ft_chartostr.c \
-	ft_strmatch.c \
-	ft_strnreplace.c \
-	ft_strsurround.c \
-	ft_realloc.c \
 	ft_is_3.c \
-	ft_strrstr.c \
-	ft_strrcmp.c \
-	ft_strrequ.c \
-	ft_simple_lst_del_one.c \
-	ft_lst_rev.c \
-	ft_getopt.c \
-\
-	printf/asprintf.c \
-	printf/buff_loop.c \
-	printf/buff_start_conv.c \
-	printf/c_conv.c \
-	printf/d_conv.c \
-	printf/dprintf.c \
-	printf/numeric_conv.c \
-	printf/p_padd.c \
-	printf/p_prec.c \
-	printf/printf.c \
-	printf/printf_parse.c \
-	printf/s_conv.c \
-	printf/sprintf.c \
-	printf/vasprintf.c
+	get_next_line.c \
+	array/ft_arraychr.c \
+	array/ft_arrayjoin.c \
+	array/ft_arraydel.c \
+	array/ft_arraydup.c \
+	array/ft_arraylen.c \
+	array/ft_arraymax_f.c \
+	btree/btree_add.c \
+	btree/btree_new.c \
+	btree/btree_print.c \
+	io/ft_putchar.c \
+	io/ft_putnbr.c \
+	io/ft_putnbr_fd.c \
+	io/ft_putnstr.c \
+	io/ft_putstr.c \
+	lst/ft_lst_add.c \
+	lst/ft_lstint.c \
+	lst/ft_lst_pop.c \
+	lst/ft_lst_create.c \
+	lst/ft_lst_del_one.c \
+	lst/ft_lst_dup.c \
+	lst/ft_lst_for_n.c \
+	lst/ft_lst_foreach.c \
+	lst/ft_lst_get_n.c \
+	lst/ft_lst_iteri.c \
+	lst/ft_lst_last.c \
+	lst/ft_lst_len.c \
+	lst/ft_lst_pushback.c \
+	lst/ft_lst_remove.c \
+	lst/ft_lst_return_if.c \
+	lst/ft_lst_rev.c \
+	lst/ft_lst_sort_insert.c \
+	lst/ft_simple_lst_del_one.c \
+	math/ft_abs.c \
+	math/ft_power.c \
+	math/ft_sort_int_tab.c \
+	math/ft_sqrt.c \
+	mem/free.c \
+	mem/ft_bzero.c \
+	mem/ft_calloc.c \
+	mem/ft_memalloc.c \
+	mem/ft_memccpy.c \
+	mem/ft_memchr.c \
+	mem/ft_memcmp.c \
+	mem/ft_memcpy.c \
+	mem/ft_memdel.c \
+	mem/ft_memmove.c \
+	mem/ft_memset.c \
+	mem/ft_realloc.c \
+	mem/palloc.c \
+	str/ft_str_isdigit.c \
+	str/ft_is_backslash.c \
+	str/charcmp.c \
+	str/ft_atoi.c \
+	str/ft_buff_wchar.c \
+	str/ft_chartostr.c \
+	str/ft_itoa.c \
+	str/ft_str_is_clr.c \
+	str/ft_strcat.c \
+	str/ft_strchange.c \
+	str/ft_strchr.c \
+	str/ft_strclr.c \
+	str/ft_strcmp.c \
+	str/ft_strcpy.c \
+	str/ft_strdel.c \
+	str/ft_strdup.c \
+	str/ft_strequ.c \
+	str/ft_strichr.c \
+	str/ft_striter.c \
+	str/ft_striteri.c \
+	str/ft_strjoin.c \
+	str/ft_strjoin3_free.c \
+	str/ft_strlcat.c \
+	str/ft_strlen.c \
+	str/ft_strmap.c \
+	str/ft_strmapi.c \
+	str/ft_strmatch.c \
+	str/ft_strncat.c \
+	str/ft_strncmp.c \
+	str/ft_strncpy.c \
+	str/ft_strnequ.c \
+	str/ft_strnew.c \
+	str/ft_strnreplace.c \
+	str/ft_strnstr.c \
+	str/ft_strrchr.c \
+	str/ft_strrcmp.c \
+	str/ft_strrequ.c \
+	str/ft_strrev.c \
+	str/ft_strrstr.c \
+	str/ft_strsplit.c \
+	str/ft_strsplit_keep.c \
+	str/ft_strstr.c \
+	str/ft_strsub.c \
+	str/ft_strsurround.c \
+	str/ft_strtrim.c \
+	str/ft_strtrunc.c \
+	str/ft_tolower.c \
+	str/ft_toupper.c \
+	str/ft_strpush.c \
+	str/ft_strspush.c \
+	system/ft_is_executable.c \
+	system/get_home.c \
+	system/size_term.c \
+	system/put_termcap.c \
+	system/pfork.c \
+	system/ppipe.c \
+	parr/ft_parrlen.c \
+	parr/ft_parrnew.c \
+	parr/ft_parrpush.c \
+	parr/ft_strarrstrn.c \
+	get_opt/get_opt.c \
+	get_opt/get_opt_display.c \
 
 NAME ?= libft.a
 
@@ -167,6 +180,16 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/printf
+	@mkdir -p $(OBJ_DIR)/array
+	@mkdir -p $(OBJ_DIR)/btree
+	@mkdir -p $(OBJ_DIR)/io
+	@mkdir -p $(OBJ_DIR)/lst
+	@mkdir -p $(OBJ_DIR)/math
+	@mkdir -p $(OBJ_DIR)/mem
+	@mkdir -p $(OBJ_DIR)/str
+	@mkdir -p $(OBJ_DIR)/system
+	@mkdir -p $(OBJ_DIR)/parr
+	@mkdir -p $(OBJ_DIR)/get_opt
 
 clean:
 	@printf "$(COLOR_RED)Removing object files ...$(COLOR_NOCOLOR)\n"
