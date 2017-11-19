@@ -33,7 +33,7 @@ static void	exec_comm_child (char *comm, int *fildes, int no_showerr)
 /* pwordexp contains NULL if field-splitting is forbidden */
 #define bufsize 128
 
-int		exec_comm (char *comm, t_expand *exp)
+int		exec_comm (char *comm, t_expand *exp, int quoted)
 {
 	int fildes[2];
 	int buflen;
@@ -65,7 +65,7 @@ int		exec_comm (char *comm, t_expand *exp)
  fprintf (stderr, "value cmd subst{%s}\n", value.str);
  #endif
 
-	handle_fieldsplitting(value.str, exp);
+	handle_fieldsplitting(value.str, exp, quoted);
 	w_free(&value);
 	return (0);
 }

@@ -63,7 +63,7 @@ char	*get_param(t_expand *exp, int *seen_hash)
 **	poised after $
 */
 
-int		parse_param (t_expand *exp)
+int		parse_param (t_expand *exp, int quoted)
 {
 	char *value = NULL;
 	int seen_hash = 0;
@@ -95,13 +95,13 @@ int		parse_param (t_expand *exp)
 		w_addstr (&exp->word, ft_itoa_word((value ? ft_strlen (value) : 0), param_length));
 		return (0);
 	}
-	handle_fieldsplitting(value, exp);
+	handle_fieldsplitting(value, exp, quoted);
 	return (0);
 }
 
 /*  on "$" */
 
-int		parse_dollars (t_expand *exp)
+int		parse_dollars (t_expand *exp, int quoted)
 {
 	if (exp->words[1 + exp->offset] == '"' || exp->words[1 + exp->offset] == '\\' || exp->words[1 + exp->offset] == '\0')
 	{
@@ -129,9 +129,7 @@ int		parse_dollars (t_expand *exp)
 			if (exp->words[i] == ')' && exp->words[i + 1] == ')')
 			{
 				(exp->offset) += 3;
-				/* Call parse_arith -- 0 is for "no brackets" */
-				//return parse_arith (&exp->word, word_length, max_length, words, offset,
-//						exp->flags, 0);
+				return parse_arith (exp);
 				return (0);
 			}
 		}
@@ -139,12 +137,12 @@ int		parse_dollars (t_expand *exp)
  fprintf(stderr,"parse dollar command substitution\n");
  #endif
 		(exp->offset) += 2;
-		return parse_comm (exp);
+		return parse_comm (exp, quoted);
 	}
 	/*case { ou deffault*/
 	else
 	{
 		++(exp->offset);
-		return parse_param (exp);
+		return parse_param (exp, quoted);
 	}
 }

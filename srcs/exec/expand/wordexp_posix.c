@@ -113,11 +113,11 @@ static int		parse_loop (const char *words, t_expand *exp)
 		else if (words[exp->offset] == '`')
 		{
 //			++exp->offset;
-			parse_backtick (exp);
+			parse_backtick (exp, 0);
 		}
 		else if (words[exp->offset] == '$')
 		{
-			parse_dollars (exp);
+			parse_dollars (exp, 0);
 #ifdef EXPAND_DEBUG
  fprintf (stderr, "word {%s}\n", exp->word.str);
  #endif
@@ -151,7 +151,7 @@ static int		parse_loop (const char *words, t_expand *exp)
 	return (0);
 }
 
-char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPLITTING
+char	**word_expansion (const char *words, int flag)
 {
 	char	**braced_words;
 	t_expand exp;

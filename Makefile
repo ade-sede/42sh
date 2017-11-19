@@ -218,6 +218,7 @@ SRC_FILE = \
 		   \
 		   \
 		   exec/expand/parse_dollar.c \
+		   exec/expand/parse_arith.c \
 		   exec/expand/parse_quote.c \
 		   exec/expand/parse_tilde.c \
 		   exec/expand/parse_backtick.c \
