@@ -1,5 +1,5 @@
 #include "bang.h"
-#include "failure.h"
+//#include "failure.h"
 #include "libft.h"
 
 /*
@@ -16,10 +16,57 @@
 **	the loop, otherwise, each function is responsible for its memory.
 */
 
+static void change_state(int state[2], int s)
+{
+	state[_B_STATE] = s;
+	state[_B_COUNT] = 0;
+}
+
+
+#include <stdio.h>
+static int	update_state_part_1(int state[2], const char source)
+{
+	if (state[_B_STATE] == DEF)
+	{
+		if (source == '\'')
+			change_state(state, QUOTES);
+		else if (source == '"')
+			change_state(state, DQUOTES);
+		else if (source == '\\')
+			change_state(state, BS);
+		return (1);
+	}
+	if (state[_B_STATE] == QUOTES)
+	{
+		if (source == '\'')
+			change_state(state, DEF);
+		return (1);
+	}
+	return (0);
+}
 static void	update_state(int state[2], const char source)
 {
+	int	ret;
+
+	ret = update_state_part_1(state, source);
+	if (!ret)
+	{
+		if (state[_B_STATE] == DQUOTES)
+		{
+			if (source == '"')
+				change_state(state, DEF);
+			if (source == '\\')
+				change_state(state, DQUOTES_BS);
+		}
+		else if (state[_B_STATE] == BS)
+		{
+			if (state[_B_COUNT] == 2)
+				change_state(state, DEF);
+		}
+		else if (state[_B_STATE] == DQUOTES_BS)
+			change_state(state, DQUOTES);
+	}
 	state[_B_COUNT]++;
-	if (state
 }
 
 char	*bang_expand(const char *source, t_hist *hist)
@@ -30,26 +77,47 @@ char	*bang_expand(const char *source, t_hist *hist)
 	t_word	word_designator;
 	int		err;
 	int		state[2];
+	int		done;
+	const char	*s;
 
+	change_state(state, DEF);
+	s = source;
 	w_newword(&ret);
 	while (*source)
 	{
 		update_state(state, *source);
-		if (*source == '!' && !ft_strchr(" 	\n=(", *(source + 1)))
+		if (state[_B_STATE] != BS && state[_B_STATE] != DQUOTES_BS && state[_B_STATE] != QUOTES && *source == '!' && !ft_strchr(" 	\n=(", *(source + 1)))
 		{
+			dprintf(2, "Found valid expand on index : %zu\n", source - s);
 			/* Find event */
 			++source;
-			if ((err = event_expand(&source, &event, hist)))
+			if ((err = event_expand(s, &source, &event, hist, &done)))
 			{
+				dprintf(2, "BAD EVENT\n");
 				w_free(&ret);
-				return ((void*)(long)investigate_error(1, "42sh", "Bad event", 0));
-				/* Display error and return NULL */
+				return (NULL);
+			}
+			if (!done)
+			{
+				w_newword(&event);
+				read_hist_numeric(-1, &event, hist);
 			}
 			/* Find work designator */
+			if ((err = word_designator_expand(&source, event, &word_designator, &done)))
+			{
+				dprintf(2, "BAD WORD\n");
+				w_free(&ret);
+				return (NULL);
+			}
+			if (!done)
+			{
+				w_newword(&word_designator);
+				w_addstr(&word_designator, event.str);
+			}
 			/* Apply modifier */
 			/* Free everything we used*/
-			w_free(&event);
-			w_free(&word_designator);
+			//w_free(&event);
+			//w_free(&word_designator);
 		}
 		w_addchar(&ret, *source);
 		++source;
