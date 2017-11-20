@@ -32,6 +32,7 @@ static	int		valid_comple(t_line *line, int keycode)
 		tmp = line->buff[line->pos];
 		line->buff[line->pos] = 0;
 		start_ptr = ft_strrchr(line->buff, '\n');
+		line->buff[line->pos] = tmp;
 		if (!start_ptr)
 			start_ptr = line->buff;
 		if (ft_str_is_clear_n(start_ptr, line->buff + line->pos - start_ptr))

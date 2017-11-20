@@ -21,11 +21,11 @@
 */
 
 char			**comple_matching_no_cursorword(t_line *line, t_comple *c,
-		t_lexer lex)
+		int cmd_name_open)
 {
 	char		**res;
 
-	if (!lex.cmd_name_open)
+	if (!cmd_name_open)
 		res = comple_file_matches(line, c);
 	else
 		res = comple_bin_matches(line, c);
@@ -33,52 +33,57 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c,
 }
 
 char			**comple_matching_cursorword(t_line *line, t_comple *c,
-		t_token *token)
+		int cmd_name_open)
 {
-	(void)token, (void)line, (void)c, (void)token;
-/*
-**		 char		**res;
-**		t_list		*glob_list;
-**	
-**		if (token != NULL && (glob_list = pathname_expansion(token, 0)))
+
+	char		**res;
+//	t_list		*glob_list;
+
+	/*
+**		if (glob_list = pathname_expansion(token, 0)))
 **			res = comple_globing_matches(line, c, glob_list);
-**		else if (!ft_strchr(c->current_word, '/') && token != NULL && \
-**				token->cmd_name == 1)
-**			res = comple_bin_matches(line, c);
-**		else
-**			res = comple_file_matches(line, c);
-**		return (res);
 */
+	if (!ft_strchr(c->current_word, '/') && !cmd_name_open)
+		res = comple_bin_matches(line, c);
+	else
+		res = comple_file_matches(line, c);
+	return (res);
+
 	return (NULL);
+}
+
+int		lex_completion(t_line *line)
+{
+	t_lexer		lex;
+	char		line_pos_char;
+	int			cmd_name_open;
+	t_list		*token_list = NULL;
+
+	line_pos_char = line->buff[line->pos]; //TODO: attention peut etre que line-buff + line-pos point sur le \0
+	line->buff[line->pos] = '\0';
+	init_lexer(&lex, line->buff);
+	get_token_list(&lex, &token_list, singleton_env()->alias);
+	line->buff[line->pos] = line_pos_char;
+	cmd_name_open = lex.cmd_name_open;
+	remove_lexer(&lex, &token_list);
+	return (cmd_name_open);
 }
 
 char			**comple_matching(t_line *line, t_comple *c)
 {
-	(void)line, (void)c;
-	/* char		**res; */
-	/* t_lexer		lex; */
-	/* t_token		*token; */
-/*
-**		t_list		*token_list;
-**		t_lexer		lexer;
-**	
-**	 	line_pos_char = line->buff[line->pos];
-**	 	line->buff[line->pos] = '\0';
-**		init_lexer(&lex, line->buff);
-**		get_token_list(&lexer, &token_list, singleton_env()->alias);
-**	 	line->buff[line->pos] = line_pos_char;
-**		c->to_replace = get_start_word_cursor(line);
-**		token = lex_completion(&lex);
-**		res = NULL;
-**		c->current_word = get_current_word_cursor(line);
-**		if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
-**				|| line->buff[line->pos] == '\0')
-**							&& line->buff[line->pos - 1] == ' '))
-**			res = comple_matching_no_cursorword(line, c, lex);
-**		else
-**			res = comple_matching_cursorword(line, c, token);
-**		remove_lexer(lex, token_list);
-**		free(c->current_word);
-*/
-	return (NULL);
+	char		**res;
+	int			cmd_name_open;
+
+	c->to_replace = get_start_word_cursor(line);
+	cmd_name_open = lex_completion(line);
+	res = NULL;
+	c->current_word = get_current_word_cursor(line);
+	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
+					|| line->buff[line->pos] == '\0')
+				&& line->buff[line->pos - 1] == ' '))
+		res = comple_matching_no_cursorword(line, c, cmd_name_open);
+	else
+		res = comple_matching_cursorword(line, c, cmd_name_open);
+	free(c->current_word);
+	return (res);
 }
