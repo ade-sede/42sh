@@ -145,12 +145,8 @@ int		exec_simple_command(t_ast *ast)
 	exec_dup(redirect_list);
 	if (av && av[0])
 	{
-		printf("function a[0]: %s\n", av[0]);
 		if ((fct = get_function(singleton_env(), av[0])))
-		{
-			printf("get function a[0]: %s\n", av[0]);
 			return (exec_function(fct->fct_body, av));
-		}
 		if (get_exec_builtin(av[0]))
 			return (exec_builtin(singleton_env(), (const char **)av));
 		exec_bin(singleton_env(), (const char **)av);
