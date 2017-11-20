@@ -2,32 +2,29 @@
 #include "list.h"
 
 /*
-** Get the n'th node of the list from where we are. first is node 1
-** first->next is node 2
+** 0 is current node, 1 is next, -1 is prev.
 */
 
 t_list_d	*ft_double_lst_get_n(t_list_d *first, int n)
 {
 	if (n == 0)
-		return (NULL);
+		return (first);
 	if (!first)
 		return (NULL);
 	if (n > 0)
 	{
-		while (first && n > 1)
+		while (first && n)
 		{
-			n--;
-			if (first->next)
-				first = first->next;
+			--n;
+			first = first->next;
 		}
 	}
-	else if (n < 0)
+	if (n < 0)
 	{
-		while (first && n < -1)
+		while (first && n)
 		{
-			n++;
-			if (first->prev)
-				first = first->prev;
+			++n;
+			first = first->prev;
 		}
 	}
 	return (first);

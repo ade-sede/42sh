@@ -16,4 +16,5 @@ char	*w_addchar (t_word *word, char ch);
 char	*w_addmem (t_word *word, const char *str, size_t len);
 char	*w_addstr (t_word *word, const char *str);
 void	w_free (t_word *word);
+void	w_change(t_word *word);
 #endif

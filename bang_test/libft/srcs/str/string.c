@@ -7,6 +7,13 @@ void	w_newword (t_word *word)
 	word->maxlen = 0;
 }
 
+void	w_change(t_word *word)
+{
+	if (word->str != NULL)
+		w_free(word);
+	w_newword(word);
+}
+
 void	w_free (t_word *word)
 {
 	ft_strdel(&word->str);

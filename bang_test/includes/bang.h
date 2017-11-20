@@ -1,10 +1,20 @@
 #ifndef BANG_H
 # define BANG_H
 
-# define BAD_EVENT
-# define BAR_WORD_DESIGNATOR
-# define NO_EVENT
+#define _B_STATE
+#define _B_COUNT
 
-# define EVENT_OFFSET 1
-# define EVENT_STRING 0
+enum {
+	DEF,
+	QUOTES,
+	DQUOTES,
+	BS
+}
+
+typedef	struct	s_hist
+{
+}				t_hist;
+
+char	*bang_expand(const char *source, t_hist *hist);
+int		event_expand(const char **source, t_word *event, t_hist *hist);
 #endif
