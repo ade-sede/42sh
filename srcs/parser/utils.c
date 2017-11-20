@@ -18,10 +18,10 @@ t_ast	*dup_ast(t_ast *ast)
 
 	if (!ast)
 		return (NULL);
-	if (ast->symbol)
-		new = new_ast(NULL, ast->symbol);
 	if (ast->token)
 		new = new_ast(dup_token(ast->token), 0);
+	else if (ast->symbol > 0)
+		new = new_ast(NULL, ast->symbol);
 	while (ast->child[i] && i < 7)
 	{
 		new->child[i] = dup_ast(ast->child[i]);

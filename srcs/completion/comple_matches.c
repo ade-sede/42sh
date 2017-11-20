@@ -20,34 +20,6 @@
 **		si prev
 */
 
-/* static t_lexer	get_lex_line_cursor(t_line *line) */
-/* { */
-/* 	char		line_pos_char; */
-/* 	t_lexer		lex; */
-
-/* 	line_pos_char = line->buff[line->pos]; */
-/* 	line->buff[line->pos] = '\0'; */
-/* 	lex.reopen = 0; */
-/* 	lex = init_lexer(line->buff); */
-/* 	line->buff[line->pos] = line_pos_char; */
-/* 	return (lex); */
-/* } */
-
-/* t_token			*lex_completion(t_lexer *lex) */
-/* { */
-/* 	t_token	*token; */
-/* 	t_token	*prev_token; */
-/* 	int		reopen; */
-
-/* 	prev_token = NULL; */
-/* 	while ((token = start_lex(lex, &reopen)) != NULL) */
-/* 	{ */
-/* 		free_token(prev_token); */
-/* 		prev_token = token; */
-/* 	} */
-/* 	return (prev_token); */
-/* } */
-
 char			**comple_matching_no_cursorword(t_line *line, t_comple *c,
 		t_lexer lex)
 {
@@ -64,17 +36,19 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c,
 		t_token *token)
 {
 	(void)token, (void)line, (void)c, (void)token;
-	/* char		**res; */
-	/* t_list		*glob_list; */
-
-	/* if (token != NULL && (glob_list = pathname_expansion(token, 0))) */
-	/* 	res = comple_globing_matches(line, c, glob_list); */
-	/* else if (!ft_strchr(c->current_word, '/') && token != NULL && \ */
-	/* 		token->cmd_name == 1) */
-	/* 	res = comple_bin_matches(line, c); */
-	/* else */
-	/* 	res = comple_file_matches(line, c); */
-	/* return (res); */
+/*
+**		 char		**res;
+**		t_list		*glob_list;
+**	
+**		if (token != NULL && (glob_list = pathname_expansion(token, 0)))
+**			res = comple_globing_matches(line, c, glob_list);
+**		else if (!ft_strchr(c->current_word, '/') && token != NULL && \
+**				token->cmd_name == 1)
+**			res = comple_bin_matches(line, c);
+**		else
+**			res = comple_file_matches(line, c);
+**		return (res);
+*/
 	return (NULL);
 }
 
@@ -84,20 +58,27 @@ char			**comple_matching(t_line *line, t_comple *c)
 	/* char		**res; */
 	/* t_lexer		lex; */
 	/* t_token		*token; */
-
-	/* c->to_replace = get_start_word_cursor(line); */
-	/* lex = get_lex_line_cursor(line); */
-	/* token = lex_completion(&lex); */
-	/* res = NULL; */
-	/* c->current_word = get_current_word_cursor(line); */
-	/* if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' ' */
-	/* 		|| line->buff[line->pos] == '\0') */
-	/* 					&& line->buff[line->pos - 1] == ' ')) */
-	/* 	res = comple_matching_no_cursorword(line, c, lex); */
-	/* else */
-	/* 	res = comple_matching_cursorword(line, c, token); */
-	/* free(lex.line); */
-	/* free(c->current_word); */
-	/* free_token(token); */
+/*
+**		t_list		*token_list;
+**		t_lexer		lexer;
+**	
+**	 	line_pos_char = line->buff[line->pos];
+**	 	line->buff[line->pos] = '\0';
+**		init_lexer(&lex, line->buff);
+**		get_token_list(&lexer, &token_list, singleton_env()->alias);
+**	 	line->buff[line->pos] = line_pos_char;
+**		c->to_replace = get_start_word_cursor(line);
+**		token = lex_completion(&lex);
+**		res = NULL;
+**		c->current_word = get_current_word_cursor(line);
+**		if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
+**				|| line->buff[line->pos] == '\0')
+**							&& line->buff[line->pos - 1] == ' '))
+**			res = comple_matching_no_cursorword(line, c, lex);
+**		else
+**			res = comple_matching_cursorword(line, c, token);
+**		remove_lexer(lex, token_list);
+**		free(c->current_word);
+*/
 	return (NULL);
 }

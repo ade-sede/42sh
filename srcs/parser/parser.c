@@ -69,7 +69,7 @@ int		parse(t_parser *parser, t_ast **ast, t_list *token_list)
 	dollar_token->value = ft_strdup("End token");
 	dollar_token->state_info = NULL;
 	dollar_token->delim = 0;
-	dollar_token->id = $;
+	dollar_token->id = DOLAR;
 	ft_simple_lst_pushback(&token_list, ft_simple_lst_create(dollar_token));
 	tmp = token_list;
 	while (tmp)
@@ -98,7 +98,7 @@ int		parse(t_parser *parser, t_ast **ast, t_list *token_list)
 		else
 		{
 		//	printf("s%d\n", action);
-			ft_genlst_add(&parser->ast_stack, ft_simple_lst_create(new_ast(tmp->data, -1)));
+			ft_genlst_add(&parser->ast_stack, ft_simple_lst_create(new_ast(tmp->data, 0)));
 			tmp = tmp->next;
 			parser->state = action;
 		}

@@ -130,14 +130,11 @@ int		exec_simple_command(t_ast *ast)
 
 	if (is_symb(ast->child[0], CMD_PREFIX))
 		exec_cmd_prefix(ast->child[0], &redirect_list);
-
 	av = get_cmd_name(ast, 0);
-
 	if (is_symb(ast->child[1], CMD_SUFFIX))
 		cmd_suffix = ast->child[1];
 	if (is_symb(ast->child[2], CMD_SUFFIX))
 		cmd_suffix = ast->child[2];
-
 	if (cmd_suffix)
 	{
 		av_cmdsuffix = exec_cmd_suffix(cmd_suffix, &redirect_list, av_cmdsuffix);
@@ -145,7 +142,6 @@ int		exec_simple_command(t_ast *ast)
 		av = av ? ft_arrayjoin_free(av, av_cmdsuffix, 0b11) : av_cmdsuffix;
 	}
 	exec_dup(redirect_list);
-	
 	if (av && av[0])
 	{
 		if ((fct = get_function(singleton_env(), av[0])))
