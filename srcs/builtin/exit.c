@@ -5,38 +5,14 @@
 #include "failure.h"
 #include "history.h"
 
-//TODO: pas besoin normalement '?' est initialiser au debut et est proteger, l utilisateur ne peut pas corrompre la variable
-
-//static int	ft_isnum(char *str)
-//{
-//	char	*beg;
-//
-//	if (!(beg = str))
-//		return (0);
-//	while (str && *str && *str >= 0 && *str <= 9)
-//		str++;
-//	if(str && *str && str != beg)
-//		return (1);
-//	return (0);
-//}
-//
-//static int	ft_getstat(t_env *env, char *str)
-//{
-//	if(!str)
-//		return (0);
-//	if(ft_isnum(str))
-//		return ft_atoi(local_get_value(env->local, "?"));
-//	return (255);
-//}
-//
-//
 int	builtin_exit(t_env *env, const char **argv)
 {
 	int		exit_status;
 	int		argc;
 
 	argc = ft_arraylen(argv);
-	exit_status = ft_atoi(local_get_value(env->local, "?"));
+	if (!ft_atoi_safe(local_get_value(env->local, "?"), &exit_status))
+		exit_status = 1;
 	if (argc == 1)
 	{
 		//ft_putstr_fd("exit\n", 2);
@@ -47,7 +23,7 @@ int	builtin_exit(t_env *env, const char **argv)
 		return (investigate_error(1, NULL, "exit: too many arguments",
 					EXIT_FAILURE));
 	else if (!(ft_atoi_safe(argv[1], &exit_status)))
-		return (investigate_error(1, NULL, "exit: numeric argument required",
+		return (investigate_error(255, NULL, "exit: numeric argument required",
 					EXIT_FAILURE));
 	else
 	{
