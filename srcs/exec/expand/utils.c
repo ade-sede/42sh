@@ -17,8 +17,8 @@ int		w_addword (t_expand *exp, t_word *g_word, t_word *word)
 	if (exp->actlen == exp->maxlen)
 	{
 		exp->maxlen += W_ARRAY_SIZE;
-		exp->av_word = (char **)ft_realloc(sizeof(char *) * exp->actlen, exp->av_word,  sizeof(char *) * (1 + exp->maxlen));
-		exp->av_gword = (char **)ft_realloc(sizeof(char *) * exp->actlen, exp->av_gword, sizeof(char *) *  (1 + exp->maxlen));
+		exp->av_word = (char **)cl_realloc(sizeof(char *) * exp->actlen, exp->av_word,  sizeof(char *) * (1 + exp->maxlen));
+		exp->av_gword = (char **)cl_realloc(sizeof(char *) * exp->actlen, exp->av_gword, sizeof(char *) *  (1 + exp->maxlen));
 	}
 	allocated = 0;
 	if (g_word->str == NULL)

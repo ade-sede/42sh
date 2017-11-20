@@ -179,6 +179,6 @@ char	**word_expansion (const char *words, int flag)
 	ft_arraydel(&braced_words);
 	if (!(flag & NO_GLOBBING))
 		return (pathname_expension(&exp));
-//	ft_arraydel(&exp.av_gword); // FAIT PETER a=b
+	ft_arraydel(&exp.av_gword); // FAIT PETER a=b
 	return (exp.av_word);
 }

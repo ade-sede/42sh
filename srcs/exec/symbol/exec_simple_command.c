@@ -30,13 +30,6 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 		word_expanded = word_expansion(word->token->value, 0);
 		av = av ? ft_arrayjoin_free(word_expanded, av, 0b11) : word_expanded;
 	}
-	else if (io_redirect)
-	{
-		//av = av ? ft_arrayjoin_free(&io_redirect->heredoc, av, 0b11) : io_redirect->heredoc;
-		// TODO Donne il faut cree des char ** 
-	//	av = (char**)ft_parrnew();
-	//	ft_parrpush((void***)&av, io_redirect->heredoc);
-	}
 	if (io_redirect)
 		exec_io_redirect(io_redirect, redirect_list);
 	if (is_symb(ast->child[0], CMD_SUFFIX))
@@ -55,7 +48,7 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 #include <stdio.h>
 void	exec_assignment_word(t_ast *ast)
 {
-	char		**word_expanded;
+	char		**word_expanded = NULL;
 	char		*eq_pos;
 	
 	eq_pos = ft_strchr(ast->token->value, '=');
@@ -72,7 +65,7 @@ void	exec_assignment_word(t_ast *ast)
 		//fprintf(stderr, "word expanded NULL \n");
 		local_add_change_from_string(singleton_env(), ast->token->value);
 	}
-	//ft_arraydel(&word_expanded); //TODO: fait peter a=b
+	ft_arraydel(&word_expanded); //TODO: fait peter a=b
 }
 
 void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
