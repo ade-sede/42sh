@@ -177,6 +177,7 @@ SRC_FILE = \
 		   lexer/id/words.c \
 		   \
 		   lexer/lexer_action/bs.c \
+		   lexer/lexer_action/ar_exp.c \
 		   lexer/lexer_action/cmd_subst.c \
 		   lexer/lexer_action/comment.c \
 		   lexer/lexer_action/default.c \
@@ -215,6 +216,7 @@ SRC_FILE = \
 		   parser/parser.c \
 		   parser/parser_construct_prompt.c \
 		   parser/utils.c \
+		   parser/t_ast.c \
 		   \
 		   \
 		   exec/expand/parse_dollar.c \

@@ -83,7 +83,6 @@ int			ft_atoilong_safe(const char *str, char **end_ptr, long *result)
 		return (0);
 	while ('0' <= *str && *str <= '9')
 	{
-		printf("%c, %ld\n", *str, *result);
 		*result = (*result * 10) + (*str - '0');
 		str++;
 	}

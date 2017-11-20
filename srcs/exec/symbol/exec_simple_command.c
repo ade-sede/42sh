@@ -1,6 +1,8 @@
 #include "exec.h"
+#include "hash_table.h"
 #include "expand.h"
 #include "builtin.h"
+#include "failure.h"
 #include "local.h"
 #include "job_control.h"
 
@@ -120,6 +122,7 @@ int		exec_simple_command(t_ast *ast)
 	t_list	*redirect_list = NULL;
 	t_ast	*cmd_suffix = NULL;
 	t_lst_func	*fct = NULL;
+	int			exit_status = EXIT_SUCCESS;
 
 	if (is_symb(ast->child[0], CMD_PREFIX))
 		exec_cmd_prefix(ast->child[0], &redirect_list);
@@ -138,13 +141,16 @@ int		exec_simple_command(t_ast *ast)
 	exec_dup(redirect_list);
 	if (av && av[0])
 	{
-		if ((fct = get_function(singleton_env(), av[0])))
-			return (exec_function(fct->fct_body, av));
-		if (get_exec_builtin(av[0]))
-			return (exec_builtin(singleton_env(), (const char **)av));
-		exec_bin(singleton_env(), (const char **)av);
+		if (hash_get(singleton_env()->hash_table, av[0]))
+			exit_status = exec_bin(singleton_env(), (const char **)av);
+		else if ((fct = get_function(singleton_env(), av[0])))
+			exit_status = exec_function(fct->fct_body, av);
+		else if (get_exec_builtin(av[0]))
+			exit_status = exec_builtin(singleton_env(), (const char **)av);
+		else
+			exit_status = investigate_error(1, (const char *)av[0], "commmand not found", EXIT_FAILURE);
 		ft_arraydel(&av);
 	}
 	close_dup(redirect_list);
-	return (EXIT_SUCCESS);
+	return (exit_status);
 }

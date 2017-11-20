@@ -127,6 +127,7 @@ int	get_arith(t_expand *exp, t_word cpy_word, t_word cpy_g_word)
 		convertme = numresult;
 	w_addstr (&exp->word, ft_itoa_word (convertme, result));
 	w_addstr (&exp->g_word, ft_itoa_word (convertme, result));
+//	fprintf(stderr, "get arith{%s} \n", exp->word.str);
 	return (0);
 }
 
@@ -141,7 +142,7 @@ int		parse_arith_special_chars (t_expand *exp, t_word cpy_word, t_word cpy_g_wor
 	}
 	else if (exp->words[exp->offset] == '\\')
 		parse_qtd_backslash (&exp->g_word, &exp->word, exp->words, &exp->offset);
-	else if (ft_strchr("\n;{}",exp->words[exp->offset]))
+	else if (ft_strchr(";{}",exp->words[exp->offset]))
 		return bad_arith(exp, cpy_word, cpy_g_word);
 	else
 		w_addchar (&exp->word, exp->words[exp->offset]);
@@ -166,9 +167,10 @@ int		parse_arith (t_expand *exp)
 	cpy_word_g_word(exp, &cpy_word, &cpy_g_word);
 	while (exp->words[exp->offset])
 	{
-		printf("parse arith{%c} |%d|\n", exp->words[exp->offset], paren_depth);
+//		printf("parse arith{%c} |%d|\n", exp->words[exp->offset], paren_depth);
 		if (exp->words[exp->offset] == ')')
 		{
+//			fprintf(stderr, "parse arith{%s} %d\n", exp->word.str, paren_depth);
 			if (--paren_depth == 0)
 				return (get_arith(exp, cpy_word, cpy_g_word));
 			w_addchar (&exp->word, exp->words[exp->offset]);

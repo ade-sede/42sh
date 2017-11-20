@@ -64,7 +64,6 @@ int		exec_comm (char *comm, t_expand *exp, int quoted)
 #ifdef EXPAND_DEBUG
  fprintf (stderr, "value cmd subst{%s}\n", value.str);
  #endif
-
 	handle_fieldsplitting(value.str, exp, quoted);
 	w_free(&value);
 	return (0);

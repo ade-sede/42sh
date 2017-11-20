@@ -81,6 +81,7 @@ int add_pos_param(t_env *env, const char **argv, size_t index, size_t start)
 		nb_param = ft_itoa_base(i - 1, 10);
 		local_add_change_from_key_value(env, "#", nb_param);
 		free(nb_param);
+		ft_strdel(&all_param);
 	}
 	return (1);
 }
