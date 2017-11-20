@@ -34,8 +34,8 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 	{
 		//av = av ? ft_arrayjoin_free(&io_redirect->heredoc, av, 0b11) : io_redirect->heredoc;
 		// TODO Donne il faut cree des char ** 
-		av = (char**)ft_parrnew();
-		ft_parrpush((void***)&av, io_redirect->heredoc);
+	//	av = (char**)ft_parrnew();
+	//	ft_parrpush((void***)&av, io_redirect->heredoc);
 	}
 	if (io_redirect)
 		exec_io_redirect(io_redirect, redirect_list);
@@ -139,14 +139,18 @@ int		exec_simple_command(t_ast *ast)
 	{
 		av_cmdsuffix = exec_cmd_suffix(cmd_suffix, &redirect_list, av_cmdsuffix);
 	//	fprintf(stderr, "[%s]\n", av_cmdsuffix[1]);
-		av = av ? ft_arrayjoin_free(av, av_cmdsuffix, 0b11) : av_cmdsuffix;
+		if (av_cmdsuffix)
+			av = av ? ft_arrayjoin_free(av, av_cmdsuffix, 0b11) : av_cmdsuffix;
 	}
 	exec_dup(redirect_list);
 	if (av && av[0])
 	{
+		printf("function a[0]: %s\n", av[0]);
 		if ((fct = get_function(singleton_env(), av[0])))
+		{
+			printf("get function a[0]: %s\n", av[0]);
 			return (exec_function(fct->fct_body, av));
-
+		}
 		if (get_exec_builtin(av[0]))
 			return (exec_builtin(singleton_env(), (const char **)av));
 		exec_bin(singleton_env(), (const char **)av);
