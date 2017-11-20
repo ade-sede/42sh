@@ -33,49 +33,59 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c,
 }
 
 char			**comple_matching_cursorword(t_line *line, t_comple *c,
-		int cmd_name_open)
+		int cmd_name)
 {
 
 	char		**res;
+	
 //	t_list		*glob_list;
 
 	/*
 **		if (glob_list = pathname_expansion(token, 0)))
 **			res = comple_globing_matches(line, c, glob_list);
 */
-	if (!ft_strchr(c->current_word, '/') && !cmd_name_open)
-		res = comple_bin_matches(line, c);
-	else
+	//if (!ft_strchr(c->current_word, '/') && cmd_name)
+		//res = comple_bin_matches(line, c);
+	//else
+		//res = comple_file_matches(line, c);
+	if (!cmd_name || ft_strchr(c->current_word, '/'))
 		res = comple_file_matches(line, c);
+	else
+		res = comple_bin_matches(line, c);
 	return (res);
 
 	return (NULL);
 }
 
-int		lex_completion(t_line *line)
+int		lex_completion(t_line *line, int *cmd_name_open)
 {
 	t_lexer		lex;
 	char		line_pos_char;
-	int			cmd_name_open;
 	t_list		*token_list = NULL;
+	t_list		*last;
+	int			cmd_name = 1;
 
-	line_pos_char = line->buff[line->pos]; //TODO: attention peut etre que line-buff + line-pos point sur le \0
+	line_pos_char = line->buff[line->pos];
 	line->buff[line->pos] = '\0';
 	init_lexer(&lex, line->buff);
 	get_token_list(&lex, &token_list, singleton_env()->alias);
 	line->buff[line->pos] = line_pos_char;
-	cmd_name_open = lex.cmd_name_open;
+	*cmd_name_open = lex.cmd_name_open;
+	last = ft_last_simple_lst(token_list);
+	if (last && last->data)
+		cmd_name = ((t_token *)last->data)->cmd_name;
 	remove_lexer(&lex, &token_list);
-	return (cmd_name_open);
+	return (cmd_name);
 }
 
 char			**comple_matching(t_line *line, t_comple *c)
 {
 	char		**res;
 	int			cmd_name_open;
+	int			cmd_name;
 
 	c->to_replace = get_start_word_cursor(line);
-	cmd_name_open = lex_completion(line);
+	cmd_name = lex_completion(line, &cmd_name_open);
 	res = NULL;
 	c->current_word = get_current_word_cursor(line);
 	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
@@ -83,7 +93,7 @@ char			**comple_matching(t_line *line, t_comple *c)
 				&& line->buff[line->pos - 1] == ' '))
 		res = comple_matching_no_cursorword(line, c, cmd_name_open);
 	else
-		res = comple_matching_cursorword(line, c, cmd_name_open);
+		res = comple_matching_cursorword(line, c, cmd_name);
 	free(c->current_word);
 	return (res);
 }

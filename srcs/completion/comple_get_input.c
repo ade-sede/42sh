@@ -27,6 +27,8 @@ static	int		valid_comple(t_line *line, int keycode)
 	char	tmp;
 	char	*start_ptr;
 
+//	if (line->completion)
+		//return (TRUE);
 	if (!(line->completion) && keycode == KEY_TAB)
 	{
 		tmp = line->buff[line->pos];
@@ -86,7 +88,7 @@ int		comple_get_input(t_line *line, int keycode)
 	{
 		comple_set_signals();
 		if (!(comple_init(line, c)))
-			return (0);
+			return (1);
 		comple_refresh(line, *c);
 		line->completion = 1;
 		return (1);

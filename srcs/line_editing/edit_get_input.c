@@ -102,7 +102,7 @@ char				*edit_get_input(void)
 			read(0, (char *)&keycode + 1, 7);
 		if (keycode != KEY_ALT_UP && keycode != KEY_ALT_DOWN)
 			l->col_target = -1;
-		if (btsearch_get_input(l, keycode) || history_get_input(l, keycode) || comple_get_input(l, keycode))
+		if (btsearch_get_input(l, keycode) || comple_get_input(l, keycode)|| history_get_input(l, keycode))
 			continue ;
 		if (end_of_input(l, keycode))
 			return (edit_exit(l));

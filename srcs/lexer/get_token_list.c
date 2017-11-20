@@ -133,8 +133,12 @@ static	int	debug_token_list(t_list *token_list)
 	{
 		token = token_list->data;
 		/* Print bar */
+
 		printf("%s", i == 1 ? "\u250c" : "\u251c");
 		for (size_t i = 0; i != value_size + 2; i++)
+			printf("%s", "\u2500");
+		printf("%s", i == 1 ? "\u252c" : "\u253c");
+		for (size_t i = 0; i != 13; i++)
 			printf("%s", "\u2500");
 		printf("%s", i == 1 ? "\u252c" : "\u253c");
 		for (size_t i = 0; i != id_size + 2; i++)
@@ -153,6 +157,10 @@ static	int	debug_token_list(t_list *token_list)
 		for (int i = value_size - ft_strlen(token->value) + 1; i; --i)
 			printf(" ");
 		printf("%s", "\u2502");
+		printf(" %s", token->cmd_name ? "CMD_NAME" : "NO_CMD_NAME");
+		for (int i = 0; i != 13; ++i)
+			printf(" ");
+		printf("%s", "\u2502");
 		printf(" %s", get_id(token->id));
 		for (int i = id_size - ft_strlen(get_id(token->id)) + 1; i; --i)
 			printf(" ");
@@ -169,6 +177,9 @@ static	int	debug_token_list(t_list *token_list)
 	/* Print bot line */
 	printf("%s", "\u2514");
 	for (size_t i = 0; i != value_size + 2; i++)
+		printf("%s", "\u2500");
+	printf("%s", "\u2534");
+	for (size_t i = 0; i != 13; i++)
 		printf("%s", "\u2500");
 	printf("%s", "\u2534");
 	for (size_t i = 0; i != id_size + 2; i++)
