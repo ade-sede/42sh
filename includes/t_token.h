@@ -1,7 +1,7 @@
 #ifndef T_TOKEN_H
 # define T_TOKEN_H
 # include <sys/types.h>
-
+# include "libft.h"
 /*
 **	Every type of token we can find accoring to the POSIX STANDARD should be
 **	listed in the following enums. The first enum of each groups starts at the
@@ -59,7 +59,7 @@ enum
 	TK_LPAREN,
 	TK_RPAREN,
 	TK_IN,
-	$ = 666
+	DOLAR = 666
 };
 
 #define _T_STATE 0
@@ -73,7 +73,7 @@ struct s_info
 	int		state;
 	int		count;
 	int		nest;
-	char	*value;
+	t_word	value;
 };
 
 typedef struct	s_token

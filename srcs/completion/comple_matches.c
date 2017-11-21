@@ -20,40 +20,12 @@
 **		si prev
 */
 
-/* static t_lexer	get_lex_line_cursor(t_line *line) */
-/* { */
-/* 	char		line_pos_char; */
-/* 	t_lexer		lex; */
-
-/* 	line_pos_char = line->buff[line->pos]; */
-/* 	line->buff[line->pos] = '\0'; */
-/* 	lex.reopen = 0; */
-/* 	lex = init_lexer(line->buff); */
-/* 	line->buff[line->pos] = line_pos_char; */
-/* 	return (lex); */
-/* } */
-
-/* t_token			*lex_completion(t_lexer *lex) */
-/* { */
-/* 	t_token	*token; */
-/* 	t_token	*prev_token; */
-/* 	int		reopen; */
-
-/* 	prev_token = NULL; */
-/* 	while ((token = start_lex(lex, &reopen)) != NULL) */
-/* 	{ */
-/* 		free_token(prev_token); */
-/* 		prev_token = token; */
-/* 	} */
-/* 	return (prev_token); */
-/* } */
-
 char			**comple_matching_no_cursorword(t_line *line, t_comple *c,
-		t_lexer lex)
+		int cmd_name_open)
 {
 	char		**res;
 
-	if (!lex.cmd_name_open)
+	if (!cmd_name_open)
 		res = comple_file_matches(line, c);
 	else
 		res = comple_bin_matches(line, c);
@@ -61,43 +33,67 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c,
 }
 
 char			**comple_matching_cursorword(t_line *line, t_comple *c,
-		t_token *token)
+		int cmd_name)
 {
-	(void)token, (void)line, (void)c, (void)token;
-	/* char		**res; */
-	/* t_list		*glob_list; */
 
-	/* if (token != NULL && (glob_list = pathname_expansion(token, 0))) */
-	/* 	res = comple_globing_matches(line, c, glob_list); */
-	/* else if (!ft_strchr(c->current_word, '/') && token != NULL && \ */
-	/* 		token->cmd_name == 1) */
-	/* 	res = comple_bin_matches(line, c); */
-	/* else */
-	/* 	res = comple_file_matches(line, c); */
-	/* return (res); */
+	char		**res;
+	
+//	t_list		*glob_list;
+
+	/*
+**		if (glob_list = pathname_expansion(token, 0)))
+**			res = comple_globing_matches(line, c, glob_list);
+*/
+	//if (!ft_strchr(c->current_word, '/') && cmd_name)
+		//res = comple_bin_matches(line, c);
+	//else
+		//res = comple_file_matches(line, c);
+	if (!cmd_name || ft_strchr(c->current_word, '/'))
+		res = comple_file_matches(line, c);
+	else
+		res = comple_bin_matches(line, c);
+	return (res);
+
 	return (NULL);
+}
+
+int		lex_completion(t_line *line, int *cmd_name_open)
+{
+	t_lexer		lex;
+	char		line_pos_char;
+	t_list		*token_list = NULL;
+	t_list		*last;
+	int			cmd_name = 1;
+
+	line_pos_char = line->buff[line->pos];
+	line->buff[line->pos] = '\0';
+	init_lexer(&lex, line->buff);
+	get_token_list(&lex, &token_list, singleton_env()->alias);
+	line->buff[line->pos] = line_pos_char;
+	*cmd_name_open = lex.cmd_name_open;
+	last = ft_last_simple_lst(token_list);
+	if (last && last->data)
+		cmd_name = ((t_token *)last->data)->cmd_name;
+	remove_lexer(&lex, &token_list);
+	return (cmd_name);
 }
 
 char			**comple_matching(t_line *line, t_comple *c)
 {
-	(void)line, (void)c;
-	/* char		**res; */
-	/* t_lexer		lex; */
-	/* t_token		*token; */
+	char		**res;
+	int			cmd_name_open;
+	int			cmd_name;
 
-	/* c->to_replace = get_start_word_cursor(line); */
-	/* lex = get_lex_line_cursor(line); */
-	/* token = lex_completion(&lex); */
-	/* res = NULL; */
-	/* c->current_word = get_current_word_cursor(line); */
-	/* if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' ' */
-	/* 		|| line->buff[line->pos] == '\0') */
-	/* 					&& line->buff[line->pos - 1] == ' ')) */
-	/* 	res = comple_matching_no_cursorword(line, c, lex); */
-	/* else */
-	/* 	res = comple_matching_cursorword(line, c, token); */
-	/* free(lex.line); */
-	/* free(c->current_word); */
-	/* free_token(token); */
-	return (NULL);
+	c->to_replace = get_start_word_cursor(line);
+	cmd_name = lex_completion(line, &cmd_name_open);
+	res = NULL;
+	c->current_word = get_current_word_cursor(line);
+	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
+					|| line->buff[line->pos] == '\0')
+				&& line->buff[line->pos - 1] == ' '))
+		res = comple_matching_no_cursorword(line, c, cmd_name_open);
+	else
+		res = comple_matching_cursorword(line, c, cmd_name);
+	free(c->current_word);
+	return (res);
 }

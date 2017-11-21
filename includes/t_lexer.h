@@ -62,4 +62,5 @@ int			init_lexer(t_lexer *lex, const char *line);
 int			free_lexer(t_lexer *lex);
 int			free_lexer_le(t_lexer *lex);
 int			init_le_lexer(t_lexer *lex, const char *line);
+void	remove_lexer(t_lexer *lex, t_list **token_list);
 #endif

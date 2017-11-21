@@ -29,6 +29,7 @@ SRC_FILE = \
 		   builtin/fg.c \
 		   builtin/jobs.c \
 		   builtin/read.c \
+		   builtin/read_get_input.c \
 		   builtin/read_options.c \
 		   builtin/set.c \
 		   builtin/setenv.c \
@@ -86,6 +87,7 @@ SRC_FILE = \
 		   exec/main_loop.c \
 		   exec/redir_utils.c \
 		   exec/get_input.c \
+		   exec/parse_heredoc.c \
 		   \
 		   \
 		   \
@@ -119,6 +121,7 @@ SRC_FILE = \
 		   failure/return_failure.c \
 		   \
 		   globing/curly_bracket_split.c \
+		   globing/change_state_quote.c \
 		   globing/curly_brackets.c \
 		   globing/curly_brackets_is_range.c \
 		   globing/curly_brackets_range.c \
@@ -158,6 +161,7 @@ SRC_FILE = \
 		   lexer/id/words.c \
 		   \
 		   lexer/lexer_action/bs.c \
+		   lexer/lexer_action/ar_exp.c \
 		   lexer/lexer_action/cmd_subst.c \
 		   lexer/lexer_action/comment.c \
 		   lexer/lexer_action/default.c \
@@ -196,9 +200,11 @@ SRC_FILE = \
 		   parser/parser.c \
 		   parser/parser_construct_prompt.c \
 		   parser/utils.c \
+		   parser/t_ast.c \
 		   \
 		   \
 		   exec/expand/parse_dollar.c \
+		   exec/expand/parse_arith.c \
 		   exec/expand/parse_quote.c \
 		   exec/expand/parse_tilde.c \
 		   exec/expand/parse_backtick.c \

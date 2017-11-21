@@ -53,7 +53,7 @@ void	get_token_id(t_lexer *lex, t_token *token)
 	else if (info->state != COMMENT && info->state != WHITESPACE) // Token is anything else
 	{
 		token->id = id_word(lex, token);
-		if (token->id == TK_WORD && check_prev_one_id(lex))
+		if (token->id == TK_WORD && check_prev_one_id(lex) && lex->cmd_name_open)
 		{
 			token->cmd_name = TRUE;
 			lex->cmd_name_open = FALSE;

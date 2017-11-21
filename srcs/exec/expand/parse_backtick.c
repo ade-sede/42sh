@@ -7,7 +7,7 @@
 #include "expand.h"
 
 /*  after "`" */
-int		parse_backtick (t_expand *exp)
+int		parse_backtick (t_expand *exp, int quoted)
 {
 	t_word comm;
 	w_newword (&comm);
@@ -16,7 +16,10 @@ int		parse_backtick (t_expand *exp)
 	{
 		if (exp->words[exp->offset] == '`')
 		{
-			exec_comm (comm.str, exp);
+#ifdef EXPAND_DEBUG
+			dprintf(2, exp->words[exp->offset]);
+#endif
+			exec_comm (comm.str, exp, quoted);
 			return 0;
 		}
 		else

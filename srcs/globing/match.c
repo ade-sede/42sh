@@ -23,14 +23,35 @@ int		char_is_escaped(char *regex, int r_i)
 
 int		stop_condition(t_matches *m)
 {
-	ft_simple_lst_pushback(&m->list, \
-			ft_simple_lst_create(ft_strdup(m->to_match)));
+	t_list	*tmp;
+	t_list	*prev;
+	t_list	*new_node;
+
+	new_node = ft_simple_lst_create(ft_strdup(m->to_match));
+	prev = NULL;
+	tmp = m->list;
+	while (tmp)
+	{
+		if (ft_strcmp(tmp->data, m->to_match) > 0)
+			break ;
+		prev = tmp;
+		tmp = tmp->next;
+	}
+	if (prev)
+	{
+		prev->next = new_node;
+		new_node->next = tmp;
+	}
+	else
+		ft_simple_lst_add(&m->list, new_node);
 	return (1);
 }
 
 int		match(t_matches *m, int m_i, int r_i)
 {
-//	printf("r_i: %c, m_i: %c\n", m->regex[r_i], m->to_match[m_i]);
+#ifdef GLOB_DEBUG
+ printf("r_i: %c, m_i: %c\n", m->regex[r_i], m->to_match[m_i]);
+ #endif
 	if (m->regex[r_i] == '\0' && m->to_match[m_i] == '\0') //attention
 		return (stop_condition(m));
 	else if (m->regex[r_i] != '\0' && m->to_match[m_i] == '\0' \
@@ -50,9 +71,13 @@ int		match(t_matches *m, int m_i, int r_i)
 		return (match(m, m_i + 1, r_i + 1));
 	if (m->regex[r_i] == '[' && valid_square_bracket(m->regex, r_i))
 	{
-//		printf("valid\n");
+#ifdef GLOB_DEBUG
+ printf("valid\n");
+ #endif
 		return (func_square_bracket(m, m_i, r_i));
 	}
-//	printf("invalid\n");
+#ifdef GLOB_DEBUG
+ printf("invalid\n");
+ #endif
 	return (func_cmp(m, m_i, r_i));
 }

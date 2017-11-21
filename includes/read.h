@@ -24,9 +24,8 @@ typedef struct s_read
 
 int				builtin_read(t_env *env, const char **argv);
 
-//unsigned char	read_builtin();
 char			parse_read(char *arg, t_read *option, char ***args);
 char			*read_retrieve(t_read options);
-
+char			*read_get_input(t_read read);
 #endif
 

@@ -288,4 +288,5 @@ int					ft_is_backslash(char *str, int n);
 
 char				*ft_itoa_word(int n, char nbr[20]);
 int					ft_str_is_clear_n(char *str, size_t n);
+int			ft_atoilong_safe(const char *str, char **end_ptr, long *result);
 #endif

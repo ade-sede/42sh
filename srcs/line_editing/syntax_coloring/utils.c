@@ -93,23 +93,12 @@ int		consume_input_le(t_lexer *lex, t_line *line)
 
 int		pop_state_le(t_lexer *lex, ssize_t	**info)
 {
-	ssize_t	*old_info;
-	ssize_t	*new_info;
-	ssize_t	*color_info;
-
-	/*
-	**	Close color and enter color of the state we come back to.
-	*/
+	ssize_t		*current_info;
 	free(*info);
-	new_info = create_state_info_le();
-	old_info = lex->state->data;
-	old_info[_T_END] = lex->pos - 1;
-	copy_state_info_le(old_info, new_info);
+	current_info = lex->state->data;
 	ft_simple_lst_del_one(&lex->state_list, lex->state, NULL);
 	lex->state = ft_last_simple_lst(lex->state_list);
-	*info = new_info;
-	color_info = lex->state->data;
-	ft_putstr_fd(get_color(color_info, lex->cmd_name_open), 2);
+	*info = current_info;
 	return (1);
 }
 

@@ -45,7 +45,9 @@ int	match_open_dir(t_matches *m, int m_i, int r_i, char *dir_name)
 		return (bad_dir(dir_name));
 	m_dir_cpy = m->dir;
 	m->dir = dir_name;
-//	printf("m->dir: {%s}\n", m->dir);
+#ifdef GLOB_DEBUG
+ printf("m->dir: {%s}\n", m->dir);
+ #endif
 	while ((dirent = readdir(dir)) != NULL)
 	{
 		if (ft_strequ(m->dir, "."))
@@ -64,11 +66,11 @@ int	match_open_dir(t_matches *m, int m_i, int r_i, char *dir_name)
 		{
 			m->to_match = (ft_strjoin3_free(m->dir, "/", dirent->d_name, 0));
 			cpy_to_match[1] = m->to_match;
-			bool_match |= (match(m, m_i + 1, r_i));
+			if (dirent->d_name[0] != '.' || (dirent->d_name[0] == '.' && m->regex[r_i] == '.'))
+				bool_match |= (match(m, m_i + 1, r_i));
 		}
 		//m->to_match = match_open_file(m->dir, dirent->d_name);
 		//cpy_to_match[1] = m->to_match;
-		//if (dirent->d_name[0] != '.' || (dirent->d_name[0] == '.' && m->regex[r_i] == '.'))
 		free(cpy_to_match[1]);
 	}
 	closedir(dir);

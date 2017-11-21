@@ -24,7 +24,7 @@ static char	*g_operator_list[] =
 
 int		lex_action_operator(t_lexer *lex, struct s_info **state_info)
 {
-	char	*operator_string;
+	t_word	operator_string;
 	struct s_info *info;
 	size_t	i;
 
@@ -35,15 +35,16 @@ int		lex_action_operator(t_lexer *lex, struct s_info **state_info)
 		pop_state(lex, state_info);
 		return (TRUE);
 	}
-	operator_string = ft_strnew(info->count + 1);
-	ft_memcpy(operator_string, info->value, info->count);
-	operator_string[info->count] = lex->line[lex->pos];
-	while (g_operator_list[i] && !ft_strequ(g_operator_list[i], operator_string))
+	w_newword(&operator_string);
+	if (info->value.str)
+		w_addstr(&operator_string, info->value.str);
+	w_addchar(&operator_string, lex->line[lex->pos]);
+	while (g_operator_list[i] && !ft_strequ(g_operator_list[i], operator_string.str))
 		++i;
 	if (g_operator_list[i])
 		consume_input(lex);
 	else
 		pop_state(lex, state_info);
-	free(operator_string);
+	w_free(&operator_string);
 	return (TRUE);
 }

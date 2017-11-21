@@ -12,7 +12,7 @@ int		lex_action_cmd_subst(t_lexer *lex, struct s_info **state_info)
 	else if (lex->line[lex->pos] == '\\')
 		push_state(lex, BS);
 	/* else if (lex->line[info[_T_START]] == '`') */
-	else if (info->value[0] == '`')
+	else if ((!info->value.str && lex->line[lex->pos] == '`') || info->value.str[0] == '`')
 	{
 		if (lex->line[lex->pos] == '`')
 		{
@@ -40,9 +40,16 @@ int		lex_action_cmd_subst(t_lexer *lex, struct s_info **state_info)
 	{
 		if (lex->line[lex->pos] == '(')
 		{
-			/* (info[_T_NEST])++; */
-			info->nest++;
-			consume_input(lex);
+			if (info->count == 2)
+			{
+				consume_input(lex);
+				change_state(lex, AR_EXP);
+			}
+			else
+			{
+				info->nest++;
+				consume_input(lex);
+			}
 		}
 		else if (lex->line[lex->pos] == '"')
 			push_state(lex, DQUOTES);
@@ -52,7 +59,6 @@ int		lex_action_cmd_subst(t_lexer *lex, struct s_info **state_info)
 			push_state(lex, PARAM_EXP);
 		else if (lex->line[lex->pos] == ')')
 		{
-			/* if (info[_T_NEST] == 0) */
 			if (info->nest == 0)
 			{
 				consume_input(lex);

@@ -100,6 +100,7 @@ int		lex_action_newline(t_lexer *lex, struct s_info **state_info);
 int		lex_action_comment(t_lexer *lex, struct s_info **state_info);
 int		lex_action_param_exp(t_lexer *lex, struct s_info **state_info);
 int		lex_action_cmd_subst(t_lexer *lex, struct s_info **state_info);
+int		lex_action_ar_exp(t_lexer *lex, struct s_info **state_info);
 
 
 /*

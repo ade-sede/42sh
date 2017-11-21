@@ -13,6 +13,7 @@ static struct s_lex_action g_lex_action[] =
 	{NEWLINE, &lex_action_newline},
 	{COMMENT, &lex_action_comment},
 	{PARAM_EXP, &lex_action_param_exp},
+	{AR_EXP, &lex_action_ar_exp},
 	{CMD_SUBST, &lex_action_cmd_subst},
 };
 

@@ -1,6 +1,8 @@
 #include "exec.h"
+#include "hash_table.h"
 #include "expand.h"
 #include "builtin.h"
+#include "failure.h"
 #include "local.h"
 #include "job_control.h"
 
@@ -11,7 +13,7 @@
 **	                 | cmd_suffix WORD
 */
 
-char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
+int	exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char ***av)
 {
 	t_ast	*io_redirect = NULL;
 	t_ast	*word = NULL;
@@ -28,13 +30,14 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 	if (word)
 	{
 		word_expanded = word_expansion(word->token->value, 0);
-		av = av ? ft_arrayjoin_free(word_expanded, av, 0b11) : word_expanded;
+		*av = *av ? ft_arrayjoin_free(word_expanded, *av, 0b11) : word_expanded;
 	}
 	if (io_redirect)
-		exec_io_redirect(io_redirect, redirect_list);
+		if (!(exec_io_redirect(io_redirect, redirect_list)))
+			return (0);
 	if (is_symb(ast->child[0], CMD_SUFFIX))
 		return (exec_cmd_suffix(ast->child[0], redirect_list, av));
-	return (av);
+	return (1);
 }
 
 /*
@@ -48,7 +51,7 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 #include <stdio.h>
 void	exec_assignment_word(t_ast *ast)
 {
-	char		**word_expanded;
+	char		**word_expanded = NULL;
 	char		*eq_pos;
 	
 	eq_pos = ft_strchr(ast->token->value, '=');
@@ -65,10 +68,10 @@ void	exec_assignment_word(t_ast *ast)
 		//fprintf(stderr, "word expanded NULL \n");
 		local_add_change_from_string(singleton_env(), ast->token->value);
 	}
-	ft_arraydel(&word_expanded);
+	ft_arraydel(&word_expanded); //TODO: fait peter a=b
 }
 
-void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
+int	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
 {
 	t_ast	*assignement_word = NULL;
 	t_ast	*io_redirect = NULL;
@@ -84,9 +87,12 @@ void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
 	if (assignement_word)
 		exec_assignment_word(assignement_word);
 	if (io_redirect)
-		exec_io_redirect(io_redirect, redirect_list);
+		if (!(exec_io_redirect(io_redirect, redirect_list)))
+			return (0);
 	if (is_symb(ast->child[0], CMD_PREFIX))
-		exec_cmd_prefix(ast->child[0], redirect_list);
+		return (exec_cmd_prefix(ast->child[0], redirect_list));
+	return (1);
+
 }
 
 char	*extract_word(t_ast *ast)
@@ -119,35 +125,41 @@ int		exec_simple_command(t_ast *ast)
 	char	**av_cmdsuffix = NULL;
 	t_list	*redirect_list = NULL;
 	t_ast	*cmd_suffix = NULL;
-	t_ast	*fct_body = NULL;
+	t_lst_func	*fct = NULL;
+	int			exit_status = EXIT_SUCCESS;
 
 	if (is_symb(ast->child[0], CMD_PREFIX))
-		exec_cmd_prefix(ast->child[0], &redirect_list);
-
+	{
+		if (!(exec_cmd_prefix(ast->child[0], &redirect_list)))
+			return (EXIT_FAILURE);
+	}
 	av = get_cmd_name(ast, 0);
-
 	if (is_symb(ast->child[1], CMD_SUFFIX))
 		cmd_suffix = ast->child[1];
 	if (is_symb(ast->child[2], CMD_SUFFIX))
 		cmd_suffix = ast->child[2];
-
 	if (cmd_suffix)
 	{
-		av_cmdsuffix = exec_cmd_suffix(cmd_suffix, &redirect_list, av_cmdsuffix);
-		av = av ? ft_arrayjoin_free(av, av_cmdsuffix, 0b11) : av_cmdsuffix;
+		if (!exec_cmd_suffix(cmd_suffix, &redirect_list, &av_cmdsuffix))
+			return (EXIT_FAILURE);
+
+	//	fprintf(stderr, "[%s]\n", av_cmdsuffix[1]);
+		if (av_cmdsuffix)
+			av = av ? ft_arrayjoin_free(av, av_cmdsuffix, 0b11) : av_cmdsuffix;
 	}
 	exec_dup(redirect_list);
-	
 	if (av && av[0])
 	{
-		if ((fct_body = get_function(singleton_env(), av[0])))
-			return (exec_function(fct_body, av));
-
-		if (get_exec_builtin(av[0]))
-			return (exec_builtin(singleton_env(), (const char **)av));
-		exec_bin(singleton_env(), (const char **)av);
+		if ((fct = get_function(singleton_env(), av[0])))
+			exit_status = exec_function(fct->fct_body, av);
+		else if (get_exec_builtin(av[0]))
+			exit_status = exec_builtin(singleton_env(), (const char **)av);
+		else if (hash_get(singleton_env()->hash_table, av[0]))
+			exit_status = exec_bin(singleton_env(), (const char **)av);
+		else
+			exit_status = investigate_error(1, (const char *)av[0], "commmand not found", EXIT_FAILURE);
 		ft_arraydel(&av);
 	}
 	close_dup(redirect_list);
-	return (EXIT_SUCCESS);
+	return (exit_status);
 }

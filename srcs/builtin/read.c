@@ -122,28 +122,20 @@ int					builtin_read(t_env *env, const char **argv)
 	
 	if (!(error = parse_option(&options, &argv)) || error == 2)
 		return !(error) ? 2 : 1;
-	if (isatty(options.fd))
-		conf_term_non_canonical();
-	load_prompt(env, line, NULL,options.prompt ?options.prompt: "read> ");//"$> ");
-	ft_putstr("\033[31m");// fd (2)
+	 if (isatty(options.fd))
+	 	conf_term_non_canonical();
+	   load_prompt(env, line, NULL,options.prompt ?options.prompt: "read> ");//"$> ");
+	//ft_putstr("\033[31m");// fd (2)
 	put_prompt(line);
-	ft_putstr("\x1b[0m");// fd (2)
-	edit_line_init(singleton_line(), &edit_set_signals_reopen);
-	line->read = &options;
-	line->read_builtin = 1;
-	values = edit_get_input();
-	if (isatty(options.fd))
-		conf_term_canonical();
+	//ft_putstr("\x1b[0m");// fd (2)
+	values = read_get_input(options);
+	//if (*values && values[ft_strlen(values) - 1] != '\n')
+		ft_putstr("\n");// fd (2)
+	 if (isatty(options.fd))
+	 	conf_term_canonical();
 	split = split_values(values, options);
 	//free(values);
 	assign_values((char**)argv, split, env);
-	line->read_builtin ^= error;
-	line->read = NULL;
 	ft_bzero(line->buff, ft_strlen(line->buff));
-	//ft_parrfree((void**)split);
-	//line->read = options;
-	//ft_putchar('"');	
-	//ft_putstr(tmpline);	
-	//ft_putchar('"');	
 	return (0);
 }

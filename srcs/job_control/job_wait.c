@@ -28,7 +28,7 @@ int		get_job_exit_status(t_job *j)
 	else if (p->stopped)
 		return (EXIT_FAILURE);
 	else if (WIFSIGNALED(p->status))
-		return (EXIT_FAILURE);
+		return (128 + WTERMSIG(p->status));//EXIT_FAILURE);
 	return (EXIT_SUCCESS); //TODO:attention peut etre exit failure
 }
 

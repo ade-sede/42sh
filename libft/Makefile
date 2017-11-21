@@ -19,6 +19,7 @@ COLOR_WHITE		= \033[1;37m
 
 SRC = \
 	fatal.c \
+	str/string.c \
 	ft_digit_count.c \
 	ft_is_1.c \
 	ft_is_2.c \

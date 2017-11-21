@@ -74,14 +74,18 @@ int				exec(t_ast	*ast);
 int				is_token(t_ast *ast, int token_id);
 int				is_symb(t_ast *ast, int symbol);
 
-void			exec_io_redirect(t_ast	*ast, t_list **redirect_list);
+int		exec_io_redirect(t_ast	*ast, t_list **redirect_list);
 
 char	**get_cmd_name(t_ast *ast, int flag);
-t_ast	*get_function(t_env *env, char *cmd_name);
 int		exec_function(t_ast *fct_body, char **av);
+t_lst_func		*get_function(t_env *env, char *cmd_name);
 void	exec_redirect_list(t_ast *ast, t_list **redirect_list);
 char	*stream_get_line(int stream);
 char	*line_editing_get_line(t_line *line, t_history *h,
 		void (*sig_handler)(void));
 int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes);
+
+void	read_heredoc(t_ast *ast, char *target);
+void	parse_heredoc(t_ast *ast);
+
 #endif

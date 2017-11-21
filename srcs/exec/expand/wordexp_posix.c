@@ -41,7 +41,9 @@ static char	**pathname_expension(t_expand *exp)
 	i = 0;
 	while (i < exp->actlen)
 	{
-		match_list = glob(exp->av_gword[i]);
+		match_list = NULL;
+		if (has_glob_char(exp->av_gword[i]))
+			match_list = glob(exp->av_gword[i]);
 		if (match_list)
 		{
 			matches = list_to_array(match_list);
@@ -102,24 +104,20 @@ static int		parse_loop (const char *words, t_expand *exp)
 		{
 			++exp->offset;
 			parse_dquote (exp);
-			if (!exp->word.str && !words[1 + exp->offset])
-				w_addword (exp, &exp->g_word, &exp->word);
 		}
 		else if (words[exp->offset] == '\'')
 		{
 			++exp->offset;
 			parse_squote (&exp->g_word, &exp->word, words, &exp->offset);
-			if (!exp->word.str && !words[1 + exp->offset])
-				w_addword (exp, &exp->g_word, &exp->word);
 		}
 		else if (words[exp->offset] == '`')
 		{
-			++exp->offset;
-			parse_backtick (exp);
+//			++exp->offset;
+			parse_backtick (exp, 0);
 		}
 		else if (words[exp->offset] == '$')
 		{
-			parse_dollars (exp);
+			parse_dollars (exp, 0);
 #ifdef EXPAND_DEBUG
  fprintf (stderr, "word {%s}\n", exp->word.str);
  #endif
@@ -145,14 +143,15 @@ static int		parse_loop (const char *words, t_expand *exp)
 	if (exp->word.str != NULL)
 	{
 #ifdef EXPAND_DEBUG
- fprintf (stderr, "word add {%s}\n", exp->word.str);
+		fprintf (stderr, "PARSE LOOP word add {%s}\n", exp->word.str);
+		fprintf (stderr, "PARSE LOOP word add {%s}\n", exp->g_word.str);
  #endif
 		w_addword (exp, &exp->g_word, &exp->word);
 	}
 	return (0);
 }
 
-char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPLITTING
+char	**word_expansion (const char *words, int flag)
 {
 	char	**braced_words;
 	t_expand exp;
@@ -172,13 +171,14 @@ char	**word_expansion (const char *words, int flag) // NO_GLOBING | NO_FIELD_SPL
 		parse_loop (braced_words[i], &exp);
 		i++;
 	}
-	//for (i=0; i < exp.actlen; i++)
 #ifdef EXPAND_DEBUG
- fprintf(stderr,"w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
+	for (i=0; i < exp.actlen; i++)
+	 fprintf(stderr,"w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
  #endif
 	free((void *)exp.ifs);
+	ft_arraydel(&braced_words);
 	if (!(flag & NO_GLOBBING))
 		return (pathname_expension(&exp));
-	ft_arraydel(&exp.av_gword);
+	ft_arraydel(&exp.av_gword); // FAIT PETER a=b
 	return (exp.av_word);
 }
