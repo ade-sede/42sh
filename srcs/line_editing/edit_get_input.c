@@ -64,7 +64,7 @@ int	g_abort_opening;
 
 static int		end_of_input(t_line *line, int keycode)
 {
-	if (line->read_builtin)
+	/*if (line->read_builtin)
 	{
 		if (line->read->nchars && line->read->nchars == (int)line->len)
 			return (1);
@@ -74,7 +74,7 @@ static int		end_of_input(t_line *line, int keycode)
 		if ((char)keycode == line->read->delim)
 			return (1);
 	}
-	else if (keycode == KEY_ENTER)
+	else */if (keycode == KEY_ENTER)
 	{
 		if (line->verbatim)
 			return (0);

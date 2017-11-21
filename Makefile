@@ -30,6 +30,7 @@ SRC_FILE = \
 		   builtin/fg.c \
 		   builtin/jobs.c \
 		   builtin/read.c \
+		   builtin/read_get_input.c \
 		   builtin/read_options.c \
 		   builtin/set.c \
 		   builtin/setenv.c \
