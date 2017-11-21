@@ -173,7 +173,7 @@ int		id_word(t_lexer *lex, t_token *token)
 	if ((func_name_token = check_function_name(lex, token->value)))
 		func_name_token->id = TK_NAME;
 	if (check_io_number(token))
-		id = ft_atoi(token->value);
+		id = TK_IO_NUMBER;
 	else if (check_assignement_word(lex, token->value))
 		id = TK_ASSIGNMENT_WORD;
 	else if (check_prev_1(lex))

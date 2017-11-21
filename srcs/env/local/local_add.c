@@ -14,6 +14,8 @@ int		local_add_from_key_value(t_env *env, const char *key, const char *value)
 
 	local = create_local(key, value);
 	ft_simple_lst_pushback(&env->local, ft_simple_lst_create(local));
+	if (env_getenv((const char **)env->environ, key, NULL))
+		env_add_change(env, key, value);
 	return (1);
 }
 

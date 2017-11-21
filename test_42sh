@@ -1,0 +1,2615 @@
+[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[1;33m~[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[1;33m~[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;160mx[0m[31m[38;5;160mx[0m[31m[1;33m~[0m[31m[38;5;160mx[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m[31m[38;5;34m.[0m                                                                                                                                  
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/002-together-stdout-first[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `M>&N`, that means `redirect M to where N is redirected`.
+  In this test the standard output is specified first.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711212122_1 TOKEN201711212122_2 1>new_file_stderr_and_stdout 2>&1[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711212122_2`[0m
+[38;5;239m  01: TOKEN201711212122_2[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_2`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711212122_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711212122_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/003-together-stderr-first[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `M>&N`, that means `redirect M to where N is redirected`.
+  In this test the standard error is specified first.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711212122_1 TOKEN201711212122_2 2>new_file_stderr_and_stdout 1>&2[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_2`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711212122_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_2`[0m
+[38;5;239m  01: TOKEN201711212122_1[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711212122_1$`[0m
+[31m[38;5;34m  SUCCESS    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711212122_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/004-together[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `&>...`, that means `redirect stdout and stderr to ...`.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "new_file_stderr_and_stdout"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711212122_1 TOKEN201711212122_2 &>new_file_stderr_and_stdout[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711212122_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_2`[0m
+[38;5;239m  01: TOKEN201711212122_1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711212122_2`[0m
+[38;5;239m  01: TOKEN201711212122_2[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711212122_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711212122_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m21sh/redirections/outputs/truncating/multiple/005-together-with-whitespaces[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  A right redirection can be associated to the twice outputs by using `&>...`, that means `redirect stdout and stderr to ...`.
+  In this test, we specify the file name in a separate field.[0m
+
+  Before test:
+[38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711212122_1 TOKEN201711212122_2 &>	  	new_file_stderr_and_stdout[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711212122_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_2`[0m
+[38;5;239m  01: TOKEN201711212122_1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711212122_2`[0m
+[38;5;239m  01: TOKEN201711212122_2[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711212122_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711212122_2$`[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/005-export-empty-variable-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that exporting an empty variable does not add it to the environment, but can be displayed with the builtin `export`.[0m
+
+  Before test:
+[38;5;239m  01: unset "TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: export TOKEN201711212122
+  02: export[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122`[0m
+[38;5;239m  01: TERM_PROGRAM=iTerm.app
+  02: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: MYVIMRC=/Users/vcombey/.vimrc
+  06: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  07: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  08: TERM_PROGRAM_VERSION=3.1.5
+  09: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  10: ZSH=/Users/vcombey/.oh-my-zsh
+  11: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  12: USER=vcombey
+  13: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  14: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  15: PAGER=less
+  16: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  17: DOTFILES=/Users/vcombey/.dotfiles
+  18: LSCOLORS=HxBxcxdxbxegedabagacad
+  19: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  20: ZSHRC=/Users/vcombey/.zshrc
+  21: a=lol
+  22: PWD=/Users/vcombey/42ShellTester/tmp
+  23: EDITOR=vim
+  24: BASE16_THEME=base16-nord
+  25: LANG=en_US.UTF-8
+  26: ITERM_PROFILE=Default
+  27: XPC_FLAGS=0x0
+  28: XPC_SERVICE_NAME=0
+  29: INSTALL_ROOT=/Users/vcombey/.sbcl
+  30: SHLVL=3
+  31: HOME=/Users/vcombey
+  32: COLORFGBG=7;0
+  33: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  34: LESS=-R
+  35: LOGNAME=vcombey
+  36: VISUAL=vim
+  37: LC_CTYPE=en_US.UTF-8
+  38: COLORTERM=truecolor
+  39: OLDPWD=/Users/vcombey/42ShellTester
+  40: _=/Users/vcombey/42/42sh/42sh
+  41: HISTFILE=/Users/vcombey/.42sh_history[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/errors/002-invalid-identifier-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to export an invalid variable identifier results in error.[0m
+
+  STDIN:
+[38;5;239m  01: export .=TOKEN201711212122[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `(not.*identifier|must begin.*letter)`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/errors/003-illegal-option[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `export` with an illegal option results in an error and a failure exit status.[0m
+
+  STDIN:
+[38;5;239m  01: export -w[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Ii]nvalid|[Ii]llegal) (option|argument)`[0m
+[38;5;239m  01: Wrong option -w[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/options/002-export-p-param-and-token-should-add-local-var-only-part1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check if export with -p option + token , add the variable into export list but not in env list. And don't display the export variable on stdout.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./stored_env"
+  02: unset "TOKEN201711212122_NAME"
+  03: export | awk 'BEGIN {FS="="} $0 !~ /^(OLDPWD|_)/ {print $1"="}' > "./stored_env"[0m
+
+  STDIN:
+[38;5;239m  01: export -p TOKEN201711212122_NAME
+  02: export[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_each_regex_of_file `./stored_env`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122_NAME`[0m
+[38;5;239m  01: TERM_PROGRAM=iTerm.app
+  02: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: MYVIMRC=/Users/vcombey/.vimrc
+  06: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  07: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  08: TERM_PROGRAM_VERSION=3.1.5
+  09: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  10: ZSH=/Users/vcombey/.oh-my-zsh
+  11: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  12: USER=vcombey
+  13: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  14: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  15: PAGER=less
+  16: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  17: DOTFILES=/Users/vcombey/.dotfiles
+  18: LSCOLORS=HxBxcxdxbxegedabagacad
+  19: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  20: ZSHRC=/Users/vcombey/.zshrc
+  21: a=lol
+  22: PWD=/Users/vcombey/42ShellTester/tmp
+  23: EDITOR=vim
+  24: BASE16_THEME=base16-nord
+  25: LANG=en_US.UTF-8
+  26: ITERM_PROFILE=Default
+  27: XPC_FLAGS=0x0
+  28: XPC_SERVICE_NAME=0
+  29: INSTALL_ROOT=/Users/vcombey/.sbcl
+  30: SHLVL=3
+  31: HOME=/Users/vcombey
+  32: COLORFGBG=7;0
+  33: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  34: LESS=-R
+  35: LOGNAME=vcombey
+  36: VISUAL=vim
+  37: LC_CTYPE=en_US.UTF-8
+  38: COLORTERM=truecolor
+  39: OLDPWD=/Users/vcombey/42ShellTester
+  40: _=/Users/vcombey/42/42sh/42sh
+  41: HISTFILE=/Users/vcombey/.42sh_history
+  42: TERM_PROGRAM=iTerm.app
+  43: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  44: TERM=xterm-256color
+  45: SHELL=42sh
+  46: MYVIMRC=/Users/vcombey/.vimrc
+  47: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  48: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  49: TERM_PROGRAM_VERSION=3.1.5
+  50: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  51: ZSH=/Users/vcombey/.oh-my-zsh
+  52: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  53: USER=vcombey
+  54: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  55: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  56: PAGER=less
+  57: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  58: DOTFILES=/Users/vcombey/.dotfiles
+  59: LSCOLORS=HxBxcxdxbxegedabagacad
+  60: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  61: ZSHRC=/Users/vcombey/.zshrc
+  62: a=lol
+  63: PWD=/Users/vcombey/42ShellTester/tmp
+  64: EDITOR=vim
+  65: BASE16_THEME=base16-nord
+  66: LANG=en_US.UTF-8
+  67: ITERM_PROFILE=Default
+  68: XPC_FLAGS=0x0
+  69: XPC_SERVICE_NAME=0
+  70: INSTALL_ROOT=/Users/vcombey/.sbcl
+  71: SHLVL=3
+  72: HOME=/Users/vcombey
+  73: COLORFGBG=7;0
+  74: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  75: LESS=-R
+  76: LOGNAME=vcombey
+  77: VISUAL=vim
+  78: LC_CTYPE=en_US.UTF-8
+  79: COLORTERM=truecolor
+  80: OLDPWD=/Users/vcombey/42ShellTester
+  81: _=/Users/vcombey/42/42sh/42sh
+  82: HISTFILE=/Users/vcombey/.42sh_history[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/builtins/export/options/004-export-n-param[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m   The purpose of this test is to check that using the builtin `export` with option `-n` results in a removed environment variable.[0m
+
+  Before test:
+[38;5;239m  01: export TOKEN201711212122_NAME=TOKEN201711212122_VALUE[0m
+
+  STDIN:
+[38;5;239m  01: export -n TOKEN201711212122_NAME
+  02: export
+  03: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711212122_NAME`[0m
+[38;5;239m  01: TERM_PROGRAM=iTerm.app
+  02: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  03: TERM=xterm-256color
+  04: SHELL=42sh
+  05: MYVIMRC=/Users/vcombey/.vimrc
+  06: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  07: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  08: TERM_PROGRAM_VERSION=3.1.5
+  09: OLDPWD=/Users/vcombey/42ShellTester
+  10: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  16: PAGER=less
+  17: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  18: DOTFILES=/Users/vcombey/.dotfiles
+  19: LSCOLORS=HxBxcxdxbxegedabagacad
+  20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  21: ZSHRC=/Users/vcombey/.zshrc
+  22: TOKEN201711212122_NAME=TOKEN201711212122_VALUE
+  23: a=lol
+  24: PWD=/Users/vcombey/42ShellTester/tmp
+  25: EDITOR=vim
+  26: BASE16_THEME=base16-nord
+  27: LANG=en_US.UTF-8
+  28: ITERM_PROFILE=Default
+  29: XPC_FLAGS=0x0
+  30: XPC_SERVICE_NAME=0
+  31: INSTALL_ROOT=/Users/vcombey/.sbcl
+  32: SHLVL=3
+  33: HOME=/Users/vcombey
+  34: COLORFGBG=7;0
+  35: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  36: LESS=-R
+  37: LOGNAME=vcombey
+  38: VISUAL=vim
+  39: LC_CTYPE=en_US.UTF-8
+  40: COLORTERM=truecolor
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=/Users/vcombey/.42sh_history
+  43: ------------------------------
+  44: TERM_PROGRAM=iTerm.app
+  45: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  46: TERM=xterm-256color
+  47: SHELL=42sh
+  48: MYVIMRC=/Users/vcombey/.vimrc
+  49: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  50: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  51: TERM_PROGRAM_VERSION=3.1.5
+  52: OLDPWD=/Users/vcombey/42ShellTester
+  53: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  54: ZSH=/Users/vcombey/.oh-my-zsh
+  55: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  56: USER=vcombey
+  57: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  58: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  59: PAGER=less
+  60: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  61: DOTFILES=/Users/vcombey/.dotfiles
+  62: LSCOLORS=HxBxcxdxbxegedabagacad
+  63: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  64: ZSHRC=/Users/vcombey/.zshrc
+  65: TOKEN201711212122_NAME=TOKEN201711212122_VALUE
+  66: a=lol
+  67: PWD=/Users/vcombey/42ShellTester/tmp
+  68: EDITOR=vim
+  69: BASE16_THEME=base16-nord
+  70: LANG=en_US.UTF-8
+  71: ITERM_PROFILE=Default
+  72: XPC_FLAGS=0x0
+  73: XPC_SERVICE_NAME=0
+  74: INSTALL_ROOT=/Users/vcombey/.sbcl
+  75: SHLVL=3
+  76: HOME=/Users/vcombey
+  77: COLORFGBG=7;0
+  78: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  79: LESS=-R
+  80: LOGNAME=vcombey
+  81: VISUAL=vim
+  82: LC_CTYPE=en_US.UTF-8
+  83: COLORTERM=truecolor
+  84: _=/Users/vcombey/42/42sh/42sh
+  85: HISTFILE=/Users/vcombey/.42sh_history
+  86: ------------------------------
+  87: TOTAL ENVIRONMENT VARIABLES: 42[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: Wrong option -n[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/escaping/mixed/globbing/brace-expansion/001-it-does-not-expand-braces-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that escaping braces does not result in an expansion process.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_all_arguments_on_stdout \{1..2} {1\..2} {1.\.2} {1..2\}[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^[{]1..2}@[{]1..2}@[{]1..2}@[{]1..2}@$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/escaping/mixed/globbing/bracket-expansion/001-it-does-not-expand-brackets[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that escaping brackets does not result in an expansion process.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./test_globbing"
+  02: mkdir "./test_globbing"
+  03: cd "./test_globbing"
+  04: touch 'a' 'b' 'c'[0m
+
+  STDIN:
+[38;5;239m  01: /Users/vcombey/42ShellTester/tmp/write_all_arguments_on_stdout \[abc] [abc\] \[abc\][0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^[[]abc]@[[]abc]@[[]abc]@$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/globbing/brace-expansion/ascii-range/010-big-range[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that brace expansion may be performed with a big numeric range.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_all_arguments_on_stdout {A..z}[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^A@B@C@D@E@F@G@H@I@J@K@L@M@N@O@P@Q@R@S@T@U@V@W@X@Y@Z@.+@.?@.+@.+@_@.+@a@b@c@d@e@f@g@h@i@j@k@l@m@n@o@p@q@r@s@t@u@v@w@x@y@z@$`[0m
+[38;5;239m  01: A@B@C@D@E@F@G@H@I@J@K@L@M@N@O@P@Q@R@S@T@U@V@W@X@Y@Z@[@]@^@_@a@b@c@d@e@f@g@h@i@j@k@l@m@n@o@p@q@r@s@t@u@v@w@x@y@z@[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/004-existing-variable-in-environment-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is initialize a local variable named as an environment variable and check if it's update the existing environment variable.[0m
+
+  Before test:
+[38;5;239m  01: export "TOKEN201711212122_NAME=TOKEN201711212122_VALUE_OLD"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711212122_NAME=TOKEN201711212122_VALUE_NEW
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_NAME=TOKEN201711212122_VALUE_NEW$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `^TOKEN201711212122_NAME=TOKEN201711212122_VALUE_OLD$`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: OLDPWD=/Users/vcombey/42ShellTester
+  11: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  16: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  17: PAGER=less
+  18: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  19: DOTFILES=/Users/vcombey/.dotfiles
+  20: LSCOLORS=HxBxcxdxbxegedabagacad
+  21: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  22: ZSHRC=/Users/vcombey/.zshrc
+  23: TOKEN201711212122_NAME=TOKEN201711212122_VALUE_OLD
+  24: a=lol
+  25: PWD=/Users/vcombey/42ShellTester/tmp
+  26: EDITOR=vim
+  27: BASE16_THEME=base16-nord
+  28: LANG=en_US.UTF-8
+  29: ITERM_PROFILE=Default
+  30: XPC_FLAGS=0x0
+  31: XPC_SERVICE_NAME=0
+  32: INSTALL_ROOT=/Users/vcombey/.sbcl
+  33: SHLVL=3
+  34: HOME=/Users/vcombey
+  35: COLORFGBG=7;0
+  36: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  37: LESS=-R
+  38: LOGNAME=vcombey
+  39: VISUAL=vim
+  40: LC_CTYPE=en_US.UTF-8
+  41: COLORTERM=truecolor
+  42: _=/Users/vcombey/42/42sh/42sh
+  43: HISTFILE=/Users/vcombey/.42sh_history
+  44: ------------------------------
+  45: TOTAL ENVIRONMENT VARIABLES: 42[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/005-existing-variable-in-environment-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is initialize a local variable named as an environment variable and check if it's update the existing environment variable.[0m
+
+  Before test:
+[38;5;239m  01: export "TOKEN201711212122_NAME=TOKEN201711212122_VALUE"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711212122_NAME=
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_NAME=$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `^TOKEN201711212122_NAME=TOKEN201711212122_VALUE$`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: OLDPWD=/Users/vcombey/42ShellTester
+  11: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  16: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  17: PAGER=less
+  18: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  19: DOTFILES=/Users/vcombey/.dotfiles
+  20: LSCOLORS=HxBxcxdxbxegedabagacad
+  21: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  22: ZSHRC=/Users/vcombey/.zshrc
+  23: TOKEN201711212122_NAME=TOKEN201711212122_VALUE
+  24: a=lol
+  25: PWD=/Users/vcombey/42ShellTester/tmp
+  26: EDITOR=vim
+  27: BASE16_THEME=base16-nord
+  28: LANG=en_US.UTF-8
+  29: ITERM_PROFILE=Default
+  30: XPC_FLAGS=0x0
+  31: XPC_SERVICE_NAME=0
+  32: INSTALL_ROOT=/Users/vcombey/.sbcl
+  33: SHLVL=3
+  34: HOME=/Users/vcombey
+  35: COLORFGBG=7;0
+  36: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  37: LESS=-R
+  38: LOGNAME=vcombey
+  39: VISUAL=vim
+  40: LC_CTYPE=en_US.UTF-8
+  41: COLORTERM=truecolor
+  42: _=/Users/vcombey/42/42sh/42sh
+  43: HISTFILE=/Users/vcombey/.42sh_history
+  44: ------------------------------
+  45: TOTAL ENVIRONMENT VARIABLES: 42[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/008-multiple-declaration-with-same-name[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that declaring the same variable several times in the same command line does work and does not result in error.[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711212122_NAME=TOKEN201711212122_VALUE1 TOKEN201711212122_NAME=TOKEN201711212122_VALUE2 TOKEN201711212122_NAME=TOKEN201711212122_VALUE3
+  02: ./write_on_stdout $TOKEN201711212122_NAME[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `^TOKEN201711212122_VALUE1$`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `^TOKEN201711212122_VALUE2$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_VALUE3$`[0m
+[38;5;239m  01: TOKEN201711212122_VALUE1[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/local-variable/mixed/inline-environment-variable/001-local-variable-shouldnt-be-set[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that declaring a variable and specifying a binary does not result in local variable declaration but a modified environment for the command.[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711212122_NAME=TOKEN201711212122_VALUE ./display_env
+  02: ./write_on_stderr $TOKEN201711212122[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_NAME=TOKEN201711212122_VALUE$`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  16: PAGER=less
+  17: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  18: DOTFILES=/Users/vcombey/.dotfiles
+  19: LSCOLORS=HxBxcxdxbxegedabagacad
+  20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  21: ZSHRC=/Users/vcombey/.zshrc
+  22: a=lol
+  23: PWD=/Users/vcombey/42ShellTester/tmp
+  24: EDITOR=vim
+  25: BASE16_THEME=base16-nord
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: COLORTERM=truecolor
+  40: OLDPWD=/Users/vcombey/42ShellTester
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=/Users/vcombey/.42sh_history
+  43: ------------------------------
+  44: TOTAL ENVIRONMENT VARIABLES: 41[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_VALUE`[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `write on stderr`[0m
+[38;5;239m  01: write on stderr[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/double-quotes/004-multiline-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that closing double quote may be done on a different line.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout "
+  02: TOKEN201711212122_FIRST
+  03: TOKEN201711212122_SECOND
+  04: TOKEN201711212122_THIRD
+  05: "[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_FIRST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_SECOND$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_THIRD$`[0m
+[38;5;239m  01: TOKEN201711212122_FIRSTTOKEN201711212122_SECONDTOKEN201711212122_THIRD[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/double-quotes/005-multiline-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that closing double quote may be done on a different line.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr "
+  02: "TOKEN201711212122"_FIRST
+  03: TOKEN201711212122_SECOND" "TOKEN201711212122_THIRD
+  04: TOKEN201711212122_FOU"RT"H
+  05: "[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_FIRST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_SECOND$`[0m
+[38;5;239m  01: TOKEN201711212122_FIRSTTOKEN201711212122_SECOND[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_THIRD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_FOURTH$`[0m
+[38;5;239m  01: TOKEN201711212122_THIRDTOKEN201711212122_FOURTH[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/double-quotes/mixed/escaping/004-it-results-in-error[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using backslash `\\` before the closing double-quote `"` does result in syntax error.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout "TOKEN201711212122\"[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `^TOKEN201711212122$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Ss]yntax|[Pp]arse) error`[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/mixed/002-multiline[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbols simple quote `'` and double quote `"` may work together in harmony in multiline mode.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr '
+  02: 'TOKEN201711212122"_FIR'ST
+  03: TOKEN201711212122_SECOND" 'TOKEN201711212122_TH"IRD
+  04: TOKEN201711212122_FOU'RT"H
+  05: "[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_FIR'ST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_SECOND$`[0m
+[38;5;239m  01: TOKEN201711212122_FIR'STTOKEN201711212122_SECOND[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_TH"IRD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_FOURTH$`[0m
+[38;5;239m  01: TOKEN201711212122_TH"IRDTOKEN201711212122_FOURTH[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/simple-quotes/004-multiline-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that closing double quote may be done on a different line.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout '
+  02: TOKEN201711212122_FIRST
+  03: TOKEN201711212122_SECOND
+  04: TOKEN201711212122_THIRD
+  05: '[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_FIRST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_SECOND$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_THIRD$`[0m
+[38;5;239m  01: TOKEN201711212122_FIRSTTOKEN201711212122_SECONDTOKEN201711212122_THIRD[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/simple-quotes/005-multiline-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that closing double quote may be done on a different line.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr '
+  02: 'TOKEN201711212122'_FIRST
+  03: TOKEN201711212122_SECOND' 'TOKEN201711212122_THIRD
+  04: TOKEN201711212122_FOU'RT'H
+  05: '[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_FIRST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_SECOND$`[0m
+[38;5;239m  01: TOKEN201711212122_FIRSTTOKEN201711212122_SECOND[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_THIRD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_FOURTH$`[0m
+[38;5;239m  01: TOKEN201711212122_THIRDTOKEN201711212122_FOURTH[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/quoting/simple-quotes/mixed/escaping/002-escape-simple-quote-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a simple-quote `'` may be preserved when it is preceded by a backslash `\\`.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout_and_stderr \'TOKEN201711212122_STDOUT TOKEN201711212122_STDERR\'[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^'TOKEN201711212122_STDOUT$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_STDERR'$`[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/subshell/004-exit-status[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the exit status of a subshell command that is executed at the end of a script is correctly returned at termination by the parent shell.[0m
+
+  STDIN:
+[38;5;239m  01: (./exit_with_status 42)[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status 42[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/subshell/mixed/builtins/exit/001-exiting-subshell[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that prematurely exiting a subshell does work and does not result in parent shell termination.[0m
+
+  STDIN:
+[38;5;239m  01: (exit ; ./write_on_stdout TOKEN201711212122_NOT_DISPLAYED)
+  02: ./write_on_stdout TOKEN201711212122_DISPLAYED[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_NOT_DISPLAYED`[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711212122_DISPLAYED`[0m
+[38;5;239m  01: TOKEN201711212122_DISPLAYED[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: open: Bad address[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/subshell/mixed/escaping/001-escaped-subshell-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a subshell with parentheses `(` and `)` may be escaped with backslash `\\`.[0m
+
+  STDIN:
+[38;5;239m  01: \(./write_on_stdout TOKEN201711212122_STDOUT\)[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_STDOUT`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Cc]ommand not found|[Nn]o such file or directory)`[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/subshell/mixed/escaping/002-escaped-subshell-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the tokens parentheses `(` and `)` for subshell generation may be escaped with backslash `\\`.[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout \\\(TOKEN201711212122_STDOUT\\\)[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `\(TOKEN201711212122_STDOUT\)`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/subshell/mixed/inline-environment-variable/001-modifies-the-child-environment-only-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that declaring a variable and specifying a binary in a subshell does not result in local variable declaration or a modified parent shell's environment, but only a modified child's environment.[0m
+
+  STDIN:
+[38;5;239m  01: (TOKEN201711212122_NAME=TOKEN201711212122_VALUE ./display_env)
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_NAME=TOKEN201711212122_VALUE$` once[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  16: PAGER=less
+  17: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  18: DOTFILES=/Users/vcombey/.dotfiles
+  19: LSCOLORS=HxBxcxdxbxegedabagacad
+  20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  21: ZSHRC=/Users/vcombey/.zshrc
+  22: a=lol
+  23: PWD=/Users/vcombey/42ShellTester/tmp
+  24: EDITOR=vim
+  25: BASE16_THEME=base16-nord
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: COLORTERM=truecolor
+  40: OLDPWD=/Users/vcombey/42ShellTester
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=/Users/vcombey/.42sh_history
+  43: ------------------------------
+  44: TOTAL ENVIRONMENT VARIABLES: 41
+  45: ------------------------------
+  46: TERM_PROGRAM=iTerm.app
+  47: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  48: TERM=xterm-256color
+  49: SHELL=42sh
+  50: MYVIMRC=/Users/vcombey/.vimrc
+  51: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  52: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  53: TERM_PROGRAM_VERSION=3.1.5
+  54: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  55: ZSH=/Users/vcombey/.oh-my-zsh
+  56: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  57: USER=vcombey
+  58: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  59: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  60: PAGER=less
+  61: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  62: DOTFILES=/Users/vcombey/.dotfiles
+  63: LSCOLORS=HxBxcxdxbxegedabagacad
+  64: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  65: ZSHRC=/Users/vcombey/.zshrc
+  66: a=lol
+  67: PWD=/Users/vcombey/42ShellTester/tmp
+  68: EDITOR=vim
+  69: BASE16_THEME=base16-nord
+  70: LANG=en_US.UTF-8
+  71: ITERM_PROFILE=Default
+  72: XPC_FLAGS=0x0
+  73: XPC_SERVICE_NAME=0
+  74: INSTALL_ROOT=/Users/vcombey/.sbcl
+  75: SHLVL=3
+  76: HOME=/Users/vcombey
+  77: COLORFGBG=7;0
+  78: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  79: LESS=-R
+  80: LOGNAME=vcombey
+  81: VISUAL=vim
+  82: LC_CTYPE=en_US.UTF-8
+  83: COLORTERM=truecolor
+  84: OLDPWD=/Users/vcombey/42ShellTester
+  85: _=/Users/vcombey/42/42sh/42sh
+  86: HISTFILE=/Users/vcombey/.42sh_history
+  87: ------------------------------
+  88: TOTAL ENVIRONMENT VARIABLES: 41[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1m42sh/subshell/mixed/inline-environment-variable/002-modifies-the-child-environment-only-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that declaring a variable and specifying a binary in a subshell does not result in local variable declaration or a modified parent shell's environment, but only a modified child's environment.[0m
+
+  STDIN:
+[38;5;239m  01: ( (TOKEN201711212122_NAME=TOKEN201711212122_VALUE ./display_env) ; ./display_env) ; ./display_env
+  02: [0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_NAME=TOKEN201711212122_VALUE$` once[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  16: PAGER=less
+  17: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  18: DOTFILES=/Users/vcombey/.dotfiles
+  19: LSCOLORS=HxBxcxdxbxegedabagacad
+  20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  21: ZSHRC=/Users/vcombey/.zshrc
+  22: a=lol
+  23: PWD=/Users/vcombey/42ShellTester/tmp
+  24: EDITOR=vim
+  25: BASE16_THEME=base16-nord
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: COLORTERM=truecolor
+  40: OLDPWD=/Users/vcombey/42ShellTester
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=/Users/vcombey/.42sh_history
+  43: ------------------------------
+  44: TOTAL ENVIRONMENT VARIABLES: 41
+  45: ------------------------------
+  46: TERM_PROGRAM=iTerm.app
+  47: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  48: TERM=xterm-256color
+  49: SHELL=42sh
+  50: MYVIMRC=/Users/vcombey/.vimrc
+  51: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  52: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  53: TERM_PROGRAM_VERSION=3.1.5
+  54: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  55: ZSH=/Users/vcombey/.oh-my-zsh
+  56: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  57: USER=vcombey
+  58: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  59: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  60: PAGER=less
+  61: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  62: DOTFILES=/Users/vcombey/.dotfiles
+  63: LSCOLORS=HxBxcxdxbxegedabagacad
+  64: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  65: ZSHRC=/Users/vcombey/.zshrc
+  66: a=lol
+  67: PWD=/Users/vcombey/42ShellTester/tmp
+  68: EDITOR=vim
+  69: BASE16_THEME=base16-nord
+  70: LANG=en_US.UTF-8
+  71: ITERM_PROFILE=Default
+  72: XPC_FLAGS=0x0
+  73: XPC_SERVICE_NAME=0
+  74: INSTALL_ROOT=/Users/vcombey/.sbcl
+  75: SHLVL=3
+  76: HOME=/Users/vcombey
+  77: COLORFGBG=7;0
+  78: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  79: LESS=-R
+  80: LOGNAME=vcombey
+  81: VISUAL=vim
+  82: LC_CTYPE=en_US.UTF-8
+  83: COLORTERM=truecolor
+  84: OLDPWD=/Users/vcombey/42ShellTester
+  85: _=/Users/vcombey/42/42sh/42sh
+  86: HISTFILE=/Users/vcombey/.42sh_history
+  87: ------------------------------
+  88: TOTAL ENVIRONMENT VARIABLES: 41
+  89: ------------------------------
+  90: TERM_PROGRAM=iTerm.app
+  91: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  92: TERM=xterm-256color
+  93: SHELL=42sh
+  94: MYVIMRC=/Users/vcombey/.vimrc
+  95: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  96: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  97: TERM_PROGRAM_VERSION=3.1.5
+  98: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  99: ZSH=/Users/vcombey/.oh-my-zsh
+  100: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  101: USER=vcombey
+  102: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  103: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  104: PAGER=less
+  105: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  106: DOTFILES=/Users/vcombey/.dotfiles
+  107: LSCOLORS=HxBxcxdxbxegedabagacad
+  108: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  109: ZSHRC=/Users/vcombey/.zshrc
+  110: a=lol
+  111: PWD=/Users/vcombey/42ShellTester/tmp
+  112: EDITOR=vim
+  113: BASE16_THEME=base16-nord
+  114: LANG=en_US.UTF-8
+  115: ITERM_PROFILE=Default
+  116: XPC_FLAGS=0x0
+  117: XPC_SERVICE_NAME=0
+  118: INSTALL_ROOT=/Users/vcombey/.sbcl
+  119: SHLVL=3
+  120: HOME=/Users/vcombey
+  121: COLORFGBG=7;0
+  122: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  123: LESS=-R
+  124: LOGNAME=vcombey
+  125: VISUAL=vim
+  126: LC_CTYPE=en_US.UTF-8
+  127: COLORTERM=truecolor
+  128: OLDPWD=/Users/vcombey/42ShellTester
+  129: _=/Users/vcombey/42/42sh/42sh
+  130: HISTFILE=/Users/vcombey/.42sh_history
+  131: ------------------------------
+  132: TOTAL ENVIRONMENT VARIABLES: 41[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ./lib/main.sh: line 102: 56659 Segmentation fault: 11  /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/inline-environment-variable/001-modifies-child-environment-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a binary may have its environment to be modified by appending variables inline.[0m
+
+  Before test:
+[38;5;239m  01: unset "TOKEN201711212122_VARIABLE"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711212122_VARIABLE=TOKEN201711212122_VALUE ./display_env
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_VARIABLE=TOKEN201711212122_VALUE$` once[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  16: PAGER=less
+  17: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  18: DOTFILES=/Users/vcombey/.dotfiles
+  19: LSCOLORS=HxBxcxdxbxegedabagacad
+  20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  21: ZSHRC=/Users/vcombey/.zshrc
+  22: a=lol
+  23: PWD=/Users/vcombey/42ShellTester/tmp
+  24: EDITOR=vim
+  25: BASE16_THEME=base16-nord
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: COLORTERM=truecolor
+  40: OLDPWD=/Users/vcombey/42ShellTester
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=/Users/vcombey/.42sh_history
+  43: ------------------------------
+  44: TOTAL ENVIRONMENT VARIABLES: 41
+  45: ------------------------------
+  46: TERM_PROGRAM=iTerm.app
+  47: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  48: TERM=xterm-256color
+  49: SHELL=42sh
+  50: MYVIMRC=/Users/vcombey/.vimrc
+  51: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  52: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  53: TERM_PROGRAM_VERSION=3.1.5
+  54: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  55: ZSH=/Users/vcombey/.oh-my-zsh
+  56: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  57: USER=vcombey
+  58: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  59: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  60: PAGER=less
+  61: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  62: DOTFILES=/Users/vcombey/.dotfiles
+  63: LSCOLORS=HxBxcxdxbxegedabagacad
+  64: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  65: ZSHRC=/Users/vcombey/.zshrc
+  66: a=lol
+  67: PWD=/Users/vcombey/42ShellTester/tmp
+  68: EDITOR=vim
+  69: BASE16_THEME=base16-nord
+  70: LANG=en_US.UTF-8
+  71: ITERM_PROFILE=Default
+  72: XPC_FLAGS=0x0
+  73: XPC_SERVICE_NAME=0
+  74: INSTALL_ROOT=/Users/vcombey/.sbcl
+  75: SHLVL=3
+  76: HOME=/Users/vcombey
+  77: COLORFGBG=7;0
+  78: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  79: LESS=-R
+  80: LOGNAME=vcombey
+  81: VISUAL=vim
+  82: LC_CTYPE=en_US.UTF-8
+  83: COLORTERM=truecolor
+  84: OLDPWD=/Users/vcombey/42ShellTester
+  85: _=/Users/vcombey/42/42sh/42sh
+  86: HISTFILE=/Users/vcombey/.42sh_history
+  87: ------------------------------
+  88: TOTAL ENVIRONMENT VARIABLES: 41[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/inline-environment-variable/002-modifies-child-environment-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a binary may have its environment to be modified by appending variables inline.[0m
+
+  Before test:
+[38;5;239m  01: unset "TOKEN201711212122_VARIABLE"[0m
+
+  STDIN:
+[38;5;239m  01: TOKEN201711212122_VARIABLE1=TOKEN201711212122_VALUE1 TOKEN201711212122_VARIABLE2=TOKEN201711212122_VALUE2 TOKEN201711212122_VARIABLE3=TOKEN201711212122_VALUE3 ./display_env
+  02: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_VARIABLE1=TOKEN201711212122_VALUE1$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_VARIABLE2=TOKEN201711212122_VALUE2$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122_VARIABLE3=TOKEN201711212122_VALUE3$` once[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  16: PAGER=less
+  17: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  18: DOTFILES=/Users/vcombey/.dotfiles
+  19: LSCOLORS=HxBxcxdxbxegedabagacad
+  20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  21: ZSHRC=/Users/vcombey/.zshrc
+  22: a=lol
+  23: PWD=/Users/vcombey/42ShellTester/tmp
+  24: EDITOR=vim
+  25: BASE16_THEME=base16-nord
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: COLORTERM=truecolor
+  40: OLDPWD=/Users/vcombey/42ShellTester
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=/Users/vcombey/.42sh_history
+  43: ------------------------------
+  44: TOTAL ENVIRONMENT VARIABLES: 41
+  45: ------------------------------
+  46: TERM_PROGRAM=iTerm.app
+  47: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  48: TERM=xterm-256color
+  49: SHELL=42sh
+  50: MYVIMRC=/Users/vcombey/.vimrc
+  51: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  52: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  53: TERM_PROGRAM_VERSION=3.1.5
+  54: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  55: ZSH=/Users/vcombey/.oh-my-zsh
+  56: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  57: USER=vcombey
+  58: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  59: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  60: PAGER=less
+  61: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  62: DOTFILES=/Users/vcombey/.dotfiles
+  63: LSCOLORS=HxBxcxdxbxegedabagacad
+  64: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  65: ZSHRC=/Users/vcombey/.zshrc
+  66: a=lol
+  67: PWD=/Users/vcombey/42ShellTester/tmp
+  68: EDITOR=vim
+  69: BASE16_THEME=base16-nord
+  70: LANG=en_US.UTF-8
+  71: ITERM_PROFILE=Default
+  72: XPC_FLAGS=0x0
+  73: XPC_SERVICE_NAME=0
+  74: INSTALL_ROOT=/Users/vcombey/.sbcl
+  75: SHLVL=3
+  76: HOME=/Users/vcombey
+  77: COLORFGBG=7;0
+  78: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  79: LESS=-R
+  80: LOGNAME=vcombey
+  81: VISUAL=vim
+  82: LC_CTYPE=en_US.UTF-8
+  83: COLORTERM=truecolor
+  84: OLDPWD=/Users/vcombey/42ShellTester
+  85: _=/Users/vcombey/42/42sh/42sh
+  86: HISTFILE=/Users/vcombey/.42sh_history
+  87: ------------------------------
+  88: TOTAL ENVIRONMENT VARIABLES: 41[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/inline-environment-variable/003-modifies-PATH-only[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that a binary may have its environment to be modified by appending variables inline.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "temporary_directory"
+  02: mkdir -p "temporary_directory"
+  03: cd "temporary_directory"[0m
+
+  STDIN:
+[38;5;239m  01: PATH=.. write_on_stdout TOKEN201711212122
+  02: exit_with_status 42[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711212122$`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Cc]ommand not found`[0m
+[38;5;239m  01: write_on_stdout: command not found
+  02: exit_with_status: command not found[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status `42`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/mixed/001-and-or[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the two separators AND `&&` and OR `||` applies the good logic: The second command is executed if the first one succeeds, and the third command is executed if the second one fails or is not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42 && ./write_on_stderr TOKEN201711212122_ERROR 21 || ./write_on_stdout TOKEN201711212122_SUCCESS[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122_SUCCESS`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/mixed/002-and-or[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the two separators AND `&&` and OR `||` applies the good logic: The second command is executed if the first one succeeds, and the third command is executed if the second one fails or is not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 0 && ./write_on_stderr TOKEN201711212122_ERROR 21 || ./write_on_stdout TOKEN201711212122_SUCCESS[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122_SUCCESS`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711212122_ERROR`[0m
+[38;5;239m  01: TOKEN201711212122_ERROR[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/mixed/004-or-and[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the two separators OR `||` and AND `&&` applies the good logic: The second command is executed if the first one fails, and the third command is executed if the second one succeeds or is not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42 || ./write_on_stderr TOKEN201711212122_ERROR 21 && ./write_on_stdout TOKEN201711212122_SUCCESS[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122_ERROR`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `21`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/mixed/005-or-and[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the two separators OR `||` and AND `&&` applies the good logic: The second command is executed if the first one fails, and the third command is executed if the second one succeeds or is not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42 || ./write_on_stdout TOKEN201711212122_SUCCESS && ./write_on_stderr TOKEN201711212122_ERROR 21[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122_SUCCESS`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122_ERROR`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `21`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/or/002-run-second-only[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the OR operator `||` makes the right command to be executed if the left one exits with an error status code.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 42 || ./write_on_stdout TOKEN201711212122[0m
+
+  STDOUT:
+[31m[1;33m  WARNING    might match_regex `TOKEN201711212122`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[1;33m  WARNING    might exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/separators/or/003-run-until-succeeding[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the OR separator `||` with chained commands results in the execution of all until the first succeed. The remaining commands are not executed.[0m
+
+  STDIN:
+[38;5;239m  01: ./exit_with_status 1 || ./exit_with_status 2 || ./exit_with_status 3 || ./exit_with_status 4 || ./write_on_stdout TOKEN201711212122_FIRST || ./write_on_stdout TOKEN201711212122_SECOND[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122_FIRST`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711212122_SECOND`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/003-expanded-with-PWD-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable PWD when followed by the symbol `+`.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~+[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~[+]`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711212122[+]`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42ShellTester/tmp$`[0m
+[38;5;239m  01: /TOKEN201711212122+[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/004-expanded-with-PWD-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable PWD when followed by the symbol `+`.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~+/TOKEN201711212122_SUBDIRECTORY[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~+/TOKEN201711212122_SUBDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711212122[+]/TOKEN201711212122_SUBDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42ShellTester/tmp/TOKEN201711212122_SUBDIRECTORY$`[0m
+[38;5;239m  01: /TOKEN201711212122+/TOKEN201711212122_SUBDIRECTORY[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/005-expanded-with-OLDPWD-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable OLDPWD when followed by the symbol `+`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./TOKEN201711212122_SUBDIRECTORY"
+  02: mkdir "./TOKEN201711212122_SUBDIRECTORY"
+  03: export "HOME=/TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: cd ./TOKEN201711212122_SUBDIRECTORY
+  02: /Users/vcombey/42ShellTester/tmp/write_on_stdout ~-[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~-`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711212122-`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42ShellTester/tmp$`[0m
+[38;5;239m  01: /TOKEN201711212122-[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/006-expanded-with-OLDPWD-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable OLDPWD when followed by the symbol `+`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./TOKEN201711212122_SUBDIRECTORY"
+  02: mkdir "./TOKEN201711212122_SUBDIRECTORY"
+  03: export "HOME=/TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: cd ./TOKEN201711212122_SUBDIRECTORY
+  02: /Users/vcombey/42ShellTester/tmp/write_on_stdout ~-/TOKEN201711212122_OTHERDIRECTORY[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~-/TOKEN201711212122_OTHERDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711212122-/TOKEN201711212122_OTHERDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42ShellTester/tmp/TOKEN201711212122_OTHERDIRECTORY$`[0m
+[38;5;239m  01: /TOKEN201711212122-/TOKEN201711212122_OTHERDIRECTORY[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/not-expanded/001-not-expanded-with-HOME-1[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be not expanded when not followed by an authorized symbol or user name.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~~[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~~$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711212122`[0m
+[38;5;239m  01: /TOKEN201711212122/TOKEN201711212122[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/not-expanded/002-not-expanded-with-HOME-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be not expanded when not followed by an authorized symbol or user name.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~TOKEN201711212122_UNKNOWNUSER[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~TOKEN201711212122_UNKNOWNUSER$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711212122TOKEN201711212122_UNKNOWNUSER`[0m
+[38;5;239m  01: /TOKEN201711212122TOKEN201711212122_UNKNOWNUSER[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/not-expanded/003-not-expanded-with-PWD[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` is not expanded with the environment variable PWD when not followed by the symbol `/`.[0m
+
+  Before test:
+[38;5;239m  01: export "HOME=/TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: ./write_on_stdout ~+TOKEN201711212122_SUBDIRECTORY[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~[+]TOKEN201711212122_SUBDIRECTORY$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711212122[+]TOKEN201711212122_SUBDIRECTORY`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/Users/vcombey/42ShellTester/tmpTOKEN201711212122_SUBDIRECTORY`[0m
+[38;5;239m  01: /TOKEN201711212122+TOKEN201711212122_SUBDIRECTORY[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mbonuses/tilde-expansion/not-expanded/004-not-expanded-with-OLDPWD[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the symbol tilde `~` is not expanded with the environment variable OLDPWD when not followed by the symbol `/`.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "./TOKEN201711212122_SUBDIRECTORY"
+  02: mkdir "./TOKEN201711212122_SUBDIRECTORY"
+  03: export "HOME=/TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: cd ./TOKEN201711212122_SUBDIRECTORY
+  02: /Users/vcombey/42ShellTester/tmp/write_on_stdout ~-TOKEN201711212122_OTHERDIRECTORY[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~-TOKEN201711212122_OTHERDIRECTORY$`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/TOKEN201711212122-/TOKEN201711212122_OTHERDIRECTORY`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/Users/vcombey/42ShellTester/tmp/TOKEN201711212122_OTHERDIRECTORY`[0m
+[38;5;239m  01: /TOKEN201711212122-TOKEN201711212122_OTHERDIRECTORY[0m
+
+  STDERR:
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/003-binary-test-exec-order[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell correctly finds binaries by iterating on paths within the environment variable PATH from left to right.[0m
+
+  Before test:
+[38;5;239m  01: mkdir -p "./virtual_path_1" "./virtual_path_2"
+  02: cp "./write_on_stdout" "./virtual_path_1/fake_echo"
+  03: cp "./write_on_stderr" "./virtual_path_2/fake_echo"
+  04: export PATH="/Users/vcombey/42ShellTester/tmp/virtual_path_1:/Users/vcombey/42ShellTester/tmp/virtual_path_2"[0m
+
+  STDIN:
+[38;5;239m  01: fake_echo TOKEN201711212122[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex TOKEN201711212122[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: TOKEN201711212122[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/004-binary-test-empty-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell finds binaries that are located in the current directory when the environment variable PATH is empty.[0m
+
+  Before test:
+[38;5;239m  01: export PATH=""[0m
+
+  STDIN:
+[38;5;239m  01: write_on_stdout "TOKEN201711212122"[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: write_on_stdout: command not found[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/006-binary-undefined-path[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the Shell retrieves the default value of the environment variable PATH if not set. This test depends on the presence of the UNIX binary `ls`, located in a path within the default environment variable PATH.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf "TOKEN201711212122_006-BINARY-UNDEFINED-PATH"
+  02: touch "TOKEN201711212122_006-BINARY-UNDEFINED-PATH"
+  03: unset PATH[0m
+
+  STDIN:
+[38;5;239m  01: ls[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711212122_006-BINARY-UNDEFINED-PATH`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ls: command not found[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/binary/008-binary-too-many-symbolic-links-encountered[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that trying to execute a path that encounters an infinite loop of symbolic link results in an error on standard error and a failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -rf ./symbolic_link1 ./symbolic_link2 ./symbolic_link3
+  02: ln -s ./symbolic_link1 ./symbolic_link2
+  03: ln -s ./symbolic_link2 ./symbolic_link3
+  04: ln -s ./symbolic_link3 ./symbolic_link1[0m
+
+  STDIN:
+[38;5;239m  01: ./symbolic_link1[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Tt]oo many.*symbolic links`[0m
+[38;5;239m  01: ./symbolic_link1: no such file or directory[0m
+
+  MISC:
+[31m[38;5;34m  SUCCESS    expected_to_not exit_with_status 0[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/007-symbolic-link[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link as first argument with the builtin `cd` results in moving the linked directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link"
+  02: mkdir -p "./sub_directory"
+  03: ln -s "./sub_directory" "./symbolic_link"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp/symbolic_link$`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD
+  02: ------------------------------
+  03: TERM_PROGRAM=iTerm.app
+  04: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  05: TERM=xterm-256color
+  06: SHELL=42sh
+  07: MYVIMRC=/Users/vcombey/.vimrc
+  08: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  09: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  10: TERM_PROGRAM_VERSION=3.1.5
+  11: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  16: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  17: PAGER=less
+  18: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  19: DOTFILES=/Users/vcombey/.dotfiles
+  20: LSCOLORS=HxBxcxdxbxegedabagacad
+  21: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  22: ZSHRC=/Users/vcombey/.zshrc
+  23: a=lol
+  24: PWD=/Users/vcombey/42ShellTester/tmp/sub_directory
+  25: EDITOR=vim
+  26: BASE16_THEME=base16-nord
+  27: LANG=en_US.UTF-8
+  28: ITERM_PROFILE=Default
+  29: XPC_FLAGS=0x0
+  30: XPC_SERVICE_NAME=0
+  31: INSTALL_ROOT=/Users/vcombey/.sbcl
+  32: SHLVL=3
+  33: HOME=/Users/vcombey
+  34: COLORFGBG=7;0
+  35: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  36: LESS=-R
+  37: LOGNAME=vcombey
+  38: VISUAL=vim
+  39: LC_CTYPE=en_US.UTF-8
+  40: COLORTERM=truecolor
+  41: OLDPWD=/Users/vcombey/42ShellTester/tmp
+  42: _=/Users/vcombey/42/42sh/42sh
+  43: HISTFILE=/Users/vcombey/.42sh_history
+  44: ------------------------------
+  45: TOTAL ENVIRONMENT VARIABLES: 41[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/008-symbolic-link-2[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link as first argument with the builtin `cd` results in moving to the linked directory. In this test, the directory is linked with to chained symbolic links.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2"
+  02: mkdir -p "./sub_directory"
+  03: ln -s "./sub_directory" "./symbolic_link1"
+  04: ln -s "./symbolic_link1" "./symbolic_link2"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link2
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^PWD=/Users/vcombey/42ShellTester/tmp/symbolic_link2$`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp/sub_directory:PWD
+  02: ------------------------------
+  03: TERM_PROGRAM=iTerm.app
+  04: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  05: TERM=xterm-256color
+  06: SHELL=42sh
+  07: MYVIMRC=/Users/vcombey/.vimrc
+  08: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  09: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  10: TERM_PROGRAM_VERSION=3.1.5
+  11: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  16: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  17: PAGER=less
+  18: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  19: DOTFILES=/Users/vcombey/.dotfiles
+  20: LSCOLORS=HxBxcxdxbxegedabagacad
+  21: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  22: ZSHRC=/Users/vcombey/.zshrc
+  23: a=lol
+  24: PWD=/Users/vcombey/42ShellTester/tmp/sub_directory
+  25: EDITOR=vim
+  26: BASE16_THEME=base16-nord
+  27: LANG=en_US.UTF-8
+  28: ITERM_PROFILE=Default
+  29: XPC_FLAGS=0x0
+  30: XPC_SERVICE_NAME=0
+  31: INSTALL_ROOT=/Users/vcombey/.sbcl
+  32: SHLVL=3
+  33: HOME=/Users/vcombey
+  34: COLORFGBG=7;0
+  35: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  36: LESS=-R
+  37: LOGNAME=vcombey
+  38: VISUAL=vim
+  39: LC_CTYPE=en_US.UTF-8
+  40: COLORTERM=truecolor
+  41: OLDPWD=/Users/vcombey/42ShellTester/tmp
+  42: _=/Users/vcombey/42/42sh/42sh
+  43: HISTFILE=/Users/vcombey/.42sh_history
+  44: ------------------------------
+  45: TOTAL ENVIRONMENT VARIABLES: 41[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/errors/005-too-many-symbolic-links-encountered[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a symbolic link resulting in ELOOP error as first argument with the builtin `cd` results in error and not changing current directory.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./symbolic_link1" "./symbolic_link2" "./symbolic_link3"
+  02: ln -s "./symbolic_link1" "./symbolic_link2"
+  03: ln -s "./symbolic_link2" "./symbolic_link3"
+  04: ln -s "./symbolic_link3" "./symbolic_link1"[0m
+
+  STDIN:
+[38;5;239m  01: cd symbolic_link1
+  02: /Users/vcombey/42ShellTester/tmp/display_pwd[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    expected_to match_regex `PWD:/Users/vcombey/42ShellTester/tmp:PWD`[0m
+[38;5;239m  01: PWD:/Users/vcombey/42ShellTester/tmp:PWD[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Tt]oo many.*symbolic links`[0m
+[38;5;239m  01: cd: Out of streams resources[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/cd/options/001-not-following-links[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using symbolic links twice with the builtin `cd` and the option `-P` results in a correct environment variable PWD. The option `-P` makes the Shell to resolve symbolic links.[0m
+
+  Before test:
+[38;5;239m  01: rm -fr "./sub_directory_link" "./sub_directory"
+  02: mkdir -p "./sub_directory/sub_sub_directory"
+  03: ln -s "./sub_directory" "./sub_directory_link"
+  04: ln -s "./sub_sub_directory" "./sub_directory/sub_sub_directory_link"[0m
+
+  STDIN:
+[38;5;239m  01: cd -P sub_directory_link
+  02: cd -P sub_sub_directory_link
+  03: /Users/vcombey/42ShellTester/tmp/display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `PWD=/Users/vcombey/42ShellTester/tmp/sub_directory/sub_sub_directory`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  16: PAGER=less
+  17: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  18: DOTFILES=/Users/vcombey/.dotfiles
+  19: LSCOLORS=HxBxcxdxbxegedabagacad
+  20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  21: ZSHRC=/Users/vcombey/.zshrc
+  22: a=lol
+  23: PWD=/Users/vcombey/42ShellTester/tmp
+  24: EDITOR=vim
+  25: BASE16_THEME=base16-nord
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: COLORTERM=truecolor
+  40: OLDPWD=/Users/vcombey/42ShellTester
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=/Users/vcombey/.42sh_history
+  43: ------------------------------
+  44: TOTAL ENVIRONMENT VARIABLES: 41[0m
+
+  STDERR:
+[31m[1;33m  WARNING    might be_empty[0m
+[38;5;239m  01: cd: No such file or directory
+  02: cd: No such file or directory[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/003-ignore-environment[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the option `-i` with the builtin `env` results in an empty environment sent to the given command.[0m
+
+  STDIN:
+[38;5;239m  01: env -i ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOTAL ENVIRONMENT VARIABLES: 0`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to be_empty[0m
+[38;5;239m  (no output)[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/005-set-variables[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `env` can modify or set multiple environment variables before executing the given command.[0m
+
+  Before test:
+[38;5;239m  01: export VARTEST1="OLD_VALUE"[0m
+
+  STDIN:
+[38;5;239m  01: env VARTEST1=TOKEN201711212122_1 VARTEST2=TOKEN201711212122_2 VARTEST3=TOKEN201711212122_3 ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST1=TOKEN201711212122_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST2=TOKEN201711212122_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `VARTEST3=TOKEN201711212122_3`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ./lib/main.sh: line 102: 64940 Segmentation fault: 11  /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/errors/001-command-not-found[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `env` with an invalid binary as argument results in an error and failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f "./invalid_binary"[0m
+
+  STDIN:
+[38;5;239m  01: env ./invalid_binary[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `[Cc]ommand not found`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/errors/002-illegal-option[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using the builtin `env` with an invalid option results in an error and failure exit status.[0m
+
+  Before test:
+[38;5;239m  01: rm -f -- "-w"[0m
+
+  STDIN:
+[38;5;239m  01: env -w[0m
+
+  STDOUT:
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `([Ii]nvalid|[Ii]llegal) (option|argument)`[0m
+[38;5;239m  (no output)[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/env/multiple-options/001-ignore-environment-and-set-variable[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that `env -i` works if we use a second argument to set an environment variable, we are also checking if this command unset environments variables for a given binary.[0m
+
+  STDIN:
+[38;5;239m  01: env -i TESTVARIABLE=TOKEN201711212122 ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVARIABLE=TOKEN201711212122`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOTAL ENVIRONMENT VARIABLES: 1`[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;160m  FAILURE    expected_to be_empty[0m
+[38;5;239m  01: ./lib/main.sh: line 102: 65316 Segmentation fault: 11  /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/002-status-passed-as-argument[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a number as first argument with the builtin `exit` results in the Shell termination with given number as exit status.[0m
+
+  STDIN:
+[38;5;239m  01: exit 42[0m
+
+  STDOUT:
+[31m[1;33m  WARNING    might be_empty[0m
+[38;5;239m  01: tcsetattr error[0m
+
+  STDERR:
+[38;5;239m  01: open: Bad address[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to exit_with_status `42`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/exit/errors/002-non-numeric-argument[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a non-numeric argument with the builtin `exit` results in the Shell termination and an error on standard error.[0m
+
+  STDIN:
+[38;5;239m  01: exit abc
+  02: ./write_on_stdout TOKEN201711212122[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711212122`[0m
+[38;5;239m  01: TOKEN201711212122[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    might_not be_empty[0m
+[31m[38;5;34m  SUCCESS    might match_regex `[Nn]umeric argument required`[0m
+[38;5;239m  01: exit: numeric argument required[0m
+
+  MISC:
+[31m[38;5;160m  FAILURE    expected_to_not exit_with_status `0`[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/002-add-new-variable[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `setenv` (or `export`) can add a new variable to the environment, either with the syntax `setenv KEY VALUE` or with `setenv KEY=VALUE`.[0m
+
+  Before test:
+[38;5;239m  01: unset "TESTVAR1"[0m
+
+  STDIN:
+[38;5;239m  01: setenv TESTVAR1 VALUE_TOKEN201711212122
+  02: ./display_env
+  03: 
+  04: setenv TESTVAR1=VALUE_TOKEN201711212122
+  05: ./display_env
+  06: 
+  07: export TESTVAR1=VALUE_TOKEN201711212122
+  08: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR1=VALUE_TOKEN201711212122`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  11: ZSH=/Users/vcombey/.oh-my-zsh
+  12: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  13: USER=vcombey
+  14: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  15: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  16: PAGER=less
+  17: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  18: DOTFILES=/Users/vcombey/.dotfiles
+  19: LSCOLORS=HxBxcxdxbxegedabagacad
+  20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  21: ZSHRC=/Users/vcombey/.zshrc
+  22: a=lol
+  23: PWD=/Users/vcombey/42ShellTester/tmp
+  24: EDITOR=vim
+  25: BASE16_THEME=base16-nord
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
+  28: XPC_FLAGS=0x0
+  29: XPC_SERVICE_NAME=0
+  30: INSTALL_ROOT=/Users/vcombey/.sbcl
+  31: SHLVL=3
+  32: HOME=/Users/vcombey
+  33: COLORFGBG=7;0
+  34: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  35: LESS=-R
+  36: LOGNAME=vcombey
+  37: VISUAL=vim
+  38: LC_CTYPE=en_US.UTF-8
+  39: COLORTERM=truecolor
+  40: OLDPWD=/Users/vcombey/42ShellTester
+  41: _=/Users/vcombey/42/42sh/42sh
+  42: HISTFILE=/Users/vcombey/.42sh_history
+  43: ------------------------------
+  44: TOTAL ENVIRONMENT VARIABLES: 41[0m
+
+  STDERR:
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..
+  02: ./lib/main.sh: line 102: 66322 Segmentation fault: 11  /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/003-set-existing-variable[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `setenv` (or `export`) can add a new variable to the environment, either with the syntax `setenv KEY VALUE` or with `setenv KEY=VALUE`.[0m
+
+  Before test:
+[38;5;239m  01: export "TESTVAR1=OLD_TOKEN201711212122"[0m
+
+  STDIN:
+[38;5;239m  01: setenv TESTVAR1 NEW_TOKEN201711212122
+  02: ./display_env
+  03: 
+  04: setenv TESTVAR1=NEW_TOKEN201711212122
+  05: ./display_env
+  06: 
+  07: export TESTVAR1=NEW_TOKEN201711212122
+  08: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR1=NEW_TOKEN201711212122`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: OLDPWD=/Users/vcombey/42ShellTester
+  11: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: TESTVAR1=OLD_TOKEN201711212122
+  16: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  17: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  18: PAGER=less
+  19: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  20: DOTFILES=/Users/vcombey/.dotfiles
+  21: LSCOLORS=HxBxcxdxbxegedabagacad
+  22: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  23: ZSHRC=/Users/vcombey/.zshrc
+  24: a=lol
+  25: PWD=/Users/vcombey/42ShellTester/tmp
+  26: EDITOR=vim
+  27: BASE16_THEME=base16-nord
+  28: LANG=en_US.UTF-8
+  29: ITERM_PROFILE=Default
+  30: XPC_FLAGS=0x0
+  31: XPC_SERVICE_NAME=0
+  32: INSTALL_ROOT=/Users/vcombey/.sbcl
+  33: SHLVL=3
+  34: HOME=/Users/vcombey
+  35: COLORFGBG=7;0
+  36: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  37: LESS=-R
+  38: LOGNAME=vcombey
+  39: VISUAL=vim
+  40: LC_CTYPE=en_US.UTF-8
+  41: COLORTERM=truecolor
+  42: _=/Users/vcombey/42/42sh/42sh
+  43: HISTFILE=/Users/vcombey/.42sh_history
+  44: ------------------------------
+  45: TOTAL ENVIRONMENT VARIABLES: 42[0m
+
+  STDERR:
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..
+  02: ./lib/main.sh: line 102: 66430 Segmentation fault: 11  /Users/vcombey/42/42sh/42sh[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/004-invalid-identifier[0m [31m[1;33m(WARNING)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that using a wrong variable name with the builtin `setenv` (or `export`) results in error.[0m
+
+  STDIN:
+[38;5;239m  01: setenv 42
+  02: export 42[0m
+
+  STDOUT:
+[31m[38;5;34m  SUCCESS    might be_empty[0m
+[38;5;239m  (no output)[0m
+
+  STDERR:
+[31m[38;5;34m  SUCCESS    expected_to_not be_empty[0m
+[31m[1;33m  WARNING    might match_regex `(not.*identifier|must begin.*letter)`[0m
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..[0m
+
+----------------------------------------------------------------
+
+[37;1mminishell/builtins/setenv/005-add-and-set-multiple-variables[0m [31m[38;5;160m(FAILED)[0m
+
+  Description:
+[38;5;239m  The purpose of this test is to check that the builtin `setenv` (or `export`) can add multiples variables into the environment, either with the syntax `setenv KEY VALUE` or with `setenv KEY=VALUE`.[0m
+
+  Before test:
+[38;5;239m  01: unset "TESTVAR1"
+  02: unset "TESTVAR2"
+  03: unset "TESTVAR3"
+  04: unset "TESTVAR4"
+  05: unset "TESTVAR5"
+  06: unset "TESTVAR6"
+  07: unset "TESTVAR7"
+  08: unset "TESTVAR8"
+  09: unset "TESTVAR9"
+  10: unset "TESTVAR10"
+  11: 
+  12: export "TEST2VAR1=OLD_TOKEN201711212122_1"
+  13: export "TEST2VAR2=OLD_TOKEN201711212122_2"
+  14: export "TEST2VAR3=OLD_TOKEN201711212122_3"
+  15: export "TEST2VAR4=OLD_TOKEN201711212122_4"
+  16: export "TEST2VAR5=OLD_TOKEN201711212122_5"
+  17: export "TEST2VAR6=OLD_TOKEN201711212122_6"
+  18: export "TEST2VAR7=OLD_TOKEN201711212122_7"
+  19: export "TEST2VAR8=OLD_TOKEN201711212122_8"
+  20: export "TEST2VAR9=OLD_TOKEN201711212122_9"
+  21: export "TEST2VAR10=OLD_TOKEN201711212122_10"[0m
+
+  STDIN:
+[38;5;239m  01: setenv TESTVAR1 VALUE_TOKEN201711212122_1
+  02: setenv TEST2VAR1 VALUE_TOKEN201711212122_1
+  03: setenv TESTVAR2 VALUE_TOKEN201711212122_2
+  04: setenv TEST2VAR2 VALUE_TOKEN201711212122_2
+  05: setenv TESTVAR3 VALUE_TOKEN201711212122_3
+  06: setenv TEST2VAR3 VALUE_TOKEN201711212122_3
+  07: setenv TESTVAR4 VALUE_TOKEN201711212122_4
+  08: setenv TEST2VAR4 VALUE_TOKEN201711212122_4
+  09: setenv TESTVAR5 VALUE_TOKEN201711212122_5
+  10: setenv TEST2VAR5 VALUE_TOKEN201711212122_5
+  11: setenv TESTVAR6 VALUE_TOKEN201711212122_6
+  12: setenv TEST2VAR6 VALUE_TOKEN201711212122_6
+  13: setenv TESTVAR7 VALUE_TOKEN201711212122_7
+  14: setenv TEST2VAR7 VALUE_TOKEN201711212122_7
+  15: setenv TESTVAR8 VALUE_TOKEN201711212122_8
+  16: setenv TEST2VAR8 VALUE_TOKEN201711212122_8
+  17: setenv TESTVAR9 VALUE_TOKEN201711212122_9
+  18: setenv TEST2VAR9 VALUE_TOKEN201711212122_9
+  19: setenv TESTVAR10 VALUE_TOKEN201711212122_10
+  20: setenv TEST2VAR10 VALUE_TOKEN201711212122_10
+  21: ./display_env
+  22: 
+  23: setenv TESTVAR1=VALUE_TOKEN201711212122_1
+  24: setenv TEST2VAR1=VALUE_TOKEN201711212122_1
+  25: setenv TESTVAR2=VALUE_TOKEN201711212122_2
+  26: setenv TEST2VAR2=VALUE_TOKEN201711212122_2
+  27: setenv TESTVAR3=VALUE_TOKEN201711212122_3
+  28: setenv TEST2VAR3=VALUE_TOKEN201711212122_3
+  29: setenv TESTVAR4=VALUE_TOKEN201711212122_4
+  30: setenv TEST2VAR4=VALUE_TOKEN201711212122_4
+  31: setenv TESTVAR5=VALUE_TOKEN201711212122_5
+  32: setenv TEST2VAR5=VALUE_TOKEN201711212122_5
+  33: setenv TESTVAR6=VALUE_TOKEN201711212122_6
+  34: setenv TEST2VAR6=VALUE_TOKEN201711212122_6
+  35: setenv TESTVAR7=VALUE_TOKEN201711212122_7
+  36: setenv TEST2VAR7=VALUE_TOKEN201711212122_7
+  37: setenv TESTVAR8=VALUE_TOKEN201711212122_8
+  38: setenv TEST2VAR8=VALUE_TOKEN201711212122_8
+  39: setenv TESTVAR9=VALUE_TOKEN201711212122_9
+  40: setenv TEST2VAR9=VALUE_TOKEN201711212122_9
+  41: setenv TESTVAR10=VALUE_TOKEN201711212122_10
+  42: setenv TEST2VAR10=VALUE_TOKEN201711212122_10
+  43: ./display_env
+  44: 
+  45: export TESTVAR1=VALUE_TOKEN201711212122_1
+  46: export TEST2VAR1=VALUE_TOKEN201711212122_1
+  47: export TESTVAR2=VALUE_TOKEN201711212122_2
+  48: export TEST2VAR2=VALUE_TOKEN201711212122_2
+  49: export TESTVAR3=VALUE_TOKEN201711212122_3
+  50: export TEST2VAR3=VALUE_TOKEN201711212122_3
+  51: export TESTVAR4=VALUE_TOKEN201711212122_4
+  52: export TEST2VAR4=VALUE_TOKEN201711212122_4
+  53: export TESTVAR5=VALUE_TOKEN201711212122_5
+  54: export TEST2VAR5=VALUE_TOKEN201711212122_5
+  55: export TESTVAR6=VALUE_TOKEN201711212122_6
+  56: export TEST2VAR6=VALUE_TOKEN201711212122_6
+  57: export TESTVAR7=VALUE_TOKEN201711212122_7
+  58: export TEST2VAR7=VALUE_TOKEN201711212122_7
+  59: export TESTVAR8=VALUE_TOKEN201711212122_8
+  60: export TEST2VAR8=VALUE_TOKEN201711212122_8
+  61: export TESTVAR9=VALUE_TOKEN201711212122_9
+  62: export TEST2VAR9=VALUE_TOKEN201711212122_9
+  63: export TESTVAR10=VALUE_TOKEN201711212122_10
+  64: export TEST2VAR10=VALUE_TOKEN201711212122_10
+  65: ./display_env[0m
+
+  STDOUT:
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR1=VALUE_TOKEN201711212122_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR2=VALUE_TOKEN201711212122_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR3=VALUE_TOKEN201711212122_3`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR4=VALUE_TOKEN201711212122_4`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR5=VALUE_TOKEN201711212122_5`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR6=VALUE_TOKEN201711212122_6`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR7=VALUE_TOKEN201711212122_7`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR8=VALUE_TOKEN201711212122_8`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR9=VALUE_TOKEN201711212122_9`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TESTVAR10=VALUE_TOKEN201711212122_10`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR1=VALUE_TOKEN201711212122_1`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR2=VALUE_TOKEN201711212122_2`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR3=VALUE_TOKEN201711212122_3`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR4=VALUE_TOKEN201711212122_4`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR5=VALUE_TOKEN201711212122_5`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR6=VALUE_TOKEN201711212122_6`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR7=VALUE_TOKEN201711212122_7`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR8=VALUE_TOKEN201711212122_8`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR9=VALUE_TOKEN201711212122_9`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TEST2VAR10=VALUE_TOKEN201711212122_10`[0m
+[38;5;239m  01: ------------------------------
+  02: TERM_PROGRAM=iTerm.app
+  03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
+  04: TERM=xterm-256color
+  05: SHELL=42sh
+  06: MYVIMRC=/Users/vcombey/.vimrc
+  07: TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002hk0000m4h/T/
+  08: Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.L2CpdxWFDX/Render
+  09: TERM_PROGRAM_VERSION=3.1.5
+  10: OLDPWD=/Users/vcombey/42ShellTester
+  11: TERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  12: ZSH=/Users/vcombey/.oh-my-zsh
+  13: SBCL_HOME=/Users/vcombey/.sbcl/lib/sbcl
+  14: USER=vcombey
+  15: SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GQD4sySyQz/Listeners
+  16: __CF_USER_TEXT_ENCODING=0x5090:0x0:0x0
+  17: PAGER=less
+  18: HOMEBREW_CACHE=/tmp/vcombey/Homebrew/Caches
+  19: DOTFILES=/Users/vcombey/.dotfiles
+  20: LSCOLORS=HxBxcxdxbxegedabagacad
+  21: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
+  22: ZSHRC=/Users/vcombey/.zshrc
+  23: a=lol
+  24: PWD=/Users/vcombey/42ShellTester/tmp
+  25: EDITOR=vim
+  26: BASE16_THEME=base16-nord
+  27: LANG=en_US.UTF-8
+  28: ITERM_PROFILE=Default
+  29: XPC_FLAGS=0x0
+  30: TEST2VAR10=OLD_TOKEN201711212122_10
+  31: XPC_SERVICE_NAME=0
+  32: INSTALL_ROOT=/Users/vcombey/.sbcl
+  33: SHLVL=3
+  34: HOME=/Users/vcombey
+  35: COLORFGBG=7;0
+  36: ITERM_SESSION_ID=w0t0p0:11C9EEA4-4F91-4C93-B4D5-3967EA359A74
+  37: LESS=-R
+  38: LOGNAME=vcombey
+  39: VISUAL=vim
+  40: LC_CTYPE=en_US.UTF-8
+  41: TEST2VAR9=OLD_TOKEN201711212122_9
+  42: TEST2VAR8=OLD_TOKEN201711212122_8
+  43: TEST2VAR7=OLD_TOKEN201711212122_7
+  44: TEST2VAR6=OLD_TOKEN201711212122_6
+  45: TEST2VAR5=OLD_TOKEN201711212122_5
+  46: TEST2VAR4=OLD_TOKEN201711212122_4
+  47: TEST2VAR3=OLD_TOKEN201711212122_3
+  48: TEST2VAR2=OLD_TOKEN201711212122_2
+  49: TEST2VAR1=OLD_TOKEN201711212122_1
+  50: COLORTERM=truecolor
+  51: _=/Users/vcombey/42/42sh/42sh
+  52: HISTFILE=/Users/vcombey/.42sh_history
+  53: ------------------------------
+  54: TOTAL ENVIRONMENT VARIABLES: 51[0m
+
+  STDERR:
+[38;5;239m  01: usage: setenv key1=value1 key2=value2 ..
+  02: usage: setenv key1=value1 key2=value2 ..
+  03: usage: setenv key1=value1 key2=value2 ..
+  04: usage: setenv key1=value1 key2=value2 ..
+  05: usage: setenv key1=value1 key2=value2 ..
+  06: usage: setenv key1=value1 key2=value2 ..
+  07: usage: setenv key1=value1 key2=value2 ..
+  08: usage: setenv key1=value1 key2=value2 ..
+  09: usage: setenv key1=value1 key2=value2 ..
+  10: usage: setenv key1=value1 key2=value2 ..
+  11: usage: setenv key1=value1 key2=value2 ..
+  12: usage: setenv key1=value1 key2=value2 ..
+  13: usage: setenv key1=value1 key2=value2 ..
+  14: usage: setenv key1=value1 key2=value2 ..
+  15: usage: setenv key1=value1 key2=value2 ..
+  16: usage: setenv key1=value1 key2=value2 ..
+  17: usage: setenv key1=value1 key2=value2 ..
+  18: usage: setenv key1=value1 key2=value2 ..
+  19: usage: setenv key1=value1 key2=value2 ..
+  20: usage: setenv key1=value1 key2=value2 ..
+  21: ./lib/main.sh: line 102: 66735 Segmentation fault: 11  /Users/vcombey/42/42sh/42sh[0m
+
+Total tests: 281
+Total failed tests: 60
+Total pending tests: 3
