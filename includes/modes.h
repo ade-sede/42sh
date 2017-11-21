@@ -4,7 +4,7 @@
 # include "t_ast.h"
 # include "parser.h"
 # include "t_line.h"
-//# include "history.h"
+# include "history.h"
 # include "job_control.h"
 # include "exec_symbol.h"
 

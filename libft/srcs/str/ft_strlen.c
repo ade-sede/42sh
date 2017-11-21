@@ -2,19 +2,6 @@
 #include "str.h"
 #include <string.h>
 
-size_t	ft_strstrlen(const char **s)
-{
-	size_t i;
-
-	i = 0;
-	while (*s != NULL)
-	{
-		i++;
-		s++;
-	}
-	return (i);
-}
-
 size_t	ft_strlen(const char *s)
 {
 	size_t i;

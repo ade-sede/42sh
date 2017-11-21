@@ -9,13 +9,12 @@
 #include "modes.h"
 #include "get_next_line.h"
 #include "lexer.h"
-#include "t_history.h"
 
-char	*line_editing_get_line(t_line *line, t_history *hist,
+char	*line_editing_get_line(t_line *line, t_hist *hist,
 		void (*sig_handler)(void))
 {
 	put_prompt(line);
-//	history_init_line(*hist);
+	history_init(hist);
 	edit_line_init(line, sig_handler);
 	return (edit_get_input());
 }
@@ -59,7 +58,7 @@ int		get_input(t_modes *modes, char **buff)
 {
 	if (modes->mode == INTERACTIVE_MODE)
 		*buff = ft_strdup(line_editing_get_line(singleton_line(), \
-					singleton_history(), &edit_set_signals_open));
+					singleton_hist(), &edit_set_signals_open));
 	else if (modes->mode == STRING_MODE)
 		*buff = string_get_line(modes);
 	else

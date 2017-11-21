@@ -4,14 +4,13 @@
 #include "shopt.h"
 #include "failure.h"
 #include "get_opt.h"
-#include "libft.h"
+#include <stdio.h>
 
 static t_option g_option[] = {
 	{1, "o", OPTION_STRING, "shell option", "Set / Unset a shell option"},
 	{0, NULL, 0, NULL, NULL}
 };
 
-#include <stdio.h>
 
 static int	display_all(t_env *env)
 {

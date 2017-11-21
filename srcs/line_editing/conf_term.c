@@ -12,13 +12,8 @@
 
 void	conf_term_non_canonical(void)
 {
-//	write(1, "deb", 1);
-//	sleep(5);
-//	write(1, "deb", 1);
 	if (tcsetattr(0, TCSANOW, &singleton_line()->non_canonical_mode) < 0)
 		fatal("tcsetattr error");
-//	sleep(5);
-//	write(1, "fin", 1);
 }
 
 void	conf_term_canonical(void)
