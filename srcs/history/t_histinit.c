@@ -43,9 +43,9 @@ char        *histfile(void)
 	t_env   *env;
 	char    *hist_file;
 
-	env = singleton_env();
-	hist_file = env_getenv((const char **)env->environ, "HISTFILE", NULL);
-	if (!hist_file)
+//	env = singleton_env();
+//	hist_file = env_getenv((const char **)env->environ, "HISTFILE", NULL);
+//	if (!hist_file)
 		hist_file = HISTFILE;
 	return (hist_file);
 }

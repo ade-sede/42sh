@@ -2,7 +2,7 @@
 # define T_HISTORY_H
 
 # include "libft.h"
-# define HISTFILE "~/42sh_history"
+# define HISTFILE "42sh_history"
 
 /*
  *	Au moment ou on lance un line editing new_node est cree.
@@ -29,7 +29,7 @@ typedef struct	s_history
 
 typedef struct	s_hist_cmd_node
 {
-	char			*line;
+	t_word			line;
 	int				index;
 	struct timeval	timestamp;
 	int				modified;
@@ -50,5 +50,10 @@ void			init_history(t_history *hist);
 void			history_init_line(t_history *hist);
 t_history		*singleton_history(void);
 void			history_write_to_histfile(t_history *hist, t_list_d *last);
+int				history_load(t_history *hist);
+
+
+#include "environ.h"
+int				builtin_history(t_env *env, const char **argv);
 
 #endif

@@ -27,12 +27,12 @@ void            history_write_to_histfile(t_history *hist, t_list_d *last)
 		last = hist->command_list->last;
 	if ((fd = open(histfile(), O_RDWR | O_APPEND)) == -1)
 	{
-		investigate_error(1, "open", NULL, -1);
+//		investigate_error(1, "open", NULL, -1);
 		return ;
 	}
 	while (last)
 	{
-		write_to_hist((((t_hist_node *)last->data)->history.line), fd);
+		write_to_hist((((t_hist_node *)last->data)->history.line.str), fd);
 		write(fd, "\n", 1);
 		last = last->prev;
 	}

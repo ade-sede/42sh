@@ -8,11 +8,10 @@
 void			set_hist_cmd_node(char *line, int index, int modif, t_hist_cmd_node *nd)
 {
 	nd->index = index;
-	free(nd->line);
+	w_free(&nd->line);
+	w_newword(&nd->line);
 	if (line)
-		nd->line = ft_strdup(line);
-	else
-		nd->line = NULL;
+		w_addstr(&nd->line, line);
 	nd->modified = modif;
 	gettimeofday(&nd->timestamp, NULL);
 }
@@ -37,7 +36,7 @@ void			reset_cmd_node(t_history *hist)
 	{
 		if ((nd = start->data)->hist_modif.modified)
 		{
-			set_hist_cmd_node(nd->history.line, nd->history.index, 0,
+			set_hist_cmd_node(nd->history.line.str, nd->history.index, 0,
 					&nd->hist_modif);
 		}
 		start = start->prev;
@@ -60,11 +59,11 @@ void			set_new_hist_cmd(t_history *hist, char *str)
 
 	if (str)
 		set_hist_cmd_node(str, ft_strlen(str), 0,
-				&((t_hist_node *)hist->command_list->last->data)->history);
+				&((t_hist_node *)hist->command_list->first->data)->history);
 	else
 	{
 		if ((nd = hist->current_node->data))
-			set_hist_cmd_node(nd->hist_modif.line, nd->hist_modif.index, 0,
+			set_hist_cmd_node(nd->hist_modif.line.str, nd->hist_modif.index, 0,
 				&((t_hist_node *)hist->command_list->last->data)->history);
 		reset_cmd_node(hist);
 	}

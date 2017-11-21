@@ -38,6 +38,7 @@ int         history_load(t_history *hist)
 		if (charcmp(cat, ft_strlen(cat) - 1, '\\'))
 			continue ;
 		set_new_hist_cmd(hist, cat);
+		ft_putendl(cat);
 		cat = NULL;
 	}
 	close(fd);
