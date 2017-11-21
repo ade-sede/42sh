@@ -59,7 +59,6 @@ int		logwrite(const char *filename, const char *func_name,
 	return (-1);
 }
 
-
 int		investigate_error(int log, const char *prefix,
 		const char *custom_error, int return_value)
 {

@@ -30,13 +30,13 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 		word_expanded = word_expansion(word->token->value, 0);
 		av = av ? ft_arrayjoin_free(word_expanded, av, 0b11) : word_expanded;
 	}
-	else if (io_redirect)
+/*	else if (io_redirect)
 	{
 		//av = av ? ft_arrayjoin_free(&io_redirect->heredoc, av, 0b11) : io_redirect->heredoc;
 		// TODO Donne il faut cree des char ** 
 		av = (char**)ft_parrnew();
-		ft_parrpush((void***)&av, io_redirect->heredoc);
-	}
+//		ft_parrpush((void***)&av, io_redirect->heredoc);
+	}*/
 	if (io_redirect)
 		exec_io_redirect(io_redirect, redirect_list);
 	if (is_symb(ast->child[0], CMD_SUFFIX))

@@ -23,7 +23,8 @@ int	read_hist_numeric(int count, t_word *event, t_hist *hist)
 	/* if (!event_node) */
 	/* 	return (TRUE); */
 	/* w_addstr(event_node->line); */
-	w_addstr(event, "0 1 2 3 4 5 6 7 8 9");
+	/* w_addstr(event, "0 1 2 3 4 5 6 7 8 9"); */
+	w_addstr(event, "'1' '' '1' '' '' '2'\\''fd' '' '' '' ''\\'''");
 	return (FALSE);
 }
 
@@ -75,7 +76,7 @@ static int read_hist_string(int flag, t_word string_event, t_word *event, t_hist
 	/* if (!node) */
 	/* 	return (TRUE); */
 	/* w_addstr(event, node->line); */
-	w_addstr(event, "a b c d e f g h i k l m n o p q r s t u v w x y z");
+	w_addstr(event, "a b c d e f g h i k l m n o p q r s t u v w x y z a");
 	return (FALSE);
 }
 
@@ -147,7 +148,8 @@ int	event_expand(const char *s, const char **source, t_word *event, t_hist *hist
 	}
 	else
 	{
-		w_addmem(event, s, *source - s - 1);
+		if (*source - s - 1 > 0)
+			w_addmem(event, s, *source - s - 1);
 		++(*source);
 	}
 	dprintf(2, "Event string = #%s#\n", event->str);

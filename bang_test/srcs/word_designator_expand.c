@@ -11,7 +11,8 @@ static int valid_designator(const char **source, int *done)
 		return (FALSE);
 	}
 	if (**source == ':')
-	{ if (!ft_strchr("^$-*", *(*source + 1)) && !ft_isdigit(*(*source + 1)))
+	{
+		if (!ft_strchr("^$-*", *(*source + 1)) && !ft_isdigit(*(*source + 1)))
 		{
 			*done = FALSE;
 			return (TRUE);
@@ -74,7 +75,9 @@ static void	parse_range(const char **source, int *start, int *end)
 	{
 		++(*source);
 		*start = 1;
-		*end = -1; } }
+		*end = -1;
+	}
+}
 
 static void fake_lex(const char *source, t_list **list)
 {
@@ -99,7 +102,11 @@ static int	extract_words(int start, int end, t_word event, t_word *word_designat
 	if (start > end && end != -1 && end != -2)
 		return (TRUE);
 	fake_lex(event.str, &list);
-	start_node = ft_simple_lst_get_n(list, start); if (end == -1)
+	if (start == -1)
+		start_node = ft_last_simple_lst(list);
+	else
+		start_node = ft_simple_lst_get_n(list, start);
+	if (end == -1)
 		end_node = ft_last_simple_lst(list);
 	else if (end == -2)
 		end_node = ft_previous_last_simple_lst(list);

@@ -27,8 +27,13 @@ typedef	struct	s_hist
 **	-2 is the previous last.
 */
 
+/*
+**	
+*/
+
 char	*bang_expand(const char *source, t_hist *hist);
 int		event_expand(const char *s, const char **source, t_word *event, t_hist *hist, int *done);
 int		read_hist_numeric(int count, t_word *event, t_hist *hist);
 int		word_designator_expand(const char **source, t_word event, t_word *word_designator, int *done);
+int		modifier_expand(const char **source, t_word *ret, t_word word_designator, int *done);
 #endif

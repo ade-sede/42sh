@@ -9,8 +9,7 @@
 **
 **	RETURN VALUE:
 **		NULL if an error occured.
-**		The address of the new expanded string otherwise.
-**
+**		The address of the new expanded string otherwise.  **
 **	Each function is incharge of the init for the variable it uses.
 **	If everything was okay, this function frees everything when going out of
 **	the loop, otherwise, each function is responsible for its memory.
@@ -80,6 +79,7 @@ char	*bang_expand(const char *source, t_hist *hist)
 	int		done;
 	const char	*s;
 
+	/* NEED TO INCLUDE DEF BEHAVIOR IN THE FUNCTIONS THEMSELVES */
 	change_state(state, DEF);
 	s = source;
 	w_newword(&ret);
@@ -97,7 +97,7 @@ char	*bang_expand(const char *source, t_hist *hist)
 				w_free(&ret);
 				return (NULL);
 			}
-			if (!done)
+			if (!done) // Default behavior if no event
 			{
 				w_newword(&event);
 				read_hist_numeric(-1, &event, hist);
@@ -107,16 +107,31 @@ char	*bang_expand(const char *source, t_hist *hist)
 			{
 				dprintf(2, "BAD WORD\n");
 				w_free(&ret);
+				w_free(&event);
+				return (NULL);
+			}
+			if (!done) // Default behavior if no designator
+			{
+				w_newword(&word_designator);
+				if (event.str)
+					w_addstr(&word_designator, event.str);
+			}
+			w_free(&event);
+			if ((err = modifier_expand(&source, &ret, word_designator, &done)))
+			{
+				dprintf(2, "BAD MOD\n");
+				w_free(&ret);
+				w_free(&word_designator);
 				return (NULL);
 			}
 			if (!done)
 			{
-				w_newword(&word_designator);
-				w_addstr(&word_designator, event.str);
+				if (word_designator.str)
+					w_addstr(&ret, word_designator.str);
 			}
+			w_free(&word_designator);
 			/* Apply modifier */
 			/* Free everything we used*/
-			//w_free(&event);
 			//w_free(&word_designator);
 		}
 		w_addchar(&ret, *source);
