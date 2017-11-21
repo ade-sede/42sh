@@ -1,4 +1,5 @@
 #include "exec.h"
+#include "expand.h"
 
 /*
 **	io_redirect      :           io_file
@@ -15,15 +16,16 @@
 **	                 | CLOBBER   filename
 */
 #include "failure.h"
-void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
+int	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 {
 	int			io_number;
 	int			(*f)(int, char*, t_list**, int);
-	char		*target;
+	char		*filename;
 	int	id;
 	t_ast		*io_file = NULL;
 	t_ast		*io_here = NULL;
 	int			mypipe[2];
+	char		**expanded_filename;
 
 	io_number = -1;
 	if (is_token(ast->child[0], TK_IO_NUMBER))
@@ -36,8 +38,19 @@ void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 	{
 		id = io_file->child[0]->token->id;
 		f = get_exec_redir_func(id);
-		target = io_file->child[1]->child[0]->token->value;
-		f(io_number, target, redirect_list, id);
+		filename = io_file->child[1]->child[0]->token->value;
+
+		expanded_filename = word_expansion(filename, NO_FIELDSPLITING);
+		//fprintf(stderr, "[filename vaut %s]\n", expanded_filename[0]);
+		//fprintf(stderr, "[return vaut %d]\n", f(io_number, filename, redirect_list, id));
+		//fprintf(stderr, "[return vaut %d]\n", f(io_number, filename, redirect_list, id));
+		if (!(f(io_number, expanded_filename[0], redirect_list, id)))
+		{
+			ft_arraydel(&expanded_filename);
+			return (0);
+		}
+		ft_arraydel(&expanded_filename);
+
 	}
 	if (is_symb(ast->child[0], IO_HERE))
 		io_here = ast->child[0];
@@ -50,13 +63,14 @@ void	exec_io_redirect(t_ast	*ast, t_list **redirect_list)
 		{
 			investigate_error(1, "pipe", "pipe failed",
 						EXIT_FAILURE);
-			return ;
+			return 0;
 		}
 		//pipe(mypipe);
 		ft_putstr_fd(io_here->heredoc, mypipe[1]);
 		close(mypipe[1]);
 		push_dup(io_number == -1 ? STDIN_FILENO : io_number, mypipe[0], FALSE, redirect_list);
 	}
+	return 1;
 	/*
 	** creer pipe
 	** ecrire ast->heredoc pipe[WRITE_END]

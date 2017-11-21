@@ -129,7 +129,7 @@ int					builtin_read(t_env *env, const char **argv)
 	put_prompt(line);
 	//ft_putstr("\x1b[0m");// fd (2)
 	values = read_get_input(options);
-	if (*value && values[ft_strlen(values) - 1] != '\n')
+	//if (*values && values[ft_strlen(values) - 1] != '\n')
 		ft_putstr("\n");// fd (2)
 	 if (isatty(options.fd))
 	 	conf_term_canonical();

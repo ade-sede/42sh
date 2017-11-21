@@ -13,7 +13,7 @@
 **	                 | cmd_suffix WORD
 */
 
-char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
+int	exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char ***av)
 {
 	t_ast	*io_redirect = NULL;
 	t_ast	*word = NULL;
@@ -30,13 +30,14 @@ char	**exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char **av)
 	if (word)
 	{
 		word_expanded = word_expansion(word->token->value, 0);
-		av = av ? ft_arrayjoin_free(word_expanded, av, 0b11) : word_expanded;
+		*av = *av ? ft_arrayjoin_free(word_expanded, *av, 0b11) : word_expanded;
 	}
 	if (io_redirect)
-		exec_io_redirect(io_redirect, redirect_list);
+		if (!(exec_io_redirect(io_redirect, redirect_list)))
+			return (0);
 	if (is_symb(ast->child[0], CMD_SUFFIX))
 		return (exec_cmd_suffix(ast->child[0], redirect_list, av));
-	return (av);
+	return (1);
 }
 
 /*
@@ -70,7 +71,7 @@ void	exec_assignment_word(t_ast *ast)
 	ft_arraydel(&word_expanded); //TODO: fait peter a=b
 }
 
-void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
+int	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
 {
 	t_ast	*assignement_word = NULL;
 	t_ast	*io_redirect = NULL;
@@ -86,9 +87,12 @@ void	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
 	if (assignement_word)
 		exec_assignment_word(assignement_word);
 	if (io_redirect)
-		exec_io_redirect(io_redirect, redirect_list);
+		if (!(exec_io_redirect(io_redirect, redirect_list)))
+			return (0);
 	if (is_symb(ast->child[0], CMD_PREFIX))
-		exec_cmd_prefix(ast->child[0], redirect_list);
+		return (exec_cmd_prefix(ast->child[0], redirect_list));
+	return (1);
+
 }
 
 char	*extract_word(t_ast *ast)
@@ -125,7 +129,10 @@ int		exec_simple_command(t_ast *ast)
 	int			exit_status = EXIT_SUCCESS;
 
 	if (is_symb(ast->child[0], CMD_PREFIX))
-		exec_cmd_prefix(ast->child[0], &redirect_list);
+	{
+		if (!(exec_cmd_prefix(ast->child[0], &redirect_list)))
+			return (EXIT_FAILURE);
+	}
 	av = get_cmd_name(ast, 0);
 	if (is_symb(ast->child[1], CMD_SUFFIX))
 		cmd_suffix = ast->child[1];
@@ -133,7 +140,9 @@ int		exec_simple_command(t_ast *ast)
 		cmd_suffix = ast->child[2];
 	if (cmd_suffix)
 	{
-		av_cmdsuffix = exec_cmd_suffix(cmd_suffix, &redirect_list, av_cmdsuffix);
+		if (!exec_cmd_suffix(cmd_suffix, &redirect_list, &av_cmdsuffix))
+			return (EXIT_FAILURE);
+
 	//	fprintf(stderr, "[%s]\n", av_cmdsuffix[1]);
 		if (av_cmdsuffix)
 			av = av ? ft_arrayjoin_free(av, av_cmdsuffix, 0b11) : av_cmdsuffix;

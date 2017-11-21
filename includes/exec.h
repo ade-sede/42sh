@@ -73,7 +73,7 @@ int				exec(t_ast	*ast);
 int				is_token(t_ast *ast, int token_id);
 int				is_symb(t_ast *ast, int symbol);
 
-void			exec_io_redirect(t_ast	*ast, t_list **redirect_list);
+int		exec_io_redirect(t_ast	*ast, t_list **redirect_list);
 
 char	**get_cmd_name(t_ast *ast, int flag);
 int		exec_function(t_ast *fct_body, char **av);
