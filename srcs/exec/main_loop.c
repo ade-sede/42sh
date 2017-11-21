@@ -5,7 +5,6 @@
 #include "environ.h"
 #include "exec.h"
 #include "builtin.h"
-#include "history.h"
 #include "line_editing.h"
 #include "lexer.h"
 #include "get_next_line.h"
@@ -14,9 +13,8 @@
 #include <stdio.h>
 #define LOCAL_BUFF_SIZE 4096
 
-void	init_main_loop(t_line *line, t_hist *hist)
+void	init_main_loop(t_line *line)
 {
-	(void)hist;
 	line->len = 0;
 	line->pos = 0;
 	line->visu_mode = 0;
@@ -38,8 +36,8 @@ int		main_loop(t_env *env, t_modes *modes)
 {
 	char		*buff;
 
-	if (modes->mode == INTERACTIVE_MODE)
-		init_main_loop(singleton_line(), singleton_hist());
+	//if (modes->mode == INTERACTIVE_MODE)
+	//	init_main_loop(singleton_line(), singleton_hist());
 	while (42)
 	{
 		if (modes->mode == INTERACTIVE_MODE)

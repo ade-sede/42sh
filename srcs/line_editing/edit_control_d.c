@@ -1,5 +1,5 @@
 #include "line_editing.h"
-#include "history.h"
+#include "t_history.h"
 
 /*
 **	When CTRL-D is read, if the line is empty :

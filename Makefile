@@ -35,7 +35,6 @@ SRC_FILE = \
 		   builtin/unalias.c \
 		   builtin/unset.c \
 		   builtin/unsetenv.c \
-		   builtin/history.c \
 		   \
 		   completion/comple_bin_matches.c \
 		   completion/comple_create_completion_tree.c \
@@ -226,7 +225,6 @@ SRC_FILE = \
 		   line_editing/syntax_coloring//lexer_action_le/whitespace.c \
 		   line_editing/syntax_coloring//lexer_action_le/word.c
 
->>>>>>> master
 INCLUDES_FILES = \
 				 builtin.h \
 				 shopt.h \

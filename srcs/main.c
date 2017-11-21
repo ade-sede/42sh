@@ -89,7 +89,7 @@ int		main(int ac, char **av)
 	if (modes.mode == INTERACTIVE_MODE)
 	{
 		conf_term_init();
-		history_load(singleton_hist(), env);
+		//history_load(singleton_hist(), env);
 		create_ternary_tree(env);
 	}
 	local_add_change_from_key_value(env, "?", "0");

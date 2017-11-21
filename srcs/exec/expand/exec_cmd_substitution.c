@@ -1,6 +1,7 @@
 #include "expand.h"
 #include "libft.h"
 #include "exec.h"
+#include <fcntl.h>
 
 static void	exec_comm_child (char *comm, int *fildes, int no_showerr)
 {

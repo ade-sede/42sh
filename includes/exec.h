@@ -4,7 +4,8 @@
 # include "t_ast.h"
 # include "parser.h"
 # include "t_line.h"
-# include "history.h"
+# include "line_editing.h"
+# include "t_history.h"
 # include "job_control.h"
 # include "exec_symbol.h"
 # include "modes.h"
@@ -54,7 +55,7 @@ void			no_handle_signals(void);
 */
 
 int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes);
-void			init_main_loop(t_line *line, t_hist *hist);
+void			init_main_loop(t_line *line);
 int		main_loop(t_env *env, t_modes *modes);
 int		get_input(t_modes *modes, char **buff);
 
@@ -80,7 +81,7 @@ t_ast	*get_function(t_env *env, char *cmd_name);
 int		exec_function(t_ast *fct_body, char **av);
 void	exec_redirect_list(t_ast *ast, t_list **redirect_list);
 char	*stream_get_line(int stream);
-char	*line_editing_get_line(t_line *line, t_hist *hist,
+char	*line_editing_get_line(t_line *line, t_history *h,
 		void (*sig_handler)(void));
 int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes);
 #endif

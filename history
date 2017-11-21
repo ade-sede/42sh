@@ -47,11 +47,11 @@ Quand on lit le fichier d'historique, les lignes dont le \n est echappe par un \
 
 struct s_hist
 {
-	t_lst_head *lst_head
-	t_list_d	*last_read;
-	struct s_cmd_node current_cmd
-	size_t		last_line_read;
-	int			signum;
+	t_lst_head			*lst_head
+	t_list_d			*last_read;
+	struct s_cmd_node	current_cmd
+	size_t				last_line_read;
+	int					signum;
 }
 
 line update avant l'exec.

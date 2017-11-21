@@ -2,8 +2,8 @@
 #include "parser.h"
 #include "failure.h"
 #include "t_lexer.h"
-#include "history.h"
 #include "exec.h"
+#include "t_history.h"
 #include "lexer.h"
 
 char	*join_prompt(char *parser_prompt, char *lexer_prompt)
@@ -36,5 +36,5 @@ void		reopen_line_editing(t_lexer *lex, t_parser *parser, char **new_command)
 	line = singleton_line();
 	load_prompt(env, line, NULL, prompt);
 	*new_command = line_editing_get_line(line, \
-			singleton_hist(), &edit_set_signals_reopen);
+			singleton_history(), &edit_set_signals_reopen);
 }

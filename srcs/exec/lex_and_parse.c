@@ -3,7 +3,7 @@
 #include "t_env.h"
 #include "exec.h"
 #include "builtin.h"
-#include "history.h"
+//#include "history.h"
 #include "line_editing.h"
 #include "lexer.h"
 #include "parser.h"
@@ -40,8 +40,8 @@ void	remove_parser(t_parser *parser)
 
 void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list *token_list)
 {
-	if (!g_abort_opening && singleton_jc()->shell_is_interactive)
-		history_append_command_to_list((char*)lex->line);
+	//if (!g_abort_opening && singleton_jc()->shell_is_interactive)
+	//	history_append_command_to_list((char*)lex->line);
 	ft_simple_lst_remove(&token_list, free_token);
 	remove_lexer(lex);
 	remove_parser(parser);

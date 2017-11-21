@@ -1,5 +1,6 @@
 #include "t_env.h"
 #include "builtin.h"
+#include "libft.h"
 #include "local.h"
 
 int		builtin_unset(t_env *env, const char **argv)

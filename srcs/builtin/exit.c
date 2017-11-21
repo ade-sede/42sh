@@ -1,9 +1,10 @@
 #include "libft.h"
+# include "line_editing.h"
 #include "t_env.h"
 #include "local.h"
 #include "builtin.h"
 #include "failure.h"
-#include "history.h"
+//#include "history.h"
 
 int	builtin_exit(t_env *env, const char **argv)
 {
@@ -14,7 +15,7 @@ int	builtin_exit(t_env *env, const char **argv)
 	exit_status = ft_atoi(local_get_value(env->local, "$?"));
 	if (argc == 1)
 	{
-		history_write_to_histfile();
+	//	history_write_to_histfile();
 		exit(exit_status);
 	}
 	if (argc > 2)
@@ -25,7 +26,7 @@ int	builtin_exit(t_env *env, const char **argv)
 					EXIT_FAILURE));
 	else
 	{
-		history_write_to_histfile(NULL, NULL);
+//		history_write_to_histfile(NULL, NULL);
 		conf_term_canonical();
 		exit(exit_status);
 	}

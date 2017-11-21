@@ -1,6 +1,5 @@
 #include "line_editing.h"
 #include "completion.h"
-#include "history.h"
 #include "failure.h"
 
 static t_edit_func	g_edit_func[] =
@@ -103,8 +102,8 @@ char				*edit_get_input(void)
 		if (keycode != KEY_ALT_UP && keycode != KEY_ALT_DOWN)
 			l->col_target = -1;
 		/* if (btsearch_get_input(l, keycode) || history_get_input(l, keycode) || comple_get_input(l, keycode)) */
-		if (btsearch_get_input(l, keycode) || comple_get_input(l, keycode))
-			continue ;
+	//	if (btsearch_get_input(l, keycode) || comple_get_input(l, keycode))
+	//		continue ;
 		if (end_of_input(l, keycode))
 			return (edit_exit(l));
 		edit_loop(keycode, l);
