@@ -154,10 +154,8 @@ int		exec_simple_command(t_ast *ast)
 			exit_status = exec_function(fct->fct_body, av);
 		else if (get_exec_builtin(av[0]))
 			exit_status = exec_builtin(singleton_env(), (const char **)av);
-		else if (hash_get(singleton_env()->hash_table, av[0]))
-			exit_status = exec_bin(singleton_env(), (const char **)av);
 		else
-			exit_status = investigate_error(1, (const char *)av[0], "commmand not found", EXIT_FAILURE);
+			exec_bin(singleton_env(), (const char **)av);
 		ft_arraydel(&av);
 	}
 	close_dup(redirect_list);
