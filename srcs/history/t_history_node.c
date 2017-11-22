@@ -14,6 +14,18 @@ t_hist_node *create_hist_node(void)
 	return (ret);
 }
 
+void	destroy_hist_node(t_list_d *l)
+{
+	t_hist_node *node;
+	if (l)
+	{
+		node = l->data;
+		destroy_hist_cmd_node(&node->history);
+		destroy_hist_cmd_node(&node->hist_modif);
+		free(node);
+	}
+}
+
 t_hist_cmd_node *get_cmd_node(t_hist_node *histnode)
 {
 	if (singleton_env()->option & HISTREEDIT)
@@ -22,11 +34,6 @@ t_hist_cmd_node *get_cmd_node(t_hist_node *histnode)
 		return (&histnode->hist_modif);
 }
 
-void	destroy_hist_cmd_node(t_hist_cmd_node *node)
-{
-	w_free(&node->line);
-	ft_bzero(node, sizeof(*node));
-}
 
 void	copy_cmd_node(t_hist_cmd_node *source, t_hist_cmd_node *dest)
 {
@@ -37,11 +44,11 @@ void	copy_cmd_node(t_hist_cmd_node *source, t_hist_cmd_node *dest)
 	dest->timestamp = source->timestamp;
 }
 
-void	restore_cmd_node(void *ptr)
+void	restore_cmd_node(t_list_d *ptr)
 {
 	t_hist_node *node;
 
-	node = ptr;
+	node = ptr->data;
 	if (node)
 	{
 		if (node->history.modified || node->hist_modif.modified)

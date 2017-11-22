@@ -80,7 +80,7 @@ int		exec_function(t_ast *fct_body, char **av);
 t_lst_func		*get_function(t_env *env, char *cmd_name);
 void	exec_redirect_list(t_ast *ast, t_list **redirect_list);
 char	*stream_get_line(int stream);
-char	*line_editing_get_line(t_line *line, t_hist *hist,
+char	*line_editing_get_line(t_line *line, t_history *hist, void (*sig_handler)(void));
 		void (*sig_handler)(void));
 int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes);
 

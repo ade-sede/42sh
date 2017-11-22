@@ -7,6 +7,12 @@ void	update_timestamp(t_hist_cmd_node *node)
 	gettimeofday(&node->timestamp, NULL);
 }
 
+void	destroy_hist_cmd_node(t_hist_cmd_node *node)
+{
+	w_free(&node->line);
+	ft_bzero(node, sizeof(*node));
+}
+
 void	update_line_hist_cmd_node(t_hist_cmd_node *node, const char *line)
 {
 	w_free(&node->line);

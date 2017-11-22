@@ -8,8 +8,7 @@ static int	concat(char *line, char **cat)
 	if (*cat)
 	{
 		(*cat)[ft_strlen(*cat) - 1] = '\n';
-		*cat = ft_strjoin_free(*cat, line, 0b11);
-	}
+		*cat = ft_strjoin_free(*cat, line, 0b11); }
 	if (!*cat)
 		*cat = line;
 	return (1);
