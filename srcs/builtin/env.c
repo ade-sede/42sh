@@ -39,7 +39,9 @@ static const char	**apply_opt(t_env *env, const char **argv, int *error)
 			return (argv);
 	}
 	return (argv);
-} static const char	**build_new_env(t_env *env, const char **argv, int *error)
+}
+
+static const char	**build_new_env(t_env *env, const char **argv, int *error)
 {
 	int	eq_index;
 
@@ -75,8 +77,6 @@ static int			exec_env(t_env *new_env, const char **argv)
 		exit(exec_builtin(new_env, argv));
 	else
 		wait(&ret);
-	/* if (!WEXITSTATUS(ret)) */
-	/* 	fork_exec_bin(&new_env, argv, NULL); */
 	return (1);
 }
 

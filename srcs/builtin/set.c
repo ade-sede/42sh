@@ -11,13 +11,17 @@ static t_option g_option[] = {
 	{0, NULL, 0, NULL, NULL}
 };
 
+static t_programinfo pi = {
+	"set", "Assign positional parameters / set unset shell variables",
+	g_option, NULL, 0, 0, 1, 0, NULL, 0, 0
+};
 
 static int	display_all(t_env *env)
 {
-	t_list	*local_list;
-	t_local	*local;
-	t_list	*pos_param_list;
-	t_pos_param	*pos_param;
+	t_list			*local_list;
+	t_local			*local;
+	t_list			*pos_param_list;
+	t_pos_param		*pos_param;
 
 	local_list = env->local;
 	pos_param_list = env->pos_param;
@@ -44,9 +48,9 @@ static int	display_all(t_env *env)
 
 int			builtin_set(t_env *env, const char **argv)
 {
-	int		opt_id;
-	size_t	argc;
-	t_programinfo pi = { "set", "Assign positional parameters / set unset shell variables", g_option, NULL, 0, 0, 1, 0, NULL, 0, 0 };
+	int				opt_id;
+	size_t			argc;
+
 	argc = ft_arraylen(argv);
 	if (argc == 1)
 	{

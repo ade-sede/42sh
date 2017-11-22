@@ -5,7 +5,15 @@
 #include "failure.h"
 #include "history.h"
 
-int	builtin_exit(t_env *env, const char **argv)
+static void		exit_quit(int exit_status)
+{
+	history_write_to_histfile();
+	if (isatty(STDIN_FILENO))
+		conf_term_canonical();
+	exit(exit_status);
+}
+
+int				builtin_exit(t_env *env, const char **argv)
 {
 	int		exit_status;
 	int		argc;
@@ -14,13 +22,7 @@ int	builtin_exit(t_env *env, const char **argv)
 	if (!ft_atoi_safe(local_get_value(env->local, "?"), &exit_status))
 		exit_status = 1;
 	if (argc == 1)
-	{
-		//ft_putstr_fd("exit\n", 2);
-		if (isatty(STDIN_FILENO))
-			conf_term_canonical();
-		history_write_to_histfile();
-		exit(exit_status);
-	}
+		exit_quit(exit_status);
 	if (argc > 2)
 		return (investigate_error(1, NULL, "exit: too many arguments",
 					EXIT_FAILURE));
@@ -33,11 +35,6 @@ int	builtin_exit(t_env *env, const char **argv)
 					255));
 	}
 	else
-	{
-		history_write_to_histfile();
-		if (isatty(STDIN_FILENO))
-			conf_term_canonical();
-		exit(exit_status);
-	}
+		exit_quit(exit_status);
 	return (EXIT_SUCCESS);
 }

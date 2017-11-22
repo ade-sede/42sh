@@ -15,7 +15,6 @@ t_list		*find_alias(t_list *alias, const char *argv, size_t len)
 	return (alias);
 }
 
-#include <stdio.h>
 static void	create_alias(t_env *env, const char *argv, int eq_index, int *ret)
 {
 	t_list	*node;

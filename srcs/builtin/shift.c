@@ -3,24 +3,33 @@
 #include "libft.h"
 #include "failure.h"
 
-int			builtin_shift(t_env *env, const char **argv)
+int			fisrt_err(int *n, const char **argv)
 {
-	int		n;
-	size_t	len;
-	size_t	n_tmp;
-	t_list	*node_del;
-	t_list	*del_next;;
-	t_list	*node_shift;
-	t_pos_param	*pos_param;
-	char	*tmp_max_param;
+	size_t		len;
 
 	len = ft_arraylen(argv);
 	if (len > 2)
-		return (investigate_error(1, "shift: ", "Too many arguments", EXIT_FAILURE));
+		return (1);
 	if (len == 1)
-		n = 1;
+		*n = 1;
 	else
-		n = ft_atoi_base((char*)argv[1], 10);
+		*n = ft_atoi_base((char*)argv[1], 10);
+	return (0);
+}
+
+int			builtin_shift(t_env *env, const char **argv)
+{
+	int			n;
+	size_t		n_tmp;
+	t_list		*node_del;
+	t_list		*del_next;;
+	t_list		*node_shift;
+	t_pos_param	*pos_param;
+	char		*tmp_max_param;
+
+
+	if (fisrt_err(&n, argv))
+		return (investigate_error(1, "shift: ", "Too many arguments", EXIT_FAILURE));
 	tmp_max_param = local_get_value(env->local, "#");
 	if (!tmp_max_param)
 			return (EXIT_FAILURE);
