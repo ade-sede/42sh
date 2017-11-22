@@ -16,6 +16,8 @@ int	builtin_exit(t_env *env, const char **argv)
 	if (argc == 1)
 	{
 		//ft_putstr_fd("exit\n", 2);
+		if (isatty(STDIN_FILENO))
+			conf_term_canonical();
 		history_write_to_histfile();
 		exit(exit_status);
 	}
@@ -23,12 +25,18 @@ int	builtin_exit(t_env *env, const char **argv)
 		return (investigate_error(1, NULL, "exit: too many arguments",
 					EXIT_FAILURE));
 	else if (!(ft_atoi_safe(argv[1], &exit_status)))
-		return (investigate_error(255, NULL, "exit: numeric argument required",
-					EXIT_FAILURE));
+	{
+		history_write_to_histfile();
+		if (isatty(STDIN_FILENO))
+			conf_term_canonical();
+		exit(investigate_error(1, "exit: numeric argument required", argv[1],
+					255));
+	}
 	else
 	{
 		history_write_to_histfile();
-		conf_term_canonical();
+		if (isatty(STDIN_FILENO))
+			conf_term_canonical();
 		exit(exit_status);
 	}
 	return (EXIT_SUCCESS);
