@@ -158,7 +158,7 @@ static	int	debug_token_list(t_list *token_list)
 			printf(" ");
 		printf("%s", "\u2502");
 		printf(" %s", token->cmd_name ? "CMD_NAME" : "NO_CMD_NAME");
-		for (int i = 0; i <= 3; ++i)
+		for (int i = ft_strlen("NO_CMD_NAME") - (token->cmd_name ? ft_strlen("CMD_NAME") : ft_strlen("NO_CMD_NAME")) + 1; i; --i)
 			printf(" ");
 		printf("%s", "\u2502");
 		printf(" %s", get_id(token->id));
