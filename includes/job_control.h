@@ -36,7 +36,6 @@ typedef struct	s_job
 	int				stdin;
 	int				stdout;
 	int				stderr;
-	int				exit_status;
 }				t_job;
 
 typedef struct	s_job_control

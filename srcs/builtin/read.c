@@ -38,7 +38,7 @@ static char			**split_values(char *line, t_read options)
 
 	values = (char **)ft_parrnew();
 	word = ft_strnew(0);
-	line[ft_strlen(line) - 1] = '\0';
+//	line[ft_strlen(line) - 1] = '\0';
 	while (*line == ' ' || *line == '\t')
 		line++;
 	while (*line)
