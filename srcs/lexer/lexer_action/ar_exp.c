@@ -25,7 +25,7 @@ int		lex_action_ar_exp(t_lexer *lex, struct s_info **state_info)
 	else if (lex->line[lex->pos] == ')')
 	{
 		/* if (info[_T_NEST] == 0) */
-		if (info->nest == 0)
+		if (info->nest == -1)
 		{
 			consume_input(lex);
 			pop_state(lex, state_info);
