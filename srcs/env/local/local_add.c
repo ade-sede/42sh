@@ -11,10 +11,12 @@
 int		local_add_from_key_value(t_env *env, const char *key, const char *value)
 {
 	t_local	*local;
+	char	*env_value;
 
 	local = create_local(key, value);
 	ft_simple_lst_pushback(&env->local, ft_simple_lst_create(local));
-	if (env_getenv((const char **)env->environ, key, NULL))
+	env_value = env_getenv((const char **)env->environ, key, NULL);
+	if ((env_value && !ft_strequ(env_value, value)) || env->option & ALLEXPORT)
 		env_add_change(env, key, value);
 	return (1);
 }
@@ -38,12 +40,16 @@ int		local_add_change_from_key_value(t_env *env, const char *key, const char *va
 {
 	t_list	*node;
 	t_local	*local;
+	char	*env_value;
 
 	if ((node = local_get_node(env->local, key)))
 	{
 		local = node->data;
+		env_value = env_getenv((const char **)env->environ, key, NULL);
 		if (!ft_strequ(local->value, value))
 			local->value = ft_strchange(local->value, ft_strdup(value));
+		if (env_value && !ft_strequ(env_value, value))
+			env_add_change(env, key, value);
 	}
 	else
 		local_add_from_key_value(env, key, value);
