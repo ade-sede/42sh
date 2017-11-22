@@ -135,22 +135,6 @@ SRC_FILE = \
 		   env/hash_table/hash.c \
 		   env/hash_table/hash_free.c \
 		   \
-		   history/btsearch_add.c \
-		   history/btsearch_del.c \
-		   history/btsearch_exit.c \
-		   history/btsearch_get_input.c \
-		   history/btsearch_init.c \
-		   history/btsearch_move.c \
-		   history/btsearch_refresh.c \
-		   history/btsearch_signals.c \
-		   history/expansion.c \
-		   history/history_get_input.c \
-		   history/history_init.c \
-		   history/history_line_refresh.c \
-		   history/history_move.c \
-		   history/history_write.c \
-		   history/load_history.c \
-		   \
 		   job_control/job_background.c \
 		   job_control/job_continue.c \
 		   job_control/job_fill_process_av.c \
