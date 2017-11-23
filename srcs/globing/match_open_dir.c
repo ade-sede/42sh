@@ -3,18 +3,6 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-/*
-**	char *match_open_file(char *m_dir, char *file_name)
-**	{
-**		if (ft_strequ(m_dir, "."))
-**			return (ft_strdup(file_name));
-**		else if (ft_strequ(m_dir, "/"))
-**			return (ft_strjoin(m_dir, file_name));
-**		else
-**			return (ft_strjoin3_free(m_dir, "/", file_name, 0));
-**	}
-*/
-
 int	bad_dir(char *dir_name)
 {
 	free(dir_name);
@@ -45,9 +33,6 @@ int	match_open_dir(t_matches *m, int m_i, int r_i, char *dir_name)
 		return (bad_dir(dir_name));
 	m_dir_cpy = m->dir;
 	m->dir = dir_name;
-#ifdef GLOB_DEBUG
- printf("m->dir: {%s}\n", m->dir);
- #endif
 	while ((dirent = readdir(dir)) != NULL)
 	{
 		if (ft_strequ(m->dir, "."))
@@ -69,8 +54,6 @@ int	match_open_dir(t_matches *m, int m_i, int r_i, char *dir_name)
 			if (dirent->d_name[0] != '.' || (dirent->d_name[0] == '.' && m->regex[r_i] == '.'))
 				bool_match |= (match(m, m_i + 1, r_i));
 		}
-		//m->to_match = match_open_file(m->dir, dirent->d_name);
-		//cpy_to_match[1] = m->to_match;
 		free(cpy_to_match[1]);
 	}
 	closedir(dir);

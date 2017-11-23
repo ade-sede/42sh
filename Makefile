@@ -91,6 +91,8 @@ SRC_FILE = \
 		   exec/redir_utils.c \
 		   exec/get_input.c \
 		   exec/parse_heredoc.c \
+		   exec/exec_command_prefix.c \
+		   exec/exec_command_suffix.c \
 		   \
 		   \
 		   \
@@ -154,6 +156,7 @@ SRC_FILE = \
 		   history/load_history.c \
 		   \
 		   job_control/job_background.c \
+		   job_control/job_is.c \
 		   job_control/job_continue.c \
 		   job_control/job_fill_process_av.c \
 		   job_control/job_foreground.c \
@@ -215,7 +218,7 @@ SRC_FILE = \
 		line_editing/edit_verbatim.c \
 		   \
 		   parser/get_action.c \
-		   parser/parse_redir.c \
+		   parser/parser_reopen.c \
 		   parser/parser.c \
 		   parser/parser_construct_prompt.c \
 		   parser/utils.c \

@@ -87,5 +87,7 @@ int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes);
 
 void	read_heredoc(t_ast *ast, char *target);
 void	parse_heredoc(t_ast *ast);
+int	exec_cmd_suffix(t_ast *ast, t_list **redirect_list, char ***av);
+int	exec_cmd_prefix(t_ast *ast, t_list **redirect_list);
 
 #endif

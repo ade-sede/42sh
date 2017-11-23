@@ -49,10 +49,7 @@ int		stop_condition(t_matches *m)
 
 int		match(t_matches *m, int m_i, int r_i)
 {
-#ifdef GLOB_DEBUG
- printf("r_i: %c, m_i: %c\n", m->regex[r_i], m->to_match[m_i]);
- #endif
-	if (m->regex[r_i] == '\0' && m->to_match[m_i] == '\0') //attention
+	if (m->regex[r_i] == '\0' && m->to_match[m_i] == '\0')
 		return (stop_condition(m));
 	else if (m->regex[r_i] != '\0' && m->to_match[m_i] == '\0' \
 			&& m->regex[r_i] != '*' && m->regex[r_i] != '/')
@@ -70,14 +67,6 @@ int		match(t_matches *m, int m_i, int r_i)
 	if (m->regex[r_i] == '?' && !char_is_escaped(m->regex, r_i))
 		return (match(m, m_i + 1, r_i + 1));
 	if (m->regex[r_i] == '[' && valid_square_bracket(m->regex, r_i))
-	{
-#ifdef GLOB_DEBUG
- printf("valid\n");
- #endif
 		return (func_square_bracket(m, m_i, r_i));
-	}
-#ifdef GLOB_DEBUG
- printf("invalid\n");
- #endif
 	return (func_cmp(m, m_i, r_i));
 }

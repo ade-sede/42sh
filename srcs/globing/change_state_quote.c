@@ -23,11 +23,7 @@ int		change_state_quote(char c, int quoted)
 		else if (quoted == 3)
 			quoted = 0;
 	}
-	else
-	{
-		if (quoted == 3)
-			quoted = 0;
-	}
-	return quoted;
+	else if (quoted == 3)
+		quoted = 0;
+	return (quoted);
 }
-

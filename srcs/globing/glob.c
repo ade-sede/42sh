@@ -57,7 +57,6 @@ int		has_glob_char(char *expr)
 		if (quoted == 0 && ft_strchr("*[?", expr[i]))
 			return (1);
 		quoted = change_state_quote(expr[i], quoted);
-//		fprintf(stderr, "end_bracket quoted: %d, %c\n", quoted, expr[i]);
 		i++;
 	}
 	return (0);
@@ -73,13 +72,8 @@ t_list	*glob(char *regex)
 	dir_name = init_regex(regex, &r_i);
 	if (r_i - 1 >= 0)
 		m_i = r_i - 1;
-
 	else
 		m_i = 0;
-
-#ifdef GLOB_DEBUG
- printf("regex: %s\n", regex);
- #endif
 	m = (t_matches){NULL, NULL, regex, dir_name};
 	if (!match_open_dir(&m, m_i, r_i, dir_name))
 		return (NULL);
