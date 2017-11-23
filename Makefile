@@ -364,3 +364,6 @@ test:
 	@$(CC) -g $(TEST_FILE) $(INCLUDES) $(LDFLAGS) $(SANITIZER) $(APPEND)
 	@printf "$(COLOR_GREEN)done !!! launching $(TEST_FILE) now !!!\n$(COLOR_NOCOLOR)"
 	@./a.out
+
+parser_lr:
+	gcc test/*.c -L ./libft/libft.a -I ./libft/includes/
