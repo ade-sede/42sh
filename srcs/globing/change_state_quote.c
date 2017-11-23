@@ -1,33 +1,25 @@
 #include "glob.h"
 
-int		change_state_quote(char c, int quoted)
+static void		quotement(int *quoted, int what)
+{
+	if (*quoted == 0)
+		*quoted = what;
+	else if (*quoted == what)
+		*quoted = 0;
+}
+
+int				change_state_quote(char c, int quoted)
 {
 	if (c == '\'' && quoted != 3)
-	{
-		if (quoted == 0)
-			quoted = 1;
-		else if (quoted == 1)
-			quoted = 0;
-	}
+		quotement(&quoted, 1);
 	else if (c == '"' && quoted != 3)
-	{
-		if (quoted == 0)
-			quoted = 2;
-		else if (quoted == 2)
-			quoted = 0;
-	}
+		quotement(&quoted, 2);
 	else if (c == '\\')
-	{
-		if (quoted == 0)
-			quoted = 3;
-		else if (quoted == 3)
-			quoted = 0;
-	}
+		quotement(&quoted, 3);
 	else
 	{
 		if (quoted == 3)
 			quoted = 0;
 	}
-	return quoted;
+	return (quoted);
 }
-

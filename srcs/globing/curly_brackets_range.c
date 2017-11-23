@@ -35,10 +35,10 @@ void	curly_brackets_range_alpha(t_list **res, char *expr, char *str, int end)
 
 void	curly_brackets_range_num(t_list **res, char *expr, char *str, int end)
 {
-	int	i;
-	int	start_range;
-	int	end_range;
-	char *new_str;
+	int		i;
+	int		start_range;
+	int		end_range;
+	char	*new_str;
 
 	ft_atoi_safe(str, &start_range);
 	i = 0;

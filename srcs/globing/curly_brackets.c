@@ -26,8 +26,9 @@ int		get_end_bracket(char *expr, int offset)
 {
 	int		depth;
 	size_t	i;
-	int		quoted = 0;
+	int		quoted;
 
+	quoted = 0;
 	depth = 0;
 	i = offset;
 	while (expr[i])
@@ -39,38 +40,37 @@ int		get_end_bracket(char *expr, int offset)
 		if (depth == 0)
 			return (i);
 		quoted = change_state_quote(expr[i], quoted);
-//		fprintf(stderr, "end_bracket quoted: %d, %c\n", quoted, expr[i]);
 		i++;
 	}
 	return (-1);
 }
 
 /*
- ** find first '{' wich is not backslashed
- */
+** find first '{' wich is not backslashed
+*/
 
 int		get_start_bracket(char *expr, int offset)
 {
 	size_t	i;
-	int		quoted = 0;
+	int		quoted;
 
+	quoted = 0;
 	i = offset;
 	while (expr[i])
 	{
 		if (expr[i] == '{' && quoted == 0)
 			return (i);
 		quoted = change_state_quote(expr[i], quoted);
-//		fprintf(stderr, "start quoted: %d, %c\n", quoted, expr[i]);
 		i++;
 	}
 	return (-1);
 }
 
 /*
- ** get start and end of pattern {-}, increase start until there il a closing '}'
- ** whith the same depth : "{1,{1..10}"
- ** here start will point to {1..10} at the end of the loop
- */
+** get start and end of pattern {-}, increase start until there il a closing '}'
+** whith the same depth : "{1,{1..10}"
+** here start will point to {1..10} at the end of the loop
+*/
 
 void	curly_brackets(t_list **res, char *expr, int offset)
 {
