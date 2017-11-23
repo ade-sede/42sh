@@ -88,6 +88,7 @@ int		exec_simple_command(t_ast *ast)
 	}
 	if (layer_command_suffix(ast, &av, &redirect_list) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	exec_dup(redirect_list);
 	if (av && av[0])
 		exit_status = layer_exec(av);
 	close_dup(redirect_list);

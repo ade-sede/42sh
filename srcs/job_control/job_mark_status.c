@@ -2,11 +2,11 @@
 
 int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 {
-	t_job *j;
-	t_process *p;
+	t_job		*j;
+	t_process	*p;
 
 	if (pid == 0 || errno == ECHILD)
-		return -1;
+		return (-1);
 	j = jc->first_job;
 	while (j)
 	{
@@ -15,7 +15,6 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 		{
 			if (p->pid == pid)
 			{
-//				dprintf(2, "mark process_status pid found\n");
 				p->status = status;
 				if (WIFSTOPPED(status))
 					p->stopped = 1;
@@ -31,6 +30,6 @@ int		mark_process_status(t_job_control *jc, pid_t pid, int status)
 		}
 		j = j->next;
 	}
-	fprintf (stderr, "No child process %d.\n", pid);
+	fprintf(stderr, "No child process %d.\n", pid);
 	return (-1);
 }
