@@ -46,5 +46,6 @@ int		wait_for_job(t_job_control *jc, t_job *j)
 					&& !job_is_completed(j)))
 			break ;
 	}
-	return ((singleton_env()->previous_exit = get_job_exit_status(j)));
+	//return ((singleton_env()->previous_exit = get_job_exit_status(j)));
+	return (get_job_exit_status(j));
 }
