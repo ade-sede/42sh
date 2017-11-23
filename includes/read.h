@@ -27,5 +27,6 @@ int				builtin_read(t_env *env, const char **argv);
 char			parse_read(char *arg, t_read *option, char ***args);
 char			*read_retrieve(t_read options);
 char			*read_get_input(t_read read);
+char			*read_get_rcinput(t_read options);
 #endif
 

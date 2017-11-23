@@ -114,28 +114,27 @@ int					builtin_read(t_env *env, const char **argv)
 	options.prompt = 0;
 	options.nchars = 0;
 	options.delim = '\n';
-
 	/*
 	**if (!parse_option(&options, &argv))
 		**return (2);
 	*/
-	
 	if (!(error = parse_option(&options, &argv)) || error == 2)
 		return !(error) ? 2 : 1;
-	 if (isatty(options.fd))
+	 if (singleton_jc()->shell_is_interactive && isatty(options.fd))
+	 {
 	 	conf_term_non_canonical();
-	   load_prompt(env, line, NULL,options.prompt ?options.prompt: "read> ");//"$> ");
-	//ft_putstr("\033[31m");// fd (2)
-	put_prompt(line);
-	//ft_putstr("\x1b[0m");// fd (2)
-	values = read_get_input(options);
-	//if (*values && values[ft_strlen(values) - 1] != '\n')
-		ft_putstr("\n");// fd (2)
-	 if (isatty(options.fd))
+		load_prompt(env, line, NULL,options.prompt ?options.prompt: "read> ");//"$> ");
+		put_prompt(line);
+		values = read_get_input(options);
+		ft_putstr("\n");
 	 	conf_term_canonical();
+	 }
+	 else
+		values = read_get_rcinput(options);
+	
 	split = split_values(values, options);
-	//free(values);
 	assign_values((char**)argv, split, env);
-	ft_bzero(line->buff, ft_strlen(line->buff));
+	free(values);
+	ft_arraydel(&split);
 	return (0);
 }
