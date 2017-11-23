@@ -50,4 +50,3 @@ void	parse_heredoc(t_ast *ast)
 		i++;
 	}
 }
-

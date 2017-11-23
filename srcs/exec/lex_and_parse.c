@@ -23,7 +23,8 @@ void	exec_main_loop(t_ast *ast)
 		conf_term_canonical();
 	}
 	exit_status = exec(ast);
-	local_add_change_from_key_value(singleton_env(), "?", ft_itoa_word(exit_status, nbr));
+	local_add_change_from_key_value(singleton_env(), "?",
+			ft_itoa_word(exit_status, nbr));
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_non_canonical();
 }
@@ -64,7 +65,8 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	res_parser = -1;
 	init_lexer(&lexer, buff);
 	init_parser(&parser);
-	while (!((res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS) || res_parser == PARSER_ERROR))
+	while (!((res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS) ||
+				res_parser == PARSER_ERROR))
 	{
 		token_list = NULL;
 		res_lexer = get_token_list(&lexer, &token_list, singleton_env()->alias);
@@ -76,7 +78,8 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 			reopen_token->state_info = NULL;
 			reopen_token->delim = 0;
 			reopen_token->id = 42;
-			ft_simple_lst_pushback(&token_list, ft_simple_lst_create(reopen_token));
+			ft_simple_lst_pushback(&token_list,
+					ft_simple_lst_create(reopen_token));
 		}
 		res_parser = parse(&parser, &ast, token_list);
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
