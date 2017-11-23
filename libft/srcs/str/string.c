@@ -14,7 +14,26 @@ void	w_free (t_word *word)
 	word->maxlen = 0;
 }
 
-char	*w_addchar (t_word *word, char ch)
+/*
+**	Insert char ch so that word->str[index] == ch.
+*/
+
+char	*w_insertchar(t_word *word, const char ch, size_t index)
+{
+	if (word->actlen == word->maxlen)
+	{
+		word->maxlen += W_BUFF_SIZE;
+		word->str = (char *)cl_realloc (word->actlen, word->str,  1 + word->maxlen);
+	}
+	if (index > word->maxlen)
+		return (NULL);
+	ft_memmove(word->str + index + 1, word->str + index, word->actlen - index);
+	word->str[index] = ch;
+	return (word->str);
+}
+
+
+char	*w_addchar (t_word *word, const char ch)
 {
 	if (word->actlen == word->maxlen)
 	{
@@ -32,6 +51,23 @@ char	*w_addchar (t_word *word, char ch)
 static int	max(int a, int b)
 {
 	return (a > b ? a: b);
+}
+
+char	*w_insertstr(t_word *word, const char *str, size_t index)
+{
+	size_t	len;
+
+	len = ft_strlen(str);
+	if (word->actlen + len > word->maxlen)
+	{
+		word->maxlen += max (2 * len, W_BUFF_SIZE);
+		word->str = (char *)cl_realloc (word->actlen, word->str, 1 + word->maxlen);
+	}
+	if (index > word->maxlen)
+		return (NULL);
+	ft_memmove(word->str + index + len, word->str + index, word->actlen - index);
+	ft_memcpy(word->str + index, str, len);
+	return (word->str);
 }
 
 char	*w_addmem (t_word *word, const char *str, size_t len)

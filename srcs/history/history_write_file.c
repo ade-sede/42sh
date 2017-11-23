@@ -39,3 +39,31 @@ int	history_write_file(t_list_d *start, size_t *ln, const char *filename, int ap
 	}
 	return (1);
 }
+
+int	history_write_file_wrapper(t_history *history, const char *filename, int append)
+{
+	t_histfile *histfile;
+	t_list		*tmp;
+	t_list_d	*start;
+
+	histfile = NULL;
+	if (history->histfile_list)
+		histfile = history->histfile_list->data;
+	if (histfile)
+	{
+		if (filename)
+		{
+			tmp = history->histfile_list;
+			while (tmp && !ft_strequ(filename, histfile->filename))
+			{
+				histfile = tmp->data;
+				tmp = tmp->next;
+			}
+		}
+		start = history->command_list->first;
+		if (append)
+			start = histfile->last_cmd ? histfile->last_cmd->next : NULL;
+		history_write_file(start, &histfile->ln, histfile->filename, append);
+	}
+	return (1);
+}

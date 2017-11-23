@@ -16,7 +16,6 @@ int		control_d(t_line *line)
 
 	if (line->len == 0)
 	{
-		history_write_to_histfile();
 		ft_putchar('\n');
 		builtin_exit(singleton_env(), (const char **)command);
 	}

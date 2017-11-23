@@ -1,6 +1,7 @@
 #include "line_editing.h"
 #include "failure.h"
 #include "color.h"
+#include "history.h"
 
 void	realoc_line_buff(t_line *line, size_t new_size)
 {
@@ -21,14 +22,10 @@ void	edit_add(int keycode, t_line *line)
 {
 	if (line->len == line->size - 1)
 		realoc_line_buff(line, line->size + BUFF_LINE_SIZE);
-	/* if (line->pos == line->len) */
-	/* 	line->buff[line->len] = (char)keycode; */
-	/* else */
-	/* { */
-		ft_memmove((void*)(line->buff + line->pos + 1), \
-				(void*)(line->buff + line->pos), line->len - line->pos);
-		line->buff[line->pos] = (char)keycode;
-	/* } */
+	ft_memmove((void*)(line->buff + line->pos + 1), \
+			(void*)(line->buff + line->pos), line->len - line->pos);
+	line->buff[line->pos] = (char)keycode;
+	insert_char_hist_cmd_node(get_cmd_node(singleton_history()->current->data), keycode, line->pos);
 	line->pos++;
 	line->len++;
 	edit_refresh(line);

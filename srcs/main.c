@@ -7,6 +7,7 @@
 #include "local.h"
 #include "modes.h"
 #include "history.h"
+#include "line_editing.h"
 
 void	read_args(int ac, char **av, t_modes *modes)
 {
@@ -90,7 +91,6 @@ int		main(int ac, char **av)
 	if (modes.mode == INTERACTIVE_MODE)
 	{
 		conf_term_init();
-		init_history(env, singleton_hist());
 		create_ternary_tree(env);
 	}
 	local_add_from_key_value(env, "?", "0");

@@ -4,6 +4,7 @@
 #include "builtin.h"
 #include "failure.h"
 #include "history.h"
+#include "line_editing.h"
 
 int	builtin_exit(t_env *env, const char **argv)
 {
@@ -16,7 +17,7 @@ int	builtin_exit(t_env *env, const char **argv)
 	if (argc == 1)
 	{
 		//ft_putstr_fd("exit\n", 2);
-		history_write_to_histfile();
+		history_write_file_wrapper(singleton_history(), NULL, 1);
 		exit(exit_status);
 	}
 	if (argc > 2)
@@ -27,7 +28,7 @@ int	builtin_exit(t_env *env, const char **argv)
 					EXIT_FAILURE));
 	else
 	{
-		history_write_to_histfile();
+		history_write_file_wrapper(singleton_history(), NULL, 1);
 		conf_term_canonical();
 		exit(exit_status);
 	}

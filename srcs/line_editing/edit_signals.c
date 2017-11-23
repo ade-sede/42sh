@@ -14,7 +14,7 @@ void	edit_handle_sigwinch(int signum)
 
 void	edit_handle_sigint_open(int signum)
 {
-	history_init(singleton_hist());
+	history_init(singleton_history());
 	move_cursor_lastline(singleton_line());
 	edit_line_init(singleton_line(), &edit_set_signals_open);
 	ft_putchar_fd('\n', 2);

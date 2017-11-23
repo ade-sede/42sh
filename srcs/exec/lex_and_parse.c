@@ -23,14 +23,8 @@ void	exec_main_loop(t_ast *ast)
 		conf_term_canonical();
 	}
 
-
-
-	/* Push new_command dans la liste */
-
-
-
-
-
+	/* ft_double_lst_pushback(&singleton_history()->command_list, singleton_history()->new_command); */
+	history_push(&singleton_history()->command_list, singleton_history()->new_command);
 	exit_status = exec(ast);
 	local_add_change_from_key_value(singleton_env(), "?", ft_itoa_word(exit_status, nbr));
 	if (singleton_jc()->shell_is_interactive)
@@ -53,8 +47,8 @@ void	remove_parser(t_parser *parser)
 void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list **token_list)
 {
 	(void)token_list;
-	if (!g_abort_opening && singleton_jc()->shell_is_interactive)
-		history_append_command_to_list((char*)lex->line);
+	/* if (!g_abort_opening && singleton_jc()->shell_is_interactive) */
+	/* 	history_append_command_to_list((char*)lex->line); */
 	remove_lexer(lex, token_list);
 	remove_parser(parser);
 }
@@ -70,6 +64,7 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	int			res_parser = -1;
 	t_parser	parser;
 	t_token		*reopen_token;
+	t_hist_node *history_node;
 
 	init_lexer(&lexer, buff);
 	init_parser(&parser);
@@ -98,7 +93,11 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 				break ;
 		}
 	}
-	/* update new_command*/
+	/* update new_command in history */
+	history_node = create_hist_node();
+	update_line_hist_cmd_node(&history_node->history, lexer.line);
+	singleton_history()->new_command = ft_double_lst_create(history_node);
+
 
 	if (res_parser == PARSER_SUCCESS && !g_abort_opening)
 		exec_main_loop(ast);

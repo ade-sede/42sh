@@ -7,6 +7,7 @@
 # include "termios.h"
 # include "term.h"
 # include "t_lexer.h"
+# include "history.h"
 # define KEY_ESCAPE 0x1B
 # define KEY_SPACE 0x20
 # define KEY_CTRL_D 4
@@ -85,7 +86,7 @@ size_t			get_ws_row(void);
 
 char			*control_d_heredoc(t_line *line);
 void			edit_line_init(t_line *line, void (*sig_handler)(void));
-char			*edit_get_input(void);
+char			*edit_get_input(t_line *line, t_history *history);
 void			edit_set_signals_open(void);
 void			edit_handle_sigwinch(int signum);
 void			conf_term_init(void);
@@ -123,8 +124,8 @@ void			move_cursor_firstline_from_lastline(t_line *line);
 void			move_cursor_bufflen_from_lastline(t_line *line);
 char			*edit_exit(t_line *line);
 
-int				ft_insert_str_dest(char *str, char *dest, size_t dest_len);
 int				edit_insert_str(t_line *line, char *dest, char *str);
+int				ft_insert_str_dest(char *dest, char *str, size_t dest_len);
 
 void			realoc_line_buff(t_line *line, size_t new_size);
 

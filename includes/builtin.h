@@ -3,6 +3,7 @@
 # include "t_env.h"
 //# include "history.h"
 # include "fcntl.h"
+# include "history.h"
 
 /*
 ** In unsetenv.c
@@ -93,21 +94,7 @@ int			builtin_export(t_env *env, const char **argv);
 ** In file history.c
 */
 
-typedef struct	s_history_opt
-{
-	const char	*key;
-	const char	**(*f)(t_hist*, const char **argv, int *error);
-}				t_history_opt;
-
 int				builtin_history(t_env *env, const char **argv);
-const char		**handle_options(t_hist *h, const char **argv, int *ret);
-int				parse_options(t_hist *h, const char **argv);
-
-/*
-** 	In file history_handle_options.c
-*/
-
-const char		**handle_r(t_hist *h, const char **argv, int *error);
 
 /*
 **	The builtin struct, holding a key (name of the builtin)

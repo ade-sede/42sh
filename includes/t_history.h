@@ -17,6 +17,7 @@ typedef struct	s_history {
 	t_list_d	*current;
 	t_list_d	*new_command;
 	t_list		*histfile_list;
+	char		*target;
 }				t_history;
 
 typedef struct	s_hist_cmd_node
@@ -38,7 +39,7 @@ typedef struct	s_hist_node
 */
 
 t_history	*singleton_history(void);
-void		init_history(t_env *env, t_history *hist);
+void		ctr_history(t_env *env, t_history *hist);
 
 /*
 t_hist_node *create_hist_node(void);
@@ -47,6 +48,8 @@ t_hist_node *create_hist_node(void);
 void	update_timestamp(t_hist_cmd_node *node);
 void	update_line_hist_cmd_node(t_hist_cmd_node *node, const char *line);
 void	append_line_hist_cmd_node(t_hist_cmd_node *node, const char *cat);
+void	insert_line_hist_cmd_node(t_hist_cmd_node *node, const char *cat, size_t index);
+void	insert_char_hist_cmd_node(t_hist_cmd_node *node, size_t index, const char c);
 void	append_char_hist_cmd_node(t_hist_cmd_node *node, const char c);
 void	index_hist_cmd_node(t_hist_cmd_node *node, size_t index);
 void	destroy_hist_cmd_node(t_hist_cmd_node *node);

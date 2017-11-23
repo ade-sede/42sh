@@ -1,4 +1,5 @@
 #include "expand.h"
+#include <fcntl.h>
 #include "libft.h"
 #include "exec.h"
 

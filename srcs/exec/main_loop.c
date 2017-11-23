@@ -14,9 +14,9 @@
 #include <stdio.h>
 #define LOCAL_BUFF_SIZE 4096
 
-void	init_main_loop(t_line *line, t_hist *hist)
+void	init_main_loop(t_line *line, t_history *hist)
 {
-	(void)hist;
+	ctr_history(singleton_env(), hist);
 	line->len = 0;
 	line->pos = 0;
 	line->visu_mode = 0;
@@ -39,7 +39,7 @@ int		main_loop(t_env *env, t_modes *modes)
 	char		*buff;
 
 	if (modes->mode == INTERACTIVE_MODE)
-		init_main_loop(singleton_line(), singleton_hist());
+		init_main_loop(singleton_line(), singleton_history());
 	while (42)
 	{
 		if (modes->mode == INTERACTIVE_MODE)

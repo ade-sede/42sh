@@ -12,8 +12,10 @@ typedef struct	s_word
 }				t_word;
 
 void	w_newword (t_word *word);
-char	*w_addchar (t_word *word, char ch);
+char	*w_addchar (t_word *word, const char ch);
 char	*w_addmem (t_word *word, const char *str, size_t len);
 char	*w_addstr (t_word *word, const char *str);
+char	*w_insertchar(t_word *word, const char ch, size_t index);
+char	*w_insertstr(t_word *word, const char *str, size_t index);
 void	w_free (t_word *word);
 #endif

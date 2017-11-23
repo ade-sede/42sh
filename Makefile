@@ -144,8 +144,13 @@ globing/match_open_dir.c \
 globing/square_bracket.c \
 globing/star.c \
 \
+history/history_free.c \
+history/history_get_input.c \
+history/history_init.c \
+history/history_move.c \
 history/history_push.c \
 history/history_read_file.c \
+history/history_refresh_line.c \
 history/history_write_file.c \
 history/t_histfile.c \
 history/t_history.c \
@@ -214,7 +219,6 @@ line_editing/edit_write.c \
 line_editing/put_termcap.c \
 \
 line_editing/syntax_coloring/delim.c \
-line_editing/syntax_coloring/lexer_action_le \
 line_editing/syntax_coloring/loop.c \
 line_editing/syntax_coloring/utils.c \
 line_editing/syntax_coloring/write.c \

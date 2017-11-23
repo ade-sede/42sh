@@ -8,6 +8,7 @@ struct s_shopt_mask g_shopt_mask[] =
 	{SYNCOLOR, "syncolor"},
 	{ALLEXPORT, "allexport"},
 	{HISTREEDIT, "histreedit"},
+	{OZSHHIST, "ozshhist"},
 	{-1, NULL},
 };
 

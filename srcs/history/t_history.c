@@ -2,6 +2,8 @@
 #include "libft.h"
 #include "environ.h"
 
+
+#include <stdio.h>
 t_history		*singleton_history(void)
 {
 	static t_history hist;
@@ -14,7 +16,7 @@ t_history		*singleton_history(void)
 ** It loads the history file structure, and reads the history file.
 */
 
-void		init_history(t_env *env, t_history *hist)
+void		ctr_history(t_env *env, t_history *hist)
 {
 	const char *filename;
 	t_histfile	*histfile;
@@ -23,6 +25,7 @@ void		init_history(t_env *env, t_history *hist)
 	hist->current = NULL;
 	hist->new_command = NULL;
 	hist->histfile_list = NULL;
+	hist->target = NULL;
 	filename = env_getenv((const char **)env->environ, "HISTFILE", NULL);
 	histfile = add_histfile(&hist->histfile_list, filename);
 	history_read_file(&hist->command_list, histfile->filename, &histfile->ln, &histfile->last_cmd);

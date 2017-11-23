@@ -20,7 +20,7 @@ char	*line_editing_get_line(t_line *line, t_history *hist,
 	put_prompt(line);
 	history_init(hist);
 	edit_line_init(line, sig_handler);
-	tmp = edit_get_input();
+	tmp = edit_get_input(line, hist);
 	free_history_node(&hist->new_command);
 	return (tmp);
 }

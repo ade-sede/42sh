@@ -2,6 +2,8 @@
 #include "exec.h"
 #include "t_line.h"
 #include "exec_symbol.h"
+#include "line_editing.h"
+
 /*
 **io_here          : DLESS     here_end
 **                 **| DLESSDASH here_end
@@ -22,7 +24,7 @@ void	read_heredoc(t_ast *ast, char *target)
 	while(42)
 	{
 		buff = ft_strdup(line_editing_get_line(singleton_line(), \
-					singleton_hist(), &edit_set_signals_open));
+					singleton_history(), &edit_set_signals_open));
 //		dprintf(2, "{%s}\n", buff);
 		if (ft_strequ(buff, target) || ft_strchr(buff, 4))
 			break ;

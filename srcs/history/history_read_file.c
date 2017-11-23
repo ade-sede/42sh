@@ -1,7 +1,8 @@
-#include "t_history.h"
+#include "history.h"
 #include "libft.h"
 #include "failure.h"
 #include "get_next_line.h"
+#include <stdio.h>
 
 static int	concat(char *line, char **cat)
 {
@@ -44,6 +45,18 @@ static int push_routine(t_lst_head **head, char *line, t_list_d **last_cmd)
 	return (1);
 }
 
+
+/* static int	print_history(t_list_d *first) */
+/* { */
+/* 	t_hist_node *node; */
+/* 	while (first) */
+/* 	{ */
+/* 		node = first->data; */
+/* 		dprintf(2, "#%s#\n", node->history.line.str); */
+/* 		first = first->next; */
+/* 	} */
+/* 	return (1); */
+/* } */
 int		history_read_file(t_lst_head **head, const char *filename, size_t *ln, t_list_d **last_cmd)
 {
 	int		fd;
@@ -52,7 +65,7 @@ int		history_read_file(t_lst_head **head, const char *filename, size_t *ln, t_li
 
 	cat = NULL;
 	if ((fd = open(filename, O_RDONLY)) < 0)
-		return (investigate_error(1, "open", NULL, 0));
+		return (investigate_error(0, "open", NULL, 0));
 	skip_lines(ln, fd);
 	while (get_next_line(fd, &line))
 	{
@@ -66,8 +79,8 @@ int		history_read_file(t_lst_head **head, const char *filename, size_t *ln, t_li
 		if (charcmp(cat, ft_strlen(cat) - 1, '\\'))
 			continue ;
 		/* Pushback command to the end of the history */
+		push_routine(head, cat, last_cmd);
 
-		*last_cmd = head->last;
 		cat = NULL;
 	}
 	close(fd);
