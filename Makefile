@@ -235,7 +235,6 @@ SRC_FILE = \
 			line_editing/syntax_coloring/lexer_action_le/word.c \
 		   \
 		   parser/get_action.c \
-		   parser/parser_reopen.c \
 		   parser/parser.c \
 		   parser/parser_construct_prompt.c \
 		   parser/utils.c \

@@ -23,7 +23,6 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		setpgid(pid, pgid);
 		if (!in_a_fork && foreground && !jc->background)
 		{
-		//	fprintf(stderr, "put controling terminal");
 			if (tcsetpgrp(jc->shell_terminal, pgid) == -1)
 				perror("tcsetpgrp:");
 			if (foreground)
@@ -36,7 +35,7 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		if (!foreground)
 		{
 			signal(SIGTTIN, SIG_DFL);
-			signal(SIGTTOU, SIG_DFL); //attention
+			signal(SIGTTOU, SIG_DFL);
 		}
 		signal(SIGCHLD, SIG_DFL);
 	}
@@ -76,8 +75,6 @@ int		launch_job(t_job_control *jc, t_job *j, int foreground)
 			j->pgid = parent_process_group_id;
 			in_a_fork = 1;
 		}
-//		else if (foreground)
-//			fprintf(stderr, "put controling terminal");
 	}
 	infile = j->stdin;
 	p = j->first_process;
