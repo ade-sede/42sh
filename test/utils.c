@@ -8,6 +8,8 @@ struct s_line *create_line(int state) {
 	if (!(new_line = (struct s_line *)calloc(sizeof(struct s_line), 1)))
 		return NULL;
 	new_line->state = state;
+	ft_memset(new_line->goto_table, -1, NB_SYMBOLS);
+	ft_memset(new_line->action_table, -1, NB_TOKEN);
 	return new_line;
 }
 

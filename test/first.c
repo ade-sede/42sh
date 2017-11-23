@@ -119,7 +119,7 @@ void	init_firsts(struct s_parser_lr *lr)
 }
 void	debug_firsts(struct s_parser_lr *lr)
 {
-	int	i = 1;
+	int	i = FIRST_SYMBOL;
 
 	while (i < NB_SYMBOLS + 1)
 	{

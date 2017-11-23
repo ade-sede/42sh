@@ -3,6 +3,8 @@
 #include "libft.h"
 #include "parser_lr.h"
 
+
+
 void	lr_closure(struct s_item **item_lst)
 {
 	struct s_item *current;
@@ -64,6 +66,15 @@ struct s_line	*lr_items(void)
 			current_line = current_line->next;
 		}
 	}
+}
+
+	struct s_line *res;
+	struct s_line *curr;
+	add_item(&item_list_I, &lr->grammar_rules[0], 0, dollar);
+	closure(item_list_curr);
+	while (curr != NULL)
+{
+	add_item(&item_list_I, &lr->grammar_rules[0], 0, dollar);
 }
 
 int main(void)

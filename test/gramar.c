@@ -77,4 +77,3 @@ void	debug_gramar(struct s_parser_lr *lr)
 		i++;
 	}
 }
-
