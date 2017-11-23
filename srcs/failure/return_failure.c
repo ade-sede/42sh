@@ -31,7 +31,6 @@ int		get_logfd(const char *file)
 	return (fd);
 }
 
-
 int		logwrite(const char *filename, const char *func_name,
 		const char *format, ...)
 {
@@ -59,7 +58,6 @@ int		logwrite(const char *filename, const char *func_name,
 	return (-1);
 }
 
-
 int		investigate_error(int log, const char *prefix,
 		const char *custom_error, int return_value)
 {
@@ -69,13 +67,13 @@ int		investigate_error(int log, const char *prefix,
 
 	buff = singleton_error();
 	ft_bzero(buff, E_BUFSIZE);
-	if (prefix != NULL &&(i = -1))
+	if (prefix != NULL && (i = -1))
 	{
 		while (prefix[++i])
 			buff[i] = prefix[i];
 		buff[i++] = ':';
 		buff[i++] = ' ';
-		error_name = custom_error ?(char*)custom_error : get_errno();
+		error_name = custom_error ? (char*)custom_error : get_errno();
 		if (error_name)
 			ft_strcpy(buff + i, error_name);
 	}
@@ -86,6 +84,6 @@ int		investigate_error(int log, const char *prefix,
 	return (return_value == -1 ? errno : return_value);
 }
 /*
- **	if (!log)
- **		logwrite(logfile, __func__, "%s\n", buff);
- */
+**	if (!log)
+**		logwrite(logfile, __func__, "%s\n", buff);
+*/

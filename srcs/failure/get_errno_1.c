@@ -48,7 +48,7 @@ char	*get_errno(void)
 	size_t	i;
 
 	i = 0;
-	while (i <= 11 &&(error =(*g_err_func[i])()) == NULL)
+	while (i <= 11 && (error = (*g_err_func[i])()) == NULL)
 		i++;
 	return (error);
 }
