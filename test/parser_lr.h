@@ -54,7 +54,7 @@ struct s_grammar_rule {
 
 struct s_item {
 	struct item			*next_item;
-	struct s_grammar_rule	*rule;
+	int					gramar_rule;
 	int					point;
 	enum e_token		look_ahead;
 };
@@ -72,6 +72,8 @@ struct s_line {
 	struct s_line			*next;
 	int 					state;
 	struct s_item			*item_list;
+	struct s_item			*closure;
+	struct s_item			*kernel;
 	int						action_table[NB_TOKEN];
 	int				 		goto_table[NB_SYMBOLS];
 };

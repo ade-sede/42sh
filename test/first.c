@@ -38,36 +38,6 @@ struct s_morpheme_lst *union_morpheme_lst(struct s_morpheme_lst **a, struct s_mo
 	return (*a);
 }
 
-static struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *m_lst)
-{
-	struct s_morpheme_lst *res = NULL;
-	struct s_morpheme_lst	*tmp = m_lst;
-
-	while (tmp)
-	{
-		if (IS_TOKEN(tmp->m))
-			add_unique_morpheme_lst(&res, tmp->m);
-		else if (IS_SYMBOL(tmp->m))
-		{
-			/*
-			 **	tmp s'ecrit Aß:
-			 **	si A contient epsilon ou si c'est le premier symbol de la regle on ajoute
-			 ** a firsts: soit le firsts deja trouver soit app recursif pour le trouver
-			 **	sinon on break
-			 */
-			if (search_morpheme_lst(tmp, EPSILON) || tmp == m_lst)
-			{
-				if (lr->firsts[tmp->m])
-					union_morpheme_lst(&lr->firsts[tmp->m], lr->firsts[tmp->m]);
-			}
-			else
-				break;
-		}
-		tmp = tmp->next;
-	}
-	return (res);
-}
-
 static struct s_morpheme_lst	*init_firsts_symbol(struct s_parser_lr *lr, enum e_symbol symb)
 {
 	int	i;
@@ -143,5 +113,35 @@ void	debug_firsts(struct s_parser_lr *lr)
 		i++;
 		printf("\n");
 	}
+}
+
+struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *m_lst)
+{
+	struct s_morpheme_lst *res = NULL;
+	struct s_morpheme_lst	*tmp = m_lst;
+
+	while (tmp)
+	{
+		if (IS_TOKEN(tmp->m))
+			add_unique_morpheme_lst(&res, tmp->m);
+		else if (IS_SYMBOL(tmp->m))
+		{
+			/*
+			 **	tmp s'ecrit Aß:
+			 **	si A contient epsilon ou si c'est le premier symbol de la regle on ajoute
+			 ** a firsts: soit le firsts deja trouver soit app recursif pour le trouver
+			 **	sinon on break
+			 */
+			if (search_morpheme_lst(tmp, EPSILON) || tmp == m_lst)
+			{
+				if (lr->firsts[tmp->m])
+					union_morpheme_lst(&lr->firsts[tmp->m], lr->firsts[tmp->m]);
+			}
+			else
+				break;
+		}
+		tmp = tmp->next;
+	}
+	return (res);
 }
 
