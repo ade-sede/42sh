@@ -3,29 +3,31 @@
 #include "libft.h"
 #include "parser_lr.h"
 
-/*
-struct item *lr_closure(struct item **item_lst)
+void	lr_closure(struct s_item **item_lst)
 {
-	struct item *current;
-	enum morpheme symbol_B;
-	enum morpheme token_a;
-	int			added;
+	struct s_item *current;
+	t_morpheme symbol_B;
+	t_morpheme token_a;
+	int			added = 0;
 
 	while (added)
 	{
+		added = 0;
 		current = item_lst;
 		while (current)
 		{
-			current = item_lst;
-			token_a = current->token;
-			if (!symbol_B = current->rule[point] == 0)
+			token_a = current->look_ahead;
+			if ((symbol_B = current->rule[point]) == 0)
 				;
 			char *beta = current->rule[point + 1];
 			int		i = find_first_rule(symbol_B);
 			while (i < NB_RULES && rules[i].node == symbol_B)
 			{
 				for b in first(beta, token_a)
-				add_item(item_lst, &rules[i], 0, b);
+				if (add_item(item_lst, &rules[i], 0, b))
+				{
+					added = 1;
+				}
 				i++;
 			}
 			current = current->next;
@@ -34,16 +36,16 @@ struct item *lr_closure(struct item **item_lst)
 	return (item_lst);
 }
 
-struct item *lr_goto(struct item *item_lst, enum morpheme symbol)
+struct s_item *lr_goto(struct s_item *item_lst, enum morpheme symbol)
 {
 
 }
 
-struct line	*lr_items(void)
+struct s_line	*lr_items(void)
 {
-	struct line *array = NULL;
-	struct line *current_line;
-	struct item *item_list_I = NULL;
+	struct s_line *array = NULL;
+	struct s_line *current_line;
+	struct s_item *item_list_I = NULL;
 	add_item(&item_list_I, &rules[0], 0, dollar);
 	closure(&item_list_I);
 	current_line = add_line(&array, 0, item_list_I);
@@ -63,7 +65,6 @@ struct line	*lr_items(void)
 		}
 	}
 }
-*/
 
 int main(void)
 {
