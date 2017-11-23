@@ -36,6 +36,8 @@ int exec_for_clause(t_ast *ast)
 	t_ast	*do_group;
 	char	*var;
 
+	if (!ast->child[6])
+		return (EXIT_SUCCESS);
 	if (ast->child[4] && is_symb(ast->child[4], WORDLIST))
 		array_word = expand_wordlist(ast->child[4], NULL);
 	else
@@ -45,9 +47,9 @@ int exec_for_clause(t_ast *ast)
 	var = ast->child[1]->child[0]->token->value;
 	for (i = 0; array_word[i]; i++)
 	{
-//		printf("var %s, array_word[i]: %s\n", var,array_word[i]);
 		local_add_change_from_key_value(singleton_env(), var, array_word[i]);
 		exec(do_group);
 	}
+	ft_arraydel(&array_word);
 	return (EXIT_SUCCESS);
 }

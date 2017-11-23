@@ -71,7 +71,6 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	{
 		token_list = NULL;
 		res_lexer = get_token_list(&lexer, &token_list, singleton_env()->alias);
-		ft_simple_lst_pushback(&big_list, token_list);
 		if (res_lexer == LEXER_REOPEN)
 		{
 			reopen_token = ft_memalloc(sizeof(*reopen_token) * 1);
@@ -82,6 +81,7 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 			ft_simple_lst_pushback(&token_list, ft_simple_lst_create(reopen_token));
 		}
 		res_parser = parse(&parser, &ast, token_list);
+		ft_simple_lst_pushback(&big_list, token_list);
 	//	res_parser = PARSER_SUCCESS;
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{

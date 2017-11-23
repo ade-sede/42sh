@@ -20,21 +20,21 @@ void	edit_refresh_cursor(t_line *line)
 void	edit_refresh_line(t_line *line)
 {
 	t_coor	pos;
-	t_lexer lex;
+	/* t_lexer lex; */
 	int		ret;
 
 	ret = DEFAULT;
 	if (singleton_env()->option & SYNCOLOR)
 	{
-		init_le_lexer(&lex, line->buff);
-		ret = loop_le_delim(&lex, line);
-		if (ret != DEFAULT)
-		{
-			ft_putstr_fd(RED, 2);
-			ft_putchar_fd('_', 2);
-			ft_putstr_fd(RESET, 2);
-		}
-		free_lexer_le(&lex);
+		/* /1* init_le_lexer(&lex, line->buff); *1/ */
+		/* ret = loop_le_delim(&lex, line); */
+		/* if (ret != DEFAULT) */
+		/* { */
+		/* 	ft_putstr_fd(RED, 2); */
+		/* 	ft_putchar_fd('_', 2); */
+		/* 	ft_putstr_fd(RESET, 2); */
+		/* } */
+		/* free_lexer_le(&lex); */
 	}
 	else
 		term_putstr(line);
