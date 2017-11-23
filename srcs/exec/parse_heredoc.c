@@ -19,7 +19,7 @@ void	read_heredoc(t_ast *ast, char *target)
 	singleton_line()->heredoc = 1;
 	load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
 	cat = ft_strnew(0);
-	while(42)
+	while (42)
 	{
 		buff = ft_strdup(line_editing_get_line(singleton_line(), \
 					singleton_hist(), &edit_set_signals_open));

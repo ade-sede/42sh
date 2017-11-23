@@ -15,7 +15,7 @@ static void	ft_strrem(char *str)
 
 static void	read_get_input_2(t_read options, unsigned long keycode, char **line)
 {
-	if (**line && (keycode == KEY_DELETE || keycode == KEY_BACKSPACE))
+	if (**line &&(keycode == KEY_DELETE || keycode == KEY_BACKSPACE))
 	{
 		ft_strrem(line[ft_strlen(*line) - 1]);
 		put_termcap("le");
@@ -50,10 +50,10 @@ char		*read_get_input(t_read options)
 		keycode = 0;
 		read(0, &keycode, 1);
 		if (g_abort_opening || keycode == KEY_CTRL_D ||
-				(options.delim == (char)keycode))
+				(options.delim ==(char)keycode))
 			return (line);
 		if (keycode == 27 || keycode > 127)
-			read(STDIN_FILENO, (char *)&keycode + 1, 7);
+			read(STDIN_FILENO,(char *)&keycode + 1, 7);
 		read_get_input_2(options, keycode, &line);
 		if (options.nchars && options.nchars == ++index)
 			return (line);

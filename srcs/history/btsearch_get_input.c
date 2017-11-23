@@ -22,9 +22,9 @@ int		btsearch_get_input(t_line *line, unsigned long keycode)
 	t_hist				*h;
 
 	h = singleton_hist();
-	if (!(line->btsearch) && (keycode == KEY_BACKSPACE))
+	if (!(line->btsearch) &&(keycode == KEY_BACKSPACE))
 		return (0);
-	if ((keycode == KEY_ALT_R) || (keycode == KEY_BACKSPACE))
+	if ((keycode == KEY_ALT_R) ||(keycode == KEY_BACKSPACE))
 		return (btsearch_special_keys(line, h, keycode));
 	else if (line->btsearch && ft_isprint(keycode))
 	{

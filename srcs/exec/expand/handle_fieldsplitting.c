@@ -46,7 +46,7 @@ static void	yep_slit(char *value, t_expand *exp)
 
 int			handle_fieldsplitting(char *value, t_expand *exp, int quoted)
 {
-	if (!value || (value && *value == 0))
+	if (!value ||(value && *value == 0))
 		return (0);
 	if (quoted || !exp || exp->flag & NO_FIELDSPLITING)
 		nop_slit(value, exp);

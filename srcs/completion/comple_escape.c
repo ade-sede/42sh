@@ -34,7 +34,7 @@ char			*comple_escape(size_t i, size_t j, char *input)
 {
 	char	*escaped_str;
 
-	escaped_str = ft_memalloc(sizeof(char*) * (escaped_size(input) + 1));
+	escaped_str = ft_memalloc(sizeof(char*) *(escaped_size(input) + 1));
 	while (input[i] != 0)
 	{
 		if (input[i] == '\\' || input[i] == '"' || input[i] == '\'' ||

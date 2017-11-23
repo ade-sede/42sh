@@ -15,11 +15,11 @@ static char **list_to_array(t_list *lst)
 	int		i;
 	
 	n = ft_lst_len(lst);
-	res = ft_memalloc(sizeof(char *) * (n + 1));
+	res = ft_memalloc(sizeof(char *) *(n + 1));
 	i = 0;
 	while (lst)
 	{
-		res[i] = (char *)lst->data;
+		res[i] =(char *)lst->data;
 #ifdef EXPAND_DEBUG
  fprintf(stderr, "{%s}", res[i]);
  #endif
@@ -35,7 +35,7 @@ static char	**pathname_expension(t_expand *exp)
 	size_t		i;
 	char	*no_match[2];
 	char	**matches;
-	char	**av = ft_memalloc(sizeof(char *) * (1));
+	char	**av = ft_memalloc(sizeof(char *) *(1));
 
 	no_match[1] = NULL;
 	i = 0;
@@ -84,46 +84,46 @@ static char	**brace_expension(const char *words)
 #ifdef EXPAND_DEBUG
  fprintf(stderr,"match list null\n");
  #endif
-		matches = ft_memalloc(sizeof(char *) * (2));
+		matches = ft_memalloc(sizeof(char *) *(2));
 		matches[0] = ft_strdup(words);
 	}
 	return (matches);
 }
 
-static int		parse_loop (const char *words, t_expand *exp)
+static int		parse_loop(const char *words, t_expand *exp)
 {
-	w_newword (&exp->word);
-	w_newword (&exp->g_word);
+	w_newword(&exp->word);
+	w_newword(&exp->g_word);
 	exp->offset = 0;
 	exp->words = words;
 	while (words[exp->offset])
 	{
 		if (words[exp->offset] == '\\')
-			parse_backslash (&exp->g_word, &exp->word, words, &exp->offset);
+			parse_backslash(&exp->g_word, &exp->word, words, &exp->offset);
 		else if (words[exp->offset] == '"')
 		{
 			++exp->offset;
-			parse_dquote (exp);
+			parse_dquote(exp);
 		}
 		else if (words[exp->offset] == '\'')
 		{
 			++exp->offset;
-			parse_squote (&exp->g_word, &exp->word, words, &exp->offset);
+			parse_squote(&exp->g_word, &exp->word, words, &exp->offset);
 		}
 		else if (words[exp->offset] == '`')
 		{
 //			++exp->offset;
-			parse_backtick (exp, 0);
+			parse_backtick(exp, 0);
 		}
 		else if (words[exp->offset] == '$')
 		{
-			parse_dollars (exp, 0);
+			parse_dollars(exp, 0);
 #ifdef EXPAND_DEBUG
- fprintf (stderr, "word {%s}\n", exp->word.str);
+ fprintf(stderr, "word {%s}\n", exp->word.str);
  #endif
 		}
 		else if (words[exp->offset] == '~')
-			parse_tilde (exp);
+			parse_tilde(exp);
 		else
 		{
 #ifdef EXPAND_DEBUG
@@ -135,32 +135,32 @@ static int		parse_loop (const char *words, t_expand *exp)
 #ifdef EXPAND_DEBUG
  fprintf(stderr,"wsize max: {%zu}, gwsize max: {%zu}\n", exp->word.maxlen, exp->g_word.maxlen);
  #endif
-			w_addchar (&exp->word, words[exp->offset]);
-			w_addchar (&exp->g_word, words[exp->offset]);
+			w_addchar(&exp->word, words[exp->offset]);
+			w_addchar(&exp->g_word, words[exp->offset]);
 		}
 		exp->offset++;
 	}
 	if (exp->word.str != NULL)
 	{
 #ifdef EXPAND_DEBUG
-		fprintf (stderr, "PARSE LOOP word add {%s}\n", exp->word.str);
-		fprintf (stderr, "PARSE LOOP word add {%s}\n", exp->g_word.str);
+		fprintf(stderr, "PARSE LOOP word add {%s}\n", exp->word.str);
+		fprintf(stderr, "PARSE LOOP word add {%s}\n", exp->g_word.str);
  #endif
-		w_addword (exp, &exp->g_word, &exp->word);
+		w_addword(exp, &exp->g_word, &exp->word);
 	}
 	return (0);
 }
 
-char	**word_expansion (const char *words, int flag)
+char	**word_expansion(const char *words, int flag)
 {
 	char	**braced_words;
 	t_expand exp;
 	size_t i;
 	(void)flag;
-	w_newexp (&exp);
+	w_newexp(&exp);
 
 	exp.flag = flag;
-	exp.ifs = ft_strdup(var_get_value (singleton_env(), "IFS"));
+	exp.ifs = ft_strdup(var_get_value(singleton_env(), "IFS"));
 	if (exp.ifs == NULL)
 		exp.ifs = ft_strdup(" \t\n");
 
@@ -168,11 +168,11 @@ char	**word_expansion (const char *words, int flag)
 	i = 0;
 	while (braced_words[i])
 	{
-		parse_loop (braced_words[i], &exp);
+		parse_loop(braced_words[i], &exp);
 		i++;
 	}
 #ifdef EXPAND_DEBUG
-	for (i=0; i < exp.actlen; i++)
+	for(i=0; i < exp.actlen; i++)
 	 fprintf(stderr,"w: {%s}, gw: {%s}\n", exp.av_word[i], exp.av_gword[i]);
  #endif
 	free((void *)exp.ifs);

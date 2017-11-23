@@ -153,9 +153,9 @@ int		exec_simple_command(t_ast *ast)
 		if ((fct = get_function(singleton_env(), av[0])))
 			exit_status = exec_function(fct->fct_body, av);
 		else if (get_exec_builtin(av[0]))
-			exit_status = exec_builtin(singleton_env(), (const char **)av);
+			exit_status = exec_builtin(singleton_env(),(const char **)av);
 		else
-			exec_bin(singleton_env(), (const char **)av);
+			exec_bin(singleton_env(),(const char **)av);
 		ft_arraydel(&av);
 	}
 	close_dup(redirect_list);

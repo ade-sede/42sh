@@ -11,7 +11,7 @@
 #include "lexer.h"
 
 char	*line_editing_get_line(t_line *line, t_hist *hist,
-		void (*sig_handler)(void))
+		void(*sig_handler)(void))
 {
 	put_prompt(line);
 	history_init(hist);

@@ -11,7 +11,7 @@ void	env_remove_var_index(t_env *env, size_t key_index)
 
 	environ = env->environ;
 	environ_size = env->environ_size;
-	new_environ = palloc(sizeof(char*) * (environ_size - 1 + 1));
+	new_environ = palloc(sizeof(char*) *(environ_size - 1 + 1));
 	free(environ[key_index]);
 	ft_memcpy(new_environ, environ, key_index * sizeof(*new_environ));
 	ft_memcpy(new_environ + key_index, environ + key_index + 1, \

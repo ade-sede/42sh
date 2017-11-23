@@ -23,7 +23,7 @@ int	curly_brackets_is_range(char *str)
 	if (!is_number)
 		return (IS_RANGE_A(str) ? 1 : 0);
 	i = 0;
-	while (str[i] && (ft_is_start_of_digit(str[i])))
+	while (str[i] &&(ft_is_start_of_digit(str[i])))
 		i++;
 	if (str[i] != '.' || str[i + 1] != '.')
 		return (0);

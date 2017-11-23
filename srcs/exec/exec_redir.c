@@ -54,12 +54,12 @@ int		merge_fd(int io_number, char *target, t_list **redir_stack, \
 
 	natural_fd = TRUE;
 	if (io_number == -1)
-		io_number = (id == TK_LESSAND) ? STDIN_FILENO : STDOUT_FILENO;
+		io_number =(id == TK_LESSAND) ? STDIN_FILENO : STDOUT_FILENO;
 	if (ft_strequ(target, "-"))
 		target_fd = -2;
 	else
 		target_fd = ft_atoi(target);
-	if (target_fd == -2 || (target_fd >= STDIN_FILENO &&
+	if (target_fd == -2 ||(target_fd >= STDIN_FILENO &&
 				(fcntl(target_fd, F_GETFD) != -1)))
 		push_dup(io_number, target_fd, natural_fd, redir_stack);
 	return (1);
@@ -71,7 +71,7 @@ int		file_redir(int io_number, char *target, t_list **redir_stack, \
 	int	target_fd;
 
 	if (io_number == -1)
-		io_number = (id == TK_LESS || id == TK_LESSGREAT) ? \
+		io_number =(id == TK_LESS || id == TK_LESSGREAT) ? \
 					STDIN_FILENO : STDOUT_FILENO;
 	if ((target_fd = redir_open_file(target, id)) == -1)
 		return (0);

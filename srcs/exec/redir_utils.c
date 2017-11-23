@@ -32,7 +32,7 @@ int			redir_open_file(char *target, int id)
 		mode |= O_RDONLY;
 	if (id != TK_LESS)
 	{
-		mode |= (id == TK_LESSGREAT) ? O_RDWR : O_WRONLY;
+		mode |=(id == TK_LESSGREAT) ? O_RDWR : O_WRONLY;
 		if (access(target, F_OK) == -1)
 			mode |= O_CREAT;
 		if (id == TK_DGREAT)
@@ -45,9 +45,9 @@ int			redir_open_file(char *target, int id)
 }
 
 /*
-**	save[0] is the original fd (source) (fildes1)
-**	save[1] The duplicate of the source fd save[0] (dup(io_number))
-**	save[2] is the fd of the opened file. -1 if no file was opened. (fildes2)
+**	save[0] is the original fd(source)(fildes1)
+**	save[1] The duplicate of the source fd save[0](dup(io_number))
+**	save[2] is the fd of the opened file. -1 if no file was opened.(fildes2)
 **	save[3] is a flag that indicates if save[1](target) is a fd that should or
 **	not be closed. If the fd shouldnt be closed its value is 1.
 **	Must be careful about never closing stdin stdout or stderr.

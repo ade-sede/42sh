@@ -54,20 +54,20 @@ int	match_open_dir(t_matches *m, int m_i, int r_i, char *dir_name)
 		{
 			m->to_match = ft_strdup(dirent->d_name);
 			cpy_to_match[1] = m->to_match;
-			bool_match |= (match(m, m_i, r_i));
+			bool_match |=(match(m, m_i, r_i));
 		}
 		else if (ft_strequ(m->dir, "/"))
 		{
-			m->to_match = (ft_strjoin(m->dir, dirent->d_name));
+			m->to_match =(ft_strjoin(m->dir, dirent->d_name));
 			cpy_to_match[1] = m->to_match;
-			bool_match |= (match(m, m_i + 1, r_i));
+			bool_match |=(match(m, m_i + 1, r_i));
 		}
 		else
 		{
-			m->to_match = (ft_strjoin3_free(m->dir, "/", dirent->d_name, 0));
+			m->to_match =(ft_strjoin3_free(m->dir, "/", dirent->d_name, 0));
 			cpy_to_match[1] = m->to_match;
-			if (dirent->d_name[0] != '.' || (dirent->d_name[0] == '.' && m->regex[r_i] == '.'))
-				bool_match |= (match(m, m_i + 1, r_i));
+			if (dirent->d_name[0] != '.' ||(dirent->d_name[0] == '.' && m->regex[r_i] == '.'))
+				bool_match |=(match(m, m_i + 1, r_i));
 		}
 		//m->to_match = match_open_file(m->dir, dirent->d_name);
 		//cpy_to_match[1] = m->to_match;

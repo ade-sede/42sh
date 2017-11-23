@@ -85,7 +85,7 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	//	res_parser = PARSER_SUCCESS;
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{
-//			free (buff);
+//			free(buff);
 			if (!reopen(&lexer, &parser, modes))
 				return (0);
 			token_list = NULL;

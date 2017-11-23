@@ -14,7 +14,7 @@ static t_comple_func	g_comple_func[] =
 
 /*
 **	Returns yes if we are allowed to go in comple_get_input
-**	Returns no if we are not (meaning we wanna go in edit_add)
+**	Returns no if we are not(meaning we wanna go in edit_add)
 **
 **	Edit_add case
 **	- keycode is tab, and there is nothing between
@@ -75,7 +75,7 @@ int				comple_get_input(t_line *line, int keycode)
 	c = singleton_comple();
 	if (line->completion)
 	{
-		if (keycode == KEY_ENTER || (!comple_loop(keycode, line, c)))
+		if (keycode == KEY_ENTER ||(!comple_loop(keycode, line, c)))
 		{
 			line->completion = 0;
 			comple_exit_matched(line, *c, keycode);

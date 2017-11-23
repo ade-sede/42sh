@@ -17,7 +17,7 @@ static unsigned int	ft_count_words(char *s, char c)
 			i++;
 		if (s[i] && s[i] != c && depth == 0)
 			nb_words++;
-		while (s[i] && (!(s[i] == c && depth == 0)))
+		while (s[i] &&(!(s[i] == c && depth == 0)))
 		{
 			if (s[i] == '{' && !ft_is_backslash(s, i))
 				depth++;
@@ -46,7 +46,7 @@ static void			ft_malloc_t(char *s, char **t, char c)
 		if (s[i] && s[i] != c && depth == 0)
 			no_words++;
 		nb_letters = 0;
-		while (s[i] && (!(s[i] == c && depth == 0)))
+		while (s[i] &&(!(s[i] == c && depth == 0)))
 		{
 			if ((s[i] == '{' || s[i] == '}') && !ft_is_backslash(s, i))
 				(s[i] == '{') ? depth++ : depth--;
@@ -75,7 +75,7 @@ static void			ft_fill_t(char *s, char **t, char c)
 		if (s[i] && s[i] != c && depth == 0)
 			no_words++;
 		no_letters = 0;
-		while (s[i] && (!(s[i] == c && depth == 0)))
+		while (s[i] &&(!(s[i] == c && depth == 0)))
 		{
 			if ((s[i] == '{' || s[i] == '}') && !ft_is_backslash(s, i))
 				(s[i] == '{') ? depth++ : depth--;
@@ -99,7 +99,7 @@ char				**ft_strsplit_coma_bracket(char *s)
 	i = 0;
 	nb_words = ft_count_words(s, c);
 	t = NULL;
-	if (!(t = (char **)malloc(sizeof(char *) * (nb_words + 1))))
+	if (!(t =(char **)malloc(sizeof(char *) *(nb_words + 1))))
 		return (NULL);
 	t[nb_words] = NULL;
 	ft_malloc_t(s, t, c);

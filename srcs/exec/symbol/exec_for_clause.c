@@ -43,7 +43,7 @@ int exec_for_clause(t_ast *ast)
 
 	do_group = ast->child[6];
 	var = ast->child[1]->child[0]->token->value;
-	for (i = 0; array_word[i]; i++)
+	for(i = 0; array_word[i]; i++)
 	{
 //		printf("var %s, array_word[i]: %s\n", var,array_word[i]);
 		local_add_change_from_key_value(singleton_env(), var, array_word[i]);

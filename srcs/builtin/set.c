@@ -70,7 +70,7 @@ int			builtin_set(t_env *env, const char **argv)
 		return (EXIT_SUCCESS);
 	}
 	opt_init(&pi, argc, argv);
-	while (pi.argerr == 0 && (opt_id = get_opt(&pi) > 0))
+	while (pi.argerr == 0 &&(opt_id = get_opt(&pi) > 0))
 		if (opt_id == 1)
 			set_shell_opt(env, pi.min, pi.argopt);
 	if (pi.argerr)

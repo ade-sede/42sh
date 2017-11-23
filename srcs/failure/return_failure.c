@@ -69,13 +69,13 @@ int		investigate_error(int log, const char *prefix,
 
 	buff = singleton_error();
 	ft_bzero(buff, E_BUFSIZE);
-	if (prefix != NULL && (i = -1))
+	if (prefix != NULL &&(i = -1))
 	{
 		while (prefix[++i])
 			buff[i] = prefix[i];
 		buff[i++] = ':';
 		buff[i++] = ' ';
-		error_name = custom_error ? (char*)custom_error : get_errno();
+		error_name = custom_error ?(char*)custom_error : get_errno();
 		if (error_name)
 			ft_strcpy(buff + i, error_name);
 	}

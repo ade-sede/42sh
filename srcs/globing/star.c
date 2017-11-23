@@ -18,9 +18,9 @@ int	func_star(t_matches *m, int m_i, int r_i)
 		return (0);
 	while (!bool_match && m->to_match[i])
 	{
-		bool_match || (bool_match |= match(m, i, r_i + 1));
+		bool_match ||(bool_match |= match(m, i, r_i + 1));
 		i++;
 	}
-	bool_match || (bool_match |= match(m, i, r_i + 1));
+	bool_match ||(bool_match |= match(m, i, r_i + 1));
 	return (bool_match);
 }

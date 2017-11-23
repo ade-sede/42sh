@@ -18,7 +18,7 @@ char		**env_create_environ(const char **original, size_t *new_size)
 	char		**new_environ;
 	size_t		original_size;
 
-	original_size = (original == NULL) ? 0 : ft_arraylen(original);
+	original_size =(original == NULL) ? 0 : ft_arraylen(original);
 	new_environ = ft_arraydup(original);
 	if (new_size != NULL)
 		*new_size = original_size;
@@ -42,7 +42,7 @@ char		*env_getenv(const char **environ, const char *key_start, \
 	if (index != NULL)
 		*index = i;
 	if (environ[i])
-		value = (char*)(environ[i] + ft_strichr((char*)environ[i], '=') + 1);
+		value =(char*)(environ[i] + ft_strichr((char*)environ[i], '=') + 1);
 	else
 		value = NULL;
 	free(key);

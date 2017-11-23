@@ -15,10 +15,10 @@ static int	treat_string(t_env *env, const char *argv)
 	{
 		local_value = local_get_value(env->local, argv);
 		if (local_value)
-			env_add_change(env, argv, (const char*)local_value);
+			env_add_change(env, argv,(const char*)local_value);
 	}
 	else
-		env_add_var_from_string(env, (char*)argv, eq_pos);
+		env_add_var_from_string(env,(char*)argv, eq_pos);
 	return (1);
 }
 
@@ -29,7 +29,7 @@ int			builtin_export(t_env *env, const char **argv)
 
 	i = 1;
 	len = ft_arraylen(argv);
-	if (len == 1 || (len > 1 && ft_strequ(argv[1], "-p")))
+	if (len == 1 ||(len > 1 && ft_strequ(argv[1], "-p")))
 	{
 		env_print_environ((const char**)env->environ);
 		return (EXIT_SUCCESS);

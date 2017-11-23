@@ -9,7 +9,7 @@ char	*get_word_slash(t_line *line)
 	word = line->buff + line->pos;
 	if (word > line->buff && *word == ' ')
 		word--;
-	while (word > line->buff && (*word != ' ') && (*word != '/'))
+	while (word > line->buff &&(*word != ' ') &&(*word != '/'))
 		word--;
 	return ((*word == '/') ? word : NULL);
 }
@@ -21,9 +21,9 @@ char	*get_start_word_cursor(t_line *line)
 	word = line->buff + line->pos;
 	if (word > line->buff && *word == ' ')
 		word--;
-	while (word > line->buff && (*word != ' '))
+	while (word > line->buff &&(*word != ' '))
 		word--;
-	word = (*word == ' ') ? word + 1 : word;
+	word =(*word == ' ') ? word + 1 : word;
 	return (word);
 }
 

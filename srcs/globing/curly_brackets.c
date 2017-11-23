@@ -81,7 +81,7 @@ void	curly_brackets(t_list **res, char *expr, int offset)
 	start = -1;
 	end = -1;
 	start = get_start_bracket(expr, offset);
-	while (start != -1 && (end = get_end_bracket(expr, start)) == -1)
+	while (start != -1 &&(end = get_end_bracket(expr, start)) == -1)
 		start = get_start_bracket(expr, start + 1);
 	if (start == -1 || end == -1)
 	{

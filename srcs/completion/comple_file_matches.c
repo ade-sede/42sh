@@ -21,7 +21,7 @@ char	**array_matches(size_t i, size_t size, char *dir_match, char *to_match)
 	char			**matches;
 
 	matches = NULL;
-	dir = (dir_match) ? opendir(dir_match) : opendir(".");
+	dir =(dir_match) ? opendir(dir_match) : opendir(".");
 	if (!dir)
 		return (matches);
 	while ((dirent = readdir(dir)) != NULL)

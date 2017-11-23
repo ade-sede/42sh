@@ -11,8 +11,8 @@ size_t	hash(unsigned char *str)
 
 	hash = 5381;
 	while ((c = *str++))
-		hash = ((hash << 5) + hash) + c;
-	return (hash % (HASH_TABLE_SIZE - 1));
+		hash =((hash << 5) + hash) + c;
+	return (hash %(HASH_TABLE_SIZE - 1));
 }
 
 char	*hash_get(t_list **hash_table, char *value)

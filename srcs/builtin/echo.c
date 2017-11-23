@@ -11,7 +11,7 @@ static const char	**parse_options(const char **argv, short int *n_flag, \
 	option_array[2] = "-ne";
 	option_array[3] = "-en";
 	option_array[4] = NULL;
-	while (ft_arraychr((const char**)option_array, (const char*)*argv))
+	while (ft_arraychr((const char**)option_array,(const char*)*argv))
 	{
 		if (ft_strequ(*argv, "-n"))
 			*n_flag = TRUE;
