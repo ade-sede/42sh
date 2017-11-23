@@ -153,7 +153,6 @@ int		exec_simple_command(t_ast *ast)
 	}
 	if (layer_command_suffix(ast, &av, &redirect_list) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	exec_dup(redirect_list);
 	if (av && av[0])
 	{
 		if ((fct = get_function(singleton_env(), av[0])))
