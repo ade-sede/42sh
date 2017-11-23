@@ -3,18 +3,6 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-/*
-**	char *match_open_file(char *m_dir, char *file_name)
-**	{
-**		if (ft_strequ(m_dir, "."))
-**			return (ft_strdup(file_name));
-**		else if (ft_strequ(m_dir, "/"))
-**			return (ft_strjoin(m_dir, file_name));
-**		else
-**			return (ft_strjoin3_free(m_dir, "/", file_name, 0));
-**	}
-*/
-
 int	bad_dir(char *dir_name)
 {
 	free(dir_name);

@@ -59,9 +59,9 @@ int	match_square_bracket(char c, char *regex, int i, \
 		else if (regex[i] != '\\' && regex[i] == c)
 			return (1);
 		if (regex[i] == '\\')
-			backslash = 1;
+			bslash = 1;
 		else
-			backslash = 0;
+			bslash = 0;
 		i++;
 	}
 	return (0);

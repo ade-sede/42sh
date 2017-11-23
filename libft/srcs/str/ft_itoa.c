@@ -12,6 +12,7 @@ char	*ft_itoa_word(int n, char nbr[20])
 	int		i = -1;
 	while (res[++i])
 		nbr[i] = res[i];
+	nbr[i] = '\0';
 	free(res);
 	return (nbr);
 }

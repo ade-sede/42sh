@@ -19,10 +19,10 @@ int		job_number(t_job *j)
 void	format_job_info_process(t_job *j, const char *status)
 {
 	t_process	*p;
-	char		*job_no;
+	char		job_no[21];
 	size_t		job_no_length;
 
-	job_no = ft_itoa(job_number(j));
+	ft_itoa_word(job_number(j), job_no);
 	job_no_length = ft_strlen(job_no);
 	if (j->foreground)
 		ft_putchar('\n');
