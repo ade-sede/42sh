@@ -6,7 +6,7 @@ char			**ft_array_string_realloc(char **origin, size_t o_size,
 {
 	char **new_str;
 
-	if (!(new_str =(char **)ft_memalloc(sizeof(char *) *(n_size + 1))))
+	if (!(new_str = (char **)ft_memalloc(sizeof(char *) * (n_size + 1))))
 		return (NULL);
 	ft_memcpy(new_str, origin, o_size * sizeof(char *));
 	free(origin);
@@ -42,7 +42,7 @@ static void		layer(t_ternary_tree *node,
 	if (node->left || node->right)
 	{
 		comple_bin_matches_extract_tree(node, s->matches, i, size);
-		*(s->cur) = ft_realloc(ft_strlen(*s->cur), *s->cur,(s->i + 1) *
+		*(s->cur) = ft_realloc(ft_strlen(*s->cur), *s->cur, (s->i + 1) *
 				sizeof(char));
 		(*(s->cur))[s->i] = '\0';
 	}
@@ -55,7 +55,7 @@ static void		layer(t_ternary_tree *node,
 	}
 	else
 	{
-		*(s->cur) = ft_realloc(ft_strlen(*s->cur), *s->cur,(s->i + 2) \
+		*(s->cur) = ft_realloc(ft_strlen(*s->cur), *s->cur, (s->i + 2) \
 				* sizeof(char));
 		(*(s->cur))[s->i + 1] = '\0';
 		(*(s->cur))[s->i] = node->c;
@@ -70,11 +70,11 @@ static void		comple_bin_match_trip_tree(t_ternary_tree *node,
 	i = 0;
 	if ((*(s->cur))[s->i] == '\0' || !node)
 		return (layer(node, &i, &size, s));
-	if ((*(s->cur))[s->i] < node->c &&(!node->left ||(node->left &&
+	if ((*(s->cur))[s->i] < node->c && (!node->left || (node->left &&
 					(*(s->cur))[s->i] > node->left->c)))
 		return ;
 	else if ((*(s->cur))[s->i] > node->c
-			&&(!node->right ||(node->right &&(*(s->cur))[s->i] <
+			&& (!node->right || (node->right && (*(s->cur))[s->i] <
 					node->right->c)))
 		return ;
 	else if ((*(s->cur))[s->i] < node->c)

@@ -38,7 +38,7 @@ void	comple_refresh_line(t_line *line, t_comple c)
 	put_ntermcap("up", c.nb_lines);
 	cursor_goto_buff(line, 0, line->len);
 	y = get_prompt_visual_offset(line).y;
-	put_ntermcap("up",(size_t)y);
+	put_ntermcap("up", (size_t)y);
 	put_termcap("cr");
 	put_prompt(line);
 	edit_refresh_line(line);
@@ -50,7 +50,7 @@ size_t	comple_listart_big_completion(t_comple c)
 	if (c.pos == -1)
 		return (0);
 	else
-		return (c.pos % c.nb_lines /(c.ws_row - 1)) *(c.ws_row - 1);
+		return (c.pos % c.nb_lines / (c.ws_row - 1)) * (c.ws_row - 1);
 }
 
 int		comple_refresh(t_line *line, t_comple c)

@@ -16,7 +16,7 @@ void	history_line_refresh(t_line *line, char *new_line)
 	edit_refresh_clear(line);
 	ft_strclr(line->buff);
 	i = ft_strlen(new_line);
-	if(i >= 1 && new_line[i - 1] == '\n')
+	if (i >= 1 && new_line[i - 1] == '\n')
 		new_line[i - 1] = 0;
 	edit_insert_str(line, line->buff, new_line);
 	put_prompt(line);

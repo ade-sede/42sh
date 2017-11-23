@@ -34,7 +34,7 @@ int		func_cmp(t_matches *m, int m_i, int r_i)
 {
 	int backslash;
 
-	backslash =(m->regex[r_i] == '\\' && m->regex[r_i + 1] == '\\');
+	backslash = (m->regex[r_i] == '\\' && m->regex[r_i + 1] == '\\');
 	if (m->regex[r_i] != '\\' || backslash)
 	{
 		if (m->regex[r_i] == m->to_match[m_i])
@@ -80,7 +80,7 @@ t_list	*glob(char *regex)
 #ifdef GLOB_DEBUG
  printf("regex: %s\n", regex);
  #endif
-	m =(t_matches){NULL, NULL, regex, dir_name};
+	m = (t_matches){NULL, NULL, regex, dir_name};
 	if (!match_open_dir(&m, m_i, r_i, dir_name))
 		return (NULL);
 	return (m.list);

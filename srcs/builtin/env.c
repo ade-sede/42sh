@@ -58,7 +58,7 @@ static const char	**build_new_env(t_env *env, const char **argv, int *error)
 			return (argv);
 		}
 		else if (eq_index > 0)
-			env_add_var_from_string(env,(char *)*argv, eq_index);
+			env_add_var_from_string(env, (char *)*argv, eq_index);
 		else
 			return (argv);
 		argv++;

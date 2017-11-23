@@ -20,7 +20,7 @@ void	env_add_var(t_env *env, const char *key, const char *value)
 	}
 	environ = env->environ;
 	new_environ_size = env->environ_size + 1;
-	new_environ = palloc(sizeof(char*) *(new_environ_size + 1));
+	new_environ = palloc(sizeof(char*) * (new_environ_size + 1));
 	new_key_value = ft_strsurround(key, "=", value);
 	ft_memcpy(new_environ, environ, env->environ_size * sizeof(*new_environ));
 	new_environ[new_environ_size - 1] = new_key_value;
@@ -29,7 +29,7 @@ void	env_add_var(t_env *env, const char *key, const char *value)
 	env->environ = new_environ;
 	env->environ_size++;
 	local_value = local_get_value(env->local, key);
-	if (!local_value ||(local_value && !ft_strequ(local_value, value)))
+	if (!local_value || (local_value && !ft_strequ(local_value, value)))
 		local_add_change_from_string(env, new_key_value);
 }
 
@@ -53,7 +53,7 @@ void	env_change_value(t_env *env, const char *key, size_t key_index, \
 	free(environ[key_index]);
 	environ[key_index] = ft_strsurround(key, "=", new_value);
 	local_value = local_get_value(env->local, key);
-	if (!local_value ||(local_value && !ft_strequ(local_value, new_value)))
+	if (!local_value || (local_value && !ft_strequ(local_value, new_value)))
 		local_add_change_from_key_value(env, key, new_value);
 }
 
@@ -73,7 +73,7 @@ void	env_add_var_from_string(t_env *env, char *key_value, \
 		ssize_t eq_index)
 {
 	key_value[eq_index] = '\0';
-	env_add_change(env,(const char*)key_value, \
+	env_add_change(env, (const char*)key_value, \
 			(const char*)key_value + eq_index + 1);
 	key_value[eq_index] = '=';
 }

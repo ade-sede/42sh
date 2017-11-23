@@ -50,14 +50,14 @@ static char		parse_fd(char *arg, t_read *options, char ***args)
 	if (*++arg)
 	{
 		while (*arg >= '0' && *arg <= '9')
-			fd =(fd * 10) +(*arg++ - '0');
+			fd = (fd * 10) + (*arg++ - '0');
 		if (*arg)
 			return (0);
 	}
-	else if (*++*args &&(arg = **args))
+	else if (*++*args && (arg = **args))
 	{
 		while (*arg >= '0' && *arg <= '9')
-			fd =(fd * 10) + *arg++ - '0';
+			fd = (fd * 10) + *arg++ - '0';
 		if (*arg)
 			return (0);
 	}

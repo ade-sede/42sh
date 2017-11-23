@@ -37,7 +37,7 @@ static char			**split_values(char *line, t_read options)
 	char			**values;
 	char			*word;
 
-	values =(char **)ft_parrnew();
+	values = (char **)ft_parrnew();
 	word = ft_strnew(0);
 	while (*line == ' ' || *line == '\t')
 		line++;
@@ -68,9 +68,9 @@ static void			assign_values(char **vars, char **values, t_env *env)
 
 	while (*vars)
 	{
-		ptr =(env_getenv((const char**)env->environ, *vars, &index)) ? 1 : 0;
+		ptr = (env_getenv((const char**)env->environ, *vars, &index)) ? 1 : 0;
 		len = ft_strlen(*vars);
-		path =(!ft_strcmp("PATH", *vars)) ? 1 : 0;
+		path = (!ft_strcmp("PATH", *vars)) ? 1 : 0;
 		ft_strpush(vars, '=');
 		if (*values)
 			ft_strspush(vars, *values++);
@@ -93,8 +93,8 @@ static char			parse_option(t_read *options, const char ***args)
 
 	while (*++*args && ***args == '-')
 	{
-		option =(char*)**args + 1;
-		if (!(parse_read(option, options,(char***)args)))
+		option = (char*)**args + 1;
+		if (!(parse_read(option, options, (char***)args)))
 			return (0);
 	}
 	return (1);

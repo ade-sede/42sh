@@ -26,7 +26,7 @@ static int		write_to_hist(char *value, int fd)
 	i = 0;
 	while (value[i])
 	{
-		if(value[i] == '\n')
+		if (value[i] == '\n')
 			write(fd, "\\", 1);
 		write(fd, value + i, 1);
 		++i;
@@ -41,12 +41,12 @@ void			history_write_to_histfile(void)
 	int			fd;
 
 	h = singleton_hist();
-	if((fd = open(h->file, O_RDWR | O_TRUNC)) == -1)
+	if ((fd = open(h->file, O_RDWR | O_TRUNC)) == -1)
 	{
 		investigate_error(1, "open", NULL, -1);
 		return ;
 	}
-	last =(!h->list) ? NULL : h->list->last;
+	last = (!h->list) ? NULL : h->list->last;
 	while (last)
 	{
 		write_to_hist(last->data, fd);
@@ -62,11 +62,11 @@ void			history_append_command_to_list(char *command)
 	t_list_d	*list;
 
 	h = singleton_hist();
-	if(command[0] == '\0' || ft_str_is_clr(command))
+	if (command[0] == '\0' || ft_str_is_clr(command))
 		return ;
 	command[ft_strlen(command) - 1] = 0;
 	list = ft_double_lst_create(ft_strdup(command));
-	if(h->list == NULL)
+	if (h->list == NULL)
 		h->list = ft_create_head(list);
 	else
 		ft_double_lst_add(&h->list, list);

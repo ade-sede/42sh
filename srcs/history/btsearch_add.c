@@ -40,7 +40,7 @@ void	btsearch_first_search(t_hist *h)
 /*
 **	void	debug(t_list_d *item)
 **	{
-**		printf("%s\n",(char*)item->data);
+**		printf("%s\n", (char*)item->data);
 **	}
 */
 

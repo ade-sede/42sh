@@ -3,9 +3,9 @@
 
 int		comple_right(t_comple *c)
 {
-	if (c->nb_matches -(size_t)c->pos < c->nb_matches % c->nb_lines + 1)
+	if (c->nb_matches - (size_t)c->pos < c->nb_matches % c->nb_lines + 1)
 		c->pos -= c->nb_lines - c->nb_matches % c->nb_lines;
-	else if (c->nb_matches -(size_t)c->pos <= c->nb_lines)
+	else if (c->nb_matches - (size_t)c->pos <= c->nb_lines)
 		c->pos += c->nb_matches % c->nb_lines;
 	c->pos += c->nb_lines;
 	c->pos += c->nb_matches;

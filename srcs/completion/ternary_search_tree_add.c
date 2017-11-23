@@ -38,9 +38,9 @@ void	ternary_tree_insert_down(t_ternary_tree *node, char *cur, char *str)
 
 void	ternary_tree_add(t_ternary_tree *node, char *cur, char *str)
 {
-	if (*cur < node->c &&(!node->left ||(node->left && *cur > node->left->c)))
+	if (*cur < node->c && (!node->left || (node->left && *cur > node->left->c)))
 		return (ternary_tree_insert_left(node, cur, str));
-	else if (*cur > node->c &&(!node->right || \
+	else if (*cur > node->c && (!node->right || \
 				(node->right && *cur < node->right->c)))
 		return (ternary_tree_insert_right(node, cur, str));
 	else if (*cur < node->c)

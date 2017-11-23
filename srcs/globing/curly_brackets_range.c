@@ -15,7 +15,7 @@ void	curly_brackets_range_alpha(t_list **res, char *expr, char *str, int end)
 	{
 		while (b[0] <= b_end)
 		{
-			new_str = ft_strjoin3_free(expr,(char *)b, expr + end + 1, 0);
+			new_str = ft_strjoin3_free(expr, (char *)b, expr + end + 1, 0);
 			curly_brackets(res, new_str, ft_strlen(expr) + ft_strlen(b));
 			(*b)++;
 		}
@@ -24,7 +24,7 @@ void	curly_brackets_range_alpha(t_list **res, char *expr, char *str, int end)
 	{
 		while (b[0] >= b_end)
 		{
-			new_str = ft_strjoin3_free(expr,(char *)b, expr + end + 1, 0);
+			new_str = ft_strjoin3_free(expr, (char *)b, expr + end + 1, 0);
 			curly_brackets(res, new_str, ft_strlen(expr) + ft_strlen(b));
 			(*b)--;
 		}
@@ -50,7 +50,7 @@ void	curly_brackets_range_num(t_list **res, char *expr, char *str, int end)
 	{
 		char	itoa_res[20];
 		ft_itoa_word(start_range, itoa_res);
-		new_str = ft_strjoin3_free(expr,(char *)itoa_res, expr + end + 1, 0);
+		new_str = ft_strjoin3_free(expr, (char *)itoa_res, expr + end + 1, 0);
 		curly_brackets(res, new_str, ft_strlen(expr) + ft_strlen(itoa_res));
 		if (start_range < end_range)
 			start_range++;
@@ -59,7 +59,7 @@ void	curly_brackets_range_num(t_list **res, char *expr, char *str, int end)
 	}
 	char	itoa_res[20];
 	ft_itoa_word(start_range, itoa_res);
-	new_str = ft_strjoin3_free(expr,(char *)itoa_res, expr + end + 1, 0);
+	new_str = ft_strjoin3_free(expr, (char *)itoa_res, expr + end + 1, 0);
 	curly_brackets(res, new_str, ft_strlen(expr) + ft_strlen(itoa_res));
 	free(str);
 	free(expr);

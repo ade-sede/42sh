@@ -62,7 +62,7 @@ int				lex_completion(t_line *line, int *cmd_name_open)
 	*cmd_name_open = lex.cmd_name_open;
 	last = ft_last_simple_lst(token_list);
 	if (last && last->data)
-		cmd_name =((t_token *)last->data)->cmd_name;
+		cmd_name = ((t_token *)last->data)->cmd_name;
 	remove_lexer(&lex, &token_list);
 	return (cmd_name);
 }
@@ -77,7 +77,7 @@ char			**comple_matching(t_line *line, t_comple *c)
 	cmd_name = lex_completion(line, &cmd_name_open);
 	res = NULL;
 	c->current_word = get_current_word_cursor(line);
-	if (line->pos == 0 ||(line->pos > 0 &&(line->buff[line->pos] == ' '
+	if (line->pos == 0 || (line->pos > 0 && (line->buff[line->pos] == ' '
 					|| line->buff[line->pos] == '\0')
 				&& line->buff[line->pos - 1] == ' '))
 		res = comple_matching_no_cursorword(line, c, cmd_name_open);
