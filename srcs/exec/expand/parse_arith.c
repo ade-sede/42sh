@@ -1,100 +1,100 @@
 #include "expand.h"
 
-char	*skip_white_space(char *str)
+char		*skip_white_space(char *str)
 {
 	while (*str && ft_is_space(*str))
 		str++;
 	return (str);
 }
 
-int		eval_expr_val(char **expr, long int *result)
+int			eval_expr_val(char **expr, long int *result)
 {
-	char	*digit;
-	int		depth = 0;
+	char		*digit;
+	int			depth;
 
-	digit = skip_white_space(*expr);
-	if (*digit == '(')
+	depth = 0;
+	if (*(digit = skip_white_space(*expr)) == '(')
 	{
 		++digit;
 		while (**expr)
 		{
 			if (**expr == ')' && --depth == 0)
-				break;
+				break ;
 			else if (**expr == '(')
 				depth++;
 			(*expr)++;
 		}
 		if (!**expr)
-			return WRDE_SYNTAX;
+			return (WRDE_SYNTAX);
 		*(*expr)++ = 0;
 		if (eval_expr(digit, result))
-			return WRDE_SYNTAX;
-		return 0;
+			return (WRDE_SYNTAX);
+		return (0);
 	}
 	if (!ft_atoilong_safe(digit, expr, result))
-		return WRDE_SYNTAX;
-	return 0;
+		return (WRDE_SYNTAX);
+	return (0);
 }
 
-int		eval_expr_multdiv(char **expr, long int *result)
+int			eval_expr_multdiv(char **expr, long int *result)
 {
-	long int arg;
+	long int		arg;
 
 	if (eval_expr_val(expr, result) != 0)
-		return WRDE_SYNTAX;
+		return (WRDE_SYNTAX);
 	while (**expr)
 	{
-		*expr = skip_white_space(*expr); 
+		*expr = skip_white_space(*expr);
 		if (**expr == '*')
 		{
 			++(*expr);
 			if (eval_expr_val(expr, &arg) != 0)
-				return WRDE_SYNTAX;
+				return (WRDE_SYNTAX);
 			*result *= arg;
 		}
 		else if (**expr == '/')
 		{
 			++(*expr);
 			if (eval_expr_val(expr, &arg) != 0 || arg == 0)
-				return WRDE_SYNTAX;
+				return (WRDE_SYNTAX);
 			*result /= arg;
 		}
 		else
-			break;
+			break ;
 	}
-	return 0;
+	return (0);
 }
 
-int		eval_expr(char *expr, long int *result)
+int			eval_expr(char *expr, long int *result)
 {
-	long arg;
+	long			arg;
 
 	if (eval_expr_multdiv(&expr, result) != 0)
-		return WRDE_SYNTAX;
+		return (WRDE_SYNTAX);
 	while (*expr)
 	{
-		expr = skip_white_space(expr); 
+		expr = skip_white_space(expr);
 		if (*expr == '+')
 		{
 			++expr;
 			if (eval_expr_multdiv(&expr, &arg) != 0)
-				return WRDE_SYNTAX;
+				return (WRDE_SYNTAX);
 			*result += arg;
 		}
 		else if (*expr == '-')
 		{
 			++expr;
 			if (eval_expr_multdiv(&expr, &arg) != 0)
-				return WRDE_SYNTAX;
+				return (WRDE_SYNTAX);
 			*result -= arg;
 		}
 		else
-			break;
+			break ;
 	}
-	return 0;
+	return (0);
 }
 
-int		bad_arith(t_expand *exp, t_word cpy_word, t_word cpy_g_word)
+int			bad_arith(t_expand *exp, t_word cpy_word, t_word cpy_g_word)
 {
 	w_free(&exp->word);
 	w_free(&exp->g_word);
@@ -103,19 +103,20 @@ int		bad_arith(t_expand *exp, t_word cpy_word, t_word cpy_g_word)
 	return (WRDE_SYNTAX);
 }
 
-int	get_arith(t_expand *exp, t_word cpy_word, t_word cpy_g_word)
+int			get_arith(t_expand *exp, t_word cpy_word, t_word cpy_g_word)
 {
 	char			result[21];
-	long int		numresult = 0;
+	long int		numresult;
 	long long int	convertme;
 	int				error;
 
+	numresult = 0;
 	ft_bzero(result, 21);
 	if (exp->words[1 + exp->offset] != ')')
-		return bad_arith(exp, cpy_word, cpy_g_word);
+		return (bad_arith(exp, cpy_word, cpy_g_word));
 	++(exp->offset);
-	if (exp->word.str &&(error = eval_expr(exp->word.str, &numresult)) != 0)
-		return bad_arith(exp, cpy_word, cpy_g_word);
+	if (exp->word.str && (error = eval_expr(exp->word.str, &numresult)) != 0)
+		return (bad_arith(exp, cpy_word, cpy_g_word));
 	bad_arith(exp, cpy_word, cpy_g_word);
 	if (numresult < 0)
 	{
@@ -129,7 +130,8 @@ int	get_arith(t_expand *exp, t_word cpy_word, t_word cpy_g_word)
 	return (0);
 }
 
-int		parse_arith_special_chars(t_expand *exp, t_word cpy_word, t_word cpy_g_word)
+int			parse_arith_special_chars(t_expand *exp, t_word cpy_word,
+		t_word cpy_g_word)
 {
 	if (exp->words[exp->offset] == '$')
 		parse_dollars(exp, 1);
@@ -140,14 +142,14 @@ int		parse_arith_special_chars(t_expand *exp, t_word cpy_word, t_word cpy_g_word
 	}
 	else if (exp->words[exp->offset] == '\\')
 		parse_qtd_backslash(&exp->g_word, &exp->word, exp->words, &exp->offset);
-	else if (ft_strchr(";{}",exp->words[exp->offset]))
-		return bad_arith(exp, cpy_word, cpy_g_word);
+	else if (ft_strchr(";{}", exp->words[exp->offset]))
+		return (bad_arith(exp, cpy_word, cpy_g_word));
 	else
 		w_addchar(&exp->word, exp->words[exp->offset]);
 	return (0);
 }
 
-void	cpy_word_g_word(t_expand *exp, t_word *cpy_word, t_word *cpy_g_word)
+void		cpy_word_g_word(t_expand *exp, t_word *cpy_word, t_word *cpy_g_word)
 {
 	*cpy_word = exp->word;
 	*cpy_g_word = exp->g_word;
@@ -155,11 +157,11 @@ void	cpy_word_g_word(t_expand *exp, t_word *cpy_word, t_word *cpy_g_word)
 	w_newword(&exp->g_word);
 }
 
-int		parse_arith(t_expand *exp)
+int			parse_arith(t_expand *exp)
 {
-	int			paren_depth = 1;
-	t_word		cpy_word;
-	t_word		cpy_g_word;
+	int				paren_depth;
+	t_word			cpy_word;
+	t_word			cpy_g_word;
 
 	paren_depth = 1;
 	cpy_word_g_word(exp, &cpy_word, &cpy_g_word);
@@ -180,5 +182,5 @@ int		parse_arith(t_expand *exp)
 			return (WRDE_SYNTAX);
 		++(exp->offset);
 	}
-	return bad_arith(exp, cpy_word, cpy_g_word);
+	return (bad_arith(exp, cpy_word, cpy_g_word));
 }

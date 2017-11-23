@@ -25,7 +25,8 @@ int		pipe_sequence_has_to_fork(t_ast *pipe_sequence)
 	if (!(is_symb(simple_command, SIMPLE_COMMAND)))
 		return (0);
 	cmd_name_expanded = get_cmd_name(simple_command, NO_SHOW_ERROR);
-	if (cmd_name_expanded && cmd_name_expanded[0] && !get_exec_builtin(cmd_name_expanded[0])
+	if (cmd_name_expanded && cmd_name_expanded[0] &&
+			!get_exec_builtin(cmd_name_expanded[0])
 		&& !get_function(singleton_env(), cmd_name_expanded[0]))
 	{
 		ft_arraydel(&cmd_name_expanded);
@@ -79,7 +80,6 @@ int		exec_pipeline(t_ast *ast)
 	{
 		new_job = job_new();
 		fill_job(pipe_sequence, &first_process);
-		//		debug_process(first_process);
 		new_job->first_process = first_process;
 		ft_genlst_pushback(&singleton_jc()->first_job, new_job);
 		exit_status = launch_job(singleton_jc(), new_job, 1);

@@ -28,7 +28,7 @@ static t_exec_func	g_exec_func[] =
 	{0, NULL},
 };
 
-int		exec(t_ast	*ast)
+int		exec(t_ast *ast)
 {
 	int		i;
 

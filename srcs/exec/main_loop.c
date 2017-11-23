@@ -32,8 +32,6 @@ void	init_main_loop(t_line *line, t_hist *hist)
 	line->col_target = -1;
 }
 
-//loop until end of input in case of noninteractive mode
-
 int		main_loop(t_env *env, t_modes *modes)
 {
 	char		*buff;

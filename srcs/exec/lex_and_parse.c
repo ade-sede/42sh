@@ -13,8 +13,8 @@
 
 void	exec_main_loop(t_ast *ast)
 {
-	int		exit_status;
-	char	nbr[20];
+	int			exit_status;
+	char		nbr[20];
 
 	singleton_jc()->background = 0;
 	if (singleton_jc()->shell_is_interactive)
@@ -22,11 +22,8 @@ void	exec_main_loop(t_ast *ast)
 		parse_heredoc(ast);
 		conf_term_canonical();
 	}
-//	(void)ast;
-//	exit_status = 0; ////////////
 	exit_status = exec(ast);
 	local_add_change_from_key_value(singleton_env(), "?", ft_itoa_word(exit_status, nbr));
-	//printf("{%s}\n", nbr);
 	if (singleton_jc()->shell_is_interactive)
 		conf_term_non_canonical();
 }
@@ -43,7 +40,6 @@ void	remove_parser(t_parser *parser)
 	ft_genlst_remove(&parser->ast_stack, free_ast_node);
 }
 
-#include <stdio.h>
 void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list **token_list)
 {
 	(void)token_list;
@@ -53,18 +49,19 @@ void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list **token_list)
 	remove_parser(parser);
 }
 
-// execute one command and get input from the shell mode if needed
-
 int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 {
 	t_lexer		lexer;
 	t_list		*token_list;
-	t_list		*big_list = NULL;
-	int			res_lexer = -1;
-	int			res_parser = -1;
+	t_list		*big_list;
+	int			res_lexer;
+	int			res_parser;
 	t_parser	parser;
 	t_token		*reopen_token;
 
+	big_list = NULL;
+	res_lexer = -1;
+	res_parser = -1;
 	init_lexer(&lexer, buff);
 	init_parser(&parser);
 	while (!((res_lexer == LEXER_SUCCESS && res_parser == PARSER_SUCCESS) || res_parser == PARSER_ERROR))
@@ -82,10 +79,8 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 			ft_simple_lst_pushback(&token_list, ft_simple_lst_create(reopen_token));
 		}
 		res_parser = parse(&parser, &ast, token_list);
-	//	res_parser = PARSER_SUCCESS;
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{
-//			free(buff);
 			if (!reopen(&lexer, &parser, modes))
 				return (0);
 			token_list = NULL;

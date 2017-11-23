@@ -1,15 +1,16 @@
 #include "exec.h"
 
 /*
-** function_body    : compound_command                
-**                  | compound_command redirect_list 
+** function_body    : compound_command
+**                  | compound_command redirect_list
 */
 
-int exec_function_body(t_ast *ast)
+int		exec_function_body(t_ast *ast)
 {
 	int		exit_status;
-	t_list	*redirect_list = NULL;
+	t_list	*redirect_list;
 
+	redirect_list = NULL;
 	if (ast->child[1])
 	{
 		exec_redirect_list(ast->child[1], &redirect_list);

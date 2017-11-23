@@ -11,7 +11,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-int	safe_open(char *target, int mode)
+int			safe_open(char *target, int mode)
 {
 	int		target_fd;
 
@@ -27,12 +27,15 @@ int	safe_open(char *target, int mode)
 
 int			redir_open_file(char *target, int id)
 {
-	int	target_fd; int	mode; mode = 0;
+	int		target_fd;
+	int		mode;
+
+	mode = 0;
 	if (id == TK_LESS)
 		mode |= O_RDONLY;
 	if (id != TK_LESS)
 	{
-		mode |=(id == TK_LESSGREAT) ? O_RDWR : O_WRONLY;
+		mode |= (id == TK_LESSGREAT) ? O_RDWR : O_WRONLY;
 		if (access(target, F_OK) == -1)
 			mode |= O_CREAT;
 		if (id == TK_DGREAT)
@@ -84,7 +87,7 @@ void		close_dup(t_list *redir_stack)
 void		push_dup(int io_number, int target_fd, int natural_fd, \
 		t_list **redir_stack)
 {
-	int	*save;
+	int		*save;
 
 	save = palloc(sizeof(*save) * 4);
 	save[0] = io_number;

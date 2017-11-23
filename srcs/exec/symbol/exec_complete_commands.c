@@ -5,7 +5,7 @@
 **	                 |                                complete_command
 */
 
-int exec_complete_commands(t_ast *ast)
+int		exec_complete_commands(t_ast *ast)
 {
 	if (ast->child[0] && !ast->child[2])
 		return (exec(ast->child[0]));

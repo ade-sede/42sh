@@ -7,11 +7,12 @@
 **	                 | function_definition
 */
 
-int exec_command(t_ast *ast)
+int		exec_command(t_ast *ast)
 {
 	int		exit_status;
-	t_list	*redirect_list = NULL;
+	t_list	*redirect_list;
 
+	redirect_list = NULL;
 	if (ast->child[1])
 	{
 		exec_redirect_list(ast->child[1], &redirect_list);

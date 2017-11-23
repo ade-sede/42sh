@@ -13,12 +13,14 @@
 **	                 | cmd_suffix WORD
 */
 
-int	exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char ***av)
+int			exec_cmd_suffix(t_ast *ast, t_list **redirect_list, char ***av)
 {
-	t_ast	*io_redirect = NULL;
-	t_ast	*word = NULL;
+	t_ast		*io_redirect;
+	t_ast		*word;
 	char		**word_expanded;
 
+	io_redirect = NULL;
+	word = NULL;
 	if (is_symb(ast->child[0], IO_REDIRECT))
 		io_redirect = ast->child[0];
 	else if (is_symb(ast->child[1], IO_REDIRECT))
@@ -48,34 +50,35 @@ int	exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char ***av)
 **	                 ;
 */
 
-#include <stdio.h>
-void	exec_assignment_word(t_ast *ast)
+void		exec_assignment_word(t_ast *ast)
 {
-	char		**word_expanded = NULL;
+	char		**word_expanded;
 	char		*eq_pos;
-	
+
+	word_expanded = NULL;
 	eq_pos = ft_strchr(ast->token->value, '=');
 	word_expanded = word_expansion(eq_pos + 1, NO_GLOBBING | NO_FIELDSPLITING);
 	if (word_expanded[0])
 	{
-		//fprintf(stderr, "word expanded\n");
 		*eq_pos = 0;
-		local_add_change_from_key_value(singleton_env(), ast->token->value, word_expanded[0]);
+		local_add_change_from_key_value(singleton_env(), ast->token->value,
+				word_expanded[0]);
 		*eq_pos = '=';
 	}
 	else
 	{
-		//fprintf(stderr, "word expanded NULL \n");
 		local_add_change_from_string(singleton_env(), ast->token->value);
 	}
-	ft_arraydel(&word_expanded); //TODO: fait peter a=b
+	ft_arraydel(&word_expanded);
 }
 
-int	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
+int			exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
 {
-	t_ast	*assignement_word = NULL;
-	t_ast	*io_redirect = NULL;
+	t_ast		*assignement_word;
+	t_ast		*io_redirect;
 
+	assignement_word = NULL;
+	io_redirect = NULL;
 	if (is_symb(ast->child[0], IO_REDIRECT))
 		io_redirect = ast->child[0];
 	else if (is_symb(ast->child[1], IO_REDIRECT))
@@ -92,23 +95,23 @@ int	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
 	if (is_symb(ast->child[0], CMD_PREFIX))
 		return (exec_cmd_prefix(ast->child[0], redirect_list));
 	return (1);
-
 }
 
-char	*extract_word(t_ast *ast)
+char		*extract_word(t_ast *ast)
 {
 	return (ft_strdup(ast->token->value));
 }
 
-char	**get_cmd_name(t_ast *ast, int flag)
+char		**get_cmd_name(t_ast *ast, int flag)
 {
-	char 	*word = NULL;
+	char		*word;
 
+	word = NULL;
 	if (is_symb(ast->child[1], CMD_WORD))
 		word = ast->child[1]->child[0]->token->value;
 	else if (is_symb(ast->child[0], CMD_NAME))
 		word = ast->child[0]->child[0]->token->value;
-	return (word ? word_expansion(word, flag): NULL);
+	return (word ? word_expansion(word, flag) : NULL);
 }
 
 /*
@@ -119,43 +122,51 @@ char	**get_cmd_name(t_ast *ast, int flag)
 **	                 | cmd_name
 */
 
-int		exec_simple_command(t_ast *ast)
+static int	exec_simle_cut(t_ast *ast, t_list **redirect_list, char ***av)
 {
-	char	**av = NULL;
-	char	**av_cmdsuffix = NULL;
-	t_list	*redirect_list = NULL;
-	t_ast	*cmd_suffix = NULL;
-	t_lst_func	*fct = NULL;
-	int			exit_status = EXIT_SUCCESS;
+	char		**av_cmdsuffix;
+	t_ast		*cmd_suffix;
 
-	if (is_symb(ast->child[0], CMD_PREFIX))
-	{
-		if (!(exec_cmd_prefix(ast->child[0], &redirect_list)))
-			return (EXIT_FAILURE);
-	}
-	av = get_cmd_name(ast, 0);
+	av_cmdsuffix = NULL;
+	cmd_suffix = NULL;
 	if (is_symb(ast->child[1], CMD_SUFFIX))
 		cmd_suffix = ast->child[1];
 	if (is_symb(ast->child[2], CMD_SUFFIX))
 		cmd_suffix = ast->child[2];
 	if (cmd_suffix)
 	{
-		if (!exec_cmd_suffix(cmd_suffix, &redirect_list, &av_cmdsuffix))
-			return (EXIT_FAILURE);
-
-	//	fprintf(stderr, "[%s]\n", av_cmdsuffix[1]);
+		if (!exec_cmd_suffix(cmd_suffix, redirect_list, &av_cmdsuffix))
+			return (1);
 		if (av_cmdsuffix)
-			av = av ? ft_arrayjoin_free(av, av_cmdsuffix, 0b11) : av_cmdsuffix;
+			*av = *av ? ft_arrayjoin_free(*av, av_cmdsuffix, 0b11) :
+				av_cmdsuffix;
 	}
+	return (0);
+}
+
+int			exec_simple_command(t_ast *ast)
+{
+	char		**av;
+	t_list		*redirect_list;
+	t_lst_func	*fct;
+	int			exit_status;
+
+	exit_status = EXIT_SUCCESS;
+	if (is_symb(ast->child[0], CMD_PREFIX) && !(redirect_list = NULL))
+		if (!(exec_cmd_prefix(ast->child[0], &redirect_list)))
+			return (EXIT_FAILURE);
+	av = get_cmd_name(ast, 0);
+	if (exec_simle_cut(ast, &redirect_list, &av))
+		return (EXIT_FAILURE);
 	exec_dup(redirect_list);
 	if (av && av[0])
 	{
 		if ((fct = get_function(singleton_env(), av[0])))
 			exit_status = exec_function(fct->fct_body, av);
 		else if (get_exec_builtin(av[0]))
-			exit_status = exec_builtin(singleton_env(),(const char **)av);
+			exit_status = exec_builtin(singleton_env(), (const char **)av);
 		else
-			exec_bin(singleton_env(),(const char **)av);
+			exec_bin(singleton_env(), (const char **)av);
 		ft_arraydel(&av);
 	}
 	close_dup(redirect_list);

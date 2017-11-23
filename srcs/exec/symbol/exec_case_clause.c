@@ -19,7 +19,7 @@
 **                  | pattern '|' WORD
 */
 
-int	exec_pattern(t_ast *ast, char *word)
+int		exec_pattern(t_ast *ast, char *word)
 {
 	if (is_token(ast->child[0], TK_WORD))
 		return (ft_strequ(word, ast->child[0]->token->value));
@@ -29,18 +29,17 @@ int	exec_pattern(t_ast *ast, char *word)
 		return (exec_pattern(ast->child[0], word));
 }
 
-int exec_case_item(t_ast *ast, char *word, int *patern_found)
+int		exec_case_item(t_ast *ast, char *word, int *patern_found)
 {
 	t_ast	*pattern;
-	t_ast	*compound_list = NULL;
+	t_ast	*compound_list;
 
+	compound_list = NULL;
 	pattern = is_symb(ast->child[0], PATTERN) ? ast->child[0] : ast->child[1];
-
 	if (is_symb(ast->child[2], COMPOUND_LIST))
 		compound_list = ast->child[2];
 	else if (is_symb(ast->child[3], COMPOUND_LIST))
 		compound_list = ast->child[3];
-
 	if (exec_pattern(pattern, word))
 	{
 		*patern_found = 1;
@@ -59,29 +58,30 @@ int exec_case_item(t_ast *ast, char *word, int *patern_found)
 **                  ;
 */
 
-int exec_case_list(t_ast *ast, char *word, int *pattern_found)
+int		exec_case_list(t_ast *ast, char *word, int *pattern_found)
 {
 	int		exit_status;
 
-	if (is_symb(ast->child[0], CASE_ITEM) || is_symb(ast->child[0], CASE_ITEM_NS))
+	if (is_symb(ast->child[0], CASE_ITEM) || is_symb(ast->child[0],
+				CASE_ITEM_NS))
 		return (exec_case_item(ast->child[0], word, pattern_found));
-
 	exit_status = exec_case_list(ast->child[0], word, pattern_found);
 	if (*pattern_found)
 		return (exit_status);
-
 	return (exec_case_item(ast->child[1], word, pattern_found));
 }
 
-int exec_case_clause(t_ast *ast)
+int		exec_case_clause(t_ast *ast)
 {
 	char	*word;
-	int		pattern_found = 0;
+	int		pattern_found;
 
+	pattern_found = 0;
 	word = ast->child[1]->token->value;
 	if (is_token(ast->child[5], TK_ESAC))
 		return (EXIT_SUCCESS);
-	else if (is_symb(ast->child[5], CASE_LIST_NS) || is_symb(ast->child[5], CASE_LIST))
+	else if (is_symb(ast->child[5], CASE_LIST_NS) || is_symb(ast->child[5],
+				CASE_LIST))
 		return (exec_case_list(ast->child[5], word, &pattern_found));
 	return (EXIT_SUCCESS);
 }

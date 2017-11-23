@@ -8,10 +8,39 @@
 #include "glob.h"
 #include "expand.h"
 
-char	*get_param(t_expand *exp, int *seen_hash)
+static int		get_param_cut(t_word *env, t_expand *exp)
 {
-	t_word	env;
-	int		brace;
+	if (ft_isalpha(exp->words[exp->offset]) || exp->words[exp->offset] == '_')
+	{
+		while (ft_isalnum(exp->words[exp->offset]) ||
+				exp->words[exp->offset] == '_')
+		{
+			w_addchar(env, exp->words[exp->offset]);
+			++exp->offset;
+		}
+	}
+	else if (ft_isdigit(exp->words[exp->offset]))
+	{
+		while (ft_isdigit(exp->words[exp->offset]))
+		{
+			w_addchar(env, exp->words[exp->offset]);
+			++exp->offset;
+		}
+	}
+	else if (CHAR_IN_SET(exp->words[exp->offset], "*@$?!"))
+	{
+		w_addchar(env, exp->words[exp->offset]);
+		++exp->offset;
+	}
+	else
+		return (0);
+	return (1);
+}
+
+char			*get_param(t_expand *exp, int *seen_hash)
+{
+	t_word		env;
+	int			brace;
 
 	brace = exp->words[exp->offset] == '{';
 	w_newword(&env);
@@ -24,32 +53,9 @@ char	*get_param(t_expand *exp, int *seen_hash)
 			return (NULL);
 		++exp->offset;
 	}
-	if (ft_isalpha(exp->words[exp->offset]) || exp->words[exp->offset] == '_')
-	{
-		while (ft_isalnum(exp->words[exp->offset]) ||
-				exp->words[exp->offset] == '_')
-		{
-			w_addchar(&env, exp->words[exp->offset]);
-			++exp->offset;
-		}
-	}
-	else if (ft_isdigit(exp->words[exp->offset]))
-	{
-		while (ft_isdigit(exp->words[exp->offset]))
-		{
-			w_addchar(&env, exp->words[exp->offset]);
-			++exp->offset;
-		}
-	}
-	else if (CHAR_IN_SET(exp->words[exp->offset], "*@$?!"))
-	{
-		w_addchar(&env, exp->words[exp->offset]);
-		++exp->offset;
-	}
-	else
-		return (env.str);
-	if (!((brace && exp->words[exp->offset] == '}')))
-		--exp->offset;
+	if (get_param_cut(&env, exp))
+		if (!((brace && exp->words[exp->offset] == '}')))
+			--exp->offset;
 	return (env.str);
 }
 
@@ -57,37 +63,46 @@ char	*get_param(t_expand *exp, int *seen_hash)
 **	poised after $
 */
 
-int		parse_param(t_expand *exp, int quoted)
+static char		*parse_param_cut(int *seen_hash, t_expand *exp)
 {
-	char	*value;
-	int		seen_hash;
-	char	*env_var;
+	char		*value;
 
-	value = NULL;
+	if (seen_hash)
+	{
+		value = ft_strdup(var_get_value(singleton_env(), "#"));
+		seen_hash = 0;
+	}
+	else
+	{
+		value = NULL;
+		exp->offset--;
+		w_addchar(&exp->word, '$');
+		w_addchar(&exp->g_word, '$');
+	}
+	return (value);
+}
+
+int				parse_param(t_expand *exp, int quoted)
+{
+	char		*value;
+	int			seen_hash;
+	char		*env_var;
+	char		param_length[20];
+
 	seen_hash = 0;
 	env_var = get_param(exp, &seen_hash);
 	if (env_var == NULL)
 	{
-		if (seen_hash)
-		{
-			value = ft_strdup(var_get_value(singleton_env(), "#"));
-			seen_hash = 0;
-		}
-		else
-		{
-			exp->offset--;
-			w_addchar(&exp->word, '$');
-			w_addchar(&exp->g_word, '$');
+		if (!(value = parse_param_cut(&seen_hash, exp)))
 			return (0);
-		}
 	}
 	else
 		value = var_get_value(singleton_env(), env_var);
 	free(env_var);
 	if (seen_hash)
 	{
-		char param_length[20];
-		w_addstr(&exp->word, ft_itoa_word((value ? ft_strlen(value) : 0), param_length));
+		w_addstr(&exp->word, ft_itoa_word((value ? ft_strlen(value) : 0),
+				param_length));
 		return (0);
 	}
 	handle_fieldsplitting(value, exp, quoted);
@@ -96,8 +111,8 @@ int		parse_param(t_expand *exp, int quoted)
 
 static int		is_arith_expansion(t_expand *exp)
 {
-	int i;
-	int depth;
+	int			i;
+	int			depth;
 
 	depth = 0;
 	i = 3 + exp->offset;
@@ -116,7 +131,7 @@ static int		is_arith_expansion(t_expand *exp)
 	return (0);
 }
 
-int		parse_dollars(t_expand *exp, int quoted)
+int				parse_dollars(t_expand *exp, int quoted)
 {
 	if (exp->words[1 + exp->offset] == '"' ||
 	exp->words[1 + exp->offset] == '\\' || exp->words[1 + exp->offset] == '\0')

@@ -7,7 +7,7 @@
 **	                 | Else compound_list
 */
 
-int exec_else_part(t_ast *ast)
+int		exec_else_part(t_ast *ast)
 {
 	if (is_token(ast->child[0], TK_ELIF))
 	{

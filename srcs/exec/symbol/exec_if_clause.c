@@ -6,7 +6,7 @@
 **					| If compound_list Then compound_list Fi
 */
 
-int exec_if_clause(t_ast *ast)
+int		exec_if_clause(t_ast *ast)
 {
 	if (exec(ast->child[1]) == EXIT_SUCCESS)
 		return (exec(ast->child[3]));

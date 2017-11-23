@@ -5,7 +5,7 @@
 **	                 |                and_or
 */
 
-int exec_term(t_ast *ast)
+int		exec_term(t_ast *ast)
 {
 	if (ast->child[0] && !ast->child[2])
 		return (exec(ast->child[0]));

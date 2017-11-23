@@ -30,10 +30,10 @@ t_ast	*get_and_or(t_ast *list)
 **	                 | list
 */
 
-int exec_complete_command(t_ast *ast)
+int		exec_complete_command(t_ast *ast)
 {
-	int	exit_status;
-	t_ast	*and_or;
+	int			exit_status;
+	t_ast		*and_or;
 
 	and_or = get_and_or(ast->child[0]);
 	exit_status = exec_list(ast->child[0]);
@@ -42,7 +42,7 @@ int exec_complete_command(t_ast *ast)
 		exec_asynchronous_list(and_or);
 		return (exit_status);
 	}
-	return (exec(and_or));	
+	return (exec(and_or));
 }
 
 /*
@@ -50,10 +50,10 @@ int exec_complete_command(t_ast *ast)
 **	                 |                   and_or
 */
 
-int exec_list(t_ast *ast)
+int		exec_list(t_ast *ast)
 {
-	int	exit_status;
-	t_ast	*and_or;
+	int			exit_status;
+	t_ast		*and_or;
 
 	if (!ast->child[2])
 		return (EXIT_SUCCESS);
@@ -64,5 +64,5 @@ int exec_list(t_ast *ast)
 		exec_asynchronous_list(and_or);
 		return (exit_status);
 	}
-	return (exec(and_or));	
+	return (exec(and_or));
 }

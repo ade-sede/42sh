@@ -6,7 +6,7 @@
 **	                 | and_or OR_IF  linebreak pipeline
 */
 
-int exec_and_or(t_ast *ast)
+int		exec_and_or(t_ast *ast)
 {
 	int		exit_status;
 
