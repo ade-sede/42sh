@@ -13,4 +13,5 @@ void		env_add_var(t_env *env, const char *key, const char *value);
 void		env_add_change(t_env *env, const char *key, const char *value);
 void		env_add_var_from_string(t_env *env, char *key_value, ssize_t eq_index);
 void		env_remove_var(t_env *env, const char *key);
+int			is_key(const char *key);
 #endif

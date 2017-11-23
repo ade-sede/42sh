@@ -2,9 +2,9 @@
 #include "libft.h"
 #include "t_env.h"
 
-t_list	*local_get_node(t_list *first, const char *key)
+t_list			*local_get_node(t_list *first, const char *key)
 {
-	t_local	*tmp;
+	t_local		*tmp;
 
 	while (first)
 	{
@@ -18,8 +18,8 @@ t_list	*local_get_node(t_list *first, const char *key)
 
 char			*local_get_value(t_list *first, const char *key)
 {
-	t_list	*node;
-	t_local	*local;
+	t_list		*node;
+	t_local		*local;
 
 	node = local_get_node(first, key);
 	if (!node)
@@ -46,10 +46,10 @@ char			*get_pos_param_value(t_list *pos_param, int key)
 
 char			*var_get_value(t_env *env, const char *key)
 {
-	char	*ret;
-	
+	char		*ret;
+
 	ret = local_get_value(env->local, key);
 	if (!ret && ft_str_isdigit(key))
-		ret = get_pos_param_value(env->pos_param, ft_atoi_base((char*)key,10));
+		ret = get_pos_param_value(env->pos_param, ft_atoi_base((char*)key, 10));
 	return (ret);
 }

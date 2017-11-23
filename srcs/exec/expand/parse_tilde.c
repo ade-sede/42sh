@@ -6,21 +6,20 @@
 #include "glob.h"
 #include "expand.h"
 
-/*  on "~" */
-int parse_tilde (t_expand *exp)
+int		parse_tilde(t_expand *exp)
 {
-      char* home;
+	char	*home;
 
-      home = getenv ("HOME");
-      if (home != NULL)
-	  {
-          w_addstr (&exp->word, home);
-          w_addstr (&exp->g_word, home);
-	  }
-      else
-	  {
-		  w_addchar (&exp->word, '~');
-		  w_addchar (&exp->g_word, '~');
-	  }
-	  return (1);
+	home = getenv("HOME");
+	if (home != NULL)
+	{
+		w_addstr(&exp->word, home);
+		w_addstr(&exp->g_word, home);
+	}
+	else
+	{
+		w_addchar(&exp->word, '~');
+		w_addchar(&exp->g_word, '~');
+	}
+	return (1);
 }

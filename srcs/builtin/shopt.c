@@ -3,7 +3,7 @@
 #include "shopt.h"
 #include <stdio.h>
 
-struct s_shopt_mask g_shopt_mask[] = 
+struct s_shopt_mask g_shopt_mask[] =
 {
 	{ALLEXPORT, "allexport"},
 	{SYNCOLOR, "syncolor"},
@@ -12,17 +12,17 @@ struct s_shopt_mask g_shopt_mask[] =
 
 int			builtin_shopt(t_env *env, const char **argv)
 {
-	(void)argv;
 	size_t	i;
 	long	opt;
 
+	(void)argv;
 	i = 0;
 	opt = env->option;
 	while (i < OPTNB)
 	{
 		dprintf(1, "%s  ", g_shopt_mask[i].string);
 		dprintf(1, "%s\n", opt & g_shopt_mask[i].mask ? "on" : "off");
-				++i;
+		++i;
 	}
 	return (EXIT_SUCCESS);
 }

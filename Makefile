@@ -60,6 +60,7 @@ SRC_FILE = \
 		   env/opt/set_opt.c \
 		   \
 		   env/local/pos_param.c \
+		   env/local/pos_param_add.c \
 		   env/local/local_add.c \
 		   env/local/local_remove.c \
 		   env/local/local_get.c \
@@ -69,6 +70,7 @@ SRC_FILE = \
 		   env/environ/env_remove.c \
 		   env/environ/environ.c \
 		   env/environ/load_base_env.c \
+		   env/environ/ft_is_key.c \
 		   \
 		   \
 		   env/prompt/get_ps1.c \

@@ -17,18 +17,18 @@ static t_comple_func	g_comple_func[] =
 **	Returns no if we are not (meaning we wanna go in edit_add)
 **
 **	Edit_add case
-**	- keycode is tab, and there is nothing between the start of the line and line->pos.
-**	- keycode is tab, and there is nothing between the start of the preceding newline and me.
-**	- 
+**	- keycode is tab, and there is nothing between
+**				the start of the line and line->pos.
+**	- keycode is tab, and there is nothing between
+**				the start of the preceding newline and me.
+**	-
 */
 
 static	int		valid_comple(t_line *line, int keycode)
 {
-	char	tmp;
-	char	*start_ptr;
+	char		tmp;
+	char		*start_ptr;
 
-//	if (line->completion)
-		//return (TRUE);
 	if (!(line->completion) && keycode == KEY_TAB)
 	{
 		tmp = line->buff[line->pos];
@@ -38,7 +38,7 @@ static	int		valid_comple(t_line *line, int keycode)
 		if (!start_ptr)
 			start_ptr = line->buff;
 		if (ft_str_is_clear_n(start_ptr, line->buff + line->pos - start_ptr))
-					return (FALSE);
+			return (FALSE);
 		else if (line->verbatim)
 		{
 			line->verbatim = 0;
@@ -49,10 +49,10 @@ static	int		valid_comple(t_line *line, int keycode)
 	return (FALSE);
 }
 
-int		comple_loop(unsigned long long keycode, t_line *line,
+int				comple_loop(unsigned long long keycode, t_line *line,
 		t_comple *c)
 {
-	int	i;
+	int			i;
 
 	i = 0;
 	while (g_comple_func[i].keycode)
@@ -68,9 +68,9 @@ int		comple_loop(unsigned long long keycode, t_line *line,
 	(void)line;
 }
 
-int		comple_get_input(t_line *line, int keycode)
+int				comple_get_input(t_line *line, int keycode)
 {
-	t_comple			*c;
+	t_comple	*c;
 
 	c = singleton_comple();
 	if (line->completion)

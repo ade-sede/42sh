@@ -32,12 +32,10 @@ char	*command_substitution(char *value)
 		exit(0);
 	}
 	else
-	{
 		while (read(pipe[0], &buff, 100))
 		{
 			res = ft_strjoin(res, buff);
 			bzero(buff, 100);
 		}
-	}
 	return (res);
 }

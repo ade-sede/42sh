@@ -8,6 +8,7 @@
 # include "job_control.h"
 # include "exec_symbol.h"
 # include "modes.h"
+#define BUFSIZE 128
 
 typedef struct	s_redir
 {

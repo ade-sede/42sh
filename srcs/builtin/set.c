@@ -1,3 +1,4 @@
+#include "printf.h"
 #include "local.h"
 #include "builtin.h"
 #include "t_env.h"
@@ -11,10 +12,19 @@ static t_option g_option[] = {
 	{0, NULL, 0, NULL, NULL}
 };
 
-static t_programinfo pi = {
-	"set", "Assign positional parameters / set unset shell variables",
-	g_option, NULL, 0, 0, 1, 0, NULL, 0, 0
-};
+static void	pi_set(t_programinfo pi)
+{
+	pi.desc = "Assign positional parameters / set unset shell variables";
+	pi.list_option = g_option;
+	pi.argv = NULL;
+	pi.argc = 0;
+	pi.argparg = 0;
+	pi.argcur = 1;
+	pi.argpos = 0;
+	pi.argopt = NULL;
+	pi.argerr = 0;
+	pi.min = 0;
+}
 
 static int	display_all(t_env *env)
 {
@@ -37,8 +47,7 @@ static int	display_all(t_env *env)
 	while (pos_param_list)
 	{
 		pos_param = pos_param_list->data;
-		dprintf(2, "%d", pos_param->key);
-		ft_putstr_fd("=", 2);
+		dprintf(2, "%d=", pos_param->key);
 		ft_putstr_fd(pos_param->value, 2);
 		ft_putchar_fd('\n', 2);
 		pos_param_list = pos_param_list->next;
@@ -50,7 +59,10 @@ int			builtin_set(t_env *env, const char **argv)
 {
 	int				opt_id;
 	size_t			argc;
+	t_programinfo	pi;
 
+	pi.progname = "set";
+	pi_set(pi);
 	argc = ft_arraylen(argv);
 	if (argc == 1)
 	{

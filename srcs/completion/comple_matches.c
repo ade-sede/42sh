@@ -35,36 +35,25 @@ char			**comple_matching_no_cursorword(t_line *line, t_comple *c,
 char			**comple_matching_cursorword(t_line *line, t_comple *c,
 		int cmd_name)
 {
-
 	char		**res;
-	
-//	t_list		*glob_list;
 
-	/*
-**		if (glob_list = pathname_expansion(token, 0)))
-**			res = comple_globing_matches(line, c, glob_list);
-*/
-	//if (!ft_strchr(c->current_word, '/') && cmd_name)
-		//res = comple_bin_matches(line, c);
-	//else
-		//res = comple_file_matches(line, c);
 	if (!cmd_name || ft_strchr(c->current_word, '/'))
 		res = comple_file_matches(line, c);
 	else
 		res = comple_bin_matches(line, c);
 	return (res);
-
-	return (NULL);
 }
 
-int		lex_completion(t_line *line, int *cmd_name_open)
+int				lex_completion(t_line *line, int *cmd_name_open)
 {
 	t_lexer		lex;
 	char		line_pos_char;
-	t_list		*token_list = NULL;
+	t_list		*token_list;
 	t_list		*last;
-	int			cmd_name = 1;
+	int			cmd_name;
 
+	token_list = NULL;
+	cmd_name = 1;
 	line_pos_char = line->buff[line->pos];
 	line->buff[line->pos] = '\0';
 	init_lexer(&lex, line->buff);

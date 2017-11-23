@@ -4,10 +4,6 @@
 #include "libft.h"
 #include "shopt.h"
 
-
-
-#include <stdio.h>
-
 int		local_add_from_key_value(t_env *env, const char *key, const char *value)
 {
 	t_local	*local;
@@ -34,9 +30,10 @@ int		local_add_from_string(t_env *env, const char *string)
 	local_add_from_key_value(env, string, pos + 1);
 	*pos = tmp;
 	return (1);
-}	
+}
 
-int		local_add_change_from_key_value(t_env *env, const char *key, const char *value)
+int		local_add_change_from_key_value(t_env *env, const char *key,
+		const char *value)
 {
 	t_list	*node;
 	t_local	*local;

@@ -51,7 +51,7 @@ static void		exec_bin_path(t_env *env, const char **argv)
 				EXIT_FAILURE));
 }
 
-int			exec_bin(t_env *env, const char **argv)
+int				exec_bin(t_env *env, const char **argv)
 {
 	ft_strchr(argv[0], '/') ? exec_bin_absolute(env, argv) : \
 			exec_bin_path(env, argv);

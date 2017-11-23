@@ -10,8 +10,6 @@ struct s_shopt_mask g_shopt_mask[OPTNB + 1];
 **	unset
 */
 
-#include <stdio.h>
-
 int	set_shell_opt(t_env *env, int sign, const char *option_value)
 {
 	size_t	i;

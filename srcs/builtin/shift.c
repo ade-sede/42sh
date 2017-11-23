@@ -17,29 +17,10 @@ int			fisrt_err(int *n, const char **argv)
 	return (0);
 }
 
-int			builtin_shift(t_env *env, const char **argv)
+void		sup_node(size_t n_tmp, t_list *node_del, t_env *env)
 {
-	int			n;
-	size_t		n_tmp;
-	t_list		*node_del;
-	t_list		*del_next;;
-	t_list		*node_shift;
-	t_pos_param	*pos_param;
-	char		*tmp_max_param;
+	t_list		*del_next;
 
-
-	if (fisrt_err(&n, argv))
-		return (investigate_error(1, "shift: ", "Too many arguments", EXIT_FAILURE));
-	tmp_max_param = local_get_value(env->local, "#");
-	if (!tmp_max_param)
-			return (EXIT_FAILURE);
-	if (n == 0)
-		return (EXIT_FAILURE);
-	if (n > ft_atoi_base(tmp_max_param, 10))
-		return (EXIT_FAILURE);
-	n_tmp = n;
-	node_del = get_pos_param_node(env->pos_param, 1);
-	node_shift = get_pos_param_node(env->pos_param, n + 1);
 	while (n_tmp && node_del)
 	{
 		del_next = node_del->next;
@@ -47,6 +28,27 @@ int			builtin_shift(t_env *env, const char **argv)
 		node_del = del_next;
 		--n_tmp;
 	}
+}
+
+int			builtin_shift(t_env *env, const char **argv)
+{
+	int			n;
+	t_list		*node_shift;
+	t_pos_param	*pos_param;
+	char		*tmp_max_param;
+
+	if (fisrt_err(&n, argv))
+		return (investigate_error(1, "shift: ",
+					"Too many arguments", EXIT_FAILURE));
+		tmp_max_param = local_get_value(env->local, "#");
+	if (!tmp_max_param)
+		return (EXIT_FAILURE);
+	if (n == 0)
+		return (EXIT_FAILURE);
+	if (n > ft_atoi_base(tmp_max_param, 10))
+		return (EXIT_FAILURE);
+	node_shift = get_pos_param_node(env->pos_param, n + 1);
+	sup_node(n, get_pos_param_node(env->pos_param, 1), env);
 	while (node_shift)
 	{
 		pos_param = node_shift->data;

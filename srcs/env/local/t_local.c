@@ -2,13 +2,14 @@
 #include "failure.h"
 #include "libft.h"
 
-t_local	*create_local(const char *key, const char *value)
+t_local				*create_local(const char *key, const char *value)
 {
-	t_local	*local;
+	t_local		*local;
 
 	if (ft_str_isdigit(key))
-		return ((void*)(long)(investigate_error(1, "Wrong assignement :", "key cannot be fully numeric", 0)));
-	local = palloc(sizeof(*local));
+		return ((void*)(long)(investigate_error(1, "Wrong assignement :",
+						"key cannot be fully numeric", 0)));
+		local = palloc(sizeof(*local));
 	local->key = ft_strdup(key);
 	local->value = ft_strdup(value);
 	return (local);
@@ -16,7 +17,7 @@ t_local	*create_local(const char *key, const char *value)
 
 void				free_local(void *local)
 {
-	t_local *node;
+	t_local		*node;
 
 	node = local;
 	free(node->key);

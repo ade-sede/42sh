@@ -3,7 +3,7 @@
 
 static struct s_debug_token_id g_debug_token_id[] =
 {
-	{TK_WORD, "TK_WORD"  },
+	{TK_WORD, "TK_WORD" },
 	{TK_ASSIGNMENT_WORD, "TK_ASSIGNMENT_WORD" },
 	{TK_NAME, "TK_NAME" },
 	{TK_NEWLINE, "TK_NEWLINE" },
@@ -47,12 +47,14 @@ static struct s_debug_token_id g_debug_token_id[] =
 
 void	debug_token(t_token *token)
 {
+	int	i;
+
+	i = 0;
 	if (!token)
 	{
 		printf("token not found\n");
 		return ;
 	}
-	int	i= 0;
 	while (g_debug_token_id[i].name)
 	{
 		if (token->id == g_debug_token_id[i].id)

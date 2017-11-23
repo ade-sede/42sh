@@ -22,7 +22,6 @@ char		*get_ps1(t_env *env, size_t *len)
 	char *current_dir;
 	char *previous_exit;
 
-	//protected variable
 	previous_exit = (ft_atoi(local_get_value(env->local, "?")) == 0) ? \
 		ft_strjoin3_free(GRN, "➜  ", RESET, 0) : \
 			ft_strjoin3_free(RED, "➜  ", RESET, 0);
