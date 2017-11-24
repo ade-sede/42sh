@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "get_next_line.h"
+#include "libft.h"
 
 char		*ft_strdupn(const char *s, size_t n)
 {

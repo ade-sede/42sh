@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "failure.h"
+#include "line_editing.h"
 
 /*
 ** static ssize_t	newline_on_the_left(t_line *line) {

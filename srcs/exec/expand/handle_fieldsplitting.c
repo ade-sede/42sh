@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "expand.h"
 
 static void	nop_slit(char *value, t_expand *exp)
 {

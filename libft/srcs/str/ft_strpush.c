@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
 void	ft_strpush(char **str, char c)
 {

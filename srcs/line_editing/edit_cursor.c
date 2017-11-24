@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "failure.h"
+#include "line_editing.h"
 
 /*
 **	This function places the cursor both visually and in memory above the

@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "local.h"
 #include "expand.h"
+#include "exec.h"
 
 /*
 **	wordlist         : wordlist WORD

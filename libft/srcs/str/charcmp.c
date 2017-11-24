@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "libft.h"
 
 short int	charcmp(const char *str, size_t i, char c)
 {

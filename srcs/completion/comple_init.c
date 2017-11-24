@@ -12,6 +12,7 @@
 
 #include "line_editing.h"
 #include <stdio.h>
+#include "completion.h"
 
 t_comple	*singleton_comple(void)
 {

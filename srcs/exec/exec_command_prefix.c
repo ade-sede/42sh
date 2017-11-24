@@ -16,6 +16,7 @@
 #include "failure.h"
 #include "local.h"
 #include "job_control.h"
+#include "exec.h"
 
 /*
 **	cmd_prefix       :            io_redirect

@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "failure.h"
+#include "libft.h"
+#include "history.h"
 
 static int		write_to_hist(char *value, int fd)
 {

@@ -12,6 +12,7 @@
 
 #include "printf.h"
 #include <stdio.h>
+#include "exec.h"
 
 struct s_sym_to_string	sts[] = {
 	{PROGRAM, "PROGRAM"},

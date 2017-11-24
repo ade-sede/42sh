@@ -15,11 +15,10 @@
 #include "exec_symbol.h"
 
 /*
-**io_here          : DLESS     here_end
-**                 **| DLESSDASH here_end
-**                 **;
-**here_end         : WORD                      / Apply rule 3
-**
+**	io_here          : DLESS     here_end
+**	                **| DLESSDASH here_end
+**	                **;
+**	here_end         : WORD
 */
 
 void	read_heredoc(t_ast *ast, char *target)

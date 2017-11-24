@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <ncurses.h>
+#include "parser.h"
 
 void		free_ast_node(void *ast_node)
 {

@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "failure.h"
 #include "color.h"
+#include "line_editing.h"
 
 /*
 **	When using a putstr to write the line to the terminal, the behavior is not

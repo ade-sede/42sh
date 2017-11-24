@@ -13,6 +13,7 @@
 #include "list.h"
 #include "libft.h"
 #include <stdio.h>
+#include "glob.h"
 
 void	curly_brackets_coma(t_list **res, char *expr, char *str, int end)
 {

@@ -15,6 +15,7 @@
 #include "builtin.h"
 #include "failure.h"
 #include "local.h"
+#include "exec.h"
 #include "job_control.h"
 
 char			*extract_word(t_ast *ast)

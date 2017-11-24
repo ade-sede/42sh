@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <sys/ioctl.h>
+#include "libft.h"
 
 size_t				get_ws_col(void)
 {

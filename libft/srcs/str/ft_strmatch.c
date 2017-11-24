@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "libft.h"
 
 int			ft_strmatch(char *s1, char *s2)
 {

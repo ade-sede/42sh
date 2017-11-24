@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "hash_table.h"
 #include "t_env.h"
+#include <dirent.h>
 
 size_t	hash(unsigned char *str)
 {

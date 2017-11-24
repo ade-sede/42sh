@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <dirent.h>
+#include "completion.h"
 #include "line_editing.h"
 #include <string.h>
 

@@ -12,6 +12,7 @@
 
 #include "failure.h"
 #include "color.h"
+#include "line_editing.h"
 
 void	realoc_line_buff(t_line *line, size_t new_size)
 {

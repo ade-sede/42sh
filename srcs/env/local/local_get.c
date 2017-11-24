@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include "t_env.h"
+#include "local.h"
 
 t_list			*local_get_node(t_list *first, const char *key)
 {

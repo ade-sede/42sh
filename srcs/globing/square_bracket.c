@@ -13,6 +13,7 @@
 #include <sys/dir.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include "glob.h"
 
 int	get_end_square_bracket(char *expr, int offset)
 {

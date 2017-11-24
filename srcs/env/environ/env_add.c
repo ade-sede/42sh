@@ -15,6 +15,7 @@
 #include "libft.h"
 #include "local.h"
 #include "failure.h"
+#include "hash_table.h"
 
 void	env_add_var(t_env *env, const char *key, const char *value)
 {

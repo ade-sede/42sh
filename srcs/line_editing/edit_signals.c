@@ -13,6 +13,8 @@
 #include "history.h"
 #include "line_editing.h"
 #include <signal.h>
+#include "line_editing.h"
+#include "completion.h"
 
 int		g_abort_opening;
 

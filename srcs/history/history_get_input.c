@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "line_editing.h"
+#include "history.h"
 
 int		history_get_input(t_line *line, unsigned long keycode)
 {

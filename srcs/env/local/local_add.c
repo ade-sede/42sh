@@ -15,6 +15,7 @@
 #include "libft.h"
 #include "shopt.h"
 #include "failure.h"
+#include "local.h"
 
 int		local_add_from_key_value(t_env *env, const char *key, const char *value)
 {

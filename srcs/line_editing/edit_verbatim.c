@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "failure.h"
+#include "line_editing.h"
 
 int		verbatim(t_line *line)
 {

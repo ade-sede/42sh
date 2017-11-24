@@ -17,6 +17,7 @@
 #include "failure.h"
 #include "get_opt.h"
 #include <stdio.h>
+#include "printf.h"
 
 static t_option g_option[] = {
 	{1, "o", OPTION_STRING, "shell option", "Set / Unset a shell option"},

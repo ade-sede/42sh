@@ -12,6 +12,7 @@
 
 #include "expand.h"
 #include "failure.h"
+#include "exec.h"
 
 /*
 **	io_redirect      :           io_file

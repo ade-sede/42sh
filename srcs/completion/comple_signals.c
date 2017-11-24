@@ -12,6 +12,7 @@
 
 #include "line_editing.h"
 #include <signal.h>
+#include "completion.h"
 
 void	comple_handle_sigwinch(int signum)
 {

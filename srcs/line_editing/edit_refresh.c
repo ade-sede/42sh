@@ -50,7 +50,8 @@ void	edit_refresh_line(t_line *line)
 	else
 		term_putstr(line);
 	pos = get_char_visual_coor(line, line->len);
-	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n' && line->buff[line->pos - 1] != '\t') && ret == DEFAULT)
+	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n' \
+				&& line->buff[line->pos - 1] != '\t') && ret == DEFAULT)
 		put_termcap("do");
 }
 

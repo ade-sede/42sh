@@ -12,6 +12,7 @@
 
 #include "printf.h"
 #include <stdio.h>
+#include "job_control.h"
 
 int		job_number(t_job *j)
 {

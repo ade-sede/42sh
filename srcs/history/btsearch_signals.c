@@ -12,6 +12,7 @@
 
 #include "line_editing.h"
 #include <signal.h>
+#include "history.h"
 
 int		btsearch_handle_sigwinch(t_line *line, t_hist *h)
 {

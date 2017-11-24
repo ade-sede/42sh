@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "job_control.h"
 
 t_job		*find_job(t_job_control *jc, pid_t pgid)
 {

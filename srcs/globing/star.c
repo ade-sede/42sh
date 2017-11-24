@@ -14,6 +14,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <stdio.h>
+#include "glob.h"
 
 int		func_star(t_matches *m, int m_i, int r_i)
 {

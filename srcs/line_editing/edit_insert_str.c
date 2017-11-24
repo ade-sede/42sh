@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "line_editing.h"
 
 int	ft_insert_str_dest(char *dest, char *str, size_t dest_len)
 {

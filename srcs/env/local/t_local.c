@@ -12,6 +12,7 @@
 
 #include "failure.h"
 #include "libft.h"
+#include "local.h"
 
 t_local				*create_local(const char *key, const char *value)
 {

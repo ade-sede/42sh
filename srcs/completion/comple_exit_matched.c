@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include "line_editing.h"
+#include "completion.h"
 
 void	comple_clear(t_comple c)
 {

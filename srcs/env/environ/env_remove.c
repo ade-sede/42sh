@@ -13,6 +13,7 @@
 #include "environ.h"
 #include "hash_table.h"
 #include "libft.h"
+#include "local.h"
 
 void	env_remove_var_index(t_env *env, size_t key_index)
 {

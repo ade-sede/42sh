@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "line_editing.h"
+#include "completion.h"
 
 void	ft_putstr_padding_space(char *str, unsigned int size)
 {

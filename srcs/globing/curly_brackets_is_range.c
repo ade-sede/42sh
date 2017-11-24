@@ -12,6 +12,7 @@
 
 #include "list.h"
 #include "libft.h"
+#include "glob.h"
 
 int	ft_is_start_of_digit(char c)
 {

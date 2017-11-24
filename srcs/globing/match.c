@@ -13,6 +13,7 @@
 #include <sys/dir.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include "glob.h"
 
 int		char_is_escaped(char *regex, int r_i)
 {

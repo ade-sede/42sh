@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "failure.h"
+#include "job_control.h"
 
 int		put_job_in_background(t_job *j, int cont)
 {

@@ -16,34 +16,6 @@
 #include <stdio.h>
 #include "exec.h"
 
-/*
-**	void			debug_pstate(t_listint *stack)
-**	{
-**		t_listint	*tmp;
-**
-**		tmp = stack;
-**		while (tmp)
-**		{
-**			tmp = tmp->next;
-**		}
-**		ft_putchar('\n');
-**	}
-**
-**	void			debug_ast_stack(t_list *ast_stack)
-**	{
-**		t_list	*tmp;
-**
-**		tmp = ast_stack;
-**		while (tmp)
-**		{
-**			debug_symbol(tmp->data);
-**			tmp = tmp->next;
-**		}
-**		ft_putchar('\n');
-**	}
-**
-*/
-
 static int		check_reopen(t_ast_lst *ast_stack, t_list *token)
 {
 	int		reopen;

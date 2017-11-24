@@ -13,6 +13,8 @@
 #include <sys/dir.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include "glob.h"
+#include "libft.h"
 
 char		*init_regex(char *regex, int *r_i)
 {

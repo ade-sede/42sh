@@ -12,6 +12,7 @@
 
 #include "local.h"
 #include "builtin.h"
+#include "exec.h"
 
 t_lst_func		*get_function(t_env *env, char *cmd_name)
 {

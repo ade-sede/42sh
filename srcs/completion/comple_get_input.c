@@ -12,6 +12,7 @@
 
 #include "failure.h"
 #include "line_editing.h"
+#include "completion.h"
 
 static t_comple_func	g_comple_func[] =
 {

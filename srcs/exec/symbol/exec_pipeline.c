@@ -15,6 +15,7 @@
 #include "job_control.h"
 #include "hash_table.h"
 #include "expand.h"
+#include "exec.h"
 
 /*
 **	pipeline         :      pipe_sequence

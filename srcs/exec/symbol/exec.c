@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "printf.h"
+#include "exec.h"
 
 static t_exec_func	g_exec_func[] =
 {

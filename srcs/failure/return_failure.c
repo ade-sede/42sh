@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "color.h"
+#include "libft.h"
 
 int		return_failure(const char *str, const char *error_msg)
 {

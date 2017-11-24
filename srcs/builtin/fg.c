@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include "failure.h"
 #include "job_control.h"
+#include "t_env.h"
 
 int		builtin_fg(t_env *env, const char **argv)
 {

@@ -12,6 +12,7 @@
 
 #include "failure.h"
 #include "line_editing.h"
+#include "job_control.h"
 
 int		put_job_in_foreground(t_job_control *jc, t_job *j, int cont, \
 		int in_a_fork)

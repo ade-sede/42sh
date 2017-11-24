@@ -12,6 +12,7 @@
 
 #include "list.h"
 #include "libft.h"
+#include "glob.h"
 
 static void	free_arg(char *expr, char *str)
 {

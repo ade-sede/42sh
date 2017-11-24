@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "t_env.h"
 #include "printf.h"
 #include <unistd.h>
 #include "failure.h"

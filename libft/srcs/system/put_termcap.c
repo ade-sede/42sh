@@ -12,6 +12,7 @@
 
 #include "termios.h"
 #include "term.h"
+#include "libft.h"
 
 int		int_putchar(int c)
 {

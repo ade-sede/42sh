@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "automaton.txt"
 #include "printf.h"
 #include "t_token.h"
+#include "parser.h"
+#include "t_ast.h"
+#include "automaton.txt"
 
 int g_token_table[] = {DOLAR, TK_AND, TK_LPAREN, TK_RPAREN, TK_SEMI, TK_LESS,
 	TK_GREAT, TK_AND_IF, TK_ASSIGNMENT_WORD, TK_BANG, TK_CLOBBER, TK_CASE,

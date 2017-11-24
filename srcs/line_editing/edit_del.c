@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "failure.h"
+#include "line_editing.h"
 
 /*
 **	Function used to delete a character in buff, when backspace is pressed by

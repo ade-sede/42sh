@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "line_editing.h"
+#include "completion.h"
 
 int		comple_right(t_comple *c)
 {

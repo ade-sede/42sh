@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include "exec.h"
+#include "expand.h"
 
 static void		exec_comm_child(char *comm, int *fildes, int no_showerr)
 {

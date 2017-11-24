@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <dirent.h>
 #include "environ.h"
 #include "t_ternary_tree.h"
 #include "line_editing.h"

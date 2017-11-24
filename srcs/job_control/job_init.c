@@ -13,6 +13,7 @@
 #include "failure.h"
 #include "line_editing.h"
 #include "printf.h"
+#include "job_control.h"
 
 void	init_job_control(t_job_control *jc)
 {

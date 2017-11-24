@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include "line_editing.h"
 #include "failure.h"
+#include <sys/ioctl.h>
 
 size_t				get_ws_col(void)
 {

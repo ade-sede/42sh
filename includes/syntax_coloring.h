@@ -51,7 +51,6 @@ int			loop_le_delim(t_lexer *lex, t_line *line);
 const char	*get_color(int state);
 void		write_term(t_line *line, size_t i);
 
-
 int			change_state_le(t_lexer *lex, int new_state);
 int			pop_state_le(t_lexer *lex, struct s_info **info);
 int			consume_input_le(t_lexer *lex, t_line *line);

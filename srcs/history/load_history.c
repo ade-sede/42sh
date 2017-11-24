@@ -15,6 +15,7 @@
 #include <sys/stat.h>
 #include "t_env.h"
 #include "environ.h"
+#include "history.h"
 
 static void	init_hist_struct(t_hist *h, t_env *env)
 {

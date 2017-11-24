@@ -12,6 +12,7 @@
 
 #include "environ.h"
 #include <errno.h>
+#include "job_control.h"
 #include "color.h"
 
 void	update_status(t_job_control *jc)

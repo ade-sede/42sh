@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "printf.h"
+#include "job_control.h"
 
 static int		mark_process_status_process(int status, t_process *p)
 {

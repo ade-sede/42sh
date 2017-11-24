@@ -13,6 +13,8 @@
 #include <sys/dir.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include "libft.h"
+#include "glob.h"
 
 int				bad_dir(char *dir_name)
 {
