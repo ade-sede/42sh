@@ -1,6 +1,7 @@
 #include "bang.h"
 //#include "failure.h"
 #include "libft.h"
+#include "printf.h"
 
 /*
 **	PARAMS:
@@ -28,8 +29,7 @@ static int	update_state_part_1(int state[2], const char source)
 	if (state[_B_STATE] == DEF)
 	{
 		if (source == '\'')
-			change_state(state, QUOTES);
-		else if (source == '"')
+			change_state(state, QUOTES); else if (source == '"')
 			change_state(state, DQUOTES);
 		else if (source == '\\')
 			change_state(state, BS);
@@ -97,24 +97,13 @@ char	*bang_expand(const char *source, t_hist *hist)
 				w_free(&ret);
 				return (NULL);
 			}
-			if (!done) // Default behavior if no event
-			{
-				w_newword(&event);
-				read_hist_numeric(-1, &event, hist);
-			}
-			/* Find work designator */
+			/* Find word designator */
 			if ((err = word_designator_expand(&source, event, &word_designator, &done)))
 			{
 				dprintf(2, "BAD WORD\n");
 				w_free(&ret);
 				w_free(&event);
 				return (NULL);
-			}
-			if (!done) // Default behavior if no designator
-			{
-				w_newword(&word_designator);
-				if (event.str)
-					w_addstr(&word_designator, event.str);
 			}
 			w_free(&event);
 			if ((err = modifier_expand(&source, &ret, word_designator, &done)))
@@ -124,15 +113,7 @@ char	*bang_expand(const char *source, t_hist *hist)
 				w_free(&word_designator);
 				return (NULL);
 			}
-			if (!done)
-			{
-				if (word_designator.str)
-					w_addstr(&ret, word_designator.str);
-			}
 			w_free(&word_designator);
-			/* Apply modifier */
-			/* Free everything we used*/
-			//w_free(&word_designator);
 		}
 		w_addchar(&ret, *source);
 		++source;

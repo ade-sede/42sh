@@ -24,7 +24,8 @@ int	read_hist_numeric(int count, t_word *event, t_hist *hist)
 	/* 	return (TRUE); */
 	/* w_addstr(event_node->line); */
 	/* w_addstr(event, "0 1 2 3 4 5 6 7 8 9"); */
-	w_addstr(event, "'1' '' '1' '' '' '2'\\''fd' '' '' '' ''\\'''");
+	/* w_addstr(event, "1 / 2 / 3"); */
+	event->str = NULL;
 	return (FALSE);
 }
 
@@ -114,6 +115,24 @@ static int	string_event(const char **source, t_word *event, t_hist *hist)
 	return (err);
 }
 
+static int	valid_event(const char **source, int *done)
+{
+	if (ft_strchr("^$*-:", **source))
+	{
+		*done = FALSE;
+		return (FALSE);
+	}
+	else if (**source != '!' && **source != '-' && **source != '#' && **source != '?' && !ft_isalnum(**source))
+		return (TRUE);
+	return (FALSE);
+}
+
+static int default_behavior(t_hist *hist, t_word *event)
+{
+	read_hist_numeric(-1, event, hist);
+	return (FALSE);
+}
+
 int	event_expand(const char *s, const char **source, t_word *event, t_hist *hist, int *done)
 {
 	int	err;
@@ -121,12 +140,11 @@ int	event_expand(const char *s, const char **source, t_word *event, t_hist *hist
 	err = FALSE;
 	*done = TRUE;
 	w_newword(event);
-	if (ft_strchr("^$*-:", **source))
-	{
-		*done = FALSE;
-		return (FALSE);
-	}
-	if (**source != '!' && **source != '-' && **source != '#' && **source != '?' && !ft_isalnum(**source))
+
+	err = valid_event(source, done);
+	if (*done == FALSE)
+		return (default_behavior(hist, event));
+	if (err)
 		return (TRUE);
 	if (**source == '!' || **source == '-' || ft_isdigit(**source))
 	{

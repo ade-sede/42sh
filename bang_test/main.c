@@ -12,5 +12,6 @@ int		main(void)
 	if (!(expanded_input = bang_expand(input, NULL)))
 		expanded_input = ft_strdup(input);
 	dprintf(2, "%s\n", expanded_input);
+	free(expanded_input);
 	return (0);
 }

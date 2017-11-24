@@ -84,6 +84,11 @@ static void fake_lex(const char *source, t_list **list)
 	char	**ret;
 
 	ret = ft_strsplit(source, " 	");
+	if (!ret)
+	{
+		*list = NULL;
+		return ;
+	}
 	for (int i = 0 ; ret[i] ; ++i)
 	{
 		ft_simple_lst_pushback(list, ft_simple_lst_create(ft_strdup(ret[i])));
@@ -124,6 +129,14 @@ static int	extract_words(int start, int end, t_word event, t_word *word_designat
 	return (FALSE);
 }
 
+static int default_behavior(t_word *word_designator, t_word event)
+{
+	w_newword(word_designator);
+	if (event.str)
+		w_addstr(word_designator, event.str);
+	return (FALSE);
+}
+
 int	word_designator_expand(const char **source, t_word event, t_word *word_designator, int *done)
 {
 	int	ret;
@@ -135,7 +148,7 @@ int	word_designator_expand(const char **source, t_word event, t_word *word_desig
 	*done = TRUE;
 	ret = valid_designator(source, done);
 	if (!*done)
-		return (FALSE);
+		return (default_behavior(word_designator, event));
 	if (ret)
 		return (TRUE);
 	parse_range(source, &start, &end);
