@@ -1,4 +1,16 @@
-#include "hash_table.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_add.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:54 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
 #include "environ.h"
 #include "libft.h"
 #include "local.h"
@@ -14,7 +26,7 @@ void	env_add_var(t_env *env, const char *key, const char *value)
 
 	if (is_key(key))
 	{
-		dprintf(2, "%s: ", key);
+		ft_dprintf(2, "%s: ", key);
 		investigate_error(1, "Wrong assignement:", "not a valid identifier", 0);
 		return ;
 	}

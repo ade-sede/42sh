@@ -1,4 +1,17 @@
-#include "parser.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:40 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
+#include "libft.h"
 #include "color.h"
 #include <stdio.h>
 #include "exec.h"
@@ -8,11 +21,9 @@
 **	{
 **		t_listint	*tmp;
 **
-**		printf("state_stack: ");
 **		tmp = stack;
 **		while (tmp)
 **		{
-**			dprintf(1, "%d ", tmp->data);
 **			tmp = tmp->next;
 **		}
 **		ft_putchar('\n');
@@ -22,7 +33,6 @@
 **	{
 **		t_list	*tmp;
 **
-**		printf("state_stack: \n");
 **		tmp = ast_stack;
 **		while (tmp)
 **		{
@@ -41,7 +51,7 @@ static int		check_reopen(t_ast_lst *ast_stack, t_list *token)
 	(void)ast_stack;
 	if ((reopen = ((t_token*)token->data)->id) == 666 || reopen == 42)
 		return (PARSER_REOPEN);
-	dprintf(2, "42sh: parse error near `%s'\n", ((t_token*)token->data)->value);
+	ft_dprintf(2, "42sh: parse error near `%s'\n", ((t_token*)token->data)->value);
 	return (PARSER_ERROR);
 }
 
@@ -63,7 +73,7 @@ static int		action_return(t_parser *parser, t_list *tmp,
 	if (act == -1)
 		return (check_reopen(parser->ast_stack, tmp));
 	if (parser->ast_stack->next)
-		printf("error\n");
+		ft_dprintf(2, "error\n");
 	*ast = parser->ast_stack->ast;
 	return (PARSER_SUCCESS);
 }

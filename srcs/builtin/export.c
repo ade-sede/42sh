@@ -1,6 +1,18 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:45 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "t_env.h"
 #include "environ.h"
+#include "printf.h"
 #include "local.h"
 
 #include <stdio.h>
@@ -38,7 +50,7 @@ int			builtin_export(t_env *env, const char **argv)
 	{
 		if (*argv[i] == '-' && !ft_strequ(argv[i], "-p"))
 		{
-			dprintf(2, "Wrong option %s\n", argv[i]);
+			ft_dprintf(2, "Wrong option %s\n", argv[i]);
 			return (EXIT_FAILURE);
 		}
 		if (!treat_string(env, argv[i]))

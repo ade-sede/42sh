@@ -1,6 +1,18 @@
-#include "parser.h"
-#include "t_token.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_action.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:40 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "automaton.txt"
+#include "printf.h"
+#include "t_token.h"
 
 int g_token_table[] = {DOLAR, TK_AND, TK_LPAREN, TK_RPAREN, TK_SEMI, TK_LESS,
 	TK_GREAT, TK_AND_IF, TK_ASSIGNMENT_WORD, TK_BANG, TK_CLOBBER, TK_CASE,
@@ -319,7 +331,7 @@ int		get_goto(t_state_lst *state_stack, int reduce_rule)
 	if ((col == symbol_table_len + offset) || \
 			(res_state = g_lr_table[state_stack->state][col]) == -1)
 	{
-		printf("goto error state -1 \n");
+		ft_dprintf(1, "goto error state -1 \n");
 		return (-1);
 	}
 	return (res_state);

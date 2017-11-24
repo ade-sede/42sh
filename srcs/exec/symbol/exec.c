@@ -1,4 +1,16 @@
-#include "exec.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:05 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
 
 static t_exec_func	g_exec_func[] =
 {
@@ -40,6 +52,6 @@ int		exec(t_ast *ast)
 		i++;
 	}
 	debug_symbol(ast);
-	printf("error : symbol not recognized by exec function\n");
+	ft_dprintf(2, "error : symbol not recognized by exec function\n");
 	return (1);
 }

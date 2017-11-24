@@ -1,5 +1,18 @@
-#include "exec.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug_token.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:58 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lexer.h"
+#include "printf.h"
+#include "libft.h"
 
 static struct s_debug_token_id g_debug_token_id[] =
 {
@@ -52,14 +65,14 @@ void	debug_token(t_token *token)
 	i = 0;
 	if (!token)
 	{
-		printf("token not found\n");
+		ft_dprintf(1, "token not found\n");
 		return ;
 	}
 	while (g_debug_token_id[i].name)
 	{
 		if (token->id == g_debug_token_id[i].id)
 		{
-			printf("%s\n", g_debug_token_id[i].name);
+			ft_dprintf(1, "%s\n", g_debug_token_id[i].name);
 			return ;
 		}
 		i++;

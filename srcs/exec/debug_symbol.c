@@ -1,4 +1,16 @@
-#include "exec_symbol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug_symbol.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:58 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
 #include <stdio.h>
 
 struct s_sym_to_string	sts[] = {
@@ -61,7 +73,7 @@ void	debug_symbol(t_ast *ast)
 	{
 		if (ast->symbol == sts[i].symbol)
 		{
-			printf("%s\n", sts[i].string);
+			ft_dprintf(2, "%s\n", sts[i].string);
 			return ;
 		}
 		i++;

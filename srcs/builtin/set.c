@@ -1,4 +1,15 @@
-#include "printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:47 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "local.h"
 #include "builtin.h"
 #include "t_env.h"
@@ -47,7 +58,7 @@ static int	display_all(t_env *env)
 	while (pos_param_list)
 	{
 		pos_param = pos_param_list->data;
-		dprintf(2, "%d=", pos_param->key);
+		ft_dprintf(2, "%d=", pos_param->key);
 		ft_putstr_fd(pos_param->value, 2);
 		ft_putchar_fd('\n', 2);
 		pos_param_list = pos_param_list->next;

@@ -1,4 +1,16 @@
-#include "job_control.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_launch.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:25 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "failure.h"
 #include "exec.h"
 
 void	quit_job(int signum)
@@ -48,7 +60,7 @@ void	launch_process(t_job_control *jc, pid_t pgid, int foreground,
 		if (!in_a_fork && foreground && !jc->background)
 		{
 			if (tcsetpgrp(jc->shell_terminal, pgid) == -1)
-				perror("tcsetpgrp:");
+				investigate_error(1, "tcsetpgrp", NULL, 0);
 			if (foreground)
 				signal(SIGINT, quit_job);
 		}

@@ -1,4 +1,15 @@
-#include "line_editing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   btsearch_add.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:18 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "history.h"
 
 void	create_strstr_btsearch_buff(t_list_d *item)
@@ -36,13 +47,6 @@ void	btsearch_first_search(t_hist *h)
 {
 	ft_double_lst_foreach(h->list->first, NULL, create_strstr_btsearch_buff, 1);
 }
-
-/*
-**	void	debug(t_list_d *item)
-**	{
-**		printf("%s\n", (char*)item->data);
-**	}
-*/
 
 void	btsearch_add(char keycode, t_line *line, t_hist *h)
 {

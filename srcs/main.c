@@ -1,4 +1,16 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:40 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
 #include "environ.h"
 #include <fcntl.h>
 #include <stdlib.h>
@@ -9,6 +21,7 @@
 #include "modes.h"
 #include <sys/resource.h>
 #include <stdio.h>
+#include "failure.h"
 
 void	read_args(int ac, char **av, t_modes *modes)
 {
@@ -18,7 +31,7 @@ void	read_args(int ac, char **av, t_modes *modes)
 	{
 		if ((modes->stream = open(av[1], O_RDONLY)) == -1)
 		{
-			perror("");
+			investigate_error(1, "open", NULL, 0);
 			exit(1);
 		}
 		modes->mode = FILE_MODE;
@@ -31,8 +44,8 @@ void	read_args(int ac, char **av, t_modes *modes)
 	}
 	else
 	{
-		dprintf(2, "Usage: 42sh [script_file]\n");
-		dprintf(2, "Usage: 42sh [-c string]\n");
+		ft_dprintf(2, "Usage: 42sh [script_file]\n");
+		ft_dprintf(2, "Usage: 42sh [-c string]\n");
 		exit(1);
 	}
 }
@@ -52,7 +65,7 @@ void	read_pointrc(t_env *env)
 	if ((fd = open(tmp, O_RDONLY)) == -1)
 	{
 		free(tmp);
-		perror("");
+		investigate_error(1, "open", NULL, 0);
 		return ;
 	}
 	free(tmp);

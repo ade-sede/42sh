@@ -1,4 +1,16 @@
-#include "exec.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_pipeline.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:09 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
 #include "builtin.h"
 #include "job_control.h"
 #include "hash_table.h"
@@ -55,13 +67,11 @@ void	fill_job(t_ast *pipe_sequence, t_process **first_process)
 
 void	debug_process(t_process *first_process)
 {
-	printf("----\n");
 	while (first_process)
 	{
 		debug_symbol(first_process->command);
 		first_process = first_process->next;
 	}
-	printf("----\n");
 }
 
 int		exec_pipeline(t_ast *ast)
