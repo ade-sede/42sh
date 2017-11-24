@@ -13,6 +13,7 @@ COLOR_VIOLET	= \033[1;35m
 COLOR_CYAN		= \033[1;36m
 COLOR_WHITE		= \033[1;37m
 
+
 # **************************************************************************** #
 SRC_FILE = \
 		   main.c \
@@ -169,6 +170,7 @@ SRC_FILE = \
 		history/bang/word_designator_expand.c \
 		   \
 		   job_control/job_background.c \
+		   job_control/process_launch.c \
 		   job_control/job_is.c \
 		   job_control/job_continue.c \
 		   job_control/job_fill_process_av.c \

@@ -69,5 +69,8 @@ void			format_job_info_process(t_job *j, const char *status);
 void			update_status(t_job_control *jc);
 void			job_free(t_job *job);
 t_process		*fill_process_av(t_ast *ast, t_process *process);
+void			launch_process(t_job_control *jc, pid_t pgid, int foreground,
+		int in_a_fork);
+void			close_std(int *stdfile, t_job *j, int state);
 
 #endif
