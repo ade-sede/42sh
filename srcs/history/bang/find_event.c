@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 18:30:14 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 19:51:22 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/11/24 20:00:48 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "bang.h"
 #include "history.h"
 
-#include <stdio.h>
 int	read_hist_numeric(int count, t_word *event, t_hist *hist)
 {
 	t_list_d	*start_point;

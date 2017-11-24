@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 18:17:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 19:52:59 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/11/24 20:00:57 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static int	default_behavior(t_hist *hist, t_word *event)
 
 static int	wrapper(const char **source, t_word *event, t_hist *hist, int *done)
 {
-
 	*done = FALSE;
 	if (**source == '!' || **source == '-' || ft_isdigit(**source))
 	{
