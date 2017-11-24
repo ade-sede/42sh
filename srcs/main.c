@@ -61,6 +61,12 @@ void	read_pointrc(t_env *env)
 	main_loop(env, &modes);
 }
 
+void	mode_first_set(t_modes modes)
+{
+	modes.mode = FILE_MODE;
+	modes.stream = STDIN_FILENO;
+}
+
 int		main(int ac, char **av)
 {
 	extern const char	**environ;
@@ -70,17 +76,13 @@ int		main(int ac, char **av)
 
 	ft_bzero(&modes, sizeof(t_modes));
 	read_args(ac, av, &modes);
-	env = singleton_env();
-	env_load_base_env(env, environ);
+	env_load_base_env((env = singleton_env()), environ);
 	jc = singleton_jc();
 	read_pointrc(env);
 	if (modes.mode == 0)
 		init_job_control(jc);
 	if (!jc->shell_is_interactive && modes.mode == 0)
-	{
-		modes.mode = FILE_MODE;
-		modes.stream = STDIN_FILENO;
-	}
+		mode_first_set(modes);
 	if (modes.mode == INTERACTIVE_MODE)
 	{
 		conf_term_init();
