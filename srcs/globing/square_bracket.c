@@ -40,15 +40,15 @@ int	valid_square_bracket(char *regex, int r_i)
 int	match_square_bracket(char c, char *regex, int i, \
 		int end_square_bracket)
 {
-	int	backslash;
+	int	bslash;
 
-	backslash = 0;
+	bslash = 0;
 	++i;
 	if (regex[i] == '!')
 		i++;
 	while (i < end_square_bracket)
 	{
-		if (backslash == 0 && regex[i + 1] && regex[i + 2] &&
+		if (bslash == 0 && regex[i + 1] && regex[i + 2] &&
 				regex[i + 1] == '-')
 		{
 			if ((c >= regex[i] && c <= regex[i + 2]))

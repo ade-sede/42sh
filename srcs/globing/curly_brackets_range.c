@@ -44,6 +44,7 @@ void		curly_brackets_range_num(t_list **res, char *expr, char *str, \
 	int		start_range;
 	int		end_range;
 	char	*new_str;
+	char	itoa_res[21];
 
 	ft_atoi_safe(str, &start_range);
 	i = 0;
