@@ -12,18 +12,18 @@ static t_option g_option[] = {
 	{0, NULL, 0, NULL, NULL}
 };
 
-static void	pi_set(t_programinfo pi)
+static void	pi_set(t_programinfo *pi)
 {
-	pi.desc = "Assign positional parameters / set unset shell variables";
-	pi.list_option = g_option;
-	pi.argv = NULL;
-	pi.argc = 0;
-	pi.argparg = 0;
-	pi.argcur = 1;
-	pi.argpos = 0;
-	pi.argopt = NULL;
-	pi.argerr = 0;
-	pi.min = 0;
+	pi->desc = "Assign positional parameters / set unset shell variables";
+	pi->list_option = g_option;
+	pi->argv = NULL;
+	pi->argc = 0;
+	pi->argparg = 0;
+	pi->argcur = 1;
+	pi->argpos = 0;
+	pi->argopt = NULL;
+	pi->argerr = 0;
+	pi->min = 0;
 }
 
 static int	display_all(t_env *env)
@@ -62,7 +62,7 @@ int			builtin_set(t_env *env, const char **argv)
 	t_programinfo	pi;
 
 	pi.progname = "set";
-	pi_set(pi);
+	pi_set(&pi);
 	argc = ft_arraylen(argv);
 	if (argc == 1)
 	{
@@ -71,8 +71,10 @@ int			builtin_set(t_env *env, const char **argv)
 	}
 	opt_init(&pi, argc, argv);
 	while (pi.argerr == 0 && (opt_id = get_opt(&pi) > 0))
+	{
 		if (opt_id == 1)
 			set_shell_opt(env, pi.min, pi.argopt);
+	}
 	if (pi.argerr)
 		return (EXIT_FAILURE);
 	add_pos_param(env, argv, pi.argcur, 1);
