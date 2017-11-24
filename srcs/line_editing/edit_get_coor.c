@@ -36,7 +36,7 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 	y = 0;
 	while ((ssize_t)index != pos)
 	{
-		if (line->buff[index] == '\t')//&& (x + 1) != (int)line->ws_col)
+		if (line->buff[index] == '\t')
 			x += (x % 8) ? (8 - (x % 8)) : (8);
 		else
 			++x;
@@ -69,13 +69,10 @@ size_t	get_char_mem_coor(size_t ret, t_line *line, size_t x_target,
 	y = pos.y;
 	while (y != y_target && line->buff[ret])
 	{
-		//++x;
-		//edit add
 		if (line->buff[ret] == '\t')
 			x += (x % 8) ? (8 - (x % 8)) : (8);
-		else 
+		else
 			++x;
-		//end add
 		if (x == line->ws_col || line->buff[ret] == '\n')
 		{
 			++y;
@@ -85,7 +82,6 @@ size_t	get_char_mem_coor(size_t ret, t_line *line, size_t x_target,
 	}
 	while (x != x_target)
 	{
-
 		if (x >= line->ws_col || line->buff[ret] == '\n' || ret >= line->len)
 		{
 			if (x > line->ws_col)

@@ -55,23 +55,6 @@ static int		layer_command_suffix(t_ast *ast, char ***av, \
 	return (EXIT_SUCCESS);
 }
 
-static int		layer_exec(char **av)
-{
-	int			exit_status;
-	t_lst_func	*fct;
-
-	fct = NULL;
-	exit_status = EXIT_SUCCESS;
-	if ((fct = get_function(singleton_env(), av[0])))
-		exit_status = exec_function(fct->fct_body, av);
-	else if (get_exec_builtin(av[0]))
-		exit_status = exec_builtin(singleton_env(), (const char **)av);
-	else
-		exec_bin(singleton_env(), (const char **)av);
-	ft_arraydel(&av);
-	return (exit_status);
-}
-
 int				exec_simple_command(t_ast *ast)
 {
 	char	**av;
@@ -90,7 +73,8 @@ int				exec_simple_command(t_ast *ast)
 		return (EXIT_FAILURE);
 	exec_dup(redirect_list);
 	if (av && av[0])
-		exit_status = layer_exec(av);
+		exit_status = layer_exec(singleton_env(), av);
+	ft_arraydel(&av);
 	close_dup(redirect_list);
 	return (exit_status);
 }

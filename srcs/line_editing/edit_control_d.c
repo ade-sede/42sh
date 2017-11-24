@@ -12,7 +12,7 @@
 
 int		control_d(t_line *line)
 {
-	char	*command[] = {"exit", NULL};
+	static char	*command[] = {"exit", NULL};
 
 	if (line->len == 0)
 	{

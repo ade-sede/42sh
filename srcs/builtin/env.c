@@ -74,7 +74,7 @@ static int			exec_env(t_env *new_env, const char **argv)
 	create_hash_table(&new_env->hash_table, new_env->environ);
 	child = fork();
 	if (child == 0)
-		exit(exec_builtin(new_env, argv));
+		exit(layer_exec(new_env, (char **)argv));
 	else
 		wait(&ret);
 	return (1);

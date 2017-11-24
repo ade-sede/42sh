@@ -12,10 +12,10 @@ t_env	*singleton_env(void)
 
 int		env_copy_env(t_env *new_env, t_env *old_env)
 {
+	ft_bzero(new_env, sizeof(t_env));
 	if (!new_env || !old_env)
 		return (0);
 	new_env->environ = NULL;
-	new_env->previous_exit = old_env->previous_exit;
 	new_env->environ = env_create_environ((const char **)old_env->environ, \
 			&(new_env)->environ_size);
 	new_env->hash_table = NULL;

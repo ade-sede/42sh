@@ -25,7 +25,6 @@ void		env_load_base_env(t_env *env, const char **environ)
 
 	i = 0;
 	env->environ = NULL;
-	env->previous_exit = 0;
 	env->option = 0;
 	env->alias = NULL;
 	env->first_func = NULL;

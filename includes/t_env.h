@@ -23,7 +23,6 @@ typedef struct				s_env
 	long					option;
 	t_ternary_tree			*tree;
 	size_t					environ_size;
-	int						previous_exit;
 	char					*branch;
 	pid_t					child_pid;
 }							t_env;

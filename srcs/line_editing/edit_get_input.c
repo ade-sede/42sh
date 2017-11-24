@@ -23,9 +23,9 @@ static t_edit_func	g_edit_func[] =
 	{0, NULL} };
 
 /*
-**	Calls the routine corresponding to the keycode. If the keycode doesnt
-**	correspond to a command, it is simply appended to the buffer. (and will be
-**	printed next time a refresh is called).
+** Calls the routine corresponding to the keycode. If the keycode doesnt
+** correspond to a command, it is simply appended to the buffer. (and will be
+** printed next time a refresh is called).
 */
 
 int					edit_loop(unsigned long long keycode, t_line *line)
@@ -47,11 +47,11 @@ int					edit_loop(unsigned long long keycode, t_line *line)
 }
 
 /*
-**	The function which starts the line editing, sets up the signals. Receives
-**	the keycode from history_move_loop(). Enters a loop in which each keycode
-**	is sent to edit_loop(), where it will be treated. If keycode is KEY_ENTER,
-**	editing is complete, and the line is returned. Every time is key is
-**	pressed, the displayed line is refreshed.
+** The function which starts the line editing, sets up the signals. Receives
+** the keycode from history_move_loop(). Enters a loop in which each keycode
+** is sent to edit_loop(), where it will be treated. If keycode is KEY_ENTER,
+** editing is complete, and the line is returned. Every time is key is
+** pressed, the displayed line is refreshed.
 */
 
 static void			init_read(t_line *l, unsigned long *keycode)
@@ -62,19 +62,9 @@ static void			init_read(t_line *l, unsigned long *keycode)
 
 int	g_abort_opening;
 
-static int		end_of_input(t_line *line, int keycode)
+static int			end_of_input(t_line *line, int keycode)
 {
-	/*if (line->read_builtin)
-	{
-		if (line->read->nchars && line->read->nchars == (int)line->len)
-			return (1);
-		if (line->read->delim == KEY_ENTER && keycode == KEY_ENTER)
-			if (line->verbatim)
-				return (0);
-		if ((char)keycode == line->read->delim)
-			return (1);
-	}
-	else */if (keycode == KEY_ENTER)
+	if (keycode == KEY_ENTER)
 	{
 		if (line->verbatim)
 			return (0);
@@ -102,7 +92,8 @@ char				*edit_get_input(void)
 			read(0, (char *)&keycode + 1, 7);
 		if (keycode != KEY_ALT_UP && keycode != KEY_ALT_DOWN)
 			l->col_target = -1;
-		if (btsearch_get_input(l, keycode) || comple_get_input(l, keycode)|| history_get_input(l, keycode))
+		if (btsearch_get_input(l, keycode) || comple_get_input(l, keycode) || \
+				history_get_input(l, keycode))
 			continue ;
 		if (end_of_input(l, keycode))
 			return (edit_exit(l));
