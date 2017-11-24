@@ -12,12 +12,12 @@ static int valid_designator(const char **source, int *done)
 	}
 	if (**source == ':')
 	{
-		if (!ft_strchr("^$-*", *(*source + 1)) && !ft_isdigit(*(*source + 1)))
+		++(*source);
+		if (!ft_strchr("^$-*", **source) && !ft_isdigit(**source))
 		{
 			*done = FALSE;
 			return (TRUE);
 		}
-		++(*source);
 	}
 	else if (!ft_strchr("^$-*", **source))
 		return (TRUE);
@@ -50,7 +50,8 @@ static void	parse_range(const char **source, int *start, int *end)
 {
 	if (**source == '^')
 	{
-		*start = 1; ++(*source);
+		*start = 1;
+		++(*source);
 		parse_end(source, start, end);
 	}
 	else if (**source == '-')
@@ -118,20 +119,24 @@ static int	extract_words(int start, int end, t_word event, t_word *word_designat
 	else
 		end_node = ft_simple_lst_get_n(list, end);
 	if (!end_node || !start_node)
+	{
+		ft_simple_lst_remove(&list, ft_free);
 		return (TRUE);
+	}
 	while (start_node && start_node != end_node->next)
 	{
 		w_addstr(word_designator, start_node->data);
 		w_addchar(word_designator, ' ');
 		start_node = start_node->next;
 	}
-	word_designator->str[word_designator->actlen - 1] = 0; --word_designator->actlen;
+	word_designator->str[word_designator->actlen - 1] = 0;
+	--word_designator->actlen;
+	ft_simple_lst_remove(&list, ft_free);
 	return (FALSE);
 }
 
 static int default_behavior(t_word *word_designator, t_word event)
 {
-	w_newword(word_designator);
 	if (event.str)
 		w_addstr(word_designator, event.str);
 	return (FALSE);
@@ -146,6 +151,7 @@ int	word_designator_expand(const char **source, t_word event, t_word *word_desig
 	start = -3;
 	end = -3;
 	*done = TRUE;
+	w_newword(word_designator);
 	ret = valid_designator(source, done);
 	if (!*done)
 		return (default_behavior(word_designator, event));
@@ -154,6 +160,5 @@ int	word_designator_expand(const char **source, t_word event, t_word *word_desig
 	parse_range(source, &start, &end);
 	if (extract_words(start, end, event, word_designator))
 		return (TRUE);
-	dprintf(2, "Word designator string = %s\n", word_designator->str);
 	return (FALSE);
 }

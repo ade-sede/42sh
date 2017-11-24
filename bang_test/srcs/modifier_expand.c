@@ -133,6 +133,8 @@ static int	apply_modifier(const char **source, struct s_parse_mod *p)
 				}
 				++(*source);
 				delim = **source;
+				if (!**source)
+					return (TRUE);
 				++(*source);
 				while (**source && !charcmp(s, *source - s, delim))//charcmp
 				{

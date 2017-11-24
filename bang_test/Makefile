@@ -8,4 +8,5 @@ srcs/modifier_expand.c\
 srcs/event_expand.c
 
 all:
-	gcc -o test $(SRCS) -lft -Llibft -Ilibft/includes -Iincludes -lreadline -fsanitize=address -fno-omit-frame-pointer
+	gcc -o test $(SRCS) -lft -Llibft -Ilibft/includes -Iincludes -lreadline
+	# gcc -o test $(SRCS) -lft -Llibft -Ilibft/includes -Iincludes -lreadline -fsanitize=address -fno-omit-frame-pointer

@@ -10,8 +10,12 @@ int		main(void)
 
 	input = readline("$> ");
 	if (!(expanded_input = bang_expand(input, NULL)))
+	{
+		dprintf(2, "ret is null\n");
 		expanded_input = ft_strdup(input);
-	dprintf(2, "%s\n", expanded_input);
+	}
+	dprintf(2, "#%s#\n", expanded_input);
 	free(expanded_input);
+	while (1);
 	return (0);
 }

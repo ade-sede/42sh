@@ -98,6 +98,7 @@ char	*bang_expand(const char *source, t_hist *hist)
 				return (NULL);
 			}
 			/* Find word designator */
+			dprintf(2, "%p\n", event.str);
 			if ((err = word_designator_expand(&source, event, &word_designator, &done)))
 			{
 				dprintf(2, "BAD WORD\n");

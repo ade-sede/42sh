@@ -24,8 +24,7 @@ int	read_hist_numeric(int count, t_word *event, t_hist *hist)
 	/* 	return (TRUE); */
 	/* w_addstr(event_node->line); */
 	/* w_addstr(event, "0 1 2 3 4 5 6 7 8 9"); */
-	/* w_addstr(event, "1 / 2 / 3"); */
-	event->str = NULL;
+	w_addstr(event, "1 / 2 / 3");
 	return (FALSE);
 }
 
@@ -135,33 +134,31 @@ static int default_behavior(t_hist *hist, t_word *event)
 
 int	event_expand(const char *s, const char **source, t_word *event, t_hist *hist, int *done)
 {
-	int	err;
+	int	ret;
 
-	err = FALSE;
+	ret = FALSE;
 	*done = TRUE;
 	w_newword(event);
 
-	err = valid_event(source, done);
+	ret = valid_event(source, done);
 	if (*done == FALSE)
 		return (default_behavior(hist, event));
-	if (err)
+	if (ret)
 		return (TRUE);
 	if (**source == '!' || **source == '-' || ft_isdigit(**source))
 	{
-		if ((err = numeric_event(source, event, hist)))
+		if (numeric_event(source, event, hist))
 		{
-			//dprintf(2, "Num returned error");
 			w_free(event);
-			return (err);
+			return (TRUE);
 		}
 	}
 	else if (**source == '?' || ft_isalpha(**source))
 	{
-		if ((err = string_event(source, event, hist)))
+		if (string_event(source, event, hist))
 		{
-			//dprintf(2, "String returned error");
 			w_free(event);
-			return (err);
+			return (TRUE);
 		}
 	}
 	else
@@ -170,6 +167,7 @@ int	event_expand(const char *s, const char **source, t_word *event, t_hist *hist
 			w_addmem(event, s, *source - s - 1);
 		++(*source);
 	}
-	dprintf(2, "Event string = #%s#\n", event->str);
-	return (err);
+	if (!event->str)
+		return (TRUE);
+	return (FALSE);
 }
