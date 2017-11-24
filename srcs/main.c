@@ -7,6 +7,8 @@
 #include "local.h"
 #include <pwd.h>
 #include "modes.h"
+#include <sys/resource.h>
+#include <stdio.h>
 
 void	read_args(int ac, char **av, t_modes *modes)
 {
@@ -26,7 +28,6 @@ void	read_args(int ac, char **av, t_modes *modes)
 	{
 		modes->mode = STRING_MODE;
 		modes->string = av[2];
-		//printf("modes->string %s\n", modes->string);
 	}
 	else
 	{
@@ -36,22 +37,18 @@ void	read_args(int ac, char **av, t_modes *modes)
 	}
 }
 
-#include <stdio.h>
 void	read_pointrc(t_env *env)
 {
 	int		fd;
 	char	*tmp;
-	t_modes				modes;
+	t_modes	modes;
 
 	ft_bzero(&modes, sizeof(t_modes));
 	tmp = ft_gethome();
-	/* CHECK THIS */
 	if (tmp)
 		tmp = ft_strjoin(tmp, "/.42shrc");
 	else
 		return ;
-	(void)env;
-
 	if ((fd = open(tmp, O_RDONLY)) == -1)
 	{
 		free(tmp);
@@ -59,13 +56,10 @@ void	read_pointrc(t_env *env)
 		return ;
 	}
 	free(tmp);
-	modes.mode = FILE_MODE; 
+	modes.mode = FILE_MODE;
 	modes.stream = fd;
 	main_loop(env, &modes);
 }
-
-#include <sys/resource.h>
-#include <stdio.h>
 
 int		main(int ac, char **av)
 {

@@ -55,7 +55,6 @@ void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
 		close(errfile);
 	}
 	exit(exec(p->command));
-	//exit(singleton_env()->previous_exit);
 }
 
 int		launch_job(t_job_control *jc, t_job *j, int foreground)
