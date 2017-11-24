@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 18:17:19 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 18:27:32 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/11/24 19:52:59 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 
 static int	numeric_event(const char **source, t_word *event, t_hist *hist)
 {
-	int	err;
 	int	count;
 
-	err = FALSE;
 	count = 0;
 	if (**source == '!')
 	{
@@ -39,13 +37,14 @@ static int	numeric_event(const char **source, t_word *event, t_hist *hist)
 		while (ft_isdigit(**source))
 			++(*source);
 	}
-	err = read_hist_numeric(count, event, hist);
-	return (err);
+	if (read_hist_numeric(count, event, hist))
+		return (TRUE);
+	return (FALSE);
 }
 
 static int	valid_event(const char **source, int *done)
 {
-	if (ft_strchr("^$*-:", **source))
+	if (ft_strchr("^$*:", **source))
 	{
 		*done = FALSE;
 		return (FALSE);
@@ -62,14 +61,13 @@ static int	default_behavior(t_hist *hist, t_word *event)
 	return (FALSE);
 }
 
-static int	wrapper(const char **source, t_word *event, t_hist *hist)
+static int	wrapper(const char **source, t_word *event, t_hist *hist, int *done)
 {
-	int		done;
 
-	done = FALSE;
+	*done = FALSE;
 	if (**source == '!' || **source == '-' || ft_isdigit(**source))
 	{
-		done = TRUE;
+		*done = TRUE;
 		if (numeric_event(source, event, hist))
 		{
 			w_free(event);
@@ -78,14 +76,14 @@ static int	wrapper(const char **source, t_word *event, t_hist *hist)
 	}
 	else if (**source == '?' || ft_isalpha(**source))
 	{
-		done = TRUE;
+		*done = TRUE;
 		if (string_event(source, event, hist))
 		{
 			w_free(event);
 			return (TRUE);
 		}
 	}
-	return (done);
+	return (FALSE);
 }
 
 int			event_expand(const char *s, const char **source, \
@@ -102,7 +100,11 @@ int			event_expand(const char *s, const char **source, \
 		return (default_behavior(hist, event));
 	if (ret)
 		return (TRUE);
-	if (!wrapper(source, event, hist))
+	if (wrapper(source, event, hist, &done))
+	{
+		return (TRUE);
+	}
+	if (!done)
 	{
 		if (*source - s - 1 > 0)
 			w_addmem(event, s, *source - s - 1);

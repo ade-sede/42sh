@@ -69,7 +69,8 @@ int		get_input(t_modes *modes, char **buff)
 					singleton_hist(), &edit_set_signals_open));
 		if ((tmp = bang_expand((const char*)*buff, singleton_hist())))
 		{
-			ft_dprintf(2, "%s\n", tmp);
+			if (!ft_strequ(tmp, *buff))
+				ft_dprintf(2, "%s\n", tmp);
 			*buff = ft_strchange(*buff, tmp);
 		}
 	}
