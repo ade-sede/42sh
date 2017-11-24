@@ -294,7 +294,7 @@ void	reduce(t_state_lst **state_stack, t_ast_lst **ast_stack, \
 	{
 		ft_genlst_del_one(state_stack, *state_stack, NULL);
 		new->child[i] = (*ast_stack)->ast;
-		ft_genlst_del_one(ast_stack, *ast_stack,  NULL);
+		ft_genlst_del_one(ast_stack, *ast_stack, NULL);
 		i--;
 	}
 	ft_genlst_add(ast_stack, ft_simple_lst_create(new));
