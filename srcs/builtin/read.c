@@ -99,17 +99,26 @@ static char			parse_option(t_read *options, const char ***args)
 	return (1);
 }
 
+static void			set_value(char *value, char **argv, t_env *env,
+		t_read options)
+{
+	char			**split;
+
+	split = split_values(value, options);
+	assign_values((char**)argv, split, env);
+	ft_arraydel(&split);
+	free(value);
+}
+
 int					builtin_read(t_env *env, const char **argv)
 {
 	int				error;
 	t_read			options;
 	t_line			*line;
 	char			*values;
-	char			**split;
 
 	(void)env;
 	line = singleton_line();
-	error = 0;
 	ft_bzero(&options, sizeof(t_read));
 	options.delim = '\n';
 	if (!(error = parse_option(&options, &argv)) || error == 2)
@@ -126,9 +135,6 @@ int					builtin_read(t_env *env, const char **argv)
 	}
 	else
 		values = read_get_rcinput(options);
-	split = split_values(values, options);
-	assign_values((char**)argv, split, env);
-	free(values);
-	ft_arraydel(&split);
+	set_value(values, (char **)argv, env, options);
 	return (0);
 }
