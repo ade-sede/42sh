@@ -14,8 +14,7 @@ void	aux(t_btree *root, int li, int co, void (printer) (void *))
 
 void	btree_print(t_btree *root, void (printer) (void *))
 {
-
 	if (!root)
 		return ;
-	aux(root, 0,  COLS / 2, printer);
+	aux(root, 0, COLS / 3, printer);
 }

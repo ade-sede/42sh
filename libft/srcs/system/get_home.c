@@ -3,8 +3,8 @@
 
 char	*ft_gethome(void)
 {
-	uid_t	uid;
-	struct passwd *pw;
+	uid_t			uid;
+	struct passwd	*pw;
 
 	uid = getuid();
 	pw = getpwuid(uid);

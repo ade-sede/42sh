@@ -15,10 +15,11 @@ size_t	ft_lst_len(t_list *lst)
 
 size_t	ft_genlst_len(void *lst)
 {
-	t_gen_lst *lst_cast = lst;
-	int		i;
+	t_gen_lst 	*lst_cast;
+	int			i;
 
 	i = 0;
+	lst_cast = lst;
 	while (lst_cast)
 	{
 		lst_cast = lst_cast->next;
