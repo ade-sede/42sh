@@ -1,8 +1,8 @@
 #ifndef SYSTEM_H
 # define SYSTEM_H
-#include "libft.h"
-#include <errno.h>
-#include <stdio.h>
+# include "libft.h"
+# include <errno.h>
+# include <stdio.h>
 
 size_t	get_ws_col(void);
 size_t	get_ws_row(void);

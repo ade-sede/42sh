@@ -114,6 +114,6 @@ int					ft_strarrstrn(char **array, char *str, unsigned int n);
 unsigned int		ft_parrlen(void **array);
 void				ft_parrpush(void ***tablo, void *elem);
 void				**ft_parrnew(void);
-void	ft_strspush(char **str, char *push);
+void				ft_strspush(char **str, char *push);
 
 #endif
