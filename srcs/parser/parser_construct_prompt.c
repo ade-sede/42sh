@@ -20,7 +20,7 @@ struct s_token_to_prompt	g_token_to_prompt[] =
 	{-1, NULL},
 };
 
-char	*token_to_prompt(int token_id)
+char			*token_to_prompt(int token_id)
 {
 	int	i;
 
@@ -34,9 +34,25 @@ char	*token_to_prompt(int token_id)
 	return (NULL);
 }
 
-char	*parser_construct_prompt(t_ast_lst *ast_stack)
+static char		*beginoftheloop(t_ast_lst **tmp, int *token_next_id)
 {
 	int			token_id;
+
+	token_id = -1;
+	if ((*tmp)->ast->token)
+		token_id = (*tmp)->ast->token->id;
+	if ((*tmp)->next && (*tmp)->next->ast->token)
+		*token_next_id = (*tmp)->next->ast->token->id;
+	if (token_id == TK_RPAREN && *token_next_id == TK_LPAREN)
+	{
+		(*tmp) = (*tmp)->next;
+		return ("function");
+	}
+	return (token_to_prompt(token_id));
+}
+
+char			*parser_construct_prompt(t_ast_lst *ast_stack)
+{
 	int			token_next_id;
 	char		*prompt;
 	char		*token_prompt;
@@ -46,18 +62,7 @@ char	*parser_construct_prompt(t_ast_lst *ast_stack)
 	tmp = ast_stack;
 	while (tmp)
 	{
-		token_id = -1;
-		if (tmp->ast->token)
-			token_id = tmp->ast->token->id;
-		if (tmp->next && tmp->next->ast->token)
-			token_next_id = tmp->next->ast->token->id;
-		if (token_id == TK_RPAREN && token_next_id == TK_LPAREN)
-		{
-			token_prompt = "function";
-			tmp = tmp->next;
-		}
-		else
-			token_prompt = token_to_prompt(token_id);
+		token_prompt = beginoftheloop(&tmp, &token_next_id);
 		if (token_prompt)
 		{
 			if (!prompt)
