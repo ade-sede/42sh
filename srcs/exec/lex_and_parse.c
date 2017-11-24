@@ -50,6 +50,19 @@ void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list **token_list)
 	remove_parser(parser);
 }
 
+void	lex_reopen(t_list **token_list)
+{
+	t_token		*reopen_token;
+
+	reopen_token = ft_memalloc(sizeof(*reopen_token) * 1);
+	reopen_token->value = ft_strdup("quoted");
+	reopen_token->state_info = NULL;
+	reopen_token->delim = 0;
+	reopen_token->id = 42;
+	ft_simple_lst_pushback(token_list,
+			ft_simple_lst_create(reopen_token));
+}
+
 int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 {
 	t_lexer		lexer;
@@ -58,7 +71,6 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	int			res_lexer;
 	int			res_parser;
 	t_parser	parser;
-	t_token		*reopen_token;
 
 	big_list = NULL;
 	res_lexer = -1;
@@ -71,22 +83,13 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 		token_list = NULL;
 		res_lexer = get_token_list(&lexer, &token_list, singleton_env()->alias);
 		if (res_lexer == LEXER_REOPEN)
-		{
-			reopen_token = ft_memalloc(sizeof(*reopen_token) * 1);
-			reopen_token->value = ft_strdup("quoted");
-			reopen_token->state_info = NULL;
-			reopen_token->delim = 0;
-			reopen_token->id = 42;
-			ft_simple_lst_pushback(&token_list,
-					ft_simple_lst_create(reopen_token));
-		}
+			lex_reopen(&token_list);
 		res_parser = parse(&parser, &ast, token_list);
 		ft_simple_lst_pushback(&big_list, token_list);
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{
 			if (!reopen(&lexer, &parser, modes))
 				return (0);
-			token_list = NULL;
 			if (g_abort_opening)
 				break ;
 		}
@@ -96,7 +99,5 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	else
 		local_add_change_from_key_value(singleton_env(), "?", "1");
 	quit_lex_and_parse(&lexer, &parser, &big_list);
-	if (res_parser == PARSER_ERROR && modes->mode > 0)
-		return (0);
-	return (1);
+	return ((res_parser == PARSER_ERROR && modes->mode > 0) ? 0 : 1);
 }
