@@ -9,16 +9,16 @@
 
   Before test:
 [38;5;239m  01: rm -rf "./size"
-  02: rm -rf "TOKEN201711241811"
-  03: echo '^'$(echo TOKEN201711241811_FILE_TOKEN201711241811_STDOUT | wc -c)'$' > "./size"[0m
+  02: rm -rf "TOKEN201711241833"
+  03: echo '^'$(echo TOKEN201711241833_FILE_TOKEN201711241833_STDOUT | wc -c)'$' > "./size"[0m
 
   STDIN:
-[38;5;239m  01: mkdir TOKEN201711241811 ; cd TOKEN201711241811 ; touch TOKEN201711241811_FILE ; ls -1 ; ls | cat | wc -c > TOKEN201711241811_STDOUT ; cat TOKEN201711241811_STDOUT[0m
+[38;5;239m  01: mkdir TOKEN201711241833 ; cd TOKEN201711241833 ; touch TOKEN201711241833_FILE ; ls -1 ; ls | cat | wc -c > TOKEN201711241833_STDOUT ; cat TOKEN201711241833_STDOUT[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711241811_FILE$`[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711241833_FILE$`[0m
 [31m[38;5;160m  FAILURE    expected_to match_each_regex_of_file `./size`[0m
-[38;5;239m  01: TOKEN201711241811_FILE
+[38;5;239m  01: TOKEN201711241833_FILE
   02:       23[0m
 
   STDERR:
@@ -37,21 +37,21 @@
 [38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711241811_1 TOKEN201711241811_2 1>new_file_stderr_and_stdout 2>&1[0m
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711241833_1 TOKEN201711241833_2 1>new_file_stderr_and_stdout 2>&1[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_1`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241811_2`[0m
-[38;5;239m  01: TOKEN201711241811_2[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241833_2`[0m
+[38;5;239m  01: TOKEN201711241833_2[0m
 
   STDERR:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_1`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_2`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_2`[0m
 [38;5;239m  (no output)[0m
 
   MISC:
-[31m[38;5;34m  SUCCESS    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241811_1$`[0m
-[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241811_2$`[0m
+[31m[38;5;34m  SUCCESS    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241833_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241833_2$`[0m
 
 ----------------------------------------------------------------
 
@@ -65,21 +65,21 @@
 [38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711241811_1 TOKEN201711241811_2 2>new_file_stderr_and_stdout 1>&2[0m
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711241833_1 TOKEN201711241833_2 2>new_file_stderr_and_stdout 1>&2[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_1`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_2`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_2`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241811_1`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_2`[0m
-[38;5;239m  01: TOKEN201711241811_1[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241833_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_2`[0m
+[38;5;239m  01: TOKEN201711241833_1[0m
 
   MISC:
-[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241811_1$`[0m
-[31m[38;5;34m  SUCCESS    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241811_2$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241833_1$`[0m
+[31m[38;5;34m  SUCCESS    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241833_2$`[0m
 
 ----------------------------------------------------------------
 
@@ -92,21 +92,21 @@
 [38;5;239m  01: rm -f "new_file_stderr_and_stdout"[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711241811_1 TOKEN201711241811_2 &>new_file_stderr_and_stdout[0m
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711241833_1 TOKEN201711241833_2 &>new_file_stderr_and_stdout[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241811_1`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_2`[0m
-[38;5;239m  01: TOKEN201711241811_1[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241833_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_2`[0m
+[38;5;239m  01: TOKEN201711241833_1[0m
 
   STDERR:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_1`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241811_2`[0m
-[38;5;239m  01: TOKEN201711241811_2[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241833_2`[0m
+[38;5;239m  01: TOKEN201711241833_2[0m
 
   MISC:
-[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241811_1$`[0m
-[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241811_2$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241833_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241833_2$`[0m
 
 ----------------------------------------------------------------
 
@@ -120,21 +120,21 @@
 [38;5;239m  01: rm -f new_file_stderr_and_stdout[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711241811_1 TOKEN201711241811_2 &>	  	new_file_stderr_and_stdout[0m
+[38;5;239m  01: ./write_on_stdout_and_stderr TOKEN201711241833_1 TOKEN201711241833_2 &>	  	new_file_stderr_and_stdout[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241811_1`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_2`[0m
-[38;5;239m  01: TOKEN201711241811_1[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241833_1`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_2`[0m
+[38;5;239m  01: TOKEN201711241833_1[0m
 
   STDERR:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_1`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241811_2`[0m
-[38;5;239m  01: TOKEN201711241811_2[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_1`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241833_2`[0m
+[38;5;239m  01: TOKEN201711241833_2[0m
 
   MISC:
-[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241811_1$`[0m
-[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241811_2$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241833_1$`[0m
+[31m[38;5;160m  FAILURE    expected_to create_file `new_file_stderr_and_stdout` matching_regex `TOKEN201711241833_2$`[0m
 
 ----------------------------------------------------------------
 
@@ -144,14 +144,14 @@
 [38;5;239m  The purpose of this test is to check that exporting an empty variable does not add it to the environment, but can be displayed with the builtin `export`.[0m
 
   Before test:
-[38;5;239m  01: unset "TOKEN201711241811"[0m
+[38;5;239m  01: unset "TOKEN201711241833"[0m
 
   STDIN:
-[38;5;239m  01: export TOKEN201711241811
+[38;5;239m  01: export TOKEN201711241833
   02: export[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833`[0m
 [38;5;239m  01: TERM_PROGRAM=iTerm.app
   02: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
   03: TERM=xterm-256color
@@ -205,10 +205,10 @@
 [38;5;239m  The purpose of this test is to check that trying to export an invalid variable identifier results in error.[0m
 
   STDIN:
-[38;5;239m  01: export .=TOKEN201711241811[0m
+[38;5;239m  01: export .=TOKEN201711241833[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
@@ -249,16 +249,16 @@
 
   Before test:
 [38;5;239m  01: rm -f "./stored_env"
-  02: unset "TOKEN201711241811_NAME"
+  02: unset "TOKEN201711241833_NAME"
   03: export | awk 'BEGIN {FS="="} $0 !~ /^(OLDPWD|_)/ {print $1"="}' > "./stored_env"[0m
 
   STDIN:
-[38;5;239m  01: export -p TOKEN201711241811_NAME
+[38;5;239m  01: export -p TOKEN201711241833_NAME
   02: export[0m
 
   STDOUT:
 [31m[38;5;34m  SUCCESS    expected_to_not match_each_regex_of_file `./stored_env`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811_NAME`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833_NAME`[0m
 [38;5;239m  01: TERM_PROGRAM=iTerm.app
   02: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
   03: TERM=xterm-256color
@@ -352,15 +352,15 @@
 [38;5;239m   The purpose of this test is to check that using the builtin `export` with option `-n` results in a removed environment variable.[0m
 
   Before test:
-[38;5;239m  01: export TOKEN201711241811_NAME=TOKEN201711241811_VALUE[0m
+[38;5;239m  01: export TOKEN201711241833_NAME=TOKEN201711241833_VALUE[0m
 
   STDIN:
-[38;5;239m  01: export -n TOKEN201711241811_NAME
+[38;5;239m  01: export -n TOKEN201711241833_NAME
   02: export
   03: ./display_env[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241811_NAME`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `TOKEN201711241833_NAME`[0m
 [38;5;239m  01: TERM_PROGRAM=iTerm.app
   02: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
   03: TERM=xterm-256color
@@ -381,13 +381,13 @@
   18: DOTFILES=/Users/vcombey/.dotfiles
   19: LSCOLORS=HxBxcxdxbxegedabagacad
   20: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
-  21: ZSHRC=/Users/vcombey/.zshrc
-  22: PWD=/Users/vcombey/42shtester_save/tmp
-  23: EDITOR=vim
-  24: BASE16_THEME=base16-nord
-  25: LANG=en_US.UTF-8
-  26: ITERM_PROFILE=Default
-  27: TOKEN201711241811_NAME=TOKEN201711241811_VALUE
+  21: TOKEN201711241833_NAME=TOKEN201711241833_VALUE
+  22: ZSHRC=/Users/vcombey/.zshrc
+  23: PWD=/Users/vcombey/42shtester_save/tmp
+  24: EDITOR=vim
+  25: BASE16_THEME=base16-nord
+  26: LANG=en_US.UTF-8
+  27: ITERM_PROFILE=Default
   28: XPC_FLAGS=0x0
   29: XPC_SERVICE_NAME=0
   30: INSTALL_ROOT=/Users/vcombey/.sbcl
@@ -423,13 +423,13 @@
   60: DOTFILES=/Users/vcombey/.dotfiles
   61: LSCOLORS=HxBxcxdxbxegedabagacad
   62: PATH=/Users/vcombey/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/vcombey/.sbcl/bin:/Users/vcombey/.sbcl/bin
-  63: ZSHRC=/Users/vcombey/.zshrc
-  64: PWD=/Users/vcombey/42shtester_save/tmp
-  65: EDITOR=vim
-  66: BASE16_THEME=base16-nord
-  67: LANG=en_US.UTF-8
-  68: ITERM_PROFILE=Default
-  69: TOKEN201711241811_NAME=TOKEN201711241811_VALUE
+  63: TOKEN201711241833_NAME=TOKEN201711241833_VALUE
+  64: ZSHRC=/Users/vcombey/.zshrc
+  65: PWD=/Users/vcombey/42shtester_save/tmp
+  66: EDITOR=vim
+  67: BASE16_THEME=base16-nord
+  68: LANG=en_US.UTF-8
+  69: ITERM_PROFILE=Default
   70: XPC_FLAGS=0x0
   71: XPC_SERVICE_NAME=0
   72: INSTALL_ROOT=/Users/vcombey/.sbcl
@@ -519,14 +519,14 @@
 [38;5;239m  The purpose of this test is to check that declaring the same variable several times in the same command line does work and does not result in error.[0m
 
   STDIN:
-[38;5;239m  01: TOKEN201711241811_NAME=TOKEN201711241811_VALUE1 TOKEN201711241811_NAME=TOKEN201711241811_VALUE2 TOKEN201711241811_NAME=TOKEN201711241811_VALUE3
-  02: ./write_on_stdout $TOKEN201711241811_NAME[0m
+[38;5;239m  01: TOKEN201711241833_NAME=TOKEN201711241833_VALUE1 TOKEN201711241833_NAME=TOKEN201711241833_VALUE2 TOKEN201711241833_NAME=TOKEN201711241833_VALUE3
+  02: ./write_on_stdout $TOKEN201711241833_NAME[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `^TOKEN201711241811_VALUE1$`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `^TOKEN201711241811_VALUE2$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_VALUE3$`[0m
-[38;5;239m  01: TOKEN201711241811_VALUE1[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `^TOKEN201711241833_VALUE1$`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `^TOKEN201711241833_VALUE2$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_VALUE3$`[0m
+[38;5;239m  01: TOKEN201711241833_VALUE1[0m
 
   STDERR:
 [31m[38;5;34m  SUCCESS    expected_to be_empty[0m
@@ -540,11 +540,11 @@
 [38;5;239m  The purpose of this test is to check that declaring a variable and specifying a binary does not result in local variable declaration but a modified environment for the command.[0m
 
   STDIN:
-[38;5;239m  01: TOKEN201711241811_NAME=TOKEN201711241811_VALUE ./display_env
-  02: ./write_on_stderr $TOKEN201711241811[0m
+[38;5;239m  01: TOKEN201711241833_NAME=TOKEN201711241833_VALUE ./display_env
+  02: ./write_on_stderr $TOKEN201711241833[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_NAME=TOKEN201711241811_VALUE$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_NAME=TOKEN201711241833_VALUE$`[0m
 [38;5;239m  01: ------------------------------
   02: TERM_PROGRAM=iTerm.app
   03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
@@ -590,7 +590,7 @@
   43: TOTAL ENVIRONMENT VARIABLES: 40[0m
 
   STDERR:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_VALUE`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_VALUE`[0m
 [31m[38;5;34m  SUCCESS    expected_to match_regex `write on stderr`[0m
 [38;5;239m  01: write on stderr[0m
 
@@ -603,16 +603,16 @@
 
   STDIN:
 [38;5;239m  01: ./write_on_stdout "
-  02: TOKEN201711241811_FIRST
-  03: TOKEN201711241811_SECOND
-  04: TOKEN201711241811_THIRD
+  02: TOKEN201711241833_FIRST
+  03: TOKEN201711241833_SECOND
+  04: TOKEN201711241833_THIRD
   05: "[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_FIRST$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_SECOND$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_THIRD$`[0m
-[38;5;239m  01: TOKEN201711241811_FIRSTTOKEN201711241811_SECONDTOKEN201711241811_THIRD[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_FIRST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_SECOND$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_THIRD$`[0m
+[38;5;239m  01: TOKEN201711241833_FIRSTTOKEN201711241833_SECONDTOKEN201711241833_THIRD[0m
 
   STDERR:
 [31m[38;5;34m  SUCCESS    expected_to be_empty[0m
@@ -627,20 +627,20 @@
 
   STDIN:
 [38;5;239m  01: ./write_on_stdout_and_stderr "
-  02: "TOKEN201711241811"_FIRST
-  03: TOKEN201711241811_SECOND" "TOKEN201711241811_THIRD
-  04: TOKEN201711241811_FOU"RT"H
+  02: "TOKEN201711241833"_FIRST
+  03: TOKEN201711241833_SECOND" "TOKEN201711241833_THIRD
+  04: TOKEN201711241833_FOU"RT"H
   05: "[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_FIRST$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_SECOND$`[0m
-[38;5;239m  01: TOKEN201711241811_FIRSTTOKEN201711241811_SECOND[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_FIRST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_SECOND$`[0m
+[38;5;239m  01: TOKEN201711241833_FIRSTTOKEN201711241833_SECOND[0m
 
   STDERR:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_THIRD$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_FOURTH$`[0m
-[38;5;239m  01: TOKEN201711241811_THIRDTOKEN201711241811_FOURTH[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_THIRD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_FOURTH$`[0m
+[38;5;239m  01: TOKEN201711241833_THIRDTOKEN201711241833_FOURTH[0m
 
 ----------------------------------------------------------------
 
@@ -650,10 +650,10 @@
 [38;5;239m  The purpose of this test is to check that using backslash `\\` before the closing double-quote `"` does result in syntax error.[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout "TOKEN201711241811\"[0m
+[38;5;239m  01: ./write_on_stdout "TOKEN201711241833\"[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `^TOKEN201711241811$`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `^TOKEN201711241833$`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
@@ -670,20 +670,20 @@
 
   STDIN:
 [38;5;239m  01: ./write_on_stdout_and_stderr '
-  02: 'TOKEN201711241811"_FIR'ST
-  03: TOKEN201711241811_SECOND" 'TOKEN201711241811_TH"IRD
-  04: TOKEN201711241811_FOU'RT"H
+  02: 'TOKEN201711241833"_FIR'ST
+  03: TOKEN201711241833_SECOND" 'TOKEN201711241833_TH"IRD
+  04: TOKEN201711241833_FOU'RT"H
   05: "[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_FIR'ST$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_SECOND$`[0m
-[38;5;239m  01: TOKEN201711241811_FIR'STTOKEN201711241811_SECOND[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_FIR'ST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_SECOND$`[0m
+[38;5;239m  01: TOKEN201711241833_FIR'STTOKEN201711241833_SECOND[0m
 
   STDERR:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_TH"IRD$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_FOURTH$`[0m
-[38;5;239m  01: TOKEN201711241811_TH"IRDTOKEN201711241811_FOURTH[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_TH"IRD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_FOURTH$`[0m
+[38;5;239m  01: TOKEN201711241833_TH"IRDTOKEN201711241833_FOURTH[0m
 
 ----------------------------------------------------------------
 
@@ -694,16 +694,16 @@
 
   STDIN:
 [38;5;239m  01: ./write_on_stdout '
-  02: TOKEN201711241811_FIRST
-  03: TOKEN201711241811_SECOND
-  04: TOKEN201711241811_THIRD
+  02: TOKEN201711241833_FIRST
+  03: TOKEN201711241833_SECOND
+  04: TOKEN201711241833_THIRD
   05: '[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_FIRST$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_SECOND$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_THIRD$`[0m
-[38;5;239m  01: TOKEN201711241811_FIRSTTOKEN201711241811_SECONDTOKEN201711241811_THIRD[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_FIRST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_SECOND$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_THIRD$`[0m
+[38;5;239m  01: TOKEN201711241833_FIRSTTOKEN201711241833_SECONDTOKEN201711241833_THIRD[0m
 
   STDERR:
 [31m[38;5;34m  SUCCESS    expected_to be_empty[0m
@@ -718,20 +718,20 @@
 
   STDIN:
 [38;5;239m  01: ./write_on_stdout_and_stderr '
-  02: 'TOKEN201711241811'_FIRST
-  03: TOKEN201711241811_SECOND' 'TOKEN201711241811_THIRD
-  04: TOKEN201711241811_FOU'RT'H
+  02: 'TOKEN201711241833'_FIRST
+  03: TOKEN201711241833_SECOND' 'TOKEN201711241833_THIRD
+  04: TOKEN201711241833_FOU'RT'H
   05: '[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_FIRST$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_SECOND$`[0m
-[38;5;239m  01: TOKEN201711241811_FIRSTTOKEN201711241811_SECOND[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_FIRST$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_SECOND$`[0m
+[38;5;239m  01: TOKEN201711241833_FIRSTTOKEN201711241833_SECOND[0m
 
   STDERR:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_THIRD$`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_FOURTH$`[0m
-[38;5;239m  01: TOKEN201711241811_THIRDTOKEN201711241811_FOURTH[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_THIRD$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_FOURTH$`[0m
+[38;5;239m  01: TOKEN201711241833_THIRDTOKEN201711241833_FOURTH[0m
 
 ----------------------------------------------------------------
 
@@ -741,14 +741,14 @@
 [38;5;239m  The purpose of this test is to check that a simple-quote `'` may be preserved when it is preceded by a backslash `\\`.[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout_and_stderr \'TOKEN201711241811_STDOUT TOKEN201711241811_STDERR\'[0m
+[38;5;239m  01: ./write_on_stdout_and_stderr \'TOKEN201711241833_STDOUT TOKEN201711241833_STDERR\'[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^'TOKEN201711241811_STDOUT$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^'TOKEN201711241833_STDOUT$`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_STDERR'$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_STDERR'$`[0m
 [38;5;239m  (no output)[0m
 
 ----------------------------------------------------------------
@@ -759,13 +759,13 @@
 [38;5;239m  The purpose of this test is to check that prematurely exiting a subshell does work and does not result in parent shell termination.[0m
 
   STDIN:
-[38;5;239m  01: (exit ; ./write_on_stdout TOKEN201711241811_NOT_DISPLAYED)
-  02: ./write_on_stdout TOKEN201711241811_DISPLAYED[0m
+[38;5;239m  01: (exit ; ./write_on_stdout TOKEN201711241833_NOT_DISPLAYED)
+  02: ./write_on_stdout TOKEN201711241833_DISPLAYED[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_NOT_DISPLAYED`[0m
-[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711241811_DISPLAYED`[0m
-[38;5;239m  01: TOKEN201711241811_DISPLAYED[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_NOT_DISPLAYED`[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711241833_DISPLAYED`[0m
+[38;5;239m  01: TOKEN201711241833_DISPLAYED[0m
 
   STDERR:
 [31m[38;5;160m  FAILURE    expected_to be_empty[0m
@@ -779,10 +779,10 @@
 [38;5;239m  The purpose of this test is to check that a subshell with parentheses `(` and `)` may be escaped with backslash `\\`.[0m
 
   STDIN:
-[38;5;239m  01: \(./write_on_stdout TOKEN201711241811_STDOUT\)[0m
+[38;5;239m  01: \(./write_on_stdout TOKEN201711241833_STDOUT\)[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_STDOUT`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_STDOUT`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
@@ -798,10 +798,10 @@
 [38;5;239m  The purpose of this test is to check that the tokens parentheses `(` and `)` for subshell generation may be escaped with backslash `\\`.[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout \\\(TOKEN201711241811_STDOUT\\\)[0m
+[38;5;239m  01: ./write_on_stdout \\\(TOKEN201711241833_STDOUT\\\)[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `\(TOKEN201711241811_STDOUT\)`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `\(TOKEN201711241833_STDOUT\)`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
@@ -816,11 +816,11 @@
 [38;5;239m  The purpose of this test is to check that declaring a variable and specifying a binary in a subshell does not result in local variable declaration or a modified parent shell's environment, but only a modified child's environment.[0m
 
   STDIN:
-[38;5;239m  01: (TOKEN201711241811_NAME=TOKEN201711241811_VALUE ./display_env)
+[38;5;239m  01: (TOKEN201711241833_NAME=TOKEN201711241833_VALUE ./display_env)
   02: ./display_env[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_NAME=TOKEN201711241811_VALUE$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_NAME=TOKEN201711241833_VALUE$` once[0m
 [38;5;239m  01: ------------------------------
   02: TERM_PROGRAM=iTerm.app
   03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
@@ -920,11 +920,11 @@
 [38;5;239m  The purpose of this test is to check that declaring a variable and specifying a binary in a subshell does not result in local variable declaration or a modified parent shell's environment, but only a modified child's environment.[0m
 
   STDIN:
-[38;5;239m  01: ( (TOKEN201711241811_NAME=TOKEN201711241811_VALUE ./display_env) ; ./display_env) ; ./display_env
+[38;5;239m  01: ( (TOKEN201711241833_NAME=TOKEN201711241833_VALUE ./display_env) ; ./display_env) ; ./display_env
   02: [0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_NAME=TOKEN201711241811_VALUE$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_NAME=TOKEN201711241833_VALUE$` once[0m
 [38;5;239m  01: ------------------------------
   02: TERM_PROGRAM=iTerm.app
   03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
@@ -1067,14 +1067,14 @@
 [38;5;239m  The purpose of this test is to check that a binary may have its environment to be modified by appending variables inline.[0m
 
   Before test:
-[38;5;239m  01: unset "TOKEN201711241811_VARIABLE"[0m
+[38;5;239m  01: unset "TOKEN201711241833_VARIABLE"[0m
 
   STDIN:
-[38;5;239m  01: TOKEN201711241811_VARIABLE=TOKEN201711241811_VALUE ./display_env
+[38;5;239m  01: TOKEN201711241833_VARIABLE=TOKEN201711241833_VALUE ./display_env
   02: ./display_env[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_VARIABLE=TOKEN201711241811_VALUE$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_VARIABLE=TOKEN201711241833_VALUE$` once[0m
 [38;5;239m  01: ------------------------------
   02: TERM_PROGRAM=iTerm.app
   03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
@@ -1174,16 +1174,16 @@
 [38;5;239m  The purpose of this test is to check that a binary may have its environment to be modified by appending variables inline.[0m
 
   Before test:
-[38;5;239m  01: unset "TOKEN201711241811_VARIABLE"[0m
+[38;5;239m  01: unset "TOKEN201711241833_VARIABLE"[0m
 
   STDIN:
-[38;5;239m  01: TOKEN201711241811_VARIABLE1=TOKEN201711241811_VALUE1 TOKEN201711241811_VARIABLE2=TOKEN201711241811_VALUE2 TOKEN201711241811_VARIABLE3=TOKEN201711241811_VALUE3 ./display_env
+[38;5;239m  01: TOKEN201711241833_VARIABLE1=TOKEN201711241833_VALUE1 TOKEN201711241833_VARIABLE2=TOKEN201711241833_VALUE2 TOKEN201711241833_VARIABLE3=TOKEN201711241833_VALUE3 ./display_env
   02: ./display_env[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_VARIABLE1=TOKEN201711241811_VALUE1$` once[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_VARIABLE2=TOKEN201711241811_VALUE2$` once[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811_VARIABLE3=TOKEN201711241811_VALUE3$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_VARIABLE1=TOKEN201711241833_VALUE1$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_VARIABLE2=TOKEN201711241833_VALUE2$` once[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833_VARIABLE3=TOKEN201711241833_VALUE3$` once[0m
 [38;5;239m  01: ------------------------------
   02: TERM_PROGRAM=iTerm.app
   03: HOMEBREW_TEMP=/tmp/vcombey/Homebrew/Temp
@@ -1288,11 +1288,11 @@
   03: cd "temporary_directory"[0m
 
   STDIN:
-[38;5;239m  01: PATH=.. write_on_stdout TOKEN201711241811
+[38;5;239m  01: PATH=.. write_on_stdout TOKEN201711241833
   02: exit_with_status 42[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241811$`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^TOKEN201711241833$`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
@@ -1313,10 +1313,10 @@
 [38;5;239m  The purpose of this test is to check that using the two separators AND `&&` and OR `||` applies the good logic: The second command is executed if the first one succeeds, and the third command is executed if the second one fails or is not executed.[0m
 
   STDIN:
-[38;5;239m  01: ./exit_with_status 42 && ./write_on_stderr TOKEN201711241811_ERROR 21 || ./write_on_stdout TOKEN201711241811_SUCCESS[0m
+[38;5;239m  01: ./exit_with_status 42 && ./write_on_stderr TOKEN201711241833_ERROR 21 || ./write_on_stdout TOKEN201711241833_SUCCESS[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811_SUCCESS`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833_SUCCESS`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
@@ -1334,15 +1334,15 @@
 [38;5;239m  The purpose of this test is to check that using the two separators AND `&&` and OR `||` applies the good logic: The second command is executed if the first one succeeds, and the third command is executed if the second one fails or is not executed.[0m
 
   STDIN:
-[38;5;239m  01: ./exit_with_status 0 && ./write_on_stderr TOKEN201711241811_ERROR 21 || ./write_on_stdout TOKEN201711241811_SUCCESS[0m
+[38;5;239m  01: ./exit_with_status 0 && ./write_on_stderr TOKEN201711241833_ERROR 21 || ./write_on_stdout TOKEN201711241833_SUCCESS[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811_SUCCESS`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833_SUCCESS`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
-[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711241811_ERROR`[0m
-[38;5;239m  01: TOKEN201711241811_ERROR[0m
+[31m[38;5;34m  SUCCESS    expected_to match_regex `TOKEN201711241833_ERROR`[0m
+[38;5;239m  01: TOKEN201711241833_ERROR[0m
 
   MISC:
 [31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
@@ -1355,14 +1355,14 @@
 [38;5;239m  The purpose of this test is to check that using the two separators OR `||` and AND `&&` applies the good logic: The second command is executed if the first one fails, and the third command is executed if the second one succeeds or is not executed.[0m
 
   STDIN:
-[38;5;239m  01: ./exit_with_status 42 || ./write_on_stderr TOKEN201711241811_ERROR 21 && ./write_on_stdout TOKEN201711241811_SUCCESS[0m
+[38;5;239m  01: ./exit_with_status 42 || ./write_on_stderr TOKEN201711241833_ERROR 21 && ./write_on_stdout TOKEN201711241833_SUCCESS[0m
 
   STDOUT:
 [31m[38;5;34m  SUCCESS    expected_to be_empty[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811_ERROR`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833_ERROR`[0m
 [38;5;239m  (no output)[0m
 
   MISC:
@@ -1376,14 +1376,14 @@
 [38;5;239m  The purpose of this test is to check that using the two separators OR `||` and AND `&&` applies the good logic: The second command is executed if the first one fails, and the third command is executed if the second one succeeds or is not executed.[0m
 
   STDIN:
-[38;5;239m  01: ./exit_with_status 42 || ./write_on_stdout TOKEN201711241811_SUCCESS && ./write_on_stderr TOKEN201711241811_ERROR 21[0m
+[38;5;239m  01: ./exit_with_status 42 || ./write_on_stdout TOKEN201711241833_SUCCESS && ./write_on_stderr TOKEN201711241833_ERROR 21[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811_SUCCESS`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833_SUCCESS`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811_ERROR`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833_ERROR`[0m
 [38;5;239m  (no output)[0m
 
   MISC:
@@ -1397,10 +1397,10 @@
 [38;5;239m  The purpose of this test is to check that the OR operator `||` makes the right command to be executed if the left one exits with an error status code.[0m
 
   STDIN:
-[38;5;239m  01: ./exit_with_status 42 || ./write_on_stdout TOKEN201711241811[0m
+[38;5;239m  01: ./exit_with_status 42 || ./write_on_stdout TOKEN201711241833[0m
 
   STDOUT:
-[31m[1;33m  WARNING    might match_regex `TOKEN201711241811`[0m
+[31m[1;33m  WARNING    might match_regex `TOKEN201711241833`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
@@ -1418,11 +1418,11 @@
 [38;5;239m  The purpose of this test is to check that using the OR separator `||` with chained commands results in the execution of all until the first succeed. The remaining commands are not executed.[0m
 
   STDIN:
-[38;5;239m  01: ./exit_with_status 1 || ./exit_with_status 2 || ./exit_with_status 3 || ./exit_with_status 4 || ./write_on_stdout TOKEN201711241811_FIRST || ./write_on_stdout TOKEN201711241811_SECOND[0m
+[38;5;239m  01: ./exit_with_status 1 || ./exit_with_status 2 || ./exit_with_status 3 || ./exit_with_status 4 || ./write_on_stdout TOKEN201711241833_FIRST || ./write_on_stdout TOKEN201711241833_SECOND[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811_FIRST`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241811_SECOND`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833_FIRST`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `TOKEN201711241833_SECOND`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
@@ -1440,16 +1440,16 @@
 [38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable PWD when followed by the symbol `+`.[0m
 
   Before test:
-[38;5;239m  01: export "HOME=/TOKEN201711241811"[0m
+[38;5;239m  01: export "HOME=/TOKEN201711241833"[0m
 
   STDIN:
 [38;5;239m  01: ./write_on_stdout ~+[0m
 
   STDOUT:
 [31m[38;5;34m  SUCCESS    expected_to_not match_regex `~[+]`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241811[+]`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241833[+]`[0m
 [31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42shtester_save/tmp$`[0m
-[38;5;239m  01: /TOKEN201711241811+[0m
+[38;5;239m  01: /TOKEN201711241833+[0m
 
   STDERR:
 [38;5;239m  (no output)[0m
@@ -1462,16 +1462,16 @@
 [38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable PWD when followed by the symbol `+`.[0m
 
   Before test:
-[38;5;239m  01: export "HOME=/TOKEN201711241811"[0m
+[38;5;239m  01: export "HOME=/TOKEN201711241833"[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout ~+/TOKEN201711241811_SUBDIRECTORY[0m
+[38;5;239m  01: ./write_on_stdout ~+/TOKEN201711241833_SUBDIRECTORY[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~+/TOKEN201711241811_SUBDIRECTORY`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241811[+]/TOKEN201711241811_SUBDIRECTORY`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42shtester_save/tmp/TOKEN201711241811_SUBDIRECTORY$`[0m
-[38;5;239m  01: /TOKEN201711241811+/TOKEN201711241811_SUBDIRECTORY[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~+/TOKEN201711241833_SUBDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241833[+]/TOKEN201711241833_SUBDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42shtester_save/tmp/TOKEN201711241833_SUBDIRECTORY$`[0m
+[38;5;239m  01: /TOKEN201711241833+/TOKEN201711241833_SUBDIRECTORY[0m
 
   STDERR:
 [38;5;239m  (no output)[0m
@@ -1484,19 +1484,19 @@
 [38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable OLDPWD when followed by the symbol `+`.[0m
 
   Before test:
-[38;5;239m  01: rm -rf "./TOKEN201711241811_SUBDIRECTORY"
-  02: mkdir "./TOKEN201711241811_SUBDIRECTORY"
-  03: export "HOME=/TOKEN201711241811"[0m
+[38;5;239m  01: rm -rf "./TOKEN201711241833_SUBDIRECTORY"
+  02: mkdir "./TOKEN201711241833_SUBDIRECTORY"
+  03: export "HOME=/TOKEN201711241833"[0m
 
   STDIN:
-[38;5;239m  01: cd ./TOKEN201711241811_SUBDIRECTORY
+[38;5;239m  01: cd ./TOKEN201711241833_SUBDIRECTORY
   02: /Users/vcombey/42shtester_save/tmp/write_on_stdout ~-[0m
 
   STDOUT:
 [31m[38;5;34m  SUCCESS    expected_to_not match_regex `~-`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241811-`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241833-`[0m
 [31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42shtester_save/tmp$`[0m
-[38;5;239m  01: /TOKEN201711241811-[0m
+[38;5;239m  01: /TOKEN201711241833-[0m
 
   STDERR:
 [38;5;239m  (no output)[0m
@@ -1509,19 +1509,19 @@
 [38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be expanded with the environment variable OLDPWD when followed by the symbol `+`.[0m
 
   Before test:
-[38;5;239m  01: rm -rf "./TOKEN201711241811_SUBDIRECTORY"
-  02: mkdir "./TOKEN201711241811_SUBDIRECTORY"
-  03: export "HOME=/TOKEN201711241811"[0m
+[38;5;239m  01: rm -rf "./TOKEN201711241833_SUBDIRECTORY"
+  02: mkdir "./TOKEN201711241833_SUBDIRECTORY"
+  03: export "HOME=/TOKEN201711241833"[0m
 
   STDIN:
-[38;5;239m  01: cd ./TOKEN201711241811_SUBDIRECTORY
-  02: /Users/vcombey/42shtester_save/tmp/write_on_stdout ~-/TOKEN201711241811_OTHERDIRECTORY[0m
+[38;5;239m  01: cd ./TOKEN201711241833_SUBDIRECTORY
+  02: /Users/vcombey/42shtester_save/tmp/write_on_stdout ~-/TOKEN201711241833_OTHERDIRECTORY[0m
 
   STDOUT:
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~-/TOKEN201711241811_OTHERDIRECTORY`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241811-/TOKEN201711241811_OTHERDIRECTORY`[0m
-[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42shtester_save/tmp/TOKEN201711241811_OTHERDIRECTORY$`[0m
-[38;5;239m  01: /TOKEN201711241811-/TOKEN201711241811_OTHERDIRECTORY[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `~-/TOKEN201711241833_OTHERDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241833-/TOKEN201711241833_OTHERDIRECTORY`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^/Users/vcombey/42shtester_save/tmp/TOKEN201711241833_OTHERDIRECTORY$`[0m
+[38;5;239m  01: /TOKEN201711241833-/TOKEN201711241833_OTHERDIRECTORY[0m
 
   STDERR:
 [38;5;239m  (no output)[0m
@@ -1534,15 +1534,15 @@
 [38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be not expanded when not followed by an authorized symbol or user name.[0m
 
   Before test:
-[38;5;239m  01: export "HOME=/TOKEN201711241811"[0m
+[38;5;239m  01: export "HOME=/TOKEN201711241833"[0m
 
   STDIN:
 [38;5;239m  01: ./write_on_stdout ~~[0m
 
   STDOUT:
 [31m[38;5;160m  FAILURE    expected_to match_regex `^~~$`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241811`[0m
-[38;5;239m  01: /TOKEN201711241811/TOKEN201711241811[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241833`[0m
+[38;5;239m  01: /TOKEN201711241833/TOKEN201711241833[0m
 
   STDERR:
 [38;5;239m  (no output)[0m
@@ -1555,15 +1555,15 @@
 [38;5;239m  The purpose of this test is to check that the symbol tilde `~` may be not expanded when not followed by an authorized symbol or user name.[0m
 
   Before test:
-[38;5;239m  01: export "HOME=/TOKEN201711241811"[0m
+[38;5;239m  01: export "HOME=/TOKEN201711241833"[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout ~TOKEN201711241811_UNKNOWNUSER[0m
+[38;5;239m  01: ./write_on_stdout ~TOKEN201711241833_UNKNOWNUSER[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^~TOKEN201711241811_UNKNOWNUSER$`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241811TOKEN201711241811_UNKNOWNUSER`[0m
-[38;5;239m  01: /TOKEN201711241811TOKEN201711241811_UNKNOWNUSER[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~TOKEN201711241833_UNKNOWNUSER$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241833TOKEN201711241833_UNKNOWNUSER`[0m
+[38;5;239m  01: /TOKEN201711241833TOKEN201711241833_UNKNOWNUSER[0m
 
   STDERR:
 [38;5;239m  (no output)[0m
@@ -1576,16 +1576,16 @@
 [38;5;239m  The purpose of this test is to check that the symbol tilde `~` is not expanded with the environment variable PWD when not followed by the symbol `/`.[0m
 
   Before test:
-[38;5;239m  01: export "HOME=/TOKEN201711241811"[0m
+[38;5;239m  01: export "HOME=/TOKEN201711241833"[0m
 
   STDIN:
-[38;5;239m  01: ./write_on_stdout ~+TOKEN201711241811_SUBDIRECTORY[0m
+[38;5;239m  01: ./write_on_stdout ~+TOKEN201711241833_SUBDIRECTORY[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^~[+]TOKEN201711241811_SUBDIRECTORY$`[0m
-[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241811[+]TOKEN201711241811_SUBDIRECTORY`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/Users/vcombey/42shtester_save/tmpTOKEN201711241811_SUBDIRECTORY`[0m
-[38;5;239m  01: /TOKEN201711241811+TOKEN201711241811_SUBDIRECTORY[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~[+]TOKEN201711241833_SUBDIRECTORY$`[0m
+[31m[38;5;160m  FAILURE    expected_to_not match_regex `/TOKEN201711241833[+]TOKEN201711241833_SUBDIRECTORY`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/Users/vcombey/42shtester_save/tmpTOKEN201711241833_SUBDIRECTORY`[0m
+[38;5;239m  01: /TOKEN201711241833+TOKEN201711241833_SUBDIRECTORY[0m
 
   STDERR:
 [38;5;239m  (no output)[0m
@@ -1598,19 +1598,19 @@
 [38;5;239m  The purpose of this test is to check that the symbol tilde `~` is not expanded with the environment variable OLDPWD when not followed by the symbol `/`.[0m
 
   Before test:
-[38;5;239m  01: rm -rf "./TOKEN201711241811_SUBDIRECTORY"
-  02: mkdir "./TOKEN201711241811_SUBDIRECTORY"
-  03: export "HOME=/TOKEN201711241811"[0m
+[38;5;239m  01: rm -rf "./TOKEN201711241833_SUBDIRECTORY"
+  02: mkdir "./TOKEN201711241833_SUBDIRECTORY"
+  03: export "HOME=/TOKEN201711241833"[0m
 
   STDIN:
-[38;5;239m  01: cd ./TOKEN201711241811_SUBDIRECTORY
-  02: /Users/vcombey/42shtester_save/tmp/write_on_stdout ~-TOKEN201711241811_OTHERDIRECTORY[0m
+[38;5;239m  01: cd ./TOKEN201711241833_SUBDIRECTORY
+  02: /Users/vcombey/42shtester_save/tmp/write_on_stdout ~-TOKEN201711241833_OTHERDIRECTORY[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `^~-TOKEN201711241811_OTHERDIRECTORY$`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/TOKEN201711241811-/TOKEN201711241811_OTHERDIRECTORY`[0m
-[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/Users/vcombey/42shtester_save/tmp/TOKEN201711241811_OTHERDIRECTORY`[0m
-[38;5;239m  01: /TOKEN201711241811-TOKEN201711241811_OTHERDIRECTORY[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `^~-TOKEN201711241833_OTHERDIRECTORY$`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/TOKEN201711241833-/TOKEN201711241833_OTHERDIRECTORY`[0m
+[31m[38;5;34m  SUCCESS    expected_to_not match_regex `/Users/vcombey/42shtester_save/tmp/TOKEN201711241833_OTHERDIRECTORY`[0m
+[38;5;239m  01: /TOKEN201711241833-TOKEN201711241833_OTHERDIRECTORY[0m
 
   STDERR:
 [38;5;239m  (no output)[0m
@@ -1629,15 +1629,15 @@
   04: export PATH="/Users/vcombey/42shtester_save/tmp/virtual_path_1:/Users/vcombey/42shtester_save/tmp/virtual_path_2"[0m
 
   STDIN:
-[38;5;239m  01: fake_echo TOKEN201711241811[0m
+[38;5;239m  01: fake_echo TOKEN201711241833[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex TOKEN201711241811[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex TOKEN201711241833[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
 [31m[38;5;160m  FAILURE    expected_to be_empty[0m
-[38;5;239m  01: TOKEN201711241811[0m
+[38;5;239m  01: TOKEN201711241833[0m
 
   MISC:
 [31m[38;5;160m  FAILURE    expected_to exit_with_status `0`[0m
@@ -1653,10 +1653,10 @@
 [38;5;239m  01: export PATH=""[0m
 
   STDIN:
-[38;5;239m  01: write_on_stdout "TOKEN201711241811"[0m
+[38;5;239m  01: write_on_stdout "TOKEN201711241833"[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:
@@ -1674,15 +1674,15 @@
 [38;5;239m  The purpose of this test is to check that the Shell retrieves the default value of the environment variable PATH if not set. This test depends on the presence of the UNIX binary `ls`, located in a path within the default environment variable PATH.[0m
 
   Before test:
-[38;5;239m  01: rm -rf "TOKEN201711241811_006-BINARY-UNDEFINED-PATH"
-  02: touch "TOKEN201711241811_006-BINARY-UNDEFINED-PATH"
+[38;5;239m  01: rm -rf "TOKEN201711241833_006-BINARY-UNDEFINED-PATH"
+  02: touch "TOKEN201711241833_006-BINARY-UNDEFINED-PATH"
   03: unset PATH[0m
 
   STDIN:
 [38;5;239m  01: ls[0m
 
   STDOUT:
-[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241811_006-BINARY-UNDEFINED-PATH`[0m
+[31m[38;5;160m  FAILURE    expected_to match_regex `TOKEN201711241833_006-BINARY-UNDEFINED-PATH`[0m
 [38;5;239m  (no output)[0m
 
   STDERR:

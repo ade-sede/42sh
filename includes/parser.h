@@ -1,8 +1,8 @@
-#ifndef AUTOMATON_H
-# define AUTOMATON_H
-#include "libft.h"
-#include "t_token.h"
-#include "t_ast.h"
+#ifndef PARSER_H
+# define PARSER_H
+# include "libft.h"
+# include "t_token.h"
+# include "t_ast.h"
 
 # ifndef PARSER_ERROR
 #  define PARSER_REOPEN 2
@@ -17,7 +17,8 @@
 # ifndef FIRST_REDUCE_RULE
 #  define FIRST_REDUCE_RULE 4242
 # endif
-enum shift {
+
+enum	e_shift {
 	s0,
 	s1,
 	s2,
@@ -2315,7 +2316,7 @@ enum shift {
 	r182,
 };
 
-enum e_symbol {
+enum	e_symbol {
 	PROGRAM = 1,
 	COMPLETE_COMMANDS,
 	COMPLETE_COMMAND,
@@ -2365,13 +2366,13 @@ enum e_symbol {
 	SEQUENTIAL_SEP,
 };
 
-typedef struct s_rule
+typedef struct	s_rule
 {
-	enum e_symbol	symbol;	
+	enum e_symbol	symbol;
 	int				nb_child;
 }				t_rule;
 
-struct s_token_to_prompt
+struct			s_token_to_prompt
 {
 	int			id;
 	char		*string;
@@ -2383,7 +2384,7 @@ typedef struct	s_state_lst
 	int					state;
 }				t_state_lst;
 
-t_state_lst	*new_state_lst(int n);
+t_state_lst		*new_state_lst(int n);
 
 typedef struct	s_ast_lst
 {
@@ -2391,8 +2392,8 @@ typedef struct	s_ast_lst
 	t_ast				*ast;
 }				t_ast_lst;
 
-t_ast_lst	*new_ast_lst(t_ast *ast);
-void	free_ast_node(void *ast_node);
+t_ast_lst		*new_ast_lst(t_ast *ast);
+void			free_ast_node(void *ast_node);
 
 typedef struct	s_parser
 {
@@ -2401,13 +2402,14 @@ typedef struct	s_parser
 	t_state_lst	*state_stack;
 }				t_parser;
 
-int			get_action(t_token *token, int state);
-t_ast		*new_ast(t_token *token, int symbol);
-int		get_goto(t_state_lst *state_stack, int reduce_rule);
-void	reduce(t_state_lst **state_stack, t_ast_lst **ast_stack, int reduce_rule);
-void	init_parser(t_parser *parser);
-int			parse(t_parser *parser, t_ast **ast, t_list *token_list);
-void		ast_print(t_ast *root, void (printer) (void *));
-char	*parser_construct_prompt(t_ast_lst	*ast_stack);
+int				get_action(t_token *token, int state);
+t_ast			*new_ast(t_token *token, int symbol);
+int				get_goto(t_state_lst *state_stack, int reduce_rule);
+void			reduce(t_state_lst **state_stack, t_ast_lst **ast_stack, \
+		int reduce_rule);
+void			init_parser(t_parser *parser);
+int				parse(t_parser *parser, t_ast **ast, t_list *token_list);
+void			ast_print(t_ast *root, void (printer) (void *));
+char			*parser_construct_prompt(t_ast_lst	*ast_stack);
 
 #endif

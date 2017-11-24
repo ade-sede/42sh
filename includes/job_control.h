@@ -48,27 +48,27 @@ typedef struct	s_job_control
 	int		shell_is_interactive;
 }				t_job_control;
 
-
-void	init_job_control(t_job_control *jc);
-int		launch_job(t_job_control *jc, t_job *j, int foreground);
-int		put_job_in_foreground(t_job_control *jc, t_job *j, int cont, int in_a_fork);
-int		put_job_in_background(t_job *j, int cont);
-int		wait_for_job(t_job_control *jc, t_job *j);
-int		mark_process_status(t_job_control *jc, pid_t pid, int status);
-void	do_job_notification(t_job_control *jc);
-int		job_is_stopped(t_job *j);
-int		job_is_completed(t_job *j);
-void	mark_job_as_running(t_job *j);
-void	continue_job(t_job *j, int foreground);
-t_job	*find_job(t_job_control *jc, pid_t pgid);
-void	format_job_info(t_job *j, const char *status);
-t_job	*job_new();
-t_process	*process_new(t_ast *command);
+void			init_job_control(t_job_control *jc);
+int				launch_job(t_job_control *jc, t_job *j, int foreground);
+int				put_job_in_foreground(t_job_control *jc, t_job *j, int cont, \
+		int in_a_fork);
+int				put_job_in_background(t_job *j, int cont);
+int				wait_for_job(t_job_control *jc, t_job *j);
+int				mark_process_status(t_job_control *jc, pid_t pid, int status);
+void			do_job_notification(t_job_control *jc);
+int				job_is_stopped(t_job *j);
+int				job_is_completed(t_job *j);
+void			mark_job_as_running(t_job *j);
+void			continue_job(t_job *j, int foreground);
+t_job			*find_job(t_job_control *jc, pid_t pgid);
+void			format_job_info(t_job *j, const char *status);
+t_job			*job_new();
+t_process		*process_new(t_ast *command);
 t_job_control	*singleton_jc(void);
-void	format_job_info_process(t_job *j, const char *status);
-void	format_job_info_process(t_job *j, const char *status);
-void	update_status(t_job_control *jc);
-void	job_free(t_job *job);
-t_process	*fill_process_av(t_ast *ast, t_process *process);
+void			format_job_info_process(t_job *j, const char *status);
+void			format_job_info_process(t_job *j, const char *status);
+void			update_status(t_job_control *jc);
+void			job_free(t_job *job);
+t_process		*fill_process_av(t_ast *ast, t_process *process);
 
 #endif

@@ -31,5 +31,5 @@ int							env_free_env(t_env *env);
 t_env						*singleton_env();
 int							env_copy_env(t_env *new_env, t_env *old_env);
 int							create_ternary_tree(t_env *env);
-#endif
 
+#endif
