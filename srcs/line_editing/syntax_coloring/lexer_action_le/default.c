@@ -1,8 +1,21 @@
-#include "syntax_coloring.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   default.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/23 20:10:09 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 12:35:09 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lexer.h"
+#include "syntax_coloring.h"
 #include "libft.h"
 
-int		lex_action_default_le(t_lexer *lex, ssize_t **state_info, t_line *line)
+int		lex_action_default_le(t_lexer *lex, struct s_info **state_info, \
+		t_line *line)
 {
 	if (lex->line[lex->pos] == 0)
 		return (TRUE);
@@ -12,14 +25,6 @@ int		lex_action_default_le(t_lexer *lex, ssize_t **state_info, t_line *line)
 		push_state_le(lex, NEWLINE);
 	else if (CHAR_IS_OPERATOR(lex->line[lex->pos]))
 		push_state_le(lex, OPERATOR);
-/*
-**		else if (lex->line[lex->pos] == '"')
-**			push_state_le(lex, DQUOTES);
-*/
-	/*
-**		else if (lex->line[lex->pos] == '\'')
-**			push_state_le(lex, QUOTES);
-*/
 	else if (lex->line[lex->pos] == '#')
 		push_state_le(lex, COMMENT);
 	else

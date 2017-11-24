@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_token.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/23 20:53:05 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/23 20:55:09 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "lexer.h"
 
-static struct s_lex_action g_lex_action[] = 
+static struct s_lex_action g_lex_action[] =
 {
 	{DEFAULT, &lex_action_default},
 	{WORD, &lex_action_word},
@@ -28,13 +40,16 @@ static struct s_lex_action g_lex_action[] =
 
 /*
 ** LOCAL_VAR:
-** 		state_info is a cache. The last token or minitoken we delimited is storred.
+** 		state_info is a cache. The last token or minitoken we delimited is
+** 		storred.
 **	Cycle of life :
-**	Step 1 = Delimitation automata.
-**		- Find the set of possible actions corresponding to the current state.
-**		- Within this set, find the exact action corresponding to the given input.
-**		- Work is done when we came back to our original state and the last state we poped was complete (has an end defined).
-**	During delimitation of a token, we may enter different states, and delimit "mini-tokens".
+**	Step 1 = Delimitation automata.  - Find the set of possible actions
+**	corresponding to the current state.  - Within this set, find the exact
+**	action corresponding to the given input.  - Work is done when we came back
+**	to our original state and the last state we poped was complete (has an end
+**	defined).
+**	During delimitation of a token, we may enter different states, and delimit
+**	"mini-tokens".
 **	Step 2 = Token creation followed by token identification
 */
 
@@ -48,8 +63,6 @@ static struct s_lex_action g_lex_action[] =
 **	Returning function pointer is tricky ...
 */
 
-#include <stdio.h>
-
 static int	(*get_action(ssize_t state))(t_lexer *, struct s_info **)
 {
 	size_t	i;
@@ -60,31 +73,24 @@ static int	(*get_action(ssize_t state))(t_lexer *, struct s_info **)
 	return (g_lex_action[i].func);
 }
 
-t_token	*get_token(t_lexer *lex)
+t_token		*get_token(t_lexer *lex)
 {
-	/* INIT */
-	/* ssize_t	*state_info; */
-	struct s_info *state_info;
-	t_token	*token;
-	int		ret;
+	struct s_info	*state_info;
+	t_token			*token;
+	int				ret;
 
 	ret = TRUE;
 	token = NULL;
 	state_info = NULL;
-
-	/* DELIM */
 	while (ret)
 	{
 		if (((struct s_info*)lex->state->data)->state == DEFAULT)
-		{
 			if (state_info && state_info->count != 0)
-					break ;
-		}
-		ret = get_action(((struct s_info*)lex->state->data)->state)(lex, &state_info);
+				break ;
+		ret = get_action(((struct s_info*)lex->state->data)->state)\
+			(lex, &state_info);
 	}
-
-	/* Check for errors */
-	if (((struct s_info*)lex->state->data)->state == DEFAULT) /* If everything is ok, TOKENIZE */
+	if (((struct s_info*)lex->state->data)->state == DEFAULT)
 	{
 		token = create_token(lex->line, state_info, lex->pos);
 		get_token_id(lex, token);

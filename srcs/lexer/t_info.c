@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bs.c                                               :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/23 19:51:23 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/23 19:51:24 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/11/23 19:36:13 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/23 20:40:48 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "lexer.h"
+#include "libft.h"
 
-int		lex_action_bs(t_lexer *lex, struct s_info **state_info)
+void			free_info(void *ptr)
 {
 	struct s_info *info;
 
-	info = lex->state->data;
-	if (lex->line[lex->pos] == 0)
-		return (FALSE);
-	else if (info->count == 2)
+	info = ptr;
+	if (info)
 	{
-		if (info->value.str[1] == '\n' && lex->line[lex->pos] == 0)
-			return (FALSE);
-		pop_state(lex, state_info);
+		if (info->value.str)
+			w_free(&info->value);
+		free(info);
 	}
-	else
-		consume_input(lex);
-	return (TRUE);
+}
+
+struct s_info	*create_state_info(void)
+{
+	struct s_info *info;
+
+	info = palloc(sizeof(*info));
+	ft_memset(info, 0, sizeof(*info));
+	w_newword(&info->value);
+	return (info);
+}
+
+void			copy_state_info(struct s_info *old_info, struct s_info *new_i)
+{
+	ft_memcpy(new_i, old_info, sizeof(struct s_info));
 }

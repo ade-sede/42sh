@@ -25,28 +25,36 @@
 struct	s_lex_action_le
 {
 	ssize_t	state;
-	int		(*func)(t_lexer *, ssize_t **, t_line *);
+	int		(*func)(t_lexer *, struct s_info **, t_line *);
 };
 
-int		loop_le_delim(t_lexer *lex, t_line *line);
-int		delim(t_lexer *lex, t_line *line);
-void	write_term(t_line *line, size_t i);
-ssize_t	*create_state_info_le(void);
-void	copy_state_info_le(ssize_t *old_info, ssize_t *new_info);
-int		push_state_le(t_lexer *lex, ssize_t new_state);
-int		consume_input_le(t_lexer *lex, t_line *line);
-int		pop_state_le(t_lexer *lex, ssize_t	**info);
-int		change_state_le(t_lexer *lex, ssize_t new_state);
+struct	s_color_match
+{
+	int			state;
+	const char	*color;
+};
 
-int		lex_action_bs_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_cmd_subst_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_comment_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_default_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_dquotes_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_newline_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_operator_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_param_exp_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_quotes_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_whitespace_le(t_lexer *lex, ssize_t **state_info, t_line *line);
-int		lex_action_word_le(t_lexer *lex, ssize_t **state_info, t_line *line);
+int			delim(t_lexer *lex, t_line *line);
+int			loop_le_delim(t_lexer *lex, t_line *line);
+const char	*get_color(int state);
+void		write_term(t_line *line, size_t i);
+
+
+int		change_state_le(t_lexer *lex, int new_state);
+int		pop_state_le(t_lexer *lex, struct s_info **info);
+int		consume_input_le(t_lexer *lex, t_line *line);
+int		push_state_le(t_lexer *lex, int new_state);
+
+int		lex_action_default_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_word_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_whitespace_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_dquotes_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_quotes_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_bs_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_operator_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_newline_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_comment_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_param_exp_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_cmd_subst_le(t_lexer *lex, struct s_info **state_info, t_line *line);
+int		lex_action_ar_exp_le(t_lexer *lex, struct s_info **state_info, t_line *line);
 #endif
