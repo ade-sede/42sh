@@ -144,13 +144,26 @@ SRC_FILE = \
 		   history/btsearch_move.c \
 		   history/btsearch_refresh.c \
 		   history/btsearch_signals.c \
-		   history/expansion.c \
 		   history/history_get_input.c \
 		   history/history_init.c \
 		   history/history_line_refresh.c \
 		   history/history_move.c \
 		   history/history_write.c \
 		   history/load_history.c \
+		   \
+		history/bang/bang_expand.c \
+		history/bang/trunc.c \
+		history/bang/subst.c \
+		history/bang/modifiers_utils.c \
+		history/bang/apply_quotes.c \
+		history/bang/lex_loop.c \
+		history/bang/parse_word_range.c \
+		history/bang/string_event.c \
+		history/bang/state.c \
+		history/bang/find_event.c \
+		history/bang/event_expand.c \
+		history/bang/modifier_expand.c \
+		history/bang/word_designator_expand.c \
 		   \
 		   job_control/job_background.c \
 		   job_control/job_is.c \
@@ -264,6 +277,7 @@ INCLUDES_FILES = \
 				 glob_struct.h \
 				 hash_table.h \
 				 history.h \
+				 bang.h \
 				 job_control.h \
 				 lexer.h \
 				 line_editing.h \
@@ -338,6 +352,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/exec/expand/
 	@/bin/mkdir -p $(OBJ_DIR)/globing
 	@/bin/mkdir -p $(OBJ_DIR)/history
+	@/bin/mkdir -p $(OBJ_DIR)/history/bang
 	@/bin/mkdir -p $(OBJ_DIR)/lexer
 	@/bin/mkdir -p $(OBJ_DIR)/lexer/id/
 	@/bin/mkdir -p $(OBJ_DIR)/lexer/lexer_action/
