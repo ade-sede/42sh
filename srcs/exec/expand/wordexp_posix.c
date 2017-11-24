@@ -26,40 +26,32 @@ static char		**list_to_array(t_list *lst)
 	return (res);
 }
 
-static char		**pathname_expension(t_expand *exp)
+static char		**pathname_expension(t_expand *ex)
 {
-	t_list		*match_list;
+	t_list		*ml;
 	size_t		i;
 	char		*no_match[2];
-	char		**matches;
 	char		**av;
 
 	av = ft_memalloc(sizeof(char *) * (1));
 	no_match[1] = NULL;
-	i = 0;
-	while (i < exp->actlen)
-	{
-		match_list = NULL;
-		if (has_glob_char(exp->av_gword[i]))
-			match_list = glob(exp->av_gword[i]);
-		if (match_list)
+	i = -1;
+	while (++i < ex->actlen)
+		if ((ml = (has_glob_char(ex->av_gword[i])) ? glob(ex->av_gword[i]) : 0))
 		{
-			matches = list_to_array(match_list);
-			av = ft_arrayjoin_free(av, matches, 0b11);
-			ft_simple_lst_remove(&match_list, NULL);
-			ft_strdel(&exp->av_word[i]);
-			ft_strdel(&exp->av_gword[i]);
+			av = ft_arrayjoin_free(av, list_to_array(ml), 0b11);
+			ft_simple_lst_remove(&ml, NULL);
+			ft_strdel(&ex->av_word[i]);
+			ft_strdel(&ex->av_gword[i]);
 		}
 		else
 		{
-			no_match[0] = exp->av_word[i];
+			no_match[0] = ex->av_word[i];
 			av = ft_arrayjoin_free(av, no_match, 0b10);
-			ft_strdel(&exp->av_gword[i]);
+			ft_strdel(&ex->av_gword[i]);
 		}
-		i++;
-	}
-	free(exp->av_gword);
-	free(exp->av_word);
+	free(ex->av_gword);
+	free(ex->av_word);
 	return (av);
 }
 
@@ -82,26 +74,19 @@ static char		**brace_expension(const char *words)
 	return (matches);
 }
 
-static int		parse_loop(const char *words, t_expand *exp)
+static void		parse_loop(const char *words, t_expand *exp)
 {
 	w_newword(&exp->word);
 	w_newword(&exp->g_word);
-	exp->offset = 0;
+	exp->offset = -1;
 	exp->words = words;
-	while (words[exp->offset])
-	{
+	while (words[++exp->offset])
 		if (words[exp->offset] == '\\')
 			parse_backslash(&exp->g_word, &exp->word, words, &exp->offset);
-		else if (words[exp->offset] == '"')
-		{
-			++exp->offset;
+		else if (words[exp->offset] == '"' && ++exp->offset)
 			parse_dquote(exp);
-		}
-		else if (words[exp->offset] == '\'')
-		{
-			++exp->offset;
+		else if (words[exp->offset] == '\'' && ++exp->offset)
 			parse_squote(&exp->g_word, &exp->word, words, &exp->offset);
-		}
 		else if (words[exp->offset] == '`')
 			parse_backtick(exp, 0);
 		else if (words[exp->offset] == '$')
@@ -113,11 +98,8 @@ static int		parse_loop(const char *words, t_expand *exp)
 			w_addchar(&exp->word, words[exp->offset]);
 			w_addchar(&exp->g_word, words[exp->offset]);
 		}
-		exp->offset++;
-	}
 	if (exp->word.str != NULL)
 		w_addword(exp, &exp->g_word, &exp->word);
-	return (0);
 }
 
 char			**word_expansion(const char *words, int flag)
