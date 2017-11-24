@@ -2,7 +2,12 @@
 #include "t_token.h"
 #include "automaton.txt"
 
-int token_table[] = {DOLAR,TK_AND,TK_LPAREN,TK_RPAREN,TK_SEMI,TK_LESS,TK_GREAT,TK_AND_IF,TK_ASSIGNMENT_WORD,TK_BANG,TK_CLOBBER,TK_CASE,TK_DGREAT,TK_DLESS,TK_DLESSDASH,TK_DSEMI,TK_DO,TK_DONE,TK_ELIF,TK_ELSE,TK_ESAC,TK_FI,TK_FOR,TK_GREATAND,TK_IO_NUMBER,TK_IF,TK_IN,TK_LESSAND,TK_LESSGREAT,TK_LBRACE,TK_NAME,TK_NEWLINE,TK_OR_IF,TK_RBRACE,TK_THEN,TK_UNTIL,TK_WORD,TK_WHILE,TK_PIPE};
+int g_token_table[] = {DOLAR, TK_AND, TK_LPAREN, TK_RPAREN, TK_SEMI, TK_LESS,
+	TK_GREAT, TK_AND_IF, TK_ASSIGNMENT_WORD, TK_BANG, TK_CLOBBER, TK_CASE,
+	TK_DGREAT, TK_DLESS, TK_DLESSDASH, TK_DSEMI, TK_DO, TK_DONE, TK_ELIF,
+	TK_ELSE, TK_ESAC, TK_FI, TK_FOR, TK_GREATAND, TK_IO_NUMBER, TK_IF, TK_IN,
+	TK_LESSAND, TK_LESSGREAT, TK_LBRACE, TK_NAME, TK_NEWLINE, TK_OR_IF,
+	TK_RBRACE, TK_THEN, TK_UNTIL, TK_WORD, TK_WHILE, TK_PIPE};
 
 /*
 **	l etat acceptant est mis a 10000 arbitrairement et l etat r0 a 4242
@@ -10,24 +15,22 @@ int token_table[] = {DOLAR,TK_AND,TK_LPAREN,TK_RPAREN,TK_SEMI,TK_LESS,TK_GREAT,T
 
 int		get_action(t_token *token, int state)
 {
-	int		col = 0;
+	int		col;
 	int		line;
-	int	nb_col = 39;
+	int		nb_col;
 
-//	printf(MAG"#"CYN"%s, %d"MAG"#\n"RESET , token->value, token->id);
-	while (col < nb_col && token_table[col] != token->id)
+	col = 0;
+	nb_col = 39;
+	while (col < nb_col && g_token_table[col] != token->id)
 		col++;
 	if (col == nb_col && token->id != 42)
-	{
-//		printf("Eror get action bad token\n");
 		return (-1);
-	}
 	line = state;
 	return (g_lr_table[line][col]);
 }
 
 /*
-**	const static char *rules[112] = {
+**	const static char *g_rules[112] = {
 **		"$accept -> program $end",
 **		"program -> linebreak complete_commands linebreak",
 **		"program -> linebreak",
@@ -258,18 +261,19 @@ static const t_rule	g_rule_table[] = {
 	{SEQUENTIAL_SEP, 1},
 };
 
-void	reduce(t_state_lst **state_stack, t_ast_lst **ast_stack, int reduce_rule)
+void	reduce(t_state_lst **state_stack, t_ast_lst **ast_stack, \
+		int reduce_rule)
 {
 	t_rule			rule;
 	int				nb_child;
 	enum e_symbol	symbol;
 	t_ast			*new;
-	int				i = 0;
+	int				i;
 
+	i = 0;
 	rule = g_rule_table[reduce_rule];
 	nb_child = rule.nb_child;
 	symbol = rule.symbol;
-//	printf("reduce by rule : %s\n", rules[reduce_rule]);
 	new = new_ast(NULL, symbol);
 	i = nb_child - 1;
 	while (i >= 0)
@@ -282,7 +286,15 @@ void	reduce(t_state_lst **state_stack, t_ast_lst **ast_stack, int reduce_rule)
 	ft_genlst_add(ast_stack, ft_simple_lst_create(new));
 }
 
-static const enum e_symbol	g_symbol_table[47] = {AND_OR,BRACE_GROUP,CASE_CLAUSE,CASE_ITEM,CASE_ITEM_NS,CASE_LIST,CASE_LIST_NS,CMD_NAME,CMD_PREFIX,CMD_SUFFIX,CMD_WORD,COMMAND,COMPLETE_COMMAND,COMPLETE_COMMANDS,COMPOUND_COMMAND,COMPOUND_LIST,DO_GROUP,ELSE_PART,FILENAME,FNAME,FOR_CLAUSE,FUNCTION_BODY,FUNCTION_DEFINITION,HERE_END,IF_CLAUSE,SYM_IN,IO_FILE,IO_HERE,IO_REDIRECT,LINEBREAK,LIST,NAME,NEWLINE_LIST,PATTERN,PIPE_SEQUENCE,PIPELINE,PROGRAM,REDIRECT_LIST,SEPARATOR,SEPARATOR_OP,SEQUENTIAL_SEP,SIMPLE_COMMAND,SUBSHELL,TERM,UNTIL_CLAUSE,WHILE_CLAUSE,WORDLIST};
+static const enum e_symbol	g_symbol_table[47] = {AND_OR, BRACE_GROUP,
+	CASE_CLAUSE, CASE_ITEM, CASE_ITEM_NS, CASE_LIST, CASE_LIST_NS, CMD_NAME,
+	CMD_PREFIX, CMD_SUFFIX, CMD_WORD, COMMAND, COMPLETE_COMMAND,
+	COMPLETE_COMMANDS, COMPOUND_COMMAND, COMPOUND_LIST, DO_GROUP, ELSE_PART,
+	FILENAME, FNAME, FOR_CLAUSE, FUNCTION_BODY, FUNCTION_DEFINITION, HERE_END,
+	IF_CLAUSE, SYM_IN, IO_FILE, IO_HERE, IO_REDIRECT, LINEBREAK, LIST, NAME,
+	NEWLINE_LIST, PATTERN, PIPE_SEQUENCE, PIPELINE, PROGRAM, REDIRECT_LIST,
+	SEPARATOR, SEPARATOR_OP, SEQUENTIAL_SEP, SIMPLE_COMMAND, SUBSHELL, TERM,
+	UNTIL_CLAUSE, WHILE_CLAUSE, WORDLIST};
 
 int		get_goto(t_state_lst *state_stack, int reduce_rule)
 {
@@ -290,21 +302,22 @@ int		get_goto(t_state_lst *state_stack, int reduce_rule)
 	int				col;
 	int				res_state;
 	int				offset;
-	int			symbol_table_len = 47;
+	int				symbol_table_len;
 
 	offset = 39;
-
+	symbol_table_len = 47;
 	symbol = g_rule_table[reduce_rule].symbol;
 	res_state = -1;
 	col = 0;
 	while (col < symbol_table_len)
 	{
 		if (g_symbol_table[col] == symbol)
-			break;
+			break ;
 		col++;
 	}
 	col += offset;
-	if ((col == symbol_table_len + offset) || (res_state = g_lr_table[state_stack->state][col]) == -1)
+	if ((col == symbol_table_len + offset) || \
+			(res_state = g_lr_table[state_stack->state][col]) == -1)
 	{
 		printf("goto error state -1 \n");
 		return (-1);

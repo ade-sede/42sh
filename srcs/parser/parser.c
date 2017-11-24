@@ -3,35 +3,38 @@
 #include <stdio.h>
 #include "exec.h"
 
-void			debug_pstate(t_listint *stack)
-{
-	t_listint	*tmp;
+/*
+**	void			debug_pstate(t_listint *stack)
+**	{
+**		t_listint	*tmp;
+**
+**		printf("state_stack: ");
+**		tmp = stack;
+**		while (tmp)
+**		{
+**			dprintf(1, "%d ", tmp->data);
+**			tmp = tmp->next;
+**		}
+**		ft_putchar('\n');
+**	}
+**
+**	void			debug_ast_stack(t_list *ast_stack)
+**	{
+**		t_list	*tmp;
+**
+**		printf("state_stack: \n");
+**		tmp = ast_stack;
+**		while (tmp)
+**		{
+**			debug_symbol(tmp->data);
+**			tmp = tmp->next;
+**		}
+**		ft_putchar('\n');
+**	}
+**
+*/
 
-	printf("state_stack: ");
-	tmp = stack;
-	while (tmp)
-	{
-		dprintf(1, "%d ", tmp->data);
-		tmp = tmp->next;
-	}
-	ft_putchar('\n');
-}
-
-void			debug_ast_stack(t_list *ast_stack)
-{
-	t_list	*tmp;
-
-	printf("state_stack: \n");
-	tmp = ast_stack;
-	while (tmp)
-	{
-		debug_symbol(tmp->data);
-		tmp = tmp->next;
-	}
-	ft_putchar('\n');
-}
-
-int				check_reopen(t_ast_lst *ast_stack, t_list *token)
+static int		check_reopen(t_ast_lst *ast_stack, t_list *token)
 {
 	int		reopen;
 
@@ -40,32 +43,6 @@ int				check_reopen(t_ast_lst *ast_stack, t_list *token)
 		return (PARSER_REOPEN);
 	dprintf(2, "42sh: parse error near `%s'\n", ((t_token*)token->data)->value);
 	return (PARSER_ERROR);
-}
-
-t_state_lst		*state_lst_new(int n)
-{
-	t_state_lst *new;
-
-	new = ft_memalloc(sizeof(t_state_lst));
-	new->state = n;
-	return (new);
-}
-
-t_ast_lst		*ast_lst_new(t_ast *ast)
-{
-	t_ast_lst *new;
-
-	new = ft_memalloc(sizeof(t_ast_lst));
-	new->ast = ast;
-	return (new);
-}
-
-void			init_parser(t_parser *parser)
-{
-	ft_bzero(parser, sizeof(parser));
-	parser->state = 0;
-	parser->ast_stack = NULL;
-	parser->state_stack = state_lst_new(0);
 }
 
 static t_token	*init_dollar(void)

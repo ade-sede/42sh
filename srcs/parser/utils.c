@@ -1,7 +1,7 @@
 #include "parser.h"
 #include <ncurses.h>
 
-void	free_ast_node(void *ast_node)
+void		free_ast_node(void *ast_node)
 {
 	free_ast(((t_ast_lst *)ast_node)->ast);
 }
