@@ -4,20 +4,6 @@
 #include "hash_table.h"
 #include "local.h"
 
-static int	load_color(t_env *env)
-{
-	local_add_change_from_key_value(env, "word_color", RESET);
-	local_add_change_from_key_value(env, "default_color", RESET);
-	local_add_change_from_key_value(env, "comment_color", RESET);
-	local_add_change_from_key_value(env, "operator_color", PNK);
-	local_add_change_from_key_value(env, "param_exp_color", BLU);
-	local_add_change_from_key_value(env, "cmd_subst_color", RESET);
-	local_add_change_from_key_value(env, "dquotes_color", YEL);
-	local_add_change_from_key_value(env, "quotes_color", MAG);
-	local_add_change_from_key_value(env, "bs_color", CYN);
-	return (1);
-}
-
 static int	load_special_params(t_env *env)
 {
 	char	*pid_string;
@@ -54,7 +40,6 @@ void		env_load_base_env(t_env *env, const char **environ)
 	}
 	create_hash_table(&env->hash_table, env->environ);
 	load_special_params(env);
-	load_color(env);
 }
 
 void		env_load_shlvl_pwd(t_env *env)
