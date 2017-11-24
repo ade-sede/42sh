@@ -37,6 +37,8 @@ int		exec_for_clause(t_ast *ast)
 	t_ast		*do_group;
 	char		*var;
 
+	if (!ast->child[6])
+		return (EXIT_SUCCESS);
 	if (ast->child[4] && is_symb(ast->child[4], WORDLIST))
 		array_word = expand_wordlist(ast->child[4], NULL);
 	else
@@ -50,5 +52,6 @@ int		exec_for_clause(t_ast *ast)
 		exec(do_group);
 		++i;
 	}
+	ft_arraydel(&array_word);
 	return (EXIT_SUCCESS);
 }

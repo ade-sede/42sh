@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_token.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/23 19:33:30 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/23 19:33:52 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "t_token.h"
 #include "lexer.h"
@@ -7,7 +19,7 @@
 **	storing many infos about the token.
 */
 
-t_token		*create_token(const char *source, struct s_info *info, size_t end_index)
+t_token	*create_token(const char *source, struct s_info *info, size_t end_index)
 {
 	t_token		*token;
 
@@ -33,7 +45,7 @@ t_token	*dup_token(t_token *original)
 	return (new);
 }
 
-void		free_token(void *value)
+void	free_token(void *value)
 {
 	t_token *token;
 

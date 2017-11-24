@@ -24,6 +24,9 @@
 # ifndef PNK
 #  define PNK "\x1B[95m"
 # endif
+# ifndef GREY
+#  define GREY "\x1B[248m"
+# endif
 # ifndef RESET
 #  define RESET "\x1B[0m"
 # endif
