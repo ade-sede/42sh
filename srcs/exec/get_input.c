@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "printf.h"
 #include "environ.h"
 #include <fcntl.h>
 #include <stdlib.h>
@@ -9,6 +10,7 @@
 #include "modes.h"
 #include "get_next_line.h"
 #include "lexer.h"
+#include "bang.h"
 
 char	*line_editing_get_line(t_line *line, t_hist *hist,
 		void (*sig_handler)(void))
@@ -59,9 +61,19 @@ char	*string_get_line(t_modes *modes)
 
 int		get_input(t_modes *modes, char **buff)
 {
+	char	*tmp;
+
 	if (modes->mode == INTERACTIVE_MODE)
+	{
 		*buff = ft_strdup(line_editing_get_line(singleton_line(), \
 					singleton_hist(), &edit_set_signals_open));
+		if ((tmp = bang_expand((const char*)*buff, singleton_hist())))
+		{
+			if (!ft_strequ(tmp, *buff))
+				ft_dprintf(2, "%s\n", tmp);
+			*buff = ft_strchange(*buff, tmp);
+		}
+	}
 	else if (modes->mode == STRING_MODE)
 		*buff = string_get_line(modes);
 	else

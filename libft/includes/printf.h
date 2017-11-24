@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/17 14:55:42 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 13:10:32 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PRINTF_H
 # define PRINTF_H
 # include <string.h>
@@ -63,8 +75,8 @@ typedef struct	s_printf_info
 # define _P_HHMOD (0b10)
 # define _P_LMOD (0b100)
 # define _P_LLMOD (0b1000)
-# define _P_JMOD (0b10000);
-# define _P_ZMOD (0b100000);
+# define _P_JMOD (0b10000)
+# define _P_ZMOD (0b100000)
 
 /*
 **	Corresponding check macros.
@@ -162,7 +174,7 @@ int				p_sconv(t_pinfo pinfo, t_pab *buf, va_list ap);
 int				p_prec(t_pab *s_buf, size_t len, t_pinfo pinfo);
 int				p_padd(t_pab *s_buf, size_t len, t_pinfo pinfo);
 int				p_dconv(t_pinfo pinfo, t_pab *buf, va_list ap);
-
+int				p_uconv(t_pinfo pinfo, t_pab *s_buf, va_list ap);
 /*
 **	in file c_conv.c
 */
