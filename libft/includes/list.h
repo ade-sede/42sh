@@ -108,6 +108,7 @@ void			ft_simple_lst_foreach(t_list *start, \
 
 t_list_d		*ft_double_lst_get_n(t_list_d *first, int n);
 t_list			*ft_simple_lst_get_n(t_list	*first, size_t n);
+void			*ft_genlst_get_n(void *first, int n);
 
 /*
 **	In file ft_lst_last.c
@@ -164,6 +165,7 @@ void			ft_simple_lst_iteri(t_list *start, \
 		t_list *end, void (*f)(t_list*, size_t));
 
 size_t			ft_lst_len(t_list *lst);
+size_t			ft_genlst_len(void *lst);
 
 /*
 **	in file ft_lst_iteri.c

@@ -48,3 +48,20 @@ t_list		*ft_simple_lst_get_n(t_list *first, size_t n)
 	}
 	return (first);
 }
+
+void		*ft_genlst_get_n(void *first, int n)
+{
+	t_gen_lst	*first_cast;
+
+	first_cast = first;
+	if (n < 0)
+		n = ft_genlst_len(first) - n;
+	if (n < 0)
+		return (NULL);
+	while (first_cast && n)
+	{
+		n--;
+		first_cast = first_cast->next;
+	}
+	return (first_cast);
+}
