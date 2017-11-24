@@ -3,14 +3,14 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-int	bad_dir(char *dir_name)
+int				bad_dir(char *dir_name)
 {
 	free(dir_name);
 	return (0);
 }
 
-int	end_match_open_dir(t_matches *m, char *cpy_to_match[2], char *m_dir_cpy, \
-		int bool_match)
+int				end_match_open_dir(t_matches *m, char *cpy_to_match[2], \
+		char *m_dir_cpy, int bool_match)
 {
 	free(m->dir);
 	m->dir = m_dir_cpy;
@@ -34,7 +34,7 @@ static int		init(char **cpy_to_match, char **m_dir_cpy, char *dir_name,
 	return (0);
 }
 
-int	match_open_dir(t_matches *m, int m_i, int r_i, char *dir_name)
+int				match_open_dir(t_matches *m, int m_i, int r_i, char *dir_name)
 {
 	int				bool_match;
 	DIR				*dir;

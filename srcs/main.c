@@ -61,7 +61,7 @@ void	read_pointrc(t_env *env)
 	main_loop(env, &modes);
 }
 
-void	mode_first_set(t_modes	*modes)
+void	mode_first_set(t_modes *modes)
 {
 	modes->mode = FILE_MODE;
 	modes->stream = STDIN_FILENO;

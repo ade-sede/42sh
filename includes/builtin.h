@@ -116,4 +116,5 @@ typedef struct	s_builtin
 }				t_builtin;
 
 void			*get_exec_builtin(const char *argv);
+void			backslash(char **line, char **word, char quote);
 #endif
