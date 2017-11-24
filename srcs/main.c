@@ -61,10 +61,10 @@ void	read_pointrc(t_env *env)
 	main_loop(env, &modes);
 }
 
-void	mode_first_set(t_modes modes)
+void	mode_first_set(t_modes	*modes)
 {
-	modes.mode = FILE_MODE;
-	modes.stream = STDIN_FILENO;
+	modes->mode = FILE_MODE;
+	modes->stream = STDIN_FILENO;
 }
 
 int		main(int ac, char **av)
@@ -82,7 +82,7 @@ int		main(int ac, char **av)
 	if (modes.mode == 0)
 		init_job_control(jc);
 	if (!jc->shell_is_interactive && modes.mode == 0)
-		mode_first_set(modes);
+		mode_first_set(&modes);
 	if (modes.mode == INTERACTIVE_MODE)
 	{
 		conf_term_init();
