@@ -242,6 +242,8 @@ SRC_FILE = \
 		   parser/t_ast.c \
 		   \
 		   exec/expand/parse_dollar.c \
+		   exec/expand/eval_expr.c \
+		   exec/expand/parse_param.c \
 		   exec/expand/parse_arith.c \
 		   exec/expand/parse_quote.c \
 		   exec/expand/parse_tilde.c \

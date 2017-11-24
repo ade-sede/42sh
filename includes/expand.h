@@ -49,4 +49,9 @@ int		eval_expr_val (char **expr, long int *result);
 int		eval_expr_multdiv (char **expr, long int *result);
 int		eval_expr (char *expr, long int *result);
 int		parse_arith (t_expand *exp);
+int			eval_expr(char *expr, long int *result);
+int			eval_expr_multdiv(char **expr, long int *result);
+int			eval_expr_val(char **expr, long int *result);
+char		*skip_white_space(char *str);
+int				parse_param(t_expand *exp, int quoted);
 #endif
