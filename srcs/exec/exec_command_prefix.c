@@ -34,7 +34,7 @@ void	exec_assignment_word(t_ast *ast)
 	ft_arraydel(&word_expanded);
 }
 
-int	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
+int		exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
 {
 	t_ast	*assignement_word;
 	t_ast	*io_redirect;
@@ -58,4 +58,3 @@ int	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
 		return (exec_cmd_prefix(ast->child[0], redirect_list));
 	return (1);
 }
-

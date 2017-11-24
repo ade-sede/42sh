@@ -11,37 +11,8 @@
 #include "parser.h"
 #include "local.h"
 
-void	exec_main_loop(t_ast *ast)
-{
-	int			exit_status;
-	char		nbr[20];
-
-	singleton_jc()->background = 0;
-	if (singleton_jc()->shell_is_interactive)
-	{
-		parse_heredoc(ast);
-		conf_term_canonical();
-	}
-	exit_status = exec(ast);
-	local_add_change_from_key_value(singleton_env(), "?",
-			ft_itoa_word(exit_status, nbr));
-	if (singleton_jc()->shell_is_interactive)
-		conf_term_non_canonical();
-}
-
-void	remove_lexer(t_lexer *lex, t_list **token_list)
-{
-	free_lexer(lex);
-	ft_simple_lst_remove(token_list, free_token);
-}
-
-void	remove_parser(t_parser *parser)
-{
-	ft_genlst_remove(&parser->state_stack, NULL);
-	ft_genlst_remove(&parser->ast_stack, free_ast_node);
-}
-
-void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list **token_list)
+static void		quit_lex_and_parse(t_lexer *lex, t_parser *parser, \
+		t_list **token_list)
 {
 	(void)token_list;
 	if (!g_abort_opening && singleton_jc()->shell_is_interactive)
@@ -50,7 +21,7 @@ void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list **token_list)
 	remove_parser(parser);
 }
 
-void	lex_reopen(t_list **token_list)
+static void		lex_reopen(t_list **token_list)
 {
 	t_token		*reopen_token;
 
@@ -86,7 +57,7 @@ static t_list	*init_sale(t_lexer *lexer, int *res, t_parser *parser, char *b)
 	return (NULL);
 }
 
-int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
+int				lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 {
 	t_lexer		lexer;
 	int			res_l_and_p[2];

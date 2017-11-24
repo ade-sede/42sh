@@ -77,6 +77,8 @@ SRC_FILE = \
 		   env/prompt/prompt_zsh.c \
 		   \
 		   exec/debug_symbol.c \
+		   exec/exec_main_loop.c \
+		   exec/remove_lexer_parser.c \
 		   exec/debug_token.c \
 		   exec/exec_asynchronous_list.c \
 		   exec/exec_bin.c \

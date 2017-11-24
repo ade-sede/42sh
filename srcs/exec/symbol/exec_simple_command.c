@@ -6,12 +6,12 @@
 #include "local.h"
 #include "job_control.h"
 
-char	*extract_word(t_ast *ast)
+char			*extract_word(t_ast *ast)
 {
 	return (ft_strdup(ast->token->value));
 }
 
-char	**get_cmd_name(t_ast *ast, int flag)
+char			**get_cmd_name(t_ast *ast, int flag)
 {
 	char	*word;
 
@@ -72,7 +72,7 @@ static int		layer_exec(char **av)
 	return (exit_status);
 }
 
-int		exec_simple_command(t_ast *ast)
+int				exec_simple_command(t_ast *ast)
 {
 	char	**av;
 	t_list	*redirect_list;
