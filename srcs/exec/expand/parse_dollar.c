@@ -44,7 +44,7 @@ char	*get_param(t_expand *exp, int *seen_hash)
 		}
 	}
 		/* Special parameter. */
-	else if (CHAR_IN_SET (exp->words[exp->offset], "*@$?"))
+	else if (CHAR_IN_SET (exp->words[exp->offset], "*@$?!"))
 	{
 		w_addchar (&env, exp->words[exp->offset]);
 		++exp->offset;
@@ -63,7 +63,7 @@ char	*get_param(t_expand *exp, int *seen_hash)
 **	poised after $
 */
 
-int		parse_param (t_expand *exp)
+int		parse_param (t_expand *exp, int quoted)
 {
 	char *value = NULL;
 	int seen_hash = 0;
@@ -95,56 +95,66 @@ int		parse_param (t_expand *exp)
 		w_addstr (&exp->word, ft_itoa_word((value ? ft_strlen (value) : 0), param_length));
 		return (0);
 	}
-	handle_fieldsplitting(value, exp);
+	handle_fieldsplitting(value, exp, quoted);
+	return (0);
+}
+
+/*  after $(( */
+
+static int		is_arith_expansion(t_expand *exp)
+{
+	int i;
+	int depth;
+
+	depth = 0;
+	i = 3 + exp->offset;
+	while (exp->words[i] && !(depth == 0 && exp->words[i] == ')'))
+	{
+		if (exp->words[i] == '(')
+			++depth;
+		else if (exp->words[i] == ')')
+			--depth;
+//		fprintf(stderr,"{%c} , %i\n", exp->words[i], i);
+		++i;
+	}
+	if (exp->words[i] == ')' && exp->words[i + 1] == ')')
+	{
+//		fprintf(stderr, "is arith exp");
+		return (1);
+	}
 	return (0);
 }
 
 /*  on "$" */
 
-int		parse_dollars (t_expand *exp)
+int		parse_dollars (t_expand *exp, int quoted)
 {
 	if (exp->words[1 + exp->offset] == '"' || exp->words[1 + exp->offset] == '\\' || exp->words[1 + exp->offset] == '\0')
 	{
 		w_addchar (&exp->word, '$');
 		return (0);
 	}
-	
+
 	if (exp->words[1 + exp->offset] == '(')
 	{
 		if (exp->words[2 + exp->offset] == '(')
 		{
-			/* Differentiate between $((1+3)) and $((echo);(ls)) */
-			int i = 3 + exp->offset;
-			int depth = 0;
-			while (exp->words[i] && !(depth == 0 && exp->words[i] == ')'))
-			{
-				if (exp->words[i] == '(')
-					++depth;
-				else if (exp->words[i] == ')')
-					--depth;
-
-				++i;
-			}
-
-			if (exp->words[i] == ')' && exp->words[i + 1] == ')')
+			if (is_arith_expansion(exp))
 			{
 				(exp->offset) += 3;
-				/* Call parse_arith -- 0 is for "no brackets" */
-				//return parse_arith (&exp->word, word_length, max_length, words, offset,
-//						exp->flags, 0);
-				return (0);
+				return (parse_arith (exp));
 			}
 		}
 #ifdef EXPAND_DEBUG
- fprintf(stderr,"parse dollar command substitution\n");
- #endif
+		fprintf(stderr,"parse dollar command substitution\n");
+#endif
 		(exp->offset) += 2;
-		return parse_comm (exp);
+		return parse_comm (exp, quoted);
 	}
 	/*case { ou deffault*/
 	else
 	{
 		++(exp->offset);
-		return parse_param (exp);
+		return parse_param (exp, quoted);
 	}
 }

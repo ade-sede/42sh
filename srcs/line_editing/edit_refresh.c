@@ -26,7 +26,7 @@ void	edit_refresh_line(t_line *line)
 	ret = DEFAULT;
 	if (singleton_env()->option & SYNCOLOR)
 	{
-		init_le_lexer(&lex, line->buff);
+		init_lexer(&lex, line->buff);
 		ret = loop_le_delim(&lex, line);
 		if (ret != DEFAULT)
 		{
@@ -34,7 +34,7 @@ void	edit_refresh_line(t_line *line)
 			ft_putchar_fd('_', 2);
 			ft_putstr_fd(RESET, 2);
 		}
-		free_lexer_le(&lex);
+		free_lexer(&lex);
 	}
 	else
 		term_putstr(line);

@@ -136,6 +136,21 @@ SRC = \
 	parr/ft_strarrstrn.c \
 	get_opt/get_opt.c \
 	get_opt/get_opt_display.c \
+	io/printf/asprintf.c \
+	io/printf/buff_loop.c \
+	io/printf/buff_start_conv.c \
+	io/printf/c_conv.c \
+	io/printf/d_conv.c \
+	io/printf/dprintf.c \
+	io/printf/numeric_conv.c \
+	io/printf/p_padd.c \
+	io/printf/p_prec.c \
+	io/printf/printf.c \
+	io/printf/printf_parse.c \
+	io/printf/s_conv.c \
+	io/printf/sprintf.c \
+	io/printf/u_conv.c \
+	io/printf/vasprintf.c
 
 NAME ?= libft.a
 
@@ -183,6 +198,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/array
 	@mkdir -p $(OBJ_DIR)/btree
 	@mkdir -p $(OBJ_DIR)/io
+	@mkdir -p $(OBJ_DIR)/io/printf
 	@mkdir -p $(OBJ_DIR)/lst
 	@mkdir -p $(OBJ_DIR)/math
 	@mkdir -p $(OBJ_DIR)/mem

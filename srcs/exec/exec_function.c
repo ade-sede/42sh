@@ -25,6 +25,7 @@ t_lst_func		*get_function(t_env *env, char *cmd_name)
 
 int		exec_function(t_ast *fct_body, char **av)
 {
-	add_pos_param(singleton_env(), (const char**)av, 0, 0);
+	if (av)
+		add_pos_param(singleton_env(), (const char**)av, 0, 0);
 	return (exec(fct_body));
 }

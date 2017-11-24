@@ -30,6 +30,7 @@ SRC_FILE = \
 		   builtin/fg.c \
 		   builtin/jobs.c \
 		   builtin/read.c \
+		   builtin/read_get_input.c \
 		   builtin/read_options.c \
 		   builtin/set.c \
 		   builtin/setenv.c \
@@ -69,7 +70,6 @@ SRC_FILE = \
 		   env/environ/environ.c \
 		   env/environ/load_base_env.c \
 		   \
-		   \
 		   env/prompt/get_ps1.c \
 		   env/prompt/prompt.c \
 		   env/prompt/prompt_zsh.c \
@@ -88,8 +88,6 @@ SRC_FILE = \
 		   exec/redir_utils.c \
 		   exec/get_input.c \
 		   exec/parse_heredoc.c \
-		   \
-		   \
 		   \
 		   exec/symbol/exec.c \
 		   exec/symbol/exec_and_or.c \
@@ -170,13 +168,16 @@ SRC_FILE = \
 		   lexer/t_lexer.c \
 		   lexer/t_token.c \
 		   lexer/utils.c \
+		   lexer/t_info.c \
 		   \
 		   lexer/id/get_token_id.c \
 		   lexer/id/operator.c \
 		   lexer/id/reserved_words.c \
 		   lexer/id/words.c \
+		   lexer/id/words_p2.c \
 		   \
 		   lexer/lexer_action/bs.c \
+		   lexer/lexer_action/ar_exp.c \
 		   lexer/lexer_action/cmd_subst.c \
 		   lexer/lexer_action/comment.c \
 		   lexer/lexer_action/default.c \
@@ -208,16 +209,35 @@ SRC_FILE = \
 		   line_editing/edit_signals.c \
 		   line_editing/edit_write.c \
 		   line_editing/put_termcap.c \
-		line_editing/edit_verbatim.c \
+		   line_editing/edit_verbatim.c \
+		   \
+			line_editing/syntax_coloring/get_color.c \
+			line_editing/syntax_coloring/delim.c \
+			line_editing/syntax_coloring/loop.c \
+			line_editing/syntax_coloring/utils.c \
+			\
+			line_editing/syntax_coloring/lexer_action_le/ar_exp.c \
+			line_editing/syntax_coloring/lexer_action_le/bs.c \
+			line_editing/syntax_coloring/lexer_action_le/cmd_subst.c \
+			line_editing/syntax_coloring/lexer_action_le/comment.c \
+			line_editing/syntax_coloring/lexer_action_le/default.c \
+			line_editing/syntax_coloring/lexer_action_le/dquotes.c \
+			line_editing/syntax_coloring/lexer_action_le/newline.c \
+			line_editing/syntax_coloring/lexer_action_le/operator.c \
+			line_editing/syntax_coloring/lexer_action_le/param_exp.c \
+			line_editing/syntax_coloring/lexer_action_le/quotes.c \
+			line_editing/syntax_coloring/lexer_action_le/whitespace.c \
+			line_editing/syntax_coloring/lexer_action_le/word.c \
 		   \
 		   parser/get_action.c \
 		   parser/parse_redir.c \
 		   parser/parser.c \
 		   parser/parser_construct_prompt.c \
 		   parser/utils.c \
-		   \
+		   parser/t_ast.c \
 		   \
 		   exec/expand/parse_dollar.c \
+		   exec/expand/parse_arith.c \
 		   exec/expand/parse_quote.c \
 		   exec/expand/parse_tilde.c \
 		   exec/expand/parse_backtick.c \
@@ -225,27 +245,11 @@ SRC_FILE = \
 		   exec/expand/utils.c \
 		   exec/expand/wordexp_posix.c \
 		   exec/expand/handle_fieldsplitting.c \
-		   exec/expand/parse_comm.c \
-		   \
-		   line_editing/syntax_coloring//delim.c \
-		   line_editing/syntax_coloring//loop.c \
-		   line_editing/syntax_coloring//utils.c \
-		   line_editing/syntax_coloring//write.c \
-		   \
-		   line_editing/syntax_coloring//lexer_action_le/bs.c \
-		   line_editing/syntax_coloring//lexer_action_le/cmd_subst.c \
-		   line_editing/syntax_coloring//lexer_action_le/comment.c \
-		   line_editing/syntax_coloring//lexer_action_le/default.c \
-		   line_editing/syntax_coloring//lexer_action_le/dquotes.c \
-		   line_editing/syntax_coloring//lexer_action_le/newline.c \
-		   line_editing/syntax_coloring//lexer_action_le/operator.c \
-		   line_editing/syntax_coloring//lexer_action_le/param_exp.c \
-		   line_editing/syntax_coloring//lexer_action_le/quotes.c \
-		   line_editing/syntax_coloring//lexer_action_le/whitespace.c \
-		   line_editing/syntax_coloring//lexer_action_le/word.c
+		   exec/expand/parse_comm.c
 
 INCLUDES_FILES = \
 				 builtin.h \
+				 syntax_coloring.h \
 				 shopt.h \
 				 completion.h \
 				 environ.h \

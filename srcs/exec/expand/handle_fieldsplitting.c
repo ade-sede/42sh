@@ -1,11 +1,11 @@
 #include "expand.h"
 #include "libft.h"
 
-int		handle_fieldsplitting (char *value, t_expand *exp)
+int		handle_fieldsplitting (char *value, t_expand *exp, int quoted)
 {
 	if (!value || (value && *value == 0))
 		return (0);
-	if (exp->quoted || !exp || exp->flag & NO_FIELDSPLITING)
+	if (quoted || !exp || exp->flag & NO_FIELDSPLITING)
 	{
 		/* no field-split */
 #ifdef EXPAND_DEBUG

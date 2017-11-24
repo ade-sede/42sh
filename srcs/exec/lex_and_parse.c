@@ -31,9 +31,10 @@ void	exec_main_loop(t_ast *ast)
 		conf_term_non_canonical();
 }
 
-void	remove_lexer(t_lexer *lex)
+void	remove_lexer(t_lexer *lex, t_list **token_list)
 {
 	free_lexer(lex);
+	ft_simple_lst_remove(token_list, free_token);
 }
 
 void	remove_parser(t_parser *parser)
@@ -48,8 +49,7 @@ void	quit_lex_and_parse(t_lexer *lex, t_parser *parser, t_list **token_list)
 	(void)token_list;
 	if (!g_abort_opening && singleton_jc()->shell_is_interactive)
 		history_append_command_to_list((char*)lex->line);
-	ft_simple_lst_remove(token_list, free_token);
-	remove_lexer(lex);
+	remove_lexer(lex, token_list);
 	remove_parser(parser);
 }
 
@@ -71,7 +71,6 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	{
 		token_list = NULL;
 		res_lexer = get_token_list(&lexer, &token_list, singleton_env()->alias);
-		ft_simple_lst_pushback(&big_list, token_list);
 		if (res_lexer == LEXER_REOPEN)
 		{
 			reopen_token = ft_memalloc(sizeof(*reopen_token) * 1);
@@ -82,6 +81,7 @@ int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 			ft_simple_lst_pushback(&token_list, ft_simple_lst_create(reopen_token));
 		}
 		res_parser = parse(&parser, &ast, token_list);
+		ft_simple_lst_pushback(&big_list, token_list);
 	//	res_parser = PARSER_SUCCESS;
 		if (res_lexer == LEXER_REOPEN || res_parser == PARSER_REOPEN)
 		{

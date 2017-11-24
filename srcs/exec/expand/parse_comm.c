@@ -9,7 +9,7 @@
 
 /*  after "$(" */
 
-int		parse_comm (t_expand *exp)
+int		parse_comm (t_expand *exp, int parent_quoted)
 {
 	int paren_depth = 1;
 	int quoted = 0;
@@ -42,7 +42,7 @@ int		parse_comm (t_expand *exp)
 #ifdef EXPAND_DEBUG
  fprintf(stderr,"exec comm\n");
  #endif
-					error = exec_comm (comm.str, exp);
+					error = exec_comm (comm.str, exp, parent_quoted);
 					w_free (&comm);
 					return error;
 				}

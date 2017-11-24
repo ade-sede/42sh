@@ -41,7 +41,7 @@ static struct s_debug_token_id g_debug_token_id[] =
 	{TK_LPAREN, "TK_LPAREN" },
 	{TK_RPAREN, "TK_RPAREN" },
 	{TK_IN, "TK_IN" },
-	{$, "$"},
+	{DOLAR, "DOLAR"},
 	{-1, NULL}
 };
 

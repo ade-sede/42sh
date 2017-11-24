@@ -68,7 +68,7 @@ char		*ft_strtrim_sequence(const char *s, const char *sequence)
 	i = 0;
 	j = 0;
 	seq_len = ft_strlen(sequence);
-	if (!seq_len || !*s)
+	if (!seq_len || !s || !*s)
 		return (NULL);
 	/* dprintf(2, "seq_len = %zu\n", seq_len); */
 	trimed_len = get_trimed_size(s, sequence, seq_len);

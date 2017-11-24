@@ -22,9 +22,6 @@ static void	term_write_char(t_line *line, size_t i)
 			if (i >= line->visu_start && i < line->pos)
 				ft_putstr("\e[39;42m");
 	}
-	if (line->read_builtin && (line->read->flags & S))
-		write(2, "*", 1);
-	else
 		write(2, line->buff + i, 1);
 	if (line->visu_mode)
 	{
@@ -37,54 +34,56 @@ static void	term_write_char(t_line *line, size_t i)
 	}
 }
 
-#include <stdio.h>
+static void write_tab(t_line *line, size_t i)
+{
+	t_coor	tab_pos;
+	size_t	offset;
+
+		tab_pos = get_char_visual_coor(line, i);
+		offset = (tab_pos.x % 8) ? (8 - (tab_pos.x % 8)) : 8;
+		if (tab_pos.x == 0)
+		{
+			ft_putchar_fd(' ', 2);
+			ft_putchar_fd('\t', 2);
+		}
+		else if (tab_pos.x + offset >= line->ws_col)
+		{
+			ft_putchar_fd('\t', 2);
+			ft_putchar_fd('\n', 2);
+		}
+		else
+			ft_putchar_fd('\t', 2);
+}
+
+void	write_term(t_line *line, size_t i)
+{
+	t_coor	pos;
+	t_coor	l_pos;
+	size_t	nb_newl;
+
+	if (line->buff[i] == '\t')
+		write_tab(line, i);
+	else if (line->buff[i] == '\n')
+	{
+		pos = get_char_visual_coor(line, i);
+		l_pos = get_char_visual_coor(line, i - 1);
+		nb_newl = 1;
+		if (pos.x == 0 && line->buff[i - 1] != '\n' &&
+				l_pos.x != (int)line->ws_col)
+			nb_newl = 2;
+		write(2, "\n\n", nb_newl);
+	}
+	else
+		term_write_char(line, i);
+}
 void		term_putstr(t_line *line)
 {
 	size_t	i;
-	t_coor	pos;
-	t_coor	l_pos;
-	t_coor	tab_pos;
-	size_t	offset;
-	size_t	nb_newl;
 
 	i = 0;
-	/* while (line->buff[i]) */
 	while (line->buff[i])
 	{
-		if (line->buff[i] == '\t')
-		{
-			tab_pos = get_char_visual_coor(line, i);
-			offset = (tab_pos.x % 8) ? (8 - (tab_pos.x % 8)) : 8;
-			if (tab_pos.x == 0)	// If pos.x = 0 we need to both jump a line and write a tab
-			{
-				/* ft_putchar_fd('\n', 2); */
-				ft_putchar_fd(' ', 2);
-				ft_putchar_fd('\t', 2);
-			}
-			else if (tab_pos.x + offset >= line->ws_col) // Jump line if tabulation would overflow the window.
-			{
-				ft_putchar_fd('\t', 2);
-				ft_putchar_fd('\n', 2);
-				/* if (i == 0 || (i > 0 && line->buff[i - 1] != '\t'))	// 2 tabulation could fit this condition. */
-				/* 	ft_putchar_fd('\n', 2); */
-			}
-			else
-			{
-				ft_putchar_fd('\t', 2);	// Write tabulation
-			}
-		}
-		else if (line->buff[i] == '\n')
-		{
-			pos = get_char_visual_coor(line, i);
-			l_pos = get_char_visual_coor(line, i - 1);
-			nb_newl = 1;
-			if (pos.x == 0 && line->buff[i - 1] != '\n' &&
-					l_pos.x != (int)line->ws_col)
-				nb_newl = 2;
-			write(2, "\n\n", nb_newl);
-		}
-		else
-			term_write_char(line, i);
+		write_term(line, i);
 		++i;
 	}
 }

@@ -59,7 +59,7 @@ enum
 	TK_LPAREN,
 	TK_RPAREN,
 	TK_IN,
-	$ = 666
+	DOLAR = 666
 };
 
 #define _T_STATE 0

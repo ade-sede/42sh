@@ -19,10 +19,10 @@ void	update_status(t_job_control *jc)
 int		get_job_exit_status(t_job *j)
 {
 	t_process	*p;
-
 	p = j->first_process;
 	while (p && p->next)
 		p = p->next;
+	
 	if (WIFEXITED(p->status))
 		return (WEXITSTATUS(p->status));
 	else if (p->stopped)
@@ -31,7 +31,7 @@ int		get_job_exit_status(t_job *j)
 		return (128 + WTERMSIG(p->status));//EXIT_FAILURE);
 	return (EXIT_SUCCESS); //TODO:attention peut etre exit failure
 }
-
+#include "environ.h"
 int		wait_for_job(t_job_control *jc, t_job *j)
 {
 	int status;
@@ -46,5 +46,6 @@ int		wait_for_job(t_job_control *jc, t_job *j)
 					&& !job_is_completed(j)))
 			break ;
 	}
+	//return ((singleton_env()->previous_exit = get_job_exit_status(j)));
 	return (get_job_exit_status(j));
 }

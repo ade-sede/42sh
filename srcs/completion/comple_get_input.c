@@ -27,11 +27,14 @@ static	int		valid_comple(t_line *line, int keycode)
 	char	tmp;
 	char	*start_ptr;
 
+//	if (line->completion)
+		//return (TRUE);
 	if (!(line->completion) && keycode == KEY_TAB)
 	{
 		tmp = line->buff[line->pos];
 		line->buff[line->pos] = 0;
 		start_ptr = ft_strrchr(line->buff, '\n');
+		line->buff[line->pos] = tmp;
 		if (!start_ptr)
 			start_ptr = line->buff;
 		if (ft_str_is_clear_n(start_ptr, line->buff + line->pos - start_ptr))
@@ -85,7 +88,7 @@ int		comple_get_input(t_line *line, int keycode)
 	{
 		comple_set_signals();
 		if (!(comple_init(line, c)))
-			return (0);
+			return (1);
 		comple_refresh(line, *c);
 		line->completion = 1;
 		return (1);

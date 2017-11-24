@@ -8,8 +8,7 @@
 struct s_state_to_prompt
 {
 	int			id;
-	char		*string;
-};
+	char		*string; };
 
 
 /*
@@ -100,6 +99,7 @@ int		lex_action_newline(t_lexer *lex, struct s_info **state_info);
 int		lex_action_comment(t_lexer *lex, struct s_info **state_info);
 int		lex_action_param_exp(t_lexer *lex, struct s_info **state_info);
 int		lex_action_cmd_subst(t_lexer *lex, struct s_info **state_info);
+int		lex_action_ar_exp(t_lexer *lex, struct s_info **state_info);
 
 
 /*
@@ -112,4 +112,9 @@ int		id_operator(const char *value);
 int		id_reserved_words(const char *value);
 int		id_word(t_lexer *lex, t_token *token);
 char	*lexer_construct_prompt(t_lexer *lex);
+
+int		check_valid_name(const char *value, size_t size);
+t_token	*check_function_name(t_lexer *lex, const char *value);
+int	check_assignement_word(t_lexer *lex, const char *value);
+int	check_io_number(t_token *token);
 #endif

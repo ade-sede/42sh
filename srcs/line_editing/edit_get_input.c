@@ -64,7 +64,7 @@ int	g_abort_opening;
 
 static int		end_of_input(t_line *line, int keycode)
 {
-	if (line->read_builtin)
+	/*if (line->read_builtin)
 	{
 		if (line->read->nchars && line->read->nchars == (int)line->len)
 			return (1);
@@ -74,7 +74,7 @@ static int		end_of_input(t_line *line, int keycode)
 		if ((char)keycode == line->read->delim)
 			return (1);
 	}
-	else if (keycode == KEY_ENTER)
+	else */if (keycode == KEY_ENTER)
 	{
 		if (line->verbatim)
 			return (0);
@@ -102,7 +102,7 @@ char				*edit_get_input(void)
 			read(0, (char *)&keycode + 1, 7);
 		if (keycode != KEY_ALT_UP && keycode != KEY_ALT_DOWN)
 			l->col_target = -1;
-		if (btsearch_get_input(l, keycode) || history_get_input(l, keycode) || comple_get_input(l, keycode))
+		if (btsearch_get_input(l, keycode) || comple_get_input(l, keycode)|| history_get_input(l, keycode))
 			continue ;
 		if (end_of_input(l, keycode))
 			return (edit_exit(l));

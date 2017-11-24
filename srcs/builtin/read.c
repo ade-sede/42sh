@@ -38,7 +38,7 @@ static char			**split_values(char *line, t_read options)
 
 	values = (char **)ft_parrnew();
 	word = ft_strnew(0);
-	line[ft_strlen(line) - 1] = '\0';
+//	line[ft_strlen(line) - 1] = '\0';
 	while (*line == ' ' || *line == '\t')
 		line++;
 	while (*line)
@@ -114,36 +114,27 @@ int					builtin_read(t_env *env, const char **argv)
 	options.prompt = 0;
 	options.nchars = 0;
 	options.delim = '\n';
-
 	/*
 	**if (!parse_option(&options, &argv))
 		**return (2);
 	*/
-	
 	if (!(error = parse_option(&options, &argv)) || error == 2)
 		return !(error) ? 2 : 1;
-	if (isatty(options.fd))
-		conf_term_non_canonical();
-	load_prompt(env, line, NULL,options.prompt ?options.prompt: "read> ");//"$> ");
-	ft_putstr("\033[31m");// fd (2)
-	put_prompt(line);
-	ft_putstr("\x1b[0m");// fd (2)
-	edit_line_init(singleton_line(), &edit_set_signals_reopen);
-	line->read = &options;
-	line->read_builtin = 1;
-	values = edit_get_input();
-	if (isatty(options.fd))
-		conf_term_canonical();
+	 if (singleton_jc()->shell_is_interactive && isatty(options.fd))
+	 {
+	 	conf_term_non_canonical();
+		load_prompt(env, line, NULL,options.prompt ?options.prompt: "read> ");//"$> ");
+		put_prompt(line);
+		values = read_get_input(options);
+		ft_putstr("\n");
+	 	conf_term_canonical();
+	 }
+	 else
+		values = read_get_rcinput(options);
+	
 	split = split_values(values, options);
-	//free(values);
 	assign_values((char**)argv, split, env);
-	line->read_builtin ^= error;
-	line->read = NULL;
-	ft_bzero(line->buff, ft_strlen(line->buff));
-	//ft_parrfree((void**)split);
-	//line->read = options;
-	//ft_putchar('"');	
-	//ft_putstr(tmpline);	
-	//ft_putchar('"');	
+	free(values);
+	ft_arraydel(&split);
 	return (0);
 }

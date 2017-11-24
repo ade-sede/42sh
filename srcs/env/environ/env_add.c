@@ -48,11 +48,14 @@ void	env_change_value(t_env *env, const char *key, size_t key_index, \
 		const char *new_value)
 {
 	char	**environ;
+	char		*local_value;
 
 	environ = env->environ;
 	free(environ[key_index]);
 	environ[key_index] = ft_strsurround(key, "=", new_value);
-	local_add_change_from_key_value(env, key, new_value);
+	local_value = local_get_value(env->local, key);
+	if (!local_value || (local_value && !ft_strequ(local_value, new_value)))
+		local_add_change_from_key_value(env, key, new_value);
 }
 
 void	env_add_change(t_env *env, const char *key, const char *value)

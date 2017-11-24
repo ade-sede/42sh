@@ -29,7 +29,7 @@ int exec_function_definition(t_ast *ast)
 
 	fname = ast->child[0]->child[0]->token->value;
 	if ((old = get_function(singleton_env(), fname)))
-		ft_genlst_del_one(&singleton_env()->first_func, old, &func_lst_free);
+		ft_genlst_del_one(&singleton_env()->first_func, old, func_lst_free);
 	ft_genlst_add(&singleton_env()->first_func, func_lst_new(ast->child[4], fname));
 	return (EXIT_SUCCESS);
 }
