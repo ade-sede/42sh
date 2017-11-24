@@ -1,0 +1,5 @@
+Script started on Thu Nov 23 21:10:03 2017
+command: ./42sh
+Couldn't put the shell in its own process group: Operation not permitted
+
+Script done on Thu Nov 23 21:10:03 2017

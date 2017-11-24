@@ -13,12 +13,14 @@
 **	                 | cmd_suffix WORD
 */
 
-int	exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char ***av)
+int	exec_cmd_suffix(t_ast *ast, t_list **redirect_list, char ***av)
 {
-	t_ast	*io_redirect = NULL;
-	t_ast	*word = NULL;
-	char		**word_expanded;
+	t_ast	*io_redirect;
+	t_ast	*word;
+	char	**word_expanded;
 
+	word = NULL;
+	io_redirect = NULL;
 	if (is_symb(ast->child[0], IO_REDIRECT))
 		io_redirect = ast->child[0];
 	else if (is_symb(ast->child[1], IO_REDIRECT))
@@ -48,7 +50,6 @@ int	exec_cmd_suffix(t_ast	*ast, t_list **redirect_list, char ***av)
 **	                 ;
 */
 
-#include <stdio.h>
 void	exec_assignment_word(t_ast *ast)
 {
 	char		**word_expanded = NULL;
@@ -64,11 +65,8 @@ void	exec_assignment_word(t_ast *ast)
 		*eq_pos = '=';
 	}
 	else
-	{
-		//fprintf(stderr, "word expanded NULL \n");
 		local_add_change_from_string(singleton_env(), ast->token->value);
-	}
-	ft_arraydel(&word_expanded); //TODO: fait peter a=b
+	ft_arraydel(&word_expanded);
 }
 
 int	exec_cmd_prefix(t_ast *ast, t_list **redirect_list)
@@ -119,12 +117,32 @@ char	**get_cmd_name(t_ast *ast, int flag)
 **	                 | cmd_name
 */
 
+int		layer_command_suffix(t_ast *ast, char ***av, t_list	**redirect_list)
+{
+	t_ast	*cmd_suffix;
+	char	**av_cmdsuffix;
+
+	cmd_suffix = NULL;
+	av_cmdsuffix = NULL;
+	*av = get_cmd_name(ast, 0);
+	if (is_symb(ast->child[1], CMD_SUFFIX))
+		cmd_suffix = ast->child[1];
+	if (is_symb(ast->child[2], CMD_SUFFIX))
+		cmd_suffix = ast->child[2];
+	if (cmd_suffix)
+	{
+		if (!exec_cmd_suffix(cmd_suffix, redirect_list, &av_cmdsuffix))
+			return (EXIT_FAILURE);
+		if (av_cmdsuffix)
+			*av = *av ? ft_arrayjoin_free(*av, av_cmdsuffix, 0b11) : av_cmdsuffix;
+	}
+	return (EXIT_SUCCESS);
+}
+
 int		exec_simple_command(t_ast *ast)
 {
 	char	**av = NULL;
-	char	**av_cmdsuffix = NULL;
 	t_list	*redirect_list = NULL;
-	t_ast	*cmd_suffix = NULL;
 	t_lst_func	*fct = NULL;
 	int			exit_status = EXIT_SUCCESS;
 
@@ -133,20 +151,8 @@ int		exec_simple_command(t_ast *ast)
 		if (!(exec_cmd_prefix(ast->child[0], &redirect_list)))
 			return (EXIT_FAILURE);
 	}
-	av = get_cmd_name(ast, 0);
-	if (is_symb(ast->child[1], CMD_SUFFIX))
-		cmd_suffix = ast->child[1];
-	if (is_symb(ast->child[2], CMD_SUFFIX))
-		cmd_suffix = ast->child[2];
-	if (cmd_suffix)
-	{
-		if (!exec_cmd_suffix(cmd_suffix, &redirect_list, &av_cmdsuffix))
-			return (EXIT_FAILURE);
-
-	//	fprintf(stderr, "[%s]\n", av_cmdsuffix[1]);
-		if (av_cmdsuffix)
-			av = av ? ft_arrayjoin_free(av, av_cmdsuffix, 0b11) : av_cmdsuffix;
-	}
+	if (layer_command_suffix(ast, &av, &redirect_list) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	exec_dup(redirect_list);
 	if (av && av[0])
 	{
