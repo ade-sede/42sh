@@ -7,43 +7,19 @@ void	quit_job(int signum)
 	kill(-getpgrp(), SIGQUIT);
 }
 
-static void		close_std(int *stdfile, t_job *j, int state)
-{
-	if (!state)
-	{
-		if (stdfile[0] != STDIN_FILENO)
-		{
-			dup2(stdfile[0], STDIN_FILENO);
-			close(stdfile[0]);
-		}
-		if (stdfile[1] != STDOUT_FILENO)
-		{
-			dup2(stdfile[1], STDOUT_FILENO);
-			close(stdfile[1]);
-		}
-		if (stdfile[2] != STDERR_FILENO)
-		{
-			dup2(stdfile[2], STDERR_FILENO);
-			close(stdfile[2]);
-		}
-		return ;
-	}
-	if (stdfile[0] != j->stdin)
-		close(stdfile[0]);
-	if (stdfile[1] != j->stdout)
-		close(stdfile[1]);
-	stdfile[0] = state;
-}
-
-static void		launch_process(t_job_control *jc, pid_t pgid, int foreground,
+void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
+		int infile, int outfile, int errfile,
+		int foreground,
 		int in_a_fork)
 {
 	pid_t	pid;
 
+	(void)foreground;
 	if (jc->shell_is_interactive)
 	{
 		pid = getpid();
-		pgid = (pgid == 0) ? pid : 0;
+		if (pgid == 0)
+			pgid = pid;
 		setpgid(pid, pgid);
 		if (!in_a_fork && foreground && !jc->background)
 		{
@@ -63,38 +39,34 @@ static void		launch_process(t_job_control *jc, pid_t pgid, int foreground,
 		}
 		signal(SIGCHLD, SIG_DFL);
 	}
-}
-
-static int		ret_job(t_job_control *jc, t_job *j, int foreground,
-		int in_a_fork)
-{
-	if (!jc->shell_is_interactive || jc->background)
-		return (wait_for_job(jc, j));
-	else if (foreground)
-		return (put_job_in_foreground(jc, j, 0, in_a_fork));
-	return (put_job_in_background(j, 0));
-}
-
-static void		cut1(t_job_control *jc, t_job *j, t_process *process, pid_t pid)
-{
-	process->pid = pid;
-	if (jc->shell_is_interactive)
+	if (infile != STDIN_FILENO)
 	{
-		if (!j->pgid)
-			j->pgid = pid;
-		setpgid(pid, j->pgid);
+		dup2(infile, STDIN_FILENO);
+		close(infile);
 	}
+	if (outfile != STDOUT_FILENO)
+	{
+		dup2(outfile, STDOUT_FILENO);
+		close(outfile);
+	}
+	if (errfile != STDERR_FILENO)
+	{
+		dup2(errfile, STDERR_FILENO);
+		close(errfile);
+	}
+	exit(exec(p->command));
 }
 
-static int		init_launch(t_job_control *jc, t_job *j, int *stdfile)
+int		launch_job(t_job_control *jc, t_job *j, int foreground)
 {
-	int			in_a_fork;
-	pid_t		parent_process_group_id;
+	t_process	*p;
+	pid_t	pid;
+	int		mypipe[2];
+	int		infile;
+	int		outfile;
+	pid_t	parent_process_group_id;
+	int		in_a_fork = 0;
 
-	in_a_fork = 0;
-	stdfile[0] = j->stdin;
-	stdfile[1] = j->stdout;
-	stdfile[2] = j->stderr;
 	if (!j->pgid)
 	{
 		if ((parent_process_group_id = getpgid(0)) != jc->shell_pgid)
@@ -103,40 +75,42 @@ static int		init_launch(t_job_control *jc, t_job *j, int *stdfile)
 			in_a_fork = 1;
 		}
 	}
-	return (in_a_fork);
-}
-
-static int		cut_pipe(int *mypipe)
-{
-	p_pipe(mypipe);
-	return (mypipe[1]);
-}
-
-int				launch_job(t_job_control *jc, t_job *j, int foreground)
-{
-	t_process	*process;
-	pid_t		pid;
-	int			mypipe[2];
-	int			stdfile[3];
-	int			in_a_fork;
-
-	in_a_fork = init_launch(jc, j, stdfile);
-	process = j->first_process;
-	while (process)
+	infile = j->stdin;
+	p = j->first_process;
+	while (p)
 	{
-		stdfile[1] = j->stdout;
-		if (process->next)
-			stdfile[1] = cut_pipe(mypipe);
-		if ((pid = p_fork()) == 0)
+		if (p->next)
 		{
-			launch_process(jc, j->pgid, foreground, in_a_fork);
-			close_std(stdfile, j, 0);
-			exit(exec(process->command));
+			p_pipe(mypipe);
+			outfile = mypipe[1];
 		}
 		else
-			cut1(jc, j, process, pid);
-		close_std(stdfile, j, mypipe[0]);
-		process = process->next;
+			outfile = j->stdout;
+		pid = p_fork();
+		if (pid == 0)
+			launch_process(jc, p, j->pgid, infile,
+					outfile, j->stderr, foreground, in_a_fork);
+		else
+		{
+			p->pid = pid;
+			if (jc->shell_is_interactive)
+			{
+				if (!j->pgid)
+					j->pgid = pid;
+				setpgid(pid, j->pgid);
+			}
+		}
+		if (infile != j->stdin)
+			close(infile);
+		if (outfile != j->stdout)
+			close(outfile);
+		infile = mypipe[0];
+		p = p->next;
 	}
-	return (ret_job(jc, j, foreground, in_a_fork));
+	if (!jc->shell_is_interactive || jc->background)
+		return (wait_for_job(jc, j));
+	else if (foreground)
+		return (put_job_in_foreground(jc, j, 0, in_a_fork));
+	else
+		return (put_job_in_background(j, 0));
 }

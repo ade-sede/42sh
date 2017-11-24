@@ -307,7 +307,7 @@ TEST_FILE=
 
 LIB_DIR = libft
 LIB_INC = -I$(LIB_DIR)/includes
-LOCAL_INC = -Iincludes
+LOCAL_INC = -Iincludes -Iressources
 SRC_DIR = srcs
 OBJ_DIR = objs
 
