@@ -1,6 +1,18 @@
 #include "job_control.h"
 
-void	do_job_notification(t_job_control *jc)
+static void	job_notification_job_completed(t_job_control *jc, t_job *j, \
+		t_job *jlast, t_job *jnext)
+{
+	if (!j->foreground && jc->shell_is_interactive)
+		format_job_info_process(j, "done");
+	if (jlast)
+		jlast->next = jnext;
+	else
+		jc->first_job = jnext;
+	job_free(j);
+}
+
+void		do_job_notification(t_job_control *jc)
 {
 	t_job		*j;
 	t_job		*jlast;
@@ -13,15 +25,7 @@ void	do_job_notification(t_job_control *jc)
 	{
 		jnext = j->next;
 		if (job_is_completed(j))
-		{
-			if (!j->foreground && jc->shell_is_interactive)
-				format_job_info_process(j, "done");
-			if (jlast)
-				jlast->next = jnext;
-			else
-				jc->first_job = jnext;
-			job_free(j);
-		}
+			job_notification_job_completed(jc, j, jlast, jnext);
 		else if (job_is_stopped(j) && !j->notified)
 		{
 			format_job_info_process(j, "stopped");
