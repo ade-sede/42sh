@@ -4,7 +4,6 @@
 #include "builtin.h"
 #include "t_env.h"
 #include "read.h"
-
 #include "local.h"
 #include "line_editing.h"
 #include "history.h"
@@ -114,17 +113,18 @@ int					builtin_read(t_env *env, const char **argv)
 	ft_bzero(&options, sizeof(t_read));
 	options.delim = '\n';
 	if (!(error = parse_option(&options, &argv)) || error == 2)
-		return !(error) ? 2 : 1;
-	 if (singleton_jc()->shell_is_interactive && isatty(options.fd))
-	 {
-	 	conf_term_non_canonical();
-		load_prompt(env, line, NULL,options.prompt ?options.prompt: "read> ");//"$> ");
+		return (!(error) ? 2 : 1);
+	if (singleton_jc()->shell_is_interactive && isatty(options.fd))
+	{
+		conf_term_non_canonical();
+		load_prompt(env, line, NULL, \
+				options.prompt ? options.prompt : "read> ");
 		put_prompt(line);
 		values = read_get_input(options);
 		ft_putstr("\n");
-	 	conf_term_canonical();
-	 }
-	 else
+		conf_term_canonical();
+	}
+	else
 		values = read_get_rcinput(options);
 	split = split_values(values, options);
 	assign_values((char**)argv, split, env);
