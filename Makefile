@@ -19,6 +19,8 @@ SRC_FILE = \
 		   main.c \
 		   \
 		   builtin/alias.c \
+		   builtin/history.c \
+		   builtin/history_opt.c \
 		   builtin/export.c \
 		   builtin/shopt.c \
 		   builtin/shift.c \

@@ -30,16 +30,12 @@ static void	routine(t_hist *h, char *cat)
 		ft_double_lst_add(&h->list, list);
 }
 
-int			history_load(t_hist *h, t_env *env)
+int			history_read_file(int fd, t_hist *h)
 {
-	int			fd;
-	char		*line;
-	char		*cat;
+	char	*line;
+	char	*cat;
 
 	cat = NULL;
-	init_hist_struct(h, env);
-	if ((fd = open(h->file, O_RDWR | O_CREAT, 0644)) == -1)
-		return (0);
 	while (get_next_line(fd, &line))
 	{
 		if (cat)
@@ -54,6 +50,17 @@ int			history_load(t_hist *h, t_env *env)
 		routine(h, cat);
 		cat = NULL;
 	}
+	return (1);
+}
+
+int			history_load(t_hist *h, t_env *env)
+{
+	int			fd;
+
+	init_hist_struct(h, env);
+	if ((fd = open(h->file, O_RDWR | O_CREAT, 0644)) == -1)
+		return (0);
+	history_read_file(fd, h);
 	close(fd);
 	return (1);
 }

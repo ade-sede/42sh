@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 18:30:14 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 20:00:48 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/11/24 20:59:21 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	read_hist_numeric(int count, t_word *event, t_hist *hist)
 	t_list_d	*start_point;
 	t_list_d	*event_node;
 
+	if (!hist->list || !hist->list->first || !hist->list->last)
+		return (TRUE);
 	if (count == 0)
 		return (FALSE);
 	if (count < 0)
@@ -37,6 +39,8 @@ int	read_hist_string(int flag, t_word string_event, t_word *event, t_hist *hist)
 {
 	t_list_d	*node;
 
+	if (!hist->list || !hist->list->first)
+		return (TRUE);
 	node = hist->list->first;
 	if (!string_event.str)
 		return (TRUE);
@@ -52,9 +56,7 @@ int	read_hist_string(int flag, t_word string_event, t_word *event, t_hist *hist)
 			node = node->next;
 	}
 	if (!node)
-	{
 		return (TRUE);
-	}
 	w_addstr(event, node->data);
 	return (FALSE);
 }
