@@ -16,7 +16,7 @@ static int		write_to_hist(char *value, int fd)
 	return (1);
 }
 
-void	history_write_to_file(int fd, t_hist *h)
+void			history_write_to_file(int fd, t_hist *h)
 {
 	t_list_d	*last;
 
