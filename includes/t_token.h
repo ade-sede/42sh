@@ -69,7 +69,7 @@ enum
 # define _T_COUNT 3
 # define _T_NEST 4
 
-struct	s_info
+struct			s_info
 {
 	int		state;
 	int		count;
@@ -86,10 +86,10 @@ typedef struct	s_token
 	int					cmd_name;
 }				t_token;
 
-t_token		*create_token(const char *source, struct s_info *info, \
+t_token			*create_token(const char *source, struct s_info *info, \
 		size_t end_index);
-void		free_token(void *value);
-t_token	*dup_token(t_token *original);
-void	debug_token(t_token *token);
+void			free_token(void *value);
+t_token			*dup_token(t_token *original);
+void			debug_token(t_token *token);
 
 #endif

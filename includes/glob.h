@@ -7,7 +7,7 @@
 
 int		match_open_dir(t_matches *m, int to_match_i, int regex_i, \
 		char *dir_name);
-char *match_open_file(char *m_dir, char *file_name);
+char	*match_open_file(char *m_dir, char *file_name);
 int		char_is_escaped(char *regex, int regex_i);
 int		match(t_matches *m, int to_match_i, int regex_i);
 int		match_open_dir(t_matches *m, int to_match_i, int regex_i, \

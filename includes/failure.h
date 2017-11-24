@@ -18,10 +18,8 @@
 
 int				get_logfd(const char *file);
 
-
 int				logwrite(const char *filename, const char *func_name,
 		const char *format, ...);
-
 
 char			*get_errno_1(void);
 char			*get_errno_2(void);

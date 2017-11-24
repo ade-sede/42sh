@@ -84,11 +84,10 @@ int				builtin_jobs(t_env *env, const char **argv);
 
 int				builtin_set(t_env *env, const char **argv);
 
+int				builtin_shopt(t_env *env, const char **argv);
 
-int			builtin_shopt(t_env *env, const char **argv);
-
-int			builtin_shift(t_env *env, const char **argv);
-int			builtin_export(t_env *env, const char **argv);
+int				builtin_shift(t_env *env, const char **argv);
+int				builtin_export(t_env *env, const char **argv);
 /*
 ** In file history.c
 */
@@ -120,5 +119,5 @@ typedef struct	s_builtin
 	int			(*f)(t_env*, const char**);
 }				t_builtin;
 
-void		*get_exec_builtin(const char *argv);
+void			*get_exec_builtin(const char *argv);
 #endif

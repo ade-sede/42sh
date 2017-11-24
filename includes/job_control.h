@@ -1,6 +1,5 @@
 #ifndef JOB_CONTROL_H
 # define JOB_CONTROL_H
-/* A process is a single process.  */
 # include <unistd.h>
 # include <term.h>
 # include <sys/types.h>
@@ -40,12 +39,12 @@ typedef struct	s_job
 
 typedef struct	s_job_control
 {
-	t_job	*first_job;
-	int		background;
-	pid_t	shell_pgid;
-	struct	termios shell_tmodes;
-	int		shell_terminal;
-	int		shell_is_interactive;
+	t_job			*first_job;
+	int				background;
+	pid_t			shell_pgid;
+	struct termios	shell_tmodes;
+	int				shell_terminal;
+	int				shell_is_interactive;
 }				t_job_control;
 
 void			init_job_control(t_job_control *jc);
