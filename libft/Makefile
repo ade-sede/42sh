@@ -75,6 +75,8 @@ SRC = \
 	mem/ft_realloc.c \
 	mem/palloc.c \
 	str/ft_str_isdigit.c \
+	str/ft_atoi_safe.c \
+	str/ft_itoa_word.c \
 	str/ft_is_backslash.c \
 	str/charcmp.c \
 	str/ft_atoi.c \

@@ -27,11 +27,13 @@ void	ft_simple_lst_del_one(t_list **first, t_list *node, void (*f)(void*))
 
 void	ft_genlst_del_one(void *first, void *node, void (*f)(void*))
 {
-	t_gen_lst	**first_cast = first;
-	t_gen_lst	*node_cast = node;
+	t_gen_lst	**first_cast;
+	t_gen_lst	*node_cast;
 	t_gen_lst	*old_tmp;
 	t_gen_lst	*curr_tmp;
 
+	first_cast = first;
+	node_cast = node;
 	if (node_cast)
 	{
 		curr_tmp = *first_cast;

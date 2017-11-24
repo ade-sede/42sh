@@ -144,7 +144,6 @@ SRC_FILE = \
 		   history/btsearch_move.c \
 		   history/btsearch_refresh.c \
 		   history/btsearch_signals.c \
-		   history/expansion.c \
 		   history/history_get_input.c \
 		   history/history_init.c \
 		   history/history_line_refresh.c \

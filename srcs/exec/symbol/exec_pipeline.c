@@ -81,7 +81,7 @@ int		exec_pipeline(t_ast *ast)
 		new_job = job_new();
 		fill_job(pipe_sequence, &first_process);
 		new_job->first_process = first_process;
-		ft_genlst_pushback(&singleton_jc()->first_job, new_job);
+		ft_genlst_pushback((void **)&singleton_jc()->first_job, new_job);
 		exit_status = launch_job(singleton_jc(), new_job, 1);
 	}
 	else

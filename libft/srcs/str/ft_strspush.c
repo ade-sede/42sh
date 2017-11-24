@@ -4,9 +4,9 @@
 
 void	ft_strspush(char **str, char *push)
 {
-	char *n_str;
-	unsigned int strlen;
-	unsigned pushlen;
+	char			*n_str;
+	unsigned int	strlen;
+	unsigned		pushlen;
 
 	strlen = ft_strlen(*str);
 	pushlen = ft_strlen(push);

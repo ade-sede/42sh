@@ -1,7 +1,7 @@
 #include "list.h"
 #include "libft.h"
 
-int		ft_lstint_pop(t_listint **list)
+int			ft_lstint_pop(t_listint **list)
 {
 	t_listint	*res;
 
@@ -20,9 +20,10 @@ t_listint	*ft_lstint_new(int data)
 	return (stack);
 }
 
-void	ft_lstint_add(t_listint **stack, int state)
+void		ft_lstint_add(t_listint **stack, int state)
 {
 	t_listint	*new;
+
 	new = ft_lstint_new(state);
 	new->next = *stack;
 	*stack = new;

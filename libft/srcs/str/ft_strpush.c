@@ -18,5 +18,4 @@ void	ft_strpush(char **str, char c)
 		n_str[len] = (*str)[len];
 	free(*str);
 	*str = n_str;
-
 }

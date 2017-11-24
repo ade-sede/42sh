@@ -121,7 +121,7 @@ t_list				*ft_previous_last_simple_lst(t_list *lst);
 **	In file ft_lst_pushback.c
 */
 
-void	ft_genlst_pushback(void *first, void *new_node);
+void	*ft_genlst_pushback(void **first, void *new_node);
 void				ft_simple_lst_pushback(t_list **first, t_list *new_node);
 void				ft_double_lst_pushback(t_lst_head **head, \
 		t_list_d *new_node);

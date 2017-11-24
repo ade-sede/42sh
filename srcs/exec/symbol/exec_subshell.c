@@ -12,6 +12,6 @@ int		exec_subshell(t_ast *ast)
 	new_job = job_new();
 	first_process = process_new(ast->child[1]);
 	new_job->first_process = first_process;
-	ft_genlst_pushback(&singleton_jc()->first_job, new_job);
+	ft_genlst_pushback((void **)&singleton_jc()->first_job, new_job);
 	return (launch_job(singleton_jc(), new_job, 1));
 }

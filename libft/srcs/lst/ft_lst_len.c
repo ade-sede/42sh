@@ -15,7 +15,7 @@ size_t	ft_lst_len(t_list *lst)
 
 size_t	ft_genlst_len(void *lst)
 {
-	t_gen_lst 	*lst_cast;
+	t_gen_lst	*lst_cast;
 	int			i;
 
 	i = 0;
@@ -27,4 +27,3 @@ size_t	ft_genlst_len(void *lst)
 	}
 	return (i);
 }
-
