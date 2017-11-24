@@ -107,6 +107,7 @@ void			ft_simple_lst_foreach(t_list *start, \
 */
 
 t_list_d		*ft_double_lst_get_n(t_list_d *first, int n);
+t_list_d		*ft_double_lst_get_n_fail(t_list_d *first, int n);
 t_list			*ft_simple_lst_get_n(t_list	*first, size_t n);
 
 /*

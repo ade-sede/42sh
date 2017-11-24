@@ -33,6 +33,35 @@ t_list_d	*ft_double_lst_get_n(t_list_d *first, int n)
 	return (first);
 }
 
+t_list_d	*ft_double_lst_get_n_fail(t_list_d *first, int n)
+{
+	if (n == 0)
+		return (NULL);
+	if (!first)
+		return (NULL);
+	if (n > 0)
+	{
+		while (first && n > 1)
+		{
+			n--;
+			if (first->next)
+				first = first->next;
+		}
+	}
+	else if (n < 0)
+	{
+		while (first && n < -1)
+		{
+			n++;
+			if (first->prev)
+				first = first->prev;
+		}
+	}
+	if (n != 1 && n != -1)
+		return (NULL);
+	return (first);
+}
+
 /*
 **	0 is the current node, 1 is node->next;
 */
