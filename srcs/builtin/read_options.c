@@ -1,12 +1,22 @@
-#include "read.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_options.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:47 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "builtin.h"
 #include "libft.h"
 #include "t_env.h"
-//#include "error.h"
 #include "failure.h"
 #include "exec.h"
 
-static char parse_delim(char *arg, t_read *options, char ***args)
+static char		parse_delim(char *arg, t_read *options, char ***args)
 {
 	if (*++arg)
 		options->delim = *arg;
@@ -17,9 +27,9 @@ static char parse_delim(char *arg, t_read *options, char ***args)
 	return (1);
 }
 
-static char parse_nchars(char *arg, t_read *options, char ***args)
+static char		parse_nchars(char *arg, t_read *options, char ***args)
 {
-	int nchars;
+	int		nchars;
 
 	nchars = 0;
 	if (*++arg)
@@ -43,9 +53,9 @@ static char parse_nchars(char *arg, t_read *options, char ***args)
 	return (1);
 }
 
-static char	parse_fd(char *arg, t_read *options, char ***args)
+static char		parse_fd(char *arg, t_read *options, char ***args)
 {
-	int	fd;
+	int		fd;
 
 	fd = 0;
 	if (*++arg)
@@ -55,9 +65,8 @@ static char	parse_fd(char *arg, t_read *options, char ***args)
 		if (*arg)
 			return (0);
 	}
-	else if (*++*args)
+	else if (*++*args && (arg = **args))
 	{
-		arg = **args;
 		while (*arg >= '0' && *arg <= '9')
 			fd = (fd * 10) + *arg++ - '0';
 		if (*arg)
@@ -67,14 +76,13 @@ static char	parse_fd(char *arg, t_read *options, char ***args)
 		return (0);
 	if (fd > -1 && fd < 3)
 		return (1);
-	if (fcntl((options->fd = fd), F_GETFL) != -1 && fcntl(fd, F_GETFD) != -1 && errno != EBADF)
+	if (fcntl((options->fd = fd), F_GETFL) != -1 && fcntl(fd, F_GETFD) != -1 &&
+			errno != EBADF)
 		return (1);
-	//return_failure("read: ", get_errno());
-//	options->fd = fd;
 	return (2);
 }
 
-static char	parse_prompt(char *arg, t_read *options, char ***args)
+static char		parse_prompt(char *arg, t_read *options, char ***args)
 {
 	char	*word;
 
@@ -93,13 +101,11 @@ static char	parse_prompt(char *arg, t_read *options, char ***args)
 		free(word);
 		return (0);
 	}
-	//ft_strpush(&word, '>');
-	//ft_strpush(&word, ' ');
 	options->prompt = word;
 	return (1);
 }
 
-char		parse_read(char *arg, t_read *options, char ***args)
+char			parse_read(char *arg, t_read *options, char ***args)
 {
 	char	status;
 
@@ -122,12 +128,8 @@ char		parse_read(char *arg, t_read *options, char ***args)
 	}
 	if (!status)
 	{
-		//write(1,singleton_line()->prompt,signleton_line()->prompt_len);
 		return_failure("syntax error near ", arg - 2);
 		return_failure("usage : ", USG);
-		//error(arg - 2, "syntax error near");
-		;//error(USG, "usage");
 	}
 	return (!status ? 0 : 1);
-
 }

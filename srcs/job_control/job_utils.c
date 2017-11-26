@@ -1,7 +1,19 @@
-#include "job_control.h"
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   job_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:24 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-t_job	*find_job(t_job_control *jc, pid_t pgid)
+#include <stdlib.h>
+#include "job_control.h"
+
+t_job		*find_job(t_job_control *jc, pid_t pgid)
 {
 	t_job *j;
 
@@ -9,34 +21,13 @@ t_job	*find_job(t_job_control *jc, pid_t pgid)
 	while (j)
 	{
 		if (j->pgid == pgid)
-			return j;
+			return (j);
 		j = j->next;
 	}
 	return (NULL);
 }
 
-int	job_is_stopped(t_job *j)
-{
-	t_process *p;
-
-	for (p = j->first_process; p; p = p->next)
-		if (!p->completed && !p->stopped)
-			return (0);
-	return (1);
-}
-
-
-int	job_is_completed(t_job *j)
-{
-	t_process *p;
-
-	for (p = j->first_process; p; p = p->next)
-		if (!p->completed)
-			return (0);
-	return (1);
-}
-
-t_job	*job_new()
+t_job		*job_new(void)
 {
 	t_job	*new;
 
@@ -57,7 +48,7 @@ t_process	*process_new(t_ast *command)
 	return (new);
 }
 
-void	job_free(t_job *job)
+void		job_free(t_job *job)
 {
 	t_process	*process;
 	t_process	*process_next;
@@ -66,10 +57,9 @@ void	job_free(t_job *job)
 	while (process)
 	{
 		process_next = process->next;
-	//	free_ast(process->command);
 		free(process->av);
 		free(process);
 		process = process_next;
 	}
-	free (job);
+	free(job);
 }

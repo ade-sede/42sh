@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_complete_command.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:07 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "exec.h"
 
 void	exec_asynchronous_list(t_ast *and_or)
@@ -9,7 +21,7 @@ void	exec_asynchronous_list(t_ast *and_or)
 	first_process = process_new(and_or);
 	fill_process_av(and_or, first_process);
 	new_job->first_process = first_process;
-	ft_genlst_pushback(&singleton_jc()->first_job, new_job);
+	ft_genlst_pushback((void **)&singleton_jc()->first_job, new_job);
 	launch_job(singleton_jc(), new_job, 0);
 }
 
@@ -30,10 +42,10 @@ t_ast	*get_and_or(t_ast *list)
 **	                 | list
 */
 
-int exec_complete_command(t_ast *ast)
+int		exec_complete_command(t_ast *ast)
 {
-	int	exit_status;
-	t_ast	*and_or;
+	int			exit_status;
+	t_ast		*and_or;
 
 	and_or = get_and_or(ast->child[0]);
 	exit_status = exec_list(ast->child[0]);
@@ -42,7 +54,7 @@ int exec_complete_command(t_ast *ast)
 		exec_asynchronous_list(and_or);
 		return (exit_status);
 	}
-	return (exec(and_or));	
+	return (exec(and_or));
 }
 
 /*
@@ -50,10 +62,10 @@ int exec_complete_command(t_ast *ast)
 **	                 |                   and_or
 */
 
-int exec_list(t_ast *ast)
+int		exec_list(t_ast *ast)
 {
-	int	exit_status;
-	t_ast	*and_or;
+	int			exit_status;
+	t_ast		*and_or;
 
 	if (!ast->child[2])
 		return (EXIT_SUCCESS);
@@ -64,5 +76,5 @@ int exec_list(t_ast *ast)
 		exec_asynchronous_list(and_or);
 		return (exit_status);
 	}
-	return (exec(and_or));	
+	return (exec(and_or));
 }

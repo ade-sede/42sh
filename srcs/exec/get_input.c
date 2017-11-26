@@ -1,4 +1,16 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_input.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:04 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
 #include "environ.h"
 #include <fcntl.h>
 #include <stdlib.h>
@@ -9,6 +21,7 @@
 #include "modes.h"
 #include "get_next_line.h"
 #include "lexer.h"
+#include "bang.h"
 
 char	*line_editing_get_line(t_line *line, t_hist *hist,
 		void (*sig_handler)(void))
@@ -22,6 +35,7 @@ char	*line_editing_get_line(t_line *line, t_hist *hist,
 char	*stream_get_line(int stream)
 {
 	char	*buff;
+
 	buff = NULL;
 	get_next_line(stream, &buff);
 	return (buff);
@@ -33,9 +47,11 @@ char	*stream_get_line(int stream)
 
 char	*string_get_line(t_modes *modes)
 {
-	char	*res = NULL;
-	int		i = 0;
+	char	*res;
+	int		i;
 
+	res = NULL;
+	i = 0;
 	while (modes->string[i])
 	{
 		if (modes->string[i] == '\n')
@@ -56,15 +72,24 @@ char	*string_get_line(t_modes *modes)
 
 int		get_input(t_modes *modes, char **buff)
 {
+	char	*tmp;
+
 	if (modes->mode == INTERACTIVE_MODE)
+	{
 		*buff = ft_strdup(line_editing_get_line(singleton_line(), \
 					singleton_hist(), &edit_set_signals_open));
+		if ((tmp = bang_expand((const char*)*buff, singleton_hist())))
+		{
+			if (!ft_strequ(tmp, *buff))
+				ft_dprintf(2, "%s\n", tmp);
+			*buff = ft_strchange(*buff, tmp);
+		}
+	}
 	else if (modes->mode == STRING_MODE)
 		*buff = string_get_line(modes);
 	else
 	{
 		*buff = stream_get_line(modes->stream);
-//		fprintf(stderr, "{%s}\n", *buff);
 	}
 	if (!*buff)
 		return (0);
@@ -75,13 +100,11 @@ int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes)
 {
 	char	*new_command;
 
-	/*
-	**	Si le parser a ete reouvert a cause d'un \ newline, il faut supprimer le \newline, et reculer le curseur de 2.
-	*/
 	if (((struct s_info*)lex->state->data)->state == BS)
 	{
 		ft_simple_lst_del_one(&lex->state_list, lex->state, free_info);
-		lex->line = ft_strchange(lex->line, ft_strndup(lex->line, ft_strlen(lex->line) - 2));
+		lex->line = ft_strchange(lex->line, ft_strndup(lex->line,
+					ft_strlen(lex->line) - 2));
 		lex->state = ft_last_simple_lst(lex->state_list);
 		lex->pos -= 2;
 	}
@@ -92,4 +115,3 @@ int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes)
 	lex->line = ft_strjoin_free(lex->line, new_command, 0b10);
 	return (1);
 }
-

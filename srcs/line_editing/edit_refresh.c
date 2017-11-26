@@ -1,4 +1,15 @@
-#include "line_editing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_refresh.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:34 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "syntax_coloring.h"
 #include "t_env.h"
 #include "t_lexer.h"
@@ -26,7 +37,7 @@ void	edit_refresh_line(t_line *line)
 	ret = DEFAULT;
 	if (singleton_env()->option & SYNCOLOR)
 	{
-		init_le_lexer(&lex, line->buff);
+		init_lexer(&lex, line->buff);
 		ret = loop_le_delim(&lex, line);
 		if (ret != DEFAULT)
 		{
@@ -34,12 +45,13 @@ void	edit_refresh_line(t_line *line)
 			ft_putchar_fd('_', 2);
 			ft_putstr_fd(RESET, 2);
 		}
-		free_lexer_le(&lex);
+		free_lexer(&lex);
 	}
 	else
 		term_putstr(line);
 	pos = get_char_visual_coor(line, line->len);
-	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n' && line->buff[line->pos - 1] != '\t') && ret == DEFAULT)
+	if (pos.x == 0 && (line->pos != 0 && line->buff[line->pos - 1] != '\n' \
+				&& line->buff[line->pos - 1] != '\t') && ret == DEFAULT)
 		put_termcap("do");
 }
 

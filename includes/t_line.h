@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_line.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:46 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef T_LINE_H
 # define T_LINE_H
 # include "termios.h"
@@ -26,8 +38,6 @@ typedef struct	s_line
 	int					heredoc;
 	void				(*sig_handler)(void);
 	ssize_t				col_target;
-	t_read				*read;
-	int					read_builtin;
 }				t_line;
 
 typedef struct	s_edit_func

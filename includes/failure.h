@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   failure.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:43 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FAILURE_H
 # define FAILURE_H
 # define E_BUFSIZE 4096
@@ -18,10 +30,8 @@
 
 int				get_logfd(const char *file);
 
-
 int				logwrite(const char *filename, const char *func_name,
 		const char *format, ...);
-
 
 char			*get_errno_1(void);
 char			*get_errno_2(void);

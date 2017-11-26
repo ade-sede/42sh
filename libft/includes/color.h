@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:40 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:15:25 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef COLOR_H
 # define COLOR_H
 # ifndef RED
@@ -23,6 +35,9 @@
 # endif
 # ifndef PNK
 #  define PNK "\x1B[95m"
+# endif
+# ifndef GREY
+#  define GREY "\x1B[248m"
 # endif
 # ifndef RESET
 #  define RESET "\x1B[0m"

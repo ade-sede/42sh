@@ -1,74 +1,47 @@
-#include "job_control.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   job_launch.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:23 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "exec.h"
 
-void	quit_job(int signum)
-{
-	(void)signum;
-	kill(-getpgrp(), SIGQUIT); 
-}
-
-void	launch_process(t_job_control *jc, t_process *p, pid_t pgid,
-		int infile, int outfile, int errfile,
-		int foreground,
+static int		ret_job(t_job_control *jc, t_job *j, int foreground,
 		int in_a_fork)
 {
-	pid_t	pid;
-
-	(void)foreground;
-	if (jc->shell_is_interactive)
-	{
-		pid = getpid();
-		if (pgid == 0)
-			pgid = pid;
-		setpgid(pid, pgid);
-		if (!in_a_fork && foreground && !jc->background)
-		{
-		//	fprintf(stderr, "put controling terminal");
-			if (tcsetpgrp(jc->shell_terminal, pgid) == -1)
-				perror("tcsetpgrp:");
-			if (foreground)
-				signal(SIGINT, quit_job);
-		}
-		if (!foreground)
-			jc->background = 1;
-		signal(SIGQUIT, SIG_DFL);
-		signal(SIGTSTP, SIG_DFL);
-		if (!foreground)
-		{
-			signal(SIGTTIN, SIG_DFL);
-			signal(SIGTTOU, SIG_DFL); //attention
-		}
-		signal(SIGCHLD, SIG_DFL);
-	}
-	if (infile != STDIN_FILENO)
-	{
-		dup2(infile, STDIN_FILENO);
-		close(infile);
-	}
-	if (outfile != STDOUT_FILENO)
-	{
-		dup2(outfile, STDOUT_FILENO);
-		close(outfile);
-	}
-	if (errfile != STDERR_FILENO)
-	{
-		dup2(errfile, STDERR_FILENO);
-		close(errfile);
-	}
-	exec(p->command);
-	exit(1);
+	if (!jc->shell_is_interactive || jc->background)
+		return (wait_for_job(jc, j));
+	else if (foreground)
+		return (put_job_in_foreground(jc, j, 0, in_a_fork));
+	return (put_job_in_background(j, 0));
 }
 
-int		launch_job(t_job_control *jc, t_job *j, int foreground)
+static void		cut1(t_job_control *jc, t_job *j, t_process *process, pid_t pid)
 {
-	t_process	*p;
-	pid_t	pid;
-	int		mypipe[2];
-	int		infile;
-	int		outfile;
-	pid_t	parent_process_group_id;
-	int		in_a_fork = 0;
+	process->pid = pid;
+	if (jc->shell_is_interactive)
+	{
+		if (!j->pgid)
+			j->pgid = pid;
+		setpgid(pid, j->pgid);
+	}
+}
 
+static int		init_launch(t_job_control *jc, t_job *j, int *stdfile)
+{
+	int			in_a_fork;
+	pid_t		parent_process_group_id;
+
+	in_a_fork = 0;
+	stdfile[0] = j->stdin;
+	stdfile[1] = j->stdout;
+	stdfile[2] = j->stderr;
 	if (!j->pgid)
 	{
 		if ((parent_process_group_id = getpgid(0)) != jc->shell_pgid)
@@ -76,54 +49,41 @@ int		launch_job(t_job_control *jc, t_job *j, int foreground)
 			j->pgid = parent_process_group_id;
 			in_a_fork = 1;
 		}
-//		else if (foreground)
-//			fprintf(stderr, "put controling terminal");
 	}
-	infile = j->stdin;
-	p = j->first_process;
-	while (p)
+	return (in_a_fork);
+}
+
+static int		cut_pipe(int *mypipe)
+{
+	p_pipe(mypipe);
+	return (mypipe[1]);
+}
+
+int				launch_job(t_job_control *jc, t_job *j, int foreground)
+{
+	t_process	*process;
+	pid_t		pid;
+	int			mypipe[2];
+	int			stdfile[3];
+	int			in_a_fork;
+
+	in_a_fork = init_launch(jc, j, stdfile);
+	process = j->first_process;
+	while (process)
 	{
-		if (p->next)
+		stdfile[1] = j->stdout;
+		if (process->next)
+			stdfile[1] = cut_pipe(mypipe);
+		if ((pid = p_fork()) == 0)
 		{
-			p_pipe(mypipe);
-			outfile = mypipe[1];
+			launch_process(jc, j->pgid, foreground, in_a_fork);
+			close_std(stdfile, j, 0);
+			exit(exec(process->command));
 		}
 		else
-			outfile = j->stdout;
-		pid = p_fork();
-		if (pid == 0)
-			launch_process(jc, p, j->pgid, infile,
-					outfile, j->stderr, foreground, in_a_fork);
-		else
-		{
-			p->pid = pid;
-			if (jc->shell_is_interactive)
-			{
-				if (!j->pgid)
-					j->pgid = pid;
-				setpgid(pid, j->pgid);
-			}
-		}
-		if (infile != j->stdin)
-			close(infile);
-		if (outfile != j->stdout)
-			close(outfile);
-		infile = mypipe[0];
-		p = p->next;
+			cut1(jc, j, process, pid);
+		close_std(stdfile, j, mypipe[0]);
+		process = process->next;
 	}
-	if (!jc->shell_is_interactive || jc->background)
-	{
-//		fprintf(stderr, "shell not interactiv || background\n");
-		return (wait_for_job(jc, j));
-	}
-	else if (foreground)
-	{
-//		fprintf(stderr, "foreground\n");
-		return (put_job_in_foreground(jc, j, 0, in_a_fork));
-	}
-	else
-	{
-//		fprintf(stderr, "ackground\n");
-		return (put_job_in_background(j, 0));
-	}
+	return (ret_job(jc, j, foreground, in_a_fork));
 }

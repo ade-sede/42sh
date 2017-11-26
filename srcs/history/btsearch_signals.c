@@ -1,6 +1,18 @@
-#include "history.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   btsearch_signals.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:19 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 #include <signal.h>
+#include "history.h"
 
 int		btsearch_handle_sigwinch(t_line *line, t_hist *h)
 {

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   str.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:41 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:15:28 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STR_H
 # define STR_H
 # include <string.h>
@@ -40,7 +52,6 @@ void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
-
 void				ft_putnstr(char *str, size_t len);
 void				ft_putnstr_fd(int fd, char *str, size_t len);
 /*
@@ -287,5 +298,7 @@ int					ft_is_backslash(char *str, int n);
 
 char				*ft_itoa_word(int n, char nbr[20]);
 int					ft_str_is_clear_n(char *str, size_t n);
-int			ft_atoilong_safe(const char *str, char **end_ptr, long *result);
+int					ft_atoilong_safe(const char *str, char **end_ptr, \
+		long *result);
+
 #endif

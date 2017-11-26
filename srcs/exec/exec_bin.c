@@ -1,4 +1,15 @@
-#include "exec.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_bin.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:58 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "t_env.h"
 #include "sys/wait.h"
@@ -51,7 +62,7 @@ static void		exec_bin_path(t_env *env, const char **argv)
 				EXIT_FAILURE));
 }
 
-int			exec_bin(t_env *env, const char **argv)
+int				exec_bin(t_env *env, const char **argv)
 {
 	ft_strchr(argv[0], '/') ? exec_bin_absolute(env, argv) : \
 			exec_bin_path(env, argv);

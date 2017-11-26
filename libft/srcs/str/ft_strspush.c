@@ -1,12 +1,23 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strspush.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:40 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:15:18 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 void	ft_strspush(char **str, char *push)
 {
-	char *n_str;
-	unsigned int strlen;
-	unsigned pushlen;
+	char			*n_str;
+	unsigned int	strlen;
+	unsigned		pushlen;
 
 	strlen = ft_strlen(*str);
 	pushlen = ft_strlen(push);

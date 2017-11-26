@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   alias.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:44 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "t_env.h"
 #include "builtin.h"
 #include "libft.h"
@@ -15,14 +27,11 @@ t_list		*find_alias(t_list *alias, const char *argv, size_t len)
 	return (alias);
 }
 
-#include <stdio.h>
 static void	create_alias(t_env *env, const char *argv, int eq_index, int *ret)
 {
 	t_list	*node;
 
 	node = find_alias(env->alias, argv, eq_index + 1);
-	if (node)
-		dprintf(2, "%s\n", node->data);
 	if (node)
 		node->data = ft_strchange(node->data, cl_strdup(argv));
 	else
@@ -44,7 +53,7 @@ static void	show_alias(t_env *env, const char *argv, int *ret)
 
 int			builtin_alias(t_env *env, const char **argv)
 {
-	int		eq_index;
+	ssize_t	eq_index;
 	int		argc;
 	int		i;
 	int		ret;
@@ -59,7 +68,7 @@ int			builtin_alias(t_env *env, const char **argv)
 		eq_index = ft_strichr(argv[i], '=');
 		if (eq_index == -1)
 			show_alias(env, argv[i], &ret);
-		else
+		else if ((size_t)eq_index != ft_strlen(argv[i]) - 1)
 			create_alias(env, argv[i], eq_index, &ret);
 	}
 	return (ret);

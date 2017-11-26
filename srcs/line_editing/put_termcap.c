@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_termcap.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:35 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 
 int		int_putchar(int c)
@@ -22,8 +34,3 @@ void	put_ntermcap(char *capacity, int n)
 		i++;
 	}
 }
-
-/* void	goto_termcap(char *capacity, int co, int li) */
-/* { */
-/* 	tputs(tgoto(tgetstr(capacity, NULL), co, li), 1, int_putchar); */
-/* } */

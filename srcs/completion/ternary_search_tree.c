@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ternary_search_tree.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:54 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "completion.h"
 
 t_ternary_tree	*ternary_tree_new_down(char *str, char *cur)
@@ -28,36 +40,3 @@ t_ternary_tree	*ternary_tree_new(char c)
 	new->c = c;
 	return (new);
 }
-/*
-**	void			ternary_tree_print(t_ternary_tree *node)
-**	{
-**		if (!node)
-**			return ;
-**		printf("c is %c\n", node->c);
-**		if (node->match)
-**			printf("match is %s\n", node->match);
-**		if (node->left)
-**			printf("\n left \n");
-**		ternary_tree_print(node->left);
-**		if (node->down)
-**			printf("\n down \n");
-**		ternary_tree_print(node->down);
-**		if (node->right)
-**			printf("\n right\n");
-**		ternary_tree_print(node->right);
-**	}
-*/
-/*
-**	void			test_ternary_tree()
-**	{
-**		char	*str;
-**		t_ternary_tree *tree;
-**		str = "ab";
-**		tree = ternary_tree_new_down(str, str);
-**		ternary_tree_print(tree);
-**		str = "ba";
-**		printf("\n test 1\n");
-**		ternary_tree_add(tree, str, str);
-**		ternary_tree_print(tree);
-**	}
-*/

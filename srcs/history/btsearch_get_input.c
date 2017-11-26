@@ -1,4 +1,15 @@
-#include "line_editing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   btsearch_get_input.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:18 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "history.h"
 
 int		btsearch_special_keys(t_line *line, t_hist *h, unsigned long keycode)

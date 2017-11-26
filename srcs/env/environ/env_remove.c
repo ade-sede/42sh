@@ -1,7 +1,19 @@
-#include "local.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_remove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:54 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environ.h"
 #include "hash_table.h"
 #include "libft.h"
+#include "local.h"
 
 void	env_remove_var_index(t_env *env, size_t key_index)
 {

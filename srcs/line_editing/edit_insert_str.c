@@ -1,5 +1,17 @@
-#include "line_editing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_insert_str.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:33 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+#include "line_editing.h"
 
 int	ft_insert_str_dest(char *dest, char *str, size_t dest_len)
 {

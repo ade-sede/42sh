@@ -1,4 +1,16 @@
-#include "completion.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   comple_create_completion_tree.c                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:49 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <dirent.h>
 #include "environ.h"
 #include "t_ternary_tree.h"
 #include "line_editing.h"

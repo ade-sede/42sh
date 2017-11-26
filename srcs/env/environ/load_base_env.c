@@ -1,22 +1,19 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_base_env.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:55 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environ.h"
 #include "printf.h"
 #include "hash_table.h"
 #include "local.h"
-
-static int	load_color(t_env *env)
-{
-	local_add_change_from_key_value(env, "word_color", RESET);
-	local_add_change_from_key_value(env, "default_color", RESET);
-	local_add_change_from_key_value(env, "comment_color", RESET);
-	local_add_change_from_key_value(env, "operator_color", PNK);
-	local_add_change_from_key_value(env, "param_exp_color", BLU);
-	local_add_change_from_key_value(env, "cmd_subst_color", RESET);
-	local_add_change_from_key_value(env, "dquotes_color", YEL);
-	local_add_change_from_key_value(env, "quotes_color", MAG);
-	local_add_change_from_key_value(env, "bs_color", CYN);
-	return (1);
-}
 
 static int	load_special_params(t_env *env)
 {
@@ -39,7 +36,6 @@ void		env_load_base_env(t_env *env, const char **environ)
 
 	i = 0;
 	env->environ = NULL;
-	env->previous_exit = 0;
 	env->option = 0;
 	env->alias = NULL;
 	env->first_func = NULL;
@@ -54,7 +50,6 @@ void		env_load_base_env(t_env *env, const char **environ)
 	}
 	create_hash_table(&env->hash_table, env->environ);
 	load_special_params(env);
-	load_color(env);
 }
 
 void		env_load_shlvl_pwd(t_env *env)

@@ -1,23 +1,18 @@
-#include "history.h"
-#include "failure.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   history_write.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:21 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-** void	history_refresh_command(t_hist *h, char *command)
-** {
-** 	write(h->fd, command, ft_strlen(command));
-** 	write(h->fd, "\n", 1);
-** }
-**
-** void	history_write_last_command(void)
-** {
-** 	t_hist		*h;
-** 	t_list_d	*list;
-**
-** 	h = singleton_hist();
-** 	list = h->list->first;
-** 	history_refresh_command(h, list->data);
-** }
-*/
+#include "failure.h"
+#include "libft.h"
+#include "history.h"
 
 static int		write_to_hist(char *value, int fd)
 {
@@ -34,18 +29,10 @@ static int		write_to_hist(char *value, int fd)
 	return (1);
 }
 
-void			history_write_to_histfile(void)
+void			history_write_to_file(int fd, t_hist *h)
 {
-	t_hist		*h;
 	t_list_d	*last;
-	int			fd;
 
-	h = singleton_hist();
-	if ((fd = open(h->file, O_RDWR | O_TRUNC)) == -1)
-	{
-		investigate_error(1, "open", NULL, -1);
-		return ;
-	}
 	last = (!h->list) ? NULL : h->list->last;
 	while (last)
 	{
@@ -53,6 +40,20 @@ void			history_write_to_histfile(void)
 		write(fd, "\n", 1);
 		last = last->prev;
 	}
+}
+
+void			history_write_to_histfile(void)
+{
+	t_hist		*h;
+	int			fd;
+
+	h = singleton_hist();
+	if ((fd = open(h->file, O_RDWR | O_TRUNC | O_CREAT, 0644)) == -1)
+	{
+		investigate_error(1, "open", NULL, -1);
+		return ;
+	}
+	history_write_to_file(fd, h);
 	close(fd);
 }
 

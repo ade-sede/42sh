@@ -13,11 +13,14 @@ COLOR_VIOLET	= \033[1;35m
 COLOR_CYAN		= \033[1;36m
 COLOR_WHITE		= \033[1;37m
 
+
 # **************************************************************************** #
 SRC_FILE = \
 		   main.c \
 		   \
 		   builtin/alias.c \
+		   builtin/history.c \
+		   builtin/history_opt.c \
 		   builtin/export.c \
 		   builtin/shopt.c \
 		   builtin/shift.c \
@@ -30,7 +33,9 @@ SRC_FILE = \
 		   builtin/fg.c \
 		   builtin/jobs.c \
 		   builtin/read.c \
+		   builtin/read_get_input.c \
 		   builtin/read_options.c \
+		   builtin/read_backslash.c \
 		   builtin/set.c \
 		   builtin/setenv.c \
 		   builtin/unalias.c \
@@ -59,6 +64,7 @@ SRC_FILE = \
 		   env/opt/set_opt.c \
 		   \
 		   env/local/pos_param.c \
+		   env/local/pos_param_add.c \
 		   env/local/local_add.c \
 		   env/local/local_remove.c \
 		   env/local/local_get.c \
@@ -68,13 +74,16 @@ SRC_FILE = \
 		   env/environ/env_remove.c \
 		   env/environ/environ.c \
 		   env/environ/load_base_env.c \
-		   \
+		   env/environ/ft_is_key.c \
 		   \
 		   env/prompt/get_ps1.c \
 		   env/prompt/prompt.c \
 		   env/prompt/prompt_zsh.c \
 		   \
 		   exec/debug_symbol.c \
+		   exec/layer_exec.c \
+		   exec/exec_main_loop.c \
+		   exec/remove_lexer_parser.c \
 		   exec/debug_token.c \
 		   exec/exec_asynchronous_list.c \
 		   exec/exec_bin.c \
@@ -88,8 +97,8 @@ SRC_FILE = \
 		   exec/redir_utils.c \
 		   exec/get_input.c \
 		   exec/parse_heredoc.c \
-		   \
-		   \
+		   exec/exec_command_prefix.c \
+		   exec/exec_command_suffix.c \
 		   \
 		   exec/symbol/exec.c \
 		   exec/symbol/exec_and_or.c \
@@ -142,7 +151,6 @@ SRC_FILE = \
 		   history/btsearch_move.c \
 		   history/btsearch_refresh.c \
 		   history/btsearch_signals.c \
-		   history/expansion.c \
 		   history/history_get_input.c \
 		   history/history_init.c \
 		   history/history_line_refresh.c \
@@ -150,7 +158,23 @@ SRC_FILE = \
 		   history/history_write.c \
 		   history/load_history.c \
 		   \
+		history/bang/bang_expand.c \
+		history/bang/trunc.c \
+		history/bang/subst.c \
+		history/bang/modifiers_utils.c \
+		history/bang/apply_quotes.c \
+		history/bang/lex_loop.c \
+		history/bang/parse_word_range.c \
+		history/bang/string_event.c \
+		history/bang/state.c \
+		history/bang/find_event.c \
+		history/bang/event_expand.c \
+		history/bang/modifier_expand.c \
+		history/bang/word_designator_expand.c \
+		   \
 		   job_control/job_background.c \
+		   job_control/process_launch.c \
+		   job_control/job_is.c \
 		   job_control/job_continue.c \
 		   job_control/job_fill_process_av.c \
 		   job_control/job_foreground.c \
@@ -170,11 +194,13 @@ SRC_FILE = \
 		   lexer/t_lexer.c \
 		   lexer/t_token.c \
 		   lexer/utils.c \
+		   lexer/t_info.c \
 		   \
 		   lexer/id/get_token_id.c \
 		   lexer/id/operator.c \
 		   lexer/id/reserved_words.c \
 		   lexer/id/words.c \
+		   lexer/id/words_p2.c \
 		   \
 		   lexer/lexer_action/bs.c \
 		   lexer/lexer_action/ar_exp.c \
@@ -209,17 +235,36 @@ SRC_FILE = \
 		   line_editing/edit_signals.c \
 		   line_editing/edit_write.c \
 		   line_editing/put_termcap.c \
-		line_editing/edit_verbatim.c \
+		   line_editing/edit_verbatim.c \
+		   \
+			line_editing/syntax_coloring/get_color.c \
+			line_editing/syntax_coloring/delim.c \
+			line_editing/syntax_coloring/loop.c \
+			line_editing/syntax_coloring/utils.c \
+			\
+			line_editing/syntax_coloring/lexer_action_le/ar_exp.c \
+			line_editing/syntax_coloring/lexer_action_le/bs.c \
+			line_editing/syntax_coloring/lexer_action_le/cmd_subst.c \
+			line_editing/syntax_coloring/lexer_action_le/comment.c \
+			line_editing/syntax_coloring/lexer_action_le/default.c \
+			line_editing/syntax_coloring/lexer_action_le/dquotes.c \
+			line_editing/syntax_coloring/lexer_action_le/newline.c \
+			line_editing/syntax_coloring/lexer_action_le/operator.c \
+			line_editing/syntax_coloring/lexer_action_le/param_exp.c \
+			line_editing/syntax_coloring/lexer_action_le/quotes.c \
+			line_editing/syntax_coloring/lexer_action_le/whitespace.c \
+			line_editing/syntax_coloring/lexer_action_le/word.c \
 		   \
 		   parser/get_action.c \
-		   parser/parse_redir.c \
+		   parser/init_parser.c \
 		   parser/parser.c \
 		   parser/parser_construct_prompt.c \
 		   parser/utils.c \
 		   parser/t_ast.c \
 		   \
-		   \
 		   exec/expand/parse_dollar.c \
+		   exec/expand/eval_expr.c \
+		   exec/expand/parse_param.c \
 		   exec/expand/parse_arith.c \
 		   exec/expand/parse_quote.c \
 		   exec/expand/parse_tilde.c \
@@ -228,27 +273,11 @@ SRC_FILE = \
 		   exec/expand/utils.c \
 		   exec/expand/wordexp_posix.c \
 		   exec/expand/handle_fieldsplitting.c \
-		   exec/expand/parse_comm.c \
-		   \
-		   line_editing/syntax_coloring//delim.c \
-		   line_editing/syntax_coloring//loop.c \
-		   line_editing/syntax_coloring//utils.c \
-		   line_editing/syntax_coloring//write.c \
-		   \
-		   line_editing/syntax_coloring//lexer_action_le/bs.c \
-		   line_editing/syntax_coloring//lexer_action_le/cmd_subst.c \
-		   line_editing/syntax_coloring//lexer_action_le/comment.c \
-		   line_editing/syntax_coloring//lexer_action_le/default.c \
-		   line_editing/syntax_coloring//lexer_action_le/dquotes.c \
-		   line_editing/syntax_coloring//lexer_action_le/newline.c \
-		   line_editing/syntax_coloring//lexer_action_le/operator.c \
-		   line_editing/syntax_coloring//lexer_action_le/param_exp.c \
-		   line_editing/syntax_coloring//lexer_action_le/quotes.c \
-		   line_editing/syntax_coloring//lexer_action_le/whitespace.c \
-		   line_editing/syntax_coloring//lexer_action_le/word.c
+		   exec/expand/parse_comm.c
 
 INCLUDES_FILES = \
 				 builtin.h \
+				 syntax_coloring.h \
 				 shopt.h \
 				 completion.h \
 				 environ.h \
@@ -259,6 +288,7 @@ INCLUDES_FILES = \
 				 glob_struct.h \
 				 hash_table.h \
 				 history.h \
+				 bang.h \
 				 job_control.h \
 				 lexer.h \
 				 line_editing.h \
@@ -283,7 +313,7 @@ TEST_FILE=
 
 LIB_DIR = libft
 LIB_INC = -I$(LIB_DIR)/includes
-LOCAL_INC = -Iincludes
+LOCAL_INC = -Iincludes -Iressources
 SRC_DIR = srcs
 OBJ_DIR = objs
 
@@ -333,6 +363,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/exec/expand/
 	@/bin/mkdir -p $(OBJ_DIR)/globing
 	@/bin/mkdir -p $(OBJ_DIR)/history
+	@/bin/mkdir -p $(OBJ_DIR)/history/bang
 	@/bin/mkdir -p $(OBJ_DIR)/lexer
 	@/bin/mkdir -p $(OBJ_DIR)/lexer/id/
 	@/bin/mkdir -p $(OBJ_DIR)/lexer/lexer_action/

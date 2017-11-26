@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   glob.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:43 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GLOB_H
 # define GLOB_H
 # include "libft.h"
@@ -7,7 +19,7 @@
 
 int		match_open_dir(t_matches *m, int to_match_i, int regex_i, \
 		char *dir_name);
-char *match_open_file(char *m_dir, char *file_name);
+char	*match_open_file(char *m_dir, char *file_name);
 int		char_is_escaped(char *regex, int regex_i);
 int		match(t_matches *m, int to_match_i, int regex_i);
 int		match_open_dir(t_matches *m, int to_match_i, int regex_i, \

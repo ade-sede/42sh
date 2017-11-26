@@ -1,4 +1,15 @@
-#include "t_env.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_builtin.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:45 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "builtin.h"
 #include "exec.h"
 #include "read.h"
@@ -24,6 +35,7 @@ static t_builtin	g_builtin[] =
 	{"shift", &builtin_shift},
 	{"export", &builtin_export},
 	{"read", &builtin_read},
+	{"history", &builtin_history},
 	{NULL, NULL}
 };
 
@@ -43,6 +55,5 @@ int			exec_builtin(t_env *env, const char **argv)
 
 	if ((f = get_exec_builtin(argv[0])) == NULL)
 		return (EXIT_FAILURE);
-	env->previous_exit = f(env, argv);
-	return (env->previous_exit);
+	return (f(env, argv));
 }

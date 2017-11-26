@@ -1,6 +1,18 @@
-# include "libft.h"
-# include "termios.h"
-# include "term.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_termcap.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:40 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:15:23 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "termios.h"
+#include "term.h"
+#include "libft.h"
 
 int		int_putchar(int c)
 {

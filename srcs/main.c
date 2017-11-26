@@ -1,4 +1,16 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:40 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
 #include "environ.h"
 #include <fcntl.h>
 #include <stdlib.h>
@@ -7,6 +19,9 @@
 #include "local.h"
 #include <pwd.h>
 #include "modes.h"
+#include <sys/resource.h>
+#include <stdio.h>
+#include "failure.h"
 
 void	read_args(int ac, char **av, t_modes *modes)
 {
@@ -16,7 +31,7 @@ void	read_args(int ac, char **av, t_modes *modes)
 	{
 		if ((modes->stream = open(av[1], O_RDONLY)) == -1)
 		{
-			perror("");
+			investigate_error(1, "open", NULL, 0);
 			exit(1);
 		}
 		modes->mode = FILE_MODE;
@@ -26,46 +41,44 @@ void	read_args(int ac, char **av, t_modes *modes)
 	{
 		modes->mode = STRING_MODE;
 		modes->string = av[2];
-		//printf("modes->string %s\n", modes->string);
 	}
 	else
 	{
-		dprintf(2, "Usage: 42sh [script_file]\n");
-		dprintf(2, "Usage: 42sh [-c string]\n");
+		ft_dprintf(2, "Usage: 42sh [script_file]\n");
+		ft_dprintf(2, "Usage: 42sh [-c string]\n");
 		exit(1);
 	}
 }
 
-#include <stdio.h>
 void	read_pointrc(t_env *env)
 {
 	int		fd;
 	char	*tmp;
-	t_modes				modes;
+	t_modes	modes;
 
 	ft_bzero(&modes, sizeof(t_modes));
 	tmp = ft_gethome();
-	/* CHECK THIS */
 	if (tmp)
 		tmp = ft_strjoin(tmp, "/.42shrc");
 	else
 		return ;
-	(void)env;
-
 	if ((fd = open(tmp, O_RDONLY)) == -1)
 	{
 		free(tmp);
-		perror("");
+		investigate_error(1, "open", NULL, 0);
 		return ;
 	}
 	free(tmp);
-	modes.mode = FILE_MODE; 
+	modes.mode = FILE_MODE;
 	modes.stream = fd;
 	main_loop(env, &modes);
 }
 
-#include <sys/resource.h>
-#include <stdio.h>
+void	mode_first_set(t_modes *modes)
+{
+	modes->mode = FILE_MODE;
+	modes->stream = STDIN_FILENO;
+}
 
 int		main(int ac, char **av)
 {
@@ -76,17 +89,13 @@ int		main(int ac, char **av)
 
 	ft_bzero(&modes, sizeof(t_modes));
 	read_args(ac, av, &modes);
-	env = singleton_env();
-	env_load_base_env(env, environ);
+	env_load_base_env((env = singleton_env()), environ);
 	jc = singleton_jc();
 	read_pointrc(env);
 	if (modes.mode == 0)
 		init_job_control(jc);
 	if (!jc->shell_is_interactive && modes.mode == 0)
-	{
-		modes.mode = FILE_MODE;
-		modes.stream = STDIN_FILENO;
-	}
+		mode_first_set(&modes);
 	if (modes.mode == INTERACTIVE_MODE)
 	{
 		conf_term_init();

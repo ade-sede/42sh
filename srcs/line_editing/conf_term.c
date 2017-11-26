@@ -1,6 +1,18 @@
-#include "line_editing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conf_term.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:30 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "t_env.h"
 #include "environ.h"
+#include "line_editing.h"
 
 /*
 **	Functions used to temper with the terminal's configuration.

@@ -1,4 +1,15 @@
-#include "line_editing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_get_coor.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:32 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "failure.h"
 
 /*
@@ -9,7 +20,7 @@
 #include <stdio.h>
 #include "line_editing.h"
 
-t_coor	get_prompt_visual_offset(t_line *line)
+t_coor			get_prompt_visual_offset(t_line *line)
 {
 	size_t	x;
 	size_t	y;
@@ -25,7 +36,7 @@ t_coor	get_prompt_visual_offset(t_line *line)
 **	display the prompt (line0)). Skipping prompt on first line.
 */
 
-t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
+t_coor			get_char_visual_coor(t_line *line, ssize_t pos)
 {
 	size_t	index;
 	int		x;
@@ -36,7 +47,7 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 	y = 0;
 	while ((ssize_t)index != pos)
 	{
-		if (line->buff[index] == '\t')//&& (x + 1) != (int)line->ws_col)
+		if (line->buff[index] == '\t')
 			x += (x % 8) ? (8 - (x % 8)) : (8);
 		else
 			++x;
@@ -57,7 +68,21 @@ t_coor	get_char_visual_coor(t_line *line, ssize_t pos)
 **	(Index from the start of the prompt).
 */
 
-size_t	get_char_mem_coor(size_t ret, t_line *line, size_t x_target,
+static void		first_lopp(t_line *line, size_t *ret, size_t *x, size_t *y)
+{
+	if (line->buff[*ret] == '\t')
+		*x += ((*x) % 8) ? (8 - ((*x) % 8)) : (8);
+	else
+		++(*x);
+	if ((*x) == line->ws_col || line->buff[*ret] == '\n')
+	{
+		++(*y);
+		(*x) = 0;
+	}
+	++(*ret);
+}
+
+size_t			get_char_mem_coor(size_t ret, t_line *line, size_t x_target,
 		size_t y_target)
 {
 	size_t	x;
@@ -68,24 +93,9 @@ size_t	get_char_mem_coor(size_t ret, t_line *line, size_t x_target,
 	x = pos.x;
 	y = pos.y;
 	while (y != y_target && line->buff[ret])
-	{
-		//++x;
-		//edit add
-		if (line->buff[ret] == '\t')
-			x += (x % 8) ? (8 - (x % 8)) : (8);
-		else 
-			++x;
-		//end add
-		if (x == line->ws_col || line->buff[ret] == '\n')
-		{
-			++y;
-			x = 0;
-		}
-		++ret;
-	}
+		first_lopp(line, &ret, &x, &y);
 	while (x != x_target)
 	{
-
 		if (x >= line->ws_col || line->buff[ret] == '\n' || ret >= line->len)
 		{
 			if (x > line->ws_col)
@@ -108,7 +118,7 @@ size_t	get_char_mem_coor(size_t ret, t_line *line, size_t x_target,
 **	not doing anything).
 */
 
-size_t	get_char_mem_coor_relative(t_line *line, int x_move, int y_move)
+size_t			get_char_mem_coor_relative(t_line *line, int x_move, int y_move)
 {
 	t_coor	pos;
 	size_t	ret;

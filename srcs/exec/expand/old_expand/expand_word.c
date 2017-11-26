@@ -1,4 +1,15 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expand_word.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:02 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lexer.h"
 #include "parser.h"
 #include "env.h"
@@ -6,9 +17,9 @@
 #include "glob.h"
 
 /*
- **	TODO : A function to check if the token is subject to param expansion. Atm
- **	we're doing quote removal first, cus its easier, but that should come last
- */
+**	TODO : A function to check if the token is subject to param expansion. Atm
+**	we're doing quote removal first, cus its easier, but that should come last
+*/
 
 static t_list	*get_globbed_tokens(t_list *list)
 {
@@ -24,13 +35,13 @@ static t_list	*get_globbed_tokens(t_list *list)
 }
 
 /*
- **	if (ft_strchr(token->value, '*') || ft_strchr(token->value, '['))
- **	first = get_globbed_tokens(glob(token->value));
- **	else if (ft_strchr(token->value, '{'))
- **	first = get_globbed_tokens(expand_curly_brackets(token->value));
- **	if (first != NULL)
- **	free_token(token);
- */
+**	if (ft_strchr(token->value, '*') || ft_strchr(token->value, '['))
+**	first = get_globbed_tokens(glob(token->value));
+**	else if (ft_strchr(token->value, '{'))
+**	first = get_globbed_tokens(expand_curly_brackets(token->value));
+**	if (first != NULL)
+**	free_token(token);
+*/
 
 t_list			*pathname_expansion(t_token *token, int match_all)
 {

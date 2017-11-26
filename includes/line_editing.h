@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   line_editing.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:44 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LINE_EDITING_H
 # define LINE_EDITING_H
 
@@ -69,7 +81,8 @@ extern int		g_abort_opening;
 
 int				edit_del(t_line *line);
 t_coor			get_prompt_visual_offset(t_line *line);
-void		reopen_line_editing(t_lexer *lex, t_parser *parser, char **new_command);
+void			reopen_line_editing(t_lexer *lex, t_parser *parser, \
+		char **new_command);
 void			term_putstr(t_line *line);
 void			edit_handle_sigint_reopen(int signum);
 void			edit_set_signals_reopen(void);

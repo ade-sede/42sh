@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_lexer.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:46 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef T_LEXER_H
 # define T_LEXER_H
 # include "t_token.h"
@@ -6,11 +18,11 @@
 
 /*
 **	state_list is a list which has ssize_t* as data. Each of these 3 int holds
-**	data about the state of the current operation:
-**	data[_T_STATE] -> current state of the automaton
-**	data[_T_START] -> where the current operation STARTED (index of the first character to include IN the token)
-**	data[_T_END] -> where the operation ended (index of the last character to include IN the token)
-**	Its a stack of ssize_t
+**	data about the state of the current operation: data[_T_STATE] -> current
+**	state of the automaton data[_T_START] -> where the current operation
+**	STARTED (index of the first character to include IN the token) data[_T_END]
+**	-> where the operation ended (index of the last character to include IN the
+**	token) Its a stack of ssize_t
 **
 **	state is a pointer to a node of state_list, representing its current state
 **
@@ -23,7 +35,6 @@
 **	potentially be a command name, or FALSE (0) if it is not possible
 **	(obviously because we have already found one in the current command)
 */
-
 
 /*
 **	The following enum concerns the different states the automata can go
@@ -39,7 +50,6 @@ enum
 	OPERATOR,
 	PARAM_EXP,
 	CMD_SUBST,
-	TILD_EXP,
 	AR_EXP,
 	DQUOTES,
 	QUOTES,
@@ -57,10 +67,9 @@ typedef struct	s_lexer
 	t_list		*reversed_list;
 }				t_lexer;
 
-
-int			init_lexer(t_lexer *lex, const char *line);
-int			free_lexer(t_lexer *lex);
-int			free_lexer_le(t_lexer *lex);
-int			init_le_lexer(t_lexer *lex, const char *line);
-void	remove_lexer(t_lexer *lex, t_list **token_list);
+int				init_lexer(t_lexer *lex, const char *line);
+int				free_lexer(t_lexer *lex);
+int				free_lexer_le(t_lexer *lex);
+int				init_le_lexer(t_lexer *lex, const char *line);
+void			remove_lexer(t_lexer *lex, t_list **token_list);
 #endif
