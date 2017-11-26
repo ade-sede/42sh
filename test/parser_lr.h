@@ -53,8 +53,8 @@ struct s_grammar_rule {
 */
 
 struct s_item {
-	struct item			*next_item;
-	int					gramar_rule;
+	struct s_item			*next;
+	int					grammar_rule;
 	int					point;
 	enum e_token		look_ahead;
 };
@@ -71,7 +71,6 @@ struct s_parser_lr {
 struct s_line {
 	struct s_line			*next;
 	int 					state;
-	struct s_item			*item_list;
 	struct s_item			*closure;
 	struct s_item			*kernel;
 	int						action_table[NB_TOKEN];
@@ -83,9 +82,6 @@ int		get_first_grammar_rule(struct s_grammar_rule *grammar_rule, enum e_symbol s
 int	search_morpheme_lst(struct s_morpheme_lst *a, t_morpheme m);
 struct s_morpheme_lst *add_unique_morpheme_lst(struct s_morpheme_lst **a, t_morpheme m);
 struct s_morpheme_lst *union_morpheme_lst(struct s_morpheme_lst **a, struct s_morpheme_lst *b);
-struct s_morpheme_lst *new_morpheme_lst(t_morpheme m);
-struct s_item *create_item(struct s_grammar_rule *rule, int point, t_morpheme token);
-struct s_line *create_line(int state);
 
 void	debug_token(int m);
 void	debug_symbol(int m);
@@ -94,4 +90,7 @@ void	debug_gramar(struct s_parser_lr *lr);
 void	init_firsts(struct s_parser_lr *lr);
 void	debug_firsts(struct s_parser_lr *lr);
 
+struct s_morpheme_lst *new_morpheme_lst(t_morpheme m);
+struct s_item *new_item(int grammar_rule, int point, enum e_token token);
+struct s_line *new_line(int state, struct s_item *kernel, struct s_item *closure);
 #endif
