@@ -3,6 +3,58 @@
 #include "libft.h"
 #include "parser_lr.h"
 
+struct s_item *dup_item_lst(struct s_item *old)
+{
+	struct s_item *new;
+	struct s_item *new_tmp;
+
+	if (!old)
+		return (NULL);
+	new_tmp = new_item(old->grammar_rule, old->point, old->look_ahead);
+	new = new_tmp;
+	while (old->next)
+	{
+		new_tmp->next = new_item(old->next->grammar_rule, old->next->point, old->next->look_ahead);
+		old = old->next;
+		new_tmp = new_tmp->next;
+	}
+	return (new);
+}
+
+struct s_morpheme_lst *dup_morpheme_lst(struct s_morpheme_lst *old)
+{
+	struct s_morpheme_lst *new;
+	struct s_morpheme_lst *new_tmp;
+
+	if (!old)
+		return (NULL);
+	new_tmp = new_morpheme_lst(old->m);
+	new = new_tmp;
+	while (old->next)
+	{
+		new_tmp->next = new_morpheme_lst(old->next->m);
+		old = old->next;
+		new_tmp = new_tmp->next;
+	}
+	return (new);
+}
+
+void	item_pushback_unique(struct s_item **item_lst, int grammar_rule, int point, enum e_token look_ahead)
+{
+	struct s_item *cur = *item_lst;
+
+	if (!(cur))
+		*item_lst = new_item(grammar_rule, point, look_ahead);
+	while (cur)
+	{
+		if (cur->grammar_rule == grammar_rule && cur->point == point && cur->look_ahead == look_ahead)
+			return ;
+		if (!cur->next)
+			cur->next = new_item(grammar_rule, point, look_ahead);
+		cur = cur->next;
+	}
+}
+
 struct s_line *new_line(int state, struct s_item *kernel, struct s_item *closure)
 {
 	struct s_line *new_line;

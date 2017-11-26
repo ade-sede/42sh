@@ -82,15 +82,23 @@ int		get_first_grammar_rule(struct s_grammar_rule *grammar_rule, enum e_symbol s
 int	search_morpheme_lst(struct s_morpheme_lst *a, t_morpheme m);
 struct s_morpheme_lst *add_unique_morpheme_lst(struct s_morpheme_lst **a, t_morpheme m);
 struct s_morpheme_lst *union_morpheme_lst(struct s_morpheme_lst **a, struct s_morpheme_lst *b);
+struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *m_lst);
 
 void	debug_token(int m);
 void	debug_symbol(int m);
 void	debug_grammar_rule(struct s_parser_lr *lr, int i);
 void	debug_gramar(struct s_parser_lr *lr);
+void	debug_item_lst(struct s_parser_lr *lr, struct s_item *item);
+void	debug_morpheme_lst(struct s_morpheme_lst *lst);
+void	debug_morpheme_node(struct s_morpheme_lst *tmp);
 void	init_firsts(struct s_parser_lr *lr);
 void	debug_firsts(struct s_parser_lr *lr);
 
 struct s_morpheme_lst *new_morpheme_lst(t_morpheme m);
 struct s_item *new_item(int grammar_rule, int point, enum e_token token);
 struct s_line *new_line(int state, struct s_item *kernel, struct s_item *closure);
+void	debug_line(struct s_parser_lr *lr, struct s_line *l);
+void	item_pushback_unique(struct s_item **item_lst, int grammar_rule, int point, enum e_token look_ahead);
+struct s_morpheme_lst *dup_morpheme_lst(struct s_morpheme_lst *old);
+struct s_item *dup_item_lst(struct s_item *old);
 #endif

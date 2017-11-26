@@ -89,6 +89,57 @@ void	debug_gramar(struct s_parser_lr *lr)
 		i++;
 	}
 }
+
+void	debug_firsts(struct s_parser_lr *lr)
+{
+	int	i = FIRST_SYMBOL;
+
+	while (i < NB_SYMBOLS + 1)
+	{
+		struct s_morpheme_lst	*childs;
+		childs = lr->firsts[i];
+
+		debug_symbol(i); printf(":");
+		while (childs)
+		{
+			if (IS_TOKEN(childs->m))
+				debug_token(childs->m);
+			else if (IS_SYMBOL(childs->m))
+				debug_symbol(childs->m);
+			else
+			{
+				printf("invalid symbol");
+				break;
+			}
+			//		printf("child i is : %d", childs->m);
+			printf(" ");
+			childs = childs->next;
+		}
+		i++;
+		printf("\n");
+	}
+}
+void	debug_morpheme_node(struct s_morpheme_lst *tmp)
+{
+		if (IS_TOKEN(tmp->m))
+			debug_token(tmp->m);
+		else if (IS_SYMBOL(tmp->m))
+			debug_symbol(tmp->m);
+		else
+			printf("invalid symbol");
+		printf(" ");
+}
+
+void	debug_morpheme_lst(struct s_morpheme_lst *tmp)
+{
+	while (tmp)
+	{
+		debug_morpheme_node(tmp);
+		tmp = tmp->next;
+	}
+	printf("\n");
+}
+
 void	debug_item(struct s_parser_lr *lr, struct s_item *item)
 {
 	int		i = 0;

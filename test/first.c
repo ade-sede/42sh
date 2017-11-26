@@ -87,61 +87,35 @@ void	init_firsts(struct s_parser_lr *lr)
 		i++;
 	}
 }
-void	debug_firsts(struct s_parser_lr *lr)
-{
-	int	i = FIRST_SYMBOL;
 
-	while (i < NB_SYMBOLS + 1)
-	{
-		struct s_morpheme_lst	*childs;
-		childs = lr->firsts[i];
-		while (childs)
-		{
-			if (IS_TOKEN(childs->m))
-				debug_token(childs->m);
-			else if (IS_SYMBOL(childs->m))
-				debug_symbol(childs->m);
-			else
-			{
-				printf("invalid symbol");
-				break;
-			}
-			//		printf("child i is : %d", childs->m);
-			printf(" ");
-			childs = childs->next;
-		}
-		i++;
-		printf("\n");
-	}
-}
-
-struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *m_lst)
+struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *first)
 {
-	struct s_morpheme_lst *res = NULL;
-	struct s_morpheme_lst	*tmp = m_lst;
+	struct s_morpheme_lst	*res = NULL;
+	struct s_morpheme_lst	*tmp = first;
+
+	/*
+	**	tmp s'ecrit Aß:
+	**	on ajoute firsts (A) dans res tant que A contient epsilon 
+	*/
 
 	while (tmp)
 	{
 		if (IS_TOKEN(tmp->m))
+		{
 			add_unique_morpheme_lst(&res, tmp->m);
+			if (tmp->m != EPSILON)
+				return (res);
+		}
 		else if (IS_SYMBOL(tmp->m))
 		{
-			/*
-			 **	tmp s'ecrit Aß:
-			 **	si A contient epsilon ou si c'est le premier symbol de la regle on ajoute
-			 ** a firsts: soit le firsts deja trouver soit app recursif pour le trouver
-			 **	sinon on break
-			 */
-			if (search_morpheme_lst(tmp, EPSILON) || tmp == m_lst)
-			{
-				if (lr->firsts[tmp->m])
-					union_morpheme_lst(&lr->firsts[tmp->m], lr->firsts[tmp->m]);
-			}
-			else
-				break;
+			if (lr->firsts[tmp->m])
+				union_morpheme_lst(&res, lr->firsts[tmp->m]);
+			else 
+				printf("WARNING symbol possede no first\n");
+			if (!(search_morpheme_lst(lr->firsts[tmp->m], EPSILON)))
+				return (res);
 		}
 		tmp = tmp->next;
 	}
 	return (res);
 }
-
