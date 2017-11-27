@@ -21,10 +21,10 @@ struct s_item *lr_closure(struct s_parser_lr *lr, struct s_item *kernel)
 	int				added = 0;
 
 	cur = dup_item_lst(kernel);
+	printf("lr_closure-- kernel: "); debug_item_lst(lr, cur); printf("\n"); 
 	res = cur;
 	while (cur)
 	{
-		printf("curlst: "); debug_item_lst(lr, cur); printf("\n"); 
 		a = cur->look_ahead;
 		struct s_morpheme_lst *B = get_point(lr, cur->grammar_rule, cur->point);
 		if (!B || !(IS_SYMBOL(B->m)))
@@ -61,19 +61,113 @@ struct s_item *lr_closure(struct s_parser_lr *lr, struct s_item *kernel)
 }
 
 /*
+** let J be the set of items [A → αX.β, a] such that
+** [A → α.Xβ, a] is in I;
+*/
+struct s_item *construct_J(struct s_parser_lr *lr, struct s_item *item_lst, struct s_item *cur, t_morpheme X)
+{
+	int				cur_found = 0;
+	struct s_item *J = NULL;
+
+	while (item_lst)
+	{
+		if (item_lst == cur)
+			cur_found = 1;
+		struct s_morpheme_lst *Y = get_point(lr, item_lst->grammar_rule, item_lst->point);
+		if (!Y)
+		{
+			item_lst = item_lst->next;
+			continue ;
+		}
+		if (Y->m == X)
+		{
+			if (!cur_found)
+				return (NULL);
+			ft_genlst_pushback((void *)&J, new_item(item_lst->grammar_rule, item_lst->point + 1, item_lst->look_ahead));
+		}
+		item_lst = item_lst->next;
+	}
+	return (J);
+}
+/*
+**search a in lst
+*/
+int		search_item_lst(struct s_item *lst, struct s_item *a)
+{
+	while (lst)
+	{
+		if (lst->point == a->point && lst->grammar_rule == a->grammar_rule && lst->look_ahead == a->look_ahead)
+			return (1);
+		lst = lst->next;
+	}
+	return (0);
+}
+
+int		equal_item_lst(struct s_item *a, struct s_item *b)
+{
+	if (!a)
+		printf("a is NULL in equal item_lst\n");
+	if (!b)
+		printf("b is NULL in equal item_lst\n");
+	if (ft_genlst_len(a) != ft_genlst_len(b))
+		return (0);
+	while (a && b)
+	{
+		if (!search_item_lst(a, b))
+			return (0);
+		b = b->next;
+	}
+	return (1);
+}
+
+int		kernel_is_in_C(struct s_line *C, struct s_item *new_kernel)
+{
+	while (C)
+	{
+		if (equal_item_lst(C->kernel, new_kernel))
+			return (1);
+		C = C->next;
+	}
+	return (0);
+}
+
+/*
 **	goto prend une line avec un set d item, et pushback des lines sur line
 */
 
+void	lr_goto(struct s_parser_lr *lr, struct s_line **res, struct s_item *item_lst)
+{
+	struct s_item *new_kernel = NULL;
+	struct s_item *cur = item_lst;
+	struct s_item *J = NULL;
+	struct s_line *n_line = NULL;
+
+	while (cur)
+	{
+		struct s_morpheme_lst *X = get_point(lr, cur->grammar_rule, cur->point);
+		if (!X)
+		{
+			cur = cur->next;
+			continue ;
+		}
+		if ((new_kernel = construct_J(lr, item_lst, cur, X->m)))
+		{
+			printf("lr_goto-- kernel: "); debug_item_lst(lr, new_kernel); printf("----\n"); 
+			if (!kernel_is_in_C(*res, new_kernel))
+			{
+				n_line = new_line(0, new_kernel, lr_closure(lr, new_kernel));
+				ft_genlst_pushback((void **)res, n_line);
+			}
+		}
+		cur = cur->next;
+	}
+}
+
 /*
-**	void	lr_goto(struct s_line **res, struct s_line *curr)
-**	{
-**		struct s_item *new_kernel = NULL;
-**		struct s_line *new_new_line = NULL;
-**	
-**		new_line->kernel = new_kernel;
-**		new_line->closure = closure(new_kernel);
-**	}
-*/
+ **for each set of items I in C and each grammar symbol X
+ **such that goto(I, X) is not empty and not in C do
+ **add goto(I, X) to C
+ */
 
 struct s_line *lr_items(struct s_parser_lr *lr)
 {
@@ -83,22 +177,22 @@ struct s_line *lr_items(struct s_parser_lr *lr)
 
 	initial_kernel = new_item(0, 0, DOLLAR);
 	cur = new_line(0, initial_kernel, lr_closure(lr, initial_kernel));
-	debug_line(lr, cur);
 	res = cur;
-	/*
-	while (curr != NULL)
+	while (cur != NULL)
 	{
-		lr_goto(&res, curr);
-		curr = curr->next;
+		debug_line(lr, cur);
+		printf("\n");
+		lr_goto(lr, &res, cur->closure);
+		cur = cur->next;
 	}
-	*/
 	return (res);
-	
+
 }
 
 int main(void)
 {
 	struct	s_parser_lr lr;
+	struct s_line	*res = NULL;
 	int		i;
 
 	ft_bzero(&lr, sizeof(struct s_parser_lr));
@@ -108,6 +202,7 @@ int main(void)
 	debug_grammar_rule(&lr, i);
 	init_firsts(&lr);
 	debug_firsts(&lr);
-	lr_items(&lr);
+	res = lr_items(&lr);
+	debug_closure_table(&lr, res);
 	return 0;
 }

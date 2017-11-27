@@ -171,6 +171,7 @@ void	debug_item(struct s_parser_lr *lr, struct s_item *item)
 	}
 	if (i == item->point)
 		printf(".");
+	printf(", ");
 	debug_token(item->look_ahead);
 	printf("]}; ");
 }
@@ -186,8 +187,19 @@ void	debug_item_lst(struct s_parser_lr *lr, struct s_item *item)
 
 void	debug_line(struct s_parser_lr *lr, struct s_line *l)
 {
-	printf("kernel:");
+	printf("\nkernel:");
 	debug_item_lst(lr, l->kernel);
 	printf("\nclosure");
 	debug_item_lst(lr, l->closure);
+	printf("\n----------");
+}
+
+void	debug_closure_table(struct s_parser_lr *lr, struct s_line *l)
+{
+	printf("---------debug_closure_table----------");
+	while (l)
+	{
+		debug_line(lr, l);
+		l = l->next;
+	}
 }

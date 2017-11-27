@@ -91,6 +91,7 @@ void	debug_gramar(struct s_parser_lr *lr);
 void	debug_item_lst(struct s_parser_lr *lr, struct s_item *item);
 void	debug_morpheme_lst(struct s_morpheme_lst *lst);
 void	debug_morpheme_node(struct s_morpheme_lst *tmp);
+void	debug_closure_table(struct s_parser_lr *lr, struct s_line *l);
 void	init_firsts(struct s_parser_lr *lr);
 void	debug_firsts(struct s_parser_lr *lr);
 
