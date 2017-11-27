@@ -228,5 +228,7 @@ int main(void)
 	debug_firsts(&lr);
 	res = lr_items(&lr);
 	debug_closure_table(&lr, res);
+	debug_action_table(&lr, res);
+	debug_goto_table(&lr, res);
 	return 0;
 }

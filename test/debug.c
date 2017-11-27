@@ -203,3 +203,40 @@ void	debug_closure_table(struct s_parser_lr *lr, struct s_line *l)
 		l = l->next;
 	}
 }
+
+void	debug_action_table(struct s_parser_lr *lr, struct s_line *l)
+{
+	printf("---------debug_action_table----------\n");
+	while (l)
+	{
+		int	i = 0;
+		while (i < NB_TOKEN)
+		{
+			if (l->action_table[i] >= 4242)
+				printf("r%d ", l->action_table[i] - 4242);
+			else if (l->action_table[i] == -1)
+				printf("%d ", -1);
+			else 
+				printf("s%d ", l->action_table[i]);
+			i++;
+		}
+		printf("\n");
+		l = l->next;
+	}
+}
+
+void	debug_goto_table(struct s_parser_lr *lr, struct s_line *l)
+{
+	printf("---------debug_goto_table----------\n");
+	while (l)
+	{
+		int	i = 0;
+		while (i < NB_SYMBOLS)
+		{
+			printf("%d ", l->goto_table[i]);
+			i++;
+		}
+		printf("\n");
+		l = l->next;
+	}
+}

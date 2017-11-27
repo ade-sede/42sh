@@ -86,6 +86,8 @@ struct s_morpheme_lst *union_morpheme_lst(struct s_morpheme_lst **a, struct s_mo
 struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *m_lst);
 
 void	debug_token(int m);
+void	debug_goto_table(struct s_parser_lr *lr, struct s_line *l);
+void	debug_action_table(struct s_parser_lr *lr, struct s_line *l);
 void	debug_symbol(int m);
 void	debug_grammar_rule(struct s_parser_lr *lr, int i);
 void	debug_gramar(struct s_parser_lr *lr);
