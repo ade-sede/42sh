@@ -9,6 +9,7 @@
 #include "line_editing.h"
 #include "history.h"
 #include "exec.h"
+#include "failure.h"
 
 static void			backslash(char **line, char **word, char quote)
 {
@@ -85,11 +86,36 @@ static void			assign_values(char **vars, char **values, t_env *env)
 		vars++;
 	}
 }
+static char	valide_argv(char c)
+{
+	return ((c >= 'a' && c <= 'z')
+	|| (c >= 'A' && c <= 'Z')
+	|| (c >= '0' && c <= '9')
+	|| c == '_') ? 1 : 0;
+}
+static char			parse_argv(const char **argv)
+{
+	int	index;
+
+	index = -1;
+	while (argv && *argv)//&& ***args == '-')
+	{
+		while ((*argv)[++index] && valide_argv((*argv)[index]))
+			;	
+		if ((*argv)[index]) //&& index)
+		{
+			return investigate_error(1, "read: not a valid identifier: ", *argv, 0);
+		}
+		index = -1;
+		argv++;
+	}
+	return (1);
+}
 
 static char			parse_option(t_read *options, const char ***args)
 {
 	char *option;
-	while (*++*args && ***args == '-')
+	while (args && *++*args && ***args == '-')
 	{
 		option = (char*)**args + 1;
 		if (!(parse_read(option, options, (char***)args)))
@@ -98,13 +124,33 @@ static char			parse_option(t_read *options, const char ***args)
 	return (1);
 }
 
+void	read_secret(t_env *env, char *str)
+{
+	char	**argv;
+	int	ret;
+
+	ret = -1;
+	argv = (char **)ft_parrnew();
+
+	ft_parrpush((void***)&argv, (void *)ft_strdup("stty"));
+	ft_parrpush((void***)&argv, (void *)ft_strdup(str));
+
+	if (!(ret = fork()))
+	{
+		exit(exec_bin(env, (const char **)argv));	
+	}
+	else if (ret > 0)
+		wait(&ret);
+	free(argv);
+}
+
 int					builtin_read(t_env *env, const char **argv)
 {
 	int		error;
 	t_read	options;
-	t_line	*line;
-	char	*values;
-	char	**split;
+	t_line		*line;
+	char		*values;
+	char		**split;
 
 	(void)env;
 	line = singleton_line();
@@ -120,21 +166,65 @@ int					builtin_read(t_env *env, const char **argv)
 	*/
 	if (!(error = parse_option(&options, &argv)) || error == 2)
 		return !(error) ? 2 : 1;
+	//if (!parse_argv(argv))
+	//	;//return 1;
+	//if (!(error = parse_argv(&argv)) || error == 2)
+	//	return !(error) ? 2 : 1;
+/*
+	**if (!(error = parse_argv(&options, &argv)) || error == 2)
+	**while(argv && *argv)
+		**fprintf(stderr, "['%s']", *argv++);
+		**sleep(2);
+*/
 	 if (singleton_jc()->shell_is_interactive && isatty(options.fd))
 	 {
+		//read_secret(env, "-echo");
 	 	conf_term_non_canonical();
-		load_prompt(env, line, NULL,options.prompt ?options.prompt: "read> ");//"$> ");
+		load_prompt(env, line, NULL, options.prompt ?options.prompt: RED"read> "RESET);//"$> ");
 		put_prompt(line);
 		values = read_get_input(options);
 		ft_putstr("\n");
 	 	conf_term_canonical();
+		//read_secret(env, "echo");
 	 }
 	 else
+	 {
+		/*tmp =  (char **)ft_parrnew();
+		ft_parrpush((void***)&tmp, (void *)ft_strdup("stty"));
+		ft_parrpush((void***)&tmp, (void *)ft_strdup("-echo"));
+		if (!(ret = fork()))
+			exit(exec_bin(env, (const char **)tmp));	
+		else if (ret > 0)
+			wait(&ret);
+			*/
+		if ((options.flags & S) && isatty(options.fd))
+		{
+			put_termcap("vs");
+			//write(2, "\n", 1);//ft_strlen(" "));
+			/*put_termcap("ve");
+			put_termcap("vi");
+		//	write(2, "🔒", ft_strlen("🔒"));
+			write(2, "\n", 1);//ft_strlen(" "));
+			write(2, "\e[1~", ft_strlen("\e[1~"));*/
+			
+		}
+		if ((options.flags & S))
+			read_secret(env, "-echo");
 		values = read_get_rcinput(options);
+		if ((options.flags & S))
+		{
+			read_secret(env, "echo");
+			put_termcap("vs");
+		}
+	 }
 	
+	//if (!parse_argv(argv))
+	//	return (1);
 	split = split_values(values, options);
+	if (!parse_argv(argv))
+		error = 1;
 	assign_values((char**)argv, split, env);
 	free(values);
 	ft_arraydel(&split);
-	return (0);
+	return (error);
 }
