@@ -186,4 +186,5 @@ size_t			ft_genlst_len(void *lst);
 
 void			ft_simple_lst_rev(t_list **lst);
 
+int				ft_genlst_index_of(void *lst, void *cur);
 #endif

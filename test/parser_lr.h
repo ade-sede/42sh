@@ -11,6 +11,7 @@
 #define IS_TOKEN(i) i >= FIRST_TOKEN && i <= FIRST_TOKEN + NB_TOKEN
 
 #define IS_SYMBOL(i) i >= FIRST_SYMBOL && i <= FIRST_SYMBOL + NB_SYMBOLS
+#include "parser.h"
 
 enum e_symbol {
 	start_symbol = FIRST_SYMBOL,

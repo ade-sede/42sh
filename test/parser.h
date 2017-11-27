@@ -2128,6 +2128,7 @@ enum shift {
 	s2109,
 	s2110,
 	s2111,
+
 	r0 = 4242,
 	r1,
 	r2,
@@ -2311,8 +2312,10 @@ enum shift {
 	r180,
 	r181,
 	r182,
+	acc = 10000,
 };
 
+/*
 enum e_symbol {
 	PROGRAM = 1,
 	COMPLETE_COMMANDS,
@@ -2362,5 +2365,5 @@ enum e_symbol {
 	SEPARATOR,
 	SEQUENTIAL_SEP,
 };
-
+*/
 #endif

@@ -8,7 +8,9 @@
 **	renvoie les symboles apres le point dans de la gramar_rule
 */
 
-struct s_morpheme_lst *get_point(struct s_parser_lr *lr, int gramar_rule, int point)
+struct s_morpheme_lst *get_point(struct s_parser_lr *lr, \
+								 int gramar_rule, \
+								 int point)
 {
 	return (ft_genlst_get_n(lr->grammar_rules[gramar_rule].childs, point));
 }
@@ -64,7 +66,11 @@ struct s_item *lr_closure(struct s_parser_lr *lr, struct s_item *kernel)
 ** let J be the set of items [A → αX.β, a] such that
 ** [A → α.Xβ, a] is in I;
 */
-struct s_item *construct_J(struct s_parser_lr *lr, struct s_item *item_lst, struct s_item *cur, t_morpheme X)
+
+struct s_item *construct_J(struct s_parser_lr *lr, \
+						   struct s_item *item_lst, \
+						   struct s_item *cur, \
+						   t_morpheme X)
 {
 	int				cur_found = 0;
 	struct s_item *J = NULL;
@@ -120,44 +126,62 @@ int		equal_item_lst(struct s_item *a, struct s_item *b)
 	return (1);
 }
 
-int		kernel_is_in_C(struct s_line *C, struct s_item *new_kernel)
+struct s_line *kernel_is_in_C(struct s_line *C, struct s_item *new_kernel)
 {
 	while (C)
 	{
 		if (equal_item_lst(C->kernel, new_kernel))
-			return (1);
+			return (C);
 		C = C->next;
 	}
-	return (0);
+	return (NULL);
 }
 
 /*
-**	goto prend une line avec un set d item, et pushback des lines sur line
+** goto prend une line avec un set d item, et pushback des lines sur line
+** If [A → α.aβ, b] is in Ii and goto(Ii, a) = Ij , 
+** then set action[i, a] to ”shift j”.
+** Here a must be a terminal.
+** if goto(Ii, A) = Ij then goto[i,A] = j
 */
 
-void	lr_goto(struct s_parser_lr *lr, struct s_line **res, struct s_item *item_lst)
+void	lr_goto(struct s_parser_lr *lr, \
+			    struct s_line **res, \
+				struct s_line *cur_line)
 {
 	struct s_item *new_kernel = NULL;
-	struct s_item *cur = item_lst;
+	struct s_item *cur = cur_line->closure;
 	struct s_item *J = NULL;
-	struct s_line *n_line = NULL;
 
 	while (cur)
 	{
 		struct s_morpheme_lst *X = get_point(lr, cur->grammar_rule, cur->point);
+		/*
+		** If [A → α., a] is in Ii, then set action[i,a] to reduce A → α. Here A may
+not be S′
+		*/
 		if (!X)
 		{
+			cur_line->action_table[cur->look_ahead - FIRST_TOKEN] = FIRST_REDUCE_RULE + cur->grammar_rule;
 			cur = cur->next;
 			continue ;
 		}
-		if ((new_kernel = construct_J(lr, item_lst, cur, X->m)))
+		if ((new_kernel = construct_J(lr, cur_line->closure, cur, X->m)))
 		{
 			printf("lr_goto-- kernel: "); debug_item_lst(lr, new_kernel); printf("----\n"); 
-			if (!kernel_is_in_C(*res, new_kernel))
+			struct s_line *n_line = kernel_is_in_C(*res, new_kernel);
+			if (!n_line)
 			{
 				n_line = new_line(0, new_kernel, lr_closure(lr, new_kernel));
 				ft_genlst_pushback((void **)res, n_line);
 			}
+			int j = ft_genlst_index_of(*res, n_line);
+			if (cur->grammar_rule == 0 && cur->point == 1 && cur->look_ahead == DOLLAR)
+				cur_line->action_table[X->m - FIRST_SYMBOL] = acc; //it is [S′ → S., $] i
+			else if (IS_SYMBOL(X->m))
+				cur_line->goto_table[X->m - FIRST_SYMBOL] = j;	//set goto(i, X) = j 
+			else if (IS_TOKEN(X->m))
+				cur_line->action_table[X->m - FIRST_TOKEN] = j; //set swich(i, X) = j 
 		}
 		cur = cur->next;
 	}
@@ -182,7 +206,7 @@ struct s_line *lr_items(struct s_parser_lr *lr)
 	{
 		debug_line(lr, cur);
 		printf("\n");
-		lr_goto(lr, &res, cur->closure);
+		lr_goto(lr, &res, cur);
 		cur = cur->next;
 	}
 	return (res);

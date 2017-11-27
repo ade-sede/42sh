@@ -40,6 +40,7 @@ SRC = \
 	io/ft_putnstr.c \
 	io/ft_putstr.c \
 	lst/ft_lst_add.c \
+	lst/ft_lst_index_of.c \
 	lst/ft_lstint.c \
 	lst/ft_lst_pop.c \
 	lst/ft_lst_create.c \
