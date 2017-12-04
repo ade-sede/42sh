@@ -158,6 +158,8 @@ int		exec_simple_command(t_ast *ast)
 			exec_bin(singleton_env(), (const char **)av);
 		ft_arraydel(&av);
 	}
+	else if (av)
+		ft_arraydel(&av);
 	close_dup(redirect_list);
 	return (exit_status);
 }

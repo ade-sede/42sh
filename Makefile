@@ -32,6 +32,7 @@ SRC_FILE = \
 		   builtin/read.c \
 		   builtin/read_get_input.c \
 		   builtin/read_options.c \
+		   builtin/read_parse.c \
 		   builtin/set.c \
 		   builtin/setenv.c \
 		   builtin/unalias.c \

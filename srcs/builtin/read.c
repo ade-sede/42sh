@@ -11,220 +11,114 @@
 #include "exec.h"
 #include "failure.h"
 
-static void			backslash(char **line, char **word, char quote)
+static char	**split_values(char *line, t_read options)
 {
-	(*line)++;
-	if (quote && **line == 'n')
-		ft_strpush(word, '\n');
-	if (quote && **line == 't')
-		ft_strpush(word, '\t');
-	if (quote && **line == 'v') ft_strpush(word, '\v');
-	if (quote && **line == 'a')
-		ft_strpush(word, '\a');
-	if (quote && **line == 'b')
-		ft_strpush(word, '\b');
-	if (quote && **line == 'f')
-		ft_strpush(word, '\f');
-	if (quote && **line == 'r')
-		ft_strpush(word, '\r');
-	else
-		ft_strpush(word, **line);
-	(*line)++;
-}
-
-static char			**split_values(char *line, t_read options)
-{
-	char			**values;
-	char			*word;
+	char	**values;
+	char	*word;
+	char	*ifs;
 
 	values = (char **)ft_parrnew();
-	word = ft_strnew(0);
-//	line[ft_strlen(line) - 1] = '\0';
-	while (*line == ' ' || *line == '\t')
-		line++;
+	word = ft_strnew(1);
+	if (!(ifs = var_get_value(singleton_env(), "IFS")))
+		ifs = IFS_DEFAULT;
 	while (*line)
 	{
+		while (*line && ft_strchr(ifs, *line))
+			line++;
 		if (*line == '\\' && *(line + 1) && !(options.flags & R))
-			backslash(&line, &word, 1);
+			read_backslash(&line, &word, 1);
 		else
 			ft_strpush(&word, *line++);
-		if (*line == ' ' || *line == '\t')
+		if (*line && ft_strchr(ifs, *line))
 		{
 			ft_parrpush((void***)&values, word);
-			word = ft_strnew(0);
+			word = ft_strnew(1);
 		}
-		while (*line == ' ' || *line == '\t')
-			line++;
 	}
 	!*word ? free(word) : ft_parrpush((void***)&values, word);
 	return (values);
 }
 
-static void			assign_values(char **vars, char **values, t_env *env)
+static void	assign_values(char **vars, char **values, t_env *env, char *tmp)
 {
-	char		ptr;
-	size_t		index;
-	size_t		 len;
 	unsigned char	path;
+	char			ptr;
+	size_t			index;
 
 	while (*vars)
 	{
-		ptr = (env_getenv((const char**)env->environ, *vars, &index)) ? 1 : 0;
-		len = ft_strlen(*vars);
-		path = (!ft_strcmp("PATH",*vars)) ? 1 : 0;
-		ft_strpush(vars, '=');
-		if (*values)
-			ft_strspush(vars, *values++);
+		tmp = ft_strdup(*vars);
+		ptr = (env_getenv((const char**)env->environ, tmp, &index)) ? 1 : 0;
+		path = (!ft_strcmp("PATH", tmp)) ? 1 : 0;
+		tmp = ft_strjoin_free(tmp, "=", 0b10);
+		tmp = (*values) ? ft_strjoin_free(tmp, *values++, 0b10) : tmp;
 		while (!*(vars + 1) && *values)
 		{
-			ft_strpush(vars, ' ');
-			ft_strspush(vars, *values++);
+			tmp = ft_strjoin_free(tmp, " ", 0b10);
+			tmp = ft_strjoin_free(tmp, *values++, 0b10);
 		}
-		ptr ? env_add_var_from_string(env, *vars, len) : local_add_change_from_string(env, *vars);
+		ptr ? env_add_var_from_string(env, tmp, ft_strlen(tmp))
+			: local_add_change_from_string(env, tmp);
 		if (path)
 			env_reload_tree_hash(env);
 		vars++;
+		free(tmp);
 	}
 }
-static char	valide_argv(char c)
-{
-	return ((c >= 'a' && c <= 'z')
-	|| (c >= 'A' && c <= 'Z')
-	|| (c >= '0' && c <= '9')
-	|| c == '_') ? 1 : 0;
-}
-static char			parse_argv(const char **argv)
-{
-	int	index;
 
-	index = -1;
-	while (argv && *argv)//&& ***args == '-')
+static void	read_rc(t_read *options, char **values)
+{
+	if (isatty(options->fd))
 	{
-		while ((*argv)[++index] && valide_argv((*argv)[index]))
-			;	
-		if ((*argv)[index]) //&& index)
+		if (options->prompt)
+			ft_putstr(options->prompt);
+		conf_term_rc(options, SAVETERM);
+		if (options->delim != '\n')
+			conf_term_rc(options, NO_ICANON);
+		if ((options->flags & S))
 		{
-			return investigate_error(1, "read: not a valid identifier: ", *argv, 0);
+			conf_term_rc(options, NO_ECHO);
+			write(2, "\e[?25h", 6);
 		}
-		index = -1;
-		argv++;
 	}
-	return (1);
+	*values = read_get_rcinput(*options);
+	if (isatty(options->fd) && (options->delim != '\n'
+				|| (options->flags & S)))
+		conf_term_rc(options, RESTORTERM);
 }
 
-static char			parse_option(t_read *options, const char ***args)
+static void	read_interact(t_env *env, t_read options, char **values)
 {
-	char *option;
-	while (args && *++*args && ***args == '-')
-	{
-		option = (char*)**args + 1;
-		if (!(parse_read(option, options, (char***)args)))
-			return (0);
-	}
-	return (1);
+	conf_term_non_canonical();
+	load_prompt(env, singleton_line(), NULL, options.prompt
+			? options.prompt : MAG"read> "RESET);
+	put_prompt(singleton_line());
+	*values = read_get_input(options);
+	ft_putstr("\n");
+	conf_term_canonical();
 }
 
-void	read_secret(t_env *env, char *str)
+int		builtin_read(t_env *env, const char **argv)
 {
-	char	**argv;
-	int	ret;
-
-	ret = -1;
-	argv = (char **)ft_parrnew();
-
-	ft_parrpush((void***)&argv, (void *)ft_strdup("stty"));
-	ft_parrpush((void***)&argv, (void *)ft_strdup(str));
-
-	if (!(ret = fork()))
-	{
-		exit(exec_bin(env, (const char **)argv));	
-	}
-	else if (ret > 0)
-		wait(&ret);
-	free(argv);
-}
-
-int					builtin_read(t_env *env, const char **argv)
-{
-	int		error;
-	t_read	options;
-	t_line		*line;
+	t_read		options;
+	int			error;
 	char		*values;
 	char		**split;
 
-	(void)env;
-	line = singleton_line();
-	error = 0;
-	options.flags = 0;
-	options.fd = 0;
-	options.prompt = 0;
-	options.nchars = 0;
+	ft_bzero(&options, sizeof(t_read));
 	options.delim = '\n';
-	/*
-	**if (!parse_option(&options, &argv))
-		**return (2);
-	*/
-	if (!(error = parse_option(&options, &argv)) || error == 2)
-		return !(error) ? 2 : 1;
-	//if (!parse_argv(argv))
-	//	;//return 1;
-	//if (!(error = parse_argv(&argv)) || error == 2)
-	//	return !(error) ? 2 : 1;
-/*
-	**if (!(error = parse_argv(&options, &argv)) || error == 2)
-	**while(argv && *argv)
-		**fprintf(stderr, "['%s']", *argv++);
-		**sleep(2);
-*/
-	 if (singleton_jc()->shell_is_interactive && isatty(options.fd))
-	 {
-		//read_secret(env, "-echo");
-	 	conf_term_non_canonical();
-		load_prompt(env, line, NULL, options.prompt ?options.prompt: RED"read> "RESET);//"$> ");
-		put_prompt(line);
-		values = read_get_input(options);
-		ft_putstr("\n");
-	 	conf_term_canonical();
-		//read_secret(env, "echo");
-	 }
-	 else
-	 {
-		/*tmp =  (char **)ft_parrnew();
-		ft_parrpush((void***)&tmp, (void *)ft_strdup("stty"));
-		ft_parrpush((void***)&tmp, (void *)ft_strdup("-echo"));
-		if (!(ret = fork()))
-			exit(exec_bin(env, (const char **)tmp));	
-		else if (ret > 0)
-			wait(&ret);
-			*/
-		if ((options.flags & S) && isatty(options.fd))
-		{
-			put_termcap("vs");
-			//write(2, "\n", 1);//ft_strlen(" "));
-			/*put_termcap("ve");
-			put_termcap("vi");
-		//	write(2, "🔒", ft_strlen("🔒"));
-			write(2, "\n", 1);//ft_strlen(" "));
-			write(2, "\e[1~", ft_strlen("\e[1~"));*/
-			
-		}
-		if ((options.flags & S))
-			read_secret(env, "-echo");
-		values = read_get_rcinput(options);
-		if ((options.flags & S))
-		{
-			read_secret(env, "echo");
-			put_termcap("vs");
-		}
-	 }
-	
-	//if (!parse_argv(argv))
-	//	return (1);
+	if ((error = read_parse_option(&options, &argv)))
+		return (error);
+	if (singleton_jc()->shell_is_interactive && isatty(options.fd))
+		read_interact(env, options, &values);
+	else
+		read_rc(&options, &values);
 	split = split_values(values, options);
-	if (!parse_argv(argv))
-		error = 1;
-	assign_values((char**)argv, split, env);
+	if (!read_parse_argv(argv))
+		error = EXIT_FAILURE;
+	assign_values((char**)argv, split, env, NULL);
 	free(values);
 	ft_arraydel(&split);
+	ft_strdel(&options.prompt);
 	return (error);
 }
