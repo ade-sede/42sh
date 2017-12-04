@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   conf_term.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:30 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include "line_editing.h"
 #include "t_env.h"
 #include "environ.h"
-#include "line_editing.h"
 
 /*
 **	Functions used to temper with the terminal's configuration.
@@ -61,5 +49,34 @@ void	conf_term_init(void)
 	line->non_canonical_mode.c_cc[VMIN] = 1;
 	line->non_canonical_mode.c_cc[VTIME] = 0;
 	if (tcsetattr(0, TCSANOW, &line->non_canonical_mode) < 0)
+		fatal("tcsetattr error");
+}
+
+void	conf_term_rc(t_read *read, char hide)
+{
+	char		*termtype;
+	struct termios	term;
+
+	if ((termtype = env_getenv((const char **)singleton_env()->environ, \
+		"TERM", NULL)) == NULL)
+		termtype = "xterm";
+	if (tgetent(NULL, termtype) <= 0)
+		fatal("cant access data base");
+	if (tcgetattr(0, &term) == -1)
+		fatal("getattr error");
+	if (hide == 1)
+	{
+		term.c_lflag &= ~(ICANON);
+		//term.c_lflag &= ~(ECHO);
+		term.c_cc[VMIN] = 1;
+		//term.c_cc[VTIME] = 0;
+	}
+	else if (hide == 2)
+		term.c_lflag &= ~(ECHO);
+	else if (!hide)
+		ft_memcpy(&read->term, &term, sizeof(struct termios));
+	else
+		ft_memcpy(&term, &read->term, sizeof(struct termios));
+	if (tcsetattr(0, TCSADRAIN, &term) < 0)
 		fatal("tcsetattr error");
 }

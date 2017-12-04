@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   read_get_input.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:13:47 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "environ.h"
+#include "libft.h"
 #include "read.h"
-#include "local.h"
 #include "line_editing.h"
 
 static void	ft_strrem(char *str)
@@ -28,7 +15,7 @@ static void	read_get_input_2(t_read options, unsigned long keycode, char **line)
 {
 	if (**line && (keycode == KEY_DELETE || keycode == KEY_BACKSPACE))
 	{
-		ft_strrem(line[ft_strlen(*line) - 1]);
+		ft_strrem(&(*line)[ft_strlen(*line) - 1]);
 		put_termcap("le");
 		write(1, " ", 1);
 		put_termcap("le");
@@ -55,11 +42,12 @@ char		*read_get_input(t_read options)
 	int				index;
 
 	index = 0;
-	line = ft_strnew(0);
-	while (42 || index < 10)
+	line = ft_strnew(1);
+	while (42)
 	{
 		keycode = 0;
-		read(0, &keycode, 1);
+		if (read(0, &keycode, 1) != 1)
+			return (line);
 		if (g_abort_opening || keycode == KEY_CTRL_D ||
 				(options.delim == (char)keycode))
 			return (line);
@@ -74,11 +62,11 @@ char		*read_get_input(t_read options)
 char		*read_get_rcinput(t_read options)
 {
 	unsigned long	keycode;
-	char			*line;
-	int				index;
+	char		*line;
+	int		index;
 
 	index = 0;
-	line = ft_strnew(0);
+	line = ft_strnew(1);
 	while (!(keycode = 0) && read(STDIN_FILENO, &keycode, 1) == 1)
 	{
 		if (g_abort_opening || keycode == KEY_CTRL_D

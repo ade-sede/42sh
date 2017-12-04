@@ -104,6 +104,7 @@ void			edit_handle_sigwinch(int signum);
 void			conf_term_init(void);
 void			conf_term_canonical(void);
 void			conf_term_non_canonical(void);
+void			conf_term_rc(t_read *read, char hide);
 void			put_termcap(char *capacity);
 t_line			*singleton_line(void);
 

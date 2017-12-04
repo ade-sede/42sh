@@ -1,35 +1,24 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   read_options.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:13:47 by ade-sede         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include "read.h"
 #include "builtin.h"
 #include "libft.h"
 #include "t_env.h"
 #include "failure.h"
 #include "exec.h"
 
-static char		parse_delim(char *arg, t_read *options, char ***args)
+static char	parse_delim(char *arg, t_read *options, char ***args)
 {
 	if (*++arg)
 		options->delim = *arg;
 	else if (*(*args + 1))
 		options->delim = **++*args;
 	else
-		return (0);
-	return (1);
+		return (errno = 22) ? 2 : 2;
+	return (0);
 }
 
-static char		parse_nchars(char *arg, t_read *options, char ***args)
+static char	parse_nchars(char *arg, t_read *options, char ***args)
 {
-	int		nchars;
+	int nchars;
 
 	nchars = 0;
 	if (*++arg)
@@ -37,7 +26,7 @@ static char		parse_nchars(char *arg, t_read *options, char ***args)
 		while (*arg >= '0' && *arg <= '9')
 			nchars = nchars * 10 + *arg++ - '0';
 		if (*arg)
-			return (0);
+			return (errno == 22) ? 1 : 1;
 	}
 	else if (*++*args)
 	{
@@ -45,17 +34,17 @@ static char		parse_nchars(char *arg, t_read *options, char ***args)
 		while (*arg >= '0' && *arg <= '9')
 			nchars = nchars * 10 + *arg++ - '0';
 		if (*arg)
-			return (0);
+			return (errno = 22) ? 1 : 1;
 	}
 	else
-		return (0);
+		return (errno = 22) ? 2 : 2;
 	options->nchars = nchars;
-	return (1);
+	return (0);
 }
 
-static char		parse_fd(char *arg, t_read *options, char ***args)
+static char	parse_fd(char *arg, t_read *options, char ***args)
 {
-	int		fd;
+	int	fd;
 
 	fd = 0;
 	if (*++arg)
@@ -63,26 +52,25 @@ static char		parse_fd(char *arg, t_read *options, char ***args)
 		while (*arg >= '0' && *arg <= '9')
 			fd = (fd * 10) + (*arg++ - '0');
 		if (*arg)
-			return (0);
+			return (errno = 22) ? 1 : 1;
 	}
-	else if (*++*args && (arg = **args))
+	else if (*++*args)
 	{
+		arg = **args;
 		while (*arg >= '0' && *arg <= '9')
 			fd = (fd * 10) + *arg++ - '0';
 		if (*arg)
-			return (0);
+			return (errno = 22) ? 1 : 1;
 	}
 	else
-		return (0);
-	if (fd > -1 && fd < 3)
-		return (1);
-	if (fcntl((options->fd = fd), F_GETFL) != -1 && fcntl(fd, F_GETFD) != -1 &&
-			errno != EBADF)
-		return (1);
-	return (2);
+		return (errno = 22) ? 2 : 2;
+	if (!((options->fd = fd) > -1 && fd < 3))
+		return (errno = 9) ? 1 : 1;
+	else
+		return (EXIT_SUCCESS);
 }
 
-static char		parse_prompt(char *arg, t_read *options, char ***args)
+static char	parse_prompt(char *arg, t_read *options, char ***args)
 {
 	char	*word;
 
@@ -99,18 +87,18 @@ static char		parse_prompt(char *arg, t_read *options, char ***args)
 	else
 	{
 		free(word);
-		return (0);
+		return (errno = 22) ? 2 : 2;
 	}
 	options->prompt = word;
-	return (1);
+	return (0);
 }
 
-char			parse_read(char *arg, t_read *options, char ***args)
+char		parse_read(char *arg, t_read *options, char ***args)
 {
 	char	status;
 
-	status = -1;
-	while (*arg && status == -1)
+	status = EXIT_SUCCESS;
+	while (*arg)
 	{
 		if (*arg == 'r')
 			options->flags |= R;
@@ -124,12 +112,9 @@ char			parse_read(char *arg, t_read *options, char ***args)
 			status = parse_prompt(arg, options, args);
 		else if (*arg == 'u')
 			status = parse_fd(arg, options, args);
+		else
+			break ;
 		arg++;
 	}
-	if (!status)
-	{
-		return_failure("syntax error near ", arg - 2);
-		return_failure("usage : ", USG);
-	}
-	return (!status ? 0 : 1);
+	return (failure_read(status, arg));
 }
