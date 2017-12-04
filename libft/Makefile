@@ -139,7 +139,9 @@ SRC = \
 	get_opt/get_opt.c \
 	get_opt/get_opt_display.c \
 	\
-	io/printf/asprintf.c \
+	io/ft_printf.c \
+
+	#io/printf/asprintf.c \
 	io/printf/buff_loop.c \
 	io/printf/buff_start_conv.c \
 	io/printf/c_conv.c \
