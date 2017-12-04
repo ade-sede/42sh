@@ -28,7 +28,6 @@ enum e_symbol {
 	term,
 	for_clause,
 	name,
-	sym_in,
 	wordlist,
 	case_clause,
 	case_list_ns,

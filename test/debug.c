@@ -24,7 +24,6 @@ struct s_sym_to_string	sts[] =
 	{term, "term"},
 	{for_clause, "for_clause"},
 	{name, "name"},
-	{sym_in, "sym_in"},
 	{wordlist, "wordlist"},
 	{case_clause, "case_clause"},
 	{case_list_ns, "case_list_ns"},
@@ -160,6 +159,7 @@ void		debug_grammar_rule(struct s_parser_lr *lr, int i)
 	}
 	printf("\n");
 }
+
 void	debug_gramar(struct s_parser_lr *lr)
 {
 	int	i = 0;

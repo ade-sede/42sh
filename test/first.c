@@ -44,8 +44,12 @@ static struct s_morpheme_lst	*init_firsts_symbol(struct s_parser_lr *lr, enum e_
 	struct s_morpheme_lst	*childs;
 	
 	i = get_first_grammar_rule(lr->grammar_rules, symb);
+    printf("symbol ");
+    debug_symbol(symb);
+    printf("\n");
 	while (i < NB_RULES && lr->grammar_rules[i].node == symb)
 	{
+        //debug_firsts(lr);
 		childs = lr->grammar_rules[i].childs;
 		while (childs)
 		{
@@ -63,7 +67,9 @@ static struct s_morpheme_lst	*init_firsts_symbol(struct s_parser_lr *lr, enum e_
 				{
 					if (lr->firsts[childs->m])
 						union_morpheme_lst(&lr->firsts[symb], lr->firsts[childs->m]);
-					else
+					else if (childs->m == symb)
+                        break ;
+					else if (childs->m)
 						union_morpheme_lst(&lr->firsts[symb], init_firsts_symbol(lr, childs->m));
 				}
 				else
