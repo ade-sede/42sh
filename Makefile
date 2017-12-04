@@ -391,7 +391,7 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 
 test_all: 
 	@printf "$(COLOR_VIOLET)compiling test $(TEST_FILE) ... $(COLOR_RESET)\n"
-	@$(CC) -g $(TEST_FILE) $(INCLUDES) $(LDFLAGS) $(SANITIZER) $(APPEND)
+	@$(CC) -g $(TEST_FILE) $(INCLUDES) $(LDFLAGS) $(APPEND)
 	@printf "$(COLOR_GREEN)done !!! launching $(TEST_FILE) now !!!\n$(COLOR_NOCOLOR)"
 	@./a.out
 
