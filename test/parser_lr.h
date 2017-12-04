@@ -1,7 +1,7 @@
 #ifndef PARSER_LR_H
 # define PARSER_LR_H
 
-#define NB_SYMBOLS 48
+#define NB_SYMBOLS 47
 #define NB_TOKEN 40
 #define FIRST_SYMBOL 0
 #define FIRST_TOKEN 10000
@@ -141,7 +141,7 @@ struct s_item {
 
 struct s_parser_lr {
 	struct s_grammar_rule		grammar_rules[NB_RULES];
-	struct s_morpheme_lst		*firsts[NB_SYMBOLS + 2];
+	struct s_morpheme_lst		*firsts[NB_SYMBOLS + 2]; //TODO: why 2 ?
 };
 
 /*
@@ -167,6 +167,7 @@ struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *m
 /*
 ** debug
 */
+
 void	debug_token(int m);
 void	debug_goto_table(struct s_parser_lr *lr, struct s_line *l);
 void	debug_line(struct s_parser_lr *lr, struct s_line *l);

@@ -176,6 +176,9 @@ not be S′
 				ft_genlst_pushback((void **)res, n_line);
 			}
 			int j = ft_genlst_index_of(*res, n_line);
+            printf("-----------------------\n");
+            debug_token(X->m);
+            printf("\n-----------------------\n");
 			if (cur->grammar_rule == 0 && cur->point == 1 && cur->look_ahead == DOLLAR)
 				cur_line->action_table[X->m - FIRST_SYMBOL] = acc; //it is [S′ → S., $] i
 			else if (IS_SYMBOL(X->m))

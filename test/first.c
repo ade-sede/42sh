@@ -65,10 +65,10 @@ static struct s_morpheme_lst	*init_firsts_symbol(struct s_parser_lr *lr, enum e_
 				 */
 				if (search_morpheme_lst(lr->firsts[symb], EPSILON) || childs == lr->grammar_rules[i].childs)
 				{
-					if (lr->firsts[childs->m])
-						union_morpheme_lst(&lr->firsts[symb], lr->firsts[childs->m]);
-					else if (childs->m == symb)
+					if (childs->m == symb)
                         break ;
+                    else if (lr->firsts[childs->m])
+						union_morpheme_lst(&lr->firsts[symb], lr->firsts[childs->m]);
 					else if (childs->m)
 						union_morpheme_lst(&lr->firsts[symb], init_firsts_symbol(lr, childs->m));
 				}
@@ -92,6 +92,7 @@ void	init_firsts(struct s_parser_lr *lr)
 			lr->firsts[i] = init_firsts_symbol(lr, i);
 		i++;
 	}
+        debug_firsts(lr);
 }
 
 struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *first)
