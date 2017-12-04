@@ -64,8 +64,8 @@ struct s_line *new_line(int state, struct s_item *kernel, struct s_item *closure
 	new_line->state = state;
 	new_line->kernel = kernel;
 	new_line->closure = closure;
-	ft_memset(new_line->goto_table, -1, NB_SYMBOLS);
-	ft_memset(new_line->action_table, -1, NB_TOKEN);
+	ft_memset(new_line->goto_table, -1, NB_SYMBOLS * sizeof(int));
+	ft_memset(new_line->action_table, -1, NB_TOKEN * sizeof(int));
 	return new_line;
 }
 
