@@ -23,7 +23,7 @@ struct s_item *lr_closure(struct s_parser_lr *lr, struct s_item *kernel)
 	int				added = 0;
 
 	cur = dup_item_lst(kernel);
-	printf("lr_closure-- kernel: "); debug_item_lst(lr, cur); printf("\n"); 
+	//printf("lr_closure-- kernel: "); debug_item_lst(lr, cur); //printf("\n"); 
 	res = cur;
 	while (cur)
 	{
@@ -36,9 +36,9 @@ struct s_item *lr_closure(struct s_parser_lr *lr, struct s_item *kernel)
 		}
 		struct s_morpheme_lst *beta = dup_morpheme_lst(B->next);
 		ft_genlst_pushback((void **)&beta, new_morpheme_lst(a));
-		printf("beta a: ");debug_morpheme_lst(beta);printf("\n");
+		//printf("beta a: ");debug_morpheme_lst(beta);//printf("\n");
 		struct s_morpheme_lst *firsts = lr_first(lr, beta);
-		printf("firsts: "); debug_morpheme_lst(firsts); printf("\n");
+		//printf("firsts: "); debug_morpheme_lst(firsts); //printf("\n");
 		int		i = get_first_grammar_rule(lr->grammar_rules, B->m);
 /*
 **	each production B → γ in G ′ , and each terminal b ∈ FIRST ( βa) such that 
@@ -46,12 +46,12 @@ struct s_item *lr_closure(struct s_parser_lr *lr, struct s_item *kernel)
 */
 		while (i < NB_RULES && lr->grammar_rules[i].node == B->m)
 		{
-			printf("gama: ");debug_grammar_rule(lr, i);printf("\n");
+			//printf("gama: ");debug_grammar_rule(lr, i);//printf("\n");
 			struct s_morpheme_lst *tmp = firsts;
 			while (tmp)
 			{
 				item_pushback_unique(&res, i, 0, tmp->m);
-				printf("cur first: ");debug_morpheme_node(tmp);printf("\n");
+				//printf("cur first: ");debug_morpheme_node(tmp);//printf("\n");
 				tmp = tmp->next;
 			}
 			i++;
@@ -112,9 +112,9 @@ int		search_item_lst(struct s_item *lst, struct s_item *a)
 int		equal_item_lst(struct s_item *a, struct s_item *b)
 {
 	if (!a)
-		printf("a is NULL in equal item_lst\n");
+		//printf("a is NULL in equal item_lst\n");
 	if (!b)
-		printf("b is NULL in equal item_lst\n");
+		//printf("b is NULL in equal item_lst\n");
 	if (ft_genlst_len(a) != ft_genlst_len(b))
 		return (0);
 	while (a && b)
@@ -168,7 +168,7 @@ not be S′
 		}
 		if ((new_kernel = construct_J(lr, cur_line->closure, cur, X->m)))
 		{
-			printf("lr_goto-- kernel: "); debug_item_lst(lr, new_kernel); printf("----\n"); 
+			//printf("lr_goto-- kernel: "); debug_item_lst(lr, new_kernel); //printf("----\n"); 
 			struct s_line *n_line = kernel_is_in_C(*res, new_kernel);
 			if (!n_line)
 			{
@@ -176,11 +176,11 @@ not be S′
 				ft_genlst_pushback((void **)res, n_line);
 			}
 			int j = ft_genlst_index_of(*res, n_line);
-            printf("-----------------------\n");
-            debug_token(X->m);
-            printf("\n-----------------------\n");
+            //printf("-----------------------\n");
+//            debug_token(X->m);
+            //printf("\n-----------------------\n");
 			if (cur->grammar_rule == 0 && cur->point == 1 && cur->look_ahead == DOLLAR)
-				cur_line->action_table[X->m - FIRST_SYMBOL] = acc; //it is [S′ → S., $] i
+				cur_line->action_table[X->m - FIRST_TOKEN] = acc; //it is [S′ → S., $] i
 			else if (IS_SYMBOL(X->m))
 				cur_line->goto_table[X->m - FIRST_SYMBOL] = j;	//set goto(i, X) = j 
 			else if (IS_TOKEN(X->m))
@@ -207,8 +207,8 @@ struct s_line *lr_items(struct s_parser_lr *lr)
 	res = cur;
 	while (cur != NULL)
 	{
-		debug_line(lr, cur);
-		printf("\n");
+	//	debug_line(lr, cur);
+		//printf("\n");
 		lr_goto(lr, &res, cur);
 		cur = cur->next;
 	}
@@ -224,14 +224,16 @@ int main(void)
 
 	ft_bzero(&lr, sizeof(struct s_parser_lr));
 	init_grammar_rules(&lr);
-	debug_gramar(&lr);
+	//debug_gramar(&lr);
 	i = get_first_grammar_rule(lr.grammar_rules, start_symbol);
 	debug_grammar_rule(&lr, i);
 	init_firsts(&lr);
 	debug_firsts(&lr);
 	res = lr_items(&lr);
-	debug_closure_table(&lr, res);
+	//debug_closure_table(&lr, res);
+    printf("\n ----------------action table---------------- \n");
 	debug_action_table(&lr, res);
+    printf("\n ----------------goto table---------------- \n");
 	debug_goto_table(&lr, res);
 	return 0;
 }
