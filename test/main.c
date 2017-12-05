@@ -3,7 +3,6 @@
 #include "libft.h"
 #include "parser_lr.h"
 
-
 /*
 **	renvoie les symboles apres le point dans de la gramar_rule
 */
@@ -157,13 +156,27 @@ void	lr_goto(struct s_parser_lr *lr, \
 	{
 		struct s_morpheme_lst *X = get_point(lr, cur->grammar_rule, cur->point);
 		/*
-		** If [A → α., a] is in Ii, then set action[i,a] to reduce A → α. Here A may
-not be S′
-		*/
+		 ** If [A → α., a] is in Ii, then set action[i,a] to reduce A → α. Here A may
+		 not be S′
+		 */
 		if (!X || 
-				X->m == EPSILON) // not safe to handle a -> .EPSILON
+				X->m == EPSILON || // not safe : to handle a -> .EPSILON
+				X->m == DOLLAR)
 		{
-			cur_line->action_table[cur->look_ahead - FIRST_TOKEN] = FIRST_REDUCE_RULE + cur->grammar_rule;
+			if (cur->grammar_rule == 0 && cur->point == 1 && cur->look_ahead == DOLLAR)
+			{
+				if (cur_line->action_table[X->m - FIRST_TOKEN] != -1)
+					printf("conflict\n");
+				cur_line->action_table[X->m - FIRST_TOKEN] = acc; //it is [S′ → S., $] i
+			}
+			else
+			{
+				if (cur_line->action_table[cur->look_ahead - FIRST_TOKEN] != -1)
+					printf("conflict\n");
+				cur_line->action_table[cur->look_ahead - FIRST_TOKEN] = FIRST_REDUCE_RULE + cur->grammar_rule;
+				if (cur->grammar_rule > 110)
+					printf("error wrong nb of grammar rule\n");
+			}
 			cur = cur->next;
 			continue ;
 		}
@@ -177,15 +190,23 @@ not be S′
 				ft_genlst_pushback((void **)res, n_line);
 			}
 			int j = ft_genlst_index_of(*res, n_line);
-            //printf("-----------------------\n");
-//            debug_token(X->m);
-            //printf("\n-----------------------\n");
-			if (cur->grammar_rule == 0 && cur->point == 1 && cur->look_ahead == DOLLAR)
-				cur_line->action_table[X->m - FIRST_TOKEN] = acc; //it is [S′ → S., $] i
-			else if (IS_SYMBOL(X->m))
+			//printf("-----------------------\n");
+			//            debug_token(X->m);
+			//printf("\n-----------------------\n");
+			if (IS_SYMBOL(X->m))
+			{
+				if (cur_line->goto_table[X->m - FIRST_SYMBOL] != -1)
+					printf("conflict\n");
 				cur_line->goto_table[X->m - FIRST_SYMBOL] = j;	//set goto(i, X) = j 
+			}
 			else if (IS_TOKEN(X->m))
+			{
+				if (cur_line->action_table[X->m - FIRST_TOKEN] != -1)
+					printf("conflict\n");
 				cur_line->action_table[X->m - FIRST_TOKEN] = j; //set swich(i, X) = j 
+			}
+			else
+				printf("error is not a token neither a symbol\n");
 		}
 		cur = cur->next;
 	}
@@ -208,7 +229,7 @@ struct s_line *lr_items(struct s_parser_lr *lr)
 	res = cur;
 	while (cur != NULL)
 	{
-	//	debug_line(lr, cur);
+		//	debug_line(lr, cur);
 		//printf("\n");
 		lr_goto(lr, &res, cur);
 		cur = cur->next;
@@ -231,11 +252,11 @@ int main(void)
 	init_firsts(&lr);
 	debug_firsts(&lr);
 	res = lr_items(&lr);
-    printf("\n ----------------closure table---------------- \n");
-//	debug_closure_table(&lr, res);
-    printf("\n\n");
+	printf("\n ----------------closure table---------------- \n");
+	debug_closure_table(&lr, res);
+	printf("\n\n");
 	debug_action_table(&lr, res);
-    printf("\n\n");
+	printf("\n\n");
 	debug_goto_table(&lr, res);
 	return 0;
 }

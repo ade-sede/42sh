@@ -52,10 +52,11 @@ static struct s_morpheme_lst	*init_firsts_symbol(struct s_parser_lr *lr, enum e_
 	{
         //debug_firsts(lr);
 		childs = lr->grammar_rules[i].childs;
+		if (!childs)
 		while (childs)
 		{
 			if (IS_TOKEN(childs->m))
-				add_unique_morpheme_lst(&lr->firsts[symb], childs->m);
+				add_unique_morpheme_lst(&lr->firsts[symb]->lst, childs->m);
 			else if (IS_SYMBOL(childs->m))
 			{
 				/*
@@ -64,12 +65,12 @@ static struct s_morpheme_lst	*init_firsts_symbol(struct s_parser_lr *lr, enum e_
 				 ** a firsts: soit le firsts deja trouver soit app recursif pour le trouver
 				 **	sinon on break
 				 */
-				if (search_morpheme_lst(lr->firsts[symb], EPSILON) || childs == lr->grammar_rules[i].childs)
+				if (lr->firsts[symb]->nullable || childs == lr->grammar_rules[i].childs)
 				{
 					if (childs->m == symb)
                         break ;
-                    else if (lr->firsts[childs->m])
-						union_morpheme_lst(&lr->firsts[symb], lr->firsts[childs->m]);
+                    else if (lr->firsts[childs->m]->lst)
+						union_morpheme_lst(&lr->firsts[symb]->lst, lr->firsts[childs->m]);
 					else if (childs->m)
 					{
 						struct s_morpheme_lst	*beta = init_firsts_symbol(lr, childs->m);

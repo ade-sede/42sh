@@ -109,7 +109,7 @@ static struct s_static_grammar_rule rules[NB_RULES] = {
 	{newline_list, {TK_NEWLINE}},
 	{newline_list, {newline_list, TK_NEWLINE}},
 	{linebreak, {newline_list}},
-	{linebreak, {EPSILON}},
+	{linebreak, NULL},
 	{separator_op, {TK_AND}},
 	{separator_op, {TK_SEMI}},
 	{separator, {separator_op, linebreak}},

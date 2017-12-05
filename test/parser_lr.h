@@ -8,9 +8,9 @@
 
 #define NB_RULES 111
 
-#define IS_TOKEN(i) i >= FIRST_TOKEN && i <= FIRST_TOKEN + NB_TOKEN
+#define IS_TOKEN(i) i >= FIRST_TOKEN && i < FIRST_TOKEN + NB_TOKEN
 
-#define IS_SYMBOL(i) i >= FIRST_SYMBOL && i <= FIRST_SYMBOL + NB_SYMBOLS
+#define IS_SYMBOL(i) i >= FIRST_SYMBOL && i < FIRST_SYMBOL + NB_SYMBOLS
 #include "parser.h"
 enum e_symbol {
 	start_symbol = FIRST_SYMBOL,
@@ -64,50 +64,50 @@ enum e_symbol {
 
 enum e_token {
 	DOLLAR = FIRST_TOKEN,
-	TK_WORD,
-	TK_ASSIGNMENT_WORD,
-	TK_NAME,
-	TK_NEWLINE,
-	TK_IO_NUMBER,
-	TK_LESS,
-	TK_GREAT,
-	TK_SEMI,
-	TK_PIPE,
-	TK_AND,
-	TK_AND_IF,
-	TK_OR_IF,
-	TK_DSEMI,
-	TK_DLESS,
-	TK_DGREAT,
-	TK_LESSAND,
-	TK_GREATAND,
-	TK_LESSGREAT,
-	TK_DLESSDASH,
-	TK_CLOBBER,
-	TK_IF,
-	TK_THEN,
-	TK_ELSE,
-	TK_ELIF,
-	TK_FI,
 	TK_DO,
 	TK_DONE,
-	TK_CASE,
-	TK_ESAC,
-	TK_WHILE,
-	TK_UNTIL,
-	TK_FOR,
 	TK_LBRACE,
 	TK_RBRACE,
+	TK_AND,
+	TK_AND_IF,
+	TK_ASSIGNMENT_WORD,
 	TK_BANG,
-	TK_LPAREN,
-	TK_RPAREN,
+	TK_CASE,
+	TK_CLOBBER,
+	TK_DGREAT,
+	TK_DLESS,
+	TK_DLESSDASH,
+	TK_DSEMI,
+	TK_ELIF,
+	TK_ELSE,
+	TK_ESAC,
+	TK_FI,
+	TK_FOR,
+	TK_GREAT,
+	TK_GREATAND,
+	TK_IF,
 	TK_IN,
+	TK_IO_NUMBER,
+	TK_LESS,
+	TK_LESSAND,
+	TK_LESSGREAT,
+	TK_LPAREN,
+	TK_NAME,
+	TK_NEWLINE,
+	TK_OR_IF,
+	TK_PIPE,
+	TK_RPAREN,
+	TK_SEMI,
+	TK_THEN,
+	TK_UNTIL,
+	TK_WHILE,
+	TK_WORD,
 	EPSILON,
 };
 
 /*
-**	a morpheme is a token or a symbol
-*/
+ **	a morpheme is a token or a symbol
+ */
 
 typedef int t_morpheme;
 
@@ -128,9 +128,9 @@ struct s_grammar_rule {
 
 
 /*
-**	an item is a [S->ß.Eµ, a]
-**	whit a gramar rule, a point and a look ahead symbol
-*/
+ **	an item is a [S->ß.Eµ, a]
+ **	whit a gramar rule, a point and a look ahead symbol
+ */
 
 struct s_item {
 	struct s_item			*next;
@@ -139,14 +139,19 @@ struct s_item {
 	enum e_token		look_ahead;
 };
 
+struct firsts_of_symbol {
+	struct s_morpheme_lst		*lst;
+	int							nullable;
+};
+
 struct s_parser_lr {
 	struct s_grammar_rule		grammar_rules[NB_RULES];
-	struct s_morpheme_lst		*firsts[NB_SYMBOLS + 2]; //TODO: why 2 ?
+	struct firsts_of_symbol		*firsts[NB_SYMBOLS];
 };
 
 /*
-** in firsts, the indice match the symbol
-*/
+ ** in firsts, the indice match the symbol
+ */
 
 struct s_line {
 	struct s_line			*next;
@@ -165,8 +170,8 @@ struct s_morpheme_lst *union_morpheme_lst(struct s_morpheme_lst **a, struct s_mo
 struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *m_lst);
 
 /*
-** debug
-*/
+ ** debug
+ */
 
 void	debug_token(int m);
 void	debug_goto_table(struct s_parser_lr *lr, struct s_line *l);

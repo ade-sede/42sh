@@ -175,7 +175,7 @@ void	debug_firsts(struct s_parser_lr *lr)
 {
 	int	i = FIRST_SYMBOL;
 
-	while (i < NB_SYMBOLS + 1)
+	while (i < NB_SYMBOLS)
 	{
 		struct s_morpheme_lst	*childs;
 		childs = lr->firsts[i];
@@ -288,6 +288,7 @@ void	debug_closure_table(struct s_parser_lr *lr, struct s_line *l)
 void	debug_action_table(struct s_parser_lr *lr, struct s_line *l)
 {
     int i = 0;
+    int state_nbr = 0;
 	printf("---------debug_action_table----------\n");
     while (i < NB_TOKEN)
     {
@@ -299,11 +300,12 @@ void	debug_action_table(struct s_parser_lr *lr, struct s_line *l)
 	while (l)
 	{
 		int	i = 0;
+        printf("%d ", state_nbr);
 		while (i < NB_TOKEN)
 		{
 			if (l->action_table[i] == acc)
 				printf("acc ");
-			if (l->action_table[i] >= 4242)
+			else if (l->action_table[i] >= 4242)
 				printf("r%d ", l->action_table[i] - 4242);
 			else if (l->action_table[i] == -1)
 				printf("%d ", -1);
@@ -313,6 +315,7 @@ void	debug_action_table(struct s_parser_lr *lr, struct s_line *l)
 		}
 		printf("\n");
 		l = l->next;
+		state_nbr++;
 	}
 }
 

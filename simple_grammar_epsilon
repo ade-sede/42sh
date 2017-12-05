@@ -1,0 +1,7 @@
+{s', {S}},
+{s, {newline, P}},
+{s, {newline}},
+{p, {C, C}},
+{p, {D}},
+{newline, {N}},
+{newline, {EPSILON}}
