@@ -27,13 +27,13 @@ static void		exec_bin_absolute(t_env *env, const char **argv)
 {
 	if (access(argv[0], F_OK) == -1)
 		exit(investigate_error(1, argv[0], "no such file or directory",
-					EXIT_FAILURE));
+					127));
 	else if (access(argv[0], X_OK) == -1)
 		exit(investigate_error(1, argv[0], "permission denied ",
-					EXIT_FAILURE));
+					126));
 	else if (execve(argv[0], (char**)argv, env->environ) == -1)
 		exit(investigate_error(1, argv[0], "command not found",
-					EXIT_FAILURE));
+					127));
 	exit(1);
 }
 
@@ -48,18 +48,18 @@ static void		exec_bin_path(t_env *env, const char **argv)
 
 	if (!(bin = hash_get(env->hash_table, (char *)argv[0])))
 		exit(investigate_error(1, argv[0], "command not found",
-					EXIT_FAILURE));
+					127));
 	if (access(bin, F_OK) == 0)
 	{
 		if (access(bin, X_OK) == -1)
 			exit(investigate_error(1, bin, "permission denied ",
-						EXIT_FAILURE));
+						126));
 		else if (execve(bin, (char**)argv, env->environ) == -1)
 			exit(investigate_error(1, argv[0], "command not found",
-						EXIT_FAILURE));
+						127));
 	}
 	exit(investigate_error(1, (const char *)*argv, "commmand not found",
-				EXIT_FAILURE));
+				127));
 }
 
 int				exec_bin(t_env *env, const char **argv)
