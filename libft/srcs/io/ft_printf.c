@@ -10,42 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "printf.h"
 
 #include <stdarg.h>
 #include <unistd.h>
 
-static void	ft_putcfd(int fd, char c)
-{
-	write(fd, &c, 1);
-}
-
-static void	ft_putsfd(int fd, const char *str)
-{
-	if (str && *str)
-		write(fd, str, ft_strlen(str));
-}
-
-static void	ft_putnfd(int fd, int nb)
-{
-	unsigned int	index;
-
-	if (nb < 0)
-	{
-		write(fd, "-", 1);
-		nb *= -1;
-	}
-	index = 1;
-	while ((unsigned int)nb / index > 9)
-		index *= 10;
-	while (index)
-	{
-		ft_putcfd(fd, (char)((unsigned int)nb / index % 10) + '0');
-		index /= 10;
-	}
-}
-
-void		ft_printf(char *str, ...)
+void		ft_printf(const char *str, ...)
 {
 	va_list		ap;
 	char		*percent;
@@ -59,6 +29,8 @@ void		ft_printf(char *str, ...)
 			ft_putstr(va_arg(ap, const char*));
 		else if (*percent == 'd')
 			ft_putnbr(va_arg(ap, int));
+		else if (*percent == 'u')
+			ft_putunfd(0, va_arg(ap, unsigned int));
 		else if (*percent == 'c')
 			ft_putchar((char)va_arg(ap, int));
 		str = percent + 1;
@@ -67,7 +39,7 @@ void		ft_printf(char *str, ...)
 		ft_putstr(str);
 }
 
-void		ft_dprintf(int fd, char *str, ...)
+void		ft_dprintf(int fd, const char *str, ...)
 {
 	va_list		ap;
 	char		*percent;
@@ -81,6 +53,8 @@ void		ft_dprintf(int fd, char *str, ...)
 			ft_putsfd(fd, va_arg(ap, const char*));
 		else if (*percent == 'd')
 			ft_putnfd(fd, va_arg(ap, int));
+		else if (*percent == 'u')
+			ft_putunfd(fd, va_arg(ap, unsigned int));
 		else if (*percent == 'c')
 			ft_putcfd(fd, (char)va_arg(ap, int));
 		str = percent + 1;
