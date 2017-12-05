@@ -159,7 +159,7 @@ struct s_line {
 
 void	init_grammar_rules(struct s_parser_lr *lr);
 int		get_first_grammar_rule(struct s_grammar_rule *grammar_rule, enum e_symbol symbol) ;
-int	search_morpheme_lst(struct s_morpheme_lst *a, t_morpheme m);
+struct s_morpheme_lst *search_morpheme_lst(struct s_morpheme_lst *a, t_morpheme m);
 struct s_morpheme_lst *add_unique_morpheme_lst(struct s_morpheme_lst **a, t_morpheme m);
 struct s_morpheme_lst *union_morpheme_lst(struct s_morpheme_lst **a, struct s_morpheme_lst *b);
 struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *m_lst);

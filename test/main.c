@@ -160,7 +160,8 @@ void	lr_goto(struct s_parser_lr *lr, \
 		** If [A → α., a] is in Ii, then set action[i,a] to reduce A → α. Here A may
 not be S′
 		*/
-		if (!X)
+		if (!X || 
+				X->m == EPSILON) // not safe to handle a -> .EPSILON
 		{
 			cur_line->action_table[cur->look_ahead - FIRST_TOKEN] = FIRST_REDUCE_RULE + cur->grammar_rule;
 			cur = cur->next;
@@ -230,10 +231,11 @@ int main(void)
 	init_firsts(&lr);
 	debug_firsts(&lr);
 	res = lr_items(&lr);
-	//debug_closure_table(&lr, res);
-    printf("\n ----------------action table---------------- \n");
+    printf("\n ----------------closure table---------------- \n");
+//	debug_closure_table(&lr, res);
+    printf("\n\n");
 	debug_action_table(&lr, res);
-    printf("\n ----------------goto table---------------- \n");
+    printf("\n\n");
 	debug_goto_table(&lr, res);
 	return 0;
 }
