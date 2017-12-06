@@ -109,7 +109,7 @@ static struct s_static_grammar_rule rules[NB_RULES] = {
 	{newline_list, {TK_NEWLINE}},
 	{newline_list, {newline_list, TK_NEWLINE}},
 	{linebreak, {newline_list}},
-	{linebreak, NULL},
+	{linebreak, {0}},
 	{separator_op, {TK_AND}},
 	{separator_op, {TK_SEMI}},
 	{separator, {separator_op, linebreak}},
@@ -127,6 +127,7 @@ void	init_grammar_rules(struct s_parser_lr *lr)
 		lr->grammar_rules[i].node = rules[i].node;
 		int	j = 0;
 		lr->grammar_rules[i].childs = NULL;
+		/* > 0 is safe because start_symbol = 0 and cant be a child */
 		while (j < 7 && rules[i].childs[j] > 0)
 		{
 			ft_genlst_pushback((void **)&lr->grammar_rules[i].childs, new_morpheme_lst(rules[i].childs[j]));

@@ -159,20 +159,24 @@ void	lr_goto(struct s_parser_lr *lr, \
 		 ** If [A → α., a] is in Ii, then set action[i,a] to reduce A → α. Here A may
 		 not be S′
 		 */
-		if (!X || 
-				X->m == EPSILON || // not safe : to handle a -> .EPSILON
-				X->m == DOLLAR)
+		if (!X || X->m == DOLLAR)
 		{
 			if (cur->grammar_rule == 0 && cur->point == 1 && cur->look_ahead == DOLLAR)
 			{
 				if (cur_line->action_table[X->m - FIRST_TOKEN] != -1)
-					printf("conflict\n");
+				{
+					printf("conflict rule:%d symbol:\n", ft_genlst_index_of(*res, cur_line));
+					debug_token(X->m);
+				}
 				cur_line->action_table[X->m - FIRST_TOKEN] = acc; //it is [S′ → S., $] i
 			}
 			else
 			{
 				if (cur_line->action_table[cur->look_ahead - FIRST_TOKEN] != -1)
-					printf("conflict\n");
+				{
+					printf("conflict rule:%d symbol:\n", ft_genlst_index_of(*res, cur_line));
+					debug_token(X->m);
+				}
 				cur_line->action_table[cur->look_ahead - FIRST_TOKEN] = FIRST_REDUCE_RULE + cur->grammar_rule;
 				if (cur->grammar_rule > 110)
 					printf("error wrong nb of grammar rule\n");
@@ -196,13 +200,19 @@ void	lr_goto(struct s_parser_lr *lr, \
 			if (IS_SYMBOL(X->m))
 			{
 				if (cur_line->goto_table[X->m - FIRST_SYMBOL] != -1)
-					printf("conflict\n");
+				{
+					printf("conflict rule:%d symbol:\n", ft_genlst_index_of(*res, cur_line));
+					debug_symbol(X->m);
+				}
 				cur_line->goto_table[X->m - FIRST_SYMBOL] = j;	//set goto(i, X) = j 
 			}
 			else if (IS_TOKEN(X->m))
 			{
 				if (cur_line->action_table[X->m - FIRST_TOKEN] != -1)
-					printf("conflict\n");
+				{
+					printf("conflict rule:%d symbol:\n", ft_genlst_index_of(*res, cur_line));
+					debug_token(X->m);
+				}
 				cur_line->action_table[X->m - FIRST_TOKEN] = j; //set swich(i, X) = j 
 			}
 			else
@@ -246,7 +256,7 @@ int main(void)
 
 	ft_bzero(&lr, sizeof(struct s_parser_lr));
 	init_grammar_rules(&lr);
-	//debug_gramar(&lr);
+	debug_gramar(&lr);
 	i = get_first_grammar_rule(lr.grammar_rules, start_symbol);
 	debug_grammar_rule(&lr, i);
 	init_firsts(&lr);

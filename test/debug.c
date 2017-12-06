@@ -116,7 +116,6 @@ static struct s_sym_to_string g_debug_token_id[] =
 	{TK_LPAREN, "TK_LPAREN" },
 	{TK_RPAREN, "TK_RPAREN" },
 	{TK_IN, "TK_IN" },
-	{EPSILON, "EPSILON" },
 	{-1, NULL}
 };
 
@@ -177,10 +176,11 @@ void	debug_firsts(struct s_parser_lr *lr)
 
 	while (i < NB_SYMBOLS)
 	{
+		printf("----------\n");
 		struct s_morpheme_lst	*childs;
-		childs = lr->firsts[i];
-
+		childs = lr->firsts[i].lst;
 		debug_symbol(i); printf(":");
+		printf(" nullable :%d\n", lr->firsts[i].nullable);
 		while (childs)
 		{
 			if (IS_TOKEN(childs->m))

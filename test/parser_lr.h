@@ -2,7 +2,7 @@
 # define PARSER_LR_H
 
 #define NB_SYMBOLS 47
-#define NB_TOKEN 40
+#define NB_TOKEN 39
 #define FIRST_SYMBOL 0
 #define FIRST_TOKEN 10000
 
@@ -102,7 +102,6 @@ enum e_token {
 	TK_UNTIL,
 	TK_WHILE,
 	TK_WORD,
-	EPSILON,
 };
 
 /*
@@ -122,7 +121,7 @@ struct s_static_grammar_rule {
 };
 
 struct s_grammar_rule {
-	t_morpheme				node;
+	t_morpheme					node;
 	struct s_morpheme_lst		*childs;
 };
 
@@ -139,14 +138,14 @@ struct s_item {
 	enum e_token		look_ahead;
 };
 
-struct firsts_of_symbol {
+struct s_firsts_of_symbol {
 	struct s_morpheme_lst		*lst;
 	int							nullable;
 };
 
 struct s_parser_lr {
 	struct s_grammar_rule		grammar_rules[NB_RULES];
-	struct firsts_of_symbol		*firsts[NB_SYMBOLS];
+	struct s_firsts_of_symbol	firsts[NB_SYMBOLS];
 };
 
 /*

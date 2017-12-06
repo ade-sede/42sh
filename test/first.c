@@ -38,13 +38,13 @@ struct s_morpheme_lst *union_morpheme_lst(struct s_morpheme_lst **a, struct s_mo
 	return (*a);
 }
 
-static struct s_morpheme_lst	*init_firsts_symbol(struct s_parser_lr *lr, enum e_symbol symb)
+static struct s_firsts_of_symbol	init_firsts_symbol(struct s_parser_lr *lr, enum e_symbol symb)
 {
 	int	i;
 	struct s_morpheme_lst	*childs;
-	int	nullable = 0;
 	
 	i = get_first_grammar_rule(lr->grammar_rules, symb);
+	lr->firsts[symb].nullable = 0;
     printf("symbol ");
     debug_symbol(symb);
     printf("\n");
@@ -53,10 +53,14 @@ static struct s_morpheme_lst	*init_firsts_symbol(struct s_parser_lr *lr, enum e_
         //debug_firsts(lr);
 		childs = lr->grammar_rules[i].childs;
 		if (!childs)
+			lr->firsts[symb].nullable = 1;
 		while (childs)
 		{
 			if (IS_TOKEN(childs->m))
-				add_unique_morpheme_lst(&lr->firsts[symb]->lst, childs->m);
+			{
+				add_unique_morpheme_lst(&lr->firsts[symb].lst, childs->m);
+				break;
+			}
 			else if (IS_SYMBOL(childs->m))
 			{
 				/*
@@ -65,52 +69,43 @@ static struct s_morpheme_lst	*init_firsts_symbol(struct s_parser_lr *lr, enum e_
 				 ** a firsts: soit le firsts deja trouver soit app recursif pour le trouver
 				 **	sinon on break
 				 */
-				if (lr->firsts[symb]->nullable || childs == lr->grammar_rules[i].childs)
-				{
-					if (childs->m == symb)
-                        break ;
-                    else if (lr->firsts[childs->m]->lst)
-						union_morpheme_lst(&lr->firsts[symb]->lst, lr->firsts[childs->m]);
-					else if (childs->m)
+				//if (lr->firsts[symb].nullable || childs == lr->grammar_rules[i].childs)
+					//TODO: /* if faudrait regarder la suite si si c'est nullable */
+					if (childs->m == symb && !lr->firsts[symb].nullable)
+                    	break ;
+					else if (childs->m == symb && lr->firsts[symb].nullable)
 					{
-						struct s_morpheme_lst	*beta = init_firsts_symbol(lr, childs->m);
-						int no_epsilon = 0;
-						if (!(search_morpheme_lst(beta, EPSILON)))
-							no_epsilon = 1;
-						/* leaks */
-						union_morpheme_lst(&lr->firsts[symb], beta);
-						if (no_epsilon)
-							break ;
+						childs = childs->next;
+						continue ;
 					}
-				}
-				else
-					break;
+					struct s_firsts_of_symbol	beta;
+                    if (lr->firsts[childs->m].lst)
+						beta = lr->firsts[childs->m];
+					else 
+						beta = init_firsts_symbol(lr, childs->m);
+					union_morpheme_lst(&lr->firsts[symb].lst, beta.lst);
+					/* leaks */
+					/* si on est arrive au bout et que le symbole est nullable */
+					if (!(childs->next) && beta.nullable)
+						lr->firsts[symb].nullable = 1;
+					/* sinon on va a la regle suivante */
+					if (!beta.nullable)
+						break ;
 			}
 			childs = childs->next;
 		}
-		/* si on est arrive au bout et qu il ya epsilon le symbol est nullable */
-
-		if (!(childs) && search_morpheme_lst(lr->firsts[symb], EPSILON))
-			nullable = 1;
 		i++;
 	}
-	/* si le symbol n 'est pas nullable il faut retirer epsilon 
-	 * par ex : A -> EPSILON TK_LOL
-	 * 			A -> TK_LOL
-	 */
-	struct s_morpheme_lst *epsilon_node = NULL;
-	if (nullable == 0 && (epsilon_node = search_morpheme_lst(lr->firsts[symb], EPSILON)))
-		ft_genlst_del_one(&lr->firsts[symb], epsilon_node, NULL);
 	return (lr->firsts[symb]);
 }
 
 void	init_firsts(struct s_parser_lr *lr)
 {
-	int	i =0;
+	int	i = 0;
 
 	while (i < NB_SYMBOLS)
 	{
-		if (lr->firsts[i] == NULL)
+		if (lr->firsts[i].lst == NULL)
 			lr->firsts[i] = init_firsts_symbol(lr, i);
 		i++;
 	}
@@ -125,7 +120,7 @@ struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *f
 
 	/*
 	 **	tmp s'ecrit Aß:
-	 **	on ajoute firsts (A) dans res tant que A contient epsilon 
+	 **	on ajoute firsts (A) dans res tant que A est nullable
 	 */
 
 	while (tmp)
@@ -133,27 +128,14 @@ struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *f
 		if (IS_TOKEN(tmp->m))
 		{
 			add_unique_morpheme_lst(&res, tmp->m);
-			if (tmp->m != EPSILON)
-			{
-				/*supression de epsilon si token != epsilon */
-				if ((epsilon_node = search_morpheme_lst(res, EPSILON)))
-					ft_genlst_del_one(&res, epsilon_node, NULL);
-				return (res);
-			}
+			return (res);
 		}
 		else if (IS_SYMBOL(tmp->m))
 		{
-			if (lr->firsts[tmp->m])
-				union_morpheme_lst(&res, lr->firsts[tmp->m]);
-			else 
-				printf("WARNING symbol possede no first\n");
-			if (!(search_morpheme_lst(lr->firsts[tmp->m], EPSILON)))
-			{
-				/*supression de epsilon si regle contient pas epsilon*/
-				if ((epsilon_node = search_morpheme_lst(res, EPSILON)))
-					ft_genlst_del_one(&res, epsilon_node, NULL);
+			if (lr->firsts[tmp->m].lst)
+				union_morpheme_lst(&res, lr->firsts[tmp->m].lst);
+			if (!(lr->firsts[tmp->m].nullable))
 				return (res);
-			}
 		}
 		tmp = tmp->next;
 	}
