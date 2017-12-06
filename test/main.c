@@ -268,5 +268,6 @@ int main(void)
 	debug_action_table(&lr, res);
 	printf("\n\n");
 	debug_goto_table(&lr, res);
+	generate_automaton(&lr, res);
 	return 0;
 }

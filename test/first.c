@@ -140,4 +140,3 @@ struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *f
 		tmp = tmp->next;
 	}
 	return (res);
-}

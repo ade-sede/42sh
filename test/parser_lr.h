@@ -1,12 +1,12 @@
 #ifndef PARSER_LR_H
 # define PARSER_LR_H
 
-#define NB_SYMBOLS 47
+#define NB_SYMBOLS 48
 #define NB_TOKEN 39
 #define FIRST_SYMBOL 0
 #define FIRST_TOKEN 10000
 
-#define NB_RULES 111
+#define NB_RULES 112
 
 #define IS_TOKEN(i) i >= FIRST_TOKEN && i < FIRST_TOKEN + NB_TOKEN
 
@@ -35,6 +35,7 @@ enum e_symbol {
 	case_item_ns,
 	case_item,
 	pattern,
+	symb_in,
 	if_clause,
 	else_part,
 	while_clause,
@@ -192,4 +193,5 @@ void	init_firsts(struct s_parser_lr *lr);
 void	item_pushback_unique(struct s_item **item_lst, int grammar_rule, int point, enum e_token look_ahead);
 struct s_morpheme_lst *dup_morpheme_lst(struct s_morpheme_lst *old);
 struct s_item *dup_item_lst(struct s_item *old);
+void	generate_automaton(struct s_parser_lr *lr, struct s_line *l);
 #endif
