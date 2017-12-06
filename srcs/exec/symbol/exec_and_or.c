@@ -30,7 +30,7 @@ int		exec_and_or(t_ast *ast)
 			return (exec(ast->child[3]));
 		return (exit_status);
 	}
-	if ((exit_status = exec(ast->child[0])) == EXIT_FAILURE)
+	if ((exit_status = exec(ast->child[0])) != EXIT_SUCCESS)
 		return (exec(ast->child[3]));
 	return (exit_status);
 }
