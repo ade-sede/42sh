@@ -65,12 +65,7 @@ void	conf_term_rc(t_read *read, char hide)
 	if (tcgetattr(0, &term) == -1)
 		fatal("getattr error");
 	if (hide == 1)
-	{
 		term.c_lflag &= ~(ICANON);
-		//term.c_lflag &= ~(ECHO);
-		term.c_cc[VMIN] = 1;
-		//term.c_cc[VTIME] = 0;
-	}
 	else if (hide == 2)
 		term.c_lflag &= ~(ECHO);
 	else if (!hide)

@@ -15,6 +15,7 @@
 #include "hash_table.h"
 #include "t_env.h"
 #include <dirent.h>
+#include "local.h"
 
 size_t	hash(unsigned char *str)
 {
@@ -77,7 +78,8 @@ int		create_hash_table(t_list ***hash_table, char **environ)
 	int		i;
 
 	i = 0;
-	if (!(path = env_getenv((const char**)environ, "PATH", NULL)))
+	if (!(path = env_getenv((const char**)environ, "PATH", NULL))
+	&& !(path = var_get_value(singleton_env(), "PATH")))
 		return (0);
 	*hash_table = ft_memalloc(sizeof(t_list *) * HASH_TABLE_SIZE);
 	paths = ft_strsplit(path, ":");

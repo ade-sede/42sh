@@ -18,7 +18,7 @@
 
 int		exec_until_clause(t_ast *ast)
 {
-	while (exec(ast->child[1]) == EXIT_FAILURE)
+	while (exec(ast->child[1]) != EXIT_SUCCESS && !g_abort_opening)
 		exec(ast->child[2]);
 	return (EXIT_SUCCESS);
 }

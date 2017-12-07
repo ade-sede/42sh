@@ -16,6 +16,8 @@
 #include "line_editing.h"
 #include "completion.h"
 
+#include "local.h"
+
 int		g_abort_opening;
 
 void	edit_handle_sigwinch(int signum)
@@ -33,6 +35,7 @@ void	edit_handle_sigint_open(int signum)
 	ft_putchar_fd('\n', 2);
 	put_prompt(singleton_line());
 	(void)signum;
+	local_add_change_from_key_value(singleton_env(), "?", "1");
 }
 
 void	edit_set_signals_open(void)

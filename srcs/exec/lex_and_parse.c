@@ -92,7 +92,7 @@ int				lex_and_parse(t_ast *ast, char *buff, t_modes *modes)
 	if (res_l_and_p[1] == PARSER_SUCCESS && !g_abort_opening)
 		exec_main_loop(ast);
 	else
-		local_add_change_from_key_value(singleton_env(), "?", "1");
+		local_add_change_from_key_value(singleton_env(), "?", "127");
 	quit_lex_and_parse(&lexer, &parser, &big_list);
 	return ((res_l_and_p[1] == PARSER_ERROR && modes->mode > 0) ? 0 : 1);
 }
