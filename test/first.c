@@ -116,7 +116,6 @@ struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *f
 {
 	struct s_morpheme_lst	*res = NULL;
 	struct s_morpheme_lst	*tmp = first;
-	struct s_morpheme_lst	*epsilon_node = NULL;
 
 	/*
 	 **	tmp s'ecrit Aß:
@@ -140,3 +139,4 @@ struct s_morpheme_lst	*lr_first(struct s_parser_lr *lr, struct s_morpheme_lst *f
 		tmp = tmp->next;
 	}
 	return (res);
+}

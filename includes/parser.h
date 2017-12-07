@@ -16,6 +16,12 @@
 # include "t_token.h"
 # include "t_ast.h"
 
+#define NB_SYMBOLS 48
+#define NB_TOKEN 39
+#define FIRST_SYMBOL 0
+#define FIRST_TOKEN 10000
+
+#define NB_RULES 112
 # ifndef PARSER_ERROR
 #  define PARSER_REOPEN 2
 # endif
@@ -2326,6 +2332,7 @@ enum	e_shift {
 	r180,
 	r181,
 	r182,
+    acc = 10000,
 };
 
 enum	e_symbol {

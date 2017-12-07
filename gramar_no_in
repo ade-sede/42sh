@@ -45,17 +45,19 @@ term             : term separator and_or
                  ;
 for_clause       : TK_FOR name                                      do_group
                  | TK_FOR name                       sequential_sep do_group
-                 | TK_FOR name linebreak TK_IN          sequential_sep do_group
-                 | TK_FOR name linebreak TK_IN wordlist sequential_sep do_group
+                 | TK_FOR name linebreak in          sequential_sep do_group
+                 | TK_FOR name linebreak in wordlist sequential_sep do_group
                  ;
 name             : TK_NAME                     /* Apply rule 5 */
+                 ;
+in               : TK_IN
                  ;
 wordlist         : wordlist TK_WORD
                  |          TK_WORD
                  ;
-case_clause      : TK_CASE TK_WORD linebreak TK_IN linebreak case_list    TK_ESAC
-                 | TK_CASE TK_WORD linebreak TK_IN linebreak case_list_ns TK_ESAC
-                 | TK_CASE TK_WORD linebreak TK_IN linebreak              TK_ESAC
+case_clause      : TK_CASE TK_WORD linebreak in linebreak case_list    TK_ESAC
+                 | TK_CASE TK_WORD linebreak in linebreak case_list_ns TK_ESAC
+                 | TK_CASE TK_WORD linebreak in linebreak              TK_ESAC
                  ;
 case_list_ns     : case_list case_item_ns
                  |           case_item_ns

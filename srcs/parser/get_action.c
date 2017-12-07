@@ -16,12 +16,49 @@
 #include "t_ast.h"
 #include "automaton.txt"
 
-int g_token_table[] = {DOLAR, TK_AND, TK_LPAREN, TK_RPAREN, TK_SEMI, TK_LESS,
-	TK_GREAT, TK_AND_IF, TK_ASSIGNMENT_WORD, TK_BANG, TK_CLOBBER, TK_CASE,
-	TK_DGREAT, TK_DLESS, TK_DLESSDASH, TK_DSEMI, TK_DO, TK_DONE, TK_ELIF,
-	TK_ELSE, TK_ESAC, TK_FI, TK_FOR, TK_GREATAND, TK_IO_NUMBER, TK_IF, TK_IN,
-	TK_LESSAND, TK_LESSGREAT, TK_LBRACE, TK_NAME, TK_NEWLINE, TK_OR_IF,
-	TK_RBRACE, TK_THEN, TK_UNTIL, TK_WORD, TK_WHILE, TK_PIPE};
+int g_token_table[] =
+{
+    DOLAR,
+    TK_DO,
+    TK_DONE,
+    TK_LBRACE,
+    TK_RBRACE,
+    TK_AND,
+    TK_AND_IF,
+    TK_ASSIGNMENT_WORD,
+    TK_BANG,
+    TK_CASE,
+    TK_CLOBBER,
+    TK_DGREAT,
+    TK_DLESS,
+    TK_DLESSDASH,
+    TK_DSEMI,
+    TK_ELIF,
+    TK_ELSE,
+    TK_ESAC,
+    TK_FI,
+    TK_FOR,
+    TK_GREAT,
+    TK_GREATAND,
+    TK_IF,
+    TK_IN,
+    TK_IO_NUMBER,
+    TK_LESS,
+    TK_LESSAND,
+    TK_LESSGREAT,
+    TK_LPAREN,
+    TK_NAME,
+    TK_NEWLINE,
+    TK_OR_IF,
+    TK_PIPE,
+    TK_RPAREN,
+    TK_SEMI,
+    TK_THEN,
+    TK_UNTIL,
+    TK_WHILE,
+    TK_WORD,
+};
+
 
 /*
 **	l etat acceptant est mis a 10000 arbitrairement et l etat r0 a 4242
@@ -29,18 +66,18 @@ int g_token_table[] = {DOLAR, TK_AND, TK_LPAREN, TK_RPAREN, TK_SEMI, TK_LESS,
 
 int		get_action(t_token *token, int state)
 {
-	int		col;
-	int		line;
-	int		nb_col;
+    int		col;
+    int		line;
+    int		nb_col;
 
-	col = 0;
-	nb_col = 39;
-	while (col < nb_col && g_token_table[col] != token->id)
-		col++;
-	if (col == nb_col && token->id != 42)
-		return (-1);
-	line = state;
-	return (g_lr_table[line][col]);
+    col = 0;
+    nb_col = 39;
+    while (col < nb_col && g_token_table[col] != token->id)
+        col++;
+    if (col == nb_col && token->id != 42)
+        return (-1);
+    line = state;
+    return (g_lr_table[line][col]);
 }
 
 /*
@@ -115,226 +152,267 @@ int		get_action(t_token *token, int state)
 **		"fname -> WORD",
 **		"brace_group -> Lbrace compound_list Rbrace",
 **		"do_group -> Do compound_list Done",
-**		"simple_command -> cmd_prefix cmd_word cmd_suffix",
-**		"simple_command -> cmd_prefix cmd_word",
-**		"simple_command -> cmd_prefix",
-**		"simple_command -> cmd_name cmd_suffix",
-**		"simple_command -> cmd_name",
-**		"cmd_name -> WORD",
-**		"cmd_word -> WORD",
-**		"cmd_prefix -> io_redirect",
-**		"cmd_prefix -> cmd_prefix io_redirect",
-**		"cmd_prefix -> ASSIGNMENT_WORD",
-**		"cmd_prefix -> cmd_prefix ASSIGNMENT_WORD",
-**		"cmd_suffix -> io_redirect",
-**		"cmd_suffix -> cmd_suffix io_redirect",
-**		"cmd_suffix -> WORD",
-**		"cmd_suffix -> cmd_suffix WORD",
-**		"redirect_list -> io_redirect",
-**		"redirect_list -> redirect_list io_redirect",
-**		"io_redirect -> io_file",
-**		"io_redirect -> IO_NUMBER io_file",
-**		"io_redirect -> io_here",
-**		"io_redirect -> IO_NUMBER io_here",
-**		"io_file -> < filename",
-**		"io_file -> LESSAND filename",
-**		"io_file -> > filename",
-**		"io_file -> GREATAND filename",
-**		"io_file -> DGREAT filename",
-**		"io_file -> LESSGREAT filename",
-**		"io_file -> CLOBBER filename",
-**		"filename -> WORD",
-**		"io_here -> DLESS here_end",
-**		"io_here -> DLESSDASH here_end",
-**		"here_end -> WORD",
-**		"newline_list -> NEWLINE",
-**		"newline_list -> newline_list NEWLINE",
-**		"linebreak -> newline_list",
-**		"linebreak ->",
-**		"separator_op -> &",
-**		"separator_op -> ;",
-**		"separator -> separator_op linebreak",
-**		"separator -> newline_list",
-**		"sequential_sep -> ; linebreak",
-**		"sequential_sep -> newline_list",
-**	};
+    **		"simple_command -> cmd_prefix cmd_word cmd_suffix",
+    **		"simple_command -> cmd_prefix cmd_word",
+    **		"simple_command -> cmd_prefix",
+    **		"simple_command -> cmd_name cmd_suffix",
+    **		"simple_command -> cmd_name",
+    **		"cmd_name -> WORD",
+    **		"cmd_word -> WORD",
+    **		"cmd_prefix -> io_redirect",
+    **		"cmd_prefix -> cmd_prefix io_redirect",
+    **		"cmd_prefix -> ASSIGNMENT_WORD",
+    **		"cmd_prefix -> cmd_prefix ASSIGNMENT_WORD",
+    **		"cmd_suffix -> io_redirect",
+    **		"cmd_suffix -> cmd_suffix io_redirect",
+    **		"cmd_suffix -> WORD",
+    **		"cmd_suffix -> cmd_suffix WORD",
+    **		"redirect_list -> io_redirect",
+    **		"redirect_list -> redirect_list io_redirect",
+    **		"io_redirect -> io_file",
+    **		"io_redirect -> IO_NUMBER io_file",
+    **		"io_redirect -> io_here",
+    **		"io_redirect -> IO_NUMBER io_here",
+    **		"io_file -> < filename",
+    **		"io_file -> LESSAND filename",
+    **		"io_file -> > filename",
+    **		"io_file -> GREATAND filename",
+    **		"io_file -> DGREAT filename",
+    **		"io_file -> LESSGREAT filename",
+    **		"io_file -> CLOBBER filename",
+    **		"filename -> WORD",
+    **		"io_here -> DLESS here_end",
+    **		"io_here -> DLESSDASH here_end",
+    **		"here_end -> WORD",
+    **		"newline_list -> NEWLINE",
+    **		"newline_list -> newline_list NEWLINE",
+    **		"linebreak -> newline_list",
+    **		"linebreak ->",
+    **		"separator_op -> &",
+    **		"separator_op -> ;",
+    **		"separator -> separator_op linebreak",
+    **		"separator -> newline_list",
+    **		"sequential_sep -> ; linebreak",
+    **		"sequential_sep -> newline_list",
+    **	};
 */
 
 static const t_rule	g_rule_table[] = {
-	{0, 2},
-	{PROGRAM, 3},
-	{PROGRAM, 1},
-	{COMPLETE_COMMANDS, 3},
-	{COMPLETE_COMMANDS, 1},
-	{COMPLETE_COMMAND, 2},
-	{COMPLETE_COMMAND, 1},
-	{LIST, 3},
-	{LIST, 1},
-	{AND_OR, 1},
-	{AND_OR, 4},
-	{AND_OR, 4},
-	{PIPELINE, 1},
-	{PIPELINE, 2},
-	{PIPE_SEQUENCE, 1},
-	{PIPE_SEQUENCE, 4},
-	{COMMAND, 1},
-	{COMMAND, 1},
-	{COMMAND, 2},
-	{COMMAND, 1},
-	{COMPOUND_COMMAND, 1},
-	{COMPOUND_COMMAND, 1},
-	{COMPOUND_COMMAND, 1},
-	{COMPOUND_COMMAND, 1},
-	{COMPOUND_COMMAND, 1},
-	{COMPOUND_COMMAND, 1},
-	{COMPOUND_COMMAND, 1},
-	{SUBSHELL, 3},
-	{COMPOUND_LIST, 2},
-	{COMPOUND_LIST, 3},
-	{TERM, 3},
-	{TERM, 1},
-	{FOR_CLAUSE, 3},
-	{FOR_CLAUSE, 4},
-	{FOR_CLAUSE, 6},
-	{FOR_CLAUSE, 7},
-	{NAME, 1},
-	{SYM_IN, 1},
-	{WORDLIST, 2},
-	{WORDLIST, 1},
-	{CASE_CLAUSE, 7},
-	{CASE_CLAUSE, 7},
-	{CASE_CLAUSE, 6},
-	{CASE_LIST_NS, 2},
-	{CASE_LIST_NS, 1},
-	{CASE_LIST, 2},
-	{CASE_LIST, 1},
-	{CASE_ITEM_NS, 3},
-	{CASE_ITEM_NS, 3},
-	{CASE_ITEM_NS, 4},
-	{CASE_ITEM_NS, 4},
-	{CASE_ITEM, 5},
-	{CASE_ITEM, 5},
-	{CASE_ITEM, 6},
-	{CASE_ITEM, 6},
-	{PATTERN, 1},
-	{PATTERN, 3},
-	{IF_CLAUSE, 6},
-	{IF_CLAUSE, 5},
-	{ELSE_PART, 4},
-	{ELSE_PART, 5},
-	{ELSE_PART, 2},
-	{WHILE_CLAUSE, 3},
-	{UNTIL_CLAUSE, 3},
-	{FUNCTION_DEFINITION, 5},
-	{FUNCTION_BODY, 1},
-	{FUNCTION_BODY, 2},
-	{FNAME, 1},
-	{BRACE_GROUP, 3},
-	{DO_GROUP, 3},
-	{SIMPLE_COMMAND, 3},
-	{SIMPLE_COMMAND, 2},
-	{SIMPLE_COMMAND, 1},
-	{SIMPLE_COMMAND, 2},
-	{SIMPLE_COMMAND, 1},
-	{CMD_NAME, 1},
-	{CMD_WORD, 1},
-	{CMD_PREFIX, 1},
-	{CMD_PREFIX, 2},
-	{CMD_PREFIX, 1},
-	{CMD_PREFIX, 2},
-	{CMD_SUFFIX, 1},
-	{CMD_SUFFIX, 2},
-	{CMD_SUFFIX, 1},
-	{CMD_SUFFIX, 2},
-	{REDIRECT_LIST, 1},
-	{REDIRECT_LIST, 2},
-	{IO_REDIRECT, 1},
-	{IO_REDIRECT, 2},
-	{IO_REDIRECT, 1},
-	{IO_REDIRECT, 2},
-	{IO_FILE, 2},
-	{IO_FILE, 2},
-	{IO_FILE, 2},
-	{IO_FILE, 2},
-	{IO_FILE, 2},
-	{IO_FILE, 2},
-	{IO_FILE, 2},
-	{FILENAME, 1},
-	{IO_HERE, 2},
-	{IO_HERE, 2},
-	{HERE_END, 1},
-	{NEWLINE_LIST, 1},
-	{NEWLINE_LIST, 2},
-	{LINEBREAK, 1},
-	{LINEBREAK, 0},
-	{SEPARATOR_OP, 1},
-	{SEPARATOR_OP, 1},
-	{SEPARATOR, 2},
-	{SEPARATOR, 1},
-	{SEQUENTIAL_SEP, 2},
-	{SEQUENTIAL_SEP, 1},
+    {0, 2},
+    {PROGRAM, 3},
+    {PROGRAM, 1},
+    {COMPLETE_COMMANDS, 3},
+    {COMPLETE_COMMANDS, 1},
+    {COMPLETE_COMMAND, 2},
+    {COMPLETE_COMMAND, 1},
+    {LIST, 3},
+    {LIST, 1},
+    {AND_OR, 1},
+    {AND_OR, 4},
+    {AND_OR, 4},
+    {PIPELINE, 1},
+    {PIPELINE, 2},
+    {PIPE_SEQUENCE, 1},
+    {PIPE_SEQUENCE, 4},
+    {COMMAND, 1},
+    {COMMAND, 1},
+    {COMMAND, 2},
+    {COMMAND, 1},
+    {COMPOUND_COMMAND, 1},
+    {COMPOUND_COMMAND, 1},
+    {COMPOUND_COMMAND, 1},
+    {COMPOUND_COMMAND, 1},
+    {COMPOUND_COMMAND, 1},
+    {COMPOUND_COMMAND, 1},
+    {COMPOUND_COMMAND, 1},
+    {SUBSHELL, 3},
+    {COMPOUND_LIST, 2},
+    {COMPOUND_LIST, 3},
+    {TERM, 3},
+    {TERM, 1},
+    {FOR_CLAUSE, 3},
+    {FOR_CLAUSE, 4},
+    {FOR_CLAUSE, 6},
+    {FOR_CLAUSE, 7},
+    {NAME, 1},
+    {SYM_IN, 1},
+    {WORDLIST, 2},
+    {WORDLIST, 1},
+    {CASE_CLAUSE, 7},
+    {CASE_CLAUSE, 7},
+    {CASE_CLAUSE, 6},
+    {CASE_LIST_NS, 2},
+    {CASE_LIST_NS, 1},
+    {CASE_LIST, 2},
+    {CASE_LIST, 1},
+    {CASE_ITEM_NS, 3},
+    {CASE_ITEM_NS, 3},
+    {CASE_ITEM_NS, 4},
+    {CASE_ITEM_NS, 4},
+    {CASE_ITEM, 5},
+    {CASE_ITEM, 5},
+    {CASE_ITEM, 6},
+    {CASE_ITEM, 6},
+    {PATTERN, 1},
+    {PATTERN, 3},
+    {IF_CLAUSE, 6},
+    {IF_CLAUSE, 5},
+    {ELSE_PART, 4},
+    {ELSE_PART, 5},
+    {ELSE_PART, 2},
+    {WHILE_CLAUSE, 3},
+    {UNTIL_CLAUSE, 3},
+    {FUNCTION_DEFINITION, 5},
+    {FUNCTION_BODY, 1},
+    {FUNCTION_BODY, 2},
+    {FNAME, 1},
+    {BRACE_GROUP, 3},
+    {DO_GROUP, 3},
+    {SIMPLE_COMMAND, 3},
+    {SIMPLE_COMMAND, 2},
+    {SIMPLE_COMMAND, 1},
+    {SIMPLE_COMMAND, 2},
+    {SIMPLE_COMMAND, 1},
+    {CMD_NAME, 1},
+    {CMD_WORD, 1},
+    {CMD_PREFIX, 1},
+    {CMD_PREFIX, 2},
+    {CMD_PREFIX, 1},
+    {CMD_PREFIX, 2},
+    {CMD_SUFFIX, 1},
+    {CMD_SUFFIX, 2},
+    {CMD_SUFFIX, 1},
+    {CMD_SUFFIX, 2},
+    {REDIRECT_LIST, 1},
+    {REDIRECT_LIST, 2},
+    {IO_REDIRECT, 1},
+    {IO_REDIRECT, 2},
+    {IO_REDIRECT, 1},
+    {IO_REDIRECT, 2},
+    {IO_FILE, 2},
+    {IO_FILE, 2},
+    {IO_FILE, 2},
+    {IO_FILE, 2},
+    {IO_FILE, 2},
+    {IO_FILE, 2},
+    {IO_FILE, 2},
+    {FILENAME, 1},
+    {IO_HERE, 2},
+    {IO_HERE, 2},
+    {HERE_END, 1},
+    {NEWLINE_LIST, 1},
+    {NEWLINE_LIST, 2},
+    {LINEBREAK, 1},
+    {LINEBREAK, 0},
+    {SEPARATOR_OP, 1},
+    {SEPARATOR_OP, 1},
+    {SEPARATOR, 2},
+    {SEPARATOR, 1},
+    {SEQUENTIAL_SEP, 2},
+    {SEQUENTIAL_SEP, 1},
 };
 
 void	reduce(t_state_lst **state_stack, t_ast_lst **ast_stack, \
-		int reduce_rule)
+        int reduce_rule)
 {
-	t_rule			rule;
-	int				nb_child;
-	enum e_symbol	symbol;
-	t_ast			*new;
-	int				i;
+    t_rule			rule;
+    int				nb_child;
+    enum e_symbol	symbol;
+    t_ast			*new;
+    int				i;
 
-	i = 0;
-	rule = g_rule_table[reduce_rule];
-	nb_child = rule.nb_child;
-	symbol = rule.symbol;
-	new = new_ast(NULL, symbol);
-	i = nb_child - 1;
-	while (i >= 0)
-	{
-		ft_genlst_del_one(state_stack, *state_stack, NULL);
-		new->child[i] = (*ast_stack)->ast;
-		ft_genlst_del_one(ast_stack, *ast_stack, NULL);
-		i--;
-	}
-	ft_genlst_add(ast_stack, ft_simple_lst_create(new));
+    i = 0;
+    rule = g_rule_table[reduce_rule];
+    nb_child = rule.nb_child;
+    symbol = rule.symbol;
+    new = new_ast(NULL, symbol);
+    i = nb_child - 1;
+    while (i >= 0)
+    {
+        ft_genlst_del_one(state_stack, *state_stack, NULL);
+        new->child[i] = (*ast_stack)->ast;
+        ft_genlst_del_one(ast_stack, *ast_stack, NULL);
+        i--;
+    }
+    ft_genlst_add(ast_stack, ft_simple_lst_create(new));
 }
-
-static const enum e_symbol	g_symbol_table[47] = {AND_OR, BRACE_GROUP,
-	CASE_CLAUSE, CASE_ITEM, CASE_ITEM_NS, CASE_LIST, CASE_LIST_NS, CMD_NAME,
-	CMD_PREFIX, CMD_SUFFIX, CMD_WORD, COMMAND, COMPLETE_COMMAND,
-	COMPLETE_COMMANDS, COMPOUND_COMMAND, COMPOUND_LIST, DO_GROUP, ELSE_PART,
-	FILENAME, FNAME, FOR_CLAUSE, FUNCTION_BODY, FUNCTION_DEFINITION, HERE_END,
-	IF_CLAUSE, SYM_IN, IO_FILE, IO_HERE, IO_REDIRECT, LINEBREAK, LIST, NAME,
-	NEWLINE_LIST, PATTERN, PIPE_SEQUENCE, PIPELINE, PROGRAM, REDIRECT_LIST,
-	SEPARATOR, SEPARATOR_OP, SEQUENTIAL_SEP, SIMPLE_COMMAND, SUBSHELL, TERM,
-	UNTIL_CLAUSE, WHILE_CLAUSE, WORDLIST};
+#define lala 1111111
+static const enum e_symbol	g_symbol_table[48] = {
+    lala,
+    PROGRAM,
+    COMPLETE_COMMANDS,
+    COMPLETE_COMMAND,
+    LIST,
+    AND_OR,
+    PIPELINE,
+    PIPE_SEQUENCE,
+    COMMAND,
+    COMPOUND_COMMAND,
+    SUBSHELL,
+    COMPOUND_LIST,
+    TERM,
+    FOR_CLAUSE,
+    NAME,
+    WORDLIST,
+    CASE_CLAUSE,
+    CASE_LIST_NS,
+    CASE_LIST,
+    CASE_ITEM_NS,
+    CASE_ITEM,
+    PATTERN,
+    SYM_IN,
+    IF_CLAUSE,
+    ELSE_PART,
+    WHILE_CLAUSE,
+    UNTIL_CLAUSE,
+    FUNCTION_DEFINITION,
+    FUNCTION_BODY,
+    FNAME,
+    BRACE_GROUP,
+    DO_GROUP,
+    SIMPLE_COMMAND,
+    CMD_PREFIX,
+    CMD_SUFFIX,
+    CMD_NAME,
+    CMD_WORD,
+    REDIRECT_LIST,
+    IO_REDIRECT,
+    IO_FILE,
+    FILENAME,
+    IO_HERE,
+    HERE_END,
+    NEWLINE_LIST,
+    LINEBREAK,
+    SEPARATOR_OP,
+    SEPARATOR,
+    SEQUENTIAL_SEP,
+};
 
 int		get_goto(t_state_lst *state_stack, int reduce_rule)
 {
-	enum e_symbol	symbol;
-	int				col;
-	int				res_state;
-	int				offset;
-	int				symbol_table_len;
+    enum e_symbol	symbol;
+    int				col;
+    int				res_state;
+    int				offset;
+    int				symbol_table_len;
 
-	offset = 39;
-	symbol_table_len = 47;
-	symbol = g_rule_table[reduce_rule].symbol;
-	res_state = -1;
-	col = 0;
-	while (col < symbol_table_len)
-	{
-		if (g_symbol_table[col] == symbol)
-			break ;
-		col++;
-	}
-	col += offset;
-	if ((col == symbol_table_len + offset) || \
-			(res_state = g_lr_table[state_stack->state][col]) == -1)
-	{
-		ft_dprintf(1, "goto error state -1 \n");
-		return (-1);
-	}
-	return (res_state);
+    offset = 39;
+    symbol_table_len = 47;
+    symbol = g_rule_table[reduce_rule].symbol;
+    res_state = -1;
+    col = 0;
+    while (col < symbol_table_len)
+    {
+        if (g_symbol_table[col] == symbol)
+            break ;
+        col++;
+    }
+    col += offset;
+    if ((col == symbol_table_len + offset) || \
+            (res_state = g_lr_table[state_stack->state][col]) == -1)
+    {
+        ft_dprintf(1, "goto error state -1 \n");
+        return (-1);
+    }
+    return (res_state);
 }
