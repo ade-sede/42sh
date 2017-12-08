@@ -60,7 +60,7 @@ static void	assign_values(char **vars, char **values, t_env *env, char *tmp)
 		ptr ? env_add_var_from_string(env, tmp, ft_strlen(tmp))
 			: local_add_change_from_string(env, tmp);
 		if (path)
-			env_reload_tree_hash(env);
+				env_reload_tree_hash(env);
 		vars++;
 		free(tmp);
 	}
@@ -78,7 +78,8 @@ static void	read_rc(t_read *options, char **values)
 		if ((options->flags & S))
 		{
 			conf_term_rc(options, NO_ECHO);
-			write(2, "\e[?25h", 6);
+			//write(2, "\e[?25h", 6);
+			ft_putstr_fd("\e[?25h", 2);
 		}
 	}
 	*values = read_get_rcinput(*options);
@@ -94,7 +95,8 @@ static void	read_interact(t_env *env, t_read options, char **values)
 			? options.prompt : MAG"read> "RESET);
 	put_prompt(singleton_line());
 	*values = read_get_input(options);
-	ft_putstr("\n");
+	//ft_putstr("\n");
+	ft_putstr_fd("\n", 2);
 	conf_term_canonical();
 }
 

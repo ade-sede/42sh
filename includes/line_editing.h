@@ -126,6 +126,7 @@ void			edit_refresh_clear(t_line *line);
 void			edit_refresh_cursor(t_line *line);
 void			edit_refresh_line(t_line *line);
 void			edit_refresh_visu(t_line *line);
+void			edit_cursor_pos(void);
 
 void			goto_termcap(char *capacity, int co, int li);
 void			put_ntermcap(char *capacity, int n);

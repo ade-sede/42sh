@@ -78,6 +78,7 @@ int				launch_job(t_job_control *jc, t_job *j, int foreground)
 		{
 			launch_process(jc, j->pgid, foreground, in_a_fork);
 			close_std(stdfile, j, 0);
+			close(mypipe[0]);
 			exit(exec(process->command));
 		}
 		else

@@ -17,21 +17,25 @@ static void	read_get_input_2(t_read options, unsigned long keycode, char **line)
 	{
 		ft_strrem(&(*line)[ft_strlen(*line) - 1]);
 		put_termcap("le");
-		write(1, " ", 1);
+		//write(1, " ", 1);
+		ft_putstr_fd(" ", 2);
 		put_termcap("le");
 	}
 	if (ft_isprint((char)keycode) || keycode == KEY_ENTER ||
 			keycode == KEY_TAB)
 		ft_strpush(line, keycode);
 	if ((options.flags & S))
-		write(2, "*", 1);
+		//write(2, "*", 1);
+		ft_putstr_fd("*", 2);
 	else if (ft_isprint((char)keycode) || keycode == KEY_ENTER ||
 			keycode == KEY_TAB)
-		write(2, &keycode, 1);
+		//write(2, &keycode, 1);
+		ft_putchar_fd((char)keycode, 2);
 	else if (keycode == 27)
 	{
 		ft_strspush(line, "^[");
-		write(2, "^[", 2);
+		//write(2, "^[", 2);
+		ft_putstr_fd("^[", 2);
 	}
 }
 

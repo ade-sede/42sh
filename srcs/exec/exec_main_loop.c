@@ -37,5 +37,8 @@ void	exec_main_loop(t_ast *ast)
 	local_add_change_from_key_value(singleton_env(), "?",
 			ft_itoa_word(exit_status, nbr));
 	if (singleton_jc()->shell_is_interactive)
+	{
 		conf_term_non_canonical();
+		edit_cursor_pos();
+	}
 }

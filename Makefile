@@ -127,6 +127,8 @@ SRC_FILE = \
 		   failure/get_errno_1.c \
 		   failure/get_errno_2.c \
 		   failure/get_errno_3.c \
+		   failure/get_errsig_1.c \
+		   failure/get_errsig_2.c \
 		   failure/return_failure.c \
 		   \
 		   globing/curly_bracket_split.c \
