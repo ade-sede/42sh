@@ -41,13 +41,13 @@ void	format_job_info_process(t_job *j, const char *status)
 		ft_putchar('\n');
 	ft_dprintf(2, "[%d]", job_number(j));
 	p = j->first_process;
-	ft_dprintf(2, " %ld %s: %s%s\n", (long)p->pid, status, p->av, \
+	ft_dprintf(2, " %u %s: %s%s\n", (long)p->pid, status, p->av, \
 			p->next ? " |" : "");
 	p = p->next;
 	while (p)
 	{
 		ft_putnstr("                ", job_no_length + 2);
-		ft_dprintf(2, " %ld %s: %s%s\n", (long)p->pid, status, p->av, \
+		ft_dprintf(2, " %u %s: %s%s\n", (long)p->pid, status, p->av, \
 				p->next ? " |" : "");
 		p = p->next;
 	}

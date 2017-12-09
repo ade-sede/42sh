@@ -34,3 +34,46 @@ size_t	cursor_goto_buff(t_line *line, size_t dest_i, size_t start_i)
 	put_ntermcap("nd", (size_t)dest.x);
 	return (dest_i);
 }
+
+void	edit_cursor_pos(void)
+{
+	unsigned int	pos;
+	char			b[4];
+
+	put_termcap("u7");
+	read(0, b, 4);
+	if (b[3] != ';')
+		while (read(0, b, 1) == 1 && *b != ';')
+			;
+	pos = 0;
+	while (read(0, b, 1) == 1 && *b != 'R')
+		pos = pos * 10 + (unsigned int)(*b - '0');
+	if (pos == singleton_line()->ws_col)
+		ft_putchar_fd('\n', 2);
+	else if (pos != 1)
+	{
+		put_termcap("so");
+		put_termcap("mr");
+		ft_putchar_fd('%', 2);
+		put_termcap("se");
+		ft_putchar_fd('\n', 2);
+	}
+}
+
+char	edit_check_cursor(void)
+{
+	unsigned int	pos;
+	char			b[4];
+
+	put_termcap("u7");
+	read(0, b, 4);
+	if (b[3] != ';')
+		while (read(0, b, 1) == 1 && *b != ';')
+			;
+	pos = 0;
+	while (read(0, b, 1) == 1 && *b != 'R')
+		pos = pos * 10 + (unsigned int)(*b - '0');
+	if (pos != 1)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}

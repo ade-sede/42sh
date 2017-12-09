@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:44 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 13:45:08 by seddaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void			edit_refresh_cursor(t_line *line);
 void			edit_refresh_line(t_line *line);
 void			edit_refresh_visu(t_line *line);
 void			edit_cursor_pos(void);
+char			edit_check_cursor(void);
 
 void			goto_termcap(char *capacity, int co, int li);
 void			put_ntermcap(char *capacity, int n);
