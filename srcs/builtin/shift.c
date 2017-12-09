@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:13:48 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:21:52 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ int			builtin_shift(t_env *env, const char **argv)
 	char		*tmp_max_param;
 
 	if (fisrt_err(&n, argv))
+	{
 		return (investigate_error(1, "shift: ",
 					"Too many arguments", EXIT_FAILURE));
+	}
 		tmp_max_param = local_get_value(env->local, "#");
 	if (!tmp_max_param)
 		return (EXIT_FAILURE);

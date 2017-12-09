@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:13:45 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:22:56 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include "hash_table.h"
 #include "failure.h"
 #include "builtin.h"
+#ifdef __linux__
+# include <sys/wait.h>
+#endif
 
 static const char	**handle_i(t_env *env, const char **argv)
 {

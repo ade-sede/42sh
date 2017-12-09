@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:12 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:24:28 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,12 @@ static void			ft_fill_t(char *s, char **t, char c)
 char				**ft_strsplit_coma_bracket(char *s)
 {
 	unsigned int	nb_words;
-	unsigned int	i;
 	char			**t;
 	char			c;
 
 	c = ',';
 	if (!s)
 		return (NULL);
-	i = 0;
 	nb_words = ft_count_words(s, c);
 	t = NULL;
 	if (!(t = (char **)malloc(sizeof(char *) * (nb_words + 1))))

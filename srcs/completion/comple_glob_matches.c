@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:13:51 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:23:25 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ char	**comple_globing_matches(t_line *line, t_comple *c, t_list *glob_list)
 {
 	char	**matches;
 	t_list	*first;
-	size_t	i;
 
-	i = 0;
 	c->to_replace = get_start_word_cursor(line);
 	first = glob_list;
 	matches = ft_memalloc(sizeof(char*) * 2);

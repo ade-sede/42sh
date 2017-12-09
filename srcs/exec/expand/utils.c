@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:03 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:26:02 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 int		w_addword(t_expand *exp, t_word *g_word, t_word *word)
 {
-	int		allocated;
-
 	if (exp->actlen == exp->maxlen)
 	{
 		exp->maxlen += W_ARRAY_SIZE;
@@ -29,7 +27,6 @@ int		w_addword(t_expand *exp, t_word *g_word, t_word *word)
 		exp->av_gword = (char **)cl_realloc(sizeof(char *) * exp->actlen,
 				exp->av_gword, sizeof(char *) * (1 + exp->maxlen));
 	}
-	allocated = 0;
 	if (g_word->str == NULL)
 		g_word->str = ft_strdup("");
 	if (word->str == NULL)

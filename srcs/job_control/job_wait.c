@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:25 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:25:05 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 #include "job_control.h"
 #include "color.h"
 #include "failure.h"
+#ifdef __linux__
+# include <sys/wait.h>
+#endif
 
 void	update_status(t_job_control *jc)
 {

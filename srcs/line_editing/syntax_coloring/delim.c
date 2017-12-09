@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:36 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:25:44 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,9 @@ static int	(*gale(ssize_t state))(t_lexer *, struct s_info **, t_line *)
 int			delim(t_lexer *lex, t_line *line)
 {
 	struct s_info	*state_info;
-	t_token			*token;
 	int				ret;
 
 	ret = TRUE;
-	token = NULL;
 	state_info = NULL;
 	while (ret)
 	{

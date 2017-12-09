@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:00 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:29:07 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	exec_main_loop(t_ast *ast)
 	if (singleton_jc()->shell_is_interactive)
 	{
 		conf_term_non_canonical();
-		edit_cursor_pos();
+		//edit_cursor_pos();
 	}
 }

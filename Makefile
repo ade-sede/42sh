@@ -306,6 +306,7 @@ INCLUDES_FILES = \
 				 t_ternary_tree.h \
 				 t_token.h
 
+SYSTEM = $(shell uname -s)
 NAME ?= 42sh
 
 # defining those variables allows auto completion to occure.
@@ -325,7 +326,11 @@ endif
 OPTIMIZATION ?= -O0
 CFLAGS ?= -g3 -Wall -Wextra -Werror
 CC ?= gcc
-LDFLAGS = -L$(LIB_DIR) -lft -ltermcap
+ifeq ($(SYSTEM), Darwin)
+	LDFLAGS = -L$(LIB_DIR) -lft -ltermcap
+else
+	LDFLAGS = -L$(LIB_DIR) -lft -lncurses
+endif
 INCLUDES = $(LOCAL_INC) $(LIB_INC)
 
 INCLUDES_DEP = $(addprefix ./includes/, $(INCLUDES_FILES))

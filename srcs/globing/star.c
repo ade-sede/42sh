@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:14 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/09 17:24:53 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ int		func_star(t_matches *m, int m_i, int r_i)
 		return (0);
 	while (!bool_match && m->to_match[i])
 	{
-		bool_match || (bool_match |= match(m, i, r_i + 1));
+		if (!bool_match)
+				(bool_match |= match(m, i, r_i + 1));
 		i++;
 	}
-	bool_match || (bool_match |= match(m, i, r_i + 1));
+	if (!bool_match)
+		(bool_match |= match(m, i, r_i + 1));
 	return (bool_match);
 }
