@@ -69,6 +69,7 @@ int				launch_job(t_job_control *jc, t_job *j, int foreground)
 
 	in_a_fork = init_launch(jc, j, stdfile);
 	process = j->first_process;
+	mypipe[0] = j->stdin;
 	while (process)
 	{
 		stdfile[1] = j->stdout;
@@ -78,11 +79,13 @@ int				launch_job(t_job_control *jc, t_job *j, int foreground)
 		{
 			launch_process(jc, j->pgid, foreground, in_a_fork);
 			close_std(stdfile, j, 0);
-			close(mypipe[0]);
+			if (mypipe[0])
+				close(mypipe[0]);
 			exit(exec(process->command));
 		}
 		else
 			cut1(jc, j, process, pid);
+
 		close_std(stdfile, j, mypipe[0]);
 		process = process->next;
 	}
