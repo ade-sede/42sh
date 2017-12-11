@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seddaoud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/11 16:14:07 by seddaoud          #+#    #+#             */
+/*   Updated: 2017/12/11 16:14:09 by seddaoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "environ.h"
 #include "hash_table.h"
@@ -60,7 +72,7 @@ static void	assign_values(char **vars, char **values, t_env *env, char *tmp)
 		ptr ? env_add_var_from_string(env, tmp, ft_strlen(tmp))
 			: local_add_change_from_string(env, tmp);
 		if (path)
-				env_reload_tree_hash(env);
+			env_reload_tree_hash(env);
 		vars++;
 		free(tmp);
 	}
@@ -78,7 +90,6 @@ static void	read_rc(t_read *options, char **values)
 		if ((options->flags & S))
 		{
 			conf_term_rc(options, NO_ECHO);
-			//write(2, "\e[?25h", 6);
 			ft_putstr_fd("\e[?25h", 2);
 		}
 	}
@@ -95,12 +106,11 @@ static void	read_interact(t_env *env, t_read options, char **values)
 			? options.prompt : MAG"read> "RESET);
 	put_prompt(singleton_line());
 	*values = read_get_input(options);
-	//ft_putstr("\n");
 	ft_putstr_fd("\n", 2);
 	conf_term_canonical();
 }
 
-int		builtin_read(t_env *env, const char **argv)
+int			builtin_read(t_env *env, const char **argv)
 {
 	t_read		options;
 	int			error;

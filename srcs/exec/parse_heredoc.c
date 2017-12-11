@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "exec.h"
+#include "expand.h"
 #include "t_line.h"
 #include "exec_symbol.h"
 
@@ -21,28 +22,64 @@
 **	here_end         : WORD
 */
 
-void	read_heredoc(t_ast *ast, char *target)
+static char		*expand_target(char *target)
 {
-	char	*buff;
-	char	*cat;
+	char	*ptr;
+	char	*word;
+	int		quote;
 
-	target = ft_strjoin(target, "\n");
-	singleton_line()->heredoc = 1;
-	load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
-	cat = ft_strnew(0);
-	while (42)
+	quote = 0;
+	ptr = ft_strnew(1);
+	while (*target == ' ' || *target == '\t')
+		target++;
+	while (*target)
 	{
-		buff = ft_strdup(line_editing_get_line(singleton_line(), \
-					singleton_hist(), &edit_set_signals_open));
-		if (ft_strequ(buff, target) || ft_strchr(buff, 4))
-			break ;
-		cat = ft_strjoin_free(cat, buff, 0b11);
+		word = ft_strnew(1);
+		while (*target && ((*target != ' ' && *target != '\t') || quote))
+			if ((*target == '\t' || *target == '"' || *target == '\'')
+				&& !quote)
+				quote = *target++;
+			else if (*target == quote)
+				quote -= *target++;
+			else
+				ft_strpush(&word, *target++);
+		ft_strspush(&ptr, word);
+		ft_strdel(&word);
+		while (*target == ' ' || *target == '\t')
+			target++;
 	}
-	singleton_line()->heredoc = 0;
-	ast->heredoc = cat;
+	return (ptr);
 }
 
-void	parse_heredoc(t_ast *ast)
+void			read_heredoc(t_ast *ast, char *ptr)
+{
+	char	*buff;
+	char	*ret;
+	char	*target;
+	char	**expanded_word;
+
+	target = expand_target(ptr);
+	ft_strpush(&target, '\n');
+	ret = ft_strnew(1);
+	singleton_line()->heredoc = 1;
+	load_prompt(singleton_env(), singleton_line(), "heredoc", "heredoc> ");
+	while (42)
+	{
+		buff = line_editing_get_line(singleton_line(), \
+					singleton_hist(), &edit_set_signals_open);
+		if (ft_strequ(buff, target) || ft_strchr(buff, 4))
+			break ;
+		ft_strspush(&ret, buff);
+	}
+	singleton_line()->heredoc = 0;
+	ast->heredoc = ft_strdup(
+		*(expanded_word = word_expansion(ret, 0b10)));
+	ft_strdel(&target);
+	ft_strdel(&ret);
+	ft_arraydel(&expanded_word);
+}
+
+void			parse_heredoc(t_ast *ast)
 {
 	int		i;
 

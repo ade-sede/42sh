@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_get_input.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seddaoud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/11 16:15:58 by seddaoud          #+#    #+#             */
+/*   Updated: 2017/12/11 16:15:59 by seddaoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "read.h"
 #include "line_editing.h"
@@ -17,7 +29,6 @@ static void	read_get_input_2(t_read options, unsigned long keycode, char **line)
 	{
 		ft_strrem(&(*line)[ft_strlen(*line) - 1]);
 		put_termcap("le");
-		//write(1, " ", 1);
 		ft_putstr_fd(" ", 2);
 		put_termcap("le");
 	}
@@ -25,16 +36,13 @@ static void	read_get_input_2(t_read options, unsigned long keycode, char **line)
 			keycode == KEY_TAB)
 		ft_strpush(line, keycode);
 	if ((options.flags & S))
-		//write(2, "*", 1);
 		ft_putstr_fd("*", 2);
 	else if (ft_isprint((char)keycode) || keycode == KEY_ENTER ||
 			keycode == KEY_TAB)
-		//write(2, &keycode, 1);
 		ft_putchar_fd((char)keycode, 2);
 	else if (keycode == 27)
 	{
 		ft_strspush(line, "^[");
-		//write(2, "^[", 2);
 		ft_putstr_fd("^[", 2);
 	}
 }
@@ -66,8 +74,8 @@ char		*read_get_input(t_read options)
 char		*read_get_rcinput(t_read options)
 {
 	unsigned long	keycode;
-	char		*line;
-	int		index;
+	char			*line;
+	int				index;
 
 	index = 0;
 	line = ft_strnew(1);

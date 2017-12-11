@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_parse.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seddaoud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/11 16:16:10 by seddaoud          #+#    #+#             */
+/*   Updated: 2017/12/11 16:16:11 by seddaoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "read.h"
 #include "libft.h"
 #include "failure.h"
@@ -74,7 +86,7 @@ void		read_backslash(char **line, char **word, char quote)
 	(*line)++;
 }
 
-char	failure_read(char status, char *arg)
+char		failure_read(char status, char *arg)
 {
 	if (status == 1)
 		investigate_error(1, "read", NULL, 1);

@@ -54,6 +54,7 @@ void	free_ast(t_ast *ast)
 		free_ast(ast->child[i]);
 		i++;
 	}
+	free(ast->heredoc);
 	free(ast);
 }
 
