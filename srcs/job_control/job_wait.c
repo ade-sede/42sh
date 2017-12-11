@@ -34,7 +34,7 @@ void	update_status(t_job_control *jc)
 int		get_job_exit_status(t_job *j)
 {
 	t_process	*p;
-	int		signum;
+	int			signum;
 
 	p = j->first_process;
 	while (p && p->next)

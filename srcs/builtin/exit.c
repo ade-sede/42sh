@@ -15,8 +15,8 @@
 #include "builtin.h"
 #include "failure.h"
 #include "history.h"
-
 #include "job_control.h"
+
 static void		exit_quit(int exit_status)
 {
 	history_write_to_histfile();
@@ -25,23 +25,28 @@ static void		exit_quit(int exit_status)
 	exit(exit_status);
 }
 
+static	int		check_jobs(void)
+{
+	t_job		*j;
+
+	j = singleton_jc()->first_job;
+	while (j)
+	{
+		if (job_is_stopped(j) && !job_is_completed(j))
+			return (investigate_error(1, NULL, "There are stopped jobs.", 1));
+		j = j->next;
+	}
+	return (EXIT_SUCCESS);
+}
+
 int				builtin_exit(t_env *env, const char **argv)
 {
 	int		exit_status;
 	int		argc;
-	t_job		*j;
 
 	argc = ft_arraylen(argv);
-	j = singleton_jc()->first_job;
-	while (j)
-	{
-		if(job_is_stopped(j) && !job_is_completed(j))
-			return (investigate_error(1, NULL, "There are stopped"
-			" jobs.",1));
-		j = j->next;
-	}
-
-	// End BG PROCESS
+	if ((exit_status = check_jobs()))
+		return (exit_status);
 	if (!ft_atoi_safe(local_get_value(env->local, "?"), &exit_status))
 		exit_status = 1;
 	if (argc == 1)

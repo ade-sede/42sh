@@ -72,20 +72,16 @@ int				launch_job(t_job_control *jc, t_job *j, int foreground)
 	mypipe[0] = j->stdin;
 	while (process)
 	{
-		stdfile[1] = j->stdout;
-		if (process->next)
-			stdfile[1] = cut_pipe(mypipe);
+		stdfile[1] = (process->next) ? cut_pipe(mypipe) : j->stdout;
 		if ((pid = p_fork()) == 0)
 		{
 			launch_process(jc, j->pgid, foreground, in_a_fork);
 			close_std(stdfile, j, 0);
-			if (mypipe[0])
-				close(mypipe[0]);
+			(mypipe[0]) ? close(mypipe[0]) : 0;
 			exit(exec(process->command));
 		}
-		else
+		else if (pid > -1)
 			cut1(jc, j, process, pid);
-
 		close_std(stdfile, j, mypipe[0]);
 		process = process->next;
 	}
