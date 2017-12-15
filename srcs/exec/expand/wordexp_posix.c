@@ -91,7 +91,7 @@ static void		parse_loop(const char *words, t_expand *exp)
 	w_newword(&exp->g_word);
 	exp->offset = -1;
 	exp->words = words;
-	while (words[++exp->offset])
+	while (words && words[++exp->offset])
 		if (words[exp->offset] == '\\')
 			parse_backslash(&exp->g_word, &exp->word, words, &exp->offset);
 		else if (words[exp->offset] == '"' && ++exp->offset)

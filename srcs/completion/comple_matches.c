@@ -12,6 +12,7 @@
 
 #include "lexer.h"
 #include "completion.h"
+#include "expand.h"
 #include <stdio.h>
 
 /*
@@ -48,11 +49,24 @@ char			**comple_matching_cursorword(t_line *line, t_comple *c,
 		int cmd_name)
 {
 	char		**res;
+	char		**glob_list;
 
+	if (*(glob_list = word_expansion(c->current_word, NO_FIELDSPLITING)))
+	{
+		res = comple_globing_matches(line, c, glob_list);
+		if (!ft_strcmp(c->current_word, *res))
+			ft_arraydel(&res);
+		else
+		{
+			ft_arraydel(&glob_list);
+			return (res);
+		}
+	}
 	if (!cmd_name || ft_strchr(c->current_word, '/'))
 		res = comple_file_matches(line, c);
 	else
 		res = comple_bin_matches(line, c);
+	ft_arraydel(&glob_list);
 	return (res);
 }
 
