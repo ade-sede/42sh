@@ -81,19 +81,20 @@ int		exec_pipeline(t_ast *ast)
 	t_process	*first_process;
 	t_job		*new_job;
 	t_ast		*pipe_sequence;
+	int			ret;
 
 	first_process = NULL;
-	if (is_token(ast->child[0], TK_BANG))
-		pipe_sequence = ast->child[1];
-	else
-		pipe_sequence = ast->child[0];
+	pipe_sequence = ast->child[is_token(ast->child[0], TK_BANG) ? 1 : 0];
 	if (pipe_sequence_has_to_fork(pipe_sequence))
 	{
+		ret = singleton_jc()->warn_exit;
+		singleton_jc()->warn_exit = 0;
 		new_job = job_new();
 		fill_job(pipe_sequence, &first_process);
 		new_job->first_process = first_process;
 		ft_genlst_pushback((void **)&singleton_jc()->first_job, new_job);
 		exit_status = launch_job(singleton_jc(), new_job, 1);
+		singleton_jc()->warn_exit = ret;
 	}
 	else
 		exit_status = exec(pipe_sequence);

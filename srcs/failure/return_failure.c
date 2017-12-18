@@ -49,7 +49,6 @@ int		investigate_error(int log, const char *prefix,
 		while (prefix[++i])
 			w_addchar(&buff, prefix[i]);
 		w_addchar(&buff, ':');
-		w_addchar(&buff, '\'');
 		error_name = custom_error ? (char*)custom_error : get_errno();
 		if (error_name)
 			w_addstr(&buff, error_name);

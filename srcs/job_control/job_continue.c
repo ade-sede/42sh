@@ -12,6 +12,19 @@
 
 #include "job_control.h"
 
+void	mark_job_as_done(t_job *j)
+{
+	t_process *p;
+
+	p = j->first_process;
+	while (p)
+	{
+		p->stopped = 0;
+		p = p->next;
+	}
+	j->notified = 0;
+}
+
 void	mark_job_as_running(t_job *j)
 {
 	t_process *p;

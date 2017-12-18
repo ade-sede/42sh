@@ -1,0 +1,2 @@
+read -s x
+echo $x

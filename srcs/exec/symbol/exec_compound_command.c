@@ -24,5 +24,12 @@
 
 int		exec_compound_command(t_ast *ast)
 {
-	return (exec(ast->child[0]));
+	int		status;
+	int		ret;
+
+	ret = singleton_jc()->exit_status;
+	singleton_jc()->exit_status = -1;
+	status = exec(ast->child[0]);
+	singleton_jc()->exit_status = ret;
+	return (status);
 }

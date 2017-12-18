@@ -20,10 +20,16 @@ int		exec_subshell(t_ast *ast)
 {
 	t_job		*new_job;
 	t_process	*first_process;
+	int			tmp;
+	int			ret;
 
 	new_job = job_new();
 	first_process = process_new(ast->child[1]);
 	new_job->first_process = first_process;
 	ft_genlst_pushback((void **)&singleton_jc()->first_job, new_job);
-	return (launch_job(singleton_jc(), new_job, 1));
+	ret = singleton_jc()->warn_exit;
+	singleton_jc()->warn_exit = 0;
+	tmp = launch_job(singleton_jc(), new_job, 1);
+	singleton_jc()->warn_exit = ret;
+	return (tmp);
 }

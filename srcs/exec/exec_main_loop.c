@@ -31,6 +31,7 @@ void	exec_main_loop(t_ast *ast)
 	if (singleton_jc()->shell_is_interactive)
 	{
 		parse_heredoc(ast);
+		job_check_exit(ast);
 		conf_term_canonical();
 	}
 	exit_status = exec(ast);

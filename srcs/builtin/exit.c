@@ -33,7 +33,20 @@ static	int		check_jobs(void)
 	while (j)
 	{
 		if (job_is_stopped(j) && !job_is_completed(j))
-			return (investigate_error(1, NULL, "There are stopped jobs.", 1));
+		{
+			if (singleton_jc()->warn_exit == 2)
+			{
+				mark_job_as_done(j);
+				if (kill(-j->pgid, SIGCONT) < 0)
+					investigate_error(1, "kill (SIGCONT)", NULL, 0);
+				kill(-j->pgid, SIGQUIT);
+			}
+			else if (singleton_jc()->warn_exit == 1)
+				return (investigate_error(1, NULL,
+				"There are stopped jobs.", 1));
+			else
+				return (EXIT_SUCCESS);
+		}
 		j = j->next;
 	}
 	return (EXIT_SUCCESS);

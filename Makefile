@@ -97,6 +97,7 @@ SRC_FILE = \
 		   exec/redir_utils.c \
 		   exec/get_input.c \
 		   exec/parse_heredoc.c \
+		   exec/parse_exit.c \
 		   exec/exec_command_prefix.c \
 		   exec/exec_command_suffix.c \
 		   \

@@ -12,6 +12,8 @@
 
 #include <stdlib.h>
 #include "job_control.h"
+#include "exec.h"
+#include "printf.h"
 
 t_job		*find_job(t_job_control *jc, pid_t pgid)
 {
@@ -62,4 +64,24 @@ void		job_free(t_job *job)
 		process = process_next;
 	}
 	free(job);
+}
+
+void		job_check_exit(t_ast *ast)
+{
+	int exit_status;
+	int	status;
+	int	reset;
+
+	reset = 0;
+	status = singleton_jc()->warn_exit;
+	if ((exit_status = parse_exit(ast)) > 0)
+	{
+		if (status + exit_status > 2)
+			status = 2;
+		else
+			status += exit_status;
+	}
+	else
+		status = 0;
+	singleton_jc()->warn_exit = status;
 }
