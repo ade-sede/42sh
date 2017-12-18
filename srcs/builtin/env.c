@@ -86,7 +86,7 @@ static int			exec_env(t_env *new_env, const char **argv)
 	child = fork();
 	if (child == 0)
 		exit(layer_exec(new_env, (char **)argv));
-	else
+	else if (child > 0)
 		wait(&ret);
 	return (1);
 }

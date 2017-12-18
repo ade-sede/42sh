@@ -57,7 +57,6 @@ typedef struct	s_job_control
 	struct termios	shell_tmodes;
 	int				shell_terminal;
 	int				shell_is_interactive;
-	int				exit_status;
 	int				warn_exit;
 }				t_job_control;
 

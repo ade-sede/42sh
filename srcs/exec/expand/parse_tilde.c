@@ -16,21 +16,16 @@
 #include "exec.h"
 #include "glob.h"
 #include "expand.h"
+#include "environ.h"
 
 int		parse_tilde(t_expand *exp)
 {
 	char	*home;
 
-	home = getenv("HOME");
-	if (home != NULL)
-	{
-		w_addstr(&exp->word, home);
-		w_addstr(&exp->g_word, home);
-	}
-	else
-	{
-		w_addchar(&exp->word, '~');
-		w_addchar(&exp->g_word, '~');
-	}
+	home = env_getenv((const char **)singleton_env()->environ, "HOME", NULL);
+	if (!(home != NULL && *home))
+		home = ft_gethome();
+	w_addstr(&exp->word, home);
+	w_addstr(&exp->g_word, home);
 	return (1);
 }

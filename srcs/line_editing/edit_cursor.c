@@ -48,6 +48,8 @@ void	edit_cursor_pos(void)
 	pos = 0;
 	while (read(0, b, 1) == 1 && *b != 'R')
 		pos = pos * 10 + (unsigned int)(*b - '0');
+	if (!pos)
+		return ;
 	if (pos == singleton_line()->ws_col)
 		ft_putchar_fd('\n', 2);
 	else if (pos != 1)

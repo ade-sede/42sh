@@ -13,7 +13,6 @@
 #include <stdlib.h>
 #include "job_control.h"
 #include "exec.h"
-#include "printf.h"
 
 t_job		*find_job(t_job_control *jc, pid_t pgid)
 {

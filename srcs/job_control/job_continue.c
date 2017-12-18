@@ -19,7 +19,7 @@ void	mark_job_as_done(t_job *j)
 	p = j->first_process;
 	while (p)
 	{
-		p->stopped = 0;
+		p->stopped = 1;
 		p = p->next;
 	}
 	j->notified = 0;
