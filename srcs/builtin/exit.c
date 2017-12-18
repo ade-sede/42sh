@@ -20,7 +20,7 @@
 static void		exit_quit(int exit_status)
 {
 	history_write_to_histfile();
-	if (isatty(STDIN_FILENO))
+	if (singleton_jc()->shell_is_interactive)
 		conf_term_canonical();
 	exit(exit_status);
 }

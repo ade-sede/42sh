@@ -335,6 +335,8 @@ SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC_FILE:.c=.o))
 
+FULL_INCLUDE_PATH = $(addprefix includes/,$(INCLUDES_FILES:.h=.h))
+
 .phony: all test hello_word lib $(OBJ_DIR) $(NAME) clean fclean re
 
 all: hello_word lib $(OBJ_DIR) $(NAME) $(INCLUDES_DEP)
@@ -392,6 +394,11 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf "$(COLOR_VIOLET)creating objects files for library $(COLOR_BLUE)$(NAME) ... \n$(COLOR_CYAN)"
 	$(CC) $(OPTIMIZATION) $(CFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) -c -o $@ $^
 	@printf "\n$(COLOR_NOCOLOR)$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_UP)$(COLOR_CLEAR)"
+
+norminette:
+	@norminette $(SRCS)
+	@norminette $(FULL_INCLUDE_PATH)
+	@make -C $(LIB_DIR) norminette
 
 test: 
 	@printf "$(COLOR_VIOLET)compiling test $(TEST_FILE) ... $(COLOR_RESET)\n"

@@ -10,9 +10,7 @@ COLOR_BLACK		= \033[1;30m
 COLOR_RED		= \033[1;31m
 COLOR_GREEN		= \033[1;32m
 COLOR_YELLOW	= \033[1;33m
-COLOR_BLUE		= \033[1;34m
-COLOR_VIOLET	= \033[1;35m
-COLOR_CYAN		= \033[1;36m
+COLOR_BLUE		= \033[1;34m COLOR_VIOLET	= \033[1;35m COLOR_CYAN		= \033[1;36m
 COLOR_WHITE		= \033[1;37m
 
 # **************************************************************************** #
@@ -161,6 +159,22 @@ SRC = \
 NAME ?= libft.a
 
 
+INCLUDE_FILES=\
+	alloc.h \
+	array.h \
+	btree.h \
+	color.h \
+	get_next_line.h \
+	get_opt.h \
+	libft.h \
+	list.h \
+	mem.h \
+	printf.h \
+	select.h \
+	str.h \
+	string.h \
+	system.h
+
 # Defining those variables allows auto completion to occure.
 APPEND=
 ASAN=
@@ -178,6 +192,8 @@ LOCAL_INC = includes
 CFLAGS ?= -g -Wall -Wextra -Werror
 CC = gcc
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+SRCS = $(addprefix $(SRC_DIR)/,$(SRC:.c=.c))
+FULL_INCLUDE_PATH = $(addprefix includes/,$(INCLUDE_FILES:.h=.h))
 
 
 all: Hello_word $(OBJ_DIR) $(NAME)
@@ -224,6 +240,10 @@ fclean: clean
 	@printf "$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_GREEN)Removed library $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 
 re: fclean all
+
+norminette:
+	@norminette $(SRCS)
+	@norminette $(FULL_INCLUDE_PATH)
 
 test: all 
 	@printf "$(COLOR_VIOLET)Compiling test $(TEST_FILE) ... $(COLOR_RESET)\n"

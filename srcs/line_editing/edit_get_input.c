@@ -13,6 +13,7 @@
 #include "completion.h"
 #include "history.h"
 #include "failure.h"
+#include "job_control.h"
 
 static t_edit_func	g_edit_func[] =
 {
@@ -94,7 +95,7 @@ char				*edit_get_input(void)
 	while (42)
 	{
 		init_read(l, &keycode);
-		read(0, &keycode, 1);
+		read(STDIN_FILENO, &keycode, 1);
 		if (g_abort_opening)
 			return (edit_exit(l));
 		if (keycode == KEY_CTRL_D && l->heredoc && l->len == 0)

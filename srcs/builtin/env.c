@@ -87,7 +87,10 @@ static int			exec_env(t_env *new_env, const char **argv)
 	if (child == 0)
 		exit(layer_exec(new_env, (char **)argv));
 	else if (child > 0)
+	{
 		wait(&ret);
+		tcsetpgrp(singleton_jc()->shell_terminal, singleton_jc()->shell_pgid);
+	}
 	return (1);
 }
 
