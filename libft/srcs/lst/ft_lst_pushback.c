@@ -74,6 +74,10 @@ void	ft_double_lst_pushback(t_lst_head **head, t_list_d *new_node)
 			(*head)->last = new_node;
 			(*head)->middle = new_node;
 		}
+		if (!(*head)->first)
+			(*head)->first = new_node;
+		if (!(*head)->middle)
+			(*head)->middle = new_node;
 	}
 	ft_lst_replace_middle(head);
 }

@@ -19,7 +19,7 @@ int	read_hist_numeric(int count, t_word *event, t_hist *hist)
 	t_list_d	*start_point;
 	t_list_d	*event_node;
 
-	if (!hist->list || !hist->list->first || !hist->list->last)
+	if (!hist->list || !hist->list->first)
 		return (TRUE);
 	if (count == 0)
 		return (FALSE);
