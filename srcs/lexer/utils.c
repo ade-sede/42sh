@@ -55,8 +55,11 @@ int		pop_state(t_lexer *lex, struct s_info **info)
 	ft_simple_lst_del_one(&lex->state_list, lex->state, NULL);
 	lex->state = ft_last_simple_lst(lex->state_list);
 	parent_info = lex->state->data;
-	w_addstr(&parent_info->value, (*info)->value.str);
-	parent_info->count += (*info)->count;
+	if ((*info)->value.str)
+	{
+			w_addstr(&parent_info->value, (*info)->value.str);
+			parent_info->count += (*info)->count;
+	}
 	return (1);
 }
 

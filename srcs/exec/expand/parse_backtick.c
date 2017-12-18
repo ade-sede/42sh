@@ -21,6 +21,7 @@ int		parse_backtick(t_expand *exp, int quoted)
 {
 	t_word		comm;
 
+	exp->offset++;
 	w_newword(&comm);
 	while (exp->words[exp->offset])
 	{

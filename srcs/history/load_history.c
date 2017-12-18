@@ -50,6 +50,8 @@ int			history_read_file(int fd, t_hist *h)
 	cat = NULL;
 	while (get_next_line(fd, &line))
 	{
+		if (line && !*line)
+				continue ;
 		if (cat)
 		{
 			cat[ft_strlen(cat) - 1] = '\n';

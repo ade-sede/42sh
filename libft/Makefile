@@ -10,7 +10,9 @@ COLOR_BLACK		= \033[1;30m
 COLOR_RED		= \033[1;31m
 COLOR_GREEN		= \033[1;32m
 COLOR_YELLOW	= \033[1;33m
-COLOR_BLUE		= \033[1;34m COLOR_VIOLET	= \033[1;35m COLOR_CYAN		= \033[1;36m
+COLOR_BLUE		= \033[1;34m
+COLOR_VIOLET	= \033[1;35m
+COLOR_CYAN		= \033[1;36m
 COLOR_WHITE		= \033[1;37m
 
 # **************************************************************************** #
@@ -139,22 +141,6 @@ SRC = \
 	\
 	io/ft_printf.c \
 	io/ft_printfd.c \
-
-	#io/printf/asprintf.c \
-	io/printf/buff_loop.c \
-	io/printf/buff_start_conv.c \
-	io/printf/c_conv.c \
-	io/printf/d_conv.c \
-	io/printf/dprintf.c \
-	io/printf/numeric_conv.c \
-	io/printf/p_padd.c \
-	io/printf/p_prec.c \
-	io/printf/printf.c \
-	io/printf/printf_parse.c \
-	io/printf/s_conv.c \
-	io/printf/sprintf.c \
-	io/printf/u_conv.c \
-	io/printf/vasprintf.c
 
 NAME ?= libft.a
 

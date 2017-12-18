@@ -13,8 +13,7 @@
 #include "completion.h"
 #include "history.h"
 #include "failure.h"
-#include "job_control.h"
-
+#include "job_control.h" 
 static t_edit_func	g_edit_func[] =
 {
 	{KEY_ALT_SPACE, &verbatim},
@@ -52,9 +51,10 @@ int					edit_loop(unsigned long long keycode, t_line *line)
 		i++;
 	}
 	if (ft_isprint((char)keycode) || keycode == KEY_TAB || keycode == KEY_ENTER)
+	{
 		edit_add(keycode, line);
-	if (keycode == KEY_ENTER)
 		line->verbatim = 0;
+	}
 	return (1);
 }
 
