@@ -28,6 +28,7 @@ int		parse_backtick(t_expand *exp, int quoted)
 		if (exp->words[exp->offset] == '`')
 		{
 			exec_comm(comm.str, exp, quoted);
+			w_free(&comm);
 			return (0);
 		}
 		else
