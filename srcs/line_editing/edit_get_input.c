@@ -6,14 +6,15 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:32 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:27:42 by tdumouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "completion.h"
 #include "history.h"
 #include "failure.h"
-#include "job_control.h" 
+#include "job_control.h"
+
 static t_edit_func	g_edit_func[] =
 {
 	{KEY_ALT_SPACE, &verbatim},
