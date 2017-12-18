@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:21 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:25:19 by tdumouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			history_read_file(int fd, t_hist *h)
 	while (get_next_line(fd, &line))
 	{
 		if (line && !*line)
-				continue ;
+			continue ;
 		if (cat)
 		{
 			cat[ft_strlen(cat) - 1] = '\n';
@@ -64,6 +64,8 @@ int			history_read_file(int fd, t_hist *h)
 		routine(h, cat);
 		cat = NULL;
 	}
+	if (cat)
+		routine(h, cat);
 	return (1);
 }
 
