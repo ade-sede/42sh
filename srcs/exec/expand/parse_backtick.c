@@ -35,6 +35,7 @@ int		parse_backtick(t_expand *exp, int quoted)
 			w_addchar(&comm, exp->words[exp->offset]);
 		++(exp->offset);
 	}
+	--(exp->offset);
 	w_free(&comm);
 	return (WRDE_SYNTAX);
 }

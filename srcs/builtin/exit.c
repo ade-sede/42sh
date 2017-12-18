@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:13:45 by ade-sede         ###   ########.fr       */
+/*   Updated: 2017/12/18 19:28:02 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,18 @@ int				builtin_exit(t_env *env, const char **argv)
 {
 	int		exit_status;
 	int		argc;
+	char	*exit_str;
 
 	argc = ft_arraylen(argv);
 	if ((exit_status = check_jobs()))
 		return (exit_status);
-	if (!ft_atoi_safe(local_get_value(env->local, "?"), &exit_status))
+	if (!(exit_str = local_get_value(env->local, "?")) || \
+			ft_atoi_safe(exit_str, &exit_status))
 		exit_status = 1;
 	if (argc == 1)
 		exit_quit(exit_status);
 	if (argc > 2)
-		return (investigate_error(1, NULL, "exit: too many arguments",
-					EXIT_FAILURE));
+		return (investigate_error(1, NULL, "exit: too many arguments", 1));
 	else if (!(ft_atoi_safe(argv[1], &exit_status)))
 	{
 		history_write_to_histfile();
