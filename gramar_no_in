@@ -49,7 +49,7 @@ for_clause       : TK_FOR name                                      do_group
                  | TK_FOR name linebreak in wordlist sequential_sep do_group
                  ;
 name             : TK_NAME                     /* Apply rule 5 */
-                 ;
+                 ;                
 in               : TK_IN
                  ;
 wordlist         : wordlist TK_WORD
@@ -96,7 +96,7 @@ function_body    : compound_command                /* Apply rule 9 */
                  ;
 fname            : TK_NAME                            /* Apply rule 8 */
                  ;
-brace_group      : Lbrace compound_list Rbrace
+brace_group      : TK_LBRACE compound_list TK_RBRACE
                  ;
 do_group         : Do compound_list Done           /* Apply rule 6 */
                  ;

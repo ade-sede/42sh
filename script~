@@ -1,0 +1,8 @@
+rm tmp_2
+cat test.txt | while IFS= read -r -d '
+' test
+  do echo $test | while IFS='
+,'  read -r LINE
+  	 do echo $LINE | sort >> tmp_2 ; done
+ done
+&& cat tmp_2 | more

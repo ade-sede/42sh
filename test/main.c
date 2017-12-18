@@ -178,7 +178,7 @@ void	lr_goto(struct s_parser_lr *lr, \
 					debug_token(X->m);
 				}
 				cur_line->action_table[cur->look_ahead - FIRST_TOKEN] = FIRST_REDUCE_RULE + cur->grammar_rule;
-				if (cur->grammar_rule > 110)
+				if (cur->grammar_rule > NB_RULES)
 					printf("error wrong nb of grammar rule\n");
 			}
 			cur = cur->next;

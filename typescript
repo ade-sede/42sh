@@ -1,0 +1,4047 @@
+Script started on Mon Dec 18 00:19:30 2017
+]4;0;rgb:2E/34/40\]4;1;rgb:88/C0/D0\]4;2;rgb:BF/61/6A\]4;3;rgb:5E/81/AC\]4;4;rgb:EB/CB/8B\]4;5;rgb:A3/BE/8C\]4;6;rgb:D0/87/70\]4;7;rgb:E5/E9/F0\]4;8;rgb:4C/56/6A\]4;9;rgb:88/C0/D0\]4;10;rgb:BF/61/6A\]4;11;rgb:5E/81/AC\]4;12;rgb:EB/CB/8B\]4;13;rgb:A3/BE/8C\]4;14;rgb:D0/87/70\]4;15;rgb:8F/BC/BB\]4;16;rgb:81/A1/C1\]4;17;rgb:B4/8E/AD\]4;18;rgb:3B/42/52\]4;19;rgb:43/4C/5E\]4;20;rgb:D8/DE/E9\]4;21;rgb:EC/EF/F4\]PgE5E9F0\]Ph2E3440\]PiE5E9F0\]Pj434C5E\]PkE5E9F0\]PlE5E9F0\]Pm2E3440\[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hbash -c script       
+zsh: do you wish to see all 2985 possibilities (597 lines)? n[J[A[0m[27m[24m[33Cbash -c[K[1C  script[?1l>[?2004l
+[J]2;bash script]1;bashrm: tmp_2: No such file or directory
+script: line 8: syntax error near unexpected token `&&'
+script: line 8: `&& cat tmp_2 | more'
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fgfg: no current job
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fgfg: no current job
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004heemacs script[1m [0m[0m [?1l>[?2004l
+]2;emacs script]1;emacs[?1049h[?12;25h[?1h=[61;1H[?25l----:---F1  [1m*scratch*   [0m   All L1     (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+[A[H[?12l[?25h[?12;25h[H[2J[62d[?25lLoading encoded-kb...[K[H[?12l[?25h[?12;25h[62;22H[?25ldone[H[?12l[?25h[?12;25h[62d[K[?1l>[?12l[?25h[?1049l[39;49m[?1049h[?12;25h[?1h=[62;1H[?25lLoading /usr/share/emacs/site-lisp/list.el (source)...[K[H
+[?12l[?25h[?12;25h[62;55H[?25ldone[H
+[?12l[?25h[?12;25h[62;36H[?25lstring.el (source)...[K[H
+[?12l[?25h[?12;25h[62;57H[?25ldone[H
+[?12l[?25h[?12;25h[62;36H[?25lcomments.el (source)...[K[H
+[?12l[?25h[?12;25h[62;59H[?25ldone[H
+[?12l[?25h[?12;25h[62;36H[?25lheader.el (source)...[K[H
+[?12l[?25h[?12;25h[62;9H[?25ledmacro...[K[H
+[?12l[?25h[?12;25h[62;19H[?25ldone[H
+[?12l[?25h[?12;25h[62;9H[?25l/usr/share/emacs/site-lisp/header.el (source)...done[H
+[?12l[?25h[?12;25h[62d[?25lFor information about the GNU Project and its goals, type C-h C-p.[H
+[?12l[?25h[?12;25h[62d[?25lLoading image...[K[H
+[?12l[?25h[?12;25h[62;17H[?25ldone[H
+[?12l[?25h[?12;25h[62d[?25lLoading image...done[K[Hrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+,'  read -r LINE[K
+     do echo $LINE | sort >> tmp_2 ; done[K
+ done[K
+&& cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[H[?12l[?25h[?12;25h[62d[K[2d
+
+
+
+[A[A[A[A[A
+
+
+
+[C[C[C[C[C[C		[C[C[C[C[C[C		
+[C[C[A		
+[C[C[C[C[C[C		[C[C[C[C[C[C		[C[C[C[C[C[C		[C[C[C[C[C[C		[C
+[C
+[7;6H[?25l&& cat tmp_2 | more
+[K[61;6H[30m[48;5;250m**[39;49m[7;6H[?12l[?25h[?12;25h[1@[?25l [?12l[?25h[?12;25h[62;1H[?25lWrote /Users/vcombey/42sh/script[7;7H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[7;7H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hemacs script[12Dfg          [10Dbash script[?1l>[?2004l
+]2;bash script]1;bash[?1h=program
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,T K_NEWLINE
+complete_commands
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+complete_command
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+list
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+and_or
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+pipeline
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+pipe_sequence
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME
+command
+TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+compound_command
+TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE
+subshell
+TK_LPAREN
+compound_list
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,T K_NEWLINE
+term
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+for_clause
+TK_FOR
+name
+TK_NAME
+wordlist
+TK_WORD
+case_clause
+TK_CASE
+case_list_ns
+TK_LPAREN,TK_WORD
+case_list
+TK_WORD,TK_LPAREN
+case_item_ns
+TK_LPAREN,TK_WORD
+case_item
+TK_LPAREN,TK_WORD
+pattern
+TK_WORD
+in
+TK_IN
+if_clause
+TK_IF
+else_part
+TK_ELSE,TK_ELIF
+while_clause
+TK_WHILE
+until_clause
+TK_UNTIL
+function_definition
+TK_NAME
+function_body
+TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL
+fname
+TK_NAME
+brace_group
+:[K[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+,'  read -r LINE[K
+     do echo $LINE | sort >> tmp_2 ; done[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[7;7H[?12l[?25h[?12;25h[A[A		[C[?25l-r LINE[K[61;6H[30m[48;5;250m**[39;49m[5;9H[?12l[?25h[?12;25h[?25lr LINE[K	[?12l[?25h[?12;25h[?25l LINE[K	[?12l[?25h[?12;25h[C[C[C[C[62;1H[?25lAuto-saving...[5;7H[?12l[?25h[?12;25h[62;15H[?25ldone[5;7H[?12l[?25h[?12;25h[62;1H[K[5;8H	[C[C[C[C[C
+[5;14H[62;1H[?25lWrote /Users/vcombey/42sh/script[5;14H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[5;14H[?12l[?25h[?12;25h[62;1H[K[5;14H[62;1H[?25l(No changes need to be saved)[5;14H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgbash script[?1l>[?2004l
+]2;bash script]1;bash[?1h=program
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,T K_NEWLINE
+complete_commands
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+complete_command
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+list
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+and_or
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+pipeline
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+pipe_sequence
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME
+command
+TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+compound_command
+TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE
+subshell
+TK_LPAREN
+compound_list
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,T K_NEWLINE
+term
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+for_clause
+TK_FOR
+name
+TK_NAME
+wordlist
+TK_WORD
+case_clause
+TK_CASE
+case_list_ns
+TK_LPAREN,TK_WORD
+case_list
+TK_WORD,TK_LPAREN
+case_item_ns
+TK_LPAREN,TK_WORD
+case_item
+TK_LPAREN,TK_WORD
+pattern
+TK_WORD
+in
+TK_IN
+if_clause
+TK_IF
+else_part
+TK_ELSE,TK_ELIF
+while_clause
+TK_WHILE
+until_clause
+TK_UNTIL
+function_definition
+TK_NAME
+function_body
+TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL
+fname
+TK_NAME
+brace_group
+:[K[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+,'  read LINE[K
+     do echo $LINE | sort >> tmp_2 ; done[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[5;14H[?12l[?25h[?12;25h
+[C		[C[C[C[C[C[C		[C[C[5;14H
+[C[C[6;5H[C[C		[C[C[C[C[C[C		[C[C[C[C[C[C		[C[C[C[C[C[C		[C[C[?25l ; done[K[61;6H[30m[48;5;250m**[39;49m[6;34H[?12l[?25h[?12;25h[?25l ; done[K[6;30H[?12l[?25h[?12;25h[6;22H[?25l ; done[K[6;22H[?12l[?25h[?12;25h[?25l; done[K[6;21H[?12l[?25h[?12;25h[?25l ; done[K[6;20H[?12l[?25h[?12;25h[?25l; done[K[6;19H[?12l[?25h[?12;25h[6;26H[C[?25l|[?12l[?25h[?12;25h[C[?25ls[?12l[?25h[?12;25h[?25lo[?12l[?25h[?12;25h[?25lr[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[C[C[?25l>[?12l[?25h[?12;25h[?25l>[?12l[?25h[?12;25h[C[?25lm[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[K[K[K[C[?25lt[?12l[?25h[?12;25h[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25l2[?12l[?25h[?12;25h[62;1H[?25lWrote /Users/vcombey/42sh/script[6;42H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[6;42H[?12l[?25h[?12;25h[62;1H[K[6;42H[62;1H[?25l(No changes need to be saved)[6;42H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgbash script[?1l>[?2004l
+]2;bash script]1;bash[?1h=program
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,T K_NEWLINE
+complete_commands
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+complete_command
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+list
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+and_or
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+pipeline
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+pipe_sequence
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME
+command
+TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+compound_command
+TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE
+subshell
+TK_LPAREN
+compound_list
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,T K_NEWLINE
+term
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+for_clause
+TK_FOR
+name
+TK_NAME
+wordlist
+TK_WORD
+case_clause
+TK_CASE
+case_list_ns
+TK_LPAREN,TK_WORD
+case_list
+TK_WORD,TK_LPAREN
+case_item_ns
+TK_LPAREN,TK_WORD
+case_item
+TK_LPAREN,TK_WORD
+pattern
+TK_WORD
+in
+TK_IN
+if_clause
+TK_IF
+else_part
+TK_ELSE,TK_ELIF
+while_clause
+TK_WHILE
+until_clause
+TK_UNTIL
+function_definition
+TK_NAME
+function_body
+TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL
+fname
+TK_NAME
+brace_group
+:[K[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+,'  read LINE[K
+     do echo $LINE ; done | sort >> tmp_2[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[6;42H[?12l[?25h[?12;25h[5;14H[6;42H[C[6;5H[C[C		[C[C[C[C[C[C		[C[C[C[C[C[C	[C[C[C		[C[C[C[C[C[C[C[C[C[C[C[C		[C[C[C[C[C[C		[C[C[C[C[C[C		[C[C	[C[C[C[C[C[C		[C
+[C[C[C[C[C[C	[C[C		[C[C[C[C[C[62;1H[?25l(No changes need to be saved)[7;11H[?12l[?25h[?12;25h[62;1H[K[7;11H[62;1H[?25l(No changes need to be saved)[7;11H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgbash script[?1l>[?2004l
+]2;bash script]1;bash[?1h=program
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,T K_NEWLINE
+complete_commands
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+complete_command
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+list
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+and_or
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+pipeline
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+pipe_sequence
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME
+command
+TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+compound_command
+TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE
+subshell
+TK_LPAREN
+compound_list
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,T K_NEWLINE
+term
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+for_clause
+TK_FOR
+name
+TK_NAME
+wordlist
+TK_WORD
+case_clause
+TK_CASE
+case_list_ns
+TK_LPAREN,TK_WORD
+case_list
+TK_WORD,TK_LPAREN
+case_item_ns
+TK_LPAREN,TK_WORD
+case_item
+TK_LPAREN,TK_WORD
+pattern
+TK_WORD
+in
+TK_IN
+if_clause
+TK_IF
+else_part
+TK_ELSE,TK_ELIF
+while_clause
+TK_WHILE
+until_clause
+TK_UNTIL
+function_definition
+TK_NAME
+function_body
+TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL
+fname
+TK_NAME
+brace_group
+:[K[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+,'  read LINE[K
+     do echo $LINE ; done | sort >> tmp_2[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[7;11H[?12l[?25h[?12;25h[A[6;42H[?25l[1@e[61;6H[30m[48;5;250m**[39;49m[6;30H[?12l[?25h[?12;25h[?25l[1@c[?12l[?25h[?12;25h[?25l[1@h[?12l[?25h[?12;25h[?25l[1@o[?12l[?25h[?12;25h[?25l[1@ [?12l[?25h[?12;25h[?25l[1@"[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[62;1H[?25lMark set[6;28H[?12l[?25h[?12;25h[62;1H[K[6;28H[K[C[?25lc[?12l[?25h[?12;25h[?25la[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[62;1H[?25lWrote /Users/vcombey/42sh/script[6;32H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[6;32H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgbash script[?1l>[?2004l
+]2;bash script]1;bashprogram
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE
+complete_commands
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+complete_command
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+list
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+and_or
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG
+pipeline
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+pipe_sequence
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME
+command
+TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+compound_command
+TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE
+subshell
+TK_LPAREN
+compound_list
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE
+term
+TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD
+for_clause
+TK_FOR
+name
+TK_NAME
+wordlist
+TK_WORD
+case_clause
+TK_CASE
+case_list_ns
+TK_LPAREN,TK_WORD
+case_list
+TK_WORD,TK_LPAREN
+case_item_ns
+TK_LPAREN,TK_WORD
+case_item
+TK_LPAREN,TK_WORD
+pattern
+TK_WORD
+in
+TK_IN
+if_clause
+TK_IF
+else_part
+TK_ELSE,TK_ELIF
+while_clause
+TK_WHILE
+until_clause
+TK_UNTIL
+function_definition
+TK_NAME
+function_body
+TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL
+fname
+TK_NAME
+brace_group
+TK_LBRACE
+do_group
+TK_DO
+simple_command
+TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD
+cmd_prefix
+TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS
+cmd_suffix
+TK_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS
+cmd_name
+TK_WORD
+cmd_word
+TK_WORD
+redirect_list
+TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS
+io_redirect
+TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER
+io_file
+TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS
+filename
+TK_WORD
+io_here
+TK_DLESSDASH,TK_DLESS
+here_end
+TK_WORD
+newline_list
+TK_NEWLINE
+linebreak
+TK_NEWLINE
+separator_op
+TK_SEMI,TK_AND
+separator
+TK_NEWLINE,TK_AND,TK_SEMI
+sequential_sep
+TK_NEWLINE,TK_SEMI
+cat: tmp_2: No such file or directory
+[?1h=[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004h[[A[A[A    [  ffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+,'  read LINE[K
+     do echo $LINE ; done | cat[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[6;32H[?12l[?25h[?12;25h[?25l[1@"[61;6H[30m[48;5;250m**[39;49m[6;15H[?12l[?25h[?12;25h[?25l[1@-[?12l[?25h[?12;25h[?25l[1@-[?12l[?25h[?12;25h[6;22H[?25l[1@-[?12l[?25h[?12;25h[?25l[1@-[?12l[?25h[?12;25h[?25l[1@"[?12l[?25h[?12;25h[62;1H[?25lWrote /Users/vcombey/42sh/script[6;25H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[6;25H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgbash script[?1l>[?2004l
+]2;bash script]1;bashrm: tmp_2: No such file or directory
+--program--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE--
+--complete_commands--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--complete_command--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG--
+--list--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--and_or--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG--
+--pipeline--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--pipe_sequence--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME--
+--command--
+--TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--compound_command--
+--TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE--
+--subshell--
+--TK_LPAREN--
+--compound_list--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE--
+--term--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--for_clause--
+--TK_FOR--
+--name--
+--TK_NAME--
+--wordlist--
+--TK_WORD--
+--case_clause--
+--TK_CASE--
+--case_list_ns--
+--TK_LPAREN,TK_WORD--
+--case_list--
+--TK_WORD,TK_LPAREN--
+--case_item_ns--
+--TK_LPAREN,TK_WORD--
+--case_item--
+--TK_LPAREN,TK_WORD--
+--pattern--
+--TK_WORD--
+--in--
+--TK_IN--
+--if_clause--
+--TK_IF--
+--else_part--
+--TK_ELSE,TK_ELIF--
+--while_clause--
+--TK_WHILE--
+--until_clause--
+--TK_UNTIL--
+--function_definition--
+--TK_NAME--
+--function_body--
+--TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL--
+--fname--
+--TK_NAME--
+--brace_group--
+--TK_LBRACE--
+--do_group--
+--TK_DO--
+--simple_command--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD--
+--cmd_prefix--
+--TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--cmd_suffix--
+--TK_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--cmd_name--
+--TK_WORD--
+--cmd_word--
+--TK_WORD--
+--redirect_list--
+--TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--io_redirect--
+--TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER--
+--io_file--
+--TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS--
+--filename--
+--TK_WORD--
+--io_here--
+--TK_DLESSDASH,TK_DLESS--
+--here_end--
+--TK_WORD--
+--newline_list--
+--TK_NEWLINE--
+--linebreak--
+--TK_NEWLINE--
+--separator_op--
+--TK_SEMI,TK_AND--
+--separator--
+--TK_NEWLINE,TK_AND,TK_SEMI--
+--sequential_sep--
+--TK_NEWLINE,TK_SEMI--
+cat: tmp_2: No such file or directory
+[?1h=[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+,'  read LINE[K
+     do echo "--$LINE--" ; done | cat[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[6;25H[?12l[?25h[?12;25h[5;14H[C[A[4;30H[5;14H[4;30H[?25l,
+[1P[61;6H[30m[48;5;250m**[39;49m[5;1H[?12l[?25h[?12;25h[62d[?25lWrote /Users/vcombey/42sh/script[5;1H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[5;1H[?12l[?25h[?12;25h[62d[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgbash script[?1l>[?2004l
+]2;bash script]1;bashrm: tmp_2: No such file or directory
+--program--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE--
+--complete_commands--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--complete_command--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG--
+--list--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--and_or--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG--
+--pipeline--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--pipe_sequence--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME--
+--command--
+--TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--compound_command--
+--TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE--
+--subshell--
+--TK_LPAREN--
+--compound_list--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE--
+--term--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--for_clause--
+--TK_FOR--
+--name--
+--TK_NAME--
+--wordlist--
+--TK_WORD--
+--case_clause--
+--TK_CASE--
+--case_list_ns--
+--TK_LPAREN,TK_WORD--
+--case_list--
+--TK_WORD,TK_LPAREN--
+--case_item_ns--
+--TK_LPAREN,TK_WORD--
+--case_item--
+--TK_LPAREN,TK_WORD--
+--pattern--
+--TK_WORD--
+--in--
+--TK_IN--
+--if_clause--
+--TK_IF--
+--else_part--
+--TK_ELSE,TK_ELIF--
+--while_clause--
+--TK_WHILE--
+--until_clause--
+--TK_UNTIL--
+--function_definition--
+--TK_NAME--
+--function_body--
+--TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL--
+--fname--
+--TK_NAME--
+--brace_group--
+--TK_LBRACE--
+--do_group--
+--TK_DO--
+--simple_command--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD--
+--cmd_prefix--
+--TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--cmd_suffix--
+--TK_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--cmd_name--
+--TK_WORD--
+--cmd_word--
+--TK_WORD--
+--redirect_list--
+--TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--io_redirect--
+--TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER--
+--io_file--
+--TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS--
+--filename--
+--TK_WORD--
+--io_here--
+--TK_DLESSDASH,TK_DLESS--
+--here_end--
+--TK_WORD--
+--newline_list--
+--TK_NEWLINE--
+--linebreak--
+--TK_NEWLINE--
+--separator_op--
+--TK_SEMI,TK_AND--
+--separator--
+--TK_NEWLINE,TK_AND,TK_SEMI--
+--sequential_sep--
+--TK_NEWLINE,TK_SEMI--
+cat: tmp_2: No such file or directory
+[?1h=[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS=',[K
+'  read LINE[K
+     do echo "--$LINE--" ; done | cat[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[5d[?12l[?25h[?12;25h[C[C[C[C[C[C		[C[C[C[C
+[C[C[6;5H[C[C		[5;13H[C[C[C		[C[62;1H[?25l(No changes need to be saved)[5;3H[?12l[?25h[?12;25h[62;1H[K[5;3H[62;1H[?25l(No changes need to be saved)[5;3H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgbash script[?1l>[?2004l
+]2;bash script]1;bashrm: tmp_2: No such file or directory
+--program--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE--
+--complete_commands--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--complete_command--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG--
+--list--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--and_or--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG--
+--pipeline--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--pipe_sequence--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME--
+--command--
+--TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--compound_command--
+--TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE--
+--subshell--
+--TK_LPAREN--
+--compound_list--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE--
+--term--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--for_clause--
+--TK_FOR--
+--name--
+--TK_NAME--
+--wordlist--
+--TK_WORD--
+--case_clause--
+--TK_CASE--
+--case_list_ns--
+--TK_LPAREN,TK_WORD--
+--case_list--
+--TK_WORD,TK_LPAREN--
+--case_item_ns--
+--TK_LPAREN,TK_WORD--
+--case_item--
+--TK_LPAREN,TK_WORD--
+--pattern--
+--TK_WORD--
+--in--
+--TK_IN--
+--if_clause--
+--TK_IF--
+--else_part--
+--TK_ELSE,TK_ELIF--
+--while_clause--
+--TK_WHILE--
+--until_clause--
+--TK_UNTIL--
+--function_definition--
+--TK_NAME--
+--function_body--
+--TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL--
+--fname--
+--TK_NAME--
+--brace_group--
+--TK_LBRACE--
+--do_group--
+--TK_DO--
+--simple_command--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD--
+--cmd_prefix--
+--TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--cmd_suffix--
+--TK_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--cmd_name--
+--TK_WORD--
+--cmd_word--
+--TK_WORD--
+--redirect_list--
+--TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--io_redirect--
+--TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER--
+--io_file--
+--TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS--
+--filename--
+--TK_WORD--
+--io_here--
+--TK_DLESSDASH,TK_DLESS--
+--here_end--
+--TK_WORD--
+--newline_list--
+--TK_NEWLINE--
+--linebreak--
+--TK_NEWLINE--
+--separator_op--
+--TK_SEMI,TK_AND--
+--separator--
+--TK_NEWLINE,TK_AND,TK_SEMI--
+--sequential_sep--
+--TK_NEWLINE,TK_SEMI--
+cat: tmp_2: No such file or directory
+[?1h=[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hbash script[11D script    [11Ds scriptsh script[?1l>[?2004l
+]2;sh script]1;shrm: tmp_2: No such file or directory
+--program--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE--
+--complete_commands--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--complete_command--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG--
+--list--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--and_or--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG--
+--pipeline--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--pipe_sequence--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME--
+--command--
+--TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--compound_command--
+--TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE--
+--subshell--
+--TK_LPAREN--
+--compound_list--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD,TK_UNTIL,TK_WHILE,TK_IF,TK_CASE,TK_FOR,TK_LPAREN,TK_LBRACE,TK_NAME,TK_BANG,TK_NEWLINE--
+--term--
+--TK_BANG,TK_NAME,TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL,TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS,TK_WORD--
+--for_clause--
+--TK_FOR--
+--name--
+--TK_NAME--
+--wordlist--
+--TK_WORD--
+--case_clause--
+--TK_CASE--
+--case_list_ns--
+--TK_LPAREN,TK_WORD--
+--case_list--
+--TK_WORD,TK_LPAREN--
+--case_item_ns--
+--TK_LPAREN,TK_WORD--
+--case_item--
+--TK_LPAREN,TK_WORD--
+--pattern--
+--TK_WORD--
+--in--
+--TK_IN--
+--if_clause--
+--TK_IF--
+--else_part--
+--TK_ELSE,TK_ELIF--
+--while_clause--
+--TK_WHILE--
+--until_clause--
+--TK_UNTIL--
+--function_definition--
+--TK_NAME--
+--function_body--
+--TK_LBRACE,TK_LPAREN,TK_FOR,TK_CASE,TK_IF,TK_WHILE,TK_UNTIL--
+--fname--
+--TK_NAME--
+--brace_group--
+--TK_LBRACE--
+--do_group--
+--TK_DO--
+--simple_command--
+--TK_WORD,TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER,TK_ASSIGNMENT_WORD--
+--cmd_prefix--
+--TK_ASSIGNMENT_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--cmd_suffix--
+--TK_WORD,TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--cmd_name--
+--TK_WORD--
+--cmd_word--
+--TK_WORD--
+--redirect_list--
+--TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS,TK_IO_NUMBER,TK_DLESSDASH,TK_DLESS--
+--io_redirect--
+--TK_DLESS,TK_DLESSDASH,TK_IO_NUMBER,TK_LESS,TK_LESSAND,TK_GREAT,TK_GREATAND,TK_DGREAT,TK_LESSGREAT,TK_CLOBBER--
+--io_file--
+--TK_CLOBBER,TK_LESSGREAT,TK_DGREAT,TK_GREATAND,TK_GREAT,TK_LESSAND,TK_LESS--
+--filename--
+--TK_WORD--
+--io_here--
+--TK_DLESSDASH,TK_DLESS--
+--here_end--
+--TK_WORD--
+--newline_list--
+--TK_NEWLINE--
+--linebreak--
+--TK_NEWLINE--
+--separator_op--
+--TK_SEMI,TK_AND--
+--separator--
+--TK_NEWLINE,TK_AND,TK_SEMI--
+--sequential_sep--
+--TK_NEWLINE,TK_SEMI--
+cat: tmp_2: No such file or directory
+[?1h=[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS=',[K
+'  read LINE[K
+     do echo "--$LINE--" ; done | cat[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[5;3H[?12l[?25h[?12;25h[C[C[C[C		[C[C[C[4;31H[C[C[C[3;7H
+[C[C[C[C[C[C		[C[C[3;7H[2;39H
+[C[2;39H[C[C[C[C[C[C
+[C[C[C[C[C[C
+[C[C[C[C[C[C		[C[C[C[C[C[C		[C[C		[C[C[C[C[C[C		[C[C[C[C[C[C		[C[C[C[C[C[C
+[4;31H[C		[C[C[C[C[C[C
+[C[C[C[C[C[C		[C[C[C[C
+[5;13H[C[C
+[C[C[6;5H[C[C		[C[C[C[C[C[C		[C[C[C[C[C[5;13H[4;22H[5;13H[6;22H[5;13H[C[C[C[C[C		[C[C[C[C
+[C[C[6;5H[C[C		[C[C[C[C[C[C[5;13H[4;31H[C[C[C[C[C		[C[C[C[C[C[C		[C[C[C[C[C[C		[C[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hrrer  ssh[?1l>[?2004l
+]2;sh]1;sh[?1034hsh-3.2$ IFS=','
+sh-3.2$ read a b c
+a,b,c
+sh-3.2$ echo $a $b $c
+a b c
+sh-3.2$ echo $a $b $c[1@;[C[1@ [1@e[1@h[1@c[1@o[C[1@ [1P[1P[1P[1P[1@c[1@h[1@o[C[1@ [1@;[C[1@ [1P[1P[1@'[1@;[1@'
+a
+; b c
+sh-3.2$ echo $a; echo ';' $b $c[10P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3Pread a b c[K[K
+^C
+sh-3.2$ read a b[K[K
+a,b,c
+sh-3.2$ read a b[K[K[K[K[K[K[K[Kecho $a
+a b c
+sh-3.2$ echo $a[1Pread a[1@w[1@h[1@i[1@e[1@l[1@ [1P[1P[1P[1@l[1@e[1@ [1@I[1@F[1@S[1@D[1@=[1P[1P[1@=[1@ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@e[1@c[1@h[1@o[1@ [1@"[1@a[1@,[1@b[1@c[1@,[1P[1P[1@,[1@c[1@"[1@ [1@|[1@ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C; do echo "--$a"[K--"; done
+--a,b,c--
+sh-3.2$ echo "a,b,c" | while IFS= read a; do echo "--$a--"; done[1@'[1@s[1@'[1P[1P[1@,[1@'
+--a,b,c--
+sh-3.2$ echo "a,b,c" | while IFS=',' read a; do echo "--$a--"; done[7P[1P[C[C[C[C[C[C[1@I[1@F[1@S[1@=[1@ [C[C[C[C[C[C[1@-[1@d[1@ [1P[1P[1P[1@ [1@-[1@d[1@ [1@'[1@,[1@'
+sh: read: `-d': not a valid identifier
+sh-3.2$ echo "a,b,c" | while IFS= read a -d ','; do echo "--$a--"; done[1P[1P[C[C[C[C[C[C[C[C[C[C[1@ [1@a
+--a--
+--b--
+sh-3.2$ echo "a,b,c" | while IFS= read -d ',' a; do echo "--$a--"; done[1@'[K
+>  read -d ',' a; do echo "--$a--"; done[C[C[1@'
+--a--
+--b--
+sh-3.2$ fg
+sh: fg: current: no such job
+sh-3.2$ exit
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS=',[K
+'  read LINE[K
+     do echo "--$LINE--" ; done | cat[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[4;26H[?12l[?25h[?12;25h[5;13H[4;26H[3;7H[2;26H[H	[2;26H[3;7H[4;26H[5;13H[6;26H
+[A[5;13H[4;26H[3;7H[2;26H[3;7H[4;26H[C[C[C[C[K[61;6H[?25l[30m[48;5;250m**[39;49m[4;30H[?12l[?25h[?12;25h[5;13H[C	[?25l-LINE[?12l[?25h[?12;25h[?25ldLINE[?12l[?25h[?12;25h[?25l LINE[?12l[?25h[?12;25h[?25l'LINE[?12l[?25h[?12;25h[?25l,LINE[?12l[?25h[?12;25h[?25l'LINE[?12l[?25h[?12;25h[?25l LINE[?12l[?25h[?12;25h[62;1H[?25lWrote /Users/vcombey/42sh/script[5;16H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[5;16H[?12l[?25h[?12;25h[62;1H[K[5;16H[62;1H[?25l(No changes need to be saved)[5;16H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgshfgsh script[?1l>[?2004l
+]2;sh script]1;shrm: tmp_2: No such file or directory
+--TK_WORD--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_DGREAT--
+--TK_LESSGREAT--
+--TK_CLOBBER--
+--TK_ASSIGNMENT_WORD--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_IF--
+--TK_CASE--
+--TK_FOR--
+--TK_LPAREN--
+--TK_LBRACE--
+--TK_NAME--
+--TK_BANG--
+--TK_BANG--
+--TK_NAME--
+--TK_LBRACE--
+--TK_LPAREN--
+--TK_FOR--
+--TK_CASE--
+--TK_IF--
+--TK_WHILE--
+--TK_UNTIL--
+--TK_ASSIGNMENT_WORD--
+--TK_CLOBBER--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_GREATAND--
+--TK_GREAT--
+--TK_LESSAND--
+--TK_LESS--
+--TK_IO_NUMBER--
+--TK_DLESSDASH--
+--TK_DLESS--
+--TK_WORD--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_DGREAT--
+--TK_LESSGREAT--
+--TK_CLOBBER--
+--TK_ASSIGNMENT_WORD--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_IF--
+--TK_CASE--
+--TK_FOR--
+--TK_LPAREN--
+--TK_LBRACE--
+--TK_NAME--
+--TK_BANG--
+--TK_NAME--
+--TK_LBRACE--
+--TK_LPAREN--
+--TK_FOR--
+--TK_CASE--
+--TK_IF--
+--TK_WHILE--
+--TK_UNTIL--
+--TK_ASSIGNMENT_WORD--
+--TK_CLOBBER--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_GREATAND--
+--TK_GREAT--
+--TK_LESSAND--
+--TK_LESS--
+--TK_IO_NUMBER--
+--TK_DLESSDASH--
+--TK_DLESS--
+--TK_WORD--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_DGREAT--
+--TK_LESSGREAT--
+--TK_CLOBBER--
+--TK_ASSIGNMENT_WORD--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_IF--
+--TK_CASE--
+--TK_FOR--
+--TK_LPAREN--
+--TK_LBRACE--
+--TK_NAME--
+--TK_BANG--
+--TK_NAME--
+--TK_LBRACE--
+--TK_LPAREN--
+--TK_FOR--
+--TK_CASE--
+--TK_IF--
+--TK_WHILE--
+--TK_UNTIL--
+--TK_ASSIGNMENT_WORD--
+--TK_CLOBBER--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_GREATAND--
+--TK_GREAT--
+--TK_LESSAND--
+--TK_LESS--
+--TK_IO_NUMBER--
+--TK_DLESSDASH--
+--TK_DLESS--
+--TK_WORD--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_DGREAT--
+--TK_LESSGREAT--
+--TK_CLOBBER--
+--TK_ASSIGNMENT_WORD--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_IF--
+--TK_CASE--
+--TK_FOR--
+--TK_LPAREN--
+--TK_LBRACE--
+--TK_NAME--
+--TK_LBRACE--
+--TK_LPAREN--
+--TK_FOR--
+--TK_CASE--
+--TK_IF--
+--TK_WHILE--
+--TK_UNTIL--
+--TK_ASSIGNMENT_WORD--
+--TK_CLOBBER--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_GREATAND--
+--TK_GREAT--
+--TK_LESSAND--
+--TK_LESS--
+--TK_IO_NUMBER--
+--TK_DLESSDASH--
+--TK_DLESS--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_IF--
+--TK_CASE--
+--TK_FOR--
+--TK_LPAREN--
+--TK_WORD--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_DGREAT--
+--TK_LESSGREAT--
+--TK_CLOBBER--
+--TK_ASSIGNMENT_WORD--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_IF--
+--TK_CASE--
+--TK_FOR--
+--TK_LPAREN--
+--TK_LBRACE--
+--TK_NAME--
+--TK_BANG--
+--TK_BANG--
+--TK_NAME--
+--TK_LBRACE--
+--TK_LPAREN--
+--TK_FOR--
+--TK_CASE--
+--TK_IF--
+--TK_WHILE--
+--TK_UNTIL--
+--TK_ASSIGNMENT_WORD--
+--TK_CLOBBER--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_GREATAND--
+--TK_GREAT--
+--TK_LESSAND--
+--TK_LESS--
+--TK_IO_NUMBER--
+--TK_DLESSDASH--
+--TK_DLESS--
+--TK_LPAREN--
+--TK_WORD--
+--TK_LPAREN--
+--TK_LPAREN--
+--TK_ELSE--
+--TK_LBRACE--
+--TK_LPAREN--
+--TK_FOR--
+--TK_CASE--
+--TK_IF--
+--TK_WHILE--
+--TK_WORD--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_DGREAT--
+--TK_LESSGREAT--
+--TK_CLOBBER--
+--TK_ASSIGNMENT_WORD--
+--TK_CLOBBER--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_GREATAND--
+--TK_GREAT--
+--TK_LESSAND--
+--TK_LESS--
+--TK_IO_NUMBER--
+--TK_DLESSDASH--
+--TK_WORD--
+--TK_CLOBBER--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_GREATAND--
+--TK_GREAT--
+--TK_LESSAND--
+--TK_LESS--
+--TK_IO_NUMBER--
+--TK_DLESSDASH--
+--TK_CLOBBER--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_GREATAND--
+--TK_GREAT--
+--TK_LESSAND--
+--TK_LESS--
+--TK_IO_NUMBER--
+--TK_DLESSDASH--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_DGREAT--
+--TK_LESSGREAT--
+--TK_CLOBBER--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_GREATAND--
+--TK_GREAT--
+--TK_LESSAND--
+--TK_DLESSDASH--
+--TK_SEMI--
+--TK_NEWLINE--
+--TK_AND--
+--TK_NEWLINE--
+cat: tmp_2: No such file or directory
+[?1h=[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+'  read -d ',' LINE[K
+     do echo "--$LINE--" ; done | cat[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[5;16H[?12l[?25h[?12;25h
+	[C[C[C[C[C[C		[C[C[C[C[C[C		[6;38H[K[61;6H[?25l[30m[48;5;250m**[39;49m[6;35H[?12l[?25h[?12;25h[?25ls[?12l[?25h[?12;25h[?25lo[?12l[?25h[?12;25h[?25lr[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h	[?25l>[?12l[?25h[?12;25h[?25l>[?12l[?25h[?12;25h[C[?25lm[?12l[?25h[?12;25h[K[C[?25lt[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[K[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25l2[?12l[?25h[?12;25h[62;1H[?25lWrote /Users/vcombey/42sh/script[6;48H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[6;48H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgsh script[9Dfg       sh script[?1l>[?2004l
+]2;sh script]1;shrm: tmp_2: No such file or directory
+[?1h=--TK_ASSIGNMENT_WORD--
+--TK_BANG--
+--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_NAME--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_WORD--
+--TK_ASSIGNMENT_WORD--
+--TK_BANG--
+--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_NAME--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_ASSIGNMENT_WORD--
+--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_NAME--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_WORD--
+:[K[K--TK_ASSIGNMENT_WORD--
+--TK_BANG--
+--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_NAME--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_ASSIGNMENT_WORD--
+--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_NAME--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_WORD--
+--TK_ASSIGNMENT_WORD--
+--TK_BANG--
+--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_NAME--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_ASSIGNMENT_WORD--
+:[K[K--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_WORD--
+--TK_ASSIGNMENT_WORD--
+--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_NAME--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_CASE--
+--TK_FOR--
+--TK_IF--
+--TK_LPAREN--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_ASSIGNMENT_WORD--
+--TK_BANG--
+--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_NAME--
+:[K[K--TK_UNTIL--
+--TK_WHILE--
+--TK_WORD--
+--TK_ASSIGNMENT_WORD--
+--TK_BANG--
+--TK_CASE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_FOR--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IF--
+--TK_IO_NUMBER--
+--TK_LBRACE--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_LPAREN--
+--TK_NAME--
+--TK_UNTIL--
+--TK_WHILE--
+--TK_LPAREN--
+--TK_WORD--
+--TK_LPAREN--
+--TK_LPAREN--
+--TK_ELSE--
+--TK_CASE--
+--TK_FOR--
+--TK_IF--
+--TK_LBRACE--
+--TK_LPAREN--
+--TK_WHILE--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_WORD--
+--TK_ASSIGNMENT_WORD--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESSDASH--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESSDASH--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IO_NUMBER--
+:[K[K--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_WORD--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_DLESSDASH--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_DGREAT--
+--TK_DLESS--
+--TK_DLESSDASH--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_IO_NUMBER--
+--TK_LESS--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_CLOBBER--
+--TK_DGREAT--
+--TK_GREAT--
+--TK_GREATAND--
+--TK_LESSAND--
+--TK_LESSGREAT--
+--TK_DLESSDASH--
+--TK_SEMI--
+--TK_AND--
+--TK_NEWLINE--
+--TK_NEWLINE--
+[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004h  fg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+'  read -d ',' LINE[K
+     do echo "--$LINE--" ; done | sort >> tmp_2[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[6;48H[?12l[?25h[?12;25h[6;35H[6;28H		[?25l[1P[61;6H[30m[48;5;250m**[39;49m[6;16H[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[6;20H[?25l[10P[?12l[?25h[?12;25h[C[?25l[1@"[?12l[?25h[?12;25h[?25l[1@-[?12l[?25h[?12;25h[?25l[1@n[?12l[?25h[?12;25h[?25l[1@ [?12l[?25h[?12;25h[A[A[3;7H
+		
+[A[3;7H
+		[62;1H[?25lAuto-saving...[4;17H[?12l[?25h[?12;25h[62;15H[?25ldone[4;17H[?12l[?25h[?12;25h[62;1H[K[5;17H[A
+
+
+[A				[?25l;[?12l[?25h[?12;25h[1;60r[7;1H[1L[1;62r[7;1H[K[7;6H[?25le[?12l[?25h[?12;25h[?25lc[?12l[?25h[?12;25h[?25lh[?12l[?25h[?12;25h[?25lo[?12l[?25h[?12;25h[C[?25l"[?12l[?25h[?12;25h[?25l"[?12l[?25h[?12;25h[C[?25l>[?12l[?25h[?12;25h[?25l>[?12l[?25h[?12;25h	[?25lt[?12l[?25h[?12;25h[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25l2[?12l[?25h[?12;25h[62;1H[?25lWrote /Users/vcombey/42sh/script[7;22H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[7;22H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004h fgsh script[?1l>[?2004l
+]2;sh script]1;shscript: line 9: syntax error: unexpected end of file
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+'  read -d ',' LINE[K
+     do echo -n "$LINE" | sort >> tmp_2;[K
+     echo "" >> tmp_2[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[7;22H[?12l[?25h[?12;25h[A				[K[61;6H[?25l[30m[48;5;250m**[39;49m[6;40H[?12l[?25h[?12;25h[7;22H[62;1H[?25lWrote /Users/vcombey/42sh/script[7;22H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[7;22H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgsh script[?1l>[?2004l
+]2;sh script]1;shrm: tmp_2: No such file or directory
+script: line 9: syntax error: unexpected end of file
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+'  read -d ',' LINE[K
+     do echo -n "$LINE" | sort >> tmp_2[K
+     echo "" >> tmp_2[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[7;22H[?12l[?25h[?12;25h[A[6;40H[6;27H[?25l[1@;[61;6H[30m[48;5;250m**[39;49m[6;25H[?12l[?25h[?12;25h[C[?25l[1@ [?12l[?25h[?12;25h[?25l[1@d[?12l[?25h[?12;25h[?25l[1@o[?12l[?25h[?12;25h[?25l[1@n[?12l[?25h[?12;25h[?25l[1@e[?12l[?25h[?12;25h[62;1H[?25lWrote /Users/vcombey/42sh/script[6;30H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[6;30H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgsh script[?1l>[?2004l
+]2;sh script]1;shrm: tmp_2: No such file or directory
+[?1h=
+-n TK_ASSIGNMENT_WORD
+-n TK_BANG
+-n TK_CASE
+-n TK_CLOBBER
+-n TK_DGREAT
+-n TK_DLESS
+-n TK_DLESSDASH
+-n TK_FOR
+-n TK_GREAT
+-n TK_GREATAND
+-n TK_IF
+-n TK_IO_NUMBER
+-n TK_LBRACE
+-n TK_LESS
+-n TK_LESSAND
+-n TK_LESSGREAT
+-n TK_LPAREN
+-n TK_NAME
+-n TK_UNTIL
+-n TK_WHILE
+-n TK_WORD
+
+
+-n TK_ASSIGNMENT_WORD
+-n TK_BANG
+-n TK_CASE
+-n TK_CLOBBER
+-n TK_DGREAT
+-n TK_DLESS
+-n TK_DLESSDASH
+-n TK_FOR
+-n TK_GREAT
+-n TK_GREATAND
+-n TK_IF
+-n TK_IO_NUMBER
+-n TK_LBRACE
+-n TK_LESS
+-n TK_LESSAND
+-n TK_LESSGREAT
+-n TK_LPAREN
+-n TK_NAME
+-n TK_UNTIL
+-n TK_WHILE
+
+
+-n TK_ASSIGNMENT_WORD
+-n TK_CASE
+-n TK_CLOBBER
+-n TK_DGREAT
+-n TK_DLESS
+-n TK_DLESSDASH
+-n TK_FOR
+-n TK_GREAT
+-n TK_GREATAND
+-n TK_IF
+-n TK_IO_NUMBER
+-n TK_LBRACE
+-n TK_LESS
+-n TK_LESSAND
+-n TK_LESSGREAT
+:[K[K[K:[K[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+'  read -d ',' LINE[K
+     do echo -n "$LINE"; done | sort >> tmp_2[K
+     echo "" >> tmp_2[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[6;30H[?12l[?25h[?12;25h[7;22H[A
+[A[?25l[1P[61;6H[30m[48;5;250m**[39;49m[6;16H[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[?25l[1P[?12l[?25h[?12;25h[62;1H[?25lWrote /Users/vcombey/42sh/script[6;14H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[6;14H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgsh script[?1l>[?2004l
+]2;sh script]1;sh[?1h=
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+:[K[KTK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+:[K[KTK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_CASE
+TK_FOR
+TK_IF
+TK_LPAREN
+TK_UNTIL
+TK_WHILE
+
+:[K[K
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+
+
+
+
+
+
+
+
+TK_LPAREN
+
+
+TK_WORD
+
+:[K[K
+TK_LPAREN
+
+
+TK_LPAREN
+
+
+
+
+
+
+
+
+TK_ELSE
+
+
+
+
+
+
+
+
+TK_CASE
+TK_FOR
+TK_IF
+TK_LBRACE
+TK_LPAREN
+TK_WHILE
+
+
+
+
+
+
+
+
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_CLOBBER
+TK_DGREAT
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+
+
+:[K[KTK_CLOBBER
+TK_DGREAT
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_WORD
+
+
+
+
+
+
+TK_CLOBBER
+TK_DGREAT
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+
+
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+
+
+TK_CLOBBER
+TK_DGREAT
+TK_GREAT
+TK_GREATAND
+TK_LESSAND
+TK_LESSGREAT
+
+
+
+
+TK_DLESSDASH
+
+
+
+
+
+
+
+
+TK_SEMI
+
+
+TK_AND
+:[K[KTK_NEWLINE
+
+
+TK_NEWLINE
+
+[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+'  read -d ',' LINE[K
+     do echo "$LINE"; done | sort >> tmp_2[K
+     echo "" >> tmp_2[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[6;14H[?12l[?25h[?12;25h[A[A[3;7H[62;1H[?25l(No changes need to be saved)[3;7H[?12l[?25h[?12;25h[62;1H[K[3;7H[62;1H[?25l(No changes need to be saved)[3;7H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgsh script[?1l>[?2004l
+]2;sh script]1;sh[?1h=
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+:[K[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hsh script[9D         [9Dffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_2[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+'  read -d ',' LINE[K
+     do echo "$LINE"; done | sort >> tmp_2[K
+     echo "" >> tmp_2[K
+ done && cat tmp_2 | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[3;7H[?12l[?25h[?12;25h[A[A	[K[61;6H[?25l[30m[48;5;250m**[39;49m[1d[?12l[?25h[?12;25h[?25lb[?12l[?25h[?12;25h[?25li[?12l[?25h[?12;25h[?25ln[?12l[?25h[?12;25h[62;1H[?25l[38;5;20mQuery replace: [39;49m[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25l2[?12l[?25h[?12;25h[62;14H[?25l[38;5;20m tmp_2 with: [39;49m[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25lb[?12l[?25h[?12;25h[?25li[?12l[?25h[?12;25h[?25ln[?12l[?25h[?12;25h[?25lMark set[K[1;11H[?12l[?25h[?12;25h[6;38H[?25l[38;5;153m[45mtmp_2[39;49m[?12l[?25h[?12;25h[62;1H[?25l[38;5;20mQuery replacing tmp_2 with tmp_bin: (? for help) [39;49m[6;43H[?12l[?25h[?12;25h
+		[?25l[48;5;159mtmp_2[39;49m[8;14H[48;5;159mtmp_2[39;49m[6;43H[?12l[?25h[?12;25h[?25l[48;5;159mtmp_bin[39;49m
+		[38;5;153m[45mtmp_2[39;49m[?12l[?25h[?12;25h[6;38H[?25ltmp_bin[8;14Htmp_2[7;22H[?12l[?25h[?12;25h[8;14H[?25l[48;5;159mtmp_2[39;49m[7;22H[?12l[?25h[?12;25h		[?25l[48;5;159mtmp_bin[39;49m[8;14H[38;5;153m[45mtmp_2[39;49m[?12l[?25h[?12;25h[A[?25ltmp_bin
+[?12l[?25h[?12;25h[62;1H[?25lReplaced 3 occurrences[K[8;19H[?12l[?25h[?12;25h[?25ltmp_bin | more[8;21H[?12l[?25h[?12;25h[62;1H[K[7;21H[62;1H[?25lWrote /Users/vcombey/42sh/script[7;21H[?12l[?25h[?12;25h[61;6H[?25l[30m[48;5;250m--[39;49m[7;21H[?12l[?25h[?12;25h[62;1H[K[7;21H[62;1H[?25l(No changes need to be saved)[7;21H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgsh script[?1l>[?2004l
+]2;sh script]1;sh[?1h=
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+:[K[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffgf  ddiff tmp_bin tmp_2[?1l>[?2004l
+]2;diff tmp_bin tmp_2]1;diff[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25lrm tmp_bin[K
+cat test.txt | while IFS= read -r -d '[K
+' test[K
+  do echo $test | while IFS='[K
+'  read -d ',' LINE[K
+     do echo "$LINE"; done | sort >> tmp_bin[K
+     echo "" >> tmp_bin[K
+ done && cat tmp_bin | more[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mscript      [0m[39;49m[30m[48;5;250m   All  (Fundamental)-----------------------------------------------------------------------------------------------------------------------------------------------------------------------[39;49m
+[A[7;21H[?12l[?25h[?12;25h
+[62;1H[?25l[38;5;20mFind file: [39;49m~/42sh/[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25le[?12l[?25h[?12;25h[?25ls[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[K[K[K[K[?25lt[?12l[?25h[?12;25h[?25l,[?12l[?25h[?12;25h[?25l[[?12l[?25h[?12;25h[K[K[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25l2[?12l[?25h[?12;25h	[?25l[Sole completion]			[?12l[?25h[?12;25h[K[H[K
+[?25lTK_ASSIGNMENT_WORD[K
+TK_BANG
+TK_CASE[K
+TK_CLOBBER[K
+TK_DGREAT[K
+TK_DLESS[K
+TK_DLESSDASH[K
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND[61;13H[1m[30m[48;5;250mtmp_2       [0m[39;49m[30m[48;5;250m   Top[39;49m[H[?12l[?25h[?12;25h[1;106H[?25l[38;5;236m[47m|[0m[39;49m
+[38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[3;106H[38;5;236m[47m|[0m[39;49mTK_BANG[4;106H[38;5;236m[47m|[0m[39;49mTK_CASE[5;106H[38;5;236m[47m|[0m[39;49mTK_CLOBBER[6;106H[38;5;236m[47m|[0m[39;49mTK_DGREAT[7;106H[38;5;236m[47m|[0m[39;49mTK_DLESS[8;106H[38;5;236m[47m|[0m[39;49mTK_DLESSDASH[9;106H[38;5;236m[47m|[0m[39;49mTK_FOR
+[38;5;236m[47m|[0m[39;49mTK_GREAT[11;106H[38;5;236m[47m|[0m[39;49mTK_GREATAND[12;106H[38;5;236m[47m|[0m[39;49mTK_IF
+[38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[14;106H[38;5;236m[47m|[0m[39;49mTK_LBRACE[15;106H[38;5;236m[47m|[0m[39;49mTK_LESS[16;106H[38;5;236m[47m|[0m[39;49mTK_LESSAND[17;106H[38;5;236m[47m|[0m[39;49mTK_LESSGREAT[18;106H[38;5;236m[47m|[0m[39;49mTK_LPAREN[19;106H[38;5;236m[47m|[0m[39;49mTK_NAME[20;106H[38;5;236m[47m|[0m[39;49mTK_UNTIL[21;106H[38;5;236m[47m|[0m[39;49mTK_WHILE[22;106H[38;5;236m[47m|[0m[39;49mTK_WORD[23;106H[38;5;236m[47m|[0m[39;49m
+[38;5;236m[47m|[0m[39;49m
+[38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[26;106H[38;5;236m[47m|[0m[39;49mTK_BANG[27;106H[38;5;236m[47m|[0m[39;49mTK_CASE[28;106H[38;5;236m[47m|[0m[39;49mTK_CLOBBER[29;106H[38;5;236m[47m|[0m[39;49mTK_DGREAT[30;106H[38;5;236m[47m|[0m[39;49mTK_DLESS[31;106H[38;5;236m[47m|[0m[39;49mTK_DLESSDASH[32;106H[38;5;236m[47m|[0m[39;49mTK_FOR
+[38;5;236m[47m|[0m[39;49mTK_GREAT[34;106H[38;5;236m[47m|[0m[39;49mTK_GREATAND[35;106H[38;5;236m[47m|[0m[39;49mTK_IF
+[38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[37;106H[38;5;236m[47m|[0m[39;49mTK_LBRACE[38;106H[38;5;236m[47m|[0m[39;49mTK_LESS[39;106H[38;5;236m[47m|[0m[39;49mTK_LESSAND[40;106H[38;5;236m[47m|[0m[39;49mTK_LESSGREAT[41;106H[38;5;236m[47m|[0m[39;49mTK_LPAREN[42;106H[38;5;236m[47m|[0m[39;49mTK_NAME[43;106H[38;5;236m[47m|[0m[39;49mTK_UNTIL[44;106H[38;5;236m[47m|[0m[39;49mTK_WHILE[45;106H[38;5;236m[47m|[0m[39;49m
+[38;5;236m[47m|[0m[39;49m
+[38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[48;106H[38;5;236m[47m|[0m[39;49mTK_CASE[49;106H[38;5;236m[47m|[0m[39;49mTK_CLOBBER[50;106H[38;5;236m[47m|[0m[39;49mTK_DGREAT[51;106H[38;5;236m[47m|[0m[39;49mTK_DLESS[52;106H[38;5;236m[47m|[0m[39;49mTK_DLESSDASH[53;106H[38;5;236m[47m|[0m[39;49mTK_FOR
+[38;5;236m[47m|[0m[39;49mTK_GREAT[55;106H[38;5;236m[47m|[0m[39;49mTK_GREATAND[56;106H[38;5;236m[47m|[0m[39;49mTK_IF
+[38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[58;106H[38;5;236m[47m|[0m[39;49mTK_LBRACE[59;106H[38;5;236m[47m|[0m[39;49mTK_LESS[60;106H[38;5;236m[47m|[0m[39;49mTK_LESSAND[61;106H[38;5;236m[47m|[0m[39;49m[38;5;236m[47m-uu-:---F1  [0m[39;49m[1m[38;5;236m[47mtmp_2       [0m[39;49m[38;5;236m[47m   Top  (Fundamental)-------------------------------------------------------------[0m[39;49m
+[H[?12l[?25h[?12;25h[61d[?25l[38;5;236m[47m-uu-:---F1  [0m[39;49m[1m[38;5;236m[47mtmp_2       [0m[39;49m[38;5;236m[47m   Top  (Fundamental)------------------------------------------------------------[0m[39;49m[38;5;236m[47m|[0m[39;49m[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mtmp_2       [0m[39;49m[30m[48;5;250m   Top  (Fundamental)-------------------------------------------------------------[39;49m
+[1;107H[?12l[?25h[?12;25h[62;1H[?25l[38;5;20mSwitch to buffer (default script): [39;49m[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25le[?12l[?25h[?12;25h[?25ls[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25lb[?12l[?25h[?12;25h[?25li[?12l[?25h[?12;25h[?25ln[?12l[?25h[?12;25h[C[?25l[No match][62;44H[?12l[?25h[?12;25h[K[K[K[K[K[K[K[K[?25lt[?12l[?25h[?12;25h[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25lb[?12l[?25h[?12;25h[?25li[?12l[?25h[?12;25h[?25ln[?12l[?25h[?12;25h[C[?25l[No match][62;43H[?12l[?25h[?12;25h[K[K[K[K[K[K[K[?25lMaking completion list...[K[?12l[?25h[?12;25h[?25lLoading help-mode...[K[?12l[?25h[?12;25h[?25ldone[?12l[?25h[?12;25h[?25lLoading help-mode...done[K[HIn this buffer, type RET to select the completion near point.                                            [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[K
+Possible completions are:                                                                                [38;5;236m[47m|[0m[39;49mTK_BANG[K
+[1m*[0mMessages*                         [1m*[0mscratch*                                                             [38;5;236m[47m|[0m[39;49mTK_CASE[K
+[1ms[0mcript                             [1mt[0mmp_2                                                                 [38;5;236m[47m|[0m[39;49mTK_CLOBBER[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DGREAT[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DLESS[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DLESSDASH[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_FOR[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_GREAT[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_GREATAND[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_IF[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LBRACE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LESS[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LESSAND[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LESSGREAT[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LPAREN[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_NAME[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_UNTIL[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_WHILE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_WORD[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_BANG[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_CASE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_CLOBBER[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DGREAT[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DLESS[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DLESSDASH[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_FOR[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_GREAT[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_GREATAND[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_IF[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LBRACE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LESS[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LESSAND[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LESSGREAT[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LPAREN[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_NAME[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_UNTIL[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_WHILE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_CASE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_CLOBBER[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DGREAT[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DLESS[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DLESSDASH[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_FOR[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_GREAT[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_GREATAND[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_IF[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LBRACE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LESS[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_LESSAND[K
+[38;5;236m[47m-uuu:%%-F1  [0m[39;49m[1m[38;5;236m[47m*Completions*[0m[39;49m[38;5;236m[47m   All  (Completion List)-------------------------------------------------------[0m[39;49m[38;5;236m[47m|[0m[39;49m[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mtmp_2       [0m[39;49m[30m[48;5;250m   Top  (Fundamental)-------------------------------------------------------------[39;49m
+[A
+			[?12l[?25h[?12;25h[?25l[38;5;20mSwitch to buffer (default script): [39;49mt[?12l[?25h[?12;25h[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_2[?12l[?25h[?12;25h[C[?25l[Sole completion]					[?12l[?25h[?12;25h[?25lQuit[K[H                                                             
+TK_ASSIGNMENT_WORD
+TK_BANG                  
+TK_CASE                                     
+TK_CLOBBER                                                                                               
+TK_DGREAT                                                                                                
+TK_DLESS                                                                                                 
+TK_DLESSDASH                                                                                             
+TK_FOR                                                                                                   
+TK_GREAT                                                                                                 
+TK_GREATAND                                                                                              
+TK_IF                                                                                                    
+TK_IO_NUMBER                                                                                             
+TK_LBRACE                                                                                                
+TK_LESS                                                                                                  
+TK_LESSAND                                                                                               
+TK_LESSGREAT                                                                                             
+TK_LPAREN                                                                                                
+TK_NAME                                                                                                  
+TK_UNTIL                                                                                                 
+TK_WHILE                                                                                                 
+TK_WORD                                                                                                  
+
+
+TK_ASSIGNMENT_WORD                                                                                       
+TK_BANG                                                                                                  
+TK_CASE                                                                                                  
+TK_CLOBBER                                                                                               
+TK_DGREAT                                                                                                
+TK_DLESS                                                                                                 
+TK_DLESSDASH                                                                                             
+TK_FOR                                                                                                   
+TK_GREAT                                                                                                 
+TK_GREATAND                                                                                              
+TK_IF                                                                                                    
+TK_IO_NUMBER                                                                                             
+TK_LBRACE                                                                                                
+TK_LESS                                                                                                  
+TK_LESSAND                                                                                               
+TK_LESSGREAT                                                                                             
+TK_LPAREN                                                                                                
+TK_NAME                                                                                                  
+TK_UNTIL                                                                                                 
+TK_WHILE                                                                                                 
+
+
+TK_ASSIGNMENT_WORD                                                                                       
+TK_CASE                                                                                                  
+TK_CLOBBER                                                                                               
+TK_DGREAT                                                                                                
+TK_DLESS                                                                                                 
+TK_DLESSDASH                                                                                             
+TK_FOR                                                                                                   
+TK_GREAT                                                                                                 
+TK_GREATAND                                                                                              
+TK_IF                                                                                                    
+TK_IO_NUMBER                                                                                             
+TK_LBRACE                                                                                                
+TK_LESS                                                                                                  
+TK_LESSAND                                                                                               [61;4H[38;5;236m[47m-:---F1  [0m[39;49m[1m[38;5;236m[47mtmp_2       [0m[39;49m[38;5;236m[47m   Top  (Fundamental)-----[0m[39;49m[1;107H[?12l[?25h[?12;25h[62;1H[K[2;107H
+[62;1H[?25l(No changes need to be saved)[3;107H[?12l[?25h[?12;25h[62;1H[K[?1l>[?12l[?25h[?1049l[39;49m
+[1]  + 56057 suspended  emacs script
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ^[[A]2;vcombey@e3r10p6: ~/42sh]1;~/42sh^[[A[0m[27m[24m[J[01;31m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hfgdiff tmp_bin tmp_2[?1l>[?2004l
+]2;diff tmp_bin tmp_2]1;diff[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hccat tmp_ib  bin[?1l>[?2004l
+]2;cat tmp_bin]1;cat
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+TK_CASE
+TK_FOR
+TK_IF
+TK_LPAREN
+TK_UNTIL
+TK_WHILE
+
+
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_BANG
+TK_CASE
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_FOR
+TK_GREAT
+TK_GREATAND
+TK_IF
+TK_IO_NUMBER
+TK_LBRACE
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_LPAREN
+TK_NAME
+TK_UNTIL
+TK_WHILE
+
+
+
+
+
+
+
+
+
+
+TK_LPAREN
+
+
+TK_WORD
+
+
+TK_LPAREN
+
+
+TK_LPAREN
+
+
+
+
+
+
+
+
+TK_ELSE
+
+
+
+
+
+
+
+
+TK_CASE
+TK_FOR
+TK_IF
+TK_LBRACE
+TK_LPAREN
+TK_WHILE
+
+
+
+
+
+
+
+
+TK_CLOBBER
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_WORD
+
+
+TK_ASSIGNMENT_WORD
+TK_CLOBBER
+TK_DGREAT
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+
+
+TK_CLOBBER
+TK_DGREAT
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+TK_WORD
+
+
+
+
+
+
+TK_CLOBBER
+TK_DGREAT
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+
+
+TK_DGREAT
+TK_DLESS
+TK_DLESSDASH
+TK_GREAT
+TK_GREATAND
+TK_IO_NUMBER
+TK_LESS
+TK_LESSAND
+TK_LESSGREAT
+
+
+TK_CLOBBER
+TK_DGREAT
+TK_GREAT
+TK_GREATAND
+TK_LESSAND
+TK_LESSGREAT
+
+
+
+
+TK_DLESSDASH
+
+
+
+
+
+
+
+
+TK_SEMI
+
+
+TK_AND
+TK_NEWLINE
+
+
+TK_NEWLINE
+
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                    ]2;vcombey@e3r10p6: ~/42sh]1;~/42sh[0m[27m[24m[J[01;32m➜  [36m42sh[00m [01;34mgit:([31mparser_generator[34m) [33m✗[00m [K[?1h=[?2004hffg[?1l>[?2004l
+]2;fg]1;fg[1]  + 56057 continued  emacs script
+[?1049h[?12;25h[?1h=[62;1H[K[H[?25l                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+TK_ASSIGNMENT_WORD                                                                                       [38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[K
+TK_BANG                                                                                                  [38;5;236m[47m|[0m[39;49mTK_BANG[K
+TK_CASE                                                                                                  [38;5;236m[47m|[0m[39;49mTK_CASE[K
+TK_CLOBBER                                                                                               [38;5;236m[47m|[0m[39;49mTK_CLOBBER[K
+TK_DGREAT                                                                                                [38;5;236m[47m|[0m[39;49mTK_DGREAT[K
+TK_DLESS                                                                                                 [38;5;236m[47m|[0m[39;49mTK_DLESS[K
+TK_DLESSDASH                                                                                             [38;5;236m[47m|[0m[39;49mTK_DLESSDASH[K
+TK_FOR                                                                                                   [38;5;236m[47m|[0m[39;49mTK_FOR[K
+TK_GREAT                                                                                                 [38;5;236m[47m|[0m[39;49mTK_GREAT[K
+TK_GREATAND                                                                                              [38;5;236m[47m|[0m[39;49mTK_GREATAND[K
+TK_IF                                                                                                    [38;5;236m[47m|[0m[39;49mTK_IF[K
+TK_IO_NUMBER                                                                                             [38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[K
+TK_LBRACE                                                                                                [38;5;236m[47m|[0m[39;49mTK_LBRACE[K
+TK_LESS                                                                                                  [38;5;236m[47m|[0m[39;49mTK_LESS[K
+TK_LESSAND                                                                                               [38;5;236m[47m|[0m[39;49mTK_LESSAND[K
+TK_LESSGREAT                                                                                             [38;5;236m[47m|[0m[39;49mTK_LESSGREAT[K
+TK_LPAREN                                                                                                [38;5;236m[47m|[0m[39;49mTK_LPAREN[K
+TK_NAME                                                                                                  [38;5;236m[47m|[0m[39;49mTK_NAME[K
+TK_UNTIL                                                                                                 [38;5;236m[47m|[0m[39;49mTK_UNTIL[K
+TK_WHILE                                                                                                 [38;5;236m[47m|[0m[39;49mTK_WHILE[K
+TK_WORD                                                                                                  [38;5;236m[47m|[0m[39;49mTK_WORD[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+TK_ASSIGNMENT_WORD                                                                                       [38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[K
+TK_BANG                                                                                                  [38;5;236m[47m|[0m[39;49mTK_BANG[K
+TK_CASE                                                                                                  [38;5;236m[47m|[0m[39;49mTK_CASE[K
+TK_CLOBBER                                                                                               [38;5;236m[47m|[0m[39;49mTK_CLOBBER[K
+TK_DGREAT                                                                                                [38;5;236m[47m|[0m[39;49mTK_DGREAT[K
+TK_DLESS                                                                                                 [38;5;236m[47m|[0m[39;49mTK_DLESS[K
+TK_DLESSDASH                                                                                             [38;5;236m[47m|[0m[39;49mTK_DLESSDASH[K
+TK_FOR                                                                                                   [38;5;236m[47m|[0m[39;49mTK_FOR[K
+TK_GREAT                                                                                                 [38;5;236m[47m|[0m[39;49mTK_GREAT[K
+TK_GREATAND                                                                                              [38;5;236m[47m|[0m[39;49mTK_GREATAND[K
+TK_IF                                                                                                    [38;5;236m[47m|[0m[39;49mTK_IF[K
+TK_IO_NUMBER                                                                                             [38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[K
+TK_LBRACE                                                                                                [38;5;236m[47m|[0m[39;49mTK_LBRACE[K
+TK_LESS                                                                                                  [38;5;236m[47m|[0m[39;49mTK_LESS[K
+TK_LESSAND                                                                                               [38;5;236m[47m|[0m[39;49mTK_LESSAND[K
+TK_LESSGREAT                                                                                             [38;5;236m[47m|[0m[39;49mTK_LESSGREAT[K
+TK_LPAREN                                                                                                [38;5;236m[47m|[0m[39;49mTK_LPAREN[K
+TK_NAME                                                                                                  [38;5;236m[47m|[0m[39;49mTK_NAME[K
+TK_UNTIL                                                                                                 [38;5;236m[47m|[0m[39;49mTK_UNTIL[K
+TK_WHILE                                                                                                 [38;5;236m[47m|[0m[39;49mTK_WHILE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+TK_ASSIGNMENT_WORD                                                                                       [38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[K
+TK_CASE                                                                                                  [38;5;236m[47m|[0m[39;49mTK_CASE[K
+TK_CLOBBER                                                                                               [38;5;236m[47m|[0m[39;49mTK_CLOBBER[K
+TK_DGREAT                                                                                                [38;5;236m[47m|[0m[39;49mTK_DGREAT[K
+TK_DLESS                                                                                                 [38;5;236m[47m|[0m[39;49mTK_DLESS[K
+TK_DLESSDASH                                                                                             [38;5;236m[47m|[0m[39;49mTK_DLESSDASH[K
+TK_FOR                                                                                                   [38;5;236m[47m|[0m[39;49mTK_FOR[K
+TK_GREAT                                                                                                 [38;5;236m[47m|[0m[39;49mTK_GREAT[K
+TK_GREATAND                                                                                              [38;5;236m[47m|[0m[39;49mTK_GREATAND[K
+TK_IF                                                                                                    [38;5;236m[47m|[0m[39;49mTK_IF[K
+TK_IO_NUMBER                                                                                             [38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[K
+TK_LBRACE                                                                                                [38;5;236m[47m|[0m[39;49mTK_LBRACE[K
+TK_LESS                                                                                                  [38;5;236m[47m|[0m[39;49mTK_LESS[K
+TK_LESSAND                                                                                               [38;5;236m[47m|[0m[39;49mTK_LESSAND[K
+[38;5;236m[47m-uu-:---F1  [0m[39;49m[1m[38;5;236m[47mtmp_2       [0m[39;49m[38;5;236m[47m   Top  (Fundamental)------------------------------------------------------------[0m[39;49m[38;5;236m[47m|[0m[39;49m[30m[48;5;250m-uu-:---F1  [39;49m[1m[30m[48;5;250mtmp_2       [0m[39;49m[30m[48;5;250m   Top  (Fundamental)-------------------------------------------------------------[39;49m
+[A[3;107H[?12l[?25h[?12;25h
+
+
+[62;1H[?25l[38;5;20mFind file: [39;49m~/42sh/[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25lb[?12l[?25h[?12;25h[?25li[?12l[?25h[?12;25h[?25ln[?12l[?25h[?12;25h[C[?25l[Sole completion][62;26H[?12l[?25h[?12;25h[K[61;123H[?25l[1m[30m[48;5;250mbin[0m[39;49m[1;107H[?12l[?25h[?12;25h
+
+[1d[?25lTK_LESS
+LESSAND[K[3;110HLESSGREAT[4;110HLPAREN
+NAME[K
+UNTIL[K
+WHILE
+WORD[K[9;107H[K
+[K
+	ASSIGNMENT_WORD[12;110HBANG
+CASE[K
+CLOBBER
+DGREAT
+DLESS[K
+DLESSDASH[18;110HFOR[K
+GREAT
+GREATAND[21;110HIF[K
+IO_NUMBER[23;107HTK_LBRACE[24;107HTK_LESS
+LESSAND[K
+LESSGREAT[27;110HLPAREN
+NAME[K
+UNTIL[K
+WHILE[31;107H[K
+[K
+	ASSIGNMENT_WORD[34;110HCASE[K
+CLOBBER
+DGREAT[K
+DLESS[K
+DLESSDASH[39;110HFOR[K
+GREAT[K
+GREATAND[42;110HIF[K
+IO_NUMBER[44;110HLBRACE[45;107HTK_LESS
+TK_LESSAND
+LESSGREAT[K[48;110HLPAREN
+NAME[K
+UNTIL[K
+WHILE
+WORD[K
+[K
+[K
+	ASSIGNMENT_WORD[56;110HBANG
+CASE[K
+CLOBBER
+DGREAT
+DLESS[K[61;134H[30m[48;5;250m19%[39;49m[1;107H[?12l[?25h[?12;25h	[?25lDGREAT
+DLESS[K
+DLESSDASH[4;110HFOR[K
+GREAT
+GREATAND[7;110HIF[K
+IO_NUMBER[9;107HTK_LBRACE[10;107HTK_LESS
+LESSAND[K
+LESSGREAT[13;110HLPAREN
+NAME[K
+UNTIL[K
+WHILE[17;107H[K
+[K
+	ASSIGNMENT_WORD[20;110HCASE[K
+CLOBBER
+DGREAT[K
+DLESS[K
+DLESSDASH[25;110HFOR[K
+GREAT[K
+GREATAND[28;110HIF[K
+IO_NUMBER[30;110HLBRACE[31;107HTK_LESS
+TK_LESSAND
+LESSGREAT[K[34;110HLPAREN
+UNTIL[K
+WHILE[K
+WORD[K
+[K
+[K
+	ASSIGNMENT_WORD[41;110HCASE[K
+CLOBBER
+DGREAT[K
+DLESS[K
+DLESSDASH[46;110HFOR[K
+GREAT[K
+GREATAND[49;110HIF[K
+IO_NUMBER[51;110HLBRACE
+LESS
+TK_LESSAND[54;107HTK_LESSGREAT[55;110HLPAREN[K
+NAME
+UNTIL
+WHILE[K[59;107H[K
+[K[61;134H[30m[48;5;250m37[39;49m[1;107H[?12l[?25h[?12;25h[1;28r[5;1H[23M[1;62r[1;107H[K
+[K[3;110H[?25lCASE[K
+
+
+TK_DGREAT                                                                                                [38;5;236m[47m|[0m[39;49mTK_LPAREN[K
+TK_DLESS                                                                                                 [38;5;236m[47m|[0m[39;49mTK_UNTIL[K
+TK_DLESSDASH                                                                                             [38;5;236m[47m|[0m[39;49mTK_WHILE[K
+TK_FOR                                                                                                   [38;5;236m[47m|[0m[39;49m[K
+TK_GREAT                                                                                                 [38;5;236m[47m|[0m[39;49m[K
+TK_GREATAND                                                                                              [38;5;236m[47m|[0m[39;49m[K
+TK_IF                                                                                                    [38;5;236m[47m|[0m[39;49m[K
+TK_IO_NUMBER                                                                                             [38;5;236m[47m|[0m[39;49mTK_ASSIGNMENT_WORD[K
+TK_LBRACE                                                                                                [38;5;236m[47m|[0m[39;49mTK_BANG[K
+TK_LESS                                                                                                  [38;5;236m[47m|[0m[39;49mTK_CASE[K
+TK_LESSAND                                                                                               [38;5;236m[47m|[0m[39;49mTK_CLOBBER[K
+TK_LESSGREAT                                                                                             [38;5;236m[47m|[0m[39;49mTK_DGREAT[K
+TK_LPAREN                                                                                                [38;5;236m[47m|[0m[39;49mTK_DLESS[K
+TK_NAME                                                                                                  [38;5;236m[47m|[0m[39;49mTK_DLESSDASH[K
+TK_UNTIL                                                                                                 [38;5;236m[47m|[0m[39;49mTK_FOR[K
+TK_WHILE                                                                                                 [38;5;236m[47m|[0m[39;49mTK_GREAT[K
+TK_WORD                                                                                                  [38;5;236m[47m|[0m[39;49mTK_GREATAND[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_IF[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_IO_NUMBER[K
+TK_ASSIGNMENT_WORD                                                                                       [38;5;236m[47m|[0m[39;49mTK_LBRACE[K
+TK_BANG                                                                                                  [38;5;236m[47m|[0m[39;49mTK_LESS[K
+TK_CASE                                                                                                  [38;5;236m[47m|[0m[39;49mTK_LESSAND[K
+TK_CLOBBER                                                                                               [38;5;236m[47m|[0m[39;49mTK_LESSGREAT[K[29;110HLPAREN[K
+NAME[K
+UNTIL
+WHILE[K
+WORD[K
+[K
+[K
+	ASSIGNMENT_WORD[37;110HBANG
+TK_CASE
+TK_CLOBBER
+DGREAT[K
+DLESS
+DLESSDASH[43;110HFOR[K
+GREAT
+GREATAND[K[46;110HIF[K
+IO_NUMBER[48;110HLBRACE[K
+LESS
+LESSAND[K
+ESSGREAT[52;111HPAREN
+NAME[K
+UNTIL[K
+WHILE[K[56;107H[K
+[K
+[K[61;134H[30m[48;5;250m56[39;49m[1;107H[?12l[?25h[?12;25h
+
+[K
+[K
+[K
+[K
+[K[8;110H[?25lLPAREN[11;107HTK_WORD[13;107H[K
+	LPAREN[15;107H[K
+[K
+	LPAREN[18;107H[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+	ELSE
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+
+TK_CASE
+FOR[K
+IF[K
+LBRACE
+LPAREN[K
+WHILE[K[41;107H[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+	CLOBBER
+DGREAT[K
+DLESS[K
+DLESSDASH[53;110HGREAT
+GREATAND[55;110HIO_NUMBER[56;107HTK_LESS
+TK_LESSAND[58;107HTK_LESSGREAT[59;107HTK_WORD[61;134H[30m[48;5;250m72[39;49m[1;107H[?12l[?25h[?12;25h[?25lTK_WORD[4;107HTK_ASSIGNMENT_WORD[5;107HTK_CLOBBER[6;107HTK_DGREAT[7;107HTK_DLESSDASH[8;110HGREAT[K[9;107HTK_GREATAND[10;107HTK_IO_NUMBER[11;110HLESS
+TK_LESSAND[13;107HTK_LESSGREAT[14;107H[K
+
+TK_CLOBBER
+DGREAT[18;107HTK_DLESSDASH[19;107HTK_GREAT[20;107HTK_GREATAND[21;107HTK_IO_NUMBER[22;107HTK_LESS
+TK_LESSAND[24;107HTK_LESSGREAT[25;107HTK_WORD
+[K[32dTK_CLOBBER[33;107HTK_DGREAT[34;107HTK_DLESSDASH[35;110HGREAT
+GREATAND
+O_NUMBER[38;111HESS[K
+ESSAND
+LESSGREAT[43;107HTK_DGREAT[44;107HTK_DLESS[45;107HTK_DLESSDASH[46;107HTK_GREAT[47;107HTK_GREATAND[48;107HTK_IO_NUMBER[49;110HLESS[K
+LESSAND
+LESSGREAT[52;107H[K
+[K
+	CLOBBER[K
+DGREAT[K
+GREAT
+GREATAND
+AND[K
+LESSGREAT[61;134H[30m[48;5;250m81[39;49m[1;107H[?12l[?25h[?12;25h	[?25lLESSGREAT[4;107H[K
+[K
+	LESSDASH[7;107H[K
+[K
+[K
+[K
+[K
+[K
+[K
+
+TK_SEMI
+[K
+[K
+	AND[K
+NEWLINE[20;107H[K
+[K
+	NEWLINE[23;107H[K
+[K
+[K[32d[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+
+
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+
+
+[K
+[K
+[K
+[K
+[K
+[K[61;134H[30m[48;5;250mBot[39;49m[1;107H[?12l[?25h[?12;25h[62;1H[?25lEnd of buffer[1;107H[?12l[?25h[?12;25h[62;1H[?25l[38;5;20mM-x [39;49m[K[?12l[?25h[?12;25h[?25ld[?12l[?25h[?12;25h[?25li[?12l[?25h[?12;25h[?25lf[?12l[?25h[?12;25h[?25lf[?12l[?25h[?12;25h[?25lLoading diff...[1;107H[?12l[?25h[?12;25h[62;16H[?25ldone[1;107H[?12l[?25h[?12;25h[62;1H[?25l[38;5;20mDiff new file (default tmp_bin): [39;49m~/42sh/[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25le[?12l[?25h[?12;25h[?25ls[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[K[K[?25lx[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[K[?25l-[?12l[?25h[?12;25h[?25lb[?12l[?25h[?12;25h[?25li[?12l[?25h[?12;25h[?25ln[?12l[?25h[?12;25h[K[K[K[K[K[K[K[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25l2[?12l[?25h[?12;25h[62;6H[?25l[38;5;20moriginal file: [39;49m~/42sh/[K[?12l[?25h[?12;25h[?25lt[?12l[?25h[?12;25h[?25lm[?12l[?25h[?12;25h[?25lp[?12l[?25h[?12;25h[?25l_[?12l[?25h[?12;25h[?25l2[?12l[?25h[?12;25h[?25lLoading diff-mode...[K[1;107H[?12l[?25h[?12;25h[62;9H[?25leasy-mmode...[1;107H[?12l[?25h[?12;25h[62;22H[?25ldone[1;107H[?12l[?25h[?12;25h[62;13H[?25lmenu...[K[1;107H[?12l[?25h[?12;25h[62;20H[?25ldone[1;107H[?12l[?25h[?12;25h[62;9H[?25ldiff-mode...done[1;107H[?12l[?25h[?12;25h[62;1H[?25lLoading diff-mode...done[K[H[90mdiff -c /Users/vcombey/42sh/tmp_2 /Users/vcombey/42sh/tmp_2                                              [39;49m[38;5;236m[47m|[0m[39;49mTK_LESSGREAT[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_DLESSDASH[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_SEMI[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_AND[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_NEWLINE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49mTK_NEWLINE[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                         [38;5;236m[47m|[0m[39;49m[K
+                                                                                                
