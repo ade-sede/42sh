@@ -140,9 +140,9 @@ This code of the factorial function works fine in our shell.
 factorial()
 {
   if [ "$1" -gt "1" ]; then
-    i=`expr $1 - 1`
+    i=$(( $1 - 1))
     j=`factorial $i`
-    k=`expr $1 \* $j`
+    k=$(($1 * $j))
     echo $k
   else
     echo 1
