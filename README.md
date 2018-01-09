@@ -2,6 +2,7 @@
 A 42 school project. 
 A bash style shell with some features from Oh my Zsh.
 Made with 4 persons. A bash style shell with some features from Oh my Zsh.
+The project follow the C Norme of 42 school. if you dont see any 'for' or 'case' dont be surprised, blame the Norme ! https://www.fichier-pdf.fr/2013/07/19/norme42/preview/page/1/
 
 ## Line editing
 
