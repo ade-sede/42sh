@@ -2,6 +2,7 @@
 A 42 school project. 
 A bash style shell with some features from Oh my Zsh.
 Made with 4 persons. A bash style shell with some features from Oh my Zsh.
+The project follow the C Norme of 42 school. if you dont see any 'for' or 'case' dont be surprised, blame the Norme ! https://www.fichier-pdf.fr/2013/07/19/norme42/preview/page/1/
 
 ## Line editing
 
@@ -140,9 +141,9 @@ This code of the factorial function works fine in our shell.
 factorial()
 {
   if [ "$1" -gt "1" ]; then
-    i=`expr $1 - 1`
+    i=$(( $1 - 1))
     j=`factorial $i`
-    k=`expr $1 \* $j`
+    k=$(($1 * $j))
     echo $k
   else
     echo 1
