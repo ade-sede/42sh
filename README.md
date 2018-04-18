@@ -2,7 +2,13 @@
 A 42 school project. 
 A bash style shell with some features from Oh my Zsh.
 Made with 4 persons. A bash style shell with some features from Oh my Zsh.
-The project follow the C Norme of 42 school. if you dont see any 'for' or 'case' dont be surprised, blame the Norme ! https://www.fichier-pdf.fr/2013/07/19/norme42/preview/page/1/
+The project follow the C Norme of 42 school. if you dont see any 'for' or 'case', or have to witness some awful code, dont be surprised, blame the Norme ! https://www.fichier-pdf.fr/2013/07/19/norme42/preview/page/1/
+
+### DISCLAIMER
+	The following list of features is not accurate, some have been removed from the project because unstable, while some do not figure in the list
+The features presented in the following document should be here and enable relatively experienced user to use this shell without too much discomfort.
+[42 - 42sh Subject](http://cdn.intra.42.fr/pdf/pdf/183/42sh.fr.pdf)
+
 
 ## Line editing
 
@@ -154,6 +160,6 @@ You can find more exemple of what our shell handles in the Exemple directory.
 
 ## Authors
 * **COMBEY Vincent** - [vcombey](https://github.com/vcombey)
-* **DE SEDE Adrien** - [Ixskill](https://github.com/Ixskill)
+* **DE SEDE Adrien** - [ade-sede](https://github.com/ade-sede)
 * **EDDAOUDI Said** - [github]()
 * **DUMOULIN Thibaut** - [github]()
