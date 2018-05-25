@@ -1,4 +1,15 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_base_env.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:55 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environ.h"
 #include "printf.h"
 #include "hash_table.h"
@@ -25,7 +36,6 @@ void		env_load_base_env(t_env *env, const char **environ)
 
 	i = 0;
 	env->environ = NULL;
-	env->previous_exit = 0;
 	env->option = 0;
 	env->alias = NULL;
 	env->first_func = NULL;

@@ -1,7 +1,19 @@
-#include "parser.h"
-#include <ncurses.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:41 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	free_ast_node(void *ast_node)
+#include <ncurses.h>
+#include "parser.h"
+
+void		free_ast_node(void *ast_node)
 {
 	free_ast(((t_ast_lst *)ast_node)->ast);
 }

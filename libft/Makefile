@@ -75,6 +75,8 @@ SRC = \
 	mem/ft_realloc.c \
 	mem/palloc.c \
 	str/ft_str_isdigit.c \
+	str/ft_atoi_safe.c \
+	str/ft_itoa_word.c \
 	str/ft_is_backslash.c \
 	str/charcmp.c \
 	str/ft_atoi.c \
@@ -136,24 +138,28 @@ SRC = \
 	parr/ft_strarrstrn.c \
 	get_opt/get_opt.c \
 	get_opt/get_opt_display.c \
-	io/printf/asprintf.c \
-	io/printf/buff_loop.c \
-	io/printf/buff_start_conv.c \
-	io/printf/c_conv.c \
-	io/printf/d_conv.c \
-	io/printf/dprintf.c \
-	io/printf/numeric_conv.c \
-	io/printf/p_padd.c \
-	io/printf/p_prec.c \
-	io/printf/printf.c \
-	io/printf/printf_parse.c \
-	io/printf/s_conv.c \
-	io/printf/sprintf.c \
-	io/printf/u_conv.c \
-	io/printf/vasprintf.c
+	\
+	io/ft_printf.c \
+	io/ft_printfd.c \
 
 NAME ?= libft.a
 
+
+INCLUDE_FILES=\
+	alloc.h \
+	array.h \
+	btree.h \
+	color.h \
+	get_next_line.h \
+	get_opt.h \
+	libft.h \
+	list.h \
+	mem.h \
+	printf.h \
+	select.h \
+	str.h \
+	string.h \
+	system.h
 
 # Defining those variables allows auto completion to occure.
 APPEND=
@@ -172,6 +178,8 @@ LOCAL_INC = includes
 CFLAGS ?= -g -Wall -Wextra -Werror
 CC = gcc
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+SRCS = $(addprefix $(SRC_DIR)/,$(SRC:.c=.c))
+FULL_INCLUDE_PATH = $(addprefix includes/,$(INCLUDE_FILES:.h=.h))
 
 
 all: Hello_word $(OBJ_DIR) $(NAME)
@@ -218,6 +226,10 @@ fclean: clean
 	@printf "$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_GREEN)Removed library $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
 
 re: fclean all
+
+norminette:
+	@norminette $(SRCS)
+	@norminette $(FULL_INCLUDE_PATH)
 
 test: all 
 	@printf "$(COLOR_VIOLET)Compiling test $(TEST_FILE) ... $(COLOR_RESET)\n"

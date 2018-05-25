@@ -1,5 +1,18 @@
-#include "job_control.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   job_format.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:22 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
 #include <stdio.h>
+#include "job_control.h"
 
 int		job_number(t_job *j)
 {
@@ -19,21 +32,23 @@ int		job_number(t_job *j)
 void	format_job_info_process(t_job *j, const char *status)
 {
 	t_process	*p;
-	char		*job_no;
+	char		job_no[21];
 	size_t		job_no_length;
 
-	job_no = ft_itoa(job_number(j));
+	ft_itoa_word(job_number(j), job_no);
 	job_no_length = ft_strlen(job_no);
 	if (j->foreground)
 		ft_putchar('\n');
-	fprintf(stderr, "[%d]", job_number(j));
+	ft_dprintf(2, "[%d]", job_number(j));
 	p = j->first_process;
-	fprintf(stderr, " %ld %s: %s%s\n", (long)p->pid, status, p->av, p->next ? " |" : "");
+	ft_dprintf(2, " %u %s: %s%s\n", (long)p->pid, status, p->av, \
+			p->next ? " |" : "");
 	p = p->next;
 	while (p)
 	{
 		ft_putnstr("                ", job_no_length + 2);
-		fprintf(stderr, " %ld %s: %s%s\n", (long)p->pid, status, p->av, p->next ? " |" : "");
+		ft_dprintf(2, " %u %s: %s%s\n", (long)p->pid, status, p->av, \
+				p->next ? " |" : "");
 		p = p->next;
 	}
 }

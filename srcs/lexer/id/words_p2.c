@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/23 20:33:57 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/23 20:39:00 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2018/05/25 20:43:58 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,9 @@ int			check_valid_name(const char *value, size_t size)
 
 t_token		*check_function_name(t_lexer *lex, const char *value)
 {
-	int		smooth;
-	size_t	count;
 	t_list	*node;
 	t_token	*token;
 
-	count = 0;
-	smooth = TRUE;
 	node = lex->reversed_list;
 	if (!ft_strequ(value, ")") || !node)
 		return (NULL);

@@ -1,8 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   job_continue.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:22 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "job_control.h"
+
+void	mark_job_as_done(t_job *j)
+{
+	t_process *p;
+
+	p = j->first_process;
+	while (p)
+	{
+		p->stopped = 1;
+		p = p->next;
+	}
+	j->notified = 0;
+}
 
 void	mark_job_as_running(t_job *j)
 {
 	t_process *p;
+
 	p = j->first_process;
 	while (p)
 	{
@@ -15,7 +41,7 @@ void	mark_job_as_running(t_job *j)
 void	continue_job(t_job *j, int foreground)
 {
 	mark_job_as_running(j);
-	format_job_info_process (j, "continue");
+	format_job_info_process(j, "continue");
 	if (foreground)
 		put_job_in_foreground(singleton_jc(), j, 1, 0);
 	else

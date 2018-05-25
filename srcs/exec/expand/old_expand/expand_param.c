@@ -1,4 +1,15 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expand_param.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:01 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "exec.h"
 #include "local.h"
@@ -21,40 +32,11 @@ static int	valid_param_expansion(char *str)
 	return (-1);
 }
 
-/*static t_list	*find_value(t_list *local, char *new_data)
-{
-	char	*new_key;
-	char	*key;
-
-	new_key = new_data;
-	while (local)
-	{
-		key = key_of_local(local->data, '=');
-		if (ft_strcmp(new_key, key) == 0)
-		{
-			free(new_key);
-			free(key);
-			return (local);
-		}
-		free(key);
-		local = local->next;
-	}
-	free(new_key);
-	return (NULL);
-}*/
-
 static char	*expand_from_env(t_env *env, char *key, int offset)
 {
 	char	*param;
-	//t_list	*local_elem;
 	char	*ret;
-	//size_t	eq_pos;
 
-	//param = env_getenv((const char **)env->environ, key + offset + 1, NULL);
-	
-	//local_elem = find_value(env->local, key + offset + 1);
-	//eq_pos = ft_strichr(local_elem->data, '=');
-	//param = local_elem->data + eq_pos + 1;
 	param = local_get_var(env->local, key + offset + 1);
 	if (param)
 		ret = ft_strdup(param);
@@ -62,8 +44,6 @@ static char	*expand_from_env(t_env *env, char *key, int offset)
 		ret = ft_strnew(0);
 	return (ret);
 }
-
-
 
 void		parameter_expansion(t_env *env, t_token *token)
 {

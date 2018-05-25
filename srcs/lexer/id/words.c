@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/23 20:29:34 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/23 20:37:53 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2018/05/25 20:43:38 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ static int	check_prev_3(t_lexer *lex)
 {
 	t_token	*token;
 	t_list	*node;
-	size_t	count;
 
 	token = NULL;
 	node = NULL;
-	count = 0;
 	node = lex->reversed_list;
 	while (node)
 	{

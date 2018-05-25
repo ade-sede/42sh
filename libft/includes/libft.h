@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:41 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:15:27 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
@@ -114,6 +126,6 @@ int					ft_strarrstrn(char **array, char *str, unsigned int n);
 unsigned int		ft_parrlen(void **array);
 void				ft_parrpush(void ***tablo, void *elem);
 void				**ft_parrnew(void);
-void	ft_strspush(char **str, char *push);
+void				ft_strspush(char **str, char *push);
 
 #endif

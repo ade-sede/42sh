@@ -1,12 +1,25 @@
-#include "glob.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   glob.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:13 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/dir.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include "glob.h"
+#include "libft.h"
 
-char	*init_regex(char *regex, int *r_i)
+char		*init_regex(char *regex, int *r_i)
 {
-	size_t	last_slash;
-	size_t	i;
+	size_t		last_slash;
+	size_t		i;
 
 	last_slash = 0;
 	i = 0;
@@ -30,9 +43,9 @@ char	*init_regex(char *regex, int *r_i)
 	return (ft_strdup("."));
 }
 
-int		func_cmp(t_matches *m, int m_i, int r_i)
+int			func_cmp(t_matches *m, int m_i, int r_i)
 {
-	int backslash;
+	int			backslash;
 
 	backslash = (m->regex[r_i] == '\\' && m->regex[r_i + 1] == '\\');
 	if (m->regex[r_i] != '\\' || backslash)
@@ -45,10 +58,10 @@ int		func_cmp(t_matches *m, int m_i, int r_i)
 		return (match(m, m_i, r_i + 1));
 }
 
-int		has_glob_char(char *expr)
+int			has_glob_char(char *expr)
 {
-	size_t	i;
-	int		quoted;
+	size_t		i;
+	int			quoted;
 
 	quoted = 0;
 	i = 0;
@@ -57,13 +70,12 @@ int		has_glob_char(char *expr)
 		if (quoted == 0 && ft_strchr("*[?", expr[i]))
 			return (1);
 		quoted = change_state_quote(expr[i], quoted);
-//		fprintf(stderr, "end_bracket quoted: %d, %c\n", quoted, expr[i]);
 		i++;
 	}
 	return (0);
 }
 
-t_list	*glob(char *regex)
+t_list		*glob(char *regex)
 {
 	t_matches	m;
 	char		*dir_name;
@@ -73,13 +85,8 @@ t_list	*glob(char *regex)
 	dir_name = init_regex(regex, &r_i);
 	if (r_i - 1 >= 0)
 		m_i = r_i - 1;
-
 	else
 		m_i = 0;
-
-#ifdef GLOB_DEBUG
- printf("regex: %s\n", regex);
- #endif
 	m = (t_matches){NULL, NULL, regex, dir_name};
 	if (!match_open_dir(&m, m_i, r_i, dir_name))
 		return (NULL);

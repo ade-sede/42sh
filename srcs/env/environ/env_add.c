@@ -1,8 +1,21 @@
-#include "hash_table.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_add.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:54 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
 #include "environ.h"
 #include "libft.h"
 #include "local.h"
 #include "failure.h"
+#include "hash_table.h"
 
 void	env_add_var(t_env *env, const char *key, const char *value)
 {
@@ -12,10 +25,10 @@ void	env_add_var(t_env *env, const char *key, const char *value)
 	char		*local_value;
 	size_t		new_environ_size;
 
-	if (ft_str_isdigit(key) || ft_strequ(key, "@") || ft_strequ(key, "*") || ft_strequ(key, "#") || ft_strequ(key, "?") || ft_strequ(key, "-") || ft_strequ(key, "$") || ft_strequ(key,"!"))
+	if (is_key(key))
 	{
-		dprintf(2, "%s: ", key);
-		investigate_error(1, "Wrong assignement :", "not a valid identifier", 0);
+		ft_dprintf(2, "%s: ", key);
+		investigate_error(1, "Wrong assignement:", "not a valid identifier", 0);
 		return ;
 	}
 	environ = env->environ;
@@ -43,11 +56,10 @@ void	env_reload_tree_hash(t_env *env)
 	create_hash_table(&env->hash_table, env->environ);
 }
 
-#include <stdio.h>
 void	env_change_value(t_env *env, const char *key, size_t key_index, \
 		const char *new_value)
 {
-	char	**environ;
+	char		**environ;
 	char		*local_value;
 
 	environ = env->environ;

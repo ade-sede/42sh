@@ -13,11 +13,14 @@ COLOR_VIOLET	= \033[1;35m
 COLOR_CYAN		= \033[1;36m
 COLOR_WHITE		= \033[1;37m
 
+
 # **************************************************************************** #
 SRC_FILE = \
 		   main.c \
 		   \
 		   builtin/alias.c \
+		   builtin/history.c \
+		   builtin/history_opt.c \
 		   builtin/export.c \
 		   builtin/shopt.c \
 		   builtin/shift.c \
@@ -61,6 +64,7 @@ SRC_FILE = \
 		   env/opt/set_opt.c \
 		   \
 		   env/local/pos_param.c \
+		   env/local/pos_param_add.c \
 		   env/local/local_add.c \
 		   env/local/local_remove.c \
 		   env/local/local_get.c \
@@ -70,12 +74,16 @@ SRC_FILE = \
 		   env/environ/env_remove.c \
 		   env/environ/environ.c \
 		   env/environ/load_base_env.c \
+		   env/environ/ft_is_key.c \
 		   \
 		   env/prompt/get_ps1.c \
 		   env/prompt/prompt.c \
 		   env/prompt/prompt_zsh.c \
 		   \
 		   exec/debug_symbol.c \
+		   exec/layer_exec.c \
+		   exec/exec_main_loop.c \
+		   exec/remove_lexer_parser.c \
 		   exec/debug_token.c \
 		   exec/exec_asynchronous_list.c \
 		   exec/exec_bin.c \
@@ -89,6 +97,9 @@ SRC_FILE = \
 		   exec/redir_utils.c \
 		   exec/get_input.c \
 		   exec/parse_heredoc.c \
+		   exec/parse_exit.c \
+		   exec/exec_command_prefix.c \
+		   exec/exec_command_suffix.c \
 		   \
 		   exec/symbol/exec.c \
 		   exec/symbol/exec_and_or.c \
@@ -117,6 +128,8 @@ SRC_FILE = \
 		   failure/get_errno_1.c \
 		   failure/get_errno_2.c \
 		   failure/get_errno_3.c \
+		   failure/get_errsig_1.c \
+		   failure/get_errsig_2.c \
 		   failure/return_failure.c \
 		   \
 		   globing/curly_bracket_split.c \
@@ -141,7 +154,6 @@ SRC_FILE = \
 		   history/btsearch_move.c \
 		   history/btsearch_refresh.c \
 		   history/btsearch_signals.c \
-		   history/expansion.c \
 		   history/history_get_input.c \
 		   history/history_init.c \
 		   history/history_line_refresh.c \
@@ -149,7 +161,23 @@ SRC_FILE = \
 		   history/history_write.c \
 		   history/load_history.c \
 		   \
+		history/bang/bang_expand.c \
+		history/bang/trunc.c \
+		history/bang/subst.c \
+		history/bang/modifiers_utils.c \
+		history/bang/apply_quotes.c \
+		history/bang/lex_loop.c \
+		history/bang/parse_word_range.c \
+		history/bang/string_event.c \
+		history/bang/state.c \
+		history/bang/find_event.c \
+		history/bang/event_expand.c \
+		history/bang/modifier_expand.c \
+		history/bang/word_designator_expand.c \
+		   \
 		   job_control/job_background.c \
+		   job_control/process_launch.c \
+		   job_control/job_is.c \
 		   job_control/job_continue.c \
 		   job_control/job_fill_process_av.c \
 		   job_control/job_foreground.c \
@@ -231,13 +259,15 @@ SRC_FILE = \
 			line_editing/syntax_coloring/lexer_action_le/word.c \
 		   \
 		   parser/get_action.c \
-		   parser/parse_redir.c \
+		   parser/init_parser.c \
 		   parser/parser.c \
 		   parser/parser_construct_prompt.c \
 		   parser/utils.c \
 		   parser/t_ast.c \
 		   \
 		   exec/expand/parse_dollar.c \
+		   exec/expand/eval_expr.c \
+		   exec/expand/parse_param.c \
 		   exec/expand/parse_arith.c \
 		   exec/expand/parse_quote.c \
 		   exec/expand/parse_tilde.c \
@@ -261,6 +291,7 @@ INCLUDES_FILES = \
 				 glob_struct.h \
 				 hash_table.h \
 				 history.h \
+				 bang.h \
 				 job_control.h \
 				 lexer.h \
 				 line_editing.h \
@@ -285,7 +316,7 @@ TEST_FILE=
 
 LIB_DIR = libft
 LIB_INC = -I$(LIB_DIR)/includes
-LOCAL_INC = -Iincludes
+LOCAL_INC = -Iincludes -Iressources
 SRC_DIR = srcs
 OBJ_DIR = objs
 
@@ -303,6 +334,8 @@ INCLUDES_DEP = $(addprefix ./includes/, $(INCLUDES_FILES))
 SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC_FILE:.c=.o))
+
+FULL_INCLUDE_PATH = $(addprefix includes/,$(INCLUDES_FILES:.h=.h))
 
 .phony: all test hello_word lib $(OBJ_DIR) $(NAME) clean fclean re
 
@@ -335,6 +368,7 @@ $(OBJ_DIR):
 	@/bin/mkdir -p $(OBJ_DIR)/exec/expand/
 	@/bin/mkdir -p $(OBJ_DIR)/globing
 	@/bin/mkdir -p $(OBJ_DIR)/history
+	@/bin/mkdir -p $(OBJ_DIR)/history/bang
 	@/bin/mkdir -p $(OBJ_DIR)/lexer
 	@/bin/mkdir -p $(OBJ_DIR)/lexer/id/
 	@/bin/mkdir -p $(OBJ_DIR)/lexer/lexer_action/
@@ -360,6 +394,11 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@printf "$(COLOR_VIOLET)creating objects files for library $(COLOR_BLUE)$(NAME) ... \n$(COLOR_CYAN)"
 	$(CC) $(OPTIMIZATION) $(CFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) -c -o $@ $^
 	@printf "\n$(COLOR_NOCOLOR)$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_UP)$(COLOR_CLEAR)$(COLOR_UP)$(COLOR_CLEAR)"
+
+norminette:
+	@norminette $(SRCS)
+	@norminette $(FULL_INCLUDE_PATH)
+	@make -C $(LIB_DIR) norminette
 
 test: 
 	@printf "$(COLOR_VIOLET)compiling test $(TEST_FILE) ... $(COLOR_RESET)\n"

@@ -1,13 +1,21 @@
-#include "local.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   local_add.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:55 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "t_env.h"
 #include "environ.h"
 #include "libft.h"
 #include "shopt.h"
 #include "failure.h"
-
-
-
-#include <stdio.h>
+#include "local.h"
 
 int		local_add_from_key_value(t_env *env, const char *key, const char *value)
 {
@@ -35,9 +43,10 @@ int		local_add_from_string(t_env *env, const char *string)
 	local_add_from_key_value(env, string, pos + 1);
 	*pos = tmp;
 	return (1);
-}	
+}
 
-int		local_add_change_from_key_value(t_env *env, const char *key, const char *value)
+int		local_add_change_from_key_value(t_env *env, const char *key,
+		const char *value)
 {
 	t_list	*node;
 	t_local	*local;

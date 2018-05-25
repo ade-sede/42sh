@@ -1,7 +1,19 @@
-#include "glob.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   match.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:13 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/dir.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include "glob.h"
 
 int		char_is_escaped(char *regex, int r_i)
 {
@@ -49,10 +61,7 @@ int		stop_condition(t_matches *m)
 
 int		match(t_matches *m, int m_i, int r_i)
 {
-#ifdef GLOB_DEBUG
- printf("r_i: %c, m_i: %c\n", m->regex[r_i], m->to_match[m_i]);
- #endif
-	if (m->regex[r_i] == '\0' && m->to_match[m_i] == '\0') //attention
+	if (m->regex[r_i] == '\0' && m->to_match[m_i] == '\0')
 		return (stop_condition(m));
 	else if (m->regex[r_i] != '\0' && m->to_match[m_i] == '\0' \
 			&& m->regex[r_i] != '*' && m->regex[r_i] != '/')
@@ -71,13 +80,7 @@ int		match(t_matches *m, int m_i, int r_i)
 		return (match(m, m_i + 1, r_i + 1));
 	if (m->regex[r_i] == '[' && valid_square_bracket(m->regex, r_i))
 	{
-#ifdef GLOB_DEBUG
- printf("valid\n");
- #endif
 		return (func_square_bracket(m, m_i, r_i));
 	}
-#ifdef GLOB_DEBUG
- printf("invalid\n");
- #endif
 	return (func_cmp(m, m_i, r_i));
 }

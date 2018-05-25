@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:42 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef EXEC_H
 # define EXEC_H
 # include "t_token.h"
@@ -8,6 +20,7 @@
 # include "job_control.h"
 # include "exec_symbol.h"
 # include "modes.h"
+# define BUFSIZE 128
 
 typedef struct	s_redir
 {
@@ -15,7 +28,7 @@ typedef struct	s_redir
 	int			(*f)(int, char*, t_list**, int);
 }				t_redir;
 
-int			expansion(char **string, t_lst_head *head);
+int				expansion(char **string, t_lst_head *head);
 
 /*
 **	In file srcs/exec/exec_bin.c
@@ -53,10 +66,10 @@ void			no_handle_signals(void);
 **	In file srcs/exec/main_loop.c
 */
 
-int		lex_and_parse(t_ast *ast, char *buff, t_modes *modes);
+int				lex_and_parse(t_ast *ast, char *buff, t_modes *modes);
 void			init_main_loop(t_line *line, t_hist *hist);
-int		main_loop(t_env *env, t_modes *modes);
-int		get_input(t_modes *modes, char **buff);
+int				main_loop(t_env *env, t_modes *modes);
+int				get_input(t_modes *modes, char **buff);
 
 /*
 **	In file srcs/exec/redir_utils.c
@@ -73,18 +86,24 @@ int				exec(t_ast	*ast);
 int				is_token(t_ast *ast, int token_id);
 int				is_symb(t_ast *ast, int symbol);
 
-int		exec_io_redirect(t_ast	*ast, t_list **redirect_list);
-
-char	**get_cmd_name(t_ast *ast, int flag);
-int		exec_function(t_ast *fct_body, char **av);
 t_lst_func		*get_function(t_env *env, char *cmd_name);
-void	exec_redirect_list(t_ast *ast, t_list **redirect_list);
-char	*stream_get_line(int stream);
-char	*line_editing_get_line(t_line *line, t_hist *hist,
-		void (*sig_handler)(void));
-int		reopen(t_lexer *lex, t_parser *parser, t_modes *modes);
+int				exec_io_redirect(t_ast	*ast, t_list **redirect_list);
+char			**get_cmd_name(t_ast *ast, int flag);
+int				exec_function(t_ast *fct_body, char **av);
+void			exec_redirect_list(t_ast *ast, t_list **redirect_list);
+char			*stream_get_line(int stream);
+char			*line_editing_get_line(t_line *line, t_hist *hist,
+				void (*sig_handler)(void));
+int				reopen(t_lexer *lex, t_parser *parser, t_modes *modes);
 
-void	read_heredoc(t_ast *ast, char *target);
-void	parse_heredoc(t_ast *ast);
+void			read_heredoc(t_ast *ast, char *target);
+void			parse_heredoc(t_ast *ast);
+int				parse_exit(t_ast *ast);
+int				exec_cmd_suffix(t_ast *ast, t_list **redirect_list, char ***av);
+int				exec_cmd_prefix(t_ast *ast, t_list **redirect_list);
+void			remove_lexer(t_lexer *lex, t_list **token_list);
+void			remove_parser(t_parser *parser);
+void			exec_main_loop(t_ast *ast);
+int				layer_exec(t_env *env, char **av);
 
 #endif

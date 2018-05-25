@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_and_or.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:06 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "exec.h"
 
 /*
@@ -6,7 +18,7 @@
 **	                 | and_or OR_IF  linebreak pipeline
 */
 
-int exec_and_or(t_ast *ast)
+int		exec_and_or(t_ast *ast)
 {
 	int		exit_status;
 
@@ -18,7 +30,7 @@ int exec_and_or(t_ast *ast)
 			return (exec(ast->child[3]));
 		return (exit_status);
 	}
-	if ((exit_status = exec(ast->child[0])) == EXIT_FAILURE)
+	if ((exit_status = exec(ast->child[0])) != EXIT_SUCCESS)
 		return (exec(ast->child[3]));
 	return (exit_status);
 }

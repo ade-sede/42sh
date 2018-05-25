@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ppipe.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:40 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:15:23 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "system.h"
 
-void	p_pipe(int	mypipe[2])
+void	p_pipe(int mypipe[2])
 {
-	if (pipe (mypipe) < 0)
+	if (pipe(mypipe) < 0)
 	{
-		perror ("pipe");
-		exit (1);
+		perror("pipe");
+		exit(1);
 	}
 }

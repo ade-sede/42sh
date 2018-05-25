@@ -1,4 +1,15 @@
-#include "line_editing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_control_d.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:31 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "history.h"
 #include "builtin.h"
 
@@ -12,7 +23,7 @@
 
 int		control_d(t_line *line)
 {
-	char	*command[] = {"exit", NULL};
+	static char	*command[] = {"exit", NULL};
 
 	if (line->len == 0)
 	{

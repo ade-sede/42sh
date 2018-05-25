@@ -1,4 +1,15 @@
-#include <sys/stat.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redir_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:05 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/types.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -11,7 +22,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-int	safe_open(char *target, int mode)
+int			safe_open(char *target, int mode)
 {
 	int		target_fd;
 
@@ -27,7 +38,10 @@ int	safe_open(char *target, int mode)
 
 int			redir_open_file(char *target, int id)
 {
-	int	target_fd; int	mode; mode = 0;
+	int		target_fd;
+	int		mode;
+
+	mode = 0;
 	if (id == TK_LESS)
 		mode |= O_RDONLY;
 	if (id != TK_LESS)
@@ -45,9 +59,9 @@ int			redir_open_file(char *target, int id)
 }
 
 /*
-**	save[0] is the original fd (source) (fildes1)
-**	save[1] The duplicate of the source fd save[0] (dup(io_number))
-**	save[2] is the fd of the opened file. -1 if no file was opened. (fildes2)
+**	save[0] is the original fd(source)(fildes1)
+**	save[1] The duplicate of the source fd save[0](dup(io_number))
+**	save[2] is the fd of the opened file. -1 if no file was opened.(fildes2)
 **	save[3] is a flag that indicates if save[1](target) is a fd that should or
 **	not be closed. If the fd shouldnt be closed its value is 1.
 **	Must be careful about never closing stdin stdout or stderr.
@@ -84,7 +98,7 @@ void		close_dup(t_list *redir_stack)
 void		push_dup(int io_number, int target_fd, int natural_fd, \
 		t_list **redir_stack)
 {
-	int	*save;
+	int		*save;
 
 	save = palloc(sizeof(*save) * 4);
 	save[0] = io_number;

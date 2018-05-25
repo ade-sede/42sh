@@ -1,8 +1,21 @@
-#include <dirent.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hash.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:55 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environ.h"
 #include "libft.h"
 #include "hash_table.h"
 #include "t_env.h"
+#include <dirent.h>
+#include "local.h"
 
 size_t	hash(unsigned char *str)
 {
@@ -65,7 +78,8 @@ int		create_hash_table(t_list ***hash_table, char **environ)
 	int		i;
 
 	i = 0;
-	if (!(path = env_getenv((const char**)environ, "PATH", NULL)))
+	if (!(path = env_getenv((const char**)environ, "PATH", NULL))
+	&& !(path = var_get_value(singleton_env(), "PATH")))
 		return (0);
 	*hash_table = ft_memalloc(sizeof(t_list *) * HASH_TABLE_SIZE);
 	paths = ft_strsplit(path, ":");

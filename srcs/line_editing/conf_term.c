@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2018/05/25 20:50:05 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 #include "t_env.h"
 #include "environ.h"
@@ -38,7 +50,7 @@ void	conf_term_init(void)
 					"TERM", NULL)) == NULL)
 		termtype = "xterm";
 	if (tgetent(NULL, termtype) <= 0)
-		fatal("cant access data base");
+		fatal("tgetent: Cant access data base");
 	if (tcgetattr(0, &term) == -1)
 		fatal("getattr error");
 	ft_memcpy(&line->canonical_mode, &term, sizeof(struct termios));
@@ -54,7 +66,7 @@ void	conf_term_init(void)
 
 void	conf_term_rc(t_read *read, char hide)
 {
-	char		*termtype;
+	char			*termtype;
 	struct termios	term;
 
 	if ((termtype = env_getenv((const char **)singleton_env()->environ, \
@@ -65,10 +77,7 @@ void	conf_term_rc(t_read *read, char hide)
 	if (tcgetattr(0, &term) == -1)
 		fatal("getattr error");
 	if (hide == 1)
-	{
 		term.c_lflag &= ~(ICANON);
-		//term.c_cc[VMIN] = 1;
-	}
 	else if (hide == 2)
 		term.c_lflag &= ~(ECHO);
 	else if (!hide)

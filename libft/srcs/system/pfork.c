@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pfork.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:40 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:15:22 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "system.h"
 
 int		p_fork(void)
@@ -5,13 +17,10 @@ int		p_fork(void)
 	pid_t	pid;
 
 	pid = fork();
-	//fprintf(stderr, "meuh\n");
-	//system("echo b >> log");
 	if (pid < 0)
 	{
-		system("echo a >> toto");
-		perror ("fork");
-		exit (1);
+		perror("fork");
+		exit(1);
 	}
 	return (pid);
 }

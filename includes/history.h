@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   history.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:43 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HISTORY_H
 # define HISTORY_H
 # include "libft.h"
@@ -20,6 +32,7 @@ typedef struct	s_hist
 
 t_hist			*singleton_hist(void);
 int				history_load(t_hist *h, t_env *env);
+int				history_read_file(int fd, t_hist *h);
 
 int				history_get_input(t_line *line, unsigned long keycode);
 void			history_init(t_hist *h);
@@ -51,6 +64,7 @@ void			create_strstr_btsearch_buff(t_list_d *item);
 
 void			history_append_command_to_list(char *command);
 void			history_write_to_histfile(void);
+void			history_write_to_file(int fd, t_hist *h);
 void			history_line_refresh(t_line *line, char *new_line);
 
 /*

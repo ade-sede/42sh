@@ -1,9 +1,21 @@
-#include "history.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_history.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/12/18 18:25:19 by tdumouli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include "t_env.h"
 #include "environ.h"
+#include "history.h"
 
 static void	init_hist_struct(t_hist *h, t_env *env)
 {
@@ -30,18 +42,16 @@ static void	routine(t_hist *h, char *cat)
 		ft_double_lst_add(&h->list, list);
 }
 
-int			history_load(t_hist *h, t_env *env)
+int			history_read_file(int fd, t_hist *h)
 {
-	int			fd;
-	char		*line;
-	char		*cat;
+	char	*line;
+	char	*cat;
 
 	cat = NULL;
-	init_hist_struct(h, env);
-	if ((fd = open(h->file, O_RDWR | O_CREAT, 0644)) == -1)
-		return (0);
 	while (get_next_line(fd, &line))
 	{
+		if (line && !*line)
+			continue ;
 		if (cat)
 		{
 			cat[ft_strlen(cat) - 1] = '\n';
@@ -54,6 +64,19 @@ int			history_load(t_hist *h, t_env *env)
 		routine(h, cat);
 		cat = NULL;
 	}
+	if (cat)
+		routine(h, cat);
+	return (1);
+}
+
+int			history_load(t_hist *h, t_env *env)
+{
+	int			fd;
+
+	init_hist_struct(h, env);
+	if ((fd = open(h->file, O_RDWR | O_CREAT, 0644)) == -1)
+		return (0);
+	history_read_file(fd, h);
 	close(fd);
 	return (1);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   alias.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:44 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "t_env.h"
 #include "builtin.h"
 #include "libft.h"
@@ -15,7 +27,6 @@ t_list		*find_alias(t_list *alias, const char *argv, size_t len)
 	return (alias);
 }
 
-#include <stdio.h>
 static void	create_alias(t_env *env, const char *argv, int eq_index, int *ret)
 {
 	t_list	*node;

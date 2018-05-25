@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtin.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:42 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BUILTIN_H
 # define BUILTIN_H
 # include "t_env.h"
@@ -84,24 +96,19 @@ int				builtin_jobs(t_env *env, const char **argv);
 
 int				builtin_set(t_env *env, const char **argv);
 
+int				builtin_shopt(t_env *env, const char **argv);
 
-int			builtin_shopt(t_env *env, const char **argv);
-
-int			builtin_shift(t_env *env, const char **argv);
-int			builtin_export(t_env *env, const char **argv);
+int				builtin_shift(t_env *env, const char **argv);
+int				builtin_export(t_env *env, const char **argv);
 /*
 ** In file history.c
 */
 
-typedef struct	s_history_opt
-{
-	const char	*key;
-	const char	**(*f)(t_hist*, const char **argv, int *error);
-}				t_history_opt;
-
 int				builtin_history(t_env *env, const char **argv);
-const char		**handle_options(t_hist *h, const char **argv, int *ret);
-int				parse_options(t_hist *h, const char **argv);
+int				builtin_history_c(t_hist *hist);
+int				builtin_history_w(t_hist *hist, const char *argv);
+int				builtin_history_r(t_hist *hist, const char *argv);
+int				builtin_history_p(t_hist *hist, const char *argv);
 
 /*
 ** 	In file history_handle_options.c
@@ -120,5 +127,6 @@ typedef struct	s_builtin
 	int			(*f)(t_env*, const char**);
 }				t_builtin;
 
-void		*get_exec_builtin(const char *argv);
+void			*get_exec_builtin(const char *argv);
+void			backslash(char **line, char **word, char quote);
 #endif

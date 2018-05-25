@@ -1,4 +1,15 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_remove.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:39 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:58 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "list.h"
 
 void	ft_simple_lst_remove(t_list **first, void (*f)(void*))
@@ -18,10 +29,11 @@ void	ft_simple_lst_remove(t_list **first, void (*f)(void*))
 
 void	ft_genlst_remove(void *first, void (*f)(void*))
 {
-	t_gen_lst		**first_cast = first;
+	t_gen_lst		**first_cast;
 	t_gen_lst		*node;
 	t_gen_lst		*tmp_next;
 
+	first_cast = first;
 	node = *first_cast;
 	while (node)
 	{

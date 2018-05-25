@@ -1,4 +1,15 @@
-#include "t_env.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:34 by ade-sede          #+#    #+#             */
+/*   Updated: 2018/05/25 20:39:41 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environ.h"
 #include "exec.h"
 #include "libft.h"
@@ -39,7 +50,9 @@ static const char	**apply_opt(t_env *env, const char **argv, int *error)
 			return (argv);
 	}
 	return (argv);
-} static const char	**build_new_env(t_env *env, const char **argv, int *error)
+}
+
+static const char	**build_new_env(t_env *env, const char **argv, int *error)
 {
 	int	eq_index;
 
@@ -72,11 +85,12 @@ static int			exec_env(t_env *new_env, const char **argv)
 	create_hash_table(&new_env->hash_table, new_env->environ);
 	child = fork();
 	if (child == 0)
-		exit(exec_builtin(new_env, argv));
-	else
+		exit(layer_exec(new_env, (char **)argv));
+	else if (child > 0)
+	{
 		wait(&ret);
-	/* if (!WEXITSTATUS(ret)) */
-	/* 	fork_exec_bin(&new_env, argv, NULL); */
+		tcsetpgrp(singleton_jc()->shell_terminal, singleton_jc()->shell_pgid);
+	}
 	return (1);
 }
 

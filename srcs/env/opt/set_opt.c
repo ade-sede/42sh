@@ -1,4 +1,15 @@
-#include "t_env.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_opt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:13:57 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "failure.h"
 #include "libft.h"
 #include "shopt.h"
@@ -9,8 +20,6 @@ struct s_shopt_mask g_shopt_mask[OPTNB + 1];
 **	Sign is '-' if value must be set '+' if it must be
 **	unset
 */
-
-#include <stdio.h>
 
 int	set_shell_opt(t_env *env, int sign, const char *option_value)
 {

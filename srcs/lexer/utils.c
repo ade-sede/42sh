@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/23 19:35:10 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/23 19:41:43 by ade-sede         ###   ########.fr       */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/12/18 18:29:13 by tdumouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ int		pop_state(t_lexer *lex, struct s_info **info)
 	ft_simple_lst_del_one(&lex->state_list, lex->state, NULL);
 	lex->state = ft_last_simple_lst(lex->state_list);
 	parent_info = lex->state->data;
-	w_addstr(&parent_info->value, (*info)->value.str);
-	parent_info->count += (*info)->count;
+	if ((*info)->value.str)
+	{
+		w_addstr(&parent_info->value, (*info)->value.str);
+		parent_info->count += (*info)->count;
+	}
 	return (1);
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_init.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:33 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "line_editing.h"
 
 /*
@@ -36,9 +48,4 @@ void		edit_line_init(t_line *line, void (*sig_handler)(void))
 	line->old_pos = 0;
 	line->len = 0;
 	line->sig_handler = sig_handler;
-	//line->read = NULL;
-	//line->read_builtin = 0;
-	//line->read.delim = '\n';
-	//line->read.flags = 0;
-	//line->read.nchars = 0;
 }

@@ -1,8 +1,20 @@
-#include "line_editing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_write.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:37 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:35 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "t_env.h"
 #include <stdio.h>
 #include "failure.h"
 #include "color.h"
+#include "line_editing.h"
 
 /*
 **	When using a putstr to write the line to the terminal, the behavior is not
@@ -22,7 +34,7 @@ static void	term_write_char(t_line *line, size_t i)
 			if (i >= line->visu_start && i < line->pos)
 				ft_putstr("\e[39;42m");
 	}
-		write(2, line->buff + i, 1);
+	write(2, line->buff + i, 1);
 	if (line->visu_mode)
 	{
 		if (line->pos < line->visu_start)
@@ -34,28 +46,28 @@ static void	term_write_char(t_line *line, size_t i)
 	}
 }
 
-static void write_tab(t_line *line, size_t i)
+static void	write_tab(t_line *line, size_t i)
 {
 	t_coor	tab_pos;
 	size_t	offset;
 
-		tab_pos = get_char_visual_coor(line, i);
-		offset = (tab_pos.x % 8) ? (8 - (tab_pos.x % 8)) : 8;
-		if (tab_pos.x == 0)
-		{
-			ft_putchar_fd(' ', 2);
-			ft_putchar_fd('\t', 2);
-		}
-		else if (tab_pos.x + offset >= line->ws_col)
-		{
-			ft_putchar_fd('\t', 2);
-			ft_putchar_fd('\n', 2);
-		}
-		else
-			ft_putchar_fd('\t', 2);
+	tab_pos = get_char_visual_coor(line, i);
+	offset = (tab_pos.x % 8) ? (8 - (tab_pos.x % 8)) : 8;
+	if (tab_pos.x == 0)
+	{
+		ft_putchar_fd(' ', 2);
+		ft_putchar_fd('\t', 2);
+	}
+	else if (tab_pos.x + offset >= line->ws_col)
+	{
+		ft_putchar_fd('\t', 2);
+		ft_putchar_fd('\n', 2);
+	}
+	else
+		ft_putchar_fd('\t', 2);
 }
 
-void	write_term(t_line *line, size_t i)
+void		write_term(t_line *line, size_t i)
 {
 	t_coor	pos;
 	t_coor	l_pos;
@@ -76,6 +88,7 @@ void	write_term(t_line *line, size_t i)
 	else
 		term_write_char(line, i);
 }
+
 void		term_putstr(t_line *line)
 {
 	size_t	i;

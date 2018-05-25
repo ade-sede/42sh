@@ -1,15 +1,20 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   return_failure.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:14:12 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "failure.h"
 #include <stdio.h>
 #include <stdarg.h>
 #include "color.h"
-
-char	*singleton_error(void)
-{
-	static char	buff[E_BUFSIZE];
-
-	return (buff);
-}
+#include "libft.h"
 
 int		return_failure(const char *str, const char *error_msg)
 {
@@ -31,61 +36,27 @@ int		get_logfd(const char *file)
 	return (fd);
 }
 
-
-int		logwrite(const char *filename, const char *func_name,
-		const char *format, ...)
-{
-	va_list		ap;
-	int			fd;
-	time_t		rawtime;
-	struct tm	*info;
-	char		time_str[26];
-
-	time(&rawtime);
-	info = localtime(&rawtime);
-	fd = get_logfd(filename);
-	strftime(time_str, 26, "%Y-%m-%d %H:%M:%S", info);
-	if (fd >= 0)
-	{
-		va_start(ap, format);
-		dprintf(fd, "From "GRN"%s "RESET" @ %s"BLU"##\n"RESET,
-				func_name, time_str);
-		vdprintf(fd, format, ap);
-		dprintf(fd, BLU"##\n"RESET);
-		va_end(ap);
-		close(fd);
-		return (1);
-	}
-	return (-1);
-}
-
-
 int		investigate_error(int log, const char *prefix,
 		const char *custom_error, int return_value)
 {
 	size_t		i;
-	char		*buff;
+	t_word		buff;
 	char		*error_name;
 
-	buff = singleton_error();
-	ft_bzero(buff, E_BUFSIZE);
+	w_newword(&buff);
 	if (prefix != NULL && (i = -1))
 	{
 		while (prefix[++i])
-			buff[i] = prefix[i];
-		buff[i++] = ':';
-		buff[i++] = ' ';
+			w_addchar(&buff, prefix[i]);
+		w_addchar(&buff, ':');
 		error_name = custom_error ? (char*)custom_error : get_errno();
 		if (error_name)
-			ft_strcpy(buff + i, error_name);
+			w_addstr(&buff, error_name);
 	}
 	else if (custom_error != NULL && prefix == NULL)
-		ft_strcpy(buff, custom_error);
-	if (log)
-		ft_putendl_fd(buff, 2);
+		w_addstr(&buff, custom_error);
+	if (log && buff.str)
+		ft_putendl_fd(buff.str, 2);
+	w_free(&buff);
 	return (return_value == -1 ? errno : return_value);
 }
-/*
- **	if (!log)
- **		logwrite(logfile, __func__, "%s\n", buff);
- */

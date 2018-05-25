@@ -1,6 +1,17 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strpush.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:40 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/11/24 23:15:14 by ade-sede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
 void	ft_strpush(char **str, char c)
 {
@@ -18,5 +29,4 @@ void	ft_strpush(char **str, char c)
 		n_str[len] = (*str)[len];
 	free(*str);
 	*str = n_str;
-
 }

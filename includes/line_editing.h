@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   line_editing.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
+/*   Updated: 2017/12/09 13:45:08 by seddaoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LINE_EDITING_H
 # define LINE_EDITING_H
 
@@ -69,7 +81,8 @@ extern int		g_abort_opening;
 
 int				edit_del(t_line *line);
 t_coor			get_prompt_visual_offset(t_line *line);
-void		reopen_line_editing(t_lexer *lex, t_parser *parser, char **new_command);
+void			reopen_line_editing(t_lexer *lex, t_parser *parser, \
+		char **new_command);
 void			term_putstr(t_line *line);
 void			edit_handle_sigint_reopen(int signum);
 void			edit_set_signals_reopen(void);
@@ -113,6 +126,8 @@ void			edit_refresh_clear(t_line *line);
 void			edit_refresh_cursor(t_line *line);
 void			edit_refresh_line(t_line *line);
 void			edit_refresh_visu(t_line *line);
+void			edit_cursor_pos(void);
+char			edit_check_cursor(void);
 
 void			goto_termcap(char *capacity, int co, int li);
 void			put_ntermcap(char *capacity, int n);
