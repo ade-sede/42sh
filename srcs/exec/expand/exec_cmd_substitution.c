@@ -6,13 +6,16 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:01 by ade-sede         ###   ########.fr       */
+/*   Updated: 2018/05/25 20:44:56 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "exec.h"
 #include "expand.h"
+#ifdef __linux__
+# include <sys/wait.h>
+#endif
 
 static void		exec_comm_child(char *comm, int *fildes, int no_showerr)
 {

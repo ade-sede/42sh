@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:05 by ade-sede         ###   ########.fr       */
+/*   Updated: 2018/05/25 20:41:29 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		exec(t_ast *ast)
 	i = 0;
 	while (g_exec_func[i].f)
 	{
-		if (ast->symbol == g_exec_func[i].symbol)
+		if (ast->symbol == (int)g_exec_func[i].symbol)
 			return (g_exec_func[i].f(ast));
 		i++;
 	}

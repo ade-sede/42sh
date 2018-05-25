@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:36 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:24 by ade-sede         ###   ########.fr       */
+/*   Updated: 2018/05/25 20:43:20 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,7 @@ void		job_check_exit(t_ast *ast)
 {
 	int exit_status;
 	int	status;
-	int	reset;
 
-	reset = 0;
 	status = singleton_jc()->warn_exit;
 	if ((exit_status = parse_exit(ast)) > 0)
 	{

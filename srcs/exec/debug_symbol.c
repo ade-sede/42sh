@@ -6,7 +6,7 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:35 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:13:58 by ade-sede         ###   ########.fr       */
+/*   Updated: 2018/05/25 20:41:13 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	debug_symbol(t_ast *ast)
 	i = 0;
 	while (sts[i].string)
 	{
-		if (ast->symbol == sts[i].symbol)
+		if (ast->symbol == (int)sts[i].symbol)
 		{
 			ft_dprintf(2, "%s\n", sts[i].string);
 			return ;

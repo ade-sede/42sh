@@ -6,12 +6,15 @@
 /*   By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 23:13:38 by ade-sede          #+#    #+#             */
-/*   Updated: 2017/11/24 23:14:42 by ade-sede         ###   ########.fr       */
+/*   Updated: 2018/05/25 20:40:13 by ade-sede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENVIRON_H
 # define ENVIRON_H
+# ifdef __linux__
+#  include <sys/wait.h>
+# endif
 # include "t_env.h"
 
 char		**env_create_environ(const char **original, size_t *new_size);
