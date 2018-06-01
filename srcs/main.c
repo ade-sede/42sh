@@ -62,7 +62,7 @@ void	read_pointrc(t_env *env)
 		tmp = ft_strjoin(tmp, "/.42shrc");
 	else
 		return ;
-	if ((fd = open(tmp, O_RDONLY)) == -1)
+	if ((fd = open(tmp, O_RDONLY | O_CREAT)) == -1)
 	{
 		free(tmp);
 		investigate_error(1, "open", NULL, 0);
