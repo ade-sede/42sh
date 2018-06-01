@@ -11,6 +11,18 @@ The features presented in the following document should be here and enable relat
 [42 - 42sh Subject](http://cdn.intra.42.fr/pdf/pdf/183/42sh.fr.pdf)
 
 
+# How to
+
+### Requirements
+- [Termcap Lirary](https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html)
+
+### Installing
+
+```sh
+git clone https://github.com/ade-sede/42sh.git 42sh
+cd 42sh && make
+```
+
 ## Line editing
 
 Keys|Functions|
@@ -147,7 +159,7 @@ This code of the factorial function works fine in our shell.
 ```sh
 factorial()
 {
-  if [ "$1" -gt "1" ]; then
+  if test "$1" -gt "1" ; then
     i=$(( $1 - 1))
     j=$(factorial $i)
     k=$(($1 * $j))
@@ -157,7 +169,6 @@ factorial()
   fi
 }   
 ```
-You can find more exemple of what our shell handles in the Exemple directory.
 
 ## Authors
 * **COMBEY Vincent** - [vcombey](https://github.com/vcombey)
