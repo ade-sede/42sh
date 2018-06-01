@@ -160,7 +160,7 @@ This code of the factorial function works fine in our shell.
 factorial()
 {
   if test "$1" -gt "1" ; then
-    i=$(( $1 - 1))
+    i=$(($1 - 1))
     j=$(factorial $i)
     k=$(($1 * $j))
     echo $k
