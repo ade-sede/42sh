@@ -16,6 +16,8 @@ The features presented in the following document should be here and enable relat
 ### Requirements
 - [Termcap Lirary](https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html)
 
+Termcap being as old as it is, it can be complicated to get the library setup on some systems.
+
 ### Installing
 
 ```sh
