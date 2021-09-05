@@ -17,7 +17,9 @@
 #include "completion.h"
 #include "local.h"
 
-int		g_abort_opening;
+/*
+ * int		g_abort_opening;
+ */
 
 void	edit_handle_sigwinch(int signum)
 {

@@ -14,7 +14,9 @@
 #include "libft.h"
 #include "shopt.h"
 
-struct s_shopt_mask g_shopt_mask[OPTNB + 1];
+/*
+ * struct s_shopt_mask g_shopt_mask[OPTNB + 1];
+ */
 
 /*
 **	Sign is '-' if value must be set '+' if it must be

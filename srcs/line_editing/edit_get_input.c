@@ -73,7 +73,9 @@ static void			init_read(t_line *l, unsigned long *keycode)
 	l->old_pos = l->pos;
 }
 
-int	g_abort_opening;
+/*
+ * int	g_abort_opening;
+ */
 
 static int			end_of_input(t_line *line, int keycode)
 {
