@@ -45,23 +45,29 @@ void	conf_term_init(void)
 	struct termios	term;
 	t_line			*line;
 
-	line = singleton_line();
-	if ((termtype = env_getenv((const char**)singleton_env()->environ, \
-					"TERM", NULL)) == NULL)
-		termtype = "xterm";
-	if (tgetent(NULL, termtype) <= 0)
-		fatal("tgetent: Cant access data base");
-	if (tcgetattr(0, &term) == -1)
-		fatal("getattr error");
-	ft_memcpy(&line->canonical_mode, &term, sizeof(struct termios));
-	ft_memcpy(&line->non_canonical_mode, &line->canonical_mode,
-			sizeof(struct termios));
-	line->non_canonical_mode.c_lflag &= ~(ICANON);
-	line->non_canonical_mode.c_lflag &= ~(ECHO);
-	line->non_canonical_mode.c_cc[VMIN] = 1;
-	line->non_canonical_mode.c_cc[VTIME] = 0;
-	if (tcsetattr(0, TCSANOW, &line->non_canonical_mode) < 0)
-		fatal("tcsetattr error");
+    line = singleton_line();
+    if ((termtype = env_getenv((const char **)singleton_env()->environ,
+                                "TERM", NULL)) == NULL) {
+        termtype = "xterm";
+    }
+    if (tgetent(NULL, termtype) == -1) {
+        fatal("tgetent: Cant access data base");
+    } else if (tgetent(NULL, termtype) == 0) {
+        fatal("tgetent: Terminal not available in the database. Check $TERM. "
+            "Your terminal may not be compatible");
+    }
+    if (tcgetattr(0, &term) == -1) {
+        fatal("getattr error");
+    }
+    ft_memcpy(&line->canonical_mode, &term, sizeof(struct termios));
+    ft_memcpy(&line->non_canonical_mode, &line->canonical_mode,
+                sizeof(struct termios));
+    line->non_canonical_mode.c_lflag &= ~(ICANON);
+    line->non_canonical_mode.c_lflag &= ~(ECHO);
+    line->non_canonical_mode.c_cc[VMIN] = 1;
+    line->non_canonical_mode.c_cc[VTIME] = 0;
+    if (tcsetattr(0, TCSANOW, &line->non_canonical_mode) < 0)
+        fatal("tcsetattr error");
 }
 
 void	conf_term_rc(t_read *read, char hide)

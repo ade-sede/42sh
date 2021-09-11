@@ -25,6 +25,22 @@ git clone https://github.com/ade-sede/42sh.git 42sh
 cd 42sh && make
 ```
 
+### Running
+```sh
+./42sh
+```
+
+The line editing does not work anymore and seems to lock / misbehave all the time.
+This is because we were forced to use the TERMCAP library as part of the school subject.
+Termcap was already obsolete 15 years ago ...
+In order to work again we would need to replace Termcap with Ncurses .
+
+You can still test execution of commands and scripts using the following command.
+
+```sh
+./42sh -c "<command>"
+```
+
 ## Line editing
 
 Keys|Functions|
