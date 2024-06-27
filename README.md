@@ -41,6 +41,12 @@ You can still test execution of commands and scripts using the following command
 ./42sh -c "<command>"
 ```
 
+## Syntax coloring
+
+```sh
+set -o syncolor
+```
+
 ## Line editing
 
 Keys|Functions|
